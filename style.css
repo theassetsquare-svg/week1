@@ -1,13 +1,13 @@
 :root {
-  --background-color: #121212;
-  --text-color: #E0E0E0;
-  --primary-container-bg: #1E1E1E;
-  --secondary-container-bg: #2A2A2A;
-  --accent-color: #D4AF37; /* Gold accent */
-  --accent-hover-color: #E7C966;
-  --border-color: #333;
-  --subtle-text-color: #888;
-  --heading-font: 'Playfair Display', serif;
+  --background-color: #FFFFFF;
+  --text-color: #222222;
+  --primary-container-bg: #FFFFFF;
+  --secondary-container-bg: #F8F8F8;
+  --accent-color: #D81921; /* Michelin Red */
+  --accent-hover-color: #EF3038;
+  --border-color: #E0E0E0;
+  --subtle-text-color: #666666;
+  --heading-font: 'Montserrat', sans-serif;
   --body-font: 'Lato', sans-serif;
 }
 
@@ -37,6 +37,7 @@ body {
   text-align: center;
   border: 1px solid var(--border-color);
   position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
 }
 
 .lang-switch {
@@ -59,7 +60,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--heading-font);
-  color: #fff;
+  color: var(--text-color);
   font-weight: 700;
 }
 
@@ -71,7 +72,7 @@ h1 {
 .subtitle {
   color: var(--subtle-text-color);
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 40px;
 }
 
@@ -110,8 +111,8 @@ h1 {
 }
 
 .btn {
-  background: transparent;
-  color: var(--accent-color);
+  background: var(--accent-color);
+  color: var(--background-color);
   border: 2px solid var(--accent-color);
   border-radius: 4px;
   padding: 12px 35px;
@@ -125,8 +126,8 @@ h1 {
 }
 
 .btn:hover {
-  background: var(--accent-color);
-  color: var(--background-color);
+  background: var(--accent-hover-color);
+  border-color: var(--accent-hover-color);
 }
 
 .btn:active {
@@ -146,7 +147,7 @@ h1 {
 }
 
 .filter-btn {
-  background: transparent;
+  background: var(--secondary-container-bg);
   border: 1px solid var(--border-color);
   border-radius: 30px;
   padding: 8px 20px;
@@ -172,7 +173,9 @@ h1 {
   font-size: 1.2rem;
   color: var(--subtle-text-color);
   margin-bottom: 15px;
-  font-weight: 400;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .history ul {
