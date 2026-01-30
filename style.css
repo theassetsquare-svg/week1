@@ -1,1 +1,150 @@
-/* Add styles here */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ff9a56, #ff6a88);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 28px;
+}
+
+.result {
+  background: #fff7f0;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.result.hidden {
+  display: none;
+}
+
+.result .emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.result .menu-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff6a88;
+}
+
+.btn {
+  background: linear-gradient(135deg, #ff6a88, #ff9a56);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 24px;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 106, 136, 0.4);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn.spin {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+}
+
+.filter-btn.active {
+  background: #ff6a88;
+  color: #fff;
+}
+
+.filter-btn:hover {
+  background: #ffccd5;
+  color: #ff6a88;
+}
+
+.filter-btn.active:hover {
+  background: #ff5577;
+  color: #fff;
+}
+
+.history h3 {
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.history ul {
+  list-style: none;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.history li {
+  padding: 6px 0;
+  color: #666;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.history li:last-child {
+  border-bottom: none;
+}
