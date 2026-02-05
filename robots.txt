@@ -3,4 +3,5 @@ Allow: /
 Allow: /a/
 Allow: /b/
 Allow: /c/
+Allow: /d/
 Sitemap: https://week1-6m5.pages.dev/sitemap.xml
