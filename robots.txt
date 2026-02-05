@@ -6,4 +6,5 @@ Allow: /c/
 Allow: /d/
 Allow: /e/
 Allow: /f/
+Allow: /g/
 Sitemap: https://week1-6m5.pages.dev/sitemap.xml

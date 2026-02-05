@@ -65,4 +65,11 @@
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/f/"/>
   </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/g/</loc>
+    <xhtml:link 
+                 rel="alternate"
+                 hreflang="ko"
+                 href="https://week1-6m5.pages.dev/g/"/>
+  </url>
 </urlset>
