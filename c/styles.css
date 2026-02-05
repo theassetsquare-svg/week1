@@ -23,6 +23,8 @@ body { margin: 0; font-family: "Outfit", sans-serif; background: var(--bg); colo
 .mood-buttons button.active { border-color: var(--accent); color: var(--accent); }
 .chapters { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px; max-width: 1200px; margin: 0 auto; }
 .chapter { min-width: 320px; flex: 0 0 340px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; scroll-snap-align: start; }
+.toc ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.toc a { color: var(--muted); text-decoration: none; }
 .note, .summary { margin-top: 10px; padding: 10px; border-radius: 10px; background: #1b1b24; color: var(--muted); }
 .policy, .contact { max-width: 900px; margin: 20px auto; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .contact form { display: grid; gap: 10px; }
