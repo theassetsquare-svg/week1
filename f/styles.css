@@ -18,6 +18,11 @@ body { margin: 0; font-family: "Rubik", sans-serif; background: var(--bg); color
 .hero h1 { font-family: "Archivo", sans-serif; font-size: clamp(28px, 4vw, 40px); margin: 8px 0 12px; }
 .kpi-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .kpi { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.section-block, .toc { max-width: 1000px; margin: 16px auto; padding: 20px; background: #0f172a; border: 1px solid var(--line); border-radius: 16px; }
+.section-block h2, .toc h2 { margin-top: 0; font-family: "Archivo", sans-serif; }
+.section-block p, .toc p { color: var(--muted); }
+.toc ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
+.toc a { color: var(--ink); text-decoration: none; }
 .checklist, .planner, .policy, .contact { max-width: 1000px; margin: 16px auto; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .checklist ul { margin: 0; padding-left: 18px; color: var(--muted); }
 .planner-options { display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -20,6 +20,9 @@ body { margin: 0; font-family: "Work Sans", sans-serif; color: var(--ink); backg
 .masthead h1 { font-family: "Literata", serif; font-size: clamp(28px, 4vw, 46px); margin: 8px 0 12px; }
 .timeline { max-width: 900px; margin: 0 auto; padding: 10px 20px 20px; display: grid; gap: 16px; }
 .moment { padding: 18px; border-radius: 16px; border: 1px solid var(--line); }
+.moment.toc ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
+.moment.toc a { color: var(--ink); text-decoration: none; }
+.moment.toc a:hover { text-decoration: underline; }
 .m1 { background: var(--block-1); }
 .m2 { background: var(--block-2); }
 .m3 { background: var(--block-3); }
