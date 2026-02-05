@@ -181,8 +181,28 @@
       font-size: 13px;
     }
     @media (max-width: 920px) {
-      .hero { grid-template-columns: 1fr; }
+      .wrap { padding: 44px 18px 72px; }
+      .hero { grid-template-columns: 1fr; padding: 28px 22px; }
+      .hero-card { padding: 18px; }
+      .section { padding: 24px 20px 6px; }
       .grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 36px 16px 64px; }
+      .hero h1 { font-size: 26px; }
+      .hero p { font-size: 14.5px; }
+      .section h2 { font-size: 20px; }
+      .section p { font-size: 14.5px; }
+      .cta { padding: 18px; }
+      .contact { padding: 18px; }
+      .contact input,
+      .contact textarea { font-size: 14px; }
+    }
+    @media (max-width: 400px) {
+      .hero { padding: 22px 16px; }
+      .hero h1 { font-size: 24px; }
+      .pill { font-size: 12px; }
+      .hero-card h3 { font-size: 16px; }
     }
   </style>
 </head>
