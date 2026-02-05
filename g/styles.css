@@ -1,0 +1,53 @@
+:root {
+  --bg: #0a0a14;
+  --ink: #f2f2f6;
+  --muted: #a2a2b3;
+  --accent: #6f4cff;
+  --accent-2: #19c2c5;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "SUIT", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+.split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  min-height: 100vh;
+}
+.left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: radial-gradient(500px 300px at 20% 10%, rgba(111,76,255,0.4), transparent 70%),
+              radial-gradient(500px 300px at 80% 60%, rgba(25,194,197,0.3), transparent 70%),
+              #0c0c18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.left-inner { max-width: 420px; }
+.label { text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--muted); }
+.left h1 { font-family: "Syne", sans-serif; font-size: clamp(32px, 4vw, 46px); margin: 10px 0 12px; }
+.left-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.btn { border: 1px solid var(--accent); padding: 10px 16px; border-radius: 999px; text-decoration: none; color: var(--accent); font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn.primary { background: var(--accent); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(111,76,255,0.3); }
+.btn.pulse { transform: scale(0.98); }
+.right { padding: 40px 24px 60px; display: grid; gap: 18px; }
+.story-panel { background: #141425; border-radius: 16px; padding: 18px; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.2s ease; }
+.story-panel:hover { transform: translateY(-3px); }
+.policy, .faq, .contact { background: #121222; border-radius: 16px; padding: 18px; border: 1px solid rgba(255,255,255,0.06); }
+.faq-item { border-top: 1px solid rgba(255,255,255,0.08); padding: 10px 0; }
+.contact form { display: grid; gap: 10px; }
+.contact input, .contact textarea { background: #0f0f1c; border: 1px solid rgba(255,255,255,0.1); color: var(--ink); padding: 12px 14px; border-radius: 10px; }
+.contact button { background: var(--accent-2); color: #0a0a14; border: none; padding: 12px 14px; border-radius: 10px; font-weight: 700; transition: transform 0.2s ease; }
+.contact button:hover { transform: translateY(-2px); }
+.footer { text-align: center; color: var(--muted); font-size: 13px; padding: 10px 0 20px; }
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .left { position: relative; height: auto; }
+}

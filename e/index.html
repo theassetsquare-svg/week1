@@ -4,642 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>파주스카이돔나이트 | 공식 안내</title>
-  <meta name="description" content="파주스카이돔나이트의 분위기, 음악, 공간 흐름을 정보 중심으로 정리한 공식 안내 페이지입니다. 과장 없는 문화·엔터테인먼트 소개." />
+  <meta name="description" content="파주스카이돔나이트를 카드에서 상세 섹션으로 확장하는 구조로 안내합니다. 경험 차별점을 정보성으로 정리했습니다." />
   <link rel="canonical" href="https://week1-6m5.pages.dev/e/" />
   <meta property="og:title" content="파주스카이돔나이트 | 공식 안내" />
-  <meta property="og:description" content="파주스카이돔나이트의 분위기와 이용 흐름을 안전하고 세련된 톤으로 안내합니다." />
+  <meta property="og:description" content="카드 클릭으로 확장되는 섹션과 탭 내비게이션을 갖춘 안내 페이지입니다." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://week1-6m5.pages.dev/e/" />
   <meta property="og:image" content="https://week1-6m5.pages.dev/e/og.jpg" />
   <meta name="naver-site-verification" content="NAVER_SITE_VERIFICATION_PLACEHOLDER" />
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink: #151515;
-      --muted: #5f6468;
-      --accent: #185e5b;
-      --accent-2: #f0b65d;
-      --bg: #f3efe9;
-      --card: #ffffff;
-      --line: #e6dfd6;
-      --shadow: 0 20px 45px rgba(20, 20, 20, 0.12);
-      --glow: radial-gradient(600px 250px at 70% 10%, rgba(80, 170, 160, 0.2), transparent 60%);
-      --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.08'/></svg>");
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: "Nanum Gothic", sans-serif;
-      background: var(--glow), linear-gradient(120deg, #fff9f2 0%, #f3efe9 55%, #eef3f1 100%);
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 88px 20px 96px;
-    }
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.78);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 14px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .nav-links a {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
-    .nav-links a:focus-visible,
-    .nav-links a:hover {
-      border-color: var(--accent);
-      outline: none;
-    }
-    .hero {
-      position: relative;
-      padding: 48px 40px;
-      border-radius: 26px;
-      border: 1px solid var(--line);
-      background: #ffffff;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: var(--noise);
-      pointer-events: none;
-    }
-    .hero h1 {
-      font-family: "Marcellus", serif;
-      font-size: clamp(30px, 4vw, 46px);
-      margin: 0 0 12px;
-      letter-spacing: 0.5px;
-    }
-    .hero p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.85;
-      max-width: 700px;
-    }
-    .cta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-weight: 700;
-      background: #fff;
-    }
-    .btn.primary {
-      background: var(--accent);
-      color: #fff;
-    }
-    .section {
-      margin-top: 42px;
-      padding: 28px 28px 10px;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 18px 30px rgba(15, 30, 30, 0.08);
-    }
-    .section h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
-      color: var(--accent);
-    }
-    .section h3 {
-      margin: 18px 0 8px;
-      font-size: 18px;
-    }
-    .section p {
-      margin: 0 0 14px;
-      line-height: 1.9;
-      color: #2f3235;
-    }
-    .concept {
-      display: grid;
-      gap: 12px;
-    }
-    .concept li {
-      list-style: none;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: #fbf8f4;
-      border: 1px solid #efe7dd;
-    }
-    .tagline {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #e6f1ef;
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.4px;
-    }
-    .selector {
-      display: grid;
-      gap: 16px;
-    }
-    .selector-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .selector-buttons button {
-      border: 1px solid #cfe1dc;
-      background: #f1f7f6;
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 8px 14px;
-      cursor: pointer;
-      font-weight: 700;
-    }
-    .selector-buttons button.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-    .selector-card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px;
-      background: #ffffff;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 18px 0 6px;
-    }
-    .card {
-      background: #fbf8f4;
-      border: 1px solid #efe7dd;
-      border-radius: 16px;
-      padding: 16px;
-    }
-    .planner {
-      display: grid;
-      gap: 16px;
-    }
-    .planner-options {
-      display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .planner-options label {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #f7f3ee;
-      border: 1px solid #efe7dd;
-      cursor: pointer;
-    }
-    .planner-result {
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      padding: 16px;
-      background: #fff;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-      border: 1px solid #efe7dd;
-      display: block;
-      background: #f1ede7;
-    }
-    .faq-item {
-      border-top: 1px solid var(--line);
-      padding: 14px 0;
-    }
-    .notice {
-      background: #f7f4ef;
-      border: 1px solid #e7e0d8;
-      padding: 16px;
-      border-radius: 14px;
-    }
-    .contact {
-      margin-top: 18px;
-      padding: 18px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: #ffffff;
-    }
-    .contact form {
-      display: grid;
-      gap: 10px;
-    }
-    .contact input,
-    .contact textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid #d9d2c8;
-      font-family: inherit;
-    }
-    .contact button {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .footer {
-      margin-top: 26px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    :focus-visible {
-      outline: 2px solid var(--accent-2);
-      outline-offset: 2px;
-    }
-    @media (max-width: 920px) {
-      .wrap { padding: 72px 18px 80px; }
-      .hero { padding: 34px 24px; }
-      .grid { grid-template-columns: 1fr; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-      .planner-options { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .wrap { padding: 64px 16px 72px; }
-      .hero h1 { font-size: 28px; }
-      .section { padding: 22px 18px 8px; }
-      .gallery { grid-template-columns: 1fr; }
-      .nav-inner { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav class="nav" aria-label="주요 섹션">
-    <div class="nav-inner">
-      <strong>파주스카이돔나이트</strong>
-      <div class="nav-links">
-        <a href="#concept">콘셉트</a>
-        <a href="#mood">Mood Selector</a>
-        <a href="#space">동선 안내</a>
-        <a href="#planner">Tonight Planner</a>
-        <a href="#gallery">갤러리</a>
-        <a href="#faq">FAQ</a>
-      </div>
+  <header class="hero">
+    <div>
+      <p class="label">Cards-to-Sections</p>
+      <h1>파주스카이돔나이트 – 카드에서 깊이로</h1>
+      <p>핵심 포인트를 카드로 보고, 관심 영역을 클릭해 상세 설명으로 확장하는 구조입니다.</p>
     </div>
-  </nav>
+    <nav class="tabs" aria-label="섹션 네비게이션">
+      <button class="tab active" data-target="detail-1">설계 차별점</button>
+      <button class="tab" data-target="detail-2">흐름 가이드</button>
+      <button class="tab" data-target="detail-3">정책 안내</button>
+    </nav>
+  </header>
 
-  <div class="wrap">
-    <header class="hero" id="top">
-      <span class="tagline">밤을 소비하는 곳이 아니라, 분위기를 디자인하는 곳</span>
-      <h1>파주스카이돔나이트 – 분위기를 디자인하는 밤</h1>
-      <p>
-        파주스카이돔나이트는 음악과 조명, 공간의 흐름을 조화롭게 설계해
-        편안하고 건강한 파티 문화를 소개하는 엔터테인먼트 안내 페이지입니다.
-        과장 없이, 분위기와 이용 흐름을 이해하기 쉽게 정리했습니다.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="#space">이용 안내</a>
-        <a class="btn" href="#contact">문의</a>
-      </div>
-    </header>
+  <section class="cards" id="cards">
+    <button class="card" data-target="detail-1">
+      <h2>균형 설계</h2>
+      <p>음악과 조명의 균형을 중시합니다.</p>
+    </button>
+    <button class="card" data-target="detail-2">
+      <h2>동선 구조</h2>
+      <p>입장부터 마무리까지 흐름을 설계합니다.</p>
+    </button>
+    <button class="card" data-target="detail-3">
+      <h2>안전 기준</h2>
+      <p>정책 안전 고지를 명확히 합니다.</p>
+    </button>
+  </section>
 
-    <section class="section" id="concept">
-      <h2>Concept Manifesto</h2>
-      <p>파주스카이돔나이트가 지향하는 하나의 콘셉트 문장은 위의 태그라인으로 통일됩니다.</p>
-      <ol class="concept">
-        <li>우리는 음악과 조명이 만드는 리듬을 중심에 두고 공간을 설계합니다.</li>
-        <li>사람들이 편안하게 즐길 수 있는 흐름을 제공해 자연스러운 몰입을 돕습니다.</li>
-        <li>조용히 즐기고 싶은 사람부터 활기를 원하는 사람까지 다양한 취향을 존중합니다.</li>
-        <li>건강하고 안전한 문화가 유지되도록 안내와 매너 중심의 운영 원칙을 강조합니다.</li>
-        <li>방문자는 과장 없이 정확한 정보를 통해 자신에게 맞는 밤을 선택할 수 있습니다.</li>
-      </ol>
-    </section>
+  <section class="details">
+    <article id="detail-1" class="detail active">
+      <h2>우리가 다르게 설계한 것들</h2>
+      <p>과장된 요소보다 자연스러운 리듬을 강조합니다. 공간의 톤, 조명 강도, 동선 길이를 균형 있게 맞춰 편안함을 유지합니다.</p>
+    </article>
+    <article id="detail-2" class="detail">
+      <h2>이용 흐름 가이드</h2>
+      <p>입장 후 분위기 파악 → 라운지 구역 적응 → 메인 흐름 이동 → 여유 있게 마무리의 흐름을 추천합니다.</p>
+    </article>
+    <article id="detail-3" class="detail">
+      <h2>정책 안전 고지</h2>
+      <p>정보 제공 목적이며 불법·유해 콘텐츠 및 알선/매칭 등으로 오해될 수 있는 서비스를 제공·홍보하지 않습니다. 권리침해 요청 시 신속히 조치합니다.</p>
+    </article>
+  </section>
 
-    <section class="section" id="mood">
-      <h2>Mood Selector</h2>
-      <p>원하는 분위기를 선택하면, 설명 카피와 이용 팁이 즉시 바뀝니다.</p>
-      <div class="selector" aria-live="polite">
-        <div class="selector-buttons" role="tablist" aria-label="분위기 선택">
-          <button type="button" class="active" data-mood="trendy" role="tab" aria-selected="true">트렌디</button>
-          <button type="button" data-mood="calm" role="tab" aria-selected="false">편안</button>
-          <button type="button" data-mood="energy" role="tab" aria-selected="false">에너지</button>
-          <button type="button" data-mood="sentimental" role="tab" aria-selected="false">감성</button>
-        </div>
-        <div class="selector-card" id="mood-result">
-          <strong>트렌디</strong>
-          <p>리듬감 있는 음악과 은은한 조명이 어우러지는 분위기입니다.</p>
-          <p>이용 팁: 입장 후 공간의 흐름을 먼저 살펴보면 더 편안합니다.</p>
-          <p>추천 섹션: Music & Light, Space & Flow</p>
-        </div>
-      </div>
-    </section>
+  <section class="faq">
+    <h2>핵심 질문</h2>
+    <div class="faq-item">
+      <h3>파주스카이돔나이트는 어떤 분위기인가요?</h3>
+      <p>균형감 있는 음악과 조명으로 편안한 분위기를 안내합니다.</p>
+    </div>
+    <div class="faq-item">
+      <h3>처음 방문해도 괜찮나요?</h3>
+      <p>동선을 안내해 부담을 줄일 수 있습니다.</p>
+    </div>
+  </section>
 
-    <section class="section" id="space">
-      <h2>Space & Flow (Act 2)</h2>
-      <p>
-        파주스카이돔나이트의 동선은 처음 방문하는 사람도 쉽게 이해할 수 있도록 설계됩니다.
-        입장 후에는 시야가 넓은 구역에서 전체 분위기를 파악하고, 편안한 구역으로 이동해
-        음악의 리듬에 익숙해지는 흐름을 추천합니다.
-      </p>
-      <div class="grid">
-        <div class="card">
-          <h3>입장 존</h3>
-          <p>밝은 톤의 조명으로 첫 인상을 부드럽게 만들어 긴장을 줄여줍니다.</p>
-        </div>
-        <div class="card">
-          <h3>메인 플로우</h3>
-          <p>음악과 리듬을 중심으로 자연스럽게 움직일 수 있는 중심 동선입니다.</p>
-        </div>
-        <div class="card">
-          <h3>라운지 존</h3>
-          <p>대화와 휴식을 위한 공간으로, 소음이 적어 편안한 분위기를 제공합니다.</p>
-        </div>
-      </div>
-    </section>
+  <section class="contact" id="contact">
+    <h2>연락 폼</h2>
+    <form action="https://formspree.io/f/mnjvbgba" method="POST">
+      <input type="text" name="name" placeholder="이름" required aria-label="이름" />
+      <input type="email" name="_replyto" placeholder="이메일" required aria-label="이메일" />
+      <textarea name="message" rows="5" placeholder="메시지" required aria-label="메시지"></textarea>
+      <button type="submit">문의 보내기</button>
+    </form>
+  </section>
 
-    <section class="section" id="music">
-      <h2>Music & Light (Act 2)</h2>
-      <p>
-        음악은 중저음이 과하지 않게 균형을 맞추고, 조명은 눈의 피로를 줄이는 색온도를
-        유지하는 것을 기본 원칙으로 합니다. 이를 통해 지나친 자극 없이도 활기를 느낄 수 있습니다.
-      </p>
-      <p>
-        시간대에 따라 음악의 템포가 유연하게 변하고, 조명은 리듬과 맞물려 공간의 에너지를
-        자연스럽게 끌어올립니다. 과장된 연출이 아니라, 분위기를 안정적으로 유지하는 것이
-        목표입니다.
-      </p>
-    </section>
+  <footer class="footer">
+    <div>파주스카이돔나이트 공식 안내</div>
+    <div>이용약관 | 개인정보처리방침</div>
+    <div>콘텐츠 업데이트 일자: 2026-02-05</div>
+  </footer>
 
-    <section class="section" id="planner">
-      <h2>Tonight Planner</h2>
-      <p>선택한 항목에 따라 방문 전 체크리스트와 에티켓, 추천 동선을 제공합니다.</p>
-      <div class="planner">
-        <div class="planner-options" aria-label="방문 유형 선택">
-          <label><input type="checkbox" value="first" /> 처음 방문</label>
-          <label><input type="checkbox" value="friends" /> 친구 모임</label>
-          <label><input type="checkbox" value="calm" /> 편안한 분위기 선호</label>
-          <label><input type="checkbox" value="photo" /> 사진/기록 위주</label>
-        </div>
-        <div class="planner-result" id="planner-result">
-          선택 항목을 체크하면 맞춤 안내가 표시됩니다.
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="gallery">
-      <h2>Gallery</h2>
-      <p>아래 이미지는 안전한 톤의 파티 분위기 예시이며, 실제 사용 시 권리 확보가 필요합니다.</p>
-      <div class="gallery">
-        <img loading="lazy" width="420" height="280" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='420' height='280' fill='%23f1ede7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='16'>AI Image Slot 1</text></svg>" alt="파주스카이돔나이트 분위기 이미지">
-        <img loading="lazy" width="420" height="280" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='420' height='280' fill='%23f1ede7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='16'>AI Image Slot 2</text></svg>" alt="파주스카이돔나이트 공간 이미지">
-        <img loading="lazy" width="420" height="280" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='420' height='280' fill='%23f1ede7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='16'>AI Image Slot 3</text></svg>" alt="파주스카이돔나이트 음악 분위기 이미지">
-        <img loading="lazy" width="420" height="280" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='420' height='280' fill='%23f1ede7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='16'>AI Image Slot 4</text></svg>" alt="파주스카이돔나이트 라운지 이미지">
-        <img loading="lazy" width="420" height="280" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='420' height='280' fill='%23f1ede7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='16'>AI Image Slot 5</text></svg>" alt="파주스카이돔나이트 파티 분위기 이미지">
-        <img loading="lazy" width="420" height="280" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='280'><rect width='420' height='280' fill='%23f1ede7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='16'>AI Image Slot 6</text></svg>" alt="파주스카이돔나이트 조명 이미지">
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <h2>FAQ (Act 3)</h2>
-      <div class="faq-item">
-        <h3>파주스카이돔나이트는 어떤 분위기인가요?</h3>
-        <p>음악과 조명 중심의 편안한 파티 문화를 지향하며, 과도한 자극보다 균형감 있는 분위기를 선호합니다. 처음 방문해도 부담이 적도록 안내 중심의 흐름으로 구성됩니다. 전반적으로 안정적인 리듬과 조명을 유지하는 것이 특징입니다.</p>
-      </div>
-      <div class="faq-item">
-        <h3>처음 방문해도 괜찮나요?</h3>
-        <p>처음 방문하는 분들도 쉽게 공간 흐름을 파악할 수 있도록 안내 정보를 제공합니다. 입장 후에는 전체 분위기를 살펴보고, 편안한 구역에서 적응하는 것을 권장합니다. 무리 없이 즐길 수 있도록 동선 중심으로 정리했습니다.</p>
-      </div>
-      <div class="faq-item">
-        <h3>친구 모임에 어울리나요?</h3>
-        <p>친구들과 함께 즐길 수 있는 분위기를 고려해 공간의 개방감과 동선을 설계합니다. 대화가 가능한 구역과 리듬을 즐기는 구역이 분리되어 있어 상황에 맞게 선택할 수 있습니다. 과장 없이 편안한 모임을 돕는 구성을 지향합니다.</p>
-      </div>
-      <div class="faq-item">
-        <h3>방문 전 알아두면 좋은 점은?</h3>
-        <p>혼잡한 시간대와 여유 있는 시간대가 다르므로, 방문 목적에 맞춰 시간을 선택하면 좋습니다. 편안한 복장과 기본적인 매너를 지키는 것이 분위기를 유지하는 데 도움이 됩니다. 자세한 흐름은 Space & Flow 섹션을 참고하세요.</p>
-      </div>
-      <div class="faq-item">
-        <h3>이용 시 에티켓이 있나요?</h3>
-        <p>서로의 공간을 존중하고, 무리한 접근을 피하는 것이 기본 에티켓입니다. 자연스럽고 편안한 분위기를 위해 배려 있는 태도를 권장합니다. 이는 건강한 문화 유지에 중요한 요소입니다.</p>
-      </div>
-      <div class="faq-item">
-        <h3>문의는 어떻게 하나요?</h3>
-        <p>페이지 하단의 문의 폼을 통해 연락하실 수 있습니다. 문의 내용은 정보 제공 및 협업 관련 범위에서만 다루며, 과장된 보장 표현 없이 안내드립니다. 빠른 회신을 위해 이메일을 정확히 입력해 주세요.</p>
-      </div>
-    </section>
-
-    <section class="section" id="notice">
-      <h2>Policy-Safe Notice</h2>
-      <div class="notice">
-        본 페이지는 공간/문화/분위기 안내 목적이며, 불법·유해·음란 콘텐츠 및 알선/조건/접대/매칭 등으로
-        오해될 수 있는 서비스를 제공·홍보하지 않습니다. 이미지/텍스트는 권리 범위 내 사용을 원칙으로 하며
-        권리침해 요청 시 신속히 조치합니다.
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <h2>문의</h2>
-      <p>콘텐츠 제휴, 브랜드 협업, 페이지 개선 관련 문의는 아래 폼을 통해 보내주세요.</p>
-      <div class="contact">
-        <form action="https://formspree.io/f/mnjvbgba" method="POST">
-          <input type="text" name="name" placeholder="이름" required aria-label="이름">
-          <input type="email" name="_replyto" placeholder="이메일" required aria-label="이메일">
-          <textarea name="message" rows="5" placeholder="메시지" required aria-label="메시지"></textarea>
-          <button type="submit">문의 보내기</button>
-        </form>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>파주스카이돔나이트 공식 안내</div>
-      <div>이용약관 | 개인정보처리방침</div>
-      <div>콘텐츠 업데이트 일자: 2026-02-05</div>
-    </footer>
-  </div>
-
-  <script>
-    const moodData = {
-      trendy: {
-        title: "트렌디",
-        desc: "리듬감 있는 음악과 은은한 조명이 어우러지는 분위기입니다.",
-        tip: "이용 팁: 입장 후 공간의 흐름을 먼저 살펴보면 더 편안합니다.",
-        section: "추천 섹션: Music & Light, Space & Flow"
-      },
-      calm: {
-        title: "편안",
-        desc: "과하지 않은 템포와 부드러운 색감이 중심인 분위기입니다.",
-        tip: "이용 팁: 라운지 존에서 시작해 천천히 리듬에 익숙해져 보세요.",
-        section: "추천 섹션: Space & Flow"
-      },
-      energy: {
-        title: "에너지",
-        desc: "활기 있는 리듬과 공간의 에너지를 느낄 수 있는 분위기입니다.",
-        tip: "이용 팁: 메인 플로우에서 음악의 흐름을 따라가면 좋습니다.",
-        section: "추천 섹션: Music & Light"
-      },
-      sentimental: {
-        title: "감성",
-        desc: "잔잔한 조명과 여유 있는 리듬이 돋보이는 분위기입니다.",
-        tip: "이용 팁: 혼잡한 시간대를 피하면 더 편안한 경험이 가능합니다.",
-        section: "추천 섹션: Space & Flow, FAQ"
-      }
-    };
-
-    const moodButtons = document.querySelectorAll(".selector-buttons button");
-    const moodResult = document.getElementById("mood-result");
-
-    moodButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        moodButtons.forEach((b) => {
-          b.classList.remove("active");
-          b.setAttribute("aria-selected", "false");
-        });
-        btn.classList.add("active");
-        btn.setAttribute("aria-selected", "true");
-        const data = moodData[btn.dataset.mood];
-        moodResult.innerHTML = `<strong>${data.title}</strong><p>${data.desc}</p><p>${data.tip}</p><p>${data.section}</p>`;
-      });
-    });
-
-    const plannerResult = document.getElementById("planner-result");
-    const plannerChecks = document.querySelectorAll(".planner-options input");
-
-    function updatePlanner() {
-      const selected = Array.from(plannerChecks)
-        .filter((item) => item.checked)
-        .map((item) => item.value);
-
-      if (selected.length === 0) {
-        plannerResult.textContent = "선택 항목을 체크하면 맞춤 안내가 표시됩니다.";
-        return;
-      }
-
-      const checklist = ["가벼운 복장", "대화 배려", "공간 흐름 확인", "과한 기대 없이 즐기기"];
-      const etiquette = "서로의 공간을 존중하고, 편안한 분위기를 유지하는 태도를 권장합니다.";
-      const flow = "입장 후 전체 분위기 확인 → 라운지 존에서 적응 → 메인 플로우로 이동";
-
-      const hints = [];
-      if (selected.includes("first")) hints.push("처음 방문이라면 공간 구조를 먼저 파악하세요.");
-      if (selected.includes("friends")) hints.push("친구 모임은 라운지 존에서 시작하는 것이 편합니다.");
-      if (selected.includes("calm")) hints.push("편안한 분위기 선호 시 여유 있는 시간대를 추천합니다.");
-      if (selected.includes("photo")) hints.push("사진 기록은 주변 분위기를 배려하며 진행하세요.");
-
-      plannerResult.innerHTML = `
-        <strong>방문 전 체크리스트</strong>
-        <p>${checklist.join(" · ")}</p>
-        <strong>추천 이용 흐름</strong>
-        <p>${flow}</p>
-        <strong>에티켓</strong>
-        <p>${etiquette}</p>
-        <strong>추가 팁</strong>
-        <p>${hints.join(" ")}</p>
-      `;
-    }
-
-    plannerChecks.forEach((item) => item.addEventListener("change", updatePlanner));
-  </script>
-
+  <script src="script.js" defer></script>
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "파주스카이돔나이트",
-      "url": "https://week1-6m5.pages.dev/e/",
-      "description": "음악과 조명 중심의 건강한 파티 문화 안내",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support"
-      }
-    }
+    {"@context": "https://schema.org", "@type": "Organization", "name": "파주스카이돔나이트", "url": "https://week1-6m5.pages.dev/e/", "description": "카드에서 상세 섹션으로 확장되는 안내 페이지", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support"}}
   </script>
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "파주스카이돔나이트는 어떤 분위기인가요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "음악과 조명 중심의 편안한 파티 문화를 지향하며, 과도한 자극보다 균형감 있는 분위기를 선호합니다. 처음 방문해도 부담이 적도록 안내 중심의 흐름으로 구성됩니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "처음 방문해도 괜찮나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "처음 방문하는 분들도 쉽게 공간 흐름을 파악할 수 있도록 안내 정보를 제공합니다. 입장 후에는 전체 분위기를 살펴보고, 편안한 구역에서 적응하는 것을 권장합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "친구 모임에 어울리나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "친구들과 함께 즐길 수 있는 분위기를 고려해 공간의 개방감과 동선을 설계합니다. 대화가 가능한 구역과 리듬을 즐기는 구역이 분리되어 있어 상황에 맞게 선택할 수 있습니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "방문 전 알아두면 좋은 점은?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "혼잡한 시간대와 여유 있는 시간대가 다르므로, 방문 목적에 맞춰 시간을 선택하면 좋습니다. 편안한 복장과 기본적인 매너를 지키는 것이 분위기를 유지하는 데 도움이 됩니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "이용 시 에티켓이 있나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "서로의 공간을 존중하고, 무리한 접근을 피하는 것이 기본 에티켓입니다. 자연스럽고 편안한 분위기를 위해 배려 있는 태도를 권장합니다."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "문의는 어떻게 하나요?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "페이지 하단의 문의 폼을 통해 연락하실 수 있습니다. 문의 내용은 정보 제공 및 협업 관련 범위에서만 다루며, 과장된 보장 표현 없이 안내드립니다."
-          }
-        }
-      ]
-    }
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+      {"@type": "Question", "name": "파주스카이돔나이트는 어떤 분위기인가요?", "acceptedAnswer": {"@type": "Answer", "text": "균형감 있는 음악과 조명으로 편안한 분위기를 안내합니다."}},
+      {"@type": "Question", "name": "처음 방문해도 괜찮나요?", "acceptedAnswer": {"@type": "Answer", "text": "동선을 안내해 부담을 줄일 수 있습니다."}}
+    ]}
   </script>
 </body>
 </html>
