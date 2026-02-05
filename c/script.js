@@ -13,3 +13,12 @@ buttons.forEach((btn) => {
     copy.textContent = moodData[btn.dataset.mood];
   });
 });
+
+const menuToggle = document.querySelector(".menu-toggle");
+const topbarLinks = document.querySelector(".topbar-links");
+if (menuToggle && topbarLinks) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = topbarLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}

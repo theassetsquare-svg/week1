@@ -8,15 +8,16 @@ const card = document.getElementById("quote-card");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 
-function render() {
-  card.textContent = quotes[idx];
-}
-prev.addEventListener("click", () => {
-  idx = (idx - 1 + quotes.length) % quotes.length;
-  render();
-});
-next.addEventListener("click", () => {
-  idx = (idx + 1) % quotes.length;
-  render();
-});
+function render() { card.textContent = quotes[idx]; }
+prev.addEventListener("click", () => { idx = (idx - 1 + quotes.length) % quotes.length; render(); });
+next.addEventListener("click", () => { idx = (idx + 1) % quotes.length; render(); });
 render();
+
+const menuToggle = document.querySelector(".menu-toggle");
+const topbarLinks = document.querySelector(".topbar-links");
+if (menuToggle && topbarLinks) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = topbarLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}

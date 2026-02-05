@@ -3,76 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>파주스카이돔나이트 | 공식 안내</title>
-  <meta name="description" content="파주스카이돔나이트를 카드에서 상세 섹션으로 확장하는 구조로 안내합니다. 경험 차별점을 정보성으로 정리했습니다." />
+  <title>파주야당스카이돔나이트 | 에디토리얼 롱리드</title>
+  <meta name="description" content="파주야당스카이돔나이트를 편안한 흐름으로 읽는 에디토리얼 롱리드입니다. 타임라인 시나리오로 정보성을 제공합니다." />
   <link rel="canonical" href="https://week1-6m5.pages.dev/e/" />
-  <meta property="og:title" content="파주스카이돔나이트 | 공식 안내" />
-  <meta property="og:description" content="카드 클릭으로 확장되는 섹션과 탭 내비게이션을 갖춘 안내 페이지입니다." />
+  <meta property="og:title" content="파주야당스카이돔나이트 | 에디토리얼 롱리드" />
+  <meta property="og:description" content="타임라인 시나리오로 정리한 에디토리얼 안내 페이지입니다." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://week1-6m5.pages.dev/e/" />
   <meta property="og:image" content="https://week1-6m5.pages.dev/e/og.jpg" />
   <meta name="naver-site-verification" content="NAVER_SITE_VERIFICATION_PLACEHOLDER" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div>
-      <p class="label">Cards-to-Sections</p>
-      <h1>파주스카이돔나이트 – 카드에서 깊이로</h1>
-      <p>핵심 포인트를 카드로 보고, 관심 영역을 클릭해 상세 설명으로 확장하는 구조입니다.</p>
+  <nav class="topbar" aria-label="주요 메뉴">
+    <div class="topbar-inner">
+      <strong>파주야당스카이돔나이트</strong>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="topbar-links">메뉴</button>
+      <div id="topbar-links" class="topbar-links">
+        <a href="#timeline">타임라인</a>
+        <a href="#notice">정책 고지</a>
+        <a href="#contact">문의 접수</a>
+      </div>
     </div>
-    <nav class="tabs" aria-label="섹션 네비게이션">
-      <button class="tab active" data-target="detail-1">설계 차별점</button>
-      <button class="tab" data-target="detail-2">흐름 가이드</button>
-      <button class="tab" data-target="detail-3">정책 안내</button>
-    </nav>
+  </nav>
+
+  <header class="masthead">
+    <div>
+      <p class="label">Editorial Timeline</p>
+      <h1>파주야당스카이돔나이트 타임라인 안내</h1>
+      <p>입장부터 마무리까지 흐름을 시간 순서로 정리한 에디토리얼 롱리드입니다.</p>
+    </div>
   </header>
 
-  <section class="cards" id="cards">
-    <button class="card" data-target="detail-1">
-      <h2>균형 설계</h2>
-      <p>음악과 조명의 균형을 중시합니다.</p>
-    </button>
-    <button class="card" data-target="detail-2">
-      <h2>동선 구조</h2>
-      <p>입장부터 마무리까지 흐름을 설계합니다.</p>
-    </button>
-    <button class="card" data-target="detail-3">
-      <h2>안전 기준</h2>
-      <p>정책 안전 고지를 명확히 합니다.</p>
-    </button>
+  <main class="timeline" id="timeline">
+    <section class="moment m1">
+      <h2>준비 단계</h2>
+      <p>입장 전에는 공간의 톤과 분위기를 가볍게 파악하는 것이 좋습니다. 여유 있는 준비가 편안함을 만듭니다.</p>
+    </section>
+    <section class="moment m2">
+      <h2>첫 인상</h2>
+      <p>조명과 음악의 리듬을 천천히 확인하세요. 과도한 자극보다는 균형을 느끼는 것이 핵심입니다.</p>
+    </section>
+    <section class="moment m3">
+      <h2>메인 흐름</h2>
+      <p>리듬에 익숙해진 뒤에는 메인 동선으로 이동합니다. 자연스러운 흐름이 이어지도록 설계됩니다.</p>
+    </section>
+    <section class="moment m4">
+      <h2>마무리</h2>
+      <p>라운지 구역에서 여유 있게 정리하는 것이 권장됩니다. 편안한 분위기를 유지하는 데 도움이 됩니다.</p>
+    </section>
+  </main>
+
+  <section class="notes" aria-live="polite">
+    <div class="note-card" id="note-card">준비 단계: 여유 있는 시작이 가장 중요합니다.</div>
   </section>
 
-  <section class="details">
-    <article id="detail-1" class="detail active">
-      <h2>우리가 다르게 설계한 것들</h2>
-      <p>과장된 요소보다 자연스러운 리듬을 강조합니다. 공간의 톤, 조명 강도, 동선 길이를 균형 있게 맞춰 편안함을 유지합니다.</p>
-    </article>
-    <article id="detail-2" class="detail">
-      <h2>이용 흐름 가이드</h2>
-      <p>입장 후 분위기 파악 → 라운지 구역 적응 → 메인 흐름 이동 → 여유 있게 마무리의 흐름을 추천합니다.</p>
-    </article>
-    <article id="detail-3" class="detail">
-      <h2>정책 안전 고지</h2>
-      <p>정보 제공 목적이며 불법·유해 콘텐츠 및 알선/매칭 등으로 오해될 수 있는 서비스를 제공·홍보하지 않습니다. 권리침해 요청 시 신속히 조치합니다.</p>
-    </article>
-  </section>
-
-  <section class="faq">
-    <h2>핵심 질문</h2>
-    <div class="faq-item">
-      <h3>파주스카이돔나이트는 어떤 분위기인가요?</h3>
-      <p>균형감 있는 음악과 조명으로 편안한 분위기를 안내합니다.</p>
-    </div>
-    <div class="faq-item">
-      <h3>처음 방문해도 괜찮나요?</h3>
-      <p>동선을 안내해 부담을 줄일 수 있습니다.</p>
-    </div>
+  <section class="policy" id="notice">
+    <h2>정책 고지</h2>
+    <p>
+      본 페이지는 정보 제공 목적이며 불법·유해 콘텐츠 및 알선/매칭 등으로 오해될 수 있는 서비스를
+      제공·홍보하지 않습니다. 이미지/텍스트는 권리 범위 내 사용을 원칙으로 하며 권리침해 요청 시 신속히 조치합니다.
+    </p>
   </section>
 
   <section class="contact" id="contact">
-    <h2>연락 폼</h2>
+    <h2>문의 접수</h2>
     <form action="https://formspree.io/f/mnjvbgba" method="POST">
       <input type="text" name="name" placeholder="이름" required aria-label="이름" />
       <input type="email" name="_replyto" placeholder="이메일" required aria-label="이메일" />
@@ -82,19 +78,19 @@
   </section>
 
   <footer class="footer">
-    <div>파주스카이돔나이트 공식 안내</div>
+    <div>파주야당스카이돔나이트 공식 안내</div>
     <div>이용약관 | 개인정보처리방침</div>
     <div>콘텐츠 업데이트 일자: 2026-02-05</div>
   </footer>
 
   <script src="script.js" defer></script>
   <script type="application/ld+json">
-    {"@context": "https://schema.org", "@type": "Organization", "name": "파주스카이돔나이트", "url": "https://week1-6m5.pages.dev/e/", "description": "카드에서 상세 섹션으로 확장되는 안내 페이지", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support"}}
+    {"@context": "https://schema.org", "@type": "Organization", "name": "파주야당스카이돔나이트", "url": "https://week1-6m5.pages.dev/e/", "description": "타임라인 기반 에디토리얼 안내 페이지", "contactPoint": {"@type": "ContactPoint", "contactType": "customer support"}}
   </script>
   <script type="application/ld+json">
     {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-      {"@type": "Question", "name": "파주스카이돔나이트는 어떤 분위기인가요?", "acceptedAnswer": {"@type": "Answer", "text": "균형감 있는 음악과 조명으로 편안한 분위기를 안내합니다."}},
-      {"@type": "Question", "name": "처음 방문해도 괜찮나요?", "acceptedAnswer": {"@type": "Answer", "text": "동선을 안내해 부담을 줄일 수 있습니다."}}
+      {"@type": "Question", "name": "어떤 흐름으로 진행되나요?", "acceptedAnswer": {"@type": "Answer", "text": "입장 → 첫 인상 → 메인 흐름 → 마무리 순서로 안내합니다."}},
+      {"@type": "Question", "name": "처음 방문해도 괜찮나요?", "acceptedAnswer": {"@type": "Answer", "text": "동선이 명확하게 구성되어 있어 부담을 줄일 수 있습니다."}}
     ]}
   </script>
 </body>

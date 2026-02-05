@@ -7,73 +7,37 @@
   --line: #2a2a35;
 }
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: "Outfit", sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-}
-.hero {
-  padding: 56px 20px 24px;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+body { margin: 0; font-family: "Outfit", sans-serif; background: var(--bg); color: var(--ink); }
+.topbar { position: sticky; top: 0; background: #0f0f17; border-bottom: 1px solid var(--line); z-index: 10; }
+.topbar-inner { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.menu-toggle { background: var(--accent); color: #fff; border: none; border-radius: 999px; padding: 10px 16px; min-height: 44px; }
+.topbar-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.topbar-links a { color: var(--muted); text-decoration: none; font-weight: 600; }
+.hero { padding: 56px 20px 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
 .label { text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--muted); }
-.hero h1 { font-size: clamp(30px, 4vw, 48px); margin: 8px 0 12px; }
+.hero h1 { font-size: clamp(28px, 4vw, 48px); margin: 8px 0 12px; }
 .hero p { color: var(--muted); line-height: 1.8; }
-.tool {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px;
-  font-family: "JetBrains Mono", monospace;
-}
+.tool { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; font-family: "JetBrains Mono", monospace; }
 .mood-buttons { display: flex; gap: 8px; margin: 10px 0 8px; flex-wrap: wrap; }
-.mood-buttons button {
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--ink);
-  padding: 6px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-}
+.mood-buttons button { border: 1px solid var(--line); background: transparent; color: var(--ink); padding: 10px 12px; min-height: 44px; border-radius: 8px; cursor: pointer; }
 .mood-buttons button.active { border-color: var(--accent); color: var(--accent); }
-.chapters {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.chapter {
-  min-width: 320px;
-  flex: 0 0 340px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 18px;
-  scroll-snap-align: start;
-}
+.chapters { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px; max-width: 1200px; margin: 0 auto; }
+.chapter { min-width: 320px; flex: 0 0 340px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; scroll-snap-align: start; }
 .note, .summary { margin-top: 10px; padding: 10px; border-radius: 10px; background: #1b1b24; color: var(--muted); }
-.policy, .contact {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 18px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-}
+.policy, .contact { max-width: 900px; margin: 20px auto; padding: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .contact form { display: grid; gap: 10px; }
 .contact input, .contact textarea { background: #0f0f16; border: 1px solid var(--line); color: var(--ink); padding: 12px 14px; border-radius: 10px; }
-.contact button { background: var(--accent); color: #fff; border: none; padding: 12px 14px; border-radius: 10px; font-weight: 700; }
+.contact button { background: var(--accent); color: #fff; border: none; padding: 12px 14px; border-radius: 10px; font-weight: 700; min-height: 44px; }
 .footer { text-align: center; color: var(--muted); font-size: 13px; padding: 20px 0 40px; }
-@media (max-width: 900px) {
+
+@media (max-width: 480px) {
+  .topbar-links { display: none; width: 100%; flex-direction: column; padding-top: 10px; }
+  .topbar-links.open { display: flex; }
   .hero { grid-template-columns: 1fr; }
   .chapters { flex-direction: column; overflow: visible; }
   .chapter { min-width: auto; flex: 1 1 auto; }
 }
+@media (min-width: 481px) and (max-width: 768px) { .hero { grid-template-columns: 1fr; } }
+@media (min-width: 769px) and (max-width: 1024px) { .hero { grid-template-columns: 1fr; } }
+@media (min-width: 1025px) { .menu-toggle { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
