@@ -2,4 +2,5 @@ User-agent: *
 Allow: /
 Allow: /a/
 Allow: /b/
+Allow: /c/
 Sitemap: https://week1-6m5.pages.dev/sitemap.xml
