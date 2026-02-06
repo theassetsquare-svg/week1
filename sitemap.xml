@@ -3,73 +3,110 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://week1-6m5.pages.dev/index.html</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/index.html"/>
-    <xhtml:link 
+    <xhtml:link
                  rel="alternate"
                  hreflang="en"
                  href="https://week1-6m5.pages.dev/en.html"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/en.html</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="en"
                  href="https://week1-6m5.pages.dev/en.html"/>
-    <xhtml:link 
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/index.html"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/a/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/a/"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/b/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/b/"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/c/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/c/"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/d/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/d/"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/e/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/e/"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/f/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/f/"/>
   </url>
   <url>
     <loc>https://week1-6m5.pages.dev/g/</loc>
-    <xhtml:link 
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
                  rel="alternate"
                  hreflang="ko"
                  href="https://week1-6m5.pages.dev/g/"/>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/h/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link
+                 rel="alternate"
+                 hreflang="ko"
+                 href="https://week1-6m5.pages.dev/h/"/>
   </url>
 </urlset>
