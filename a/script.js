@@ -1,29 +1,50 @@
-const moodData = {
-  calm: "차분한 분위기를 선호한다면 여유 있는 시간대를 추천합니다.",
-  bright: "밝은 분위기를 원한다면 입장 초반에 공간을 넓게 둘러보세요.",
-  rhythm: "리듬 중심의 분위기를 원한다면 음악 흐름에 천천히 맞춰보세요."
-};
+// Progress bar and step navigation
+(function() {
+  const progressFill = document.getElementById('progress-fill');
+  const steps = document.querySelectorAll('.progress-steps .step');
+  const stepCards = document.querySelectorAll('.step-card');
+  const totalSteps = steps.length;
 
-const buttons = document.querySelectorAll(".mood-buttons button");
-const text = document.getElementById("mood-text");
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
 
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    buttons.forEach((b) => {
-      b.classList.remove("active");
-      b.setAttribute("aria-selected", "false");
+    if (progressFill) {
+      progressFill.style.width = scrollPercent + '%';
+    }
+
+    // Determine current step based on scroll position
+    let currentStep = 1;
+    stepCards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.5) {
+        currentStep = index + 1;
+      }
     });
-    btn.classList.add("active");
-    btn.setAttribute("aria-selected", "true");
-    text.textContent = moodData[btn.dataset.mood];
-  });
-});
 
-const menuToggle = document.querySelector(".menu-toggle");
-const topbarLinks = document.querySelector(".topbar-links");
-if (menuToggle && topbarLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = topbarLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    // Update active step
+    steps.forEach((step, index) => {
+      if (index + 1 <= currentStep) {
+        step.classList.add('active');
+      } else {
+        step.classList.remove('active');
+      }
+    });
+  }
+
+  // Throttle scroll events
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateProgress();
+        ticking = false;
+      });
+      ticking = true;
+    }
   });
-}
+
+  // Initial update
+  updateProgress();
+})();
