@@ -1,50 +1,55 @@
-// Progress bar and step navigation
-(function() {
-  const progressFill = document.getElementById('progress-fill');
-  const steps = document.querySelectorAll('.progress-steps .step');
-  const stepCards = document.querySelectorAll('.step-card');
-  const totalSteps = steps.length;
+// Side progress TOC — 데스크탑에서 현재 섹션 하이라이트
+(function () {
+  var sections = document.querySelectorAll('main section[id]');
+  if (!sections.length) return;
 
-  function updateProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+  // 사이드 TOC 생성
+  var toc = document.createElement('nav');
+  toc.className = 'side-toc';
+  toc.setAttribute('aria-label', '페이지 목차');
 
-    if (progressFill) {
-      progressFill.style.width = scrollPercent + '%';
-    }
+  sections.forEach(function (sec) {
+    var heading = sec.querySelector('h2');
+    if (!heading) return;
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.textContent = heading.textContent.replace(/^.+—\s*/, '').substring(0, 18);
+    toc.appendChild(a);
+  });
 
-    // Determine current step based on scroll position
-    let currentStep = 1;
-    stepCards.forEach((card, index) => {
-      const rect = card.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.5) {
-        currentStep = index + 1;
+  document.body.appendChild(toc);
+
+  // 스크롤 시 현재 섹션 하이라이트
+  var tocLinks = toc.querySelectorAll('a');
+  var ticking = false;
+
+  function updateToc() {
+    var current = '';
+    sections.forEach(function (sec) {
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.4) {
+        current = sec.id;
       }
     });
 
-    // Update active step
-    steps.forEach((step, index) => {
-      if (index + 1 <= currentStep) {
-        step.classList.add('active');
+    tocLinks.forEach(function (link) {
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
       } else {
-        step.classList.remove('active');
+        link.classList.remove('active');
       }
     });
   }
 
-  // Throttle scroll events
-  let ticking = false;
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     if (!ticking) {
-      window.requestAnimationFrame(function() {
-        updateProgress();
+      window.requestAnimationFrame(function () {
+        updateToc();
         ticking = false;
       });
       ticking = true;
     }
   });
 
-  // Initial update
-  updateProgress();
+  updateToc();
 })();
