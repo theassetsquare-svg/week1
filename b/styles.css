@@ -541,8 +541,8 @@ body {
 }
 
 @media (min-width: 769px) {
-  .content-area {
-    margin-right: 100px; /* 우측 스텝퍼 공간 확보 */
+  .side-stepper {
+    right: calc((100vw - 760px) / 2 - 80px);
   }
 }
 
