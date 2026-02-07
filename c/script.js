@@ -1,24 +1,33 @@
-const moodData = {
-  quiet: "조용한 분위기는 여유 있는 동선을 추천합니다.",
-  balanced: "균형 있는 분위기는 메인 흐름과 라운지 이동을 권장합니다.",
-  tempo: "템포 중심이라면 리듬 변화가 큰 시간대를 참고하세요."
-};
-const buttons = document.querySelectorAll(".mood-buttons button");
-const copy = document.getElementById("mood-copy");
+// 좌측 필터칩 내비 — 스크롤 시 현재 카드에 해당하는 칩 하이라이트
+(function () {
+  var cards = document.querySelectorAll('.info-card[id]');
+  var chips = document.querySelectorAll('.chip-nav .chip');
+  if (!cards.length || !chips.length) return;
 
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    buttons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    copy.textContent = moodData[btn.dataset.mood];
-  });
-});
+  var ticking = false;
 
-const menuToggle = document.querySelector(".menu-toggle");
-const topbarLinks = document.querySelector(".topbar-links");
-if (menuToggle && topbarLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = topbarLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  function update() {
+    var current = 0;
+    cards.forEach(function (card, i) {
+      if (card.getBoundingClientRect().top < window.innerHeight * 0.45) {
+        current = i;
+      }
+    });
+
+    chips.forEach(function (c, i) {
+      c.classList.toggle('active', i === current);
+    });
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        update();
+        ticking = false;
+      });
+      ticking = true;
+    }
   });
-}
+
+  update();
+})();
