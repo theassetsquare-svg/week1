@@ -1,20 +1,61 @@
-const toggle = document.getElementById("toggle");
-const body = document.getElementById("compare-body");
-let expanded = false;
+/* /b/ 수원찬스돔나이트 — 우측 스텝퍼 내비 + 스크롤 추적 */
+(function () {
+  "use strict";
 
-toggle.addEventListener("click", () => {
-  expanded = !expanded;
-  toggle.textContent = expanded ? "요약 보기" : "상세 보기";
-  body.innerHTML = expanded
-    ? "<p>상세: 방문 목적에 따라 동선을 선택하는 것이 핵심입니다. 친구 모임은 대화 중심, 처음 방문은 공간 적응 중심, 조용한 분위기 선호는 여유 시간대 선택이 좋습니다.</p>"
-    : "<p>요약: 수원찬스돔나이트는 상황에 맞춰 흐름을 선택하는 안내를 제공합니다.</p>";
-});
+  var stepper = document.getElementById("side-stepper");
+  if (!stepper) return;
 
-const menuToggle = document.querySelector(".menu-toggle");
-const topbarLinks = document.querySelector(".topbar-links");
-if (menuToggle && topbarLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = topbarLinks.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  var items = Array.prototype.slice.call(stepper.querySelectorAll(".step-item"));
+  var sections = [];
+
+  items.forEach(function (item) {
+    var targetId = item.getAttribute("data-target");
+    var sec = document.getElementById(targetId);
+    if (sec) sections.push({ el: sec, item: item });
+
+    item.addEventListener("click", function () {
+      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
   });
-}
+
+  if (!sections.length) return;
+
+  var activeIndex = -1;
+
+  function updateStepper() {
+    var scrollY = window.scrollY || window.pageYOffset;
+    var viewH = window.innerHeight;
+    var threshold = viewH * 0.35;
+    var newIndex = -1;
+
+    for (var i = sections.length - 1; i >= 0; i--) {
+      var rect = sections[i].el.getBoundingClientRect();
+      if (rect.top <= threshold) {
+        newIndex = i;
+        break;
+      }
+    }
+
+    if (newIndex === activeIndex) return;
+    activeIndex = newIndex;
+
+    items.forEach(function (item, idx) {
+      item.classList.remove("active", "done");
+      if (idx < activeIndex) item.classList.add("done");
+      else if (idx === activeIndex) item.classList.add("active");
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        updateStepper();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateStepper();
+})();
