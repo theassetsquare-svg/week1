@@ -1,45 +1,212 @@
 :root {
   --ink: #1a1a1a;
-  --muted: #5a5a5a;
-  --accent: #c0452c;
-  --block-1: #f8f1e8;
-  --block-2: #eef3f7;
-  --block-3: #f2efe9;
-  --block-4: #f7f0f4;
-  --line: #ddd3c7;
+  --muted: #6b6b6b;
+  --accent: #2a5caa;
+  --bg: #fafafa;
+  --card-border: #e0e0e0;
+  --yes: #2e7d32;
+  --no: #c62828;
 }
-* { box-sizing: border-box; }
-body { margin: 0; font-family: "Work Sans", sans-serif; color: var(--ink); background: #fffdfa; }
-.topbar { position: sticky; top: 0; background: #ffffff; border-bottom: 1px solid var(--line); z-index: 10; }
-.topbar-inner { max-width: 1100px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.menu-toggle { background: var(--accent); color: #fff; border: none; border-radius: 999px; padding: 10px 16px; min-height: 44px; }
-.topbar-links { display: flex; gap: 10px; flex-wrap: wrap; }
-.topbar-links a { text-decoration: none; color: var(--muted); font-weight: 600; }
-.masthead { max-width: 1100px; margin: 0 auto; padding: 60px 20px 20px; }
-.label { text-transform: uppercase; letter-spacing: 0.3em; font-size: 12px; color: var(--muted); }
-.masthead h1 { font-family: "Literata", serif; font-size: clamp(28px, 4vw, 46px); margin: 8px 0 12px; }
-.timeline { max-width: 900px; margin: 0 auto; padding: 10px 20px 20px; display: grid; gap: 16px; }
-.moment { padding: 18px; border-radius: 16px; border: 1px solid var(--line); }
-.moment.toc ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
-.moment.toc a { color: var(--ink); text-decoration: none; }
-.moment.toc a:hover { text-decoration: underline; }
-.m1 { background: var(--block-1); }
-.m2 { background: var(--block-2); }
-.m3 { background: var(--block-3); }
-.m4 { background: var(--block-4); }
-.notes { max-width: 900px; margin: 10px auto; padding: 0 20px; }
-.note-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
-.policy, .contact { max-width: 900px; margin: 20px auto; padding: 18px; background: #fff; border: 1px solid var(--line); border-radius: 16px; }
-.contact form { display: grid; gap: 10px; }
-.contact input, .contact textarea { padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); }
-.contact button { background: var(--accent); color: #fff; border: none; padding: 12px 14px; border-radius: 10px; font-weight: 700; min-height: 44px; }
-.footer { text-align: center; color: var(--muted); font-size: 13px; padding: 20px 0 40px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.75;
+  padding-bottom: 60px;
+}
 
-@media (max-width: 480px) {
-  .topbar-links { display: none; width: 100%; flex-direction: column; padding-top: 10px; }
-  .topbar-links.open { display: flex; }
+/* 상단 이미지 전체 노출 */
+.hero {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
 }
-@media (min-width: 481px) and (max-width: 768px) { }
-@media (min-width: 769px) and (max-width: 1024px) { }
-@media (min-width: 1025px) { .menu-toggle { display: none; } }
-@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
+.hero img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  max-height: 420px;
+}
+@media (max-width: 768px) {
+  .hero img {
+    max-height: 320px;
+  }
+}
+
+/* 상단 CTA */
+.cta-top {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+/* 본문 */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 20px 40px;
+}
+.content h1 {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.intro-text {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+
+/* 섹션 공통 */
+.content section {
+  margin-bottom: 48px;
+}
+.content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* 4요소 카드 */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.card {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* 체크리스트 */
+.check-group {
+  margin-bottom: 24px;
+}
+.check-group h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.check-yes, .check-no {
+  list-style: none;
+  padding: 0;
+}
+.check-yes li, .check-no li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.check-yes li::before {
+  content: "\2714";
+  position: absolute;
+  left: 0;
+  color: var(--yes);
+  font-weight: 700;
+}
+.check-no li::before {
+  content: "\2716";
+  position: absolute;
+  left: 0;
+  color: var(--no);
+  font-weight: 700;
+}
+
+/* Q&A */
+.qna-item {
+  margin-bottom: 22px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+.qna-item h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.qna-item p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* 결론 */
+.summary p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+/* 정책 고지 */
+.policy {
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 18px;
+}
+.policy p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  padding: 24px 20px 70px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* 하단 고정바 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 14px 0;
+  z-index: 999;
+}
