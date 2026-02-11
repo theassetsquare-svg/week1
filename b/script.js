@@ -1,61 +1,55 @@
-/* /b/ 수원찬스돔나이트 — 우측 스텝퍼 내비 + 스크롤 추적 */
+// /b/ 수원찬스돔나이트 — 사이드 TOC 자동 생성 + 스크롤 추적
 (function () {
   "use strict";
 
-  var stepper = document.getElementById("side-stepper");
-  if (!stepper) return;
-
-  var items = Array.prototype.slice.call(stepper.querySelectorAll(".step-item"));
-  var sections = [];
-
-  items.forEach(function (item) {
-    var targetId = item.getAttribute("data-target");
-    var sec = document.getElementById(targetId);
-    if (sec) sections.push({ el: sec, item: item });
-
-    item.addEventListener("click", function () {
-      if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-
+  var sections = document.querySelectorAll('main section[id]');
   if (!sections.length) return;
 
-  var activeIndex = -1;
+  var toc = document.createElement('nav');
+  toc.className = 'side-toc';
+  toc.setAttribute('aria-label', '페이지 목차');
 
-  function updateStepper() {
-    var scrollY = window.scrollY || window.pageYOffset;
-    var viewH = window.innerHeight;
-    var threshold = viewH * 0.35;
-    var newIndex = -1;
+  sections.forEach(function (sec) {
+    var heading = sec.querySelector('h2');
+    if (!heading) return;
+    var a = document.createElement('a');
+    a.href = '#' + sec.id;
+    a.textContent = heading.textContent.substring(0, 16);
+    toc.appendChild(a);
+  });
 
-    for (var i = sections.length - 1; i >= 0; i--) {
-      var rect = sections[i].el.getBoundingClientRect();
-      if (rect.top <= threshold) {
-        newIndex = i;
-        break;
+  document.body.appendChild(toc);
+
+  var tocLinks = toc.querySelectorAll('a');
+  var ticking = false;
+
+  function updateToc() {
+    var current = '';
+    sections.forEach(function (sec) {
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.4) {
+        current = sec.id;
       }
-    }
+    });
 
-    if (newIndex === activeIndex) return;
-    activeIndex = newIndex;
-
-    items.forEach(function (item, idx) {
-      item.classList.remove("active", "done");
-      if (idx < activeIndex) item.classList.add("done");
-      else if (idx === activeIndex) item.classList.add("active");
+    tocLinks.forEach(function (link) {
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     });
   }
 
-  var ticking = false;
-  window.addEventListener("scroll", function () {
+  window.addEventListener('scroll', function () {
     if (!ticking) {
       window.requestAnimationFrame(function () {
-        updateStepper();
+        updateToc();
         ticking = false;
       });
       ticking = true;
     }
   }, { passive: true });
 
-  updateStepper();
+  updateToc();
 })();
