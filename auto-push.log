@@ -352,3 +352,5 @@ To https://github.com/theassetsquare-svg/week1.git
 To https://github.com/theassetsquare-svg/week1.git
    515122f..4dd5ff6  main -> main
 [auto-push] Pushed 2026-02-12 00:01:19 UTC
+remote: Invalid username or token. Password authentication is not supported for Git operations.
+fatal: Authentication failed for 'https://github.com/theassetsquare-svg/week1.git/'
