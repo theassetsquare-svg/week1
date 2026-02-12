@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://week1-6m5.pages.dev/h/sitemap.xml
