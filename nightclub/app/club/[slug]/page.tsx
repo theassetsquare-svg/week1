@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!venue) return {};
 
   const title = `${venue.city} ${venue.nameKo} — 분위기·위치·방문 가이드`;
-  const description = `${venue.city} ${venue.nameKo} 완벽 가이드. ${venue.address} | ${venue.summary} | 영업시간: ${venue.operatingHours || "금·토 21:00~03:00"} | 드레스코드: ${venue.dressCode || "세미캐주얼"} | 제휴문의 카톡 besta12`;
+  const summary = venue.summary.replace(/7080\s*(음악\s*(부터|과|,)\s*)?/g, "").replace(/\s{2,}/g, " ").trim();
+  const description = `${venue.city} ${venue.nameKo} 완벽 가이드. ${venue.address} | ${summary} | 영업시간: ${venue.operatingHours || "금·토 21:00~03:00"} | 드레스코드: ${venue.dressCode || "세미캐주얼"} | 제휴문의 카톡 besta12`;
 
   return {
     title,
@@ -98,6 +99,20 @@ export default async function ClubDetailPage({ params }: Props) {
   const regionS = regionSlug(venue.region);
   const cityS = citySlug(venue.city);
   const displayThemes = venue.themes.filter((t) => t !== "7080" && t !== "소셜댄스");
+  const cleanSummary = venue.summary.replace(/7080\s*(음악\s*(부터|과|,)\s*)?/g, "").replace(/\s{2,}/g, " ").trim();
+  const displayGenres = venue.genres.filter((g) => g !== "7080");
+
+  // Filter out tips that contain prices or phone numbers
+  const pricePhonePattern = /010-|원[~)]|원$|₩|\d{1,3}(,\d{3})+원|만원|입장료|MD\s/;
+  const displayTips = venue.tips.filter((t) => !pricePhonePattern.test(t));
+  const fallbackTips = [
+    `${venue.nameKo}은(는) ${venue.city}에서 분위기 좋은 나이트클럽으로 유명합니다.`,
+    `영업시간은 ${venue.operatingHours || "금·토 21:00~03:00"}이며, 피크타임은 ${venue.peakTime || "23:00~01:00"}입니다.`,
+    "드레스코드를 준수하면 더 좋은 경험을 하실 수 있습니다.",
+    "주말에는 일찍 방문하시면 여유롭게 즐길 수 있습니다.",
+    "제휴문의는 카카오톡 besta12로 연락해 주세요.",
+  ];
+  const tips = displayTips.length >= 3 ? displayTips.slice(0, 5) : fallbackTips;
 
   return (
     <>
@@ -142,7 +157,7 @@ export default async function ClubDetailPage({ params }: Props) {
             <span className="text-white">{venue.nameKo}</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-up delay-200">
-            {venue.summary}
+            {cleanSummary}
           </p>
           <div className="flex flex-wrap gap-2 mt-6 animate-fade-up delay-300">
             {displayThemes.map((t) => (
@@ -229,7 +244,7 @@ export default async function ClubDetailPage({ params }: Props) {
                 {venue.city}에 위치한 <strong className="text-white">{venue.nameKo}</strong>은(는) {venue.region} 지역을 대표하는 프리미엄 나이트라이프 공간입니다.
               </p>
               <p>
-                {venue.summary} {venue.genres.length > 0 && `${venue.genres.join(", ")} 등 다양한 장르의 음악을 즐기실 수 있습니다.`}
+                {cleanSummary} {displayGenres.length > 0 && `${displayGenres.join(", ")} 등 다양한 장르의 음악을 즐기실 수 있습니다.`}
               </p>
               <p>
                 최고의 사운드 시스템과 화려한 조명 아래, 잊을 수 없는 밤을 경험해 보세요.
@@ -301,7 +316,7 @@ export default async function ClubDetailPage({ params }: Props) {
             <span className="text-white">방문 전 알아두면 좋은 팁</span>
           </h2>
           <div className="space-y-3">
-            {venue.tips.slice(0, 5).map((tip, i) => (
+            {tips.map((tip, i) => (
               <div
                 key={i}
                 className="card-premium rounded-xl p-5 flex gap-4 items-start animate-fade-up"
@@ -372,7 +387,7 @@ export default async function ClubDetailPage({ params }: Props) {
                 <svg className="w-5 h-5 text-gray-600 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
               </summary>
               <div className="px-5 pb-5 text-sm text-gray-400 leading-relaxed">
-                {venue.summary}{" "}
+                {cleanSummary}{" "}
                 {venue.beginnerFriendly
                   ? "초보 방문객도 편하게 즐길 수 있는 분위기입니다."
                   : "첫 방문이라면 사전에 분위기를 파악하고 가시는 것을 추천합니다."}
@@ -477,7 +492,7 @@ export default async function ClubDetailPage({ params }: Props) {
           </h2>
           <div className="space-y-4 text-gray-600 text-sm leading-relaxed">
             <p>
-              <strong className="text-gray-400">{venue.city} {venue.nameKo}</strong>은(는) {venue.address}에 위치한 {venue.region} 지역의 대표 나이트클럽입니다. {venue.summary}
+              <strong className="text-gray-400">{venue.city} {venue.nameKo}</strong>은(는) {venue.address}에 위치한 {venue.region} 지역의 대표 나이트클럽입니다. {cleanSummary}
             </p>
             <p>
               {venue.city} 나이트클럽을 찾고 계신 분, {venue.city} 클럽 추천이 필요하신 분, {venue.region} 나이트 핫플을 알고 싶으신 분께 {venue.nameKo}을(를) 추천합니다.

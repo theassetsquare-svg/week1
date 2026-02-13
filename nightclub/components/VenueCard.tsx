@@ -65,7 +65,7 @@ export default function VenueCard({
         </div>
       </div>
       <div className="p-4">
-        <p className="text-gray-500 text-sm line-clamp-2 mb-3">{venue.summary}</p>
+        <p className="text-gray-500 text-sm line-clamp-2 mb-3">{venue.summary.replace(/7080\s*(음악\s*(부터|과|,)\s*)?/g, "").trim()}</p>
         <div className="flex flex-wrap gap-1.5">
           {venue.themes
             .filter((t) => t !== "7080" && t !== "소셜댄스")
