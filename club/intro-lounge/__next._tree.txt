@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/1b32e461d097bf49.css","style"]
+:HL["/_next/static/chunks/0250157cb0df1641.css","style"]
 :HL["https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css","style"]
-:HL["/images/concert-crowd.jpg","image"]
-0:{"buildId":"BjCdiQDH9BmvzX8mQhIC7","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"club","paramType":null,"paramKey":"club","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"intro-lounge","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/images/dj-booth.jpg","image"]
+0:{"buildId":"J0AvZCw7SO9dhv7dseH_f","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"club","paramType":null,"paramKey":"club","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"intro-lounge","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

@@ -13,18 +13,16 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
     >
       {items.map((item, i) => (
         <span key={i} className="flex items-center gap-1">
-          {i > 0 && <span className="text-gray-300">/</span>}
+          {i > 0 && <span className="text-gray-700">/</span>}
           {item.href ? (
             <Link
               href={item.href}
-              className="hover:text-violet-600 transition-colors"
+              className="hover:text-purple-400 transition-colors"
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-gray-900 dark:text-white font-medium">
-              {item.label}
-            </span>
+            <span className="text-white font-medium">{item.label}</span>
           )}
         </span>
       ))}

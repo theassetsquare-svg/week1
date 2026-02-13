@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { venues, allThemes, regions, citiesByRegion } from "@/lib/venues";
+import { venues, regions, citiesByRegion } from "@/lib/venues";
 import { regionSlug, citySlug } from "@/lib/venues";
 import VenueCard from "@/components/VenueCard";
 import JsonLd from "@/components/JsonLd";
@@ -8,30 +8,30 @@ import { webSiteJsonLd, itemListJsonLd } from "@/lib/structuredData";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `전국 나이트클럽 정보 — 지역별·테마별 나이트클럽 검색 | ${SITE_NAME}`,
+  title: `강남 클럽 추천 | 서울 나이트 핫플 | 홍대 라운지 — ${SITE_NAME}`,
   description:
-    "서울, 경기, 인천, 울산 등 전국 나이트클럽 위치·분위기·가격·드레스코드 정보를 한곳에서 비교하세요. 7080, 강남클럽, 소셜댄스 등 테마별 검색도 가능합니다.",
-  openGraph: {
-    title: "전국 나이트클럽 정보 — 지역별·테마별 나이트클럽 검색",
-    description:
-      "대한민국 전국 나이트클럽 정보 디렉터리. 방문 전 필요한 모든 정보를 확인하세요.",
-  },
+    "강남 클럽 추천, 서울 나이트 핫플, 홍대 라운지 분위기, 이태원 클럽 정보. 전국 프리미엄 나이트클럽 & 라운지를 한눈에. VIP 부스 예약, 분위기 후기, 추천 포인트까지.",
 };
 
-const THEME_ICONS: Record<string, string> = {
-  "7080": "🎶",
-  "소셜댄스": "💃",
-  "강남": "✨",
-  "클럽": "🎧",
-  "라운지": "🍸",
-};
+const GALLERY_IMAGES = [
+  "/images/party-1.jpg",
+  "/images/dj-booth.jpg",
+  "/images/party-confetti.jpg",
+  "/images/dance-floor.jpg",
+  "/images/club-interior.jpg",
+  "/images/neon-party.jpg",
+  "/images/concert-crowd.jpg",
+  "/images/party-lights.jpg",
+];
 
-const REGION_ICONS: Record<string, string> = {
-  서울: "🏙️",
-  경기: "🌳",
-  인천: "⚓",
-  경남: "🌊",
-};
+const FEATURED = [
+  { slug: "gangnam-race", label: "강남 레이스클럽", region: "강남", tag: "HOT" },
+  { slug: "gangnam-sound", label: "강남 사운드클럽", region: "강남", tag: "NEW" },
+  { slug: "hype-lounge", label: "압구정 하입라운지", region: "압구정", tag: "VIP" },
+  { slug: "itaewon-waikiki", label: "이태원 와이키키클럽", region: "이태원", tag: "HOT" },
+  { slug: "busan-asiad", label: "부산 아시아드나이트", region: "부산", tag: "BEST" },
+  { slug: "intro-lounge", label: "압구정 인트로라운지", region: "압구정", tag: "VIP" },
+];
 
 export default function HomePage() {
   return (
@@ -39,46 +39,63 @@ export default function HomePage() {
       <JsonLd data={webSiteJsonLd()} />
       <JsonLd data={itemListJsonLd(venues)} />
 
-      {/* Hero with background image */}
-      <section className="relative overflow-hidden">
+      {/* Hero - Fullscreen */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/images/party-confetti.jpg"
-            alt="나이트클럽 파티 분위기"
-            className="w-full h-full object-cover"
+            alt="서울 강남 클럽 나이트 파티 분위기"
+            className="w-full h-full object-cover scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-900/85 via-purple-900/80 to-pink-900/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#050508]" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28 text-center text-white">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 text-balance leading-tight drop-shadow-lg">
-            전국 나이트클럽 정보
-            <br />
-            <span className="text-violet-200">한눈에 비교하고 방문하세요</span>
-          </h1>
-          <p className="text-lg md:text-xl text-violet-100 max-w-2xl mx-auto mb-8 drop-shadow">
-            서울·경기·인천·부산·대구·울산 등 전국 나이트클럽의 위치, 분위기, 가격,
-            드레스코드 정보를 한곳에서 확인하세요.
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-16">
+          <p className="text-purple-400 text-sm md:text-base font-medium tracking-[0.4em] uppercase mb-6 animate-fade-up">
+            Premium Nightlife Guide
           </p>
-          <div className="flex justify-center gap-4">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-black mb-6 leading-[1.1] animate-fade-up delay-100">
+            <span className="gradient-text">당신의 밤을</span>
+            <br />
+            <span className="text-white">특별하게</span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up delay-200">
+            서울 강남 클럽부터 부산 나이트까지<br className="hidden md:block" />
+            대한민국 프리미엄 나이트라이프의 모든 것
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-300">
             <a
-              href="#all-clubs"
-              className="bg-white text-violet-700 font-bold px-8 py-3 rounded-full hover:bg-violet-50 transition-colors shadow-lg"
+              href="#venues"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold px-8 py-4 rounded-full hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] transition-all duration-300 text-sm tracking-wider"
             >
-              전체 나이트클럽 보기 ↓
+              전체 업소 보기
             </a>
+            <a
+              href="https://open.kakao.com/o/sbesta12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-purple-500/30 text-purple-300 font-bold px-8 py-4 rounded-full hover:bg-purple-500/10 transition-all duration-300 text-sm tracking-wider"
+            >
+              제휴문의 카톡 besta12
+            </a>
+          </div>
+        </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+          <div className="w-6 h-10 border-2 border-purple-400/30 rounded-full flex items-start justify-center p-2">
+            <div className="w-1 h-2 bg-purple-400 rounded-full" />
           </div>
         </div>
       </section>
 
-      {/* Party Photo Strip */}
-      <section className="bg-black overflow-hidden">
-        <div className="flex gap-1 overflow-x-auto scrollbar-hide">
-          {["/images/party-1.jpg", "/images/dj-booth.jpg", "/images/dance-floor.jpg", "/images/club-interior.jpg", "/images/neon-party.jpg", "/images/concert-crowd.jpg"].map((img, i) => (
-            <div key={i} className="flex-shrink-0 w-48 md:w-64 h-32 md:h-40">
+      {/* Gallery Strip */}
+      <section className="py-2 bg-[#050508]">
+        <div className="gallery-scroll px-2">
+          {GALLERY_IMAGES.map((img, i) => (
+            <div key={i} className="w-56 md:w-72 h-36 md:h-44 rounded-lg overflow-hidden">
               <img
                 src={img}
-                alt={`나이트클럽 파티 분위기 ${i + 1}`}
-                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
+                alt={`프리미엄 클럽 파티 분위기 ${i + 1}`}
+                className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-500 img-zoom"
                 loading="lazy"
               />
             </div>
@@ -86,135 +103,200 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Regions */}
-        <section className="py-12">
-          <h2 className="text-2xl font-bold mb-6">지역별 나이트클럽</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {regions.map((r) => (
+      {/* Featured Venues */}
+      <section className="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-purple-400 text-sm font-medium tracking-[0.3em] uppercase mb-3">
+            Featured
+          </p>
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
+            <span className="gradient-text">지금 가장 핫한 곳</span>
+          </h2>
+          <p className="text-gray-500 max-w-lg mx-auto">
+            서울 강남 클럽, 압구정 라운지, 부산 나이트 등 전국 최고의 핫플을 소개합니다
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {FEATURED.map((f, i) => {
+            const v = venues.find((v) => v.slug === f.slug);
+            if (!v) return null;
+            return (
               <Link
-                key={r}
-                href={
-                  "/kr/" +
-                  regionSlug(r) +
-                  "/" +
-                  citySlug(citiesByRegion[r]?.[0] || r) +
-                  "/nightclubs/"
-                }
-                className="flex items-center gap-3 bg-white dark:bg-[#1a1a2e] rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:border-violet-300 hover:shadow-md transition-all"
+                key={f.slug}
+                href={"/club/" + f.slug + "/"}
+                className="group card-premium rounded-2xl overflow-hidden animate-fade-up"
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
-                <span className="text-3xl">
-                  {REGION_ICONS[r] || "📍"}
-                </span>
-                <div>
-                  <div className="font-semibold">{r}</div>
-                  <div className="text-sm text-gray-500">
-                    {venues.filter((v) => v.region === r).length}개 클럽
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={GALLERY_IMAGES[i % GALLERY_IMAGES.length]}
+                    alt={`${f.region} ${v.nameKo} 나이트클럽 분위기`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d15] via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 bg-purple-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
+                    {f.tag}
+                  </span>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-purple-300 text-xs font-medium mb-1">{f.region}</p>
+                    <h3 className="text-white text-xl font-bold">{v.nameKo}</h3>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-gray-500 text-sm line-clamp-2 mb-3">{v.summary}</p>
+                  <div className="flex gap-2">
+                    {v.themes.filter(t => t !== "7080" && t !== "소셜댄스").map((t) => (
+                      <span key={t} className="text-[10px] border border-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        </section>
+            );
+          })}
+        </div>
+      </section>
 
-        {/* Themes */}
-        <section className="py-8">
-          <h2 className="text-2xl font-bold mb-6">테마별 나이트클럽</h2>
-          <div className="flex flex-wrap gap-3">
-            {allThemes.map((t) => (
-              <Link
-                key={t}
-                href={"/theme/" + encodeURIComponent(t) + "/"}
-                className="inline-flex items-center gap-2 bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 px-5 py-2.5 rounded-full font-medium hover:bg-violet-100 dark:hover:bg-violet-900/50 transition-colors"
-              >
-                <span>{THEME_ICONS[t] || "🎵"}</span>
-                {t}
-                <span className="text-xs text-violet-400">
-                  ({venues.filter((v) => v.themes.includes(t as string)).length})
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* All Clubs */}
-        <section id="all-clubs" className="py-12">
-          <h2 className="text-2xl font-bold mb-2">
-            전체 나이트클럽 목록{" "}
-            <span className="text-violet-500 text-lg font-normal">
-              ({venues.length}곳)
-            </span>
+      {/* Atmosphere Section - Full width image */}
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/dance-floor.jpg"
+            alt="나이트클럽 댄스플로어 분위기"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050508] via-purple-950/80 to-[#050508]" />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 md:px-8 text-center">
+          <h2 className="text-3xl md:text-5xl font-black mb-6 text-white neon-text">
+            잊을 수 없는 밤이<br />시작되는 곳
           </h2>
-          <p className="text-gray-500 mb-6">
-            클릭하면 상세 정보 페이지로 이동합니다.
+          <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+            화려한 조명 아래, 최고의 DJ 사운드와 함께.
+            프리미엄 VIP 라운지에서 특별한 밤을 경험하세요.
+            당신만의 특별한 순간이 여기서 시작됩니다.
           </p>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {venues.map((v) => (
-              <VenueCard key={v.slug} venue={v} />
-            ))}
-          </div>
-        </section>
-
-        {/* Party CTA Banner */}
-        <section className="py-8">
-          <div className="relative rounded-2xl overflow-hidden">
-            <img
-              src="/images/party-lights.jpg"
-              alt="나이트클럽 파티"
-              className="w-full h-56 md:h-72 object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-900/80 to-pink-900/60 flex items-center">
-              <div className="px-8 md:px-12">
-                <h3 className="text-white text-2xl md:text-3xl font-extrabold mb-3">
-                  지금 바로 예약하세요
-                </h3>
-                <p className="text-violet-200 mb-4 text-sm md:text-base max-w-lg">
-                  전국 27개 업소의 웨이터/MD 연락처를 확인하고 최고의 밤을 즐기세요.
-                  부스, 룸, VIP 테이블 예약이 가능합니다.
-                </p>
-                <a
-                  href="#all-clubs"
-                  className="inline-block bg-white text-violet-700 font-bold px-6 py-2.5 rounded-full hover:bg-violet-50 transition-colors text-sm"
-                >
-                  업소 둘러보기
-                </a>
-              </div>
+          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-lg mx-auto">
+            <div>
+              <div className="text-3xl md:text-4xl font-black gradient-text">27+</div>
+              <div className="text-gray-500 text-xs mt-1">프리미엄 업소</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-black gradient-text">7</div>
+              <div className="text-gray-500 text-xs mt-1">전국 지역</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-black gradient-text">VIP</div>
+              <div className="text-gray-500 text-xs mt-1">프리미엄 서비스</div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* SEO Content */}
-        <section className="py-12 prose dark:prose-invert max-w-none">
-          <h2>전국 나이트클럽 방문 가이드</h2>
-          <p>
-            대한민국 전국의 나이트클럽 정보를 한곳에 모았습니다. 서울 강남, 홍대 지역의
-            프리미엄 클럽부터 수원, 일산, 파주, 인천, 울산 등 전국 각지의 7080
-            소셜댄스 나이트클럽까지 — 지역별, 테마별로 쉽게 비교하고 선택하세요.
+      {/* Region Section */}
+      <section className="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-purple-400 text-sm font-medium tracking-[0.3em] uppercase mb-3">
+            By Region
           </p>
-          <h3>나이트클럽 방문 전 확인해야 할 것</h3>
-          <ul>
-            <li>
-              <strong>영업시간:</strong> 대부분의 나이트클럽은 금·토요일 21:00~03:00에 운영됩니다.
-            </li>
-            <li>
-              <strong>드레스코드:</strong> 업장마다 다르지만, 깔끔한 세미캐주얼 이상을 권장합니다.
-            </li>
-            <li>
-              <strong>예산:</strong> 입장료 + 음료 기준 2.5~8만원 수준이며, 지역과 업장에 따라 차이가 있습니다.
-            </li>
-            <li>
-              <strong>주차:</strong> 업장별 주차 가능 여부를 사전에 확인하세요.
-            </li>
-          </ul>
-          <h3>인기 지역</h3>
-          <p>
-            서울(강남·홍대·상봉), 경기(수원·일산·파주·안양), 인천, 울산 등이
-            나이트클럽 방문 인기 지역입니다. 각 지역 허브 페이지에서 해당 지역의
-            모든 나이트클럽을 한눈에 비교할 수 있습니다.
+          <h2 className="text-3xl md:text-5xl font-black">
+            <span className="gradient-text">지역별 나이트라이프</span>
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {regions.map((r, i) => (
+            <Link
+              key={r}
+              href={"/kr/" + regionSlug(r) + "/" + citySlug(citiesByRegion[r]?.[0] || r) + "/nightclubs/"}
+              className="card-premium rounded-2xl p-6 md:p-8 text-center group"
+            >
+              <div className="text-3xl md:text-4xl font-black gradient-text mb-2">
+                {venues.filter((v) => v.region === r).length}
+              </div>
+              <div className="text-white font-bold text-lg mb-1">{r}</div>
+              <div className="text-gray-600 text-xs">
+                {r === "서울" ? "강남 · 이태원 · 압구정" :
+                 r === "경기" ? "수원 · 일산 · 성남" :
+                 r === "부산" ? "동래 · 연산" :
+                 r === "인천" ? "계양" :
+                 r === "대구" ? "달서" :
+                 r === "충남" ? "천안" : ""}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Image Gallery Grid */}
+      <section className="py-8 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 rounded-2xl overflow-hidden">
+          {GALLERY_IMAGES.map((img, i) => (
+            <div
+              key={i}
+              className={`relative overflow-hidden ${i === 0 ? "col-span-2 row-span-2" : ""} ${i === 5 ? "col-span-2" : ""}`}
+            >
+              <img
+                src={img}
+                alt={`서울 나이트 클럽 라운지 파티 ${i + 1}`}
+                className={`w-full object-cover img-zoom ${i === 0 ? "h-80 md:h-[500px]" : i === 5 ? "h-40 md:h-60" : "h-40 md:h-60"}`}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* All Venues */}
+      <section id="venues" className="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-purple-400 text-sm font-medium tracking-[0.3em] uppercase mb-3">
+            All Venues
           </p>
-        </section>
-      </div>
+          <h2 className="text-3xl md:text-5xl font-black mb-4">
+            <span className="gradient-text">전체 업소</span>
+          </h2>
+          <p className="text-gray-500">
+            전국 {venues.length}개 프리미엄 클럽 & 라운지
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {venues.map((v, i) => (
+            <VenueCard key={v.slug} venue={v} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* SEO Content */}
+      <section className="py-20 px-4 md:px-8 max-w-4xl mx-auto">
+        <div className="divider-glow mb-12" />
+        <h2 className="text-2xl md:text-3xl font-black mb-8 gradient-text">
+          서울 나이트 & 강남 클럽 추천 가이드
+        </h2>
+        <div className="space-y-6 text-gray-500 leading-relaxed text-sm">
+          <p>
+            <strong className="text-gray-300">강남 클럽 추천</strong> — 서울 강남에는 레이스클럽, 사운드클럽 등 대한민국을 대표하는 프리미엄 클럽이 모여 있습니다.
+            세계적인 DJ 라인업과 최첨단 사운드 시스템, 그리고 VIP 부스 서비스까지. 강남 클럽은 대한민국 나이트라이프의 중심입니다.
+          </p>
+          <p>
+            <strong className="text-gray-300">홍대 라운지 분위기</strong> — 트렌디하고 자유로운 분위기의 홍대·이태원 지역에는 와이키키유토피아클럽을 비롯한 개성 있는 클럽과 라운지가 있습니다.
+          </p>
+          <p>
+            <strong className="text-gray-300">압구정 라운지</strong> — 하입라운지, 컬러라운지, 인트로라운지, 아르쥬라운지 등 압구정 로데오 라운지 클러스터는 서울에서 가장 세련된 밤문화를 경험할 수 있는 곳입니다.
+          </p>
+          <p>
+            <strong className="text-gray-300">부산 나이트 & 대구 클럽</strong> — 부산 아시아드나이트, 물나이트, 대구 바밤바나이트 등 지방 대도시에서도 최고 수준의 나이트라이프를 즐길 수 있습니다.
+          </p>
+          <p>
+            <strong className="text-gray-300">서울 나이트 핫플</strong> — 수유, 노원, 신림, 상봉 등 서울 곳곳에 위치한 나이트클럽에서 다양한 분위기와 음악을 경험해 보세요.
+            각 업소의 분위기와 특징을 비교하고 나만의 핫플을 찾아보세요.
+          </p>
+        </div>
+      </section>
     </>
   );
 }
