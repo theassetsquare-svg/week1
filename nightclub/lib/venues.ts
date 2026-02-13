@@ -114,6 +114,8 @@ export function citySlug(city: string): string {
     대구: "daegu",
     대전: "daejeon",
     광주: "gwangju",
+    성남: "seongnam",
+    천안: "cheonan",
   };
   return map[city] || city;
 }
@@ -154,6 +156,8 @@ export function cityFromSlug(slug: string): string | undefined {
     daegu: "대구",
     daejeon: "대전",
     gwangju: "광주",
+    seongnam: "성남",
+    cheonan: "천안",
   };
   return map[slug];
 }
