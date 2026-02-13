@@ -39,19 +39,27 @@ export default function HomePage() {
       <JsonLd data={webSiteJsonLd()} />
       <JsonLd data={itemListJsonLd(venues)} />
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-16 md:py-24 text-center">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 text-balance leading-tight">
+      {/* Hero with background image */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/party-confetti.jpg"
+            alt="나이트클럽 파티 분위기"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-900/85 via-purple-900/80 to-pink-900/75" />
+        </div>
+        <div className="relative max-w-6xl mx-auto px-4 py-20 md:py-28 text-center text-white">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 text-balance leading-tight drop-shadow-lg">
             전국 나이트클럽 정보
             <br />
             <span className="text-violet-200">한눈에 비교하고 방문하세요</span>
           </h1>
-          <p className="text-lg md:text-xl text-violet-100 max-w-2xl mx-auto mb-8">
-            서울·경기·인천·울산 등 전국 나이트클럽의 위치, 분위기, 가격,
+          <p className="text-lg md:text-xl text-violet-100 max-w-2xl mx-auto mb-8 drop-shadow">
+            서울·경기·인천·부산·대구·울산 등 전국 나이트클럽의 위치, 분위기, 가격,
             드레스코드 정보를 한곳에서 확인하세요.
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-4">
             <a
               href="#all-clubs"
               className="bg-white text-violet-700 font-bold px-8 py-3 rounded-full hover:bg-violet-50 transition-colors shadow-lg"
@@ -59,6 +67,22 @@ export default function HomePage() {
               전체 나이트클럽 보기 ↓
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* Party Photo Strip */}
+      <section className="bg-black overflow-hidden">
+        <div className="flex gap-1 overflow-x-auto scrollbar-hide">
+          {["/images/party-1.jpg", "/images/dj-booth.jpg", "/images/dance-floor.jpg", "/images/club-interior.jpg", "/images/neon-party.jpg", "/images/concert-crowd.jpg"].map((img, i) => (
+            <div key={i} className="flex-shrink-0 w-48 md:w-64 h-32 md:h-40">
+              <img
+                src={img}
+                alt={`나이트클럽 파티 분위기 ${i + 1}`}
+                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -128,6 +152,35 @@ export default function HomePage() {
             {venues.map((v) => (
               <VenueCard key={v.slug} venue={v} />
             ))}
+          </div>
+        </section>
+
+        {/* Party CTA Banner */}
+        <section className="py-8">
+          <div className="relative rounded-2xl overflow-hidden">
+            <img
+              src="/images/party-lights.jpg"
+              alt="나이트클럽 파티"
+              className="w-full h-56 md:h-72 object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-900/80 to-pink-900/60 flex items-center">
+              <div className="px-8 md:px-12">
+                <h3 className="text-white text-2xl md:text-3xl font-extrabold mb-3">
+                  지금 바로 예약하세요
+                </h3>
+                <p className="text-violet-200 mb-4 text-sm md:text-base max-w-lg">
+                  전국 27개 업소의 웨이터/MD 연락처를 확인하고 최고의 밤을 즐기세요.
+                  부스, 룸, VIP 테이블 예약이 가능합니다.
+                </p>
+                <a
+                  href="#all-clubs"
+                  className="inline-block bg-white text-violet-700 font-bold px-6 py-2.5 rounded-full hover:bg-violet-50 transition-colors text-sm"
+                >
+                  업소 둘러보기
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 

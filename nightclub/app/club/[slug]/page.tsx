@@ -37,10 +37,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const PARTY_IMAGES = [
+  "/images/party-1.jpg",
+  "/images/dj-booth.jpg",
+  "/images/party-confetti.jpg",
+  "/images/party-lights.jpg",
+  "/images/dance-floor.jpg",
+  "/images/concert-crowd.jpg",
+  "/images/club-interior.jpg",
+  "/images/neon-party.jpg",
+];
+
+function getVenueImages(slug: string): string[] {
+  // Deterministic image selection based on slug
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash + slug.charCodeAt(i)) | 0;
+  }
+  const start = Math.abs(hash) % PARTY_IMAGES.length;
+  return [
+    PARTY_IMAGES[start % PARTY_IMAGES.length],
+    PARTY_IMAGES[(start + 1) % PARTY_IMAGES.length],
+    PARTY_IMAGES[(start + 2) % PARTY_IMAGES.length],
+    PARTY_IMAGES[(start + 3) % PARTY_IMAGES.length],
+  ];
+}
+
 export default async function ClubDetailPage({ params }: Props) {
   const { slug } = await params;
   const venue = getVenueBySlug(slug);
   if (!venue) notFound();
+
+  const images = getVenueImages(slug);
 
   const similar = venues
     .filter(
@@ -79,6 +107,23 @@ export default async function ClubDetailPage({ params }: Props) {
             { label: venue.nameKo },
           ]}
         />
+
+        {/* Photo Gallery */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 rounded-2xl overflow-hidden">
+          {images.map((img, i) => (
+            <div key={i} className={`relative ${i === 0 ? "col-span-2 row-span-2" : ""}`}>
+              <img
+                src={img}
+                alt={`${venue.nameKo} 나이트클럽 파티 분위기 ${i + 1}`}
+                className="w-full h-full object-cover aspect-square"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+              {i === 0 && (
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* Hero Section - 1st Screen */}
         <div className="bg-gradient-to-r from-violet-600 to-pink-500 text-white rounded-2xl p-6 md:p-8 mb-8">
@@ -254,6 +299,28 @@ export default async function ClubDetailPage({ params }: Props) {
                 </a>
               </div>
             )}
+          </div>
+        </section>
+
+        {/* Party Atmosphere Banner */}
+        <section className="mb-10">
+          <div className="relative rounded-2xl overflow-hidden">
+            <img
+              src={PARTY_IMAGES[(Math.abs(slug.charCodeAt(0)) + 4) % PARTY_IMAGES.length]}
+              alt={`${venue.nameKo} 나이트클럽 분위기`}
+              className="w-full h-48 md:h-64 object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-900/80 to-pink-900/60 flex items-center justify-center">
+              <div className="text-center text-white px-4">
+                <p className="text-2xl md:text-3xl font-extrabold mb-2">
+                  {venue.nameKo}
+                </p>
+                <p className="text-violet-200 text-sm md:text-base">
+                  최고의 파티를 즐기세요
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
