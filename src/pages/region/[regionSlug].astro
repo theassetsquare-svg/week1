@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { venues, getVenueUrl, getUniqueRegions, guides } from '../../utils/venues';
+
+export function getStaticPaths() {
+  const regions = getUniqueRegions();
+  return regions.map(r => ({
+    params: { regionSlug: r.slug },
+    props: { region: r },
+  }));
+}
+
+const { region } = Astro.props;
+const regionVenues = venues.filter(v => v.regionSlug === region.slug);
+const title = `${region.name} 나이트클럽·클럽·라운지 추천 | ${region.name} 나이트라이프`;
+const description = `${region.name} 지역의 나이트클럽, 클럽, 라운지 ${region.count}곳을 한눈에. ${region.name} 밤문화 가이드와 매장별 상세 정보.`;
+
+const regionFaqMap: Record<string, {q: string; a: string}[]> = {
+  gangnam: [
+    { q: '강남에서 가장 인기 있는 나이트라이프 유형은?', a: '강남은 클럽, 나이트클럽, 라운지 모두 고르게 발달해 있으며, 특히 클럽과 라운지가 인기입니다.' },
+    { q: '강남 클럽 입장료는 어느 정도인가요?', a: '클럽에 따라 다르지만, 주말 기준 2~3만 원대가 일반적이며, 이벤트 시 변동됩니다.' },
+    { q: '강남에서 대중교통으로 이동이 편한가요?', a: '강남역, 신논현역, 역삼역 등 지하철역이 가까워 대중교통 이용이 매우 편리합니다.' },
+  ],
+  busan: [
+    { q: '부산 밤문화의 특징은?', a: '부산은 해변 인근의 독특한 분위기와 함께, 서면과 해운대를 중심으로 활발한 나이트라이프가 형성되어 있습니다.' },
+    { q: '부산에서 추천하는 나이트클럽 지역은?', a: '서면, 해운대, 광안리 일대에 인기 나이트클럽들이 밀집해 있습니다.' },
+  ],
+  itaewon: [
+    { q: '이태원 클럽의 특별한 점은?', a: '이태원은 다국적 문화가 어우러진 독특한 분위기로, 외국인 친화적인 클럽과 바가 많습니다.' },
+    { q: '이태원에서 대중교통은 편한가요?', a: '이태원역에서 도보로 주요 클럽가에 접근할 수 있어 대중교통이 편리합니다.' },
+  ],
+};
+
+const regionFaqs = regionFaqMap[region.slug] || [
+  { q: `${region.name}에서 밤문화를 즐기려면?`, a: `${region.name} 지역의 매장별 상세 페이지에서 분위기, 가격, 영업시간 등을 확인하고 방문하세요.` },
+  { q: `${region.name}에서 추천하는 매장은?`, a: `아래 목록에서 유형별로 비교해보시고, 각 매장의 상세 페이지에서 리뷰와 가이드를 참고하세요.` },
+];
+
+const jsonLd = [{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": `${region.name} 나이트라이프`,
+  "description": description,
+  "url": `https://week1-6m5.pages.dev/region/${region.slug}/`,
+}];
+---
+<BaseLayout title={title} description={description} canonical={`https://week1-6m5.pages.dev/region/${region.slug}/`} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="container">
+      <div class="breadcrumb" style="justify-content:center;">
+        <a href="/">홈</a><span>/</span><span>{region.name}</span>
+      </div>
+      <h1>{region.name} 나이트라이프 가이드</h1>
+      <p class="hub-intro">{region.name} 지역의 나이트클럽, 클럽, 라운지 {region.count}곳의 상세 정보를 확인하세요. 각 매장의 분위기, 음악, 가격, 드레스코드 정보를 비교하고 나에게 맞는 곳을 찾아보세요.</p>
+    </div>
+  </section>
+  <section class="container">
+    <div class="venue-grid">
+      {regionVenues.map(v => (
+        <a href={getVenueUrl(v)} class="venue-card">
+          <img src={v.images[0].src} alt={v.images[0].alt} class="venue-card-img" width="400" height="180" loading="lazy" />
+          <div class="venue-card-body">
+            <span class={`venue-card-type type-${v.type}`}>{v.typeLabel}</span>
+            <h3>{v.name_display}</h3>
+            <p class="venue-card-teaser">{v.teaser}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="container content-narrow" style="margin-top:2rem;">
+    <h2>자주 묻는 질문</h2>
+    {regionFaqs.map(f => (
+      <div class="faq-item">
+        <div class="faq-q">{f.q}</div>
+        <div class="faq-a">{f.a}</div>
+      </div>
+    ))}
+  </section>
+  <section class="container" style="margin-top:2rem;">
+    <h2 style="text-align:center;margin-bottom:1rem;">가이드</h2>
+    <div class="guide-grid" style="max-width:800px;margin:0 auto;">
+      {guides.slice(0, 4).map(g => (
+        <a href={`/guides/${g.slug}/`} class="guide-card">
+          <h3>{g.title}</h3>
+          <p>{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

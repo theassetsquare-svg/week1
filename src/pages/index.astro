@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { venues, getVenueUrl, getUniqueRegions, guides } from '../utils/venues';
+
+const regions = getUniqueRegions();
+const title = '전국 나이트클럽·클럽·라운지 추천 | 나이트라이프 코리아';
+const description = '한국 전국 나이트클럽, 클럽, 라운지 정보를 한눈에. 강남, 부산, 대구 등 지역별 나이트라이프 추천과 상세 리뷰.';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "나이트라이프 코리아",
+    "url": "https://week1-6m5.pages.dev",
+    "description": description,
+    "inLanguage": "ko",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://week1-6m5.pages.dev/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "전국 나이트클럽 목록",
+    "numberOfItems": venues.length,
+    "itemListElement": venues.map((v, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": v.name_seo,
+      "url": `https://week1-6m5.pages.dev${getVenueUrl(v)}`
+    }))
+  }
+];
+---
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="container">
+      <h1>전국 나이트클럽 · 클럽 · 라운지 가이드</h1>
+      <p>강남 나이트, 강남 클럽, 강남 라운지부터 부산, 대구, 인천까지 — 한국 전국의 나이트라이프를 한곳에서 찾아보세요.</p>
+
+      <div class="search-bar">
+        <input type="text" id="venueSearch" placeholder="매장명 또는 지역으로 검색..." aria-label="매장 검색" />
+      </div>
+
+      <div class="filter-chips" id="filterChips">
+        <button class="filter-chip active" data-filter="all">전체</button>
+        <button class="filter-chip" data-filter="club">클럽</button>
+        <button class="filter-chip" data-filter="night">나이트</button>
+        <button class="filter-chip" data-filter="lounge">라운지</button>
+        {regions.slice(0, 8).map(r => (
+          <button class="filter-chip" data-region={r.slug}>{r.name} ({r.count})</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="venue-grid" id="venueGrid">
+      {venues.map(v => (
+        <a href={getVenueUrl(v)} class="venue-card" data-type={v.type} data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
+          <img src={v.images[0].src} alt={v.images[0].alt} class="venue-card-img" width="400" height="180" loading="lazy" />
+          <div class="venue-card-body">
+            <span class={`venue-card-type type-${v.type}`}>{v.typeLabel}</span>
+            <h3>{v.name_display}</h3>
+            <p class="venue-card-region">{v.region}</p>
+            <p class="venue-card-teaser">{v.teaser}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container" style="margin-top: 3rem;">
+    <h2 style="text-align:center; margin-bottom: 1.5rem;">지역별 허브</h2>
+    <div class="related-grid" style="max-width:800px; margin: 0 auto;">
+      {regions.map(r => (
+        <a href={`/region/${r.slug}/`} class="related-link">{r.name} 나이트라이프 ({r.count}곳)</a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container" style="margin-top: 3rem;">
+    <h2 style="text-align:center; margin-bottom: 1.5rem;">나이트라이프 가이드</h2>
+    <div class="guide-grid">
+      {guides.slice(0, 4).map(g => (
+        <a href={`/guides/${g.slug}/`} class="guide-card">
+          <h3>{g.title}</h3>
+          <p>{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <script>
+    const search = document.getElementById('venueSearch') as HTMLInputElement;
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.venue-card') as NodeListOf<HTMLElement>;
+    let activeFilter = 'all';
+    let activeRegion = '';
+
+    function filterCards() {
+      const q = search?.value.toLowerCase() || '';
+      cards.forEach(card => {
+        const type = card.dataset.type || '';
+        const region = card.dataset.region || '';
+        const name = (card.dataset.name || '').toLowerCase();
+        const matchType = activeFilter === 'all' || type === activeFilter;
+        const matchRegion = !activeRegion || region === activeRegion;
+        const matchSearch = !q || name.includes(q);
+        card.style.display = matchType && matchRegion && matchSearch ? '' : 'none';
+      });
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const f = (chip as HTMLElement).dataset.filter;
+        const r = (chip as HTMLElement).dataset.region;
+        if (f) { activeFilter = f; activeRegion = ''; }
+        else if (r) { activeRegion = activeRegion === r ? '' : r; activeFilter = 'all'; }
+        chips.forEach(c => c.classList.remove('active'));
+        if (f && activeFilter === f) chip.classList.add('active');
+        if (r && activeRegion === r) chip.classList.add('active');
+        if (!activeRegion && activeFilter === 'all') chips[0].classList.add('active');
+        filterCards();
+      });
+    });
+
+    search?.addEventListener('input', filterCards);
+  </script>
+</BaseLayout>

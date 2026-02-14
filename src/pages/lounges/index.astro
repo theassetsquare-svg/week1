@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { venues, getVenueUrl } from '../../utils/venues';
+
+const loungeVenues = venues.filter(v => v.type === 'lounge');
+const title = '전국 라운지·감성주점 추천 | 한국 라운지 가이드';
+const description = '한국 전국의 프리미엄 라운지와 감성주점을 소개합니다. 강남 라운지를 중심으로 분위기, 칵테일, 가격 정보를 확인하세요.';
+
+const jsonLd = [{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "전국 라운지 모음",
+  "description": description,
+  "url": "https://week1-6m5.pages.dev/lounges/",
+}];
+---
+<BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/lounges/" jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="container">
+      <h1>전국 라운지 · 감성주점 가이드</h1>
+      <p class="hub-intro">세련되고 감성적인 한국의 라운지를 만나보세요. 강남을 중심으로 프리미엄 칵테일과 감각적인 인테리어를 갖춘 라운지들의 상세 정보를 제공합니다. 데이트, 소규모 모임, 조용한 밤에 딱 맞는 공간을 찾아보세요.</p>
+    </div>
+  </section>
+  <section class="container">
+    <div class="venue-grid">
+      {loungeVenues.map(v => (
+        <a href={getVenueUrl(v)} class="venue-card">
+          <img src={v.images[0].src} alt={v.images[0].alt} class="venue-card-img" width="400" height="180" loading="lazy" />
+          <div class="venue-card-body">
+            <span class="venue-card-type type-lounge">{v.typeLabel}</span>
+            <h3>{v.name_display}</h3>
+            <p class="venue-card-region">{v.region}</p>
+            <p class="venue-card-teaser">{v.teaser}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

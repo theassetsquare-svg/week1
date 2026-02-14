@@ -1,0 +1,19 @@
+{
+  "name": "nightlife-korea",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "parse": "node scripts/parse-venues.mjs",
+    "geocode": "node scripts/geocode.mjs",
+    "gen-svgs": "node scripts/generate-venue-svgs.mjs",
+    "similarity": "node scripts/similarity-check.mjs",
+    "pipeline": "npm run parse && npm run geocode && npm run gen-svgs",
+    "dev": "astro dev",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "build": "npm run pipeline && astro build && npm run sitemap && npm run similarity",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  }
+}

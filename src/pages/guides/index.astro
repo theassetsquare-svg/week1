@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { guides } from '../../utils/venues';
+
+const title = '나이트라이프 가이드 | 클럽·나이트·라운지 이용 가이드';
+const description = '첫 방문 가이드, 드레스코드, 예산 가이드, 안전 수칙 등 한국 나이트라이프를 200% 즐기기 위한 필수 가이드 모음.';
+---
+<BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/guides/">
+  <section class="hero">
+    <div class="container">
+      <h1>나이트라이프 가이드</h1>
+      <p class="hub-intro">한국의 나이트라이프를 처음 접하든, 오래 즐겨왔든, 더 알차게 즐기기 위한 필수 가이드를 모았습니다.</p>
+    </div>
+  </section>
+  <section class="container">
+    <div class="guide-grid">
+      {guides.map(g => (
+        <a href={`/guides/${g.slug}/`} class="guide-card">
+          <h3>{g.title}</h3>
+          <p>{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

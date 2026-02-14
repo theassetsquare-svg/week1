@@ -1,0 +1,121 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: object[];
+}
+
+const { title, description, canonical, ogImage, jsonLd = [] } = Astro.props;
+const siteUrl = 'https://week1-6m5.pages.dev';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content="나이트라이프 코리아" />
+  <meta property="og:locale" content="ko_KR" />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  {jsonLd.map(ld => (
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+  ))}
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">나이트라이프 코리아</a>
+      <nav class="site-nav">
+        <a href="/nights/">나이트</a>
+        <a href="/clubs/">클럽</a>
+        <a href="/lounges/">라운지</a>
+        <a href="/guides/">가이드</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta" id="kakaoCta" role="button" tabindex="0" aria-label="카카오톡 ID besta12 복사">
+        <img src="/assets/partner-kakao-besta12.svg" alt="제휴문의 카톡 besta12" width="480" height="120" loading="lazy" />
+      </div>
+      <p class="footer-copyright">&copy; 2026 나이트라이프 코리아. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">카톡 ID 복사됨: besta12</div>
+
+  <script>
+    // Scroll progress
+    const prog = document.getElementById('scrollProgress');
+    if (prog) {
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        prog.style.width = h > 0 ? ((window.scrollY / h) * 100) + '%' : '0%';
+      }, { passive: true });
+    }
+
+    // KakaoTalk CTA
+    const cta = document.getElementById('kakaoCta');
+    const toast = document.getElementById('toast');
+    if (cta) {
+      cta.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('besta12');
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = 'besta12'; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        if (toast) {
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+      });
+      cta.addEventListener('keydown', (e) => { if (e.key === 'Enter') cta.click(); });
+    }
+
+    // Accordion
+    document.querySelectorAll('.accordion-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const content = item?.querySelector('.accordion-content');
+        if (!item || !content) return;
+        const isOpen = item.classList.contains('open');
+        if (isOpen) {
+          (content as HTMLElement).style.maxHeight = '0';
+          item.classList.remove('open');
+        } else {
+          (content as HTMLElement).style.maxHeight = content.scrollHeight + 'px';
+          item.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

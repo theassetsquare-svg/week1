@@ -1,0 +1,236 @@
+{
+  "강남 레이스 클럽": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "강남 사운드 클럽": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "이태원 와이키키유토피아 클럽": {
+    "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+    "lat": 37.5351303,
+    "lon": 126.9942302,
+    "city": "서울특별시",
+    "district": "이태원1동",
+    "neighborhood": "이태원",
+    "precision": "nominatim"
+  },
+  "청담 청담나이트 나이트클럽": {
+    "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+    "lat": 37.5190912,
+    "lon": 127.0516784,
+    "city": "서울특별시",
+    "district": "삼성1동",
+    "neighborhood": "삼성동",
+    "precision": "nominatim"
+  },
+  "상봉 한국관 나이트클럽": {
+    "formatted_address": "상봉, 297, 망우로, 상봉동, 상봉1동, 중랑구, 서울특별시, 02098, 대한민국",
+    "lat": 37.5970314,
+    "lon": 127.0856555,
+    "city": "서울특별시",
+    "district": "상봉1동",
+    "neighborhood": "상봉동",
+    "precision": "nominatim"
+  },
+  "수유 샴푸 나이트클럽": {
+    "formatted_address": "수유, 도봉로, 번1동, 강북구, 서울특별시, 01074, 대한민국",
+    "lat": 37.6379932,
+    "lon": 127.0257229,
+    "city": "서울특별시",
+    "district": "번1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "노원 호박 나이트클럽": {
+    "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+    "lat": 37.6563651,
+    "lon": 127.0634799,
+    "city": "서울특별시",
+    "district": "상계2동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "길동 찬스 나이트클럽": {
+    "formatted_address": "길동, 양재대로, 길동, 강동구, 서울특별시, 05353, 대한민국",
+    "lat": 37.5383683,
+    "lon": 127.1402049,
+    "city": "서울특별시",
+    "district": "길동",
+    "neighborhood": "길동",
+    "precision": "nominatim"
+  },
+  "신림 그랑프리 나이트클럽": {
+    "formatted_address": "신림, 1614, 남부순환로, 신림동, 관악구, 서울특별시, 08754, 대한민국",
+    "lat": 37.4846585,
+    "lon": 126.9296105,
+    "city": "서울특별시",
+    "district": "신림동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "독산동 국빈관 나이트클럽": {
+    "formatted_address": "독산동, 독산4동, 금천구, 서울특별시, 08584, 대한민국",
+    "lat": 37.468399,
+    "lon": 126.8979571,
+    "city": "서울특별시",
+    "district": "독산4동",
+    "neighborhood": "독산동",
+    "precision": "nominatim"
+  },
+  "강서 호박 나이트클럽": {
+    "formatted_address": "강서, 도산대로55길, 청담동, 강남구, 서울특별시, 06014, 대한민국",
+    "lat": 37.5236673,
+    "lon": 127.0399903,
+    "city": "서울특별시",
+    "district": "청담동",
+    "neighborhood": "청담동",
+    "precision": "nominatim"
+  },
+  "성남 샴푸 나이트클럽": {
+    "formatted_address": "성남, 분당수서로, 판교, 분당구, 성남시, 경기도, 13590, 대한민국",
+    "lat": 37.3946908,
+    "lon": 127.1194122,
+    "city": "성남시",
+    "district": "판교",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "일산 샴푸 나이트클럽": {
+    "formatted_address": "일산, 경의로, 대화동, 일산3동, 일산서구, 고양시, 경기도, 10373, 대한민국",
+    "lat": 37.6822186,
+    "lon": 126.769498,
+    "city": "고양시",
+    "district": "일산3동",
+    "neighborhood": "대화동",
+    "precision": "nominatim"
+  },
+  "인천 아라비안 나이트클럽": {
+    "formatted_address": "인천광역시, 대한민국",
+    "lat": 37.456,
+    "lon": 126.7052,
+    "city": "인천광역시",
+    "district": "",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "수원 찬스돔 나이트클럽": {
+    "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+    "lat": 37.2662775,
+    "lon": 127.0004098,
+    "city": "수원시",
+    "district": "팔달구",
+    "neighborhood": "매산로1가",
+    "precision": "nominatim"
+  },
+  "천안 스타돔 나이트클럽": {
+    "formatted_address": "천안, 239, 대흥로, 대흥동, 동남구, 천안시, 충청남도, 31122, 대한민국",
+    "lat": 36.8102804,
+    "lon": 127.14684,
+    "city": "천안시",
+    "district": "동남구",
+    "neighborhood": "대흥동",
+    "precision": "nominatim"
+  },
+  "대구 바밤바 나이트클럽": {
+    "formatted_address": "대구광역시, 대한민국",
+    "lat": 35.8713,
+    "lon": 128.6018,
+    "city": "대구광역시",
+    "district": "",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "부산 아시아드 나이트클럽": {
+    "formatted_address": "부산광역시, 대한민국",
+    "lat": 35.1799528,
+    "lon": 129.0752365,
+    "city": "부산광역시",
+    "district": "",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "부산 물 나이트클럽": {
+    "formatted_address": "부산광역시, 대한민국",
+    "lat": 35.1799528,
+    "lon": 129.0752365,
+    "city": "부산광역시",
+    "district": "",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "강남 H2O 나이트클럽": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "노원 스타 나이트클럽": {
+    "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+    "lat": 37.6563651,
+    "lon": 127.0634799,
+    "city": "서울특별시",
+    "district": "상계2동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "수원 코리아 나이트클럽": {
+    "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+    "lat": 37.2662775,
+    "lon": 127.0004098,
+    "city": "수원시",
+    "district": "팔달구",
+    "neighborhood": "매산로1가",
+    "precision": "nominatim"
+  },
+  "강남 하입 라운지": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "강남 컬러 라운지": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "강남 인트로 라운지": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  },
+  "강남 아르쥬 라운지": {
+    "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+    "lat": 37.4964624,
+    "lon": 127.0282667,
+    "city": "서울특별시",
+    "district": "역삼1동",
+    "neighborhood": "",
+    "precision": "nominatim"
+  }
+}
