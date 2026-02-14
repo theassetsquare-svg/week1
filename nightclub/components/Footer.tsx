@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+function e(slug: string) {
+  return "/club/" + encodeURIComponent(slug) + "/";
+}
+
 export default function Footer() {
   return (
     <footer className="relative mt-0">
@@ -8,7 +12,7 @@ export default function Footer() {
         <div className="absolute inset-0">
           <img
             src="/images/party-lights.jpg"
-            alt="프리미엄 나이트라이프"
+            alt="전국나이트클럽 프리미엄 나이트라이프"
             className="w-full h-full object-cover"
             loading="lazy"
           />
@@ -22,7 +26,7 @@ export default function Footer() {
             <span className="gradient-text">제휴문의</span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto animate-fade-up delay-200">
-            프리미엄 나이트라이프 파트너십을 원하시면<br className="hidden md:block" />
+            전국나이트클럽 프리미엄 파트너십을 원하시면<br className="hidden md:block" />
             지금 바로 연락해 주세요
           </p>
           <a
@@ -47,56 +51,48 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">
-                서울
-              </h3>
+              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">서울</h3>
               <ul className="space-y-2.5">
-                <li><Link href="/club/gangnam-race/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">강남 레이스클럽</Link></li>
-                <li><Link href="/club/gangnam-sound/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">강남 사운드클럽</Link></li>
-                <li><Link href="/club/cheongdam-h2o/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">청담 H2O나이트</Link></li>
-                <li><Link href="/club/itaewon-waikiki/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">이태원 와이키키</Link></li>
-                <li><Link href="/club/hype-lounge/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">압구정 하입라운지</Link></li>
+                <li><Link href={e("강남레이스클럽")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">강남레이스클럽</Link></li>
+                <li><Link href={e("강남사운드클럽")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">강남사운드클럽</Link></li>
+                <li><Link href={e("청담H2O나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">청담H2O나이트</Link></li>
+                <li><Link href={e("이태원와이키키유토피아클럽")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">이태원와이키키유토피아클럽</Link></li>
+                <li><Link href={e("하입라운지")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">하입라운지</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">
-                수도권
-              </h3>
+              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">수도권</h3>
               <ul className="space-y-2.5">
-                <li><Link href="/club/suwon-chance-dome/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">수원 찬스돔나이트</Link></li>
-                <li><Link href="/club/ilsan-shampoo/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">일산 샴푸나이트</Link></li>
-                <li><Link href="/club/incheon-arabian/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">인천 아라비안나이트</Link></li>
-                <li><Link href="/club/seongnam-shampoo/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">성남 샴푸나이트</Link></li>
-                <li><Link href="/club/paju-skydome/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">파주 스카이돔나이트</Link></li>
+                <li><Link href={e("수원찬스돔나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">수원찬스돔나이트</Link></li>
+                <li><Link href={e("일산샴푸나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">일산샴푸나이트</Link></li>
+                <li><Link href={e("인천아라비안나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">인천아라비안나이트</Link></li>
+                <li><Link href={e("성남샴푸나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">성남샴푸나이트</Link></li>
+                <li><Link href={e("파주야당스카이돔나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">파주야당스카이돔나이트</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">
-                지방
-              </h3>
+              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">지방</h3>
               <ul className="space-y-2.5">
-                <li><Link href="/club/busan-asiad/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">부산 아시아드나이트</Link></li>
-                <li><Link href="/club/busan-mul/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">부산 물나이트</Link></li>
-                <li><Link href="/club/daegu-babamba/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">대구 바밤바나이트</Link></li>
-                <li><Link href="/club/ulsan-champion/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">울산 챔피언나이트</Link></li>
-                <li><Link href="/club/cheonan-stardom/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">천안 스타돔나이트</Link></li>
+                <li><Link href={e("부산아시아드나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">부산아시아드나이트</Link></li>
+                <li><Link href={e("부산물나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">부산물나이트</Link></li>
+                <li><Link href={e("대구바밤바나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">대구바밤바나이트</Link></li>
+                <li><Link href={e("울산챔피언나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">울산챔피언나이트</Link></li>
+                <li><Link href={e("천안스타돔나이트")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">천안스타돔나이트</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">
-                라운지
-              </h3>
+              <h3 className="text-white font-bold text-sm mb-4 tracking-wider uppercase">라운지</h3>
               <ul className="space-y-2.5">
-                <li><Link href="/club/hype-lounge/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">하입라운지</Link></li>
-                <li><Link href="/club/color-lounge/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">컬러라운지</Link></li>
-                <li><Link href="/club/intro-lounge/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">인트로라운지</Link></li>
-                <li><Link href="/club/arju-lounge/" className="text-gray-500 hover:text-purple-400 text-sm transition-colors">아르쥬라운지</Link></li>
+                <li><Link href={e("하입라운지")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">하입라운지</Link></li>
+                <li><Link href={e("컬러라운지")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">컬러라운지</Link></li>
+                <li><Link href={e("인트로라운지")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">인트로라운지</Link></li>
+                <li><Link href={e("아르쥬라운지")} className="text-gray-500 hover:text-purple-400 text-sm transition-colors">아르쥬라운지</Link></li>
               </ul>
             </div>
           </div>
           <div className="divider-glow mb-8" />
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600">
-            <p>&copy; 2026 NIGHTLIFE KOREA. All rights reserved.</p>
+            <p>&copy; 2026 전국나이트클럽 추천. All rights reserved.</p>
             <p>제휴문의 카카오톡: besta12</p>
           </div>
         </div>

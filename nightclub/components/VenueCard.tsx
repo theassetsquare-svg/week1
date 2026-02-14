@@ -29,6 +29,10 @@ function getCardImage(slug: string, index?: number): string {
   return CARD_IMAGES[Math.abs(hash) % CARD_IMAGES.length];
 }
 
+function clean(s: string) {
+  return s.replace(/7080\s*(음악\s*(부터|과|,)\s*)?/g, "").trim();
+}
+
 export default function VenueCard({
   venue,
   index,
@@ -38,14 +42,14 @@ export default function VenueCard({
 }) {
   return (
     <Link
-      href={"/club/" + venue.slug + "/"}
+      href={"/club/" + encodeURIComponent(venue.slug) + "/"}
       className="group card-premium rounded-2xl overflow-hidden animate-fade-up"
       style={index !== undefined ? { animationDelay: `${(index % 6) * 0.08}s` } : undefined}
     >
       <div className="relative h-48 overflow-hidden">
         <img
           src={getCardImage(venue.slug, index)}
-          alt={`${venue.city} ${venue.nameKo} 나이트클럽`}
+          alt={`${venue.nameKo} 나이트클럽 분위기`}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           loading="lazy"
         />
@@ -65,7 +69,7 @@ export default function VenueCard({
         </div>
       </div>
       <div className="p-4">
-        <p className="text-gray-500 text-sm line-clamp-2 mb-3">{venue.summary.replace(/7080\s*(음악\s*(부터|과|,)\s*)?/g, "").trim()}</p>
+        <p className="text-gray-500 text-sm line-clamp-2 mb-3">{clean(venue.summary)}</p>
         <div className="flex flex-wrap gap-1.5">
           {venue.themes
             .filter((t) => t !== "7080" && t !== "소셜댄스")
@@ -78,11 +82,6 @@ export default function VenueCard({
                 {t}
               </span>
             ))}
-          {venue.parking && (
-            <span className="text-[10px] border border-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">
-              주차가능
-            </span>
-          )}
         </div>
       </div>
     </Link>

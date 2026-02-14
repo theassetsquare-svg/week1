@@ -1,11 +1,14 @@
 import { Venue } from "./types";
 import { SITE_URL, canonical } from "./site";
 
-export function nightClubJsonLd(venue: Venue) {
+export function localBusinessJsonLd(venue: Venue) {
+  const url = canonical("/club/" + encodeURIComponent(venue.slug) + "/");
   return {
     "@context": "https://schema.org",
-    "@type": "NightClub",
+    "@type": "LocalBusiness",
+    "@id": url,
     name: venue.nameKo,
+    alternateName: venue.nameKo,
     description: venue.summary,
     address: {
       "@type": "PostalAddress",
@@ -24,20 +27,24 @@ export function nightClubJsonLd(venue: Venue) {
         }
       : {}),
     ...(venue.phone ? { telephone: venue.phone } : {}),
-    ...(venue.website ? { url: venue.website } : {}),
-    ...(venue.priceMin
-      ? {
-          priceRange:
-            venue.priceMin && venue.priceMax
-              ? `₩${venue.priceMin.toLocaleString()}~₩${venue.priceMax.toLocaleString()}`
-              : undefined,
-        }
-      : {}),
-    image: `${SITE_URL}/og-default.jpg`,
-    sameAs: [
-      venue.instagram,
-      venue.website,
-    ].filter(Boolean),
+    url,
+    image: `${SITE_URL}/images/party-confetti.jpg`,
+    sameAs: [venue.instagram, venue.website].filter(Boolean),
+  };
+}
+
+export function faqJsonLd(questions: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
   };
 }
 
@@ -60,10 +67,10 @@ export function webSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "전국 나이트클럽 정보",
+    name: "전국나이트클럽 추천",
     url: SITE_URL,
     description:
-      "대한민국 전국 나이트클럽 정보 디렉터리 — 지역별, 테마별로 나이트클럽을 검색하고 비교하세요.",
+      "전국나이트클럽 정보를 한눈에 확인하세요. 지역별 인기 나이트, 클럽, 라운지 분위기와 추천 포인트 정리.",
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/?q={search_term_string}`,
@@ -80,7 +87,7 @@ export function itemListJsonLd(venues: Venue[]) {
       "@type": "ListItem",
       position: i + 1,
       name: v.nameKo,
-      url: canonical(`/club/${v.slug}/`),
+      url: canonical(`/club/${encodeURIComponent(v.slug)}/`),
     })),
   };
 }
