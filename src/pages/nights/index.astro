@@ -3,9 +3,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { venues, getVenueUrl, getUniqueRegions } from '../../utils/venues';
 
 const nightVenues = venues.filter(v => v.type === 'night');
-const regions = getUniqueRegions();
+const allRegions = getUniqueRegions();
 const title = '전국 나이트 추천 | 한국 나이트 가이드';
 const description = '한국 전국의 나이트을 한눈에 비교하세요. 강남, 부산, 대구, 수원 등 지역별 나이트 상세 정보와 추천.';
+
+// Get regions for this type
+const regionMap = new Map<string, { name: string; slug: string; count: number }>();
+nightVenues.forEach(v => {
+  const existing = regionMap.get(v.regionSlug);
+  if (existing) existing.count++;
+  else regionMap.set(v.regionSlug, { name: v.region, slug: v.regionSlug, count: 1 });
+});
+const regions = [...regionMap.values()].sort((a, b) => b.count - a.count);
 
 const jsonLd = [{
   "@context": "https://schema.org",
@@ -17,17 +26,54 @@ const jsonLd = [{
 }];
 ---
 <BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/nights/" jsonLd={jsonLd}>
-  <section class="hero">
+  <section class="story-intro story-intro--night">
     <div class="container">
-      <h1>전국 나이트 가이드</h1>
-      <p class="hub-intro">한국 전역의 나이트을 지역별로 살펴보세요. 각 매장의 분위기, 음악, 가격 정보와 이용 가이드를 제공합니다. 서울 강남부터 부산, 대구까지 전국의 인기 나이트을 비교하고 나에게 맞는 곳을 찾아보세요.</p>
-      <img src="/assets/hero-nights.svg" alt="전국 나이트 가이드 배너" class="hero-banner" width="1200" height="300" loading="lazy" />
+      <span class="story-intro__eyebrow">Night Culture Korea</span>
+      <h1 class="story-intro__headline">라이브 밴드의 첫 코드가 울리면,<br />시간은 멈추고 음악만 남습니다</h1>
+      <p class="story-intro__narrative">
+        무대 위 조명이 켜지고, 밴드의 첫 음이 홀을 가득 채우는 순간 —
+        당신은 일상의 무게를 내려놓고 <em>음악 속으로 걸어 들어갑니다</em>.
+        트로트부터 댄스, 발라드까지. 세대를 넘나드는 라이브 공연과 함께
+        <em>전국 {nightVenues.length}개 나이트</em>의 열기 속으로 빠져보세요.
+      </p>
+      <div class="story-stats">
+        <div class="story-stat">
+          <span class="story-stat__number">{nightVenues.length}</span>
+          <span class="story-stat__label">전국 나이트</span>
+        </div>
+        <div class="story-stat">
+          <span class="story-stat__number">{regions.length}</span>
+          <span class="story-stat__label">지역 커버</span>
+        </div>
+        <div class="story-stat">
+          <span class="story-stat__number">Live</span>
+          <span class="story-stat__label">매일 밤 공연</span>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span class="scroll-indicator__arrow" onclick="document.getElementById('venueSection').scrollIntoView({behavior:'smooth'})">▼</span>
+        <span class="scroll-indicator__text">스크롤하여 둘러보기</span>
+      </div>
     </div>
   </section>
+
+  <section class="container category-search" id="venueSection">
+    <div class="search-bar">
+      <input type="text" id="venueSearch" placeholder="나이트 이름 또는 지역으로 검색..." aria-label="나이트 검색" />
+    </div>
+    <div class="filter-chips" id="filterChips">
+      <button class="filter-chip active" data-region="all">전체 ({nightVenues.length})</button>
+      {regions.map(r => (
+        <button class="filter-chip" data-region={r.slug}>{r.name} ({r.count})</button>
+      ))}
+    </div>
+    <div class="result-count" id="resultCount"></div>
+  </section>
+
   <section class="container">
-    <div class="venue-grid">
+    <div class="venue-grid" id="venueGrid">
       {nightVenues.map(v => (
-        <a href={getVenueUrl(v)} class="venue-card" data-type={v.type}>
+        <a href={getVenueUrl(v)} class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
           <img src={v.images[0].src} alt={v.images[0].alt} class="venue-card-img" width="400" height="180" loading="lazy" />
           <div class="venue-card-body">
             <span class="venue-card-type type-night">{v.typeLabel}</span>
@@ -39,12 +85,49 @@ const jsonLd = [{
       ))}
     </div>
   </section>
+
   <section class="container" style="margin-top:2rem;">
     <h2 style="text-align:center;margin-bottom:1rem;">지역별 나이트</h2>
     <div class="related-grid" style="max-width:800px;margin:0 auto;">
-      {regions.map(r => (
+      {allRegions.map(r => (
         <a href={`/region/${r.slug}/`} class="related-link">{r.name} ({r.count}곳)</a>
       ))}
     </div>
   </section>
+
+  <script define:vars={{ total: nightVenues.length }}>
+    const search = document.getElementById('venueSearch');
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.venue-card');
+    const resultCount = document.getElementById('resultCount');
+    let activeRegion = 'all';
+
+    function filterCards() {
+      const q = search?.value?.toLowerCase() || '';
+      let visible = 0;
+      cards.forEach(card => {
+        const region = card.dataset.region || '';
+        const name = (card.dataset.name || '').toLowerCase();
+        const matchRegion = activeRegion === 'all' || region === activeRegion;
+        const matchSearch = !q || name.includes(q);
+        const show = matchRegion && matchSearch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (resultCount) {
+        resultCount.textContent = (q || activeRegion !== 'all') ? `${total}개 중 ${visible}개 표시` : '';
+      }
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        activeRegion = chip.dataset.region || 'all';
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        filterCards();
+      });
+    });
+
+    search?.addEventListener('input', filterCards);
+  </script>
 </BaseLayout>

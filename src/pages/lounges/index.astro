@@ -6,26 +6,73 @@ const loungeVenues = venues.filter(v => v.type === 'lounge');
 const title = '전국 라운지·감성주점 추천 | 한국 라운지 가이드';
 const description = '한국 전국의 프리미엄 라운지와 감성주점을 소개합니다. 강남 라운지를 중심으로 분위기, 칵테일, 가격 정보를 확인하세요.';
 
+// Get regions for this type
+const regionMap = new Map<string, { name: string; slug: string; count: number }>();
+loungeVenues.forEach(v => {
+  const existing = regionMap.get(v.regionSlug);
+  if (existing) existing.count++;
+  else regionMap.set(v.regionSlug, { name: v.region, slug: v.regionSlug, count: 1 });
+});
+const regions = [...regionMap.values()].sort((a, b) => b.count - a.count);
+
 const jsonLd = [{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "전국 라운지 모음",
   "description": description,
   "url": "https://week1-6m5.pages.dev/lounges/",
+  "numberOfItems": loungeVenues.length,
 }];
 ---
 <BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/lounges/" jsonLd={jsonLd}>
-  <section class="hero">
+  <section class="story-intro story-intro--lounge">
     <div class="container">
-      <h1>전국 라운지 · 감성주점 가이드</h1>
-      <p class="hub-intro">세련되고 감성적인 한국의 라운지를 만나보세요. 강남을 중심으로 프리미엄 칵테일과 감각적인 인테리어를 갖춘 라운지들의 상세 정보를 제공합니다. 데이트, 소규모 모임, 조용한 밤에 딱 맞는 공간을 찾아보세요.</p>
-      <img src="/assets/hero-lounges.svg" alt="전국 라운지 가이드 배너" class="hero-banner" width="1200" height="300" loading="lazy" />
+      <span class="story-intro__eyebrow">Lounge & Bar Korea</span>
+      <h1 class="story-intro__headline">칵테일 한 잔의 여유,<br />은은한 조명 아래 흐르는 재즈</h1>
+      <p class="story-intro__narrative">
+        문을 열면 퍼지는 은은한 향, 바텐더의 셰이커 소리가 리듬을 만듭니다.
+        <em>시간이 천천히 흐르는 공간</em>에서 시그니처 칵테일 한 잔과 함께
+        대화가 깊어지고, 밤은 부드러워집니다. 데이트, 소규모 모임, 혼자만의 시간까지 —
+        <em>전국 {loungeVenues.length}개 프리미엄 라운지</em>가 당신을 기다립니다.
+      </p>
+      <div class="story-stats">
+        <div class="story-stat">
+          <span class="story-stat__number">{loungeVenues.length}</span>
+          <span class="story-stat__label">프리미엄 라운지</span>
+        </div>
+        <div class="story-stat">
+          <span class="story-stat__number">{regions.length}</span>
+          <span class="story-stat__label">지역 커버</span>
+        </div>
+        <div class="story-stat">
+          <span class="story-stat__number">VIP</span>
+          <span class="story-stat__label">프라이빗 공간</span>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span class="scroll-indicator__arrow" onclick="document.getElementById('venueSection').scrollIntoView({behavior:'smooth'})">▼</span>
+        <span class="scroll-indicator__text">스크롤하여 둘러보기</span>
+      </div>
     </div>
   </section>
+
+  <section class="container category-search" id="venueSection">
+    <div class="search-bar">
+      <input type="text" id="venueSearch" placeholder="라운지 이름 또는 지역으로 검색..." aria-label="라운지 검색" />
+    </div>
+    <div class="filter-chips" id="filterChips">
+      <button class="filter-chip active" data-region="all">전체 ({loungeVenues.length})</button>
+      {regions.map(r => (
+        <button class="filter-chip" data-region={r.slug}>{r.name} ({r.count})</button>
+      ))}
+    </div>
+    <div class="result-count" id="resultCount"></div>
+  </section>
+
   <section class="container">
-    <div class="venue-grid">
+    <div class="venue-grid" id="venueGrid">
       {loungeVenues.map(v => (
-        <a href={getVenueUrl(v)} class="venue-card">
+        <a href={getVenueUrl(v)} class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
           <img src={v.images[0].src} alt={v.images[0].alt} class="venue-card-img" width="400" height="180" loading="lazy" />
           <div class="venue-card-body">
             <span class="venue-card-type type-lounge">{v.typeLabel}</span>
@@ -37,4 +84,40 @@ const jsonLd = [{
       ))}
     </div>
   </section>
+
+  <script define:vars={{ total: loungeVenues.length }}>
+    const search = document.getElementById('venueSearch');
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.venue-card');
+    const resultCount = document.getElementById('resultCount');
+    let activeRegion = 'all';
+
+    function filterCards() {
+      const q = search?.value?.toLowerCase() || '';
+      let visible = 0;
+      cards.forEach(card => {
+        const region = card.dataset.region || '';
+        const name = (card.dataset.name || '').toLowerCase();
+        const matchRegion = activeRegion === 'all' || region === activeRegion;
+        const matchSearch = !q || name.includes(q);
+        const show = matchRegion && matchSearch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (resultCount) {
+        resultCount.textContent = (q || activeRegion !== 'all') ? `${total}개 중 ${visible}개 표시` : '';
+      }
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        activeRegion = chip.dataset.region || 'all';
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        filterCards();
+      });
+    });
+
+    search?.addEventListener('input', filterCards);
+  </script>
 </BaseLayout>

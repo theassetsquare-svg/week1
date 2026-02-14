@@ -83,7 +83,7 @@ const tocItems = [
 ];
 ---
 <BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} ogImage={ogImage} jsonLd={jsonLd}>
-  <section class="venue-header">
+  <section class="venue-hero-immersive venue-hero-immersive--lounge">
     <div class="container content-narrow">
       <div class="breadcrumb">
         <a href="/">홈</a><span>/</span>
@@ -91,18 +91,43 @@ const tocItems = [
         <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
         <span>{v.name_display}</span>
       </div>
-      <h1>{v.name_display}</h1>
-      <div class="venue-meta">
-        <span class={`venue-tag type-${v.type}`}>{v.typeLabel}</span>
-        <span class="venue-tag">{v.region}</span>
-        <span class="venue-tag">{v.storyFrame.tone}</span>
+      <div class="venue-hero__eyebrow">Lounge Experience</div>
+      <h1 class="venue-hero__title">{v.name_display}</h1>
+      <p class="venue-hero__teaser">{v.teaser}</p>
+      <div class="venue-hero__meta">
+        <span class="venue-hero__tag venue-hero__tag--type">{v.typeLabel}</span>
+        <span class="venue-hero__tag venue-hero__tag--region">{v.region}</span>
+        <span class="venue-hero__tag venue-hero__tag--tone">{v.storyFrame.tone}</span>
+        <span class="venue-hero__tag venue-hero__tag--time">약 {readTime}분의 몰입 여행</span>
       </div>
-      <p class="reading-time">예상 읽는 시간: ~{readTime}분+</p>
       <img src={v.images[0].src} alt={v.images[0].alt} class="venue-hero-img" width="500" height="340" loading="lazy" />
     </div>
   </section>
 
   <div class="container content-narrow">
+    <div class="story-hook">
+      <div class="story-hook__label">Tonight's Story — {v.storyFrame.style}</div>
+      <div class="story-hook__text">{v.story.scene1}</div>
+      <div class="story-hook__quote">{v.bodySections.atmosphere.split('.')[0]}.</div>
+      <a href="#atmosphere" class="story-hook__cta">이야기 속으로 ↓</a>
+    </div>
+
+    <div class="mood-check">
+      <div class="mood-check__title">오늘 밤 기분은?</div>
+      <div class="mood-check__options">
+        <button class="mood-btn" data-mood="romantic"><span class="mood-btn__emoji">🌹</span>로맨틱</button>
+        <button class="mood-btn" data-mood="relax"><span class="mood-btn__emoji">🍸</span>힐링 타임</button>
+        <button class="mood-btn" data-mood="talk"><span class="mood-btn__emoji">💬</span>깊은 대화</button>
+        <button class="mood-btn" data-mood="celebrate"><span class="mood-btn__emoji">🎉</span>축하 모임</button>
+      </div>
+      <div class="mood-check__result" id="moodResult"></div>
+    </div>
+
+    <div class="content-awaits">
+      <div class="content-awaits__bar"><div class="content-awaits__fill"></div></div>
+      <span class="content-awaits__text">{tocItems.length}개 섹션 준비됨</span>
+    </div>
+
     <nav class="toc">
       <h3>목차</h3>
       <ol>
@@ -499,6 +524,26 @@ const tocItems = [
             s.classList.toggle('active', sv <= val);
           });
         });
+      });
+    });
+
+    // ─── Mood Check ───
+    const moodMessages = {
+      romantic: `${venueName}의 은은한 조명과 프라이빗한 좌석에서 로맨틱한 밤을 만들어보세요. 🌹 분위기 요약에서 감성을 미리 느끼고, 플랜 만들기에서 데이트 코스를 완성하세요.`,
+      relax: `${venueName}의 시그니처 칵테일과 함께 일상에서 벗어나는 힐링 타임을 즐기세요. 🍸 음악/무드 섹션에서 오늘의 BGM을 확인하고, 체크리스트로 준비하세요.`,
+      talk: `${venueName}의 조용한 공간에서 깊은 대화를 나눠보세요. 💬 위치/교통에서 접근성을 확인하고, FAQ에서 예약 정보를 체크하세요.`,
+      celebrate: `${venueName}에서 특별한 순간을 축하하세요! 🎉 타임라인에서 최적의 방문 시간을 확인하고, 추천 매장에서 2차 장소도 준비하세요.`,
+    };
+    document.querySelectorAll('.mood-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        const mood = btn.dataset.mood || 'romantic';
+        const result = document.getElementById('moodResult');
+        if (result) {
+          result.textContent = moodMessages[mood] || '';
+          result.classList.add('show');
+        }
       });
     });
 
