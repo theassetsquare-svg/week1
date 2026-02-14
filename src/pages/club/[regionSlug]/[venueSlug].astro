@@ -19,8 +19,9 @@ const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(B
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean);
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean);
 
-const title = `${v.name_display} | ${v.region} 나이트 후기·가격·영업시간`;
-const description = `${v.name_display} 방문 가이드 – ${v.region} 나이트의 분위기, 음악, 드레스코드, 가격 정보와 이용 후기를 확인하세요.`;
+const ogImage = `https://week1-6m5.pages.dev/venues/${v.venueSlug}/og-thumbnail.svg`;
+const title = `${v.name_display} | ${v.region} 클럽 후기·가격·영업시간·입장료 2026`;
+const description = `${v.name_display} 완벽 가이드 – ${v.region} 클럽의 분위기, DJ 라인업, 드레스코드, 입장료, 테이블 예약 정보와 실제 방문 후기. ${v.region}에서 가장 핫한 클럽을 찾고 계신다면 지금 확인하세요.`;
 
 const jsonLd = [
   {
@@ -28,7 +29,7 @@ const jsonLd = [
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "홈", "item": siteUrl },
-      { "@type": "ListItem", "position": 2, "name": "나이트", "item": `${siteUrl}/nights/` },
+      { "@type": "ListItem", "position": 2, "name": "클럽", "item": `${siteUrl}/clubs/` },
       { "@type": "ListItem", "position": 3, "name": v.region, "item": `${siteUrl}/region/${v.regionSlug}/` },
       { "@type": "ListItem", "position": 4, "name": v.name_display, "item": `${siteUrl}${venueUrl}` },
     ]
@@ -81,12 +82,12 @@ const tocItems = [
   { id: 'gallery', label: '갤러리' },
 ];
 ---
-<BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} ogImage={ogImage} jsonLd={jsonLd}>
   <section class="venue-header">
     <div class="container content-narrow">
       <div class="breadcrumb">
         <a href="/">홈</a><span>/</span>
-        <a href="/nights/">나이트</a><span>/</span>
+        <a href="/clubs/">클럽</a><span>/</span>
         <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
         <span>{v.name_display}</span>
       </div>
@@ -248,7 +249,7 @@ const tocItems = [
       )}
       {sameType.length > 0 && (
         <div class="related-section">
-          <h3>같은 유형 (나이트)</h3>
+          <h3>같은 유형 (클럽)</h3>
           <div class="related-grid">
             {sameType.map(rv => (
               <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
@@ -277,7 +278,7 @@ const tocItems = [
       <div class="related-section">
         <div class="related-grid">
           <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-          <a href="/nights/" class="related-link">나이트 전체 보기</a>
+          <a href="/clubs/" class="related-link">클럽 전체 보기</a>
         </div>
       </div>
     </section>
@@ -291,9 +292,123 @@ const tocItems = [
         ))}
       </div>
     </section>
+
+    <!-- 12. Nightlife Quiz -->
+    <section class="venue-section" id="quiz">
+      <h2>나이트라이프 성향 테스트</h2>
+      <p class="section-intro">5가지 질문으로 당신의 나이트라이프 성향을 알아보세요. {v.name_display}이 당신에게 맞는 곳인지 확인해보세요.</p>
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgress"></div></div>
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-result" id="quizResult" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- 13. Venue Comparison -->
+    <section class="venue-section" id="compare">
+      <h2>{v.region} 밤문화 비교</h2>
+      <div class="compare-table">
+        <table>
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>클럽</th>
+              <th>나이트</th>
+              <th>라운지</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>분위기</td><td>DJ + EDM/힙합</td><td>라이브 밴드 + 댄스</td><td>칵테일 + 대화</td></tr>
+            <tr><td>연령대</td><td>20~30대 중심</td><td>30~50대 중심</td><td>25~40대</td></tr>
+            <tr><td>드레스코드</td><td>깔끔한 캐주얼</td><td>단정한 캐주얼</td><td>스마트 캐주얼</td></tr>
+            <tr><td>예산 (1인)</td><td>3~8만원</td><td>5~10만원</td><td>5~15만원</td></tr>
+            <tr><td>운영시간</td><td>22시~06시</td><td>20시~05시</td><td>19시~03시</td></tr>
+            <tr><td>음악</td><td>EDM/하우스/힙합</td><td>트로트/댄스/발라드</td><td>재즈/R&B/소울</td></tr>
+            <tr><td>추천 목적</td><td>파티/춤/음악</td><td>모임/댄스/부킹</td><td>데이트/대화/2차</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 14. Deep Dive Content -->
+    <section class="venue-section" id="deepdive">
+      <h2>{v.name_display} 심층 분석</h2>
+      <div class="deepdive-grid">
+        <div class="deepdive-card">
+          <h3>방문 전 알아야 할 것들</h3>
+          <p>{v.region}의 {v.typeLabel} 문화는 다른 지역과 구별되는 고유한 특성을 가지고 있다. {v.name_display}을 제대로 즐기기 위해서는 이 지역의 밤문화 코드를 이해하는 것이 중요하다. 먼저, 복장은 깔끔한 캐주얼이 기본이다. 슬리퍼나 반바지는 피하고, 단정하면서도 자신감 있는 스타일을 추천한다. 게스트리스트 등록은 미리 SNS에서 확인하고, 입장 줄이 길 수 있으므로 일찍 도착하는 것을 권장한다.</p>
+        </div>
+        <div class="deepdive-card">
+          <h3>{v.region} 클럽 문화 역사</h3>
+          <p>{v.region}의 클럽 문화는 2000년대 초반부터 본격적으로 발전했다. 초기 EDM 붐과 함께 시작된 클럽 씬은 힙합, 하우스, 테크노 등 다양한 장르로 확장되었다. {v.name_display}은 이러한 발전의 흐름 속에서 독자적인 음악적 정체성을 확립한 곳이다. DJ 문화의 성장과 함께 게스트 DJ 이벤트, 페스티벌 애프터파티 등 다양한 형태의 이벤트가 정착했으며, 이는 한국 클럽 문화의 수준을 한 단계 높이는 데 기여했다.</p>
+        </div>
+        <div class="deepdive-card">
+          <h3>시즌별 방문 가이드</h3>
+          <p>봄 (3~5월): 새 학기와 함께 활기가 넘치는 시즌. 신입생 환영 이벤트가 많다. 여름 (6~8월): 뮤직 페스티벌 시즌과 맞물려 클럽 씬이 가장 뜨거운 때. 해외 DJ 내한 공연도 많다. 가을 (9~11월): 할로윈 시즌에는 특별 파티가 열리며, 코스튬 이벤트로 특별한 밤을 경험할 수 있다. 겨울 (12~2월): 크리스마스와 새해 카운트다운 파티가 하이라이트. 연말 시즌에는 미리 예약이 필수다.</p>
+        </div>
+        <div class="deepdive-card">
+          <h3>현지인 추천 코스</h3>
+          <p>1차: {v.region} 맛집에서 든든하게 저녁 식사. 클럽 방문 전 적당한 식사가 밤을 즐기는 기본이다. 2차: {v.name_display}에서 23시쯤 입장. 바에서 음료를 주문하고 분위기에 적응한 후 메인 플로어로 이동한다. 피크타임은 자정~새벽 1시. 3차: 새벽에 나와서 {v.region} 근처 24시간 식당에서 해장. 뜨끈한 국물 요리로 밤을 마무리하면 완벽한 코스가 완성된다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. Venue Diary -->
+    <section class="venue-section" id="diary">
+      <h2>나만의 방문 일기</h2>
+      <p class="section-intro">방문 후 느낀 점을 기록해보세요. 작성한 내용은 브라우저에 저장됩니다.</p>
+      <div class="diary-container">
+        <div class="diary-ratings">
+          <div class="diary-rating-item">
+            <label>분위기</label>
+            <div class="star-rating" data-category="atmosphere">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+          <div class="diary-rating-item">
+            <label>음악</label>
+            <div class="star-rating" data-category="music">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+          <div class="diary-rating-item">
+            <label>서비스</label>
+            <div class="star-rating" data-category="service">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+        </div>
+        <textarea class="diary-text" id="diaryText" rows="6" placeholder="오늘 밤의 경험을 자유롭게 적어보세요..."></textarea>
+        <button class="diary-save-btn" id="diarySave">저장하기</button>
+        <div class="diary-saved-msg" id="diarySavedMsg" style="display:none;">저장되었습니다!</div>
+      </div>
+    </section>
+
+    <!-- SEO: Keywords section -->
+    <section class="venue-section" id="keywords-seo" style="margin-top:2rem;">
+      <h2>{v.name_display} 관련 검색어</h2>
+      <div class="keyword-cloud">
+        {v.keywords.map(kw => (
+          <span class="keyword-tag">{kw}</span>
+        ))}
+      </div>
+    </section>
   </div>
 
-  <script define:vars={{ plannerRules: v.plannerRules }}>
+  <script define:vars={{ plannerRules: v.plannerRules, venueId: v.id, venueName: v.name_display, venueType: v.type }}>
     let selectedPurpose = '';
     let selectedTime = '';
 
@@ -323,5 +438,100 @@ const tocItems = [
       }
       result.textContent = text || '목적과 시간대를 선택하면 맞춤 플랜이 표시됩니다.';
     }
+
+    // ─── Quiz ───
+    const quizQuestions = [
+      { q: '밤에 외출할 때 가장 중요한 것은?', opts: ['음악과 춤', '좋은 분위기', '맛있는 음료', '새로운 만남'], scores: [2, 1, 0, 3] },
+      { q: '선호하는 음악 장르는?', opts: ['EDM/일렉트로닉', '힙합/R&B', '트로트/댄스', '재즈/소울'], scores: [2, 1, 3, 0] },
+      { q: '이상적인 밤 외출 인원은?', opts: ['혼자', '2명 (데이트)', '3~5명 친구들', '대규모 단체'], scores: [0, 1, 2, 3] },
+      { q: '밤문화 예산은?', opts: ['3만원 이하', '3~5만원', '5~10만원', '10만원 이상'], scores: [2, 3, 1, 0] },
+      { q: '좋아하는 분위기는?', opts: ['조용하고 세련된', '활기차고 역동적인', '고급스럽고 프라이빗', '자유롭고 개방적인'], scores: [0, 3, 1, 2] },
+    ];
+    const types = ['라운지 스타일', '나이트 스타일', '클럽 스타일', '소셜 버터플라이'];
+    const typeDescs = [
+      '세련된 공간에서 칵테일과 대화를 즐기는 당신은 라운지형 인간입니다.',
+      '라이브 밴드와 댄스를 즐기는 당신은 나이트형 인간입니다.',
+      '강렬한 비트와 함께 자유롭게 춤추는 것을 좋아하는 클럽형 인간입니다. ' + venueName + '에서 잊지 못할 밤을 경험하세요!',
+      '어디서든 사람들과 어울리는 것을 좋아하는 소셜형 인간입니다. 어떤 장소든 당신과 함께라면 즐겁습니다!',
+    ];
+    let qIdx = 0, totalScore = 0;
+    function showQuestion() {
+      const qEl = document.getElementById('quizQuestion');
+      const oEl = document.getElementById('quizOptions');
+      const pEl = document.getElementById('quizProgress');
+      if (!qEl || !oEl || !pEl) return;
+      if (qIdx >= quizQuestions.length) { showResult(); return; }
+      pEl.style.width = ((qIdx / quizQuestions.length) * 100) + '%';
+      const q = quizQuestions[qIdx];
+      qEl.textContent = `Q${qIdx + 1}. ${q.q}`;
+      oEl.innerHTML = q.opts.map((o, i) => `<button class="quiz-opt-btn" data-score="${q.scores[i]}">${o}</button>`).join('');
+      oEl.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          totalScore += parseInt(btn.getAttribute('data-score') || '0');
+          qIdx++;
+          showQuestion();
+        });
+      });
+    }
+    function showResult() {
+      const rEl = document.getElementById('quizResult');
+      const qEl = document.getElementById('quizQuestion');
+      const oEl = document.getElementById('quizOptions');
+      const pEl = document.getElementById('quizProgress');
+      if (!rEl || !qEl || !oEl || !pEl) return;
+      pEl.style.width = '100%';
+      qEl.style.display = 'none';
+      oEl.style.display = 'none';
+      rEl.style.display = 'block';
+      const typeIdx = Math.min(Math.floor(totalScore / 4), types.length - 1);
+      rEl.innerHTML = `<h3>당신의 성향: ${types[typeIdx]}</h3><p>${typeDescs[typeIdx]}</p><button class="quiz-retry-btn" onclick="location.reload()">다시 테스트하기</button>`;
+    }
+    showQuestion();
+
+    // ─── Star Rating ───
+    document.querySelectorAll('.star-rating').forEach(rating => {
+      const stars = rating.querySelectorAll('.star');
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const val = parseInt(star.getAttribute('data-value') || '0');
+          stars.forEach(s => {
+            const sv = parseInt(s.getAttribute('data-value') || '0');
+            s.classList.toggle('active', sv <= val);
+          });
+        });
+      });
+    });
+
+    // ─── Diary ───
+    const diaryKey = 'diary-' + venueId;
+    const savedDiary = localStorage.getItem(diaryKey);
+    if (savedDiary) {
+      try {
+        const d = JSON.parse(savedDiary);
+        const ta = document.getElementById('diaryText');
+        if (ta) (ta as HTMLTextAreaElement).value = d.text || '';
+        document.querySelectorAll('.star-rating').forEach(rating => {
+          const cat = rating.getAttribute('data-category');
+          if (cat && d.ratings && d.ratings[cat]) {
+            rating.querySelectorAll('.star').forEach(s => {
+              const sv = parseInt(s.getAttribute('data-value') || '0');
+              s.classList.toggle('active', sv <= d.ratings[cat]);
+            });
+          }
+        });
+      } catch {}
+    }
+    document.getElementById('diarySave')?.addEventListener('click', () => {
+      const text = (document.getElementById('diaryText') as HTMLTextAreaElement)?.value || '';
+      const ratings: Record<string, number> = {};
+      document.querySelectorAll('.star-rating').forEach(rating => {
+        const cat = rating.getAttribute('data-category') || '';
+        const active = rating.querySelectorAll('.star.active');
+        ratings[cat] = active.length;
+      });
+      localStorage.setItem(diaryKey, JSON.stringify({ text, ratings, date: new Date().toISOString() }));
+      const msg = document.getElementById('diarySavedMsg');
+      if (msg) { msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 2000); }
+    });
   </script>
 </BaseLayout>

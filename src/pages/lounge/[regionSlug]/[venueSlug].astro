@@ -19,8 +19,9 @@ const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(B
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean);
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean);
 
-const title = `${v.name_display} | ${v.region} 나이트 후기·가격·영업시간`;
-const description = `${v.name_display} 방문 가이드 – ${v.region} 나이트의 분위기, 음악, 드레스코드, 가격 정보와 이용 후기를 확인하세요.`;
+const ogImage = `https://week1-6m5.pages.dev/venues/${v.venueSlug}/og-thumbnail.svg`;
+const title = `${v.name_display} | ${v.region} 라운지 후기·가격·예약·분위기 2026`;
+const description = `${v.name_display} 완벽 가이드 – ${v.region} 라운지의 분위기, 시그니처 칵테일, 예약 방법, 가격 정보와 실제 방문 후기. ${v.region} 최고의 라운지를 찾고 계신다면 지금 확인하세요.`;
 
 const jsonLd = [
   {
@@ -28,7 +29,7 @@ const jsonLd = [
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "홈", "item": siteUrl },
-      { "@type": "ListItem", "position": 2, "name": "나이트", "item": `${siteUrl}/nights/` },
+      { "@type": "ListItem", "position": 2, "name": "라운지", "item": `${siteUrl}/lounges/` },
       { "@type": "ListItem", "position": 3, "name": v.region, "item": `${siteUrl}/region/${v.regionSlug}/` },
       { "@type": "ListItem", "position": 4, "name": v.name_display, "item": `${siteUrl}${venueUrl}` },
     ]
@@ -81,12 +82,12 @@ const tocItems = [
   { id: 'gallery', label: '갤러리' },
 ];
 ---
-<BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} ogImage={ogImage} jsonLd={jsonLd}>
   <section class="venue-header">
     <div class="container content-narrow">
       <div class="breadcrumb">
         <a href="/">홈</a><span>/</span>
-        <a href="/nights/">나이트</a><span>/</span>
+        <a href="/lounges/">라운지</a><span>/</span>
         <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
         <span>{v.name_display}</span>
       </div>
@@ -248,7 +249,7 @@ const tocItems = [
       )}
       {sameType.length > 0 && (
         <div class="related-section">
-          <h3>같은 유형 (나이트)</h3>
+          <h3>같은 유형 (라운지)</h3>
           <div class="related-grid">
             {sameType.map(rv => (
               <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
@@ -277,7 +278,7 @@ const tocItems = [
       <div class="related-section">
         <div class="related-grid">
           <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-          <a href="/nights/" class="related-link">나이트 전체 보기</a>
+          <a href="/lounges/" class="related-link">라운지 전체 보기</a>
         </div>
       </div>
     </section>
@@ -291,9 +292,123 @@ const tocItems = [
         ))}
       </div>
     </section>
+
+    <!-- 12. Nightlife Quiz -->
+    <section class="venue-section" id="quiz">
+      <h2>나이트라이프 성향 테스트</h2>
+      <p class="section-intro">5가지 질문으로 당신의 나이트라이프 성향을 알아보세요. {v.name_display}이 당신에게 맞는 곳인지 확인해보세요.</p>
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgress"></div></div>
+        <div class="quiz-question" id="quizQuestion"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-result" id="quizResult" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- 13. Venue Comparison -->
+    <section class="venue-section" id="compare">
+      <h2>{v.region} 밤문화 비교</h2>
+      <div class="compare-table">
+        <table>
+          <thead>
+            <tr>
+              <th>항목</th>
+              <th>라운지</th>
+              <th>클럽</th>
+              <th>나이트</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>분위기</td><td>칵테일 + 대화</td><td>DJ + EDM/힙합</td><td>라이브 밴드 + 댄스</td></tr>
+            <tr><td>연령대</td><td>25~40대</td><td>20~30대 중심</td><td>30~50대 중심</td></tr>
+            <tr><td>드레스코드</td><td>스마트 캐주얼</td><td>깔끔한 캐주얼</td><td>단정한 캐주얼</td></tr>
+            <tr><td>예산 (1인)</td><td>5~15만원</td><td>3~8만원</td><td>5~10만원</td></tr>
+            <tr><td>운영시간</td><td>19시~03시</td><td>22시~06시</td><td>20시~05시</td></tr>
+            <tr><td>음악</td><td>재즈/R&B/소울</td><td>EDM/하우스/힙합</td><td>트로트/댄스/발라드</td></tr>
+            <tr><td>추천 목적</td><td>데이트/대화/2차</td><td>파티/춤/음악</td><td>모임/댄스/부킹</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 14. Deep Dive Content -->
+    <section class="venue-section" id="deepdive">
+      <h2>{v.name_display} 심층 분석</h2>
+      <div class="deepdive-grid">
+        <div class="deepdive-card">
+          <h3>방문 전 알아야 할 것들</h3>
+          <p>{v.region}의 {v.typeLabel} 문화는 세련됨과 프라이빗한 분위기가 핵심이다. {v.name_display}을 제대로 즐기기 위해서는 스마트 캐주얼 이상의 복장이 필수이며, 예약은 거의 필수다. 특히 금요일과 토요일 저녁에는 대기가 생길 수 있으므로 사전 예약을 강력히 권장한다. 시그니처 칵테일이나 바텐더 추천 메뉴를 경험해보는 것이 이곳의 매력을 제대로 느끼는 방법이다.</p>
+        </div>
+        <div class="deepdive-card">
+          <h3>{v.region} 라운지 문화</h3>
+          <p>{v.region}의 라운지 문화는 최근 5년간 급격한 성장을 이루었다. 과거 단순한 바(bar) 형태에서 벗어나, 음악, 인테리어, 칵테일 컬처가 융합된 복합 문화 공간으로 진화했다. {v.name_display}은 이러한 트렌드의 선두에 있으며, 바텐더의 전문성과 공간 디자인의 조화로 차별화된 경험을 제공한다. 해외 라운지 문화의 영향을 받으면서도 한국적 감성을 녹여낸 것이 특징이다.</p>
+        </div>
+        <div class="deepdive-card">
+          <h3>시즌별 방문 가이드</h3>
+          <p>봄 (3~5월): 테라스 좌석이 오픈되며 야외 분위기를 즐길 수 있다. 봄꽃 시즌 한정 칵테일도 등장한다. 여름 (6~8월): 시원한 실내에서 시그니처 칵테일을 즐기기 최적의 계절. 과일 기반 여름 한정 메뉴를 놓치지 말자. 가을 (9~11월): 라운지의 분위기가 가장 깊어지는 시즌. 위스키나 브랜디 등 숙성주와 함께하는 밤이 특별하다. 겨울 (12~2월): 와인과 멀드와인, 핫칵테일 등 따뜻한 음료가 매력적인 시즌이다.</p>
+        </div>
+        <div class="deepdive-card">
+          <h3>현지인 추천 코스</h3>
+          <p>1차: {v.region} 파인 다이닝이나 분위기 좋은 레스토랑에서 식사. 2차: {v.name_display}에서 시그니처 칵테일과 함께 여유로운 대화의 시간. 바텐더에게 취향을 말하면 맞춤 칵테일을 만들어준다. 3차: 가까운 카페에서 디저트와 함께 밤을 마무리하거나, 인근 야경 포인트에서 산책으로 하루를 마감한다. 라운지는 급하게 즐기는 곳이 아니라 천천히 음미하는 곳이다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. Venue Diary -->
+    <section class="venue-section" id="diary">
+      <h2>나만의 방문 일기</h2>
+      <p class="section-intro">방문 후 느낀 점을 기록해보세요. 작성한 내용은 브라우저에 저장됩니다.</p>
+      <div class="diary-container">
+        <div class="diary-ratings">
+          <div class="diary-rating-item">
+            <label>분위기</label>
+            <div class="star-rating" data-category="atmosphere">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+          <div class="diary-rating-item">
+            <label>칵테일</label>
+            <div class="star-rating" data-category="music">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+          <div class="diary-rating-item">
+            <label>서비스</label>
+            <div class="star-rating" data-category="service">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+          </div>
+        </div>
+        <textarea class="diary-text" id="diaryText" rows="6" placeholder="오늘 밤의 경험을 자유롭게 적어보세요..."></textarea>
+        <button class="diary-save-btn" id="diarySave">저장하기</button>
+        <div class="diary-saved-msg" id="diarySavedMsg" style="display:none;">저장되었습니다!</div>
+      </div>
+    </section>
+
+    <!-- SEO: Keywords section -->
+    <section class="venue-section" id="keywords-seo" style="margin-top:2rem;">
+      <h2>{v.name_display} 관련 검색어</h2>
+      <div class="keyword-cloud">
+        {v.keywords.map(kw => (
+          <span class="keyword-tag">{kw}</span>
+        ))}
+      </div>
+    </section>
   </div>
 
-  <script define:vars={{ plannerRules: v.plannerRules }}>
+  <script define:vars={{ plannerRules: v.plannerRules, venueId: v.id, venueName: v.name_display, venueType: v.type }}>
     let selectedPurpose = '';
     let selectedTime = '';
 
@@ -323,5 +438,100 @@ const tocItems = [
       }
       result.textContent = text || '목적과 시간대를 선택하면 맞춤 플랜이 표시됩니다.';
     }
+
+    // ─── Quiz ───
+    const quizQuestions = [
+      { q: '밤에 외출할 때 가장 중요한 것은?', opts: ['음악과 춤', '좋은 분위기', '맛있는 음료', '새로운 만남'], scores: [2, 1, 0, 3] },
+      { q: '선호하는 음악 장르는?', opts: ['EDM/일렉트로닉', '힙합/R&B', '트로트/댄스', '재즈/소울'], scores: [2, 1, 3, 0] },
+      { q: '이상적인 밤 외출 인원은?', opts: ['혼자', '2명 (데이트)', '3~5명 친구들', '대규모 단체'], scores: [0, 1, 2, 3] },
+      { q: '밤문화 예산은?', opts: ['3만원 이하', '3~5만원', '5~10만원', '10만원 이상'], scores: [2, 3, 1, 0] },
+      { q: '좋아하는 분위기는?', opts: ['조용하고 세련된', '활기차고 역동적인', '고급스럽고 프라이빗', '자유롭고 개방적인'], scores: [0, 3, 1, 2] },
+    ];
+    const types = ['라운지 스타일', '나이트 스타일', '클럽 스타일', '소셜 버터플라이'];
+    const typeDescs = [
+      '세련된 공간에서 칵테일과 대화를 즐기는 당신은 라운지형 인간입니다. ' + venueName + '은 당신을 위한 완벽한 공간입니다!',
+      '라이브 밴드와 댄스를 즐기는 당신은 나이트형 인간입니다.',
+      '강렬한 비트와 함께 자유롭게 춤추는 것을 좋아하는 클럽형 인간입니다.',
+      '어디서든 사람들과 어울리는 것을 좋아하는 소셜형 인간입니다. 어떤 장소든 당신과 함께라면 즐겁습니다!',
+    ];
+    let qIdx = 0, totalScore = 0;
+    function showQuestion() {
+      const qEl = document.getElementById('quizQuestion');
+      const oEl = document.getElementById('quizOptions');
+      const pEl = document.getElementById('quizProgress');
+      if (!qEl || !oEl || !pEl) return;
+      if (qIdx >= quizQuestions.length) { showResult(); return; }
+      pEl.style.width = ((qIdx / quizQuestions.length) * 100) + '%';
+      const q = quizQuestions[qIdx];
+      qEl.textContent = `Q${qIdx + 1}. ${q.q}`;
+      oEl.innerHTML = q.opts.map((o, i) => `<button class="quiz-opt-btn" data-score="${q.scores[i]}">${o}</button>`).join('');
+      oEl.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          totalScore += parseInt(btn.getAttribute('data-score') || '0');
+          qIdx++;
+          showQuestion();
+        });
+      });
+    }
+    function showResult() {
+      const rEl = document.getElementById('quizResult');
+      const qEl = document.getElementById('quizQuestion');
+      const oEl = document.getElementById('quizOptions');
+      const pEl = document.getElementById('quizProgress');
+      if (!rEl || !qEl || !oEl || !pEl) return;
+      pEl.style.width = '100%';
+      qEl.style.display = 'none';
+      oEl.style.display = 'none';
+      rEl.style.display = 'block';
+      const typeIdx = Math.min(Math.floor(totalScore / 4), types.length - 1);
+      rEl.innerHTML = `<h3>당신의 성향: ${types[typeIdx]}</h3><p>${typeDescs[typeIdx]}</p><button class="quiz-retry-btn" onclick="location.reload()">다시 테스트하기</button>`;
+    }
+    showQuestion();
+
+    // ─── Star Rating ───
+    document.querySelectorAll('.star-rating').forEach(rating => {
+      const stars = rating.querySelectorAll('.star');
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const val = parseInt(star.getAttribute('data-value') || '0');
+          stars.forEach(s => {
+            const sv = parseInt(s.getAttribute('data-value') || '0');
+            s.classList.toggle('active', sv <= val);
+          });
+        });
+      });
+    });
+
+    // ─── Diary ───
+    const diaryKey = 'diary-' + venueId;
+    const savedDiary = localStorage.getItem(diaryKey);
+    if (savedDiary) {
+      try {
+        const d = JSON.parse(savedDiary);
+        const ta = document.getElementById('diaryText');
+        if (ta) (ta as HTMLTextAreaElement).value = d.text || '';
+        document.querySelectorAll('.star-rating').forEach(rating => {
+          const cat = rating.getAttribute('data-category');
+          if (cat && d.ratings && d.ratings[cat]) {
+            rating.querySelectorAll('.star').forEach(s => {
+              const sv = parseInt(s.getAttribute('data-value') || '0');
+              s.classList.toggle('active', sv <= d.ratings[cat]);
+            });
+          }
+        });
+      } catch {}
+    }
+    document.getElementById('diarySave')?.addEventListener('click', () => {
+      const text = (document.getElementById('diaryText') as HTMLTextAreaElement)?.value || '';
+      const ratings: Record<string, number> = {};
+      document.querySelectorAll('.star-rating').forEach(rating => {
+        const cat = rating.getAttribute('data-category') || '';
+        const active = rating.querySelectorAll('.star.active');
+        ratings[cat] = active.length;
+      });
+      localStorage.setItem(diaryKey, JSON.stringify({ text, ratings, date: new Date().toISOString() }));
+      const msg = document.getElementById('diarySavedMsg');
+      if (msg) { msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 2000); }
+    });
   </script>
 </BaseLayout>

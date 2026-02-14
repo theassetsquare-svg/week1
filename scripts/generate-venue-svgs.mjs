@@ -653,8 +653,77 @@ function generateHeroBanners() {
   console.log('✅ Generated 5 hero banner SVGs');
 }
 
+// ─── OG Thumbnail SVGs (1200x630 for social sharing) ───
+function generateOGThumbnails() {
+  const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
+  const TYPE_COLORS = {
+    club: { primary: '#8b5cf6', accent: '#ec4899', label: '클럽' },
+    night: { primary: '#f59e0b', accent: '#ef4444', label: '나이트' },
+    lounge: { primary: '#06b6d4', accent: '#8b5cf6', label: '라운지' },
+  };
+
+  let count = 0;
+  for (const venue of venues) {
+    const dir = join(PUBLIC, 'venues', venue.venueSlug);
+    mkdirSync(dir, { recursive: true });
+    const seed = hashStr(venue.name_input + 'og');
+    const rng = mulberry32(seed);
+    const r = () => rng();
+    const colors = TYPE_COLORS[venue.type];
+
+    // Background decorations
+    const decorations = Array.from({ length: 12 }, () => {
+      const cx = r() * 1200;
+      const cy = r() * 630;
+      const radius = 20 + r() * 80;
+      return `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="${r() > 0.5 ? colors.primary : colors.accent}" opacity="${0.03 + r() * 0.05}"/>`;
+    }).join('');
+
+    const beams = Array.from({ length: 4 }, (_, i) => {
+      const x = 200 + i * 250 + r() * 100;
+      return `<polygon points="${x},0 ${x - 40},630 ${x + 40},630" fill="${i % 2 === 0 ? colors.primary : colors.accent}" opacity="${0.04 + r() * 0.03}"/>`;
+    }).join('');
+
+    // Silhouettes at bottom
+    const figures = Array.from({ length: 5 }, (_, i) => {
+      const x = 150 + i * 200 + r() * 50;
+      return modelSilhouette(x, 520, 1.2 + r() * 0.3, r, i % 2 === 0 ? colors.primary : colors.accent, i % 2 === 0 ? colors.accent : colors.primary);
+    }).join('');
+
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#12121f"/>
+      <stop offset="100%" style="stop-color:#0a0a1a"/>
+    </linearGradient>
+    <linearGradient id="ogtxt" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:${colors.primary}"/>
+      <stop offset="100%" style="stop-color:${colors.accent}"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogbg)"/>
+  ${beams}
+  ${decorations}
+  <rect x="0" y="540" width="1200" height="90" fill="#0a0a14" opacity="0.7"/>
+  ${figures}
+  <rect x="60" y="60" width="1080" height="200" rx="20" fill="#0a0a1a" opacity="0.85"/>
+  <rect x="60" y="60" width="1080" height="200" rx="20" fill="none" stroke="url(#ogtxt)" stroke-width="2" opacity="0.3"/>
+  <text x="600" y="135" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="52" font-weight="800" fill="#f0f0f5">${venue.name_display}</text>
+  <text x="600" y="195" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="28" font-weight="500" fill="${colors.primary}">${venue.region} ${colors.label} · 후기 · 가격 · 영업시간</text>
+  <rect x="60" y="290" width="auto" height="40" rx="20" fill="${colors.primary}" opacity="0.15"/>
+  <text x="600" y="320" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="20" fill="#a0a0b8">${venue.teaser.slice(0, 60)}</text>
+  <text x="600" y="590" text-anchor="middle" font-family="'Noto Sans KR',sans-serif" font-size="18" font-weight="600" fill="#6b6b80">나이트라이프 코리아 · nightlife-korea.com</text>
+</svg>`;
+    writeFileSync(join(dir, 'og-thumbnail.svg'), svg, 'utf8');
+    count++;
+  }
+  console.log(`✅ Generated OG thumbnails for ${count} venues`);
+}
+
 // Run
 generateFooterBadge();
 generateVenueSVGs();
 generateGuideSVGs();
 generateHeroBanners();
+generateOGThumbnails();
