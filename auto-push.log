@@ -1,21 +1,3 @@
 [auto-push] Watching /home/user/week1 (every 3s)
 [auto-push] Using origin/main
 [auto-push] Press Ctrl+C to stop
-Missing or invalid credentials.
-Error: connect ECONNREFUSED /tmp/vscode-git-30e66d41d2.sock
-    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
-  errno: -111,
-  code: 'ECONNREFUSED',
-  syscall: 'connect',
-  address: '/tmp/vscode-git-30e66d41d2.sock'
-}
-Missing or invalid credentials.
-Error: connect ECONNREFUSED /tmp/vscode-git-30e66d41d2.sock
-    at PipeConnectWrap.afterConnect [as oncomplete] (node:net:1611:16) {
-  errno: -111,
-  code: 'ECONNREFUSED',
-  syscall: 'connect',
-  address: '/tmp/vscode-git-30e66d41d2.sock'
-}
-remote: No anonymous write access.
-fatal: Authentication failed for 'https://github.com/theassetsquare-svg/week1.git/'
