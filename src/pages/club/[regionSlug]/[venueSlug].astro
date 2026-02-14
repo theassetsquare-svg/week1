@@ -90,7 +90,7 @@ const tocItems = [
         <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
         <span>{v.name_display}</span>
       </div>
-      <h1>{v.name_seo}</h1>
+      <h1>{v.name_display}</h1>
       <div class="venue-meta">
         <span class={`venue-tag type-${v.type}`}>{v.typeLabel}</span>
         <span class="venue-tag">{v.region}</span>
@@ -251,7 +251,7 @@ const tocItems = [
           <h3>같은 유형 (나이트)</h3>
           <div class="related-grid">
             {sameType.map(rv => (
-              <a href={getVenueUrl(rv!)} class="related-link">{rv!.region} {rv!.name_display}</a>
+              <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
             ))}
           </div>
         </div>
@@ -261,7 +261,7 @@ const tocItems = [
           <h3>가까운 매장</h3>
           <div class="related-grid">
             {nearby.map(rv => (
-              <a href={getVenueUrl(rv!)} class="related-link">{rv!.region} {rv!.name_display}</a>
+              <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
             ))}
           </div>
         </div>
