@@ -642,7 +642,7 @@ function main() {
       typePath: TYPE_PATH[rv.type],
       typeLabel: TYPE_LABELS[rv.type],
       name_input: rv.name_input,
-      name_display: displayName,
+      name_display: displayName.startsWith(region) ? displayName : `${region} ${displayName}`,
       name_seo: `${region} ${displayName}`,
       region,
       regionSlug,
