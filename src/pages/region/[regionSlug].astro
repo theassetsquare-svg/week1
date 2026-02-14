@@ -52,6 +52,9 @@ const jsonLd = [{
       </div>
       <h1>{region.name} 나이트라이프 가이드</h1>
       <p class="hub-intro">{region.name} 지역의 나이트클럽, 클럽, 라운지 {region.count}곳의 상세 정보를 확인하세요. 각 매장의 분위기, 음악, 가격, 드레스코드 정보를 비교하고 나에게 맞는 곳을 찾아보세요.</p>
+      {regionVenues.length > 0 && (
+        <img src={regionVenues[0].images[0].src} alt={`${region.name} 나이트라이프`} class="hero-banner" width="500" height="340" loading="lazy" />
+      )}
     </div>
   </section>
   <section class="container">
@@ -82,8 +85,11 @@ const jsonLd = [{
     <div class="guide-grid" style="max-width:800px;margin:0 auto;">
       {guides.slice(0, 4).map(g => (
         <a href={`/guides/${g.slug}/`} class="guide-card">
-          <h3>{g.title}</h3>
-          <p>{g.desc}</p>
+          <img src={`/guides/${g.slug}.svg`} alt={g.title} class="guide-card-img" width="500" height="260" loading="lazy" />
+          <div class="guide-card-body">
+            <h3>{g.title}</h3>
+            <p>{g.desc}</p>
+          </div>
         </a>
       ))}
     </div>

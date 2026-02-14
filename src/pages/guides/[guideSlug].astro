@@ -138,6 +138,7 @@ const jsonLd = [{
       </div>
       <h1>{guide.title}</h1>
       <p style="color:var(--text-secondary);margin-top:0.5rem;">{guide.desc}</p>
+      <img src={`/guides/${guide.slug}.svg`} alt={guide.title} class="guide-hero-img" width="500" height="260" loading="lazy" />
     </div>
   </section>
 
@@ -176,8 +177,11 @@ const jsonLd = [{
       <div class="guide-grid">
         {guides.filter(g => g.slug !== guide.slug).slice(0, 4).map(g => (
           <a href={`/guides/${g.slug}/`} class="guide-card">
-            <h3>{g.title}</h3>
-            <p>{g.desc}</p>
+            <img src={`/guides/${g.slug}.svg`} alt={g.title} class="guide-card-img" width="500" height="260" loading="lazy" />
+            <div class="guide-card-body">
+              <h3>{g.title}</h3>
+              <p>{g.desc}</p>
+            </div>
           </a>
         ))}
       </div>

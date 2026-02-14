@@ -10,14 +10,18 @@ const description = '첫 방문 가이드, 드레스코드, 예산 가이드, �
     <div class="container">
       <h1>나이트라이프 가이드</h1>
       <p class="hub-intro">한국의 나이트라이프를 처음 접하든, 오래 즐겨왔든, 더 알차게 즐기기 위한 필수 가이드를 모았습니다.</p>
+      <img src="/assets/hero-guides.svg" alt="나이트라이프 가이드 배너" class="hero-banner" width="1200" height="300" loading="lazy" />
     </div>
   </section>
   <section class="container">
     <div class="guide-grid">
       {guides.map(g => (
         <a href={`/guides/${g.slug}/`} class="guide-card">
-          <h3>{g.title}</h3>
-          <p>{g.desc}</p>
+          <img src={`/guides/${g.slug}.svg`} alt={g.title} class="guide-card-img" width="500" height="260" loading="lazy" />
+          <div class="guide-card-body">
+            <h3>{g.title}</h3>
+            <p>{g.desc}</p>
+          </div>
         </a>
       ))}
     </div>
