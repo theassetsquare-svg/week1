@@ -110,6 +110,7 @@ export default async function ClubDetailPage({ params }: Props) {
 
   const regionS = regionSlug(venue.region);
   const cityS = citySlug(venue.city);
+  const cityRegion = venue.city === venue.region ? venue.city : `${venue.city} ${venue.region}`;
   const displayThemes = venue.themes.filter((t) => t !== "7080" && t !== "소셜댄스");
   const cleanSummary = clean(venue.summary);
   const displayGenres = venue.genres.filter((g) => g !== "7080");
@@ -127,7 +128,7 @@ export default async function ClubDetailPage({ params }: Props) {
   const faqItems = [
     {
       q: `${n} 분위기는 어떤가요?`,
-      a: `${n}은(는) ${venue.city} ${venue.region}에 위치한 프리미엄 나이트클럽입니다. ${cleanSummary} ${venue.beginnerFriendly ? `${n}은(는) 초보 방문객도 편하게 즐길 수 있는 분위기입니다.` : `${n}은(는) 세련된 분위기로 사전에 분위기를 파악하고 방문하시는 것을 추천합니다.`}`,
+      a: `${n}은(는) ${cityRegion}에 위치한 프리미엄 나이트클럽입니다. ${cleanSummary} ${venue.beginnerFriendly ? `${n}은(는) 초보 방문객도 편하게 즐길 수 있는 분위기입니다.` : `${n}은(는) 세련된 분위기로 사전에 분위기를 파악하고 방문하시는 것을 추천합니다.`}`,
     },
     {
       q: `${n} 드레스코드가 있나요?`,
@@ -180,7 +181,7 @@ export default async function ClubDetailPage({ params }: Props) {
             />
           </div>
           <p className="text-purple-400 text-sm font-medium tracking-[0.3em] uppercase mb-3 animate-fade-up">
-            {venue.city} · {venue.region}
+            {cityRegion}
           </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 animate-fade-up delay-100">
             <span className="gradient-text">{n}</span>
@@ -270,7 +271,7 @@ export default async function ClubDetailPage({ params }: Props) {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p className="text-lg text-gray-300">
-                <strong className="text-white">{n}</strong>은(는) {venue.city} {venue.region}에 위치한 프리미엄 나이트라이프 공간입니다.
+                <strong className="text-white">{n}</strong>은(는) {cityRegion}에 위치한 프리미엄 나이트라이프 공간입니다.
                 {n}은(는) {venue.address}에 자리하고 있습니다.
               </p>
               <p>
@@ -539,7 +540,7 @@ export default async function ClubDetailPage({ params }: Props) {
           </h2>
           <div className="space-y-4 text-gray-600 text-sm leading-relaxed">
             <p>
-              <strong className="text-gray-400">{n}</strong>은(는) {venue.address}에 위치한 {venue.city} {venue.region} 지역의 대표 나이트클럽입니다. {cleanSummary}
+              <strong className="text-gray-400">{n}</strong>은(는) {venue.address}에 위치한 {cityRegion} 지역의 대표 나이트클럽입니다. {cleanSummary}
             </p>
             <p>
               {n}을(를) 처음 방문하시는 분이라면, {n}의 드레스코드({venue.dressCode || "세미캐주얼"})를 참고하시고,
