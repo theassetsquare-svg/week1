@@ -60,7 +60,7 @@ const REGION_MAP = {
   '강남': { slug: 'gangnam', display: '강남' },
   '청담': { slug: 'cheongdam', display: '청담' },
   '이태원': { slug: 'itaewon', display: '이태원' },
-  '상봉': { slug: 'sangbong', display: '상봉' },
+  '상봉동': { slug: 'sangbong', display: '상봉동' },
   '수유': { slug: 'suyu', display: '수유' },
   '노원': { slug: 'nowon', display: '노원' },
   '길동': { slug: 'gildong', display: '길동' },

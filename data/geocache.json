@@ -403,5 +403,23 @@
     "district": "팔달구",
     "neighborhood": "매산로1가",
     "precision": "nominatim"
+  },
+  "청담 청담나이트": {
+    "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+    "lat": 37.5190912,
+    "lon": 127.0516784,
+    "city": "서울특별시",
+    "district": "삼성1동",
+    "neighborhood": "삼성동",
+    "precision": "nominatim"
+  },
+  "상봉동 한국관 나이트": {
+    "formatted_address": "상봉동, 중랑구, 서울특별시, 대한민국",
+    "lat": 37.6001644,
+    "lon": 127.0909024,
+    "city": "서울특별시",
+    "district": "중랑구",
+    "neighborhood": "",
+    "precision": "nominatim"
   }
 }
