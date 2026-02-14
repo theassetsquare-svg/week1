@@ -1,7 +1,0 @@
-User-agent: Yeti
-Allow: /
-
-User-agent: *
-Allow: /
-
-Sitemap: https://week1-6m5.pages.dev/b/sitemap.xml
