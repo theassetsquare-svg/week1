@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { venues, getVenueBySlug, regionSlug, citySlug } from "@/lib/venues";
 import { canonical, SITE_NAME } from "@/lib/site";
 import { localBusinessJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/structuredData";
+import { getVenueSeoTitle, getVenueSeoDescription } from "@/lib/seoMeta";
 import Breadcrumb from "@/components/Breadcrumb";
 import JsonLd from "@/components/JsonLd";
 import VenueCard from "@/components/VenueCard";
@@ -20,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!venue) return {};
 
   const n = venue.nameKo;
-  const title = `${n} | 대표 나이트클럽 분위기 완벽 정리`;
-  const description = `${n} 분위기, 특징, 추천 포인트를 상세히 소개합니다. ${n} 방문 전 꼭 확인하세요. 영업시간, 드레스코드, 위치 정보까지 ${n} 완벽 가이드.`;
+  const title = getVenueSeoTitle(n);
+  const description = getVenueSeoDescription(n);
 
   return {
     title,
