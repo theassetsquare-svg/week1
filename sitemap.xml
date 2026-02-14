@@ -1,315 +1,339 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://week1-6m5.pages.dev/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>daily</changefreq>
-<priority>1</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/arju-lounge/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/busan-asiad/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/busan-mul/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/cheonan-stardom/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/cheongdam-h2o/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/color-lounge/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/daegu-babamba/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/doksan-kookbingwan/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/gangnam-race/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/gangnam-sound/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/gangseo-hobak/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/gildong-chance/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/hype-lounge/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/ilsan-shampoo/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/incheon-arabian/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/intro-lounge/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/itaewon-waikiki/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/nowon-hobak/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/nowon-star/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/paju-skydome/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/sangbong-hankookgwan/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/seongnam-shampoo/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/sinlim-grandprix/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/suwon-chance-dome/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/suwon-korea/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/suyu-shampoo/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/club/ulsan-champion/</loc>
-<lastmod>2026-02-13T00:00:00.000Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/seoul/seoul/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/busan/busan/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/chungnam/cheonan/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/daegu/daegu/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/gyeonggi/goyang/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/incheon/incheon/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/gyeonggi/paju/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/gyeonggi/seongnam/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/gyeonggi/suwon/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/kr/ulsan/ulsan/nightclubs/</loc>
-<lastmod>2026-02-13T23:41:50.937Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/7080/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/DJ%ED%8C%8C%ED%8B%B0/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/%EA%B0%90%EC%84%B1%EC%A3%BC%EC%A0%90/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/%EA%B0%95%EB%82%A8/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/%EB%9D%BC%EC%9A%B4%EC%A7%80/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/%EC%86%8C%EC%85%9C%EB%8C%84%EC%8A%A4/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/theme/%ED%81%B4%EB%9F%BD/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/seoul/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/suwon/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/goyang/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/incheon/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/ulsan/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/anyang/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://week1-6m5.pages.dev/guide/paju/first-time/</loc>
-<lastmod>2026-02-13T23:41:50.938Z</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/nights/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/clubs/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/lounges/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/first-visit/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/dress-code/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/budget-guide/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/safety-tips/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/music-genres/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/solo-nightlife/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/group-party/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/guides/regional-nightlife/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/gangnam/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/itaewon/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/cheongdam/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/sangbong/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/suyu/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/nowon/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/gildong/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/sinlim/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/doksan/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/gangseo/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/seongnam/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/ilsan/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/incheon/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/suwon/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/cheonan/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/daegu/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/region/busan/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/club/gangnam/레이스-클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/club/gangnam/사운드-클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/club/itaewon/와이키키유토피아-클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/cheongdam/청담나이트-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/sangbong/한국관-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/suyu/샴푸-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/nowon/호박-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/gildong/찬스-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/sinlim/그랑프리-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/doksan/국빈관-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/gangseo/호박-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/seongnam/샴푸-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/ilsan/샴푸-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/incheon/아라비안-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/suwon/찬스돔-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/cheonan/스타돔-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/daegu/바밤바-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/busan/아시아드-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/busan/물-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/gangnam/h2o-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/nowon/스타-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/night/suwon/코리아-나이트클럽/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/lounge/gangnam/하입-라운지/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/lounge/gangnam/컬러-라운지/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/lounge/gangnam/인트로-라운지/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://week1-6m5.pages.dev/lounge/gangnam/아르쥬-라운지/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
