@@ -4,13 +4,13 @@ import { venues, getVenueUrl, getUniqueRegions } from '../../utils/venues';
 
 const nightVenues = venues.filter(v => v.type === 'night');
 const regions = getUniqueRegions();
-const title = '전국 나이트클럽 추천 | 한국 나이트클럽 가이드';
-const description = '한국 전국의 나이트클럽을 한눈에 비교하세요. 강남, 부산, 대구, 수원 등 지역별 나이트클럽 상세 정보와 추천.';
+const title = '전국 나이트 추천 | 한국 나이트 가이드';
+const description = '한국 전국의 나이트을 한눈에 비교하세요. 강남, 부산, 대구, 수원 등 지역별 나이트 상세 정보와 추천.';
 
 const jsonLd = [{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "전국 나이트클럽 모음",
+  "name": "전국 나이트 모음",
   "description": description,
   "url": "https://week1-6m5.pages.dev/nights/",
   "numberOfItems": nightVenues.length,
@@ -19,9 +19,9 @@ const jsonLd = [{
 <BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/nights/" jsonLd={jsonLd}>
   <section class="hero">
     <div class="container">
-      <h1>전국 나이트클럽 가이드</h1>
-      <p class="hub-intro">한국 전역의 나이트클럽을 지역별로 살펴보세요. 각 매장의 분위기, 음악, 가격 정보와 이용 가이드를 제공합니다. 서울 강남부터 부산, 대구까지 전국의 인기 나이트클럽을 비교하고 나에게 맞는 곳을 찾아보세요.</p>
-      <img src="/assets/hero-nights.svg" alt="전국 나이트클럽 가이드 배너" class="hero-banner" width="1200" height="300" loading="lazy" />
+      <h1>전국 나이트 가이드</h1>
+      <p class="hub-intro">한국 전역의 나이트을 지역별로 살펴보세요. 각 매장의 분위기, 음악, 가격 정보와 이용 가이드를 제공합니다. 서울 강남부터 부산, 대구까지 전국의 인기 나이트을 비교하고 나에게 맞는 곳을 찾아보세요.</p>
+      <img src="/assets/hero-nights.svg" alt="전국 나이트 가이드 배너" class="hero-banner" width="1200" height="300" loading="lazy" />
     </div>
   </section>
   <section class="container">
@@ -40,7 +40,7 @@ const jsonLd = [{
     </div>
   </section>
   <section class="container" style="margin-top:2rem;">
-    <h2 style="text-align:center;margin-bottom:1rem;">지역별 나이트클럽</h2>
+    <h2 style="text-align:center;margin-bottom:1rem;">지역별 나이트</h2>
     <div class="related-grid" style="max-width:800px;margin:0 auto;">
       {regions.map(r => (
         <a href={`/region/${r.slug}/`} class="related-link">{r.name} ({r.count}곳)</a>

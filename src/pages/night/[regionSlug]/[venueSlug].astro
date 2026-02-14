@@ -19,8 +19,8 @@ const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(B
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean);
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean);
 
-const title = `${v.name_seo} | ${v.region} 나이트클럽 후기·가격·영업시간`;
-const description = `${v.name_display} 방문 가이드 – ${v.region} 나이트클럽의 분위기, 음악, 드레스코드, 가격 정보와 이용 후기를 확인하세요.`;
+const title = `${v.name_seo} | ${v.region} 나이트 후기·가격·영업시간`;
+const description = `${v.name_display} 방문 가이드 – ${v.region} 나이트의 분위기, 음악, 드레스코드, 가격 정보와 이용 후기를 확인하세요.`;
 
 const jsonLd = [
   {

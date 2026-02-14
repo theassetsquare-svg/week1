@@ -43,6 +43,7 @@ function parseRaw(text) {
   let currentType = null;
   const venues = [];
   for (const line of lines) {
+    if (/^CLUB:/i.test(line)) { currentType = 'club'; continue; }
     if (/^NIGHT:/i.test(line)) { currentType = 'night'; continue; }
     if (/^LOUNGE/i.test(line)) { currentType = 'lounge'; continue; }
     if (line.startsWith('-')) {
@@ -75,7 +76,7 @@ const REGION_MAP = {
   '부산': { slug: 'busan', display: '부산' },
 };
 
-const TYPE_LABELS = { club: '클럽', night: '나이트클럽', lounge: '라운지' };
+const TYPE_LABELS = { club: '클럽', night: '나이트', lounge: '라운지' };
 const TYPE_PATH = { club: 'club', night: 'night', lounge: 'lounge' };
 
 function extractRegionAndName(input) {
@@ -298,7 +299,7 @@ function generateMusic(v, idx, rng) {
       `${name}의 DJ 라인업은 ${region}에서 가장 ${adjs[0]} 것으로 알려져 있다. 게스트 DJ 이벤트가 정기적으로 열리며, 해외 아티스트가 방문하는 경우도 적지 않다. 사운드 시스템은 ${adjs[1]} 음질을 자랑하며, 저음부터 고음까지 모든 주파수 대역이 깨끗하게 전달된다. 음악은 이곳에서 배경이 아닌 주인공이며, 그 철학이 공간의 모든 곳에 배어 있다.`,
     ],
     night: [
-      `${name}의 라이브 무대는 ${region} 나이트클럽 중에서도 ${adjs[0]} 완성도를 보여준다. 숙련된 밴드의 연주력은 매일 밤 증명되며, 트로트부터 댄스 팝, 발라드까지 폭넓은 레퍼토리를 소화한다. 관객 참여형 코너에서는 신청곡이 연주되어 추억의 노래가 공간을 채우기도 한다. 댄스 타임이 시작되면 세대를 초월한 즐거움이 폭발하며, 무대와 객석의 경계가 허물어지는 ${adjs[1]} 순간이 찾아온다. 이것이 라이브 음악의 힘이며, ${name}이 오래도록 사랑받는 이유다.`,
+      `${name}의 라이브 무대는 ${region} 나이트 중에서도 ${adjs[0]} 완성도를 보여준다. 숙련된 밴드의 연주력은 매일 밤 증명되며, 트로트부터 댄스 팝, 발라드까지 폭넓은 레퍼토리를 소화한다. 관객 참여형 코너에서는 신청곡이 연주되어 추억의 노래가 공간을 채우기도 한다. 댄스 타임이 시작되면 세대를 초월한 즐거움이 폭발하며, 무대와 객석의 경계가 허물어지는 ${adjs[1]} 순간이 찾아온다. 이것이 라이브 음악의 힘이며, ${name}이 오래도록 사랑받는 이유다.`,
       `${name}에서는 음악이 단순한 BGM이 아닌 주인공이다. ${adjs[0]} 밴드가 매일 밤 다른 셋리스트를 준비하며, 관객의 반응에 따라 실시간으로 분위기를 조절한다. ${region}의 밤을 책임지는 이 밴드의 역량은, 첫 곡이 연주되는 순간부터 확인할 수 있다. ${adjs[1]} 무대 연출과 함께 음악이 흘러나올 때, 이곳의 가치를 부정하기 어렵다. 댄스 타임의 에너지는 특히 인상적이며, 나이와 배경을 불문한 화합의 장이 펼쳐진다.`,
       `${name}의 음악 프로그램은 ${region}에서도 손꼽히는 ${adjs[0]} 구성을 자랑한다. 공연은 여러 파트로 나뉘어 진행되는데, 초반의 감미로운 발라드 세션에서 시작해 중반의 열정적인 댄스 파트, 후반의 클라이맥스로 이어지는 구조가 관객의 감정선을 ${adjs[1]} 방식으로 이끌어낸다. 밴드 멤버 각각의 개성이 무대 위에서 빛나며, 이들의 호흡이 만들어내는 합치의 순간은 감동적이기까지 하다.`,
     ],
@@ -546,8 +547,8 @@ function generateTeaser(v, idx) {
 // ─── Keywords ───
 function generateKeywords(v) {
   return [
-    '전국 나이트클럽', '한국 나이트클럽', '나이트클럽 추천', '클럽 추천',
-    `${v.region} 나이트`, `${v.region} 나이트클럽`, `${v.region} 클럽`, `${v.region} 라운지`,
+    '전국 나이트', '한국 나이트', '나이트 추천', '클럽 추천',
+    `${v.region} 나이트`, `${v.region} 클럽`, `${v.region} 라운지`,
     `${v.displayName} 후기`, `${v.displayName} 가격`, `${v.displayName} 영업시간`, `${v.displayName} 드레스코드`,
   ];
 }

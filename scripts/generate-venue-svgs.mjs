@@ -241,6 +241,7 @@ function generateVenueSVGs() {
   const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
 
   const TYPE_COLORS = {
+    club: { primary: '#8b5cf6', accent: '#ec4899' },
     night: { primary: '#f59e0b', accent: '#ef4444' },
     lounge: { primary: '#06b6d4', accent: '#8b5cf6' },
   };
