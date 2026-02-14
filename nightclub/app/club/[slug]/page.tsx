@@ -16,7 +16,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const venue = getVenueBySlug(slug);
+  const venue = getVenueBySlug(decodeURIComponent(slug));
   if (!venue) return {};
 
   const n = venue.nameKo;
@@ -89,7 +89,7 @@ const pricePhonePattern = /\d{2,4}-\d{3,4}-\d{4}|원[~)]|원$|₩|\d{1,3}(,\d{3}
 
 export default async function ClubDetailPage({ params }: Props) {
   const { slug } = await params;
-  const venue = getVenueBySlug(slug);
+  const venue = getVenueBySlug(decodeURIComponent(slug));
   if (!venue) notFound();
 
   const n = venue.nameKo;
