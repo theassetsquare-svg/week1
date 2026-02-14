@@ -121,7 +121,6 @@ h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
   display: inline-block; padding: 0.2rem 0.6rem; border-radius: 12px;
   font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;
 }
-.type-club { background: rgba(139,92,246,0.2); color: var(--accent-purple); }
 .type-night { background: rgba(245,158,11,0.2); color: var(--accent-gold); }
 .type-lounge { background: rgba(6,182,212,0.2); color: var(--accent-cyan); }
 .venue-card h3 { font-size: 1.1rem; margin: 0.25rem 0; }

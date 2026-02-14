@@ -43,7 +43,6 @@ function parseRaw(text) {
   let currentType = null;
   const venues = [];
   for (const line of lines) {
-    if (/^CLUB:/i.test(line)) { currentType = 'club'; continue; }
     if (/^NIGHT:/i.test(line)) { currentType = 'night'; continue; }
     if (/^LOUNGE/i.test(line)) { currentType = 'lounge'; continue; }
     if (line.startsWith('-')) {

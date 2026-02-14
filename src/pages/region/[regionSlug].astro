@@ -12,13 +12,13 @@ export function getStaticPaths() {
 
 const { region } = Astro.props;
 const regionVenues = venues.filter(v => v.regionSlug === region.slug);
-const title = `${region.name} 나이트클럽·클럽·라운지 추천 | ${region.name} 나이트라이프`;
-const description = `${region.name} 지역의 나이트클럽, 클럽, 라운지 ${region.count}곳을 한눈에. ${region.name} 밤문화 가이드와 매장별 상세 정보.`;
+const title = `${region.name} 나이트·라운지 추천 | ${region.name} 나이트라이프`;
+const description = `${region.name} 지역의 나이트, 라운지 ${region.count}곳을 한눈에. ${region.name} 밤문화 가이드와 매장별 상세 정보.`;
 
 const regionFaqMap: Record<string, {q: string; a: string}[]> = {
   gangnam: [
-    { q: '강남에서 가장 인기 있는 나이트라이프 유형은?', a: '강남은 클럽, 나이트클럽, 라운지 모두 고르게 발달해 있으며, 특히 클럽과 라운지가 인기입니다.' },
-    { q: '강남 클럽 입장료는 어느 정도인가요?', a: '클럽에 따라 다르지만, 주말 기준 2~3만 원대가 일반적이며, 이벤트 시 변동됩니다.' },
+    { q: '강남에서 가장 인기 있는 나이트라이프 유형은?', a: '강남은 나이트, 라운지 모두 고르게 발달해 있으며, 특히 라운지가 인기입니다.' },
+    { q: '강남 나이트 입장료는 어느 정도인가요?', a: '매장에 따라 다르지만, 주말 기준 2~3만 원대가 일반적이며, 이벤트 시 변동됩니다.' },
     { q: '강남에서 대중교통으로 이동이 편한가요?', a: '강남역, 신논현역, 역삼역 등 지하철역이 가까워 대중교통 이용이 매우 편리합니다.' },
   ],
   busan: [
@@ -26,8 +26,8 @@ const regionFaqMap: Record<string, {q: string; a: string}[]> = {
     { q: '부산에서 추천하는 나이트클럽 지역은?', a: '서면, 해운대, 광안리 일대에 인기 나이트클럽들이 밀집해 있습니다.' },
   ],
   itaewon: [
-    { q: '이태원 클럽의 특별한 점은?', a: '이태원은 다국적 문화가 어우러진 독특한 분위기로, 외국인 친화적인 클럽과 바가 많습니다.' },
-    { q: '이태원에서 대중교통은 편한가요?', a: '이태원역에서 도보로 주요 클럽가에 접근할 수 있어 대중교통이 편리합니다.' },
+    { q: '이태원 나이트라이프의 특별한 점은?', a: '이태원은 다국적 문화가 어우러진 독특한 분위기로, 외국인 친화적인 바와 라운지가 많습니다.' },
+    { q: '이태원에서 대중교통은 편한가요?', a: '이태원역에서 도보로 주요 나이트라이프 거리에 접근할 수 있어 대중교통이 편리합니다.' },
   ],
 };
 
@@ -51,7 +51,7 @@ const jsonLd = [{
         <a href="/">홈</a><span>/</span><span>{region.name}</span>
       </div>
       <h1>{region.name} 나이트라이프 가이드</h1>
-      <p class="hub-intro">{region.name} 지역의 나이트클럽, 클럽, 라운지 {region.count}곳의 상세 정보를 확인하세요. 각 매장의 분위기, 음악, 가격, 드레스코드 정보를 비교하고 나에게 맞는 곳을 찾아보세요.</p>
+      <p class="hub-intro">{region.name} 지역의 나이트, 라운지 {region.count}곳의 상세 정보를 확인하세요. 각 매장의 분위기, 음악, 가격, 드레스코드 정보를 비교하고 나에게 맞는 곳을 찾아보세요.</p>
       {regionVenues.length > 0 && (
         <img src={regionVenues[0].images[0].src} alt={`${region.name} 나이트라이프`} class="hero-banner" width="500" height="340" loading="lazy" />
       )}

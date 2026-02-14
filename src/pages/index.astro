@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { venues, getVenueUrl, getUniqueRegions, guides } from '../utils/venues';
 
 const regions = getUniqueRegions();
-const title = '전국 나이트클럽·클럽·라운지 추천 | 나이트라이프 코리아';
-const description = '한국 전국 나이트클럽, 클럽, 라운지 정보를 한눈에. 강남, 부산, 대구 등 지역별 나이트라이프 추천과 상세 리뷰.';
+const title = '전국 나이트·라운지 추천 | 나이트라이프 코리아';
+const description = '한국 전국 나이트, 라운지 정보를 한눈에. 강남, 부산, 대구 등 지역별 나이트라이프 추천과 상세 리뷰.';
 
 const jsonLd = [
   {
@@ -37,8 +37,8 @@ const jsonLd = [
 <BaseLayout title={title} description={description} jsonLd={jsonLd}>
   <section class="hero">
     <div class="container">
-      <h1>전국 나이트클럽 · 클럽 · 라운지 가이드</h1>
-      <p>강남 나이트, 강남 클럽, 강남 라운지부터 부산, 대구, 인천까지 — 한국 전국의 나이트라이프를 한곳에서 찾아보세요.</p>
+      <h1>전국 나이트 · 라운지 가이드</h1>
+      <p>강남 나이트, 강남 라운지부터 부산, 대구, 인천까지 — 한국 전국의 나이트라이프를 한곳에서 찾아보세요.</p>
 
       <div class="search-bar">
         <input type="text" id="venueSearch" placeholder="매장명 또는 지역으로 검색..." aria-label="매장 검색" />
@@ -46,7 +46,6 @@ const jsonLd = [
 
       <div class="filter-chips" id="filterChips">
         <button class="filter-chip active" data-filter="all">전체</button>
-        <button class="filter-chip" data-filter="club">클럽</button>
         <button class="filter-chip" data-filter="night">나이트</button>
         <button class="filter-chip" data-filter="lounge">라운지</button>
         {regions.slice(0, 8).map(r => (

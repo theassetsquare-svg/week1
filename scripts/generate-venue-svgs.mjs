@@ -60,46 +60,60 @@ function generateFooterBadge() {
 }
 
 // ─── Venue illustration SVGs ───
-// Scene 1: Entrance/street vibe - silhouettes approaching venue
+// Helper: Korean supermodel female silhouette (long hair, dress, heels)
+function modelSilhouette(x, y, scale, rng, color, accent) {
+  const r = rng;
+  const hairLen = 25 + r() * 15;
+  const hairSide = r() > 0.5 ? -1 : 1;
+  const armLX = -18 - r() * 10;
+  const armLY = -10 + r() * 25;
+  const armRX = 18 + r() * 10;
+  const armRY = -15 + r() * 20;
+  return `<g transform="translate(${x},${y}) scale(${scale})">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="${color}"/>
+    <path d="M${hairSide * 3},-63 Q${hairSide * 14},-50 ${hairSide * 8},${-52 + hairLen}" stroke="${color}" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M${hairSide * -2},-63 Q${hairSide * -8},-48 ${hairSide * -4},${-55 + hairLen}" stroke="${color}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-2,15 0,25 Q2,15 6,0 Q10,-20 8,-41 Z" fill="${color}"/>
+    <path d="M-6,0 Q-12,10 -8,25 L0,25 Z" fill="${accent}" opacity="0.3"/>
+    <path d="M6,0 Q12,10 8,25 L0,25 Z" fill="${accent}" opacity="0.3"/>
+    <line x1="-2" y1="25" x2="-8" y2="60" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="8" y2="60" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-9" cy="62" rx="5" ry="2" fill="${accent}" opacity="0.6"/>
+    <ellipse cx="9" cy="62" rx="5" ry="2" fill="${accent}" opacity="0.6"/>
+    <line x1="-8" y1="-30" x2="${armLX}" y2="${armLY}" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="${armRX}" y2="${armRY}" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>
+  </g>`;
+}
+
+// Scene 1: 슈퍼모델들이 나이트 입구에서 포즈
 function generateScene1(seed, typeColor, accentColor) {
   const rng = mulberry32(seed);
   const r = () => rng();
 
-  // Vary building heights and positions
-  const buildings = Array.from({ length: 5 }, (_, i) => {
-    const x = 20 + i * 80 + r() * 30;
-    const h = 100 + r() * 160;
-    const w = 50 + r() * 40;
-    return `<rect x="${x}" y="${320 - h}" width="${w}" height="${h}" fill="#1a1a2e" opacity="${0.4 + r() * 0.3}" rx="2"/>`;
+  const buildings = Array.from({ length: 4 }, (_, i) => {
+    const x = 30 + i * 110 + r() * 30;
+    const h = 120 + r() * 140;
+    const w = 60 + r() * 40;
+    return `<rect x="${x}" y="${320 - h}" width="${w}" height="${h}" fill="#1a1a2e" opacity="${0.4 + r() * 0.3}" rx="3"/>`;
   }).join('');
 
-  // Silhouette figures (3-5)
-  const figCount = 3 + Math.floor(r() * 3);
-  const figures = Array.from({ length: figCount }, (_, i) => {
-    const x = 60 + i * 75 + r() * 30;
-    const h = 55 + r() * 20;
-    const legSpread = 5 + r() * 8;
-    return `<g transform="translate(${x},${310 - h})">
-      <ellipse cx="0" cy="0" rx="7" ry="8" fill="#2d2d44"/>
-      <line x1="0" y1="8" x2="0" y2="${h * 0.5}" stroke="#2d2d44" stroke-width="4" stroke-linecap="round"/>
-      <line x1="0" y1="${h * 0.5}" x2="-${legSpread}" y2="${h * 0.75}" stroke="#2d2d44" stroke-width="3" stroke-linecap="round"/>
-      <line x1="0" y1="${h * 0.5}" x2="${legSpread}" y2="${h * 0.75}" stroke="#2d2d44" stroke-width="3" stroke-linecap="round"/>
-      <line x1="0" y1="15" x2="-${8 + r() * 6}" y2="${20 + r() * 15}" stroke="#2d2d44" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="0" y1="15" x2="${8 + r() * 6}" y2="${20 + r() * 15}" stroke="#2d2d44" stroke-width="2.5" stroke-linecap="round"/>
-    </g>`;
+  // 3 supermodel figures at entrance
+  const models = [
+    modelSilhouette(130 + r() * 20, 245, 0.9 + r() * 0.15, r, typeColor, accentColor),
+    modelSilhouette(250 + r() * 20, 240, 0.95 + r() * 0.1, r, accentColor, typeColor),
+    modelSilhouette(370 + r() * 20, 248, 0.85 + r() * 0.15, r, typeColor, accentColor),
+  ].join('');
+
+  const neonSign = `<rect x="170" y="60" width="160" height="40" rx="8" fill="#1a1a2e" stroke="${typeColor}" stroke-width="2"/>
+  <text x="250" y="87" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="${typeColor}" opacity="0.8">NIGHT</text>`;
+
+  const glows = Array.from({ length: 5 }, () => {
+    return `<circle cx="${50 + r() * 400}" cy="${60 + r() * 200}" r="${5 + r() * 15}" fill="${r() > 0.5 ? typeColor : accentColor}" opacity="${0.06 + r() * 0.06}"/>`;
   }).join('');
 
-  // Neon glow effects
-  const neonLines = Array.from({ length: 3 }, (_, i) => {
-    const x1 = 50 + r() * 400;
-    const y1 = 80 + r() * 80;
-    return `<line x1="${x1}" y1="${y1}" x2="${x1 + 40 + r() * 60}" y2="${y1 + r() * 10 - 5}" stroke="${i % 2 === 0 ? typeColor : accentColor}" stroke-width="3" opacity="0.6" stroke-linecap="round"/>`;
-  }).join('');
-
-  // Light puddles on ground
-  const puddles = Array.from({ length: 4 }, () => {
-    const cx = 50 + r() * 400;
-    return `<ellipse cx="${cx}" cy="315" rx="${20 + r() * 30}" ry="4" fill="${typeColor}" opacity="${0.15 + r() * 0.1}"/>`;
+  const puddles = Array.from({ length: 3 }, () => {
+    const cx = 80 + r() * 340;
+    return `<ellipse cx="${cx}" cy="315" rx="${25 + r() * 35}" ry="5" fill="${typeColor}" opacity="${0.12 + r() * 0.1}"/>`;
   }).join('');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
@@ -111,48 +125,44 @@ function generateScene1(seed, typeColor, accentColor) {
   </defs>
   <rect width="500" height="340" fill="url(#sky1)"/>
   ${buildings}
+  ${neonSign}
+  ${glows}
   <rect x="0" y="310" width="500" height="30" fill="#121225"/>
   ${puddles}
-  ${neonLines}
-  ${figures}
-  <circle cx="${50 + r() * 400}" cy="${30 + r() * 40}" r="1.5" fill="#fff" opacity="0.7"/>
-  <circle cx="${50 + r() * 400}" cy="${20 + r() * 50}" r="1" fill="#fff" opacity="0.5"/>
-  <circle cx="${50 + r() * 400}" cy="${30 + r() * 40}" r="1.5" fill="#fff" opacity="0.6"/>
+  ${models}
+  <circle cx="${60 + r() * 380}" cy="${20 + r() * 40}" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="${60 + r() * 380}" cy="${20 + r() * 50}" r="1" fill="#fff" opacity="0.4"/>
 </svg>`;
 }
 
-// Scene 2: Table/conversation vibe
+// Scene 2: 슈퍼모델들이 테이블에서 건배하며 즐기는 모습
 function generateScene2(seed, typeColor, accentColor) {
   const rng = mulberry32(seed + 1000);
   const r = () => rng();
 
-  // Table
-  const tableX = 120 + r() * 50;
-  const tableW = 200 + r() * 60;
+  const tableX = 100 + r() * 40;
+  const tableW = 280 + r() * 40;
 
-  // Seated silhouettes
-  const seated = Array.from({ length: 3 + Math.floor(r() * 2) }, (_, i) => {
-    const x = tableX + 30 + i * (tableW / 4);
-    const lean = r() > 0.5 ? -3 : 3;
-    return `<g transform="translate(${x}, 180)">
-      <ellipse cx="0" cy="-25" rx="8" ry="9" fill="#2d2d44"/>
-      <rect x="-8" y="-16" width="16" height="30" rx="4" fill="#2d2d44"/>
-      <line x1="-5" y1="14" x2="-12" y2="35" stroke="#2d2d44" stroke-width="3" stroke-linecap="round"/>
-      <line x1="5" y1="14" x2="12" y2="35" stroke="#2d2d44" stroke-width="3" stroke-linecap="round"/>
-      <line x1="${lean}" y1="-5" x2="${lean * 3}" y2="8" stroke="#2d2d44" stroke-width="2.5" stroke-linecap="round"/>
-    </g>`;
+  // 3 seated supermodel figures
+  const models = [
+    modelSilhouette(tableX + 60 + r() * 20, 185, 0.75 + r() * 0.1, r, typeColor, accentColor),
+    modelSilhouette(tableX + tableW / 2 + r() * 10, 182, 0.8 + r() * 0.1, r, accentColor, typeColor),
+    modelSilhouette(tableX + tableW - 40 + r() * 15, 188, 0.75 + r() * 0.1, r, typeColor, accentColor),
+  ].join('');
+
+  const drinks = Array.from({ length: 5 }, (_, i) => {
+    const x = tableX + 40 + i * 55 + r() * 15;
+    const h = 14 + r() * 10;
+    const isChampagne = r() > 0.5;
+    return isChampagne
+      ? `<path d="M${x},${248 - h} L${x - 4},248 L${x + 4},248 Z" fill="${typeColor}" opacity="0.7"/>
+         <line x1="${x}" y1="248" x2="${x}" y2="255" stroke="${typeColor}" stroke-width="1.5"/>
+         <ellipse cx="${x}" cy="256" rx="5" ry="2" fill="${typeColor}" opacity="0.5"/>`
+      : `<rect x="${x - 4}" y="${248 - h}" width="8" height="${h}" rx="2" fill="${r() > 0.5 ? typeColor : accentColor}" opacity="0.6"/>`;
   }).join('');
 
-  // Drinks on table
-  const drinks = Array.from({ length: 4 }, (_, i) => {
-    const x = tableX + 50 + i * 50 + r() * 20;
-    const h = 12 + r() * 8;
-    return `<rect x="${x}" y="${198 - h}" width="8" height="${h}" rx="2" fill="${r() > 0.5 ? typeColor : accentColor}" opacity="0.7"/>`;
-  }).join('');
-
-  // Ambient lights
-  const ambients = Array.from({ length: 6 }, () => {
-    return `<circle cx="${30 + r() * 440}" cy="${30 + r() * 100}" r="${3 + r() * 8}" fill="${r() > 0.5 ? typeColor : accentColor}" opacity="${0.1 + r() * 0.15}"/>`;
+  const ambients = Array.from({ length: 8 }, () => {
+    return `<circle cx="${30 + r() * 440}" cy="${20 + r() * 120}" r="${4 + r() * 10}" fill="${r() > 0.5 ? typeColor : accentColor}" opacity="${0.08 + r() * 0.1}"/>`;
   }).join('');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
@@ -165,61 +175,63 @@ function generateScene2(seed, typeColor, accentColor) {
   <rect width="500" height="340" fill="#0f0f1f"/>
   <rect width="500" height="340" fill="url(#glow2)"/>
   ${ambients}
-  <rect x="${tableX}" y="200" width="${tableW}" height="8" rx="3" fill="#2a2a40"/>
-  <rect x="${tableX + 10}" y="208" width="6" height="50" fill="#1a1a30"/>
-  <rect x="${tableX + tableW - 16}" y="208" width="6" height="50" fill="#1a1a30"/>
+  <rect x="${tableX}" y="250" width="${tableW}" height="8" rx="3" fill="#2a2a40"/>
+  <rect x="${tableX + 15}" y="258" width="6" height="50" fill="#1a1a30"/>
+  <rect x="${tableX + tableW - 21}" y="258" width="6" height="50" fill="#1a1a30"/>
   ${drinks}
-  ${seated}
-  <rect x="0" y="258" width="500" height="82" fill="#0d0d1a" opacity="0.5"/>
+  ${models}
+  <rect x="0" y="308" width="500" height="32" fill="#0d0d1a" opacity="0.5"/>
 </svg>`;
 }
 
-// Scene 3: Dance floor / energy vibe
+// Scene 3: 슈퍼모델들이 댄스플로어에서 춤추는 에너지
 function generateScene3(seed, typeColor, accentColor) {
   const rng = mulberry32(seed + 2000);
   const r = () => rng();
 
-  // Dancing silhouettes
-  const dancers = Array.from({ length: 7 + Math.floor(r() * 4) }, (_, i) => {
-    const x = 30 + i * 42 + r() * 20;
-    const y = 200 + r() * 40;
-    const armAngle1 = -30 + r() * 120;
-    const armAngle2 = -30 + r() * 120;
-    const legSpread = 8 + r() * 12;
-    const scale = 0.7 + r() * 0.4;
-
-    return `<g transform="translate(${x},${y}) scale(${scale})">
-      <ellipse cx="0" cy="-40" rx="7" ry="8" fill="#2d2d44"/>
-      <line x1="0" y1="-32" x2="0" y2="0" stroke="#2d2d44" stroke-width="4" stroke-linecap="round"/>
-      <line x1="0" y1="0" x2="-${legSpread}" y2="30" stroke="#2d2d44" stroke-width="3" stroke-linecap="round"/>
-      <line x1="0" y1="0" x2="${legSpread}" y2="30" stroke="#2d2d44" stroke-width="3" stroke-linecap="round"/>
-      <line x1="0" y1="-25" x2="${-15 + r() * 30}" y2="${-35 + r() * 20}" stroke="#2d2d44" stroke-width="2.5" stroke-linecap="round"/>
-      <line x1="0" y1="-25" x2="${-15 + r() * 30}" y2="${-35 + r() * 20}" stroke="#2d2d44" stroke-width="2.5" stroke-linecap="round"/>
-    </g>`;
+  // 5-7 dancing supermodel figures
+  const count = 5 + Math.floor(r() * 3);
+  const dancers = Array.from({ length: count }, (_, i) => {
+    const x = 40 + i * (420 / count) + r() * 20;
+    const y = 210 + r() * 30;
+    const sc = 0.7 + r() * 0.3;
+    const col = i % 2 === 0 ? typeColor : accentColor;
+    const acc = i % 2 === 0 ? accentColor : typeColor;
+    return modelSilhouette(x, y, sc, r, col, acc);
   }).join('');
 
-  // Light beams
-  const beams = Array.from({ length: 5 }, (_, i) => {
-    const x = 50 + i * 100 + r() * 40;
-    const color = [typeColor, accentColor, '#ff00ff', '#00ffff', '#ffff00'][i % 5];
-    return `<polygon points="${x},0 ${x - 30},340 ${x + 30},340" fill="${color}" opacity="${0.05 + r() * 0.08}"/>`;
+  const beams = Array.from({ length: 6 }, (_, i) => {
+    const x = 40 + i * 85 + r() * 30;
+    const colors = [typeColor, accentColor, '#ff00ff', '#00ffff', '#ffff00', typeColor];
+    return `<polygon points="${x},0 ${x - 25},340 ${x + 25},340" fill="${colors[i]}" opacity="${0.05 + r() * 0.07}"/>`;
   }).join('');
 
-  // Sparkle effects
-  const sparkles = Array.from({ length: 12 }, () => {
-    return `<circle cx="${r() * 500}" cy="${r() * 250}" r="${1 + r() * 2}" fill="#fff" opacity="${0.3 + r() * 0.5}"/>`;
+  const sparkles = Array.from({ length: 18 }, () => {
+    return `<circle cx="${r() * 500}" cy="${r() * 280}" r="${1 + r() * 2.5}" fill="#fff" opacity="${0.3 + r() * 0.5}"/>`;
   }).join('');
 
-  // DJ booth (top center)
-  const djBooth = `<rect x="190" y="60" width="120" height="50" rx="6" fill="#1a1a30" stroke="${typeColor}" stroke-width="1.5" opacity="0.8"/>
-  <rect x="210" y="70" width="30" height="30" rx="15" fill="#2d2d44"/>
-  <rect x="255" y="70" width="30" height="30" rx="15" fill="#2d2d44"/>`;
+  const djBooth = `<rect x="185" y="50" width="130" height="45" rx="8" fill="#1a1a30" stroke="${typeColor}" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="220" cy="72" r="14" fill="#2d2d44" stroke="${typeColor}" stroke-width="1" opacity="0.6"/>
+  <circle cx="280" cy="72" r="14" fill="#2d2d44" stroke="${accentColor}" stroke-width="1" opacity="0.6"/>
+  <circle cx="220" cy="72" r="4" fill="${typeColor}" opacity="0.4"/>
+  <circle cx="280" cy="72" r="4" fill="${accentColor}" opacity="0.4"/>`;
+
+  const mirrorball = `<circle cx="250" cy="25" r="12" fill="#2d2d44" stroke="#fff" stroke-width="0.5" opacity="0.5"/>
+  ${Array.from({ length: 8 }, (_, i) => {
+    const angle = (i / 8) * Math.PI * 2;
+    const lx = 250 + Math.cos(angle) * 12;
+    const ly = 25 + Math.sin(angle) * 12;
+    const ex = 250 + Math.cos(angle) * (40 + r() * 60);
+    const ey = 25 + Math.sin(angle) * (40 + r() * 60);
+    return `<line x1="${lx}" y1="${ly}" x2="${ex}" y2="${ey}" stroke="#fff" stroke-width="0.5" opacity="${0.15 + r() * 0.15}"/>`;
+  }).join('')}`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
   <rect width="500" height="340" fill="#0a0a18"/>
   ${beams}
+  ${mirrorball}
   ${djBooth}
-  <rect x="0" y="280" width="500" height="60" fill="#0f0f20" opacity="0.7"/>
+  <rect x="0" y="290" width="500" height="50" fill="#0f0f20" opacity="0.6"/>
   ${dancers}
   ${sparkles}
 </svg>`;
@@ -229,7 +241,6 @@ function generateVenueSVGs() {
   const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
 
   const TYPE_COLORS = {
-    club: { primary: '#8b5cf6', accent: '#ec4899' },
     night: { primary: '#f59e0b', accent: '#ef4444' },
     lounge: { primary: '#06b6d4', accent: '#8b5cf6' },
   };
