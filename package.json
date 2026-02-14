@@ -10,7 +10,8 @@
     "pipeline": "npm run parse && npm run geocode && npm run gen-svgs",
     "dev": "astro dev",
     "sitemap": "node scripts/generate-sitemap.mjs",
-    "build": "npm run pipeline && astro build && npm run sitemap && npm run similarity",
+    "build": "astro build",
+    "build:full": "npm run pipeline && astro build && npm run sitemap && npm run similarity",
     "preview": "astro preview"
   },
   "dependencies": {
