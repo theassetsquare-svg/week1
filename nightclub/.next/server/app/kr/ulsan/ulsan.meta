@@ -1,0 +1,19 @@
+{
+  "status": 307,
+  "headers": {
+    "location": "/kr/ulsan/ulsan/nightclubs/",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/kr/layout,_N_T_/kr/[region]/layout,_N_T_/kr/[region]/[city]/layout,_N_T_/kr/[region]/[city]/page,_N_T_/kr/ulsan/ulsan/"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/kr/$d$region/$d$city/__PAGE__",
+    "/kr/$d$region/$d$city",
+    "/kr/$d$region",
+    "/kr",
+    "/_index",
+    "/_head"
+  ]
+}
