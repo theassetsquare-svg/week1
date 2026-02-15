@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
+  <defs>
+    <linearGradient id="bg_19814" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a10"/>
+      <stop offset="100%" style="stop-color:#1c1018"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="340" fill="url(#bg_19814)"/>
+  <circle cx="352.8761761263013" cy="4.6676727803424" r="44.36267164722085" fill="#eab308" opacity="0.03318400060757994"/>
+  <circle cx="318.764251191169" cy="4.010266968980432" r="15.672987766563892" fill="#fff" opacity="0.030714625138789413"/>
+  <circle cx="358.5042341146618" cy="267.31016761623323" r="19.687355739995837" fill="#fff" opacity="0.062431814670562746"/>
+  <circle cx="332.97541027422994" cy="50.0316393468529" r="25.254349887371063" fill="#f97316" opacity="0.09828129759058356"/>
+  <circle cx="263.4732188889757" cy="207.07454449031502" r="37.88772103562951" fill="#fde047" opacity="0.0592778642103076"/>
+  <circle cx="196.25797937624156" cy="258.2649387046695" r="35.16215658932924" fill="#eab308" opacity="0.05665054565295577"/>
+  <circle cx="365.2078640880063" cy="265.5647930223495" r="37.3030234798789" fill="#f97316" opacity="0.06812270961701869"/>
+  <circle cx="67.18382064718753" cy="328.1875908700749" r="15.484104353934526" fill="#fff" opacity="0.0955474528297782"/>
+  <circle cx="435.96075486857444" cy="302.4311878485605" r="47.28826284594834" fill="#f97316" opacity="0.04553015438839793"/>
+  <circle cx="364.8377232020721" cy="271.76087940111756" r="38.94494881108403" fill="#fff" opacity="0.05096166571602225"/>
+  <circle cx="2.796835731714964" cy="174.4604968931526" r="43.99970309995115" fill="#fde047" opacity="0.10188605561852455"/>
+  <circle cx="341.31134510971606" cy="186.319646127522" r="17.236859371885657" fill="#f97316" opacity="0.037656930945813655"/>
+  <circle cx="182.41049791686237" cy="136.15871745161712" r="20.692425437271595" fill="#fde047" opacity="0.10330660862848162"/>
+  <circle cx="157.49667468480766" cy="93.21066124830395" r="11.265608856454492" fill="#f97316" opacity="0.07466033784672618"/>
+  <circle cx="104.46929628960788" cy="191.86153166461736" r="43.52949599921703" fill="#fff" opacity="0.08359278287738561"/>
+  <circle cx="131.25076703727245" cy="251.1836622748524" r="20.140740612521768" fill="#fde047" opacity="0.05898441748693585"/>
+  <circle cx="468.011079588905" cy="162.7284213108942" r="44.77332241088152" fill="#fff" opacity="0.05243850430473685"/>
+  <line x1="125" y1="0" x2="142.3427723068744" y2="204" stroke="#eab308" stroke-width="20" opacity="0.04"/>
+  <line x1="250" y1="0" x2="223.9739442942664" y2="204" stroke="#eab308" stroke-width="20" opacity="0.04"/>
+  <line x1="375" y1="0" x2="379.53001499176025" y2="204" stroke="#eab308" stroke-width="20" opacity="0.04"/>
+  <circle cx="286.2413519760594" cy="69.78584379190579" r="1.8117120433598757" fill="#fff" opacity="0.423429705016315"/>
+  <circle cx="160.8287775889039" cy="83.63015098264441" r="1.4452950414270163" fill="#fff" opacity="0.26491642619948835"/>
+  <circle cx="228.32752286922187" cy="190.78947781352326" r="1.7799756340682507" fill="#fff" opacity="0.24692158149555327"/>
+  <circle cx="461.1123817740008" cy="157.11945585953072" r="2.127105478197336" fill="#fff" opacity="0.6159058074001222"/>
+  <circle cx="69.87767026294023" cy="206.24053645785898" r="1.7347742589190602" fill="#fff" opacity="0.5893607052741572"/>
+  <circle cx="232.02564858365804" cy="235.14982179319483" r="1.44568579364568" fill="#fff" opacity="0.3263887187233195"/>
+  <circle cx="61.60739087499678" cy="69.68904565647244" r="2.130717088934034" fill="#fff" opacity="0.643422554177232"/>
+  <circle cx="182.47983988840133" cy="107.22186273522675" r="2.2064378932118416" fill="#fff" opacity="0.39637834327295424"/>
+  <rect x="0" y="315" width="500" height="25" fill="#0a0a14"/>
+  <ellipse cx="460.4013639036566" cy="320" rx="44.38108118949458" ry="4" fill="#eab308" opacity="0.19428519122302534"/>
+  <ellipse cx="230.45066092163324" cy="320" rx="33.54879803257063" ry="4" fill="#eab308" opacity="0.11959916739724577"/>
+  <ellipse cx="205.63422434497625" cy="320" rx="59.932440023403615" ry="4" fill="#f97316" opacity="0.17730819187127056"/>
+  <g transform="translate(172.03237599149966,283.0750994174741) scale(1.1369602476246656)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#eab308"/>
+    <path d="M-3,-63 Q-12,-55 -8,-45" stroke="#eab308" stroke-width="3" fill="none" stroke-linecap="round"/>
+     <path d="M2,-63 Q8,-60 14,-55 Q20,-40 16,-15 Q14,0 12,10" stroke="#eab308" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-8,12 -14,30 L14,30 Q8,12 6,0 Q10,-20 8,-41 Z" fill="#f97316"/>
+     <path d="M-6,0 L-14,30 L0,30 Z" fill="#eab308" opacity="0.2"/>
+    <line x1="-2" y1="25" x2="-6" y2="60" stroke="#eab308" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="10" y2="60" stroke="#eab308" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="62" rx="6" ry="2.5" fill="#f97316" opacity="0.7"/>
+    <ellipse cx="10" cy="62" rx="6" ry="2.5" fill="#f97316" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-22" y2="-15" stroke="#eab308" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="22" y2="-38" stroke="#eab308" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="22,-42 18,-34 26,-34" fill="#f97316" opacity="0.6" stroke="#f97316" stroke-width="0.5"/>
+    <line x1="22" y1="-34" x2="22" y2="-28" stroke="#f97316" stroke-width="1"/>
+    <line x1="19" y1="-28" x2="25" y2="-28" stroke="#f97316" stroke-width="1"/>
+  </g><g transform="translate(323.2519848978457,282.00443426379934) scale(1.135046371165663)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#f97316"/>
+    <path d="M-3,-63 Q-18,-48 -14,-20 Q-16,0 -12,20" stroke="#f97316" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+     <path d="M2,-63 Q6,-55 4,-42" stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-8,12 -14,30 L14,30 Q8,12 6,0 Q10,-20 8,-41 Z" fill="#eab308"/>
+     <path d="M-6,0 L-14,30 L0,30 Z" fill="#f97316" opacity="0.2"/>
+    <line x1="-2" y1="25" x2="-8" y2="60" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="8" y2="60" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-8" cy="62" rx="6" ry="2.5" fill="#eab308" opacity="0.7"/>
+    <ellipse cx="8" cy="62" rx="6" ry="2.5" fill="#eab308" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-22" y2="-10" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="18" y2="-5" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+    
+  </g>
+  <rect x="430" y="12" width="58" height="22" rx="4" fill="#eab308" opacity="0.8"/>
+  <text x="459" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">NIGHT</text>
+  <rect x="75" y="25" width="350" height="30" rx="6" fill="#0c0a10" opacity="0.7" stroke="#eab308" stroke-width="1.5"/>
+  <text x="250" y="45" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#eab308" opacity="0.9">독산동 국빈관 나이트</text>
+</svg>

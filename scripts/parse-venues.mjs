@@ -733,9 +733,9 @@ function main() {
       faq,
       plannerRules,
       images: [
-        { src: `/venues/${venueSlug}/model-fun-1.svg`, alt: `${region} ${displayName} 분위기 – 입구 패션 일러스트` },
-        { src: `/venues/${venueSlug}/model-fun-2.svg`, alt: `${region} ${displayName} 분위기 – 테이블 무드 일러스트` },
-        { src: `/venues/${venueSlug}/model-fun-3.svg`, alt: `${region} ${displayName} 분위기 – 댄스 에너지 일러스트` },
+        { src: `/venues/${regionSlug}/${venueSlug}/model-fun-1.svg`, alt: `${region} ${displayName} 분위기 – 입구 패션 일러스트` },
+        { src: `/venues/${regionSlug}/${venueSlug}/model-fun-2.svg`, alt: `${region} ${displayName} 분위기 – 테이블 무드 일러스트` },
+        { src: `/venues/${regionSlug}/${venueSlug}/model-fun-3.svg`, alt: `${region} ${displayName} 분위기 – 댄스 에너지 일러스트` },
       ],
       imagePrompts,
       relatedVenueIds: { sameRegion: [], sameType: [], nearby: [], guides: ['first-visit', 'dress-code'] },
