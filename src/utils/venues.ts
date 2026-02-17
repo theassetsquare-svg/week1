@@ -12,6 +12,7 @@ export interface Venue {
   region: string;
   regionSlug: string;
   venueSlug: string;
+  urlSlug: string;
   geo: {
     formatted_address: string;
     lat: number;
