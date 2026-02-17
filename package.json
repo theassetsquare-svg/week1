@@ -12,7 +12,14 @@
     "sitemap": "node scripts/generate-sitemap.mjs",
     "build": "astro build",
     "build:full": "npm run pipeline && astro build && npm run sitemap && npm run similarity",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "qa:url": "node scripts/qa_url_duplicates.mjs",
+    "qa:repeat": "node scripts/qa_repeat_limit.mjs",
+    "qa:brand": "node scripts/qa_brand_count.mjs",
+    "qa:similarity": "node scripts/qa_similarity.mjs",
+    "qa:seo": "node scripts/qa_seo_meta.mjs",
+    "qa:search": "node scripts/qa_search.mjs",
+    "qa:all": "node scripts/qa_url_duplicates.mjs && node scripts/qa_repeat_limit.mjs && node scripts/qa_brand_count.mjs && node scripts/qa_similarity.mjs && node scripts/qa_seo_meta.mjs && node scripts/qa_search.mjs"
   },
   "dependencies": {
     "astro": "^4.16.0",
