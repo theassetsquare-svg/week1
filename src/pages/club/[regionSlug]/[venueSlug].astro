@@ -4,7 +4,7 @@ import { venues, getVenuesByType, getVenue, getVenueUrl, getReadingTime, guides 
 
 export function getStaticPaths() {
   return venues.filter(v => v.type === 'club').map(v => ({
-    params: { regionSlug: v.regionSlug, venueSlug: v.venueSlug },
+    params: { regionSlug: v.regionSlug, venueSlug: v.urlSlug || v.venueSlug },
     props: { venue: v },
   }));
 }
