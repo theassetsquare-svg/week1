@@ -1,0 +1,518 @@
+[
+  {
+    "old": "/club/gangnam/레이스-클럽/",
+    "new": "/club/gangnam/레이스/"
+  },
+  {
+    "old": "/club/gangnam/사운드-클럽/",
+    "new": "/club/gangnam/사운드/"
+  },
+  {
+    "old": "/club/gangnam/아르떼-클럽/",
+    "new": "/club/gangnam/아르떼/"
+  },
+  {
+    "old": "/club/gangnam/옥타곤-클럽/",
+    "new": "/club/gangnam/옥타곤/"
+  },
+  {
+    "old": "/club/gangnam/피크-클럽/",
+    "new": "/club/gangnam/피크/"
+  },
+  {
+    "old": "/club/gangnam/페이스-클럽/",
+    "new": "/club/gangnam/페이스/"
+  },
+  {
+    "old": "/club/gangnam/헤븐-클럽/",
+    "new": "/club/gangnam/헤븐/"
+  },
+  {
+    "old": "/club/gangnam/임팩트-클럽/",
+    "new": "/club/gangnam/임팩트/"
+  },
+  {
+    "old": "/club/gangnam/잭리빈-클럽/",
+    "new": "/club/gangnam/잭리빈/"
+  },
+  {
+    "old": "/club/cheongdam/플러스82-클럽/",
+    "new": "/club/cheongdam/플러스82/"
+  },
+  {
+    "old": "/club/itaewon/볼노스트-클럽/",
+    "new": "/club/itaewon/볼노스트/"
+  },
+  {
+    "old": "/club/itaewon/케이크샵-클럽/",
+    "new": "/club/itaewon/케이크샵/"
+  },
+  {
+    "old": "/club/itaewon/메카-클럽/",
+    "new": "/club/itaewon/메카/"
+  },
+  {
+    "old": "/club/itaewon/스타디움-클럽/",
+    "new": "/club/itaewon/스타디움/"
+  },
+  {
+    "old": "/club/itaewon/루시드림-클럽/",
+    "new": "/club/itaewon/루시드림/"
+  },
+  {
+    "old": "/club/hongdae/아우라-클럽/",
+    "new": "/club/hongdae/아우라/"
+  },
+  {
+    "old": "/club/hongdae/nb2-클럽/",
+    "new": "/club/hongdae/nb2/"
+  },
+  {
+    "old": "/club/hongdae/m2-클럽/",
+    "new": "/club/hongdae/m2/"
+  },
+  {
+    "old": "/club/hongdae/ff-클럽/",
+    "new": "/club/hongdae/ff/"
+  },
+  {
+    "old": "/club/hongdae/매드홀릭-클럽/",
+    "new": "/club/hongdae/매드홀릭/"
+  },
+  {
+    "old": "/club/hongdae/싱크홀-클럽/",
+    "new": "/club/hongdae/싱크홀/"
+  },
+  {
+    "old": "/club/hongdae/올카인드-클럽/",
+    "new": "/club/hongdae/올카인드/"
+  },
+  {
+    "old": "/club/busan-seomyeon/그루브-클럽/",
+    "new": "/club/busan-seomyeon/그루브/"
+  },
+  {
+    "old": "/club/busan-seomyeon/데이즈-클럽/",
+    "new": "/club/busan-seomyeon/데이즈/"
+  },
+  {
+    "old": "/club/busan-seomyeon/아지트-클럽/",
+    "new": "/club/busan-seomyeon/아지트/"
+  },
+  {
+    "old": "/club/busan-seomyeon/크림-클럽/",
+    "new": "/club/busan-seomyeon/크림/"
+  },
+  {
+    "old": "/club/busan-seomyeon/아웃풋-클럽/",
+    "new": "/club/busan-seomyeon/아웃풋/"
+  },
+  {
+    "old": "/club/busan-haeundae/빌리진-클럽/",
+    "new": "/club/busan-haeundae/빌리진/"
+  },
+  {
+    "old": "/club/busan-haeundae/멜트-클럽/",
+    "new": "/club/busan-haeundae/멜트/"
+  },
+  {
+    "old": "/club/busan-haeundae/천상-클럽/",
+    "new": "/club/busan-haeundae/천상/"
+  },
+  {
+    "old": "/club/busan-gwangalli/피셔맨-클럽/",
+    "new": "/club/busan-gwangalli/피셔맨/"
+  },
+  {
+    "old": "/club/daegu/에이유-클럽/",
+    "new": "/club/daegu/에이유/"
+  },
+  {
+    "old": "/club/daegu/에그-클럽/",
+    "new": "/club/daegu/에그/"
+  },
+  {
+    "old": "/club/daegu/루피-클럽/",
+    "new": "/club/daegu/루피/"
+  },
+  {
+    "old": "/club/daegu/디헬-클럽/",
+    "new": "/club/daegu/디헬/"
+  },
+  {
+    "old": "/club/daejeon/이비자-클럽/",
+    "new": "/club/daejeon/이비자/"
+  },
+  {
+    "old": "/club/daejeon/몬스터-클럽/",
+    "new": "/club/daejeon/몬스터/"
+  },
+  {
+    "old": "/club/daejeon/벤트-클럽/",
+    "new": "/club/daejeon/벤트/"
+  },
+  {
+    "old": "/club/gwangju/리버틴-클럽/",
+    "new": "/club/gwangju/리버틴/"
+  },
+  {
+    "old": "/club/gwangju/코요테어글리-클럽/",
+    "new": "/club/gwangju/코요테어글리/"
+  },
+  {
+    "old": "/club/jeonju/오닉스-클럽/",
+    "new": "/club/jeonju/오닉스/"
+  },
+  {
+    "old": "/club/gangneung/돈텔마마-클럽/",
+    "new": "/club/gangneung/돈텔마마/"
+  },
+  {
+    "old": "/club/incheon-bupyeong/토토가-클럽/",
+    "new": "/club/incheon-bupyeong/토토가/"
+  },
+  {
+    "old": "/club/incheon-bupyeong/파인애플-클럽/",
+    "new": "/club/incheon-bupyeong/파인애플/"
+  },
+  {
+    "old": "/club/incheon-bupyeong/아우라-클럽/",
+    "new": "/club/incheon-bupyeong/아우라/"
+  },
+  {
+    "old": "/club/incheon-bupyeong/노바-클럽/",
+    "new": "/club/incheon-bupyeong/노바/"
+  },
+  {
+    "old": "/club/suwon/엔터-클럽/",
+    "new": "/club/suwon/엔터/"
+  },
+  {
+    "old": "/club/jeju/엠파이어-클럽/",
+    "new": "/club/jeju/엠파이어/"
+  },
+  {
+    "old": "/night/cheongdam/쥴리아나-나이트/",
+    "new": "/night/cheongdam/쥴리아나/"
+  },
+  {
+    "old": "/night/sangbong/한국관-나이트/",
+    "new": "/night/sangbong/한국관/"
+  },
+  {
+    "old": "/night/suyu/샴푸-나이트/",
+    "new": "/night/suyu/샴푸/"
+  },
+  {
+    "old": "/night/nowon/호박-나이트/",
+    "new": "/night/nowon/호박/"
+  },
+  {
+    "old": "/night/nowon/스타-나이트/",
+    "new": "/night/nowon/스타/"
+  },
+  {
+    "old": "/night/nowon/잠보-나이트/",
+    "new": "/night/nowon/잠보/"
+  },
+  {
+    "old": "/night/gildong/찬스-나이트/",
+    "new": "/night/gildong/찬스/"
+  },
+  {
+    "old": "/night/sinlim/그랑프리-나이트/",
+    "new": "/night/sinlim/그랑프리/"
+  },
+  {
+    "old": "/night/doksan/국빈관-나이트/",
+    "new": "/night/doksan/국빈관/"
+  },
+  {
+    "old": "/night/gangseo/호박-나이트/",
+    "new": "/night/gangseo/호박/"
+  },
+  {
+    "old": "/night/gangbuk/보보스-나이트/",
+    "new": "/night/gangbuk/보보스/"
+  },
+  {
+    "old": "/night/gangbuk/샴푸-나이트/",
+    "new": "/night/gangbuk/샴푸/"
+  },
+  {
+    "old": "/night/jamsil/헐리우드-나이트/",
+    "new": "/night/jamsil/헐리우드/"
+  },
+  {
+    "old": "/night/jamsil/헤커-나이트/",
+    "new": "/night/jamsil/헤커/"
+  },
+  {
+    "old": "/night/jamsil/한국관-나이트/",
+    "new": "/night/jamsil/한국관/"
+  },
+  {
+    "old": "/night/jamsil/코리아타운-나이트/",
+    "new": "/night/jamsil/코리아타운/"
+  },
+  {
+    "old": "/night/jamsil/사하라-나이트/",
+    "new": "/night/jamsil/사하라/"
+  },
+  {
+    "old": "/night/jamsil/룩소-나이트/",
+    "new": "/night/jamsil/룩소/"
+  },
+  {
+    "old": "/night/jamsil/가이아나-나이트/",
+    "new": "/night/jamsil/가이아나/"
+  },
+  {
+    "old": "/night/seongnam/샴푸-나이트/",
+    "new": "/night/seongnam/샴푸/"
+  },
+  {
+    "old": "/night/ilsan/샴푸-나이트/",
+    "new": "/night/ilsan/샴푸/"
+  },
+  {
+    "old": "/night/goyang/빅토리아-나이트/",
+    "new": "/night/goyang/빅토리아/"
+  },
+  {
+    "old": "/night/goyang/캐피탈-나이트/",
+    "new": "/night/goyang/캐피탈/"
+  },
+  {
+    "old": "/night/incheon/아라비안-나이트/",
+    "new": "/night/incheon/아라비안/"
+  },
+  {
+    "old": "/night/incheon/백악관-나이트/",
+    "new": "/night/incheon/백악관/"
+  },
+  {
+    "old": "/night/suwon/찬스돔-나이트/",
+    "new": "/night/suwon/찬스돔/"
+  },
+  {
+    "old": "/night/suwon/코리아-나이트/",
+    "new": "/night/suwon/코리아/"
+  },
+  {
+    "old": "/night/suwon/서울관-나이트/",
+    "new": "/night/suwon/서울관/"
+  },
+  {
+    "old": "/night/suwon/한국관-나이트/",
+    "new": "/night/suwon/한국관/"
+  },
+  {
+    "old": "/night/cheonan/스타돔-나이트/",
+    "new": "/night/cheonan/스타돔/"
+  },
+  {
+    "old": "/night/daegu/바밤바-나이트/",
+    "new": "/night/daegu/바밤바/"
+  },
+  {
+    "old": "/night/daegu/한국관-나이트/",
+    "new": "/night/daegu/한국관/"
+  },
+  {
+    "old": "/night/busan/아시아드-나이트/",
+    "new": "/night/busan/아시아드/"
+  },
+  {
+    "old": "/night/busan/물-나이트/",
+    "new": "/night/busan/물/"
+  },
+  {
+    "old": "/night/gangnam/h2o-나이트/",
+    "new": "/night/gangnam/h2o/"
+  },
+  {
+    "old": "/night/ulsan/챔피언-나이트/",
+    "new": "/night/ulsan/챔피언/"
+  },
+  {
+    "old": "/night/ulsan/뉴월드-나이트/",
+    "new": "/night/ulsan/뉴월드/"
+  },
+  {
+    "old": "/night/pyeongtaek/관광열차-나이트/",
+    "new": "/night/pyeongtaek/관광열차/"
+  },
+  {
+    "old": "/night/pyeongtaek/금오-나이트/",
+    "new": "/night/pyeongtaek/금오/"
+  },
+  {
+    "old": "/night/pyeongtaek/뉴욕뉴욕-나이트/",
+    "new": "/night/pyeongtaek/뉴욕뉴욕/"
+  },
+  {
+    "old": "/night/bucheon/맘모스-나이트/",
+    "new": "/night/bucheon/맘모스/"
+  },
+  {
+    "old": "/night/uijeongbu/한국관-나이트/",
+    "new": "/night/uijeongbu/한국관/"
+  },
+  {
+    "old": "/night/daejeon/kk-나이트/",
+    "new": "/night/daejeon/kk/"
+  },
+  {
+    "old": "/night/daejeon/세븐-나이트/",
+    "new": "/night/daejeon/세븐/"
+  },
+  {
+    "old": "/night/gwangju/상무-나이트/",
+    "new": "/night/gwangju/상무/"
+  },
+  {
+    "old": "/night/changwon/룰루랄라-나이트/",
+    "new": "/night/changwon/룰루랄라/"
+  },
+  {
+    "old": "/night/changwon/호박-나이트/",
+    "new": "/night/changwon/호박/"
+  },
+  {
+    "old": "/night/changwon/백악관-나이트/",
+    "new": "/night/changwon/백악관/"
+  },
+  {
+    "old": "/night/pohang/한국관-나이트/",
+    "new": "/night/pohang/한국관/"
+  },
+  {
+    "old": "/night/gyeongju/런투유-나이트/",
+    "new": "/night/gyeongju/런투유/"
+  },
+  {
+    "old": "/night/gimhae/월드-나이트/",
+    "new": "/night/gimhae/월드/"
+  },
+  {
+    "old": "/night/gimhae/호박-나이트/",
+    "new": "/night/gimhae/호박/"
+  },
+  {
+    "old": "/night/chuncheon/뉴월드-나이트/",
+    "new": "/night/chuncheon/뉴월드/"
+  },
+  {
+    "old": "/night/gangneung/카리스마-나이트/",
+    "new": "/night/gangneung/카리스마/"
+  },
+  {
+    "old": "/night/cheongju/호박-나이트/",
+    "new": "/night/cheongju/호박/"
+  },
+  {
+    "old": "/night/jeonju/별밤-나이트/",
+    "new": "/night/jeonju/별밤/"
+  },
+  {
+    "old": "/night/suncheon/호박-나이트/",
+    "new": "/night/suncheon/호박/"
+  },
+  {
+    "old": "/night/suncheon/별밤-나이트/",
+    "new": "/night/suncheon/별밤/"
+  },
+  {
+    "old": "/night/mokpo/신비-나이트/",
+    "new": "/night/mokpo/신비/"
+  },
+  {
+    "old": "/night/jeju/로얄-나이트/",
+    "new": "/night/jeju/로얄/"
+  },
+  {
+    "old": "/night/jeju/제주-나이트/",
+    "new": "/night/jeju/제주/"
+  },
+  {
+    "old": "/lounge/gangnam/하입-라운지/",
+    "new": "/lounge/gangnam/하입/"
+  },
+  {
+    "old": "/lounge/gangnam/컬러-라운지/",
+    "new": "/lounge/gangnam/컬러/"
+  },
+  {
+    "old": "/lounge/gangnam/인트로-라운지/",
+    "new": "/lounge/gangnam/인트로/"
+  },
+  {
+    "old": "/lounge/gangnam/아르쥬-라운지/",
+    "new": "/lounge/gangnam/아르쥬/"
+  },
+  {
+    "old": "/lounge/gangnam/앨빈에비뉴-라운지/",
+    "new": "/lounge/gangnam/앨빈에비뉴/"
+  },
+  {
+    "old": "/lounge/gangnam/달리는토끼-라운지/",
+    "new": "/lounge/gangnam/달리는토끼/"
+  },
+  {
+    "old": "/lounge/apgujeong/코드-라운지/",
+    "new": "/lounge/apgujeong/코드/"
+  },
+  {
+    "old": "/lounge/apgujeong/디엠-라운지/",
+    "new": "/lounge/apgujeong/디엠/"
+  },
+  {
+    "old": "/lounge/apgujeong/이글-라운지/",
+    "new": "/lounge/apgujeong/이글/"
+  },
+  {
+    "old": "/lounge/itaewon/도조-라운지/",
+    "new": "/lounge/itaewon/도조/"
+  },
+  {
+    "old": "/lounge/itaewon/아울-라운지/",
+    "new": "/lounge/itaewon/아울/"
+  },
+  {
+    "old": "/lounge/itaewon/릿-라운지/",
+    "new": "/lounge/itaewon/릿/"
+  },
+  {
+    "old": "/lounge/itaewon/글로브-라운지/",
+    "new": "/lounge/itaewon/글로브/"
+  },
+  {
+    "old": "/lounge/itaewon/스테어웨이-라운지/",
+    "new": "/lounge/itaewon/스테어웨이/"
+  },
+  {
+    "old": "/lounge/itaewon/글램-라운지/",
+    "new": "/lounge/itaewon/글램/"
+  },
+  {
+    "old": "/lounge/itaewon/피스틸-라운지/",
+    "new": "/lounge/itaewon/피스틸/"
+  },
+  {
+    "old": "/lounge/suwon/피치-라운지/",
+    "new": "/lounge/suwon/피치/"
+  },
+  {
+    "old": "/lounge/incheon-songdo/플레이그라운드-라운지/",
+    "new": "/lounge/incheon-songdo/플레이그라운드/"
+  },
+  {
+    "old": "/lounge/incheon-songdo/터치스카이-라운지/",
+    "new": "/lounge/incheon-songdo/터치스카이/"
+  },
+  {
+    "old": "/lounge/busan-haeundae/클럽디오아시스-라운지/",
+    "new": "/lounge/busan-haeundae/클럽디오아시스/"
+  }
+]

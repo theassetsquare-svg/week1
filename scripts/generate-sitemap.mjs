@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
  * generate-sitemap.mjs - Generates sitemap.xml from venues.json + known routes
+ * Uses urlSlug (clean, no category token duplication) for venue URLs
+ * Outputs to both dist/sitemap.xml and root sitemap.xml
  */
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -14,8 +16,6 @@ const DIST = join(ROOT, 'dist');
 const SITE = 'https://week1-6m5.pages.dev';
 
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
-
-const TYPE_PATH = { club: 'club', night: 'night', lounge: 'lounge' };
 
 const urls = [];
 
@@ -32,7 +32,7 @@ for (const slug of guideSlugs) {
   urls.push({ loc: `/guides/${slug}/`, priority: '0.7', changefreq: 'monthly' });
 }
 
-// Region hubs
+// Region hubs (all unique regions)
 const regionSet = new Set();
 for (const v of venues) {
   regionSet.add(v.regionSlug);
@@ -41,10 +41,15 @@ for (const slug of regionSet) {
   urls.push({ loc: `/region/${slug}/`, priority: '0.8', changefreq: 'weekly' });
 }
 
-// Venue pages
+// Venue pages — use urlSlug (clean, no duplicate tokens)
+const seenUrls = new Set();
 for (const v of venues) {
-  const path = `/${TYPE_PATH[v.type]}/${v.regionSlug}/${v.venueSlug}/`;
-  urls.push({ loc: path, priority: '0.8', changefreq: 'weekly' });
+  const slug = v.urlSlug || v.venueSlug;
+  const path = `/${v.typePath}/${v.regionSlug}/${slug}/`;
+  if (!seenUrls.has(path)) {
+    urls.push({ loc: path, priority: '0.8', changefreq: 'weekly' });
+    seenUrls.add(path);
+  }
 }
 
 const today = new Date().toISOString().split('T')[0];
@@ -52,12 +57,19 @@ const today = new Date().toISOString().split('T')[0];
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url>
-    <loc>${SITE}${u.loc}</loc>
+    <loc>${SITE}${encodeURI(u.loc)}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
 
-writeFileSync(join(DIST, 'sitemap.xml'), xml, 'utf8');
-console.log(`✅ sitemap.xml generated with ${urls.length} URLs`);
+// Write to dist/ if it exists
+if (existsSync(DIST)) {
+  writeFileSync(join(DIST, 'sitemap.xml'), xml, 'utf8');
+}
+
+// Also write to root for reference
+writeFileSync(join(ROOT, 'sitemap.xml'), xml, 'utf8');
+
+console.log(`sitemap.xml generated with ${urls.length} URLs (${venues.length} venues + ${urls.length - venues.length} static/region pages)`);
