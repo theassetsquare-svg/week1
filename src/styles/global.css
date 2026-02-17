@@ -332,14 +332,20 @@ main {
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
+  html { font-size: 17px; }
+  body { line-height: 1.82; }
   .venue-grid { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
   .related-grid { grid-template-columns: 1fr 1fr; }
   .site-nav { gap: 0.8rem; }
+  .venue-hero-img { max-width: 320px; }
 }
 @media (max-width: 480px) {
+  html { font-size: 16px; }
+  body { line-height: 1.78; }
   .related-grid { grid-template-columns: 1fr; }
   h1 { font-size: 1.5rem; }
+  .venue-hero-img { max-width: 260px; }
 }
 
 /* ─── Story Intro (Category Pages) ─── */
