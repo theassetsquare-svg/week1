@@ -184,7 +184,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "레이스"
   },
   {
     "id": "venue-2",
@@ -371,7 +372,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "사운드"
   },
   {
     "id": "venue-3",
@@ -558,7 +560,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아르떼"
   },
   {
     "id": "venue-4",
@@ -750,7 +753,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "옥타곤"
   },
   {
     "id": "venue-5",
@@ -937,7 +941,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "피크"
   },
   {
     "id": "venue-6",
@@ -1124,7 +1129,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "페이스"
   },
   {
     "id": "venue-7",
@@ -1311,7 +1317,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "헤븐"
   },
   {
     "id": "venue-8",
@@ -1503,7 +1510,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "임팩트"
   },
   {
     "id": "venue-9",
@@ -1690,7 +1698,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "잭리빈"
   },
   {
     "id": "venue-10",
@@ -1873,7 +1882,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "플러스82"
   },
   {
     "id": "venue-11",
@@ -2056,7 +2066,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "르클럽"
   },
   {
     "id": "venue-12",
@@ -2248,7 +2259,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "볼노스트"
   },
   {
     "id": "venue-13",
@@ -2435,7 +2447,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "케이크샵"
   },
   {
     "id": "venue-14",
@@ -2622,7 +2635,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "메카"
   },
   {
     "id": "venue-15",
@@ -2809,7 +2823,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "스타디움"
   },
   {
     "id": "venue-16",
@@ -3001,7 +3016,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "루시드림"
   },
   {
     "id": "venue-17",
@@ -3188,7 +3204,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아우라"
   },
   {
     "id": "venue-18",
@@ -3375,7 +3392,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "nb2"
   },
   {
     "id": "venue-19",
@@ -3562,7 +3580,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "m2"
   },
   {
     "id": "venue-20",
@@ -3754,7 +3773,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "ff"
   },
   {
     "id": "venue-21",
@@ -3941,7 +3961,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "매드홀릭"
   },
   {
     "id": "venue-22",
@@ -4128,7 +4149,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "싱크홀"
   },
   {
     "id": "venue-23",
@@ -4315,7 +4337,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "올카인드"
   },
   {
     "id": "venue-24",
@@ -4505,7 +4528,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "그루브"
   },
   {
     "id": "venue-25",
@@ -4690,7 +4714,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "데이즈"
   },
   {
     "id": "venue-26",
@@ -4875,7 +4900,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아지트"
   },
   {
     "id": "venue-27",
@@ -5060,7 +5086,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "크림"
   },
   {
     "id": "venue-28",
@@ -5250,7 +5277,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아웃풋"
   },
   {
     "id": "venue-29",
@@ -5434,7 +5462,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "빌리진"
   },
   {
     "id": "venue-30",
@@ -5618,7 +5647,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "멜트"
   },
   {
     "id": "venue-31",
@@ -5802,7 +5832,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "천상"
   },
   {
     "id": "venue-32",
@@ -5987,7 +6018,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "피셔맨"
   },
   {
     "id": "venue-33",
@@ -6173,7 +6205,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "에이유"
   },
   {
     "id": "venue-34",
@@ -6359,7 +6392,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "에그"
   },
   {
     "id": "venue-35",
@@ -6545,7 +6579,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "루피"
   },
   {
     "id": "venue-36",
@@ -6736,7 +6771,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "디헬"
   },
   {
     "id": "venue-37",
@@ -6921,7 +6957,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "이비자"
   },
   {
     "id": "venue-38",
@@ -7106,7 +7143,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "몬스터"
   },
   {
     "id": "venue-39",
@@ -7291,7 +7329,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "벤트"
   },
   {
     "id": "venue-40",
@@ -7479,7 +7518,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "리버틴"
   },
   {
     "id": "venue-41",
@@ -7662,7 +7702,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "코요테어글리"
   },
   {
     "id": "venue-42",
@@ -7844,7 +7885,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "오닉스"
   },
   {
     "id": "venue-43",
@@ -8026,7 +8068,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "돈텔마마"
   },
   {
     "id": "venue-44",
@@ -8215,7 +8258,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "토토가"
   },
   {
     "id": "venue-45",
@@ -8399,7 +8443,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "파인애플"
   },
   {
     "id": "venue-46",
@@ -8583,7 +8628,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아우라"
   },
   {
     "id": "venue-47",
@@ -8767,7 +8813,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "노바"
   },
   {
     "id": "venue-48",
@@ -8958,7 +9005,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "엔터"
   },
   {
     "id": "venue-49",
@@ -9141,7 +9189,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "엠파이어"
   },
   {
     "id": "venue-50",
@@ -9324,7 +9373,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "쥴리아나"
   },
   {
     "id": "venue-51",
@@ -9504,7 +9554,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "한국관"
   },
   {
     "id": "venue-52",
@@ -9689,7 +9740,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "샴푸"
   },
   {
     "id": "venue-53",
@@ -9872,7 +9924,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "호박"
   },
   {
     "id": "venue-54",
@@ -10055,7 +10108,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "스타"
   },
   {
     "id": "venue-55",
@@ -10238,7 +10292,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "잠보"
   },
   {
     "id": "venue-56",
@@ -10423,7 +10478,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "찬스"
   },
   {
     "id": "venue-57",
@@ -10603,7 +10659,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "그랑프리"
   },
   {
     "id": "venue-58",
@@ -10783,7 +10840,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "국빈관"
   },
   {
     "id": "venue-59",
@@ -10963,7 +11021,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "호박"
   },
   {
     "id": "venue-60",
@@ -11150,7 +11209,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "보보스"
   },
   {
     "id": "venue-61",
@@ -11332,7 +11392,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "샴푸"
   },
   {
     "id": "venue-62",
@@ -11519,7 +11580,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "헐리우드"
   },
   {
     "id": "venue-63",
@@ -11706,7 +11768,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "헤커"
   },
   {
     "id": "venue-64",
@@ -11898,7 +11961,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "한국관"
   },
   {
     "id": "venue-65",
@@ -12085,7 +12149,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "코리아타운"
   },
   {
     "id": "venue-66",
@@ -12272,7 +12337,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "사하라"
   },
   {
     "id": "venue-67",
@@ -12459,7 +12525,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "룩소"
   },
   {
     "id": "venue-68",
@@ -12651,7 +12718,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "가이아나"
   },
   {
     "id": "venue-69",
@@ -12831,7 +12899,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "샴푸"
   },
   {
     "id": "venue-70",
@@ -13011,7 +13080,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "샴푸"
   },
   {
     "id": "venue-71",
@@ -13193,7 +13263,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "빅토리아"
   },
   {
     "id": "venue-72",
@@ -13380,7 +13451,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "캐피탈"
   },
   {
     "id": "venue-73",
@@ -13562,7 +13634,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아라비안"
   },
   {
     "id": "venue-74",
@@ -13744,7 +13817,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "백악관"
   },
   {
     "id": "venue-75",
@@ -13930,7 +14004,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "찬스돔"
   },
   {
     "id": "venue-76",
@@ -14121,7 +14196,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "코리아"
   },
   {
     "id": "venue-77",
@@ -14307,7 +14383,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "서울관"
   },
   {
     "id": "venue-78",
@@ -14493,7 +14570,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "한국관"
   },
   {
     "id": "venue-79",
@@ -14673,7 +14751,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "스타돔"
   },
   {
     "id": "venue-80",
@@ -14864,7 +14943,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "바밤바"
   },
   {
     "id": "venue-81",
@@ -15050,7 +15130,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "한국관"
   },
   {
     "id": "venue-82",
@@ -15232,7 +15313,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아시아드"
   },
   {
     "id": "venue-83",
@@ -15414,7 +15496,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "물"
   },
   {
     "id": "venue-84",
@@ -15606,7 +15689,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "h2o"
   },
   {
     "id": "venue-85",
@@ -15788,7 +15872,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "챔피언"
   },
   {
     "id": "venue-86",
@@ -15970,7 +16055,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "뉴월드"
   },
   {
     "id": "venue-87",
@@ -16153,7 +16239,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "관광열차"
   },
   {
     "id": "venue-88",
@@ -16341,7 +16428,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "금오"
   },
   {
     "id": "venue-89",
@@ -16524,7 +16612,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "뉴욕뉴욕"
   },
   {
     "id": "venue-90",
@@ -16704,7 +16793,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "맘모스"
   },
   {
     "id": "venue-91",
@@ -16884,7 +16974,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "한국관"
   },
   {
     "id": "venue-92",
@@ -17074,7 +17165,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "kk"
   },
   {
     "id": "venue-93",
@@ -17259,7 +17351,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "세븐"
   },
   {
     "id": "venue-94",
@@ -17442,7 +17535,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "상무"
   },
   {
     "id": "venue-95",
@@ -17625,7 +17719,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "룰루랄라"
   },
   {
     "id": "venue-96",
@@ -17813,7 +17908,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "호박"
   },
   {
     "id": "venue-97",
@@ -17996,7 +18092,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "백악관"
   },
   {
     "id": "venue-98",
@@ -18176,7 +18273,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "한국관"
   },
   {
     "id": "venue-99",
@@ -18356,7 +18454,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "런투유"
   },
   {
     "id": "venue-100",
@@ -18543,7 +18642,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "월드"
   },
   {
     "id": "venue-101",
@@ -18725,7 +18825,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "호박"
   },
   {
     "id": "venue-102",
@@ -18905,7 +19006,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "뉴월드"
   },
   {
     "id": "venue-103",
@@ -19087,7 +19189,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "카리스마"
   },
   {
     "id": "venue-104",
@@ -19272,7 +19375,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "호박"
   },
   {
     "id": "venue-105",
@@ -19454,7 +19558,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "별밤"
   },
   {
     "id": "venue-106",
@@ -19636,7 +19741,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "호박"
   },
   {
     "id": "venue-107",
@@ -19818,7 +19924,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "별밤"
   },
   {
     "id": "venue-108",
@@ -20003,7 +20110,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "신비"
   },
   {
     "id": "venue-109",
@@ -20186,7 +20294,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "로얄"
   },
   {
     "id": "venue-110",
@@ -20369,7 +20478,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "제주"
   },
   {
     "id": "venue-111",
@@ -20556,7 +20666,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "하입"
   },
   {
     "id": "venue-112",
@@ -20748,7 +20859,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "컬러"
   },
   {
     "id": "venue-113",
@@ -20935,7 +21047,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "인트로"
   },
   {
     "id": "venue-114",
@@ -21122,7 +21235,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아르쥬"
   },
   {
     "id": "venue-115",
@@ -21309,7 +21423,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "앨빈에비뉴"
   },
   {
     "id": "venue-116",
@@ -21501,7 +21616,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "달리는토끼"
   },
   {
     "id": "venue-117",
@@ -21684,7 +21800,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "코드"
   },
   {
     "id": "venue-118",
@@ -21867,7 +21984,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "디엠"
   },
   {
     "id": "venue-119",
@@ -22050,7 +22168,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "이글"
   },
   {
     "id": "venue-120",
@@ -22242,7 +22361,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "도조"
   },
   {
     "id": "venue-121",
@@ -22429,7 +22549,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "아울"
   },
   {
     "id": "venue-122",
@@ -22616,7 +22737,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "릿"
   },
   {
     "id": "venue-123",
@@ -22803,7 +22925,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "글로브"
   },
   {
     "id": "venue-124",
@@ -22995,7 +23118,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "스테어웨이"
   },
   {
     "id": "venue-125",
@@ -23182,7 +23306,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "글램"
   },
   {
     "id": "venue-126",
@@ -23369,7 +23494,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "피스틸"
   },
   {
     "id": "venue-127",
@@ -23555,7 +23681,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "피치"
   },
   {
     "id": "venue-128",
@@ -23742,7 +23869,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "플레이그라운드"
   },
   {
     "id": "venue-129",
@@ -23924,7 +24052,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "터치스카이"
   },
   {
     "id": "venue-130",
@@ -24108,6 +24237,7 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "urlSlug": "클럽디오아시스"
   }
 ]
