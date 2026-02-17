@@ -816,7 +816,7 @@ main {
   .diary-ratings { flex-direction: column; gap: 0.75rem; }
   .quiz-opt-btn { font-size: 0.85rem; padding: 0.65rem 1rem; }
   .container { padding: 0 1rem; }
-  .venue-hero-img { height: 200px; }
+  .venue-hero-img { max-width: 280px; }
   .hero { padding: 2.5rem 0 2rem; }
   .hero p { font-size: 0.92rem; }
   .site-header { padding: 0.5rem 0; }
@@ -834,7 +834,7 @@ main {
   .filter-chips { gap: 0.35rem; }
   .filter-chip { padding: 0.3rem 0.75rem; font-size: 0.78rem; }
   .venue-card-body { padding: 1rem; }
-  .venue-hero-img { height: 160px; }
+  .venue-hero-img { max-width: 220px; }
   .venue-tag { font-size: 0.72rem; padding: 0.2rem 0.6rem; }
   .timeline { padding-left: 1.5rem; }
   .accordion-trigger { padding: 0.75rem 1rem; font-size: 0.88rem; }
