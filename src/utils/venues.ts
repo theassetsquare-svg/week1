@@ -48,7 +48,7 @@ export function getVenue(id: string): Venue | undefined {
 }
 
 export function getVenueBySlug(regionSlug: string, venueSlug: string): Venue | undefined {
-  return venues.find(v => v.regionSlug === regionSlug && v.venueSlug === venueSlug);
+  return venues.find(v => v.regionSlug === regionSlug && (v.urlSlug === venueSlug || v.venueSlug === venueSlug));
 }
 
 export function getVenuesByType(type: string): Venue[] {
