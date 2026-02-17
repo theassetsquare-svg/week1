@@ -70,7 +70,7 @@ export function getUniqueRegions(): { slug: string; name: string; count: number 
 }
 
 export function getVenueUrl(v: Venue): string {
-  return `/${v.typePath}/${v.regionSlug}/${v.venueSlug}/`;
+  return `/${v.typePath}/${v.regionSlug}/${v.urlSlug || v.venueSlug}/`;
 }
 
 export function getReadingTime(v: Venue): number {
