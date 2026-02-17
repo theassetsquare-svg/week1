@@ -91,6 +91,7 @@ const tocItems = [
         <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
         <span>{v.name_display}</span>
       </div>
+      <img src={v.images[0].src} alt={v.images[0].alt} class="venue-hero-img" width="500" height="500" loading="eager" />
       <div class="venue-hero__eyebrow">Club Experience</div>
       <h1 class="venue-hero__title">{v.name_display}</h1>
       <p class="venue-hero__teaser">{v.teaser}</p>
@@ -100,7 +101,6 @@ const tocItems = [
         <span class="venue-hero__tag venue-hero__tag--tone">{v.storyFrame.tone}</span>
         <span class="venue-hero__tag venue-hero__tag--time">약 {readTime}분의 몰입 여행</span>
       </div>
-      <img src={v.images[0].src} alt={v.images[0].alt} class="venue-hero-img" width="500" height="340" loading="lazy" />
     </div>
   </section>
 
