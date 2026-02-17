@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 /**
  * qa_url_duplicates.mjs
- * URL 중복 토큰 검사 + canonical 정합성 검증
- * FAIL 조건: 경로 세그먼트에 동일 단어 반복, canonical 불일치
+ * URL 중복 토큰 검사 + canonical 정합성 + sitemap 중복 검사
+ *
+ * FAIL 조건:
+ * - 경로 세그먼트에 동일 단어가 2회 이상 등장
+ * - slug에 category 토큰(클럽/나이트/라운지) 잔존 (typePath와 중복)
+ * - canonical이 정규 URL과 불일치
+ * - sitemap에 리다이렉트 URL 또는 중복 URL 존재
  */
 import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
@@ -12,7 +17,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITEMAP = join(ROOT, 'sitemap.xml');
+const REDIRECT_MAP = join(ROOT, 'redirect_map.json');
 const SITE = 'https://week1-6m5.pages.dev';
+
+// Category token mapping: English path segment → Korean token
+const CAT_MAP = { club: '클럽', night: '나이트', lounge: '라운지' };
 
 let fails = 0;
 let warns = 0;
@@ -20,7 +29,6 @@ let warns = 0;
 function fail(msg) { console.error(`  FAIL: ${msg}`); fails++; }
 function warn(msg) { console.warn(`  WARN: ${msg}`); warns++; }
 
-// HTML 파일 재귀 탐색
 function walkHtml(dir, list = []) {
   for (const f of readdirSync(dir)) {
     const p = join(dir, f);
@@ -33,7 +41,14 @@ function walkHtml(dir, list = []) {
 function main() {
   console.log('=== qa_url_duplicates ===\n');
 
-  // 1) sitemap URL 중복 토큰 검사
+  // Load redirect old URLs for cross-check
+  const redirectOldUrls = new Set();
+  if (existsSync(REDIRECT_MAP)) {
+    const redirects = JSON.parse(readFileSync(REDIRECT_MAP, 'utf-8'));
+    redirects.forEach(r => redirectOldUrls.add(r.old));
+  }
+
+  // 1) Sitemap 검사
   if (!existsSync(SITEMAP)) {
     fail('sitemap.xml not found');
   } else {
@@ -42,14 +57,20 @@ function main() {
     const seenUrls = new Set();
 
     for (const url of urls) {
-      // 중복 URL 검사
-      if (seenUrls.has(url)) {
-        fail(`Duplicate URL in sitemap: ${url}`);
-      }
-      seenUrls.add(url);
-
-      // 경로 세그먼트 중복 토큰 검사
       const path = decodeURIComponent(new URL(url).pathname);
+
+      // a) 중복 URL 검사
+      if (seenUrls.has(path)) {
+        fail(`Duplicate URL in sitemap: ${path}`);
+      }
+      seenUrls.add(path);
+
+      // b) 리다이렉트 구 URL이 sitemap에 포함되면 FAIL
+      if (redirectOldUrls.has(path)) {
+        fail(`Redirect (old) URL in sitemap: ${path}`);
+      }
+
+      // c) 경로 세그먼트 중복 토큰 검사
       const segments = path.split('/').filter(Boolean);
 
       // 연속 동일 세그먼트 검사 (예: /부산/부산/)
@@ -59,7 +80,20 @@ function main() {
         }
       }
 
-      // 세그먼트 내 단어 분할 후 경로 전체에서 동일 단어 반복 검사
+      // d) slug에 category 토큰 잔존 검사
+      if (segments.length >= 3) {
+        const typeSeg = segments[0]; // club, night, lounge
+        const slug = segments[segments.length - 1];
+        const koreanCat = CAT_MAP[typeSeg];
+        if (koreanCat) {
+          const slugParts = slug.split('-');
+          if (slugParts.includes(koreanCat)) {
+            fail(`Slug contains category token "${koreanCat}" (redundant with /${typeSeg}/): ${path}`);
+          }
+        }
+      }
+
+      // e) 세그먼트 간 동일 단어 반복 검사
       const allWords = [];
       for (const seg of segments) {
         const words = seg.split(/[-_]/).filter(w => w.length > 0);
@@ -82,27 +116,34 @@ function main() {
   } else {
     const htmlFiles = walkHtml(DIST);
     let canonicalChecked = 0;
+    let canonicalMissing = 0;
 
     for (const file of htmlFiles) {
       const html = readFileSync(file, 'utf-8');
-      const canonMatch = html.match(/<link\s+rel=["']canonical["']\s+href=["'](.*?)["']/i);
+      const relPath = file.replace(DIST, '');
 
+      const canonMatch = html.match(/<link\s+rel=["']canonical["']\s+href=["'](.*?)["']/i);
       if (!canonMatch) {
-        const relPath = file.replace(DIST, '');
-        warn(`No canonical tag in: ${relPath}`);
+        fail(`No canonical tag in: ${relPath}`);
+        canonicalMissing++;
         continue;
       }
 
       const canonical = canonMatch[1];
 
-      // canonical이 정규 URL인지 확인
+      // canonical은 절대 URL이어야 함
       if (!canonical.startsWith('http')) {
-        fail(`Non-absolute canonical "${canonical}" in: ${file.replace(DIST, '')}`);
+        fail(`Non-absolute canonical "${canonical}" in: ${relPath}`);
       }
 
-      // canonical에 중복 토큰이 없는지 확인
+      // canonical에 리다이렉트 구 URL 포함 검사
       try {
         const cPath = decodeURIComponent(new URL(canonical).pathname);
+        if (redirectOldUrls.has(cPath)) {
+          fail(`Canonical points to redirect (old) URL: ${canonical}`);
+        }
+
+        // canonical에 중복 토큰 검사
         const cSegs = cPath.split('/').filter(Boolean);
         for (let i = 1; i < cSegs.length; i++) {
           if (cSegs[i] === cSegs[i - 1]) {
@@ -115,7 +156,7 @@ function main() {
 
       canonicalChecked++;
     }
-    console.log(`  Canonical tags checked: ${canonicalChecked}`);
+    console.log(`  Canonical tags checked: ${canonicalChecked} (missing: ${canonicalMissing})`);
   }
 
   // 결과
