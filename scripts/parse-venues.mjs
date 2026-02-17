@@ -155,6 +155,13 @@ function toSlug(s) {
   return s.replace(/[^a-zA-Z0-9가-힣]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').toLowerCase();
 }
 
+const CATEGORY_TOKENS = new Set(['클럽', '나이트', '라운지']);
+function toUrlSlug(venueSlug) {
+  const parts = venueSlug.split('-');
+  const cleaned = parts.filter(p => !CATEGORY_TOKENS.has(p));
+  return cleaned.length > 0 ? cleaned.join('-') : venueSlug;
+}
+
 // ─── 12 Story frames ───
 const STORY_FRAMES = [
   { id: 'newcomer', pov: '2nd', tone: '설렘과 긴장', style: '첫 방문자의 눈' },
