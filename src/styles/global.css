@@ -23,8 +23,9 @@
   --radius-md: 12px;
   --radius-lg: 20px;
   --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
-  --max-width: 1200px;
-  --content-width: 800px;
+  --max-width: 1060px;
+  --content-width: 780px;
+  --bg-body: #060610;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
