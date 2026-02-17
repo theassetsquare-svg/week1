@@ -52,8 +52,22 @@ h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); margin-top: 2.5rem; margin-bottom: 1
 h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
 
 /* ─── Layout ─── */
-.container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--bg-primary);
+  min-height: 80vh;
+}
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; }
 .content-narrow { max-width: var(--content-width); margin: 0 auto; }
+
+/* ─── Paragraph / list spacing ─── */
+.venue-section p,
+.venue-section .faq-a,
+.accordion-content-inner,
+.deepdive-card p { margin-bottom: 0.75rem; }
+.checklist li { margin-bottom: 0.35rem; }
+.faq-item { margin-bottom: 1.25rem; }
 
 /* ─── Scroll Progress ─── */
 .scroll-progress {
