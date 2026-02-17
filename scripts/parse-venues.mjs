@@ -729,6 +729,7 @@ function main() {
       region,
       regionSlug,
       venueSlug,
+      urlSlug: toUrlSlug(venueSlug),
       geo: { formatted_address: '', lat: 0, lon: 0, city: '', district: '', neighborhood: '', precision: 'none' },
       keywords,
       teaser,
