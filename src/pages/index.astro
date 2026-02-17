@@ -6,6 +6,17 @@ const regions = getUniqueRegions();
 const title = '전국 나이트·클럽·라운지 추천 | 나이트라이프 코리아';
 const description = '한국 전국 나이트, 클럽, 라운지 정보를 한눈에. 강남, 부산, 대구 등 지역별 나이트라이프 추천과 상세 리뷰.';
 
+// Build search index at build time
+const searchIndex = venues.map(v => ({
+  name: v.name_display,
+  norm: (v.name_display + v.region + v.typeLabel).replace(/\s+/g, '').replace(/[^가-힣a-zA-Z0-9]/g, '').toLowerCase(),
+  region: v.region,
+  cat: v.type,
+  catLabel: v.typeLabel,
+  url: getVenueUrl(v),
+  thumb: v.images[0]?.src || '',
+}));
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -40,8 +51,9 @@ const jsonLd = [
       <h1>전국 나이트 · 클럽 · 라운지 가이드</h1>
       <p>강남 나이트, 강남 클럽, 강남 라운지부터 부산, 대구, 인천까지 — 한국 전국의 나이트라이프를 한곳에서 찾아보세요.</p>
 
-      <div class="search-bar">
-        <input type="text" id="venueSearch" placeholder="매장명 또는 지역으로 검색..." aria-label="매장 검색" />
+      <div class="search-bar" style="position:relative;">
+        <input type="text" id="venueSearch" placeholder="매장명 또는 지역으로 검색..." aria-label="매장 검색" autocomplete="off" />
+        <div id="searchDropdown" class="search-dropdown" style="display:none;"></div>
       </div>
 
       <div class="filter-chips" id="filterChips">
@@ -59,7 +71,7 @@ const jsonLd = [
   <section class="container">
     <div class="venue-grid" id="venueGrid">
       {venues.map(v => (
-        <a href={getVenueUrl(v)} class="venue-card" data-type={v.type} data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
+        <a href={getVenueUrl(v)} class="venue-card" target="_blank" rel="noopener noreferrer" data-type={v.type} data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
           <img src={v.images[0].src} alt={v.images[0].alt} class="venue-card-img" width="400" height="180" loading="lazy" />
           <div class="venue-card-body">
             <span class={`venue-card-type type-${v.type}`}>{v.typeLabel}</span>
@@ -96,30 +108,253 @@ const jsonLd = [
     </div>
   </section>
 
-  <script>
-    const search = document.getElementById('venueSearch') as HTMLInputElement;
+  <style>
+    .search-dropdown {
+      position: absolute; top: 100%; left: 0; right: 0; z-index: 60;
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      max-height: 420px; overflow-y: auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .search-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.6rem 1rem; cursor: pointer;
+      text-decoration: none; color: inherit;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.15s;
+    }
+    .search-item:hover, .search-item.active {
+      background: rgba(139,92,246,0.15);
+    }
+    .search-item-thumb {
+      width: 44px; height: 44px; border-radius: 6px;
+      object-fit: cover; background: var(--bg-accent); flex-shrink: 0;
+    }
+    .search-item-info { flex: 1; min-width: 0; }
+    .search-item-name {
+      font-size: 0.92rem; font-weight: 600; color: var(--text-primary);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .search-item-meta {
+      font-size: 0.78rem; color: var(--text-muted);
+    }
+    .search-item-meta .search-cat {
+      display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px;
+      font-size: 0.7rem; font-weight: 600; margin-right: 0.3rem;
+    }
+    .search-cat-club { background: rgba(139,92,246,0.2); color: var(--accent-purple); }
+    .search-cat-night { background: rgba(245,158,11,0.2); color: var(--accent-gold); }
+    .search-cat-lounge { background: rgba(6,182,212,0.2); color: var(--accent-cyan); }
+    .search-no-result {
+      padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;
+    }
+    .search-hint {
+      font-size: 0.78rem; color: var(--text-muted); padding: 0.3rem 1rem;
+      border-top: 1px solid var(--border-subtle); text-align: right;
+    }
+  </style>
+
+  <script define:vars={{ searchIndex }}>
+    const SI = searchIndex;
+    const searchEl = document.getElementById('venueSearch');
+    const dropdown = document.getElementById('searchDropdown');
     const chips = document.querySelectorAll('.filter-chip');
-    const cards = document.querySelectorAll('.venue-card') as NodeListOf<HTMLElement>;
+    const cards = document.querySelectorAll('.venue-card');
     let activeFilter = 'all';
     let activeRegion = '';
+    let activeIdx = -1;
+    let currentResults = [];
 
+    // ─── Normalize ───
+    function norm(s) {
+      return s.replace(/\s+/g, '').replace(/[^가-힣a-zA-Z0-9]/g, '').toLowerCase();
+    }
+
+    // ─── 4-tier search ───
+    function searchVenues(query) {
+      if (!query.trim()) return [];
+      const q = norm(query);
+      const ql = query.toLowerCase().trim();
+      const qTokens = ql.split(/\s+/).filter(t => t.length > 0);
+
+      const scored = SI.map(item => {
+        let score = 0;
+        const nName = norm(item.name);
+        const lName = item.name.toLowerCase();
+
+        // Tier 1: exact normalized match (highest)
+        if (nName === q) score = 1000;
+        // Tier 2: partial normalized match
+        else if (nName.includes(q) || item.norm.includes(q)) score = 500;
+        // Tier 3: all query tokens found
+        else if (qTokens.length > 0 && qTokens.every(t => lName.includes(t) || item.region.toLowerCase().includes(t) || item.catLabel.toLowerCase().includes(t))) score = 200;
+        // Tier 4: fuzzy — any token matches
+        else if (qTokens.some(t => lName.includes(t) || item.region.toLowerCase().includes(t))) score = 50;
+        // Tier 5: character overlap (very fuzzy)
+        else {
+          const overlap = [...new Set(q)].filter(c => nName.includes(c)).length;
+          if (overlap >= Math.min(2, q.length * 0.5)) score = overlap * 5;
+        }
+
+        // Bonus: starts with query
+        if (lName.startsWith(ql)) score += 100;
+        if (nName.startsWith(q)) score += 80;
+
+        return { ...item, score };
+      });
+
+      return scored.filter(s => s.score > 0).sort((a, b) => b.score - a.score);
+    }
+
+    // ─── Render dropdown ───
+    function renderDropdown(results) {
+      if (!dropdown) return;
+      if (results.length === 0) {
+        const q = searchEl?.value?.trim() || '';
+        if (q.length > 0) {
+          // Find similar names
+          const similar = SI
+            .map(item => ({ ...item, dist: editDist(norm(q), norm(item.name)) }))
+            .sort((a, b) => a.dist - b.dist)
+            .slice(0, 3);
+          dropdown.innerHTML = '<div class="search-no-result">검색 결과가 없습니다</div>' +
+            (similar.length > 0 ? '<div class="search-no-result" style="padding-top:0;font-size:0.82rem;">비슷한 이름: ' +
+            similar.map(s => '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer" style="color:var(--accent-purple);">' + s.name + '</a>').join(', ') + '</div>' : '');
+          dropdown.style.display = 'block';
+        } else {
+          dropdown.style.display = 'none';
+        }
+        currentResults = [];
+        activeIdx = -1;
+        return;
+      }
+
+      const top = results.slice(0, 10);
+      currentResults = top;
+      activeIdx = -1;
+
+      dropdown.innerHTML = top.map((r, i) =>
+        '<a class="search-item" href="' + r.url + '" target="_blank" rel="noopener noreferrer" data-idx="' + i + '">' +
+          '<img class="search-item-thumb" src="' + r.thumb + '" alt="" width="44" height="44" loading="lazy" />' +
+          '<div class="search-item-info">' +
+            '<div class="search-item-name">' + escHtml(r.name) + '</div>' +
+            '<div class="search-item-meta"><span class="search-cat search-cat-' + r.cat + '">' + r.catLabel + '</span>' + r.region + '</div>' +
+          '</div>' +
+        '</a>'
+      ).join('') + '<div class="search-hint">Enter로 첫 번째 결과 이동 · 총 ' + results.length + '건</div>';
+      dropdown.style.display = 'block';
+    }
+
+    function escHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // ─── Simple edit distance (for fuzzy "similar" suggestion) ───
+    function editDist(a, b) {
+      if (a.length > 20 || b.length > 20) {
+        // simplified for long strings
+        const setA = new Set(a);
+        const setB = new Set(b);
+        let common = 0;
+        for (const c of setA) if (setB.has(c)) common++;
+        return Math.max(setA.size, setB.size) - common;
+      }
+      const m = a.length, n = b.length;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++)
+        for (let j = 1; j <= n; j++)
+          dp[i][j] = Math.min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + (a[i-1] !== b[j-1] ? 1 : 0));
+      return dp[m][n];
+    }
+
+    // ─── Highlight active item ───
+    function updateActiveItem() {
+      const items = dropdown?.querySelectorAll('.search-item') || [];
+      items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
+      if (activeIdx >= 0 && items[activeIdx]) {
+        items[activeIdx].scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    // ─── Filter grid cards ───
     function filterCards() {
-      const q = search?.value.toLowerCase() || '';
+      const q = searchEl?.value?.toLowerCase() || '';
       cards.forEach(card => {
-        const type = card.dataset.type || '';
-        const region = card.dataset.region || '';
-        const name = (card.dataset.name || '').toLowerCase();
+        const el = card;
+        const type = el.dataset.type || '';
+        const region = el.dataset.region || '';
+        const name = (el.dataset.name || '').toLowerCase();
         const matchType = activeFilter === 'all' || type === activeFilter;
         const matchRegion = !activeRegion || region === activeRegion;
         const matchSearch = !q || name.includes(q);
-        card.style.display = matchType && matchRegion && matchSearch ? '' : 'none';
+        el.style.display = matchType && matchRegion && matchSearch ? '' : 'none';
       });
     }
 
+    // ─── Events ───
+    searchEl?.addEventListener('input', () => {
+      const q = searchEl.value.trim();
+      if (q.length > 0) {
+        const results = searchVenues(q);
+        renderDropdown(results);
+      } else {
+        dropdown && (dropdown.style.display = 'none');
+        currentResults = [];
+        activeIdx = -1;
+      }
+      filterCards();
+    });
+
+    searchEl?.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (currentResults.length > 0) {
+          activeIdx = Math.min(activeIdx + 1, currentResults.length - 1);
+          updateActiveItem();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (currentResults.length > 0) {
+          activeIdx = Math.max(activeIdx - 1, 0);
+          updateActiveItem();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const target = activeIdx >= 0 && currentResults[activeIdx]
+          ? currentResults[activeIdx]
+          : currentResults[0];
+        if (target) {
+          window.open(target.url, '_blank', 'noopener,noreferrer');
+        }
+      } else if (e.key === 'Escape') {
+        dropdown && (dropdown.style.display = 'none');
+        activeIdx = -1;
+        currentResults = [];
+      }
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!searchEl?.contains(e.target) && !dropdown?.contains(e.target)) {
+        dropdown && (dropdown.style.display = 'none');
+      }
+    });
+
+    // Re-open on focus if has value
+    searchEl?.addEventListener('focus', () => {
+      const q = searchEl.value.trim();
+      if (q.length > 0 && currentResults.length > 0) {
+        dropdown && (dropdown.style.display = 'block');
+      }
+    });
+
+    // Filter chips
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
-        const f = (chip as HTMLElement).dataset.filter;
-        const r = (chip as HTMLElement).dataset.region;
+        const f = chip.dataset.filter;
+        const r = chip.dataset.region;
         if (f) { activeFilter = f; activeRegion = ''; }
         else if (r) { activeRegion = activeRegion === r ? '' : r; activeFilter = 'all'; }
         chips.forEach(c => c.classList.remove('active'));
@@ -129,7 +364,5 @@ const jsonLd = [
         filterCards();
       });
     });
-
-    search?.addEventListener('input', filterCards);
   </script>
 </BaseLayout>
