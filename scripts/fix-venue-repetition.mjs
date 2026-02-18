@@ -182,36 +182,37 @@ let totalRegionRemoved = 0;
 for (const v of venues) {
   const name = v.name_display;
   const region = v.region;
+  const coreName = getCoreName(v);
   const beforeName = countAllText(v, name);
 
-  // ── 1. name_display 제거 (필드별 목표) ──
-  v.teaser = removeName(v.teaser, name, 0);
+  // ── 1. name_display → coreName 치환 (유사도 보존) ──
+  v.teaser = removeName(v.teaser, name, 0, coreName);
   for (const scene of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5']) {
-    v.story[scene] = removeName(v.story[scene], name, 0);
+    v.story[scene] = removeName(v.story[scene], name, 0, coreName);
   }
-  v.bodySections.atmosphere = removeName(v.bodySections.atmosphere, name, 0);
-  v.bodySections.music = removeName(v.bodySections.music, name, 0);
-  v.bodySections.safety = removeName(v.bodySections.safety, name, 0);
-  v.timeline = v.timeline.map(t => ({ ...t, desc: removeName(t.desc, name, 0) }));
+  v.bodySections.atmosphere = removeName(v.bodySections.atmosphere, name, 0, coreName);
+  v.bodySections.music = removeName(v.bodySections.music, name, 0, coreName);
+  v.bodySections.safety = removeName(v.bodySections.safety, name, 0, coreName);
+  v.timeline = v.timeline.map(t => ({ ...t, desc: removeName(t.desc, name, 0, coreName) }));
 
-  // checklist: strip name prefix
+  // checklist: strip name prefix, then replace remaining
   v.checklist = v.checklist.map(item => {
     const re = new RegExp('^' + escapeRegex(name) + '\\s*(방문 시|이용 시|입장 전|준비 중|참고:?)\\s*', '');
     let fixed = item.replace(re, '');
-    fixed = removeName(fixed, name, 0);
+    fixed = removeName(fixed, name, 0, coreName);
     return fixed;
   });
 
-  // FAQ - keep 1 name in first answer for brand distribution
+  // FAQ - keep 1 full name in first answer for brand distribution
   v.faq = v.faq.map((f, i) => ({
-    q: removeName(f.q, name, 0),
-    a: removeName(f.a, name, i === 0 ? 1 : 0),
+    q: removeName(f.q, name, 0, coreName),
+    a: removeName(f.a, name, i === 0 ? 1 : 0, coreName),
   }));
 
   // plannerRules
   for (const group of Object.keys(v.plannerRules || {})) {
     for (const key of Object.keys(v.plannerRules[group] || {})) {
-      v.plannerRules[group][key] = removeName(v.plannerRules[group][key], name, 0);
+      v.plannerRules[group][key] = removeName(v.plannerRules[group][key], name, 0, coreName);
     }
   }
 
