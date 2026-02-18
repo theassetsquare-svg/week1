@@ -579,11 +579,12 @@ function generateDeepDive(v, idx, rng) {
   };
 }
 
-// ─── Scene generators (truly unique per venue) ───
+// ─── Scene generators (compositional: 3 fragment pools × 12 variants per scene) ───
 function generateScenes(v, idx, rng) {
   const name = v.displayName;
   const region = v.region;
   const type = v.type;
+  const typeKr = TYPE_LABELS[type];
   const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
   const [adj1, adj2, adj3, adj4] = adjs;
   const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
