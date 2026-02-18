@@ -42,11 +42,10 @@ for (const slug of regionSet) {
   urls.push({ loc: `/region/${slug}/`, priority: '0.8', changefreq: 'weekly' });
 }
 
-// Venue pages — use urlSlug (clean, no duplicate tokens)
+// Venue pages — use buildVenueUrl (single source of truth, dedup applied)
 const seenUrls = new Set();
 for (const v of venues) {
-  const slug = v.urlSlug || v.venueSlug;
-  const path = `/${v.typePath}/${v.regionSlug}/${slug}/`;
+  const path = buildVenueUrl(v);
   if (!seenUrls.has(path)) {
     urls.push({ loc: path, priority: '0.8', changefreq: 'weekly' });
     seenUrls.add(path);
