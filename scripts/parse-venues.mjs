@@ -1243,7 +1243,7 @@ function main() {
       seoTitle,
       seoDescription,
       hookIntro,
-      storyFrame: STORY_FRAMES[idx % STORY_FRAMES.length],
+      storyFrame: STORY_FRAMES[hashStr(displayName + 'frame') % STORY_FRAMES.length],
       story,
       bodySections: { atmosphere, music, safety, deepDive },
       timeline,
