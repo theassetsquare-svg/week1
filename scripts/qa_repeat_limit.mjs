@@ -119,9 +119,17 @@ function main() {
     const titleMatch = html.match(/<title>(.*?)<\/title>/s);
     const title = titleMatch ? titleMatch[1] : '';
     let brandName = '';
+    let coreName = '';
     for (const v of VENUES) {
       if (title.includes(v.name_display)) {
         brandName = v.name_display;
+        // coreName: name_display에서 region과 type 제거
+        let cn = v.name_display;
+        if (v.region) cn = cn.replace(v.region + ' ', '').replace(v.region, '');
+        for (const t of ['클럽', '나이트', '라운지']) {
+          cn = cn.replace(' ' + t, '').replace(t, '');
+        }
+        coreName = cn.trim();
         break;
       }
     }
