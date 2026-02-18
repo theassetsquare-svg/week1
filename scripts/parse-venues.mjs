@@ -1059,6 +1059,7 @@ function main() {
     const atmosphere = generateAtmosphere(v, idx, rng);
     const music = generateMusic(v, idx, rng);
     const safety = generateSafety(v, idx);
+    const deepDive = generateDeepDive(v, idx, rng);
     const timeline = generateTimeline(v, idx, rng);
     const checklist = generateChecklist(v, idx, rng);
     const faq = generateFAQs(v, idx);
@@ -1066,6 +1067,9 @@ function main() {
     const imagePrompts = generateImagePrompts(v, idx);
     const teaser = generateTeaser(v, idx);
     const keywords = generateKeywords(v, idx);
+    const seoTitle = generateSeoTitle(v, idx);
+    const seoDescription = generateSeoDescription(v, idx);
+    const hookIntro = generateHookIntro(v, idx, rng);
 
     const venue = {
       id: `venue-${idx + 1}`,
