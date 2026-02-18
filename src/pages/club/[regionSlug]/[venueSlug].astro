@@ -40,6 +40,7 @@ const jsonLd = [
     "@type": "NightClub",
     "name": v.name_display,
     "description": v.teaser,
+    "image": ogImage,
     "url": `${siteUrl}${venueUrl}`,
     ...(v.geo.precision !== 'none' ? {
       "address": {
