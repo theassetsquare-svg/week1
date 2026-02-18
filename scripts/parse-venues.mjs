@@ -1070,7 +1070,7 @@ function generateFAQs(v, idx) {
   };
 
   const pool = faqTemplates[v.type][0];
-  const start = (sectionSel(idx, 'faq') * 2) % pool.length;
+  const start = hashStr(v.displayName + 'faq') % pool.length;
   const faqs = [];
   for (let i = 0; i < 8; i++) {
     faqs.push(pool[(start + i) % pool.length]);
