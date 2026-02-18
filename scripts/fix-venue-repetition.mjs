@@ -34,10 +34,16 @@ function countSub(text, sub) {
 function getCoreName(v) {
   let core = v.name_display;
   if (v.region) core = core.replace(v.region + ' ', '').replace(v.region, '');
+  let coreNoType = core;
   for (const t of ['클럽', '나이트', '라운지']) {
-    core = core.replace(' ' + t, '').replace(t, '');
+    coreNoType = coreNoType.replace(' ' + t, '').replace(t, '');
   }
-  return core.trim();
+  coreNoType = coreNoType.trim();
+  // If core too short without type, keep type suffix (collapse spaces for token protection)
+  if (coreNoType.length < 2) {
+    return core.trim().replace(/\s+/g, '');
+  }
+  return coreNoType;
 }
 
 // 동명 매장 감지 → 중복 coreName이면 region 포함하여 고유성 확보
