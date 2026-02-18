@@ -36,10 +36,12 @@ function extractTag(html, regex) {
   return m ? m[1].trim() : null;
 }
 
-// 업소명 → regionSlug/venueSlug 매핑
+import { buildVenueUrl } from './lib/url.mjs';
+
+// 업소명 → URL path 매핑
 const venueByPath = {};
 for (const v of VENUES) {
-  const key = `/${v.typePath}/${v.regionSlug}/${v.venueSlug}/`;
+  const key = buildVenueUrl(v);
   venueByPath[key] = v;
 }
 
