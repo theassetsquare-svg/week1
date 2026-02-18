@@ -158,7 +158,7 @@ function main() {
       if (brandName && token === brandName) continue; // brand_count에서 별도 검사
 
       // 브랜드명의 일부인 경우 스킵
-      if (brandName && brandName.includes(token) && token.length <= 3) continue;
+      if (brandName && brandName.includes(token)) continue;
 
       // 지역명: 6회 상한
       if (regionSet.has(token) || (regionName && token === regionName)) {
