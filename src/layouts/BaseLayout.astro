@@ -109,6 +109,20 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
       cta.addEventListener('keydown', (e) => { if (e.key === 'Enter') cta.click(); });
     }
 
+    // View toggle (mobile preview)
+    const viewToggle = document.getElementById('viewToggle');
+    if (viewToggle) {
+      if (localStorage.getItem('mobilePreview') === '1') {
+        document.body.classList.add('mobile-preview');
+        viewToggle.textContent = 'PC 보기';
+      }
+      viewToggle.addEventListener('click', () => {
+        const active = document.body.classList.toggle('mobile-preview');
+        localStorage.setItem('mobilePreview', active ? '1' : '0');
+        viewToggle.textContent = active ? 'PC 보기' : '모바일 보기';
+      });
+    }
+
     // Accordion
     document.querySelectorAll('.accordion-trigger').forEach(btn => {
       btn.addEventListener('click', () => {
