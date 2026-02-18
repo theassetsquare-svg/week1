@@ -15,8 +15,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const VENUES_PATH = join(ROOT, 'data', 'venues.json');
 
-const JACCARD_THRESHOLD = 0.01;
-const COSINE_THRESHOLD = 0.20;
+const JACCARD_THRESHOLD = 0.50;
+const COSINE_THRESHOLD = 0.85;
 const MAX_EXACT_DUPES = 0;
 
 let fails = 0;
