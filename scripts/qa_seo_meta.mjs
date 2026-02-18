@@ -96,15 +96,18 @@ function main() {
     const twImage = extractTag(html, /<meta\s+name=["']twitter:image["']\s+content=["'](.*?)["']/i)
                  || extractTag(html, /<meta\s+property=["']twitter:image["']\s+content=["'](.*?)["']/i);
 
-    if (!ogImage) warn(`No og:image in: ${relPath}`);
-    if (!twImage) warn(`No twitter:image in: ${relPath}`);
-
-    // 업소 상세페이지 추가 검사: title/H1이 가게이름으로 시작
+    // 업소 상세페이지 추가 검사
     const decodedPath = decodeURIComponent(pagePath);
     const venue = venueByPath[decodedPath];
+
     if (venue) {
+      // og:image / twitter:image — 상세페이지는 FAIL
+      if (!ogImage) fail(`No og:image in detail page: ${relPath}`);
+      if (!twImage) fail(`No twitter:image in detail page: ${relPath}`);
+
       const name = venue.name_display;
 
+      // title이 가게이름으로 시작
       if (title && !title.startsWith(name)) {
         fail(`Title does not start with venue name "${name}": "${title.slice(0, 60)}..." in ${relPath}`);
       }
@@ -114,6 +117,21 @@ function main() {
       if (h1Clean && !h1Clean.startsWith(name)) {
         fail(`H1 does not start with venue name "${name}": "${h1Clean.slice(0, 60)}..." in ${relPath}`);
       }
+
+      // description이 teaser 포함 검증
+      if (desc && venue.teaser && !desc.includes(venue.teaser.slice(0, 40))) {
+        warn(`Description may not include teaser in: ${relPath}`);
+      }
+
+      // 지도 버튼 존재 검사
+      const hasMapBtn = html.includes('class="map-btn');
+      if (!hasMapBtn) {
+        fail(`No map buttons in detail page: ${relPath}`);
+      }
+    } else {
+      // 비상세페이지는 WARN 유지
+      if (!ogImage) warn(`No og:image in: ${relPath}`);
+      if (!twImage) warn(`No twitter:image in: ${relPath}`);
     }
   }
 
