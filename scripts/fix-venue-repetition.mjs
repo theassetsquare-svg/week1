@@ -29,7 +29,6 @@ function countSub(text, sub) {
 /**
  * 브랜드 코어 이름 추출: name_display에서 region과 type을 제거한 고유 부분.
  * 예: "강남 레이스 클럽" → "레이스", "부산해운대 멜트 클럽" → "멜트"
- * repeat_limit에서 brandName.includes(token) 로 스킵되므로 안전.
  */
 function getCoreName(v) {
   let core = v.name_display;
@@ -46,7 +45,10 @@ function getCoreName(v) {
   return coreNoType;
 }
 
-// 동명 매장 감지 → 중복 coreName이면 region 포함하여 고유성 확보
+/**
+ * buildCoreNameMap: ALWAYS returns bare coreName, even for duplicates.
+ * Region prefix is NOT added — it bloats repetition counts.
+ */
 function buildCoreNameMap(venues) {
   const coreCount = {};
   for (const v of venues) {
@@ -54,15 +56,15 @@ function buildCoreNameMap(venues) {
     coreCount[cn] = (coreCount[cn] || 0) + 1;
   }
   const map = new Map();
+  const dupSet = new Set();
   for (const v of venues) {
     const cn = getCoreName(v);
-    if (coreCount[cn] > 1 && v.region) {
-      map.set(v.id, v.region + ' ' + cn);
-    } else {
-      map.set(v.id, cn);
+    map.set(v.id, cn);
+    if (coreCount[cn] > 1) {
+      dupSet.add(v.id);
     }
   }
-  return map;
+  return { map, dupSet };
 }
 
 /**
@@ -163,33 +165,6 @@ function extractKoreanTokens(text) {
   return text.match(/[\uAC00-\uD7AF]{2,}/g) || [];
 }
 
-function reduceGeneralTokens(text, brandName, region, max) {
-  const tokens = extractKoreanTokens(text);
-  const counts = {};
-  for (const t of tokens) counts[t] = (counts[t] || 0) + 1;
-
-  for (const [token, count] of Object.entries(counts)) {
-    if (FUNC_WORDS.has(token)) continue;
-    if (token.length < 2) continue;
-    if (brandName && brandName.includes(token)) continue;
-    if (CATEGORY_TOKENS.has(token)) continue; // category는 6회 허용
-    if (UI_TOKENS.has(token)) continue;
-    if (region && token === region) continue; // region은 별도 처리
-
-    // 일반 토큰: max 허용
-    if (count > max) {
-      let curCount = count;
-      while (curCount > max) {
-        const idx = text.lastIndexOf(token);
-        if (idx === -1) break;
-        text = text.slice(0, idx) + text.slice(idx + token.length);
-        curCount--;
-      }
-    }
-  }
-  return cleanSpaces(text);
-}
-
 function cleanSpaces(text) {
   return text
     .replace(/  +/g, ' ')
@@ -221,16 +196,191 @@ function removeAtBoundary(text, token) {
   }
 }
 
+/**
+ * Remove a specific token from text (at boundary), limited removals.
+ * Returns updated text after removing one occurrence from the back.
+ */
+function removeOneAtBoundaryFromBack(text, token) {
+  return removeAtBoundary(text, token);
+}
+
+// ─── Keywords Cleanup ───
+
+function cleanupKeywords(v, coreName, region) {
+  if (!v.keywords || !Array.isArray(v.keywords)) return;
+
+  // 1. Remove empty strings
+  v.keywords = v.keywords.filter(kw => kw && kw.trim().length > 0);
+
+  // 2. Deduplicate (exact match)
+  v.keywords = [...new Set(v.keywords)];
+
+  // 3. Remove region from keywords
+  if (region) {
+    v.keywords = v.keywords.map(kw => {
+      if (kw.includes(region)) {
+        return kw.replace(region + ' ', '').replace(' ' + region, '').replace(region, '').trim();
+      }
+      return kw;
+    }).filter(kw => kw.length > 0);
+    // Deduplicate again after region removal
+    v.keywords = [...new Set(v.keywords)];
+  }
+
+  // 4. Limit keywords containing coreName: keep max 2
+  if (coreName && coreName.length >= 2) {
+    const withCore = [];
+    const withoutCore = [];
+    for (const kw of v.keywords) {
+      if (kw.includes(coreName)) {
+        withCore.push(kw);
+      } else {
+        withoutCore.push(kw);
+      }
+    }
+    if (withCore.length > 2) {
+      // Keep first 2 that contain coreName as-is
+      const kept = withCore.slice(0, 2);
+      // For the rest, remove coreName from them
+      const trimmed = withCore.slice(2).map(kw => {
+        return kw.replace(coreName + ' ', '').replace(' ' + coreName, '').replace(coreName, '').trim();
+      }).filter(kw => kw.length > 0);
+      v.keywords = [...kept, ...trimmed, ...withoutCore];
+    }
+    // Deduplicate again
+    v.keywords = [...new Set(v.keywords)];
+  }
+
+  // 5. Limit keywords containing category type tokens: keep max 3 per type
+  for (const typeToken of ['나이트', '클럽', '라운지']) {
+    const withType = [];
+    const withoutType = [];
+    for (let i = 0; i < v.keywords.length; i++) {
+      if (v.keywords[i].includes(typeToken)) {
+        withType.push(i);
+      }
+    }
+    if (withType.length > 3) {
+      // Remove type token from keywords beyond the 3rd
+      const toTrim = withType.slice(3);
+      for (const idx of toTrim) {
+        v.keywords[idx] = v.keywords[idx]
+          .replace(typeToken + ' ', '')
+          .replace(' ' + typeToken, '')
+          .replace(typeToken, '')
+          .trim();
+      }
+      v.keywords = v.keywords.filter(kw => kw.length > 0);
+      v.keywords = [...new Set(v.keywords)];
+    }
+  }
+}
+
+// ─── FAQ Cleanup ───
+
+function cleanupFAQ(v, coreName, region) {
+  if (!v.faq || !Array.isArray(v.faq)) return;
+
+  // Remove coreName from FAQ Q&A, keep max 1 across all FAQs
+  if (coreName && coreName.length >= 2) {
+    let coreCount = 0;
+    for (const f of v.faq) {
+      coreCount += countSub(f.q, coreName) + countSub(f.a, coreName);
+    }
+    // Remove from back until only 1 remains
+    for (let i = v.faq.length - 1; i >= 0 && coreCount > 1; i--) {
+      // Remove from answer first
+      while (countSub(v.faq[i].a, coreName) > 0 && coreCount > 1) {
+        const result = removeAtBoundary(v.faq[i].a, coreName);
+        if (!result.found) break;
+        v.faq[i].a = cleanSpaces(result.text);
+        coreCount--;
+      }
+      // Then from question
+      while (countSub(v.faq[i].q, coreName) > 0 && coreCount > 1) {
+        const result = removeAtBoundary(v.faq[i].q, coreName);
+        if (!result.found) break;
+        v.faq[i].q = cleanSpaces(result.text);
+        coreCount--;
+      }
+    }
+  }
+
+  // Remove region from FAQ Q&A, keep max 0
+  if (region && region.length >= 2) {
+    for (const f of v.faq) {
+      f.q = reduceRegion(f.q, region, 0);
+      f.a = reduceRegion(f.a, region, 0);
+    }
+  }
+}
+
+// ─── Aggressive Token Reduction (NEW) ───
+
+function reduceAllTokensAggressively(v, coreName, region) {
+  // Combine ALL text fields and count every Korean 2+ char token
+  const allFields = getAllTextFields(v);
+  const combinedText = allFields.map(f => f.value).join(' ');
+  const tokenCounts = {};
+  for (const t of extractKoreanTokens(combinedText)) {
+    tokenCounts[t] = (tokenCounts[t] || 0) + 1;
+  }
+
+  // Determine limits per token
+  const tokensToReduce = [];
+  for (const [token, count] of Object.entries(tokenCounts)) {
+    if (FUNC_WORDS.has(token)) continue;
+    if (token.length < 2) continue;
+    if (UI_TOKENS.has(token)) continue;
+
+    let limit;
+    if (coreName && token === coreName) {
+      limit = 4; // coreName (bare): max 4 in data
+    } else if (region && token === region) {
+      limit = 2; // region: max 2 in data
+    } else if (CATEGORY_TOKENS.has(token)) {
+      limit = 3; // category tokens: max 3 in data
+    } else {
+      limit = 3; // everything else: max 3
+    }
+
+    if (count > limit) {
+      tokensToReduce.push([token, count, limit]);
+    }
+  }
+
+  // Sort by count descending (reduce most repeated first)
+  tokensToReduce.sort((a, b) => b[1] - a[1]);
+
+  // Reduce each token across all fields (from back)
+  for (const [token, _count, limit] of tokensToReduce) {
+    let totalCount = getAllTextFields(v).reduce((s, f) => s + countSub(f.value, token), 0);
+    const fields = getAllTextFields(v);
+    for (let i = fields.length - 1; i >= 0 && totalCount > limit; i--) {
+      let val = fields[i].value;
+      while (countSub(val, token) > 0 && totalCount > limit) {
+        const result = removeAtBoundary(val, token);
+        if (!result.found) break;
+        val = cleanSpaces(result.text);
+        totalCount--;
+      }
+      setTextField(v, fields[i].path, val);
+    }
+  }
+}
+
 // ─── Main Processing ───
 
 let totalNameRemoved = 0;
 let totalRegionRemoved = 0;
-const coreNameMap = buildCoreNameMap(venues);
+let totalAggressiveRemoved = 0;
+const { map: coreNameMap, dupSet } = buildCoreNameMap(venues);
 
 for (const v of venues) {
   const name = v.name_display;
   const region = v.region;
   const coreName = coreNameMap.get(v.id) || getCoreName(v);
+  const hasDupCoreName = dupSet.has(v.id);
   const beforeName = countAllText(v, name);
 
   // ── 1. name_display → coreName 치환 (유사도 보존) ──
@@ -276,21 +426,33 @@ for (const v of venues) {
   totalNameRemoved += (beforeName - afterName);
 
   // ── 2. 지역명 감소 ──
-  // 동명 매장(coreName 중복)은 지역명이 유일한 구분자 → 제거 스킵
-  const hasDupCoreName = (function() {
-    const cn = getCoreName(v);
-    return venues.filter(vv => getCoreName(vv) === cn).length > 1;
-  })();
+  // NEVER skip region removal. For duplicates: max 2, non-duplicates: max 0.
+  const regionMax = hasDupCoreName ? 2 : 0;
   const beforeRegion = countAllText(v, region);
-  if (!hasDupCoreName) {
-    const allTextFields = getAllTextFields(v);
-    for (const field of allTextFields) {
-      setTextField(v, field.path, reduceRegion(field.value, region, 0));
-    }
+  const allTextFields = getAllTextFields(v);
+  for (const field of allTextFields) {
+    setTextField(v, field.path, reduceRegion(field.value, region, 0));
   }
-  // teaser에 1회 허용
-  if (countSub(v.teaser, region) === 0) {
-    // teaser에 지역 없으면 OK
+  // If duplicate coreName, allow up to regionMax region mentions total
+  if (hasDupCoreName && regionMax > 0) {
+    // Re-check: if we removed too many, that's fine — we want max 2 total
+    // The reduceRegion(field, 0) per-field may leave a few if they're the only one in that field.
+    // Do a global pass to enforce the total limit.
+    let regionTotal = countAllText(v, region);
+    if (regionTotal > regionMax) {
+      const fields = getAllTextFields(v);
+      for (let i = fields.length - 1; i >= 0 && regionTotal > regionMax; i--) {
+        let val = fields[i].value;
+        while (countSub(val, region) > 0 && regionTotal > regionMax) {
+          val = reduceRegion(val, region, 0);
+          regionTotal = countAllText(v, region);
+          // Update in-place to track accurately
+          setTextField(v, fields[i].path, val);
+          // Re-read for accurate count
+          regionTotal = countAllText(v, region);
+        }
+      }
+    }
   }
   const afterRegion = countAllText(v, region);
   totalRegionRemoved += (beforeRegion - afterRegion);
@@ -319,67 +481,36 @@ for (const v of venues) {
     time: t.time.replace(/^(\d+)단계$/, 'Step $1'),
   }));
 
-  // ── 3.6 키워드에서 지역명 제거 ──
-  if (region && v.keywords) {
-    v.keywords = v.keywords.map(kw => {
-      if (kw.includes(region)) {
-        return kw.replace(region + ' ', '').replace(' ' + region, '').replace(region, '').trim();
-      }
-      return kw;
-    }).filter(kw => kw.length > 0);
-  }
+  // ── 3.6 키워드 정리 (dedup, coreName/type limits, region removal) ──
+  cleanupKeywords(v, coreName, region);
 
-  // ── 4. 일반 토큰 반복 감소 ──
-  // 모든 텍스트를 합쳐서 토큰 카운트 → 2회 초과 토큰을 필드별로 제거
-  const allFields = getAllTextFields(v);
-  const combinedText = allFields.map(f => f.value).join(' ');
-  const tokenCounts = {};
-  for (const t of extractKoreanTokens(combinedText)) {
-    tokenCounts[t] = (tokenCounts[t] || 0) + 1;
-  }
+  // ── 3.7 FAQ 정리 (coreName max 1, region max 0) ──
+  cleanupFAQ(v, coreName, region);
 
-  // For space-containing coreNames (e.g. "창원 호박"), extract bare core for token matching
-  const bareCore = coreName && coreName.includes(' ') ? coreName.split(' ').pop() : coreName;
-  const overflowTokens = Object.entries(tokenCounts)
-    .filter(([t, c]) => {
-      if (FUNC_WORDS.has(t)) return false;
-      if (t.length < 2) return false;
-      if (name && name.includes(t)) return false;
-      // coreName + 조사 결합형 보호 (e.g., "레이스에서는", "레이스만의")
-      if (coreName && coreName.length >= 2 && t.startsWith(coreName)) return false;
-      if (bareCore && bareCore.length >= 2 && t.startsWith(bareCore)) return false;
-      // coreName 내부 substring 보호 (e.g., "나이트" in "물나이트")
-      if (coreName && coreName.length >= 2 && coreName.includes(t)) return false;
-      if (bareCore && bareCore.length >= 2 && bareCore.includes(t)) return false;
-      if (CATEGORY_TOKENS.has(t)) return c > 1; // 데이터에서 1회까지
-      if (UI_TOKENS.has(t)) return false;
-      if (t === region) return false;
-      return c > 1; // 데이터에서 1회까지
-    })
-    .sort((a, b) => b[1] - a[1]);
-
-  for (const [token, _count] of overflowTokens) {
-    const limit = CATEGORY_TOKENS.has(token) ? 1 : 1;
-    // 뒤 필드부터 제거 (Korean word-boundary safe)
-    let totalCount = getAllTextFields(v).reduce((s, f) => s + countSub(f.value, token), 0);
-    const fields3 = getAllTextFields(v);
-    for (let i = fields3.length - 1; i >= 0 && totalCount > limit; i--) {
-      let val = fields3[i].value;
-      while (countSub(val, token) > 0 && totalCount > limit) {
-        const result = removeAtBoundary(val, token);
-        if (!result.found) break;
-        val = cleanSpaces(result.text);
-        totalCount--;
-      }
-      setTextField(v, fields3[i].path, val);
+  // ── 4. Aggressive token reduction (NEW — replaces old general token pass) ──
+  const beforeAggressive = getAllTextFields(v).reduce((s, f) => {
+    for (const t of extractKoreanTokens(f.value)) {
+      s++;
     }
-  }
+    return s;
+  }, 0);
+
+  reduceAllTokensAggressively(v, coreName, region);
+
+  const afterAggressive = getAllTextFields(v).reduce((s, f) => {
+    for (const t of extractKoreanTokens(f.value)) {
+      s++;
+    }
+    return s;
+  }, 0);
+  totalAggressiveRemoved += (beforeAggressive - afterAggressive);
 }
 
 writeFileSync(venuesPath, JSON.stringify(venues, null, 2), 'utf-8');
 console.log(`✅ fix-venue-repetition complete`);
 console.log(`   name_display removed: ${totalNameRemoved} occurrences`);
 console.log(`   region removed: ${totalRegionRemoved} occurrences`);
+console.log(`   aggressive token pass removed: ${totalAggressiveRemoved} token occurrences`);
 
 // ─── Helpers ───
 
