@@ -190,7 +190,7 @@ for (const v of venues) {
   const beforeName = countAllText(v, name);
 
   // ── 1. name_display 제거 (필드별 목표) ──
-  v.teaser = removeName(v.teaser, name, 1);
+  v.teaser = removeName(v.teaser, name, 0);
   for (const scene of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5']) {
     v.story[scene] = removeName(v.story[scene], name, 0);
   }
@@ -207,10 +207,10 @@ for (const v of venues) {
     return fixed;
   });
 
-  // FAQ
-  v.faq = v.faq.map(f => ({
+  // FAQ - keep 1 name in first answer for brand distribution
+  v.faq = v.faq.map((f, i) => ({
     q: removeName(f.q, name, 0),
-    a: removeName(f.a, name, 0),
+    a: removeName(f.a, name, i === 0 ? 1 : 0),
   }));
 
   // plannerRules
