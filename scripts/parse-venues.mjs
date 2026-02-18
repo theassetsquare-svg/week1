@@ -44,34 +44,7 @@ function sectionSel(idx, sectionId) {
   return Math.abs((idx * s + Math.floor(s / 2)) | 0);
 }
 
-// Ensure every sentence contains the FULL venue name (region + displayName)
-// Handles same-name venues in different regions (e.g. 호박 나이트 in 강서 vs 노원)
-function uniquifyText(text, displayName, region, idx) {
-  if (!text) return text;
-  const fullName = `${region} ${displayName}`;
-  const segments = text.split(/([.!?。]+\s*)/);
-  let sIdx = 0;
-  const prefixes = [
-    `${fullName}에서 `, `${fullName}의 경우 `, `${fullName}에서는 `,
-    `${fullName}만의 특성으로 `, `${fullName}을 기준으로 `,
-    `${fullName}에 관해 `, `${fullName}의 특색으로 `,
-  ];
-  return segments.map(seg => {
-    if (/^[.!?。\s]*$/.test(seg) || !seg.trim()) return seg;
-    if (seg.trim().length < 8) { sIdx++; return seg; }
-    // Already contains full name → unique, skip
-    if (seg.includes(fullName)) { sIdx++; return seg; }
-    // Contains short name → replace with full name for uniqueness
-    if (seg.includes(displayName)) {
-      sIdx++;
-      return seg.replace(displayName, fullName);
-    }
-    // No name at all → prepend full name
-    const result = prefixes[(idx * 3 + sIdx) % prefixes.length] + seg;
-    sIdx++;
-    return result;
-  }).join('');
-}
+// uniquifyText removed — brand name placement now controlled by distributeStoreName()
 
 // ─── Parse raw file ───
 function parseRaw(text) {
