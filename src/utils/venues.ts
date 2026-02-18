@@ -69,8 +69,30 @@ export function getUniqueRegions(): { slug: string; name: string; count: number 
   return Array.from(map.values()).sort((a, b) => b.count - a.count);
 }
 
+/**
+ * slug에서 category/region 중복 토큰 제거
+ */
+function cleanSlug(slug: string, typePath: string, regionSlug: string): string {
+  const catKr: Record<string, string> = { club: '클럽', night: '나이트', lounge: '라운지' };
+  let s = slug;
+  const cat = catKr[typePath];
+  if (cat) {
+    const cleaned = s.split('-').filter(p => p !== cat).join('-');
+    if (cleaned.length > 0) s = cleaned;
+  }
+  if (regionSlug) {
+    const cleaned = s.split('-').filter(p => p !== regionSlug).join('-');
+    if (cleaned.length > 0) s = cleaned;
+  }
+  return s;
+}
+
+/**
+ * 정규 URL 생성 (Single Source of Truth)
+ */
 export function getVenueUrl(v: Venue): string {
-  return `/${v.typePath}/${v.regionSlug}/${v.urlSlug || v.venueSlug}/`;
+  const slug = cleanSlug(v.urlSlug || v.venueSlug, v.typePath, v.regionSlug);
+  return `/${v.typePath}/${v.regionSlug}/${slug}/`;
 }
 
 export function getReadingTime(v: Venue): number {
