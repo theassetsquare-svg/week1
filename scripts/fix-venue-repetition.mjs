@@ -309,15 +309,15 @@ for (const v of venues) {
       if (name && name.includes(t)) return false;
       // coreName + 조사 결합형 보호 (e.g., "레이스에서는", "레이스만의")
       if (coreName && coreName.length >= 2 && t.startsWith(coreName)) return false;
-      if (CATEGORY_TOKENS.has(t)) return c > 2; // 데이터에서 2회까지
+      if (CATEGORY_TOKENS.has(t)) return c > 1; // 데이터에서 1회까지
       if (UI_TOKENS.has(t)) return false;
       if (t === region) return false;
-      return c > 2; // 데이터에서 2회까지 (유사도 보존)
+      return c > 1; // 데이터에서 1회까지
     })
     .sort((a, b) => b[1] - a[1]);
 
   for (const [token, _count] of overflowTokens) {
-    const limit = CATEGORY_TOKENS.has(token) ? 2 : 2;
+    const limit = CATEGORY_TOKENS.has(token) ? 1 : 1;
     // 뒤 필드부터 제거
     let totalCount = getAllTextFields(v).reduce((s, f) => s + countSub(f.value, token), 0);
     const fields3 = getAllTextFields(v);
