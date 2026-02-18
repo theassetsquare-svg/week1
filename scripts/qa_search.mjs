@@ -160,7 +160,7 @@ function main() {
 
   for (const v of samples) {
     const query = v.name_display;
-    const expectedUrl = `/${v.typePath}/${v.regionSlug}/${v.urlSlug || v.venueSlug}/`;
+    const expectedUrl = buildVenueUrl(v);
 
     // Test 1: data-name attribute contains the name
     const nameInData = dataNames.some(d => d.toLowerCase().includes(query.toLowerCase()));
