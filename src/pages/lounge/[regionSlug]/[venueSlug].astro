@@ -215,11 +215,14 @@ const tocItems = [
     <!-- 5. Checklist -->
     <section class="venue-section" id="checklist">
       <h2>첫방문 체크리스트</h2>
-      <ul class="checklist">
-        {v.checklist.map(item => (
-          <li>{item}</li>
-        ))}
-      </ul>
+      <table class="checklist-table">
+        <thead><tr><th>항목</th><th>체크</th></tr></thead>
+        <tbody>
+          {v.checklist.map((item, i) => (
+            <tr><td>{item}</td><td><input type="checkbox" id={`ck${i}`} /></td></tr>
+          ))}
+        </tbody>
+      </table>
     </section>
 
     <!-- 6. Music -->
