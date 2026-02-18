@@ -722,22 +722,7 @@ function main() {
       relatedVenueIds: { sameRegion: [], sameType: [], nearby: [], guides: ['first-visit', 'dress-code'] },
     };
 
-    // Post-process: embed full venue name (region + displayName) in every sentence for 0% content similarity
-    const uq = (text, seed) => uniquifyText(text, displayName, region, idx * 100 + seed);
-    venue.bodySections.safety = uq(venue.bodySections.safety, 1);
-    venue.bodySections.music = uq(venue.bodySections.music, 2);
-    venue.bodySections.atmosphere = uq(venue.bodySections.atmosphere, 3);
-    Object.keys(venue.story).forEach((key, ki) => {
-      venue.story[key] = uq(venue.story[key], 10 + ki);
-    });
-    venue.timeline = venue.timeline.map((t, ti) => ({ ...t, desc: uq(t.desc, 20 + ti) }));
-    venue.faq = venue.faq.map((f, fi) => ({ q: f.q, a: uq(f.a, 30 + fi) }));
-    venue.checklist = venue.checklist.map((item, ci) => {
-      if (item.includes(displayName)) return item;
-      const tags = ['방문 시', '이용 시', '입장 전', '준비 중', '참고:'];
-      return `${region} ${displayName} ${tags[ci % tags.length]} ${item}`;
-    });
-    venue.teaser = uq(venue.teaser, 50);
+    // No more uniquifyText — checklist stays generic, brand name controlled by generators
 
     return venue;
   });
