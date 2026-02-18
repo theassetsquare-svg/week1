@@ -935,6 +935,18 @@ body.mobile-preview .site-footer .container {
   padding: 0.25rem 0; line-height: 1.4;
 }
 
+/* ─── Fact Box ─── */
+.fact-box {
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+}
+.fact-box__list { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; }
+.fact-box__item { display: flex; gap: 0.4rem; }
+.fact-box__item dt { color: var(--text-muted); font-size: 0.82rem; font-weight: 600; }
+.fact-box__item dd { color: var(--text-primary); font-size: 0.82rem; margin: 0; }
+.fact-box__date { display: block; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.5rem; }
+.fact-box__notice { color: var(--text-muted); font-size: 0.72rem; margin: 0.25rem 0 0; opacity: 0.8; }
+
 @media (max-width: 480px) {
   .view-toggle { bottom: 1rem; right: 1rem; font-size: 0.75rem; padding: 0.5rem 1rem; }
   .map-buttons { flex-direction: column; }
