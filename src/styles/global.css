@@ -36,6 +36,7 @@ body {
   color: var(--text-primary);
   line-height: 1.78;
   font-size: 1rem;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
   overflow-wrap: break-word;
