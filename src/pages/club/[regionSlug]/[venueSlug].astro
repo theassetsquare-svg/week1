@@ -117,7 +117,7 @@ const tocItems = [
         <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
         <span>{v.name_display}</span>
       </div>
-      <img src={v.images[0].src} alt={`${v.name_display} ${v.images[0].alt}`} class="venue-hero-img" width="500" height="500" loading="eager" />
+      <img src={v.images[0].src} alt={v.images[0].alt} class="venue-hero-img" width="500" height="500" loading="eager" />
       <span class="venue-hero__cat-badge venue-hero__cat-badge--club">{v.typeLabel}</span>
       <h1 class="venue-hero__title">{v.name_display}</h1>
       <ul class="venue-summary">
@@ -384,7 +384,7 @@ const tocItems = [
       <div class="gallery">
         {v.images.slice(0, 3).map((img, i) => (
           <figure>
-            <img src={img.src} alt={`${v.name_display} ${img.alt}`} width="400" height="340" loading="lazy" />
+            <img src={img.src} alt={img.alt} width="400" height="340" loading="lazy" />
             {v.imagePrompts[i] && <figcaption class="gallery-caption">{v.imagePrompts[i]}</figcaption>}
           </figure>
         ))}
