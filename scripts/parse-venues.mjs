@@ -1112,7 +1112,7 @@ function generateTeaser(v, idx) {
     `${adjs[0]} 순간들이 모여 하나의 밤을 완성하는 곳, ${name}입니다.`,
   ];
 
-  return teasers[idx % teasers.length];
+  return teasers[hashStr(name + 'teaser') % teasers.length];
 }
 
 // ─── Keywords (unique per venue for 0% similarity) ───
