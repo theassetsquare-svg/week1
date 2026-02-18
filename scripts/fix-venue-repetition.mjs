@@ -268,15 +268,15 @@ for (const v of venues) {
       if (FUNC_WORDS.has(t)) return false;
       if (t.length < 2) return false;
       if (name && name.includes(t) && t.length <= 3) return false;
-      if (CATEGORY_TOKENS.has(t)) return c > 3; // 데이터에서 3회까지 (템플릿에서 3회 추가)
+      if (CATEGORY_TOKENS.has(t)) return c > 2; // 데이터에서 2회까지 (템플릿에서 1~4회 추가)
       if (UI_TOKENS.has(t)) return false;
       if (t === region) return false;
-      return c > 3;
+      return c > 2; // 데이터에서 2회까지 (템플릿 여유분 확보)
     })
     .sort((a, b) => b[1] - a[1]);
 
   for (const [token, _count] of overflowTokens) {
-    const limit = CATEGORY_TOKENS.has(token) ? 3 : 3;
+    const limit = CATEGORY_TOKENS.has(token) ? 2 : 2;
     // 뒤 필드부터 제거
     let totalCount = getAllTextFields(v).reduce((s, f) => s + countSub(f.value, token), 0);
     const fields3 = getAllTextFields(v);
