@@ -100,7 +100,8 @@ export function getVenueUrl(v: Venue): string {
 
 export function getReadingTime(v: Venue): number {
   const text = [
-    v.teaser, v.bodySections.atmosphere, v.bodySections.music, v.bodySections.safety,
+    v.teaser, v.hookIntro || '', v.bodySections.atmosphere, v.bodySections.music, v.bodySections.safety,
+    ...(v.bodySections.deepDive ? Object.values(v.bodySections.deepDive) : []),
     ...Object.values(v.story),
     ...v.timeline.map(t => t.desc),
     ...v.checklist,
