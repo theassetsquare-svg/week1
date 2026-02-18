@@ -1140,7 +1140,7 @@ function generateKeywords(v, idx) {
 
 // ─── Planner rules ───
 function generatePlannerRules(v, idx) {
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
   const name = v.displayName;
   const typeSpecific = {
     club: {
