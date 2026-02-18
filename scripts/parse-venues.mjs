@@ -845,48 +845,85 @@ function generateSafety(v, idx) {
   return compose(v.displayName, 'safety', [openers, manners, budgets]);
 }
 
-// ─── Timeline (unique per venue) ───
+// ─── Timeline (10 variants, venue name in every desc) ───
 function generateTimeline(v, idx, rng) {
-  const name = v.displayName;
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const { name, adj1, adj2, adj3, adj4, rf, region } = getVenueVars(v);
 
   const timelineVariants = [
-    // Variant 0: Standard timeline
     [
-      { time: '21:00', label: '도착과 첫 발걸음', desc: `${name}에 도착한다. 입구의 ${adjs[0]} 분위기가 기대감을 높인다. 드레스코드 확인과 입장 절차를 마치고 내부로 들어선다.` },
-      { time: '21:30', label: '첫 음료와 공간 탐색', desc: `바에서 음료를 주문하고 공간을 둘러본다. ${adjs[1]} 인테리어와 조명이 눈에 들어오며, 오늘 밤의 무대가 서서히 윤곽을 드러낸다.` },
-      { time: '22:15', label: '분위기 적응', desc: `음악과 조명에 익숙해지면서 자연스럽게 공간에 녹아든다. 주변 테이블의 분위기도 점점 활기를 띠기 시작한다.` },
-      { time: '23:00', label: '본격적인 즐김', desc: `밤이 본격적으로 시작되는 시간. ${adjs[2]} 에너지가 공간 전체로 퍼지며, 음악의 볼륨도 한층 올라간다.` },
-      { time: '00:00', label: '피크 타임', desc: `${name}이 가장 뜨거운 순간을 맞이한다. 모든 감각이 활짝 열리는 ${adjs[3]} 시간대다.` },
-      { time: '01:30', label: '여운과 귀가', desc: `달콤한 아쉬움을 안고 밤을 정리한다. 다음 방문에 대한 기대가 자연스럽게 피어오른다.` },
+      { time: '21:00', label: '도착과 첫 발걸음', desc: `${name}에 도착한다. ${name}의 입구가 풍기는 ${adj1} 분위기가 기대감을 높인다.` },
+      { time: '21:30', label: '첫 음료와 공간 탐색', desc: `${name}의 바에서 음료를 주문하고 ${name}의 공간을 둘러본다. ${adj2} 인테리어가 눈에 들어온다.` },
+      { time: '22:15', label: '분위기 적응', desc: `${name}의 음악과 조명에 익숙해지면서 자연스럽게 녹아든다.` },
+      { time: '23:00', label: '본격적인 즐김', desc: `${name}에서 밤이 본격적으로 시작된다. ${adj3} 에너지가 ${name} 전체로 퍼진다.` },
+      { time: '00:00', label: '피크 타임', desc: `${name}이 가장 뜨거운 순간을 맞이한다. ${name}에서의 ${adj4} 시간이다.` },
+      { time: '01:30', label: '여운과 귀가', desc: `${name}을 떠나며 달콤한 아쉬움이 남는다. ${name} 재방문에 대한 기대가 피어오른다.` },
     ],
-    // Variant 1: Phase system
     [
-      { time: '웜업 (20-21시)', label: '준비와 이동', desc: `집에서 ${name} 방문을 위한 준비를 마치고 이동한다. ${adjs[0]} 기대감과 함께 출발한다.` },
-      { time: '엔트리 (21-22시)', label: '입장과 적응', desc: `입장 후 공간에 익숙해지는 시간. 음료를 주문하고 ${adjs[1]} 분위기를 천천히 흡수한다.` },
-      { time: '빌드업 (22-23시)', label: '에너지 상승', desc: `분위기가 점점 고조된다. 음악이 강해지고, 사람들의 에너지가 ${adjs[2]} 방식으로 섞이기 시작한다.` },
-      { time: '피크 (23-01시)', label: '절정의 경험', desc: `${name}의 밤이 가장 ${adjs[3]} 빛을 발하는 시간. 모든 것이 하나로 수렴되는 순간이다.` },
-      { time: '쿨다운 (01시 이후)', label: '마무리와 귀가', desc: `밤의 여운을 즐기며 서서히 마무리한다. 안전한 귀가를 위한 교통편을 확보한다.` },
+      { time: '웜업 (20-21시)', label: '준비와 이동', desc: `${name} 방문을 위한 준비를 마치고 이동한다. ${name}에 대한 ${adj1} 기대감과 함께 출발한다.` },
+      { time: '엔트리 (21-22시)', label: '입장과 적응', desc: `${name}에 입장 후 공간에 익숙해지는 시간. ${name}의 ${adj2} 분위기를 천천히 흡수한다.` },
+      { time: '빌드업 (22-23시)', label: '에너지 상승', desc: `${name}의 분위기가 점점 고조된다. ${name}의 음악이 강해지고 에너지가 섞이기 시작한다.` },
+      { time: '피크 (23-01시)', label: '절정의 경험', desc: `${name}의 밤이 가장 ${adj3} 빛을 발하는 시간. ${name}의 모든 것이 하나로 수렴된다.` },
+      { time: '쿨다운 (01시 이후)', label: '마무리와 귀가', desc: `${name}에서의 여운을 즐기며 마무리한다. ${name} 인근에서 귀가 교통편을 확보한다.` },
     ],
-    // Variant 2: Experiential stages
     [
-      { time: '1단계', label: '기대의 시작', desc: `${name}에 대한 정보를 확인하고 방문을 결심하는 순간부터 밤은 시작된다. ${adjs[0]} 기대감이 발걸음을 재촉한다.` },
-      { time: '2단계', label: '첫 만남', desc: `입구를 통과하는 순간, ${adjs[1]} 첫인상이 각인된다. 이곳만의 공기가 피부에 닿는 것을 느낀다.` },
-      { time: '3단계', label: '몰입의 시간', desc: `공간과 음악, 사람들 사이에서 자연스러운 몰입이 이루어진다. 시간 감각이 ${adjs[2]} 방식으로 변형된다.` },
-      { time: '4단계', label: '정점의 순간', desc: `밤의 하이라이트. ${adjs[3]} 경험이 모든 감각을 관통하는 순간이 찾아온다.` },
-      { time: '5단계', label: '기억의 각인', desc: `떠나면서도 남는 것들. ${name}에서의 경험이 하나의 기억으로 정리되어 마음에 새겨진다.` },
+      { time: 'Step 1', label: '기대의 시작', desc: `${name}에 대한 정보를 확인하고 방문을 결심하는 순간부터 밤은 시작된다. ${name}에 대한 ${adj1} 기대감이 커진다.` },
+      { time: 'Step 2', label: '첫 만남', desc: `${name}의 입구를 통과하는 순간, ${name}의 ${adj2} 첫인상이 각인된다.` },
+      { time: 'Step 3', label: '몰입의 시간', desc: `${name}의 음악과 사람들 사이에서 자연스러운 몰입이 이루어진다. ${name}에서의 시간 감각이 변형된다.` },
+      { time: 'Step 4', label: '정점의 순간', desc: `${name}에서의 밤이 하이라이트에 도달한다. ${adj3} 경험이 모든 감각을 관통한다.` },
+      { time: 'Step 5', label: '기억의 각인', desc: `${name}을 떠나면서도 남는 것들. ${name}에서의 경험이 기억으로 새겨진다.` },
     ],
-    // Variant 3: Mood progression
     [
-      { time: '설렘 (도착)', label: '기분: 기대', desc: `${name}의 문 앞에 서면 설렘이 올라온다. ${adjs[0]} 간판과 입구의 분위기가 이미 밤의 서막을 알린다.` },
-      { time: '탐색 (첫 30분)', label: '기분: 호기심', desc: `공간의 구석구석을 살피며 이곳의 ${adjs[1]} 디테일을 발견하는 시간이다.` },
-      { time: '적응 (1시간)', label: '기분: 편안함', desc: `음료와 음악이 자연스럽게 어우러지며, 이 공간에 속해 있다는 ${adjs[2]} 안정감이 찾아온다.` },
-      { time: '고조 (피크)', label: '기분: 흥분', desc: `분위기가 최고조에 달하는 순간, ${adjs[3]} 에너지가 온몸을 감싼다.` },
-      { time: '여운 (귀가)', label: '기분: 만족', desc: `밖으로 나서며 든든한 만족감이 자리잡는다. 다음 방문이 이미 기다려진다.` },
+      { time: '설렘 (도착)', label: '기분: 기대', desc: `${name}의 문 앞에 서면 설렘이 올라온다. ${name}의 ${adj1} 간판이 밤의 서막을 알린다.` },
+      { time: '탐색 (첫 30분)', label: '기분: 호기심', desc: `${name}의 구석구석을 살피며 ${name}의 ${adj2} 디테일을 발견하는 시간이다.` },
+      { time: '적응 (1시간)', label: '기분: 편안함', desc: `${name}의 음료와 음악이 자연스럽게 어우러지며, ${name}에 속해 있다는 안정감이 찾아온다.` },
+      { time: '고조 (피크)', label: '기분: 흥분', desc: `${name}의 분위기가 최고조에 달한다. ${name}의 ${adj3} 에너지가 온몸을 감싼다.` },
+      { time: '여운 (귀가)', label: '기분: 만족', desc: `${name}을 나서며 만족감이 자리잡는다. ${name} 다음 방문이 이미 기다려진다.` },
+    ],
+    [
+      { time: '19:00', label: '준비', desc: `${name}에 갈 준비를 시작한다. ${name}에 어울리는 복장을 고르고 출발한다.` },
+      { time: '20:30', label: '식사', desc: `${rf.food}에서 저녁 식사를 마친다. ${name}에서의 밤을 위한 에너지를 충전한다.` },
+      { time: '21:30', label: '입장', desc: `${name}에 도착하여 입장한다. ${name}의 ${adj1} 분위기가 첫인상을 남긴다.` },
+      { time: '23:00', label: '클라이맥스', desc: `${name}이 가장 활기찬 시간대. ${name}의 ${adj2} 에너지를 온몸으로 느낀다.` },
+      { time: '01:00', label: '마무리', desc: `${name}에서의 밤을 정리하고, ${name} 인근에서 안전하게 귀가한다.` },
+    ],
+    [
+      { time: '출발 전', label: '사전 점검', desc: `${name} 방문을 위해 신분증, 현금, 카드를 점검한다. ${name}의 이벤트 정보도 확인한다.` },
+      { time: '이동 중', label: '기대감 상승', desc: `${rf.transport}을 향해 이동하며 ${name}에 대한 기대감이 커진다.` },
+      { time: '입장 직후', label: '첫 인상', desc: `${name}의 문을 열고 들어서는 순간, ${name}의 ${adj1} 공기가 감각을 깨운다.` },
+      { time: '본격 시작', label: '몰입', desc: `${name}의 리듬에 몸을 맡기며 ${name}에서의 밤에 완전히 빠져든다.` },
+      { time: '피크', label: '절정', desc: `${name}이 가장 빛나는 시간. ${name}의 ${adj3} 순간을 만끽한다.` },
+      { time: '귀가', label: '여운', desc: `${name}을 나서며 오늘 밤의 기억을 정리한다. ${name}이 남긴 여운이 새벽 공기와 섞인다.` },
+    ],
+    [
+      { time: 'A', label: '${name} 도착', desc: `${name} 앞에 도착한다. ${name}의 ${adj1} 외관이 기대를 높인다.` },
+      { time: 'B', label: '공간 파악', desc: `${name} 내부를 둘러보며 자리를 잡는다. ${name}의 구조와 분위기를 파악한다.` },
+      { time: 'C', label: '음료와 교류', desc: `${name}에서 음료를 즐기며 주변과 자연스럽게 교류한다.` },
+      { time: 'D', label: '하이라이트', desc: `${name}의 밤이 절정에 이른다. ${name}에서의 ${adj2} 순간을 경험한다.` },
+      { time: 'E', label: '안전 귀가', desc: `${name}에서의 밤을 마무리하고 안전하게 귀가한다.` },
+    ],
+    [
+      { time: '저녁 8시', label: '워밍업', desc: `${name} 방문 전 가볍게 워밍업. ${name}에서의 밤을 위해 컨디션을 점검한다.` },
+      { time: '저녁 9시', label: '${name} 입성', desc: `${name}에 입장하며 첫 음료를 주문한다. ${name}의 ${adj1} 공간이 눈에 들어온다.` },
+      { time: '밤 10시', label: '분위기 상승', desc: `${name}에 사람들이 늘어나며 분위기가 달아오른다. ${name}의 음악도 한층 강해진다.` },
+      { time: '밤 11시', label: '피크 시작', desc: `${name}의 피크 타임이 시작된다. ${name}의 ${adj2} 에너지가 공간을 가득 채운다.` },
+      { time: '새벽 1시', label: '마무리', desc: `${name}에서의 밤을 정리한다. ${name}이 남긴 ${adj3} 기억을 안고 귀가한다.` },
+    ],
+    [
+      { time: '첫 번째 잔', label: '시작의 의식', desc: `${name}에서의 첫 음료는 밤의 시작을 알리는 의식이다. ${name}의 바에서 주문한 한 잔이 모든 것을 열어준다.` },
+      { time: '두 번째 잔', label: '몰입의 시작', desc: `${name}의 분위기에 적응하며 두 번째 음료를 즐긴다. ${name}의 ${adj1} 무드가 서서히 스며든다.` },
+      { time: '세 번째 잔', label: '절정의 순간', desc: `${name}의 밤이 가장 뜨거운 순간. ${name}에서의 ${adj2} 에너지와 함께 세 번째 잔을 기울인다.` },
+      { time: '마지막 잔', label: '건배와 마무리', desc: `${name}에서의 마지막 잔은 오늘 밤에 대한 건배다. ${name}을 떠나기 전, 이 ${adj3} 순간을 기억에 새긴다.` },
+    ],
+    [
+      { time: '프리게임', label: '만남과 이동', desc: `${region}에서 모여 ${name}으로 향한다. ${name}에 대한 이야기를 나누며 기대감을 높인다.` },
+      { time: '오프닝', label: '입장의 순간', desc: `${name}의 문을 열고 들어선다. ${name}의 ${adj1} 첫인상이 오감에 각인된다.` },
+      { time: '메인 이벤트', label: '밤의 핵심', desc: `${name}에서의 핵심 시간. ${name}의 음악과 분위기가 ${adj2} 에너지로 가득한 시간대다.` },
+      { time: '앙코르', label: '한 번 더', desc: `${name}을 떠나기 아쉬워 한 곡 더, 한 잔 더. ${name}의 ${adj3} 매력이 발걸음을 잡는다.` },
+      { time: '엔딩', label: '귀가의 길', desc: `${name}에서의 밤이 끝난다. ${name}이 남긴 여운과 함께 안전하게 귀가한다.` },
     ],
   ];
 
-  return timelineVariants[sectionSel(idx, 'timeline') % timelineVariants.length];
+  return timelineVariants[hashStr(name + 'timeline') % timelineVariants.length];
 }
 
 // ─── Checklist (unique per venue) ───
