@@ -241,6 +241,14 @@ for (const v of venues) {
   v.bodySections.atmosphere = removeName(v.bodySections.atmosphere, name, 0, coreName);
   v.bodySections.music = removeName(v.bodySections.music, name, 0, coreName);
   v.bodySections.safety = removeName(v.bodySections.safety, name, 0, coreName);
+  // hookIntro
+  if (v.hookIntro) v.hookIntro = removeName(v.hookIntro, name, 1, coreName);
+  // deepDive subsections
+  if (v.bodySections.deepDive) {
+    for (const key of Object.keys(v.bodySections.deepDive)) {
+      v.bodySections.deepDive[key] = removeName(v.bodySections.deepDive[key], name, 0, coreName);
+    }
+  }
   v.timeline = v.timeline.map(t => ({ ...t, desc: removeName(t.desc, name, 0, coreName) }));
 
   // checklist: strip name prefix, then replace remaining
