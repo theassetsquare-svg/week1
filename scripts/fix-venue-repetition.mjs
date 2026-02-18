@@ -200,6 +200,27 @@ function cleanSpaces(text) {
     .trim();
 }
 
+/**
+ * Remove token from text only at Korean word boundaries (char before is NOT Korean).
+ * Prevents removing substrings from within larger Korean compounds.
+ */
+function removeAtBoundary(text, token) {
+  const hangulRe = /[\uAC00-\uD7AF]/;
+  let searchFrom = text.length;
+  while (true) {
+    const idx = text.lastIndexOf(token, searchFrom - 1);
+    if (idx === -1 || idx >= searchFrom) return { text, found: false };
+    const charBefore = idx > 0 ? text[idx - 1] : '';
+    if (!hangulRe.test(charBefore)) {
+      return {
+        text: text.slice(0, idx) + text.slice(idx + token.length),
+        found: true,
+      };
+    }
+    searchFrom = idx;
+  }
+}
+
 // ─── Main Processing ───
 
 let totalNameRemoved = 0;
