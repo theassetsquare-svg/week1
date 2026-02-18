@@ -111,7 +111,44 @@ function main() {
     console.log(`  Sitemap URLs checked: ${urls.length}`);
   }
 
-  // 2) dist/ HTML canonical 검증
+  // 2) venues.json ↔ buildVenueUrl 크로스 검증
+  const VENUES_PATH = join(ROOT, 'data', 'venues.json');
+  if (existsSync(VENUES_PATH)) {
+    const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf-8'));
+    const venueUrls = new Set();
+    for (const v of venues) {
+      const url = buildVenueUrl(v);
+
+      // a) buildVenueUrl 결과에 중복 토큰 검사
+      const segs = url.split('/').filter(Boolean);
+      const words = [];
+      for (const seg of segs) {
+        words.push(...seg.split(/[-_]/).filter(w => w.length > 0));
+      }
+      const wc = {};
+      for (const w of words) {
+        wc[w] = (wc[w] || 0) + 1;
+        if (wc[w] > 1) {
+          fail(`buildVenueUrl token "${w}" ×${wc[w]} in: ${url} (venue ${v.id})`);
+        }
+      }
+
+      // b) URL 중복 (다른 venue가 같은 URL)
+      if (venueUrls.has(url)) {
+        fail(`buildVenueUrl collision: ${url} (venue ${v.id})`);
+      }
+      venueUrls.add(url);
+
+      // c) old URL = new URL이면 redirect 불필요 확인
+      const oldUrl = buildOldVenueUrl(v);
+      if (oldUrl !== url && !redirectOldUrls.has(oldUrl)) {
+        warn(`Old URL ${oldUrl} differs from new ${url} but missing from redirect_map.json (venue ${v.id})`);
+      }
+    }
+    console.log(`  Venues cross-validated: ${venues.length}`);
+  }
+
+  // 3) dist/ HTML canonical 검증
   if (!existsSync(DIST)) {
     warn('dist/ not found — skipping canonical check');
   } else {
