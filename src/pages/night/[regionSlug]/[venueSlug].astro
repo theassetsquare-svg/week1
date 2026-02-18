@@ -106,7 +106,7 @@ const tocItems = [
   { id: 'gallery', label: '갤러리' },
 ];
 ---
-<BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} ogImage={ogImage} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} canonical={`${siteUrl}${venueUrl}`} ogImage={ogImage} keywords={v.keywords.join(', ')} jsonLd={jsonLd}>
   <section class="venue-hero-immersive venue-hero-immersive--night">
     <div class="container content-narrow">
       <div class="breadcrumb">
