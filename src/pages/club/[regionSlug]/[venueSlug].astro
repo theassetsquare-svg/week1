@@ -320,8 +320,11 @@ const tocItems = [
     <section class="venue-section" id="gallery">
       <h2>갤러리</h2>
       <div class="gallery">
-        {v.images.map(img => (
-          <img src={img.src} alt={img.alt} width="400" height="340" loading="lazy" />
+        {v.images.slice(0, 3).map((img, i) => (
+          <figure>
+            <img src={img.src} alt={img.alt} width="400" height="340" loading="lazy" />
+            {v.imagePrompts[i] && <figcaption class="gallery-caption">{v.imagePrompts[i]}</figcaption>}
+          </figure>
         ))}
       </div>
     </section>
