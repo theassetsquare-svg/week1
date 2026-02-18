@@ -256,7 +256,13 @@ for (const v of venues) {
     }
   }
 
-  // ── 3.5 키워드에서 지역명 제거 ──
+  // ── 3.5 타임라인 time 필드 "N단계" → "Step N" ──
+  v.timeline = v.timeline.map(t => ({
+    ...t,
+    time: t.time.replace(/^(\d+)단계$/, 'Step $1'),
+  }));
+
+  // ── 3.6 키워드에서 지역명 제거 ──
   if (region && v.keywords) {
     v.keywords = v.keywords.map(kw => {
       if (kw.includes(region)) {
