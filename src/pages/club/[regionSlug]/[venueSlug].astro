@@ -14,6 +14,7 @@ const v = venue;
 const readTime = getReadingTime(v);
 const siteUrl = 'https://week1-6m5.pages.dev';
 const venueUrl = getVenueUrl(v);
+const updateDate = '2026-02-18';
 
 const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
