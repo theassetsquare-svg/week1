@@ -327,16 +327,15 @@ for (const v of venues) {
 
   for (const [token, _count] of overflowTokens) {
     const limit = CATEGORY_TOKENS.has(token) ? 1 : 1;
-    // 뒤 필드부터 제거
+    // 뒤 필드부터 제거 (Korean word-boundary safe)
     let totalCount = getAllTextFields(v).reduce((s, f) => s + countSub(f.value, token), 0);
     const fields3 = getAllTextFields(v);
     for (let i = fields3.length - 1; i >= 0 && totalCount > limit; i--) {
       let val = fields3[i].value;
       while (countSub(val, token) > 0 && totalCount > limit) {
-        const idx = val.lastIndexOf(token);
-        if (idx === -1) break;
-        val = val.slice(0, idx) + val.slice(idx + token.length);
-        val = cleanSpaces(val);
+        const result = removeAtBoundary(val, token);
+        if (!result.found) break;
+        val = cleanSpaces(result.text);
         totalCount--;
       }
       setTextField(v, fields3[i].path, val);
