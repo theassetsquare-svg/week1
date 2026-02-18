@@ -145,7 +145,7 @@ function reduceGeneralTokens(text, brandName, region, max) {
   for (const [token, count] of Object.entries(counts)) {
     if (FUNC_WORDS.has(token)) continue;
     if (token.length < 2) continue;
-    if (brandName && brandName.includes(token) && token.length <= 3) continue;
+    if (brandName && brandName.includes(token)) continue;
     if (CATEGORY_TOKENS.has(token)) continue; // category는 6회 허용
     if (UI_TOKENS.has(token)) continue;
     if (region && token === region) continue; // region은 별도 처리
