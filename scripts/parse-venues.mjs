@@ -281,6 +281,7 @@ function generateSeoTitle(v, idx) {
   const region = v.region;
   const typeKr = TYPE_LABELS[v.type];
   const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const [adj1, adj2, adj3, adj4] = adjs;
   const rf = getRegionFlavor(region);
 
   const pools = {
@@ -473,6 +474,7 @@ function generateHookIntro(v, idx, rng) {
   const region = v.region;
   const typeKr = TYPE_LABELS[v.type];
   const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const [adj1, adj2, adj3, adj4] = adjs;
   const rf = getRegionFlavor(region);
   const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
   const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
@@ -583,6 +585,7 @@ function generateScenes(v, idx, rng) {
   const region = v.region;
   const type = v.type;
   const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const [adj1, adj2, adj3, adj4] = adjs;
   const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
   const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
   const adj1 = adjs[0], adj2 = adjs[1], adj3 = adjs[2], adj4 = adjs[3];
