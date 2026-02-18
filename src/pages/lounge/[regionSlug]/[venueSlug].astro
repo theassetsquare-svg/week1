@@ -261,10 +261,10 @@ const tocItems = [
 
     <!-- 10. Related -->
     <section class="venue-section" id="related">
-      <h2>추천 매장</h2>
+      <h2>관련 매장</h2>
       {sameRegion.length > 0 && (
         <div class="related-section">
-          <h3>인근 추천</h3>
+          <h3>근처</h3>
           <div class="related-grid">
             {sameRegion.map(rv => (
               <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
