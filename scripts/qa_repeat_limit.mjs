@@ -127,10 +127,13 @@ function main() {
         // coreName: name_display에서 region과 type 제거
         let cn = v.name_display;
         if (v.region) cn = cn.replace(v.region + ' ', '').replace(v.region, '');
+        let cnNoType = cn;
         for (const t of ['클럽', '나이트', '라운지']) {
-          cn = cn.replace(' ' + t, '').replace(t, '');
+          cnNoType = cnNoType.replace(' ' + t, '').replace(t, '');
         }
-        coreName = cn.trim();
+        cnNoType = cnNoType.trim();
+        // If core too short without type, keep type suffix (collapse spaces)
+        coreName = cnNoType.length < 2 ? cn.trim().replace(/\s+/g, '') : cnNoType;
         break;
       }
     }
