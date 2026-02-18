@@ -67,6 +67,29 @@ const jsonLd = [
       "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
     }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": `${siteUrl}${venueUrl}`,
+    "datePublished": "2026-01-15",
+    "dateModified": updateDate,
+    "inLanguage": "ko",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "나이트라이프 코리아",
+      "url": siteUrl
+    },
+    "about": {
+      "@type": "NightClub",
+      "name": v.name_display
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".fact-box", "#atmosphere", "#faq"]
+    }
   }
 ];
 
