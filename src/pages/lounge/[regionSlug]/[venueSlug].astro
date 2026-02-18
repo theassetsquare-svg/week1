@@ -307,8 +307,8 @@ const tocItems = [
         )}
       </div>
       <div class="map-buttons">
-        <a href={`https://map.naver.com/v5/search/${encodeURIComponent(v.name_display + ' ' + v.region)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--naver">네이버지도 검색</a>
-        <a href={`https://www.google.com/maps/search/${encodeURIComponent(v.name_display + ' ' + v.region)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--google">구글지도 검색</a>
+        <a href={`https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--naver">네이버지도 검색</a>
+        <a href={`https://www.google.com/maps/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--google">구글지도 검색</a>
       </div>
     </section>
 
@@ -547,7 +547,7 @@ const tocItems = [
     ];
     const types = ['라운지 스타일', '나이트 스타일', '클럽 스타일', '소셜 버터플라이'];
     const typeDescs = [
-      '세련된 공간에서 칵테일과 대화를 즐기는 당신은 라운지형 인간입니다. ' + venueName + '은 당신을 위한 완벽한 공간입니다!',
+      '세련된 공간에서 칵테일과 대화를 즐기는 당신은 라운지형 인간입니다. 당신을 위한 완벽한 공간입니다!',
       '라이브 밴드와 댄스를 즐기는 당신은 나이트형 인간입니다.',
       '강렬한 비트와 함께 자유롭게 춤추는 것을 좋아하는 클럽형 인간입니다.',
       '어디서든 사람들과 어울리는 것을 좋아하는 소셜형 인간입니다. 어떤 장소든 당신과 함께라면 즐겁습니다!',
