@@ -261,7 +261,7 @@ const tocItems = [
 
     <!-- 6. Music -->
     <section class="venue-section" id="music">
-      <h2>뮤직 노트</h2>
+      <h2>{v.name_display} 뮤직</h2>
       <p>{v.bodySections.music}</p>
     </section>
 
@@ -286,7 +286,7 @@ const tocItems = [
 
     <!-- 8. FAQ -->
     <section class="venue-section" id="faq">
-      <h2>자주 묻는 질문 (FAQ)</h2>
+      <h2>{v.name_display} FAQ</h2>
       {v.faq.map(f => (
         <div class="faq-item">
           <div class="faq-q">{f.q}</div>
