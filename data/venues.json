@@ -12,13 +12,13 @@
     "venueSlug": "레이스-클럽",
     "urlSlug": "레이스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -189,7 +189,14 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -209,13 +216,13 @@
     "venueSlug": "사운드-클럽",
     "urlSlug": "사운드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -385,7 +392,14 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -405,13 +419,13 @@
     "venueSlug": "아르떼-클럽",
     "urlSlug": "아르떼",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -582,7 +596,14 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-4",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -602,13 +623,13 @@
     "venueSlug": "옥타곤-클럽",
     "urlSlug": "옥타곤",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -778,7 +799,14 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -798,13 +826,13 @@
     "venueSlug": "피크-클럽",
     "urlSlug": "피크",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -975,7 +1003,14 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -995,13 +1030,13 @@
     "venueSlug": "페이스-클럽",
     "urlSlug": "페이스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1171,7 +1206,14 @@
         "venue-5",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -1191,13 +1233,13 @@
     "venueSlug": "헤븐-클럽",
     "urlSlug": "헤븐",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1372,7 +1414,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -1392,13 +1441,13 @@
     "venueSlug": "임팩트-클럽",
     "urlSlug": "임팩트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1568,7 +1617,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -1588,13 +1644,13 @@
     "venueSlug": "잭리빈-클럽",
     "urlSlug": "잭리빈",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1765,7 +1821,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -1785,13 +1848,13 @@
     "venueSlug": "플러스82-클럽",
     "urlSlug": "플러스82",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+      "lat": 37.5190912,
+      "lon": 127.0516784,
+      "city": "서울특별시",
+      "district": "삼성1동",
+      "neighborhood": "삼성동",
+      "precision": "nominatim"
     },
     "keywords": [
       "82",
@@ -1953,7 +2016,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-11",
+        "venue-50",
+        "venue-59",
+        "venue-117",
+        "venue-118",
+        "venue-119"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -1973,13 +2043,13 @@
     "venueSlug": "르클럽",
     "urlSlug": "르클럽",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+      "lat": 37.5190912,
+      "lon": 127.0516784,
+      "city": "서울특별시",
+      "district": "삼성1동",
+      "neighborhood": "삼성동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2145,7 +2215,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-10",
+        "venue-50",
+        "venue-59",
+        "venue-117",
+        "venue-118",
+        "venue-119"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -2165,13 +2242,13 @@
     "venueSlug": "볼노스트-클럽",
     "urlSlug": "볼노스트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2341,7 +2418,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -2361,13 +2445,13 @@
     "venueSlug": "케이크샵-클럽",
     "urlSlug": "케이크샵",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2537,7 +2621,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -2557,13 +2648,13 @@
     "venueSlug": "메카-클럽",
     "urlSlug": "메카",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2733,7 +2824,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-15",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -2753,13 +2851,13 @@
     "venueSlug": "스타디움-클럽",
     "urlSlug": "스타디움",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2930,7 +3028,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -2950,13 +3055,13 @@
     "venueSlug": "루시드림-클럽",
     "urlSlug": "루시드림",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -3126,7 +3231,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -3146,13 +3258,13 @@
     "venueSlug": "아우라-클럽",
     "urlSlug": "아우라",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -3317,7 +3429,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -3337,13 +3456,13 @@
     "venueSlug": "nb2-클럽",
     "urlSlug": "nb2",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "NB2",
@@ -3519,7 +3638,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -3539,13 +3665,13 @@
     "venueSlug": "m2-클럽",
     "urlSlug": "m2",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "M2",
@@ -3721,7 +3847,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-20",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -3741,13 +3874,13 @@
     "venueSlug": "ff-클럽",
     "urlSlug": "ff",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "FF",
@@ -3913,7 +4046,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -3933,13 +4073,13 @@
     "venueSlug": "매드홀릭-클럽",
     "urlSlug": "매드홀릭",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4109,7 +4249,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -4129,13 +4276,13 @@
     "venueSlug": "싱크홀-클럽",
     "urlSlug": "싱크홀",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4305,7 +4452,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -4325,13 +4479,13 @@
     "venueSlug": "올카인드-클럽",
     "urlSlug": "올카인드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4502,7 +4656,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-22"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -4522,13 +4683,13 @@
     "venueSlug": "그루브-클럽",
     "urlSlug": "그루브",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4701,7 +4862,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -4721,13 +4889,13 @@
     "venueSlug": "데이즈-클럽",
     "urlSlug": "데이즈",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4890,7 +5058,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-26",
+        "venue-27",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -4910,13 +5085,13 @@
     "venueSlug": "아지트-클럽",
     "urlSlug": "아지트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -5084,7 +5259,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-25",
+        "venue-27",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -5104,13 +5286,13 @@
     "venueSlug": "크림-클럽",
     "urlSlug": "크림",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -5279,7 +5461,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -5299,13 +5488,13 @@
     "venueSlug": "아웃풋-클럽",
     "urlSlug": "아웃풋",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -5473,7 +5662,14 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -6264,13 +6460,13 @@
     "venueSlug": "에이유-클럽",
     "urlSlug": "에이유",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -6440,7 +6636,13 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-34",
+        "venue-35",
+        "venue-36",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -6460,13 +6662,13 @@
     "venueSlug": "에그-클럽",
     "urlSlug": "에그",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -6640,7 +6842,13 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-35",
+        "venue-36",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -6660,13 +6868,13 @@
     "venueSlug": "루피-클럽",
     "urlSlug": "루피",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -6836,7 +7044,13 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-36",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -6856,13 +7070,13 @@
     "venueSlug": "디헬-클럽",
     "urlSlug": "디헬",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7036,7 +7250,13 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-35",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -7056,13 +7276,13 @@
     "venueSlug": "이비자-클럽",
     "urlSlug": "이비자",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7231,7 +7451,12 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-38",
+        "venue-39",
+        "venue-92",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -7251,13 +7476,13 @@
     "venueSlug": "몬스터-클럽",
     "urlSlug": "몬스터",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7425,7 +7650,12 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-39",
+        "venue-92",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -7445,13 +7675,13 @@
     "venueSlug": "벤트-클럽",
     "urlSlug": "벤트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7625,7 +7855,12 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-38",
+        "venue-92",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -7645,13 +7880,13 @@
     "venueSlug": "리버틴-클럽",
     "urlSlug": "리버틴",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "광주광역시, 대한민국",
+      "lat": 35.1594647,
+      "lon": 126.8515034,
+      "city": "광주광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7822,7 +8057,10 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-41",
+        "venue-94"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -7842,13 +8080,13 @@
     "venueSlug": "코요테어글리-클럽",
     "urlSlug": "코요테어글리",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "광주광역시, 대한민국",
+      "lat": 35.1594647,
+      "lon": 126.8515034,
+      "city": "광주광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -8014,7 +8252,10 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-40",
+        "venue-94"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -8034,13 +8275,13 @@
     "venueSlug": "오닉스-클럽",
     "urlSlug": "오닉스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "전주, 680, 동부대로, 우아동3가, 덕진구, 전주시, 전북특별자치도, 54908, 대한민국",
+      "lat": 35.8500537,
+      "lon": 127.1623649,
+      "city": "전주시",
+      "district": "덕진구",
+      "neighborhood": "우아동3가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -8205,7 +8446,9 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-105"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -8225,13 +8468,13 @@
     "venueSlug": "돈텔마마-클럽",
     "urlSlug": "돈텔마마",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강릉, 176, 용지로, 교2동, 강릉시, 강원특별자치도, 25491, 대한민국",
+      "lat": 37.76452,
+      "lon": 128.8993979,
+      "city": "강릉시",
+      "district": "교2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -8397,7 +8640,9 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-103"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -9196,13 +9441,13 @@
     "venueSlug": "엔터-클럽",
     "urlSlug": "엔터",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9376,7 +9621,13 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-75",
+        "venue-76",
+        "venue-77",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -9396,13 +9647,13 @@
     "venueSlug": "엠파이어-클럽",
     "urlSlug": "엠파이어",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
+      "formatted_address": "제주특별자치도, 대한민국",
+      "lat": 33.4887737,
+      "lon": 126.4987083,
       "city": "",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9567,7 +9818,10 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-109",
+        "venue-110"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -9587,13 +9841,13 @@
     "venueSlug": "쥴리아나-나이트",
     "urlSlug": "쥴리아나",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+      "lat": 37.5190912,
+      "lon": 127.0516784,
+      "city": "서울특별시",
+      "district": "삼성1동",
+      "neighborhood": "삼성동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9757,7 +10011,14 @@
         "venue-55",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-10",
+        "venue-11",
+        "venue-59",
+        "venue-117",
+        "venue-118",
+        "venue-119"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -9777,13 +10038,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "상봉동, 중랑구, 서울특별시, 대한민국",
+      "lat": 37.6001644,
+      "lon": 127.0909024,
+      "city": "서울특별시",
+      "district": "중랑구",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9961,13 +10222,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "수유, 도봉로, 번1동, 강북구, 서울특별시, 01074, 대한민국",
+      "lat": 37.6379932,
+      "lon": 127.0257229,
+      "city": "서울특별시",
+      "district": "번1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10154,13 +10415,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+      "lat": 37.6563651,
+      "lon": 127.0634799,
+      "city": "서울특별시",
+      "district": "상계2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10326,7 +10587,10 @@
         "venue-55",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-54",
+        "venue-55"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -10346,13 +10610,13 @@
     "venueSlug": "스타-나이트",
     "urlSlug": "스타",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+      "lat": 37.6563651,
+      "lon": 127.0634799,
+      "city": "서울특별시",
+      "district": "상계2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10523,7 +10787,10 @@
         "venue-55",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-53",
+        "venue-55"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -10543,13 +10810,13 @@
     "venueSlug": "잠보-나이트",
     "urlSlug": "잠보",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+      "lat": 37.6563651,
+      "lon": 127.0634799,
+      "city": "서울특별시",
+      "district": "상계2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10720,7 +10987,10 @@
         "venue-54",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-53",
+        "venue-54"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -10740,13 +11010,13 @@
     "venueSlug": "찬스-나이트",
     "urlSlug": "찬스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "길동, 양재대로, 길동, 강동구, 서울특별시, 05353, 대한민국",
+      "lat": 37.5383683,
+      "lon": 127.1402049,
+      "city": "서울특별시",
+      "district": "길동",
+      "neighborhood": "길동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10933,13 +11203,13 @@
     "venueSlug": "그랑프리-나이트",
     "urlSlug": "그랑프리",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "신림, 1614, 남부순환로, 신림동, 관악구, 서울특별시, 08754, 대한민국",
+      "lat": 37.4846585,
+      "lon": 126.9296105,
+      "city": "서울특별시",
+      "district": "신림동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11123,13 +11393,13 @@
     "venueSlug": "국빈관-나이트",
     "urlSlug": "국빈관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "독산동, 독산4동, 금천구, 서울특별시, 08584, 대한민국",
+      "lat": 37.468399,
+      "lon": 126.8979571,
+      "city": "서울특별시",
+      "district": "독산4동",
+      "neighborhood": "독산동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11307,13 +11577,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "강서, 도산대로55길, 청담동, 강남구, 서울특별시, 06014, 대한민국",
+      "lat": 37.5236673,
+      "lon": 127.0399903,
+      "city": "서울특별시",
+      "district": "청담동",
+      "neighborhood": "청담동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11476,7 +11746,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-117",
+        "venue-118",
+        "venue-119",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -11496,13 +11773,13 @@
     "venueSlug": "보보스-나이트",
     "urlSlug": "보보스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "대구 강북 경찰서, 130, 동암로, 구암동, 북구, 대구광역시, 41424, 대한민국",
+      "lat": 35.9434079,
+      "lon": 128.5656383,
+      "city": "대구광역시",
+      "district": "북구",
+      "neighborhood": "구암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11672,7 +11949,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-61"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -11692,13 +11971,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "대구 강북 경찰서, 130, 동암로, 구암동, 북구, 대구광역시, 41424, 대한민국",
+      "lat": 35.9434079,
+      "lon": 128.5656383,
+      "city": "대구광역시",
+      "district": "북구",
+      "neighborhood": "구암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11868,7 +12147,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-60"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -11888,13 +12169,13 @@
     "venueSlug": "헐리우드-나이트",
     "urlSlug": "헐리우드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12063,7 +12344,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -12083,13 +12371,13 @@
     "venueSlug": "헤커-나이트",
     "urlSlug": "헤커",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12263,7 +12551,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -12283,13 +12578,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12452,7 +12747,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-65",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -12472,13 +12774,13 @@
     "venueSlug": "코리아타운-나이트",
     "urlSlug": "코리아타운",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12648,7 +12950,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -12668,13 +12977,13 @@
     "venueSlug": "사하라-나이트",
     "urlSlug": "사하라",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12843,7 +13152,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -12863,13 +13179,13 @@
     "venueSlug": "룩소-나이트",
     "urlSlug": "룩소",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13045,7 +13361,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -13065,13 +13388,13 @@
     "venueSlug": "가이아나-나이트",
     "urlSlug": "가이아나",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13241,7 +13564,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-67"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -13261,13 +13591,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "성남, 분당수서로, 판교, 분당구, 성남시, 경기도, 13590, 대한민국",
+      "lat": 37.3946908,
+      "lon": 127.1194122,
+      "city": "성남시",
+      "district": "판교",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13455,13 +13785,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "일산, 경의로, 대화동, 일산3동, 일산서구, 고양시, 경기도, 10373, 대한민국",
+      "lat": 37.6822186,
+      "lon": 126.769498,
+      "city": "고양시",
+      "district": "일산3동",
+      "neighborhood": "대화동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13647,13 +13977,13 @@
     "venueSlug": "빅토리아-나이트",
     "urlSlug": "빅토리아",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "고양(백석)종합터미널, 강송로, 백석동, 백석1동, 일산동구, 고양시, 10450, 대한민국",
+      "lat": 37.643033,
+      "lon": 126.7905105,
+      "city": "고양시",
+      "district": "백석1동",
+      "neighborhood": "백석동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13817,7 +14147,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-72"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -13837,13 +14169,13 @@
     "venueSlug": "캐피탈-나이트",
     "urlSlug": "캐피탈",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "고양(백석)종합터미널, 강송로, 백석동, 백석1동, 일산동구, 고양시, 10450, 대한민국",
+      "lat": 37.643033,
+      "lon": 126.7905105,
+      "city": "고양시",
+      "district": "백석1동",
+      "neighborhood": "백석동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14007,7 +14339,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-71"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -14027,13 +14361,13 @@
     "venueSlug": "아라비안-나이트",
     "urlSlug": "아라비안",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "인천광역시, 대한민국",
+      "lat": 37.456,
+      "lon": 126.7052,
+      "city": "인천광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14199,7 +14533,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-74"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -14219,13 +14555,13 @@
     "venueSlug": "백악관-나이트",
     "urlSlug": "백악관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "인천광역시, 대한민국",
+      "lat": 37.456,
+      "lon": 126.7052,
+      "city": "인천광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14388,7 +14724,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-73"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -14408,13 +14746,13 @@
     "venueSlug": "찬스돔-나이트",
     "urlSlug": "찬스돔",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14582,7 +14920,13 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-76",
+        "venue-77",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -14602,13 +14946,13 @@
     "venueSlug": "코리아-나이트",
     "urlSlug": "코리아",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14777,7 +15121,13 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-77",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -14797,13 +15147,13 @@
     "venueSlug": "서울관-나이트",
     "urlSlug": "서울관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14973,7 +15323,13 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-76",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -14993,13 +15349,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15161,7 +15517,13 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-76",
+        "venue-77",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -15181,13 +15543,13 @@
     "venueSlug": "스타돔-나이트",
     "urlSlug": "스타돔",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "천안, 239, 대흥로, 대흥동, 동남구, 천안시, 충청남도, 31122, 대한민국",
+      "lat": 36.8102804,
+      "lon": 127.14684,
+      "city": "천안시",
+      "district": "동남구",
+      "neighborhood": "대흥동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15374,13 +15736,13 @@
     "venueSlug": "바밤바-나이트",
     "urlSlug": "바밤바",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15549,7 +15911,13 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-35",
+        "venue-36",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -15569,13 +15937,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15738,7 +16106,13 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-35",
+        "venue-36",
+        "venue-80"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -15758,13 +16132,13 @@
     "venueSlug": "아시아드-나이트",
     "urlSlug": "아시아드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "부산광역시, 대한민국",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "city": "부산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15928,7 +16302,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-83",
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-28"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -15948,13 +16329,13 @@
     "venueSlug": "물-나이트",
     "urlSlug": "물",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "부산광역시, 대한민국",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "city": "부산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "물",
@@ -16125,7 +16506,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-82",
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-28"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -16145,13 +16533,13 @@
     "venueSlug": "h2o-나이트",
     "urlSlug": "h2o",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "H2O",
@@ -16326,7 +16714,14 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -16346,13 +16741,13 @@
     "venueSlug": "챔피언-나이트",
     "urlSlug": "챔피언",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "울산광역시, 대한민국",
+      "lat": 35.5391697,
+      "lon": 129.3119136,
+      "city": "울산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -16518,7 +16913,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-86"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -16538,13 +16935,13 @@
     "venueSlug": "뉴월드-나이트",
     "urlSlug": "뉴월드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "울산광역시, 대한민국",
+      "lat": 35.5391697,
+      "lon": 129.3119136,
+      "city": "울산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -16709,7 +17106,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-85"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -16729,13 +17128,13 @@
     "venueSlug": "관광열차-나이트",
     "urlSlug": "관광열차",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "평택, 평택로39번길, 평택동, 평택시, 경기도, 17917, 대한민국",
+      "lat": 36.9908233,
+      "lon": 127.0853183,
+      "city": "평택시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "평택동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -16902,7 +17301,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-88",
+        "venue-89"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -16922,13 +17324,13 @@
     "venueSlug": "금오-나이트",
     "urlSlug": "금오",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "평택, 평택로39번길, 평택동, 평택시, 경기도, 17917, 대한민국",
+      "lat": 36.9908233,
+      "lon": 127.0853183,
+      "city": "평택시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "평택동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17093,7 +17495,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-87",
+        "venue-89"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -17113,13 +17518,13 @@
     "venueSlug": "뉴욕뉴욕-나이트",
     "urlSlug": "뉴욕뉴욕",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "평택, 평택로39번길, 평택동, 평택시, 경기도, 17917, 대한민국",
+      "lat": 36.9908233,
+      "lon": 127.0853183,
+      "city": "평택시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "평택동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17284,7 +17689,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-87",
+        "venue-88"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -17304,13 +17712,13 @@
     "venueSlug": "맘모스-나이트",
     "urlSlug": "맘모스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "부천, 자유로, 심곡본동, 소사구, 부천시, 14716, 대한민국",
+      "lat": 37.4841098,
+      "lon": 126.7827347,
+      "city": "부천시",
+      "district": "소사구",
+      "neighborhood": "심곡본동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17492,13 +17900,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "의정부, 525, 평화로, 의정부동, 의정부1동, 의정부시, 경기도, 11696, 대한민국",
+      "lat": 37.7377035,
+      "lon": 127.0460501,
+      "city": "의정부시",
+      "district": "의정부1동",
+      "neighborhood": "의정부동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17675,13 +18083,13 @@
     "venueSlug": "kk-나이트",
     "urlSlug": "kk",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "KK",
@@ -17850,7 +18258,12 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-38",
+        "venue-39",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -17870,13 +18283,13 @@
     "venueSlug": "세븐-나이트",
     "urlSlug": "세븐",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18044,7 +18457,12 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-38",
+        "venue-39",
+        "venue-92"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -18064,13 +18482,13 @@
     "venueSlug": "상무-나이트",
     "urlSlug": "상무",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "광주광역시, 대한민국",
+      "lat": 35.1594647,
+      "lon": 126.8515034,
+      "city": "광주광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18235,7 +18653,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-40",
+        "venue-41"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -18255,13 +18676,13 @@
     "venueSlug": "룰루랄라-나이트",
     "urlSlug": "룰루랄라",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "창원, 남해고속도로제1지선, 동정동, 의창구, 창원시, 경상남도, 51368, 대한민국",
+      "lat": 35.2581253,
+      "lon": 128.6070336,
+      "city": "창원시",
+      "district": "의창구",
+      "neighborhood": "동정동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18426,7 +18847,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-96",
+        "venue-97"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -18446,13 +18870,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "창원, 남해고속도로제1지선, 동정동, 의창구, 창원시, 경상남도, 51368, 대한민국",
+      "lat": 35.2581253,
+      "lon": 128.6070336,
+      "city": "창원시",
+      "district": "의창구",
+      "neighborhood": "동정동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18618,7 +19042,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-95",
+        "venue-97"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -18638,13 +19065,13 @@
     "venueSlug": "백악관-나이트",
     "urlSlug": "백악관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "창원, 남해고속도로제1지선, 동정동, 의창구, 창원시, 경상남도, 51368, 대한민국",
+      "lat": 35.2581253,
+      "lon": 128.6070336,
+      "city": "창원시",
+      "district": "의창구",
+      "neighborhood": "동정동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18810,7 +19237,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-95",
+        "venue-96"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -18830,13 +19260,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "포항, 1, 포항역로, 흥해읍, 북구, 포항시, 경상북도, 37561, 대한민국",
+      "lat": 36.0712333,
+      "lon": 129.3426784,
+      "city": "포항시",
+      "district": "북구",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19013,13 +19443,13 @@
     "venueSlug": "런투유-나이트",
     "urlSlug": "런투유",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "경주, 내외로, 건천읍, 경주시, 경상북도, 38183, 대한민국",
+      "lat": 35.7982689,
+      "lon": 129.1389632,
+      "city": "경주시",
+      "district": "건천읍",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19201,13 +19631,13 @@
     "venueSlug": "월드-나이트",
     "urlSlug": "월드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "김해국제공항, 108, 공항진입로, 대저2동, 강서구, 부산광역시, 46720, 대한민국",
+      "lat": 35.1800774,
+      "lon": 128.9364014,
+      "city": "부산광역시",
+      "district": "강서구",
+      "neighborhood": "대저2동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19372,7 +19802,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-101"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -19392,13 +19824,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "김해국제공항, 108, 공항진입로, 대저2동, 강서구, 부산광역시, 46720, 대한민국",
+      "lat": 35.1800774,
+      "lon": 128.9364014,
+      "city": "부산광역시",
+      "district": "강서구",
+      "neighborhood": "대저2동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19563,7 +19995,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-100"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -19583,13 +20017,13 @@
     "venueSlug": "뉴월드-나이트",
     "urlSlug": "뉴월드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "춘천, 평화로, 근화동, 춘천시, 강원특별자치도, 24238, 대한민국",
+      "lat": 37.8845604,
+      "lon": 127.716664,
+      "city": "춘천시",
+      "district": "근화동",
+      "neighborhood": "근화동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19771,13 +20205,13 @@
     "venueSlug": "카리스마-나이트",
     "urlSlug": "카리스마",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강릉, 176, 용지로, 교2동, 강릉시, 강원특별자치도, 25491, 대한민국",
+      "lat": 37.76452,
+      "lon": 128.8993979,
+      "city": "강릉시",
+      "district": "교2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19943,7 +20377,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-43"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -19963,13 +20399,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청주, 청주역로358번길, 서촌동, 흥덕구, 청주시, 충청북도, 28113, 대한민국",
+      "lat": 36.6471132,
+      "lon": 127.3923613,
+      "city": "청주시",
+      "district": "흥덕구",
+      "neighborhood": "서촌동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20152,13 +20588,13 @@
     "venueSlug": "별밤-나이트",
     "urlSlug": "별밤",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "전주, 680, 동부대로, 우아동3가, 덕진구, 전주시, 전북특별자치도, 54908, 대한민국",
+      "lat": 35.8500537,
+      "lon": 127.1623649,
+      "city": "전주시",
+      "district": "덕진구",
+      "neighborhood": "우아동3가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20328,7 +20764,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-42"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -20348,13 +20786,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "순천, 135, 팔마로, 덕암동, 옥천동, 순천시, 전라남도, 57964, 대한민국",
+      "lat": 34.9458107,
+      "lon": 127.5040597,
+      "city": "순천시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "덕암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20519,7 +20957,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-107"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -20539,13 +20979,13 @@
     "venueSlug": "별밤-나이트",
     "urlSlug": "별밤",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "순천, 135, 팔마로, 덕암동, 옥천동, 순천시, 전라남도, 57964, 대한민국",
+      "lat": 34.9458107,
+      "lon": 127.5040597,
+      "city": "순천시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "덕암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20715,7 +21155,9 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-106"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -20735,13 +21177,13 @@
     "venueSlug": "신비-나이트",
     "urlSlug": "신비",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "목포, 98, 영산로, 명륜동, 목원동, 목포시, 전라남도, 58773, 대한민국",
+      "lat": 34.7921339,
+      "lon": 126.3876448,
+      "city": "목포시",
+      "district": "목원동",
+      "neighborhood": "명륜동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20924,13 +21366,13 @@
     "venueSlug": "로얄-나이트",
     "urlSlug": "로얄",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
+      "formatted_address": "제주특별자치도, 대한민국",
+      "lat": 33.4887737,
+      "lon": 126.4987083,
       "city": "",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21097,7 +21539,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-49",
+        "venue-110"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -21117,13 +21562,13 @@
     "venueSlug": "제주-나이트",
     "urlSlug": "제주",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
+      "formatted_address": "제주특별자치도, 대한민국",
+      "lat": 33.4887737,
+      "lon": 126.4987083,
       "city": "",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21293,7 +21738,10 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-49",
+        "venue-109"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -21313,13 +21761,13 @@
     "venueSlug": "하입-라운지",
     "urlSlug": "하입",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21489,7 +21937,14 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -21509,13 +21964,13 @@
     "venueSlug": "컬러-라운지",
     "urlSlug": "컬러",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21685,7 +22140,14 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -21705,13 +22167,13 @@
     "venueSlug": "인트로-라운지",
     "urlSlug": "인트로",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21882,7 +22344,14 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -21902,13 +22371,13 @@
     "venueSlug": "아르쥬-라운지",
     "urlSlug": "아르쥬",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22077,7 +22546,14 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -22097,13 +22573,13 @@
     "venueSlug": "앨빈에비뉴-라운지",
     "urlSlug": "앨빈에비뉴",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22274,7 +22750,14 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -22294,13 +22777,13 @@
     "venueSlug": "달리는토끼-라운지",
     "urlSlug": "달리는토끼",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22470,7 +22953,14 @@
         "venue-115",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -22490,13 +22980,13 @@
     "venueSlug": "코드-라운지",
     "urlSlug": "코드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "압구정, 논현로, 가로수길, 신사동, 강남구, 서울특별시, 06022, 대한민국",
+      "lat": 37.5261847,
+      "lon": 127.0284989,
+      "city": "서울특별시",
+      "district": "신사동",
+      "neighborhood": "가로수길",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22668,7 +23158,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-118",
+        "venue-119",
+        "venue-59",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -22688,13 +23185,13 @@
     "venueSlug": "디엠-라운지",
     "urlSlug": "디엠",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "압구정, 논현로, 가로수길, 신사동, 강남구, 서울특별시, 06022, 대한민국",
+      "lat": 37.5261847,
+      "lon": 127.0284989,
+      "city": "서울특별시",
+      "district": "신사동",
+      "neighborhood": "가로수길",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22859,7 +23356,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-117",
+        "venue-119",
+        "venue-59",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -22879,13 +23383,13 @@
     "venueSlug": "이글-라운지",
     "urlSlug": "이글",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "압구정, 논현로, 가로수길, 신사동, 강남구, 서울특별시, 06022, 대한민국",
+      "lat": 37.5261847,
+      "lon": 127.0284989,
+      "city": "서울특별시",
+      "district": "신사동",
+      "neighborhood": "가로수길",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23056,7 +23560,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-117",
+        "venue-118",
+        "venue-59",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -23076,13 +23587,13 @@
     "venueSlug": "도조-라운지",
     "urlSlug": "도조",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23252,7 +23763,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -23272,13 +23790,13 @@
     "venueSlug": "아울-라운지",
     "urlSlug": "아울",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23453,7 +23971,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -23473,13 +23998,13 @@
     "venueSlug": "릿-라운지",
     "urlSlug": "릿",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "릿",
@@ -23648,7 +24173,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -23668,13 +24200,13 @@
     "venueSlug": "글로브-라운지",
     "urlSlug": "글로브",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23849,7 +24381,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -23869,13 +24408,13 @@
     "venueSlug": "스테어웨이-라운지",
     "urlSlug": "스테어웨이",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24045,7 +24584,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -24065,13 +24611,13 @@
     "venueSlug": "글램-라운지",
     "urlSlug": "글램",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24240,7 +24786,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -24260,13 +24813,13 @@
     "venueSlug": "피스틸-라운지",
     "urlSlug": "피스틸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24435,7 +24988,14 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -24455,13 +25015,13 @@
     "venueSlug": "피치-라운지",
     "urlSlug": "피치",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24629,7 +25189,13 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-76",
+        "venue-77",
+        "venue-78"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -24649,13 +25215,13 @@
     "venueSlug": "플레이그라운드-라운지",
     "urlSlug": "플레이그라운드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "호텔 스카이파크 인천송도, 233, 컨벤시아대로, 송도동, 송도1동, 연수구, 인천광역시, 22009, 대한민국",
+      "lat": 37.3845521,
+      "lon": 126.6386833,
+      "city": "인천광역시",
+      "district": "송도1동",
+      "neighborhood": "송도동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24820,7 +25386,9 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-129"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
@@ -24840,13 +25408,13 @@
     "venueSlug": "터치스카이-라운지",
     "urlSlug": "터치스카이",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "호텔 스카이파크 인천송도, 233, 컨벤시아대로, 송도동, 송도1동, 연수구, 인천광역시, 22009, 대한민국",
+      "lat": 37.3845521,
+      "lon": 126.6386833,
+      "city": "인천광역시",
+      "district": "송도1동",
+      "neighborhood": "송도동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -25011,7 +25579,9 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-128"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
