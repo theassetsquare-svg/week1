@@ -108,6 +108,30 @@ const tocItems = [
       </ol>
     </nav>
 
+    <div class="venue-hero__meta">
+      <span class="venue-hero__tag venue-hero__tag--region">{v.region}</span>
+      <span class="venue-hero__tag venue-hero__tag--tone">{v.storyFrame.tone}</span>
+      <span class="venue-hero__tag venue-hero__tag--time">약 {readTime}분</span>
+    </div>
+
+    <div class="story-hook">
+      <div class="story-hook__label">Tonight's Story — {v.storyFrame.style}</div>
+      <div class="story-hook__text">{v.story.scene1}</div>
+      <div class="story-hook__quote">{v.bodySections.atmosphere.split('.')[0]}.</div>
+      <a href="#atmosphere" class="story-hook__cta">이야기 속으로 ↓</a>
+    </div>
+
+    <div class="mood-check">
+      <div class="mood-check__title">지금 기분은?</div>
+      <div class="mood-check__options">
+        <button class="mood-btn" data-mood="energy"><span class="mood-btn__emoji">🔥</span>에너지 폭발</button>
+        <button class="mood-btn" data-mood="chill"><span class="mood-btn__emoji">🌙</span>여유롭게</button>
+        <button class="mood-btn" data-mood="social"><span class="mood-btn__emoji">🥂</span>새로운 만남</button>
+        <button class="mood-btn" data-mood="music"><span class="mood-btn__emoji">🎵</span>음악에 집중</button>
+      </div>
+      <div class="mood-check__result" id="moodResult"></div>
+    </div>
+
     <!-- 1. Atmosphere -->
     <section class="venue-section" id="atmosphere">
       <h2>감성 요약</h2>
