@@ -40,24 +40,7 @@ function getCoreName(v) {
   return core.trim();
 }
 
-// 동명 매장 감지 → 중복 coreName이면 region 포함하여 고유성 확보
-function buildCoreNameMap(venues) {
-  const coreCount = {};
-  for (const v of venues) {
-    const cn = getCoreName(v);
-    coreCount[cn] = (coreCount[cn] || 0) + 1;
-  }
-  const map = new Map();
-  for (const v of venues) {
-    const cn = getCoreName(v);
-    if (coreCount[cn] > 1 && v.region) {
-      map.set(v.id, v.region + ' ' + cn);
-    } else {
-      map.set(v.id, cn);
-    }
-  }
-  return map;
-}
+// buildCoreNameMap is no longer needed — duplicate core names handled via region preservation
 
 /**
  * name_display를 coreName으로 치환한다 (유사도 보존).
