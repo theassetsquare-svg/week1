@@ -25,8 +25,7 @@ function main() {
   const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
 
   const index = venues.map(v => {
-    const slug = v.urlSlug || v.venueSlug;
-    const url = `/${v.typePath}/${v.regionSlug}/${slug}/`;
+    const url = buildVenueUrl(v);
     return {
       name: v.name_display,
       normalized_name: normalize(v.name_display),
