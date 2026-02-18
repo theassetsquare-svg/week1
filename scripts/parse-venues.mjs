@@ -1019,6 +1019,7 @@ function generateFAQs(v, idx) {
   const region = v.region;
   const typeKr = TYPE_LABELS[v.type];
   const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const [adj1, adj2, adj3, adj4] = adjs;
 
   // Generate truly unique questions by embedding venue name and region
   const faqTemplates = {
@@ -1144,6 +1145,7 @@ function generateKeywords(v, idx) {
 // ─── Planner rules ───
 function generatePlannerRules(v, idx) {
   const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const [adj1, adj2, adj3, adj4] = adjs;
   const name = v.displayName;
   const typeSpecific = {
     club: {
@@ -1192,6 +1194,7 @@ function generatePlannerRules(v, idx) {
 // ─── Image prompts ───
 function generateImagePrompts(v, idx) {
   const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const [adj1, adj2, adj3, adj4] = adjs;
   const typeEnglish = { club: 'nightclub', night: 'dance hall', lounge: 'lounge' };
   return [
     `Fictional illustration: Stylish Korean adults arriving at a ${adj1} ${typeEnglish[v.type]} entrance in ${v.region}, street vibe with neon lights, fashion-forward silhouettes, no identifiable faces, no text or logos, dark moody atmosphere with warm accents`,
