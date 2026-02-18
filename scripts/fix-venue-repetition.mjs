@@ -83,8 +83,8 @@ function reduceRegion(text, region, maxKeep) {
     while (count > maxKeep) {
       const idx = text.lastIndexOf(pat);
       if (idx === -1) break;
-      // 이 지역 등의 대체어 사용 (첫 2회만)
-      const replacement = count > maxKeep + 1 ? '' : '이 지역 ';
+      // 대체어 없이 제거 (이 지역은 '지역' 토큰 반복 유발)
+      const replacement = '';
       text = text.slice(0, idx) + replacement + text.slice(idx + pat.length);
       count = countSub(text, region);
     }
