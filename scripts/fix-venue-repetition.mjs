@@ -27,38 +27,31 @@ function countSub(text, sub) {
 }
 
 /**
- * name_display 필러 패턴을 제거한다.
- * 뒤에서부터 제거하여 서론에 남기고 결론에서 제거 (분산 유지).
+ * 브랜드 코어 이름 추출: name_display에서 region과 type을 제거한 고유 부분.
+ * 예: "강남 레이스 클럽" → "레이스", "부산해운대 멜트 클럽" → "멜트"
+ * repeat_limit에서 brandName.includes(token) 로 스킵되므로 안전.
  */
-function removeName(text, name, maxKeep) {
-  const patterns = [
-    name + '만의 특성으로 ',
-    name + '을 기준으로 ',
-    name + '에 관해 ',
-    name + '의 특색으로 ',
-    name + '의 경우 ',
-    name + '에서는 ',
-    name + '에서 ',
-    name + '이라는 ',
-    name + '의 ',
-    name + '이 ',
-    name + '은 ',
-    name + '을 ',
-    name + '에 ',
-    name + '과 ',
-    name + '와 ',
-    name,
-  ];
+function getCoreName(v) {
+  let core = v.name_display;
+  if (v.region) core = core.replace(v.region + ' ', '').replace(v.region, '');
+  for (const t of ['클럽', '나이트', '라운지']) {
+    core = core.replace(' ' + t, '').replace(t, '');
+  }
+  return core.trim();
+}
 
+/**
+ * name_display를 coreName으로 치환한다 (유사도 보존).
+ * 뒤에서부터 치환하여 서론에 남기고 결론에서 치환 (분산 유지).
+ * coreName이 비어 있으면 삭제 (기존 동작).
+ */
+function removeName(text, name, maxKeep, coreName = '') {
   let count = countSub(text, name);
-  for (const pat of patterns) {
-    while (count > maxKeep) {
-      const idx = text.lastIndexOf(pat);
-      if (idx === -1) break;
-      text = text.slice(0, idx) + text.slice(idx + pat.length);
-      count = countSub(text, name);
-    }
-    if (count <= maxKeep) break;
+  while (count > maxKeep) {
+    const idx = text.lastIndexOf(name);
+    if (idx === -1) break;
+    text = text.slice(0, idx) + coreName + text.slice(idx + name.length);
+    count = countSub(text, name);
   }
   return cleanSpaces(text);
 }
