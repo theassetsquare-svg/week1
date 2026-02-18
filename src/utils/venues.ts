@@ -86,7 +86,7 @@ export function getReadingTime(v: Venue): number {
 }
 
 export const guides = [
-  { slug: 'first-visit', title: '첫 방문 핵심 팁', desc: '처음 가는 밤, 두려움을 설렘으로 바꾸는 핵심 팁' },
+  { slug: 'first-visit', title: '첫 입장 핵심 팁', desc: '처음 가는 밤, 두려움을 설렘으로 바꾸는 핵심 팁' },
   { slug: 'dress-code', title: '드레스코드 총정리', desc: '어떤 옷을 입어야 할지 고민된다면, 유형별 드레스코드를 확인하세요' },
   { slug: 'budget-guide', title: '나이트라이프 예산 관리', desc: '유형별 예상 비용과 절약 팁' },
   { slug: 'safety-tips', title: '안전하게 즐기는 법', desc: '즐거운 밤을 위한 안전 수칙과 주의사항' },
