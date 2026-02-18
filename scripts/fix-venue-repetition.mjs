@@ -325,6 +325,7 @@ function getAllTextFields(v) {
   fields.push({ path: 'bodySections.music', value: v.bodySections.music });
   fields.push({ path: 'bodySections.safety', value: v.bodySections.safety });
   v.timeline.forEach((t, i) => {
+    fields.push({ path: `timeline.${i}.label`, value: t.label });
     fields.push({ path: `timeline.${i}.desc`, value: t.desc });
   });
   v.checklist.forEach((c, i) => {
@@ -339,6 +340,10 @@ function getAllTextFields(v) {
       fields.push({ path: `plannerRules.${group}.${key}`, value: v.plannerRules[group][key] });
     }
   }
+  // Keywords as text fields for token reduction
+  v.keywords.forEach((kw, i) => {
+    fields.push({ path: `keywords.${i}`, value: kw });
+  });
   return fields;
 }
 
