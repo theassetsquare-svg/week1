@@ -1084,10 +1084,8 @@ function generateFAQs(v, idx) {
 
 // ─── Teaser (unique per venue) ───
 function generateTeaser(v, idx) {
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
-  const name = v.displayName;
-  const region = v.region;
-  const typeKr = TYPE_LABELS[v.type];
+  const { name, region, typeKr, adj1, adj2 } = getVenueVars(v);
+  const adjs = [adj1, adj2];
 
   const teasers = [
     `${region}의 밤을 ${adjs[0]} 경험으로 바꾸는 ${name}. 방문자 모두에게 잊지 못할 순간을 선사합니다.`,
