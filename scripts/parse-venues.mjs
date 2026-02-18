@@ -1015,7 +1015,7 @@ function generateFAQs(v, idx) {
   const name = `${v.region} ${v.displayName}`;
   const region = v.region;
   const typeKr = TYPE_LABELS[v.type];
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
 
   // Generate truly unique questions by embedding venue name and region
   const faqTemplates = {
