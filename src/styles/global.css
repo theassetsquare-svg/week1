@@ -58,6 +58,10 @@ main {
   margin: 0 auto;
   background: var(--bg-primary);
   min-height: 80vh;
+  overflow-x: hidden;
+  border-left: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  transition: max-width 0.3s ease;
 }
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; }
 .content-narrow { max-width: var(--content-width); margin: 0 auto; }
