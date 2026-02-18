@@ -133,7 +133,7 @@ function main() {
       const c3 = countSubstring(part3, brandName);
 
       if (c1 === 0 || c2 === 0 || c3 === 0) {
-        warn(`${relPath}: "${brandName}" distribution [${c1},${c2},${c3}] — missing from a section`);
+        fail(`${relPath}: "${brandName}" distribution [${c1},${c2},${c3}] — missing from a section`);
         distributionFails++;
       }
     }
