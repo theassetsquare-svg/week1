@@ -187,7 +187,7 @@ const tocItems = [
 
     <!-- 4. Planner -->
     <section class="venue-section" id="planner">
-      <h2>나만의 플랜 만들기</h2>
+      <h2>커스텀 코스</h2>
       <div class="planner">
         <div class="planner-group">
           <label>목적을 선택하세요</label>
@@ -223,7 +223,7 @@ const tocItems = [
 
     <!-- 6. Music -->
     <section class="venue-section" id="music">
-      <h2>음악/사운드</h2>
+      <h2>뮤직 노트</h2>
       <p>{v.bodySections.music}</p>
     </section>
 
@@ -261,10 +261,10 @@ const tocItems = [
 
     <!-- 10. Related -->
     <section class="venue-section" id="related">
-      <h2>추천 매장</h2>
+      <h2>관련 매장</h2>
       {sameRegion.length > 0 && (
         <div class="related-section">
-          <h3>인근 추천</h3>
+          <h3>근처</h3>
           <div class="related-grid">
             {sameRegion.map(rv => (
               <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
@@ -382,7 +382,7 @@ const tocItems = [
 
     <!-- 15. Venue Diary -->
     <section class="venue-section" id="diary">
-      <h2>나만의 방문 일기</h2>
+      <h2>나만의 후기</h2>
       <p class="section-intro">방문 후 느낀 점을 기록해보세요. 작성한 내용은 브라우저에 저장됩니다.</p>
       <div class="diary-container">
         <div class="diary-ratings">
