@@ -15,9 +15,9 @@ const readTime = getReadingTime(v);
 const siteUrl = 'https://week1-6m5.pages.dev';
 const venueUrl = getVenueUrl(v);
 
-const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(Boolean);
-const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean);
-const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean);
+const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
+const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
+const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
 
 const ogImage = `https://week1-6m5.pages.dev/venues/${v.venueSlug}/og-thumbnail.svg`;
 const title = `${v.name_display} | ${v.region} 클럽 후기·가격·영업시간·입장료 2026`;
