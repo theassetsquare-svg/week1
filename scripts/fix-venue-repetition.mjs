@@ -326,7 +326,7 @@ function reduceAllTokensAggressively(v, coreName, region) {
 
     let limit;
     if (coreName && token === coreName) {
-      limit = 2; // coreName (bare): max 2 in data (template adds h1, h2, breadcrumb)
+      limit = 5; // coreName (bare): max 5 in data (template adds h1, h2, breadcrumb)
     } else if (region && token === region) {
       limit = 0; // region: max 0 in data (template adds breadcrumb, fact box, tags)
     } else if (CATEGORY_TOKENS.has(token)) {
