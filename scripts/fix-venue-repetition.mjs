@@ -330,6 +330,8 @@ for (const v of venues) {
     tokenCounts[t] = (tokenCounts[t] || 0) + 1;
   }
 
+  // For space-containing coreNames (e.g. "창원 호박"), extract bare core for token matching
+  const bareCore = coreName && coreName.includes(' ') ? coreName.split(' ').pop() : coreName;
   const overflowTokens = Object.entries(tokenCounts)
     .filter(([t, c]) => {
       if (FUNC_WORDS.has(t)) return false;
@@ -337,8 +339,10 @@ for (const v of venues) {
       if (name && name.includes(t)) return false;
       // coreName + 조사 결합형 보호 (e.g., "레이스에서는", "레이스만의")
       if (coreName && coreName.length >= 2 && t.startsWith(coreName)) return false;
+      if (bareCore && bareCore.length >= 2 && t.startsWith(bareCore)) return false;
       // coreName 내부 substring 보호 (e.g., "나이트" in "물나이트")
       if (coreName && coreName.length >= 2 && coreName.includes(t)) return false;
+      if (bareCore && bareCore.length >= 2 && bareCore.includes(t)) return false;
       if (CATEGORY_TOKENS.has(t)) return c > 1; // 데이터에서 1회까지
       if (UI_TOKENS.has(t)) return false;
       if (t === region) return false;
