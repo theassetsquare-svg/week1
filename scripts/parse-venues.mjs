@@ -280,7 +280,7 @@ function generateSeoTitle(v, idx) {
   const name = v.displayName;
   const region = v.region;
   const typeKr = TYPE_LABELS[v.type];
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
   const rf = getRegionFlavor(region);
 
   const pools = {
