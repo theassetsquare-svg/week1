@@ -287,7 +287,7 @@ function generateSeoTitle(v, idx) {
     club: [
       `${region} ${name} ${typeKr} 실전 가이드 – 입장료·드레스코드·예약 2026`,
       `${name} ${typeKr} 첫방문 완벽 정리 | ${region} ${rf.adj} 밤의 시작`,
-      `${region} ${name} 후기 – ${adjs[0]} 사운드와 분위기 총정리`,
+      `${region} ${name} 후기 – ${adj1} 사운드와 분위기 총정리`,
       `${name} ${typeKr} 가격·영업시간·위치 | ${region} 핫플 2026`,
       `${region} 대표 ${typeKr} ${name} 솔직 리뷰 – 분위기부터 입장까지`,
       `${name} ${typeKr}에서 보내는 ${adjs[1]} 밤 | ${region} 추천`,
@@ -296,7 +296,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${typeKr} 추천 1순위 ${name} | 드레스코드·가격 안내`,
       `${name}에서 즐기는 ${region}의 ${adjs[2]} 밤 – 완벽 가이드 2026`,
       `${region} ${name} 예약·입장·분위기 한눈에 | ${typeKr} 리뷰`,
-      `${adjs[0]} ${region} ${typeKr} ${name} – 첫방문자 필독 가이드`,
+      `${adj1} ${region} ${typeKr} ${name} – 첫방문자 필독 가이드`,
       `${name} ${typeKr} 영업시간·위치·후기 | ${region} 밤문화 2026`,
       `${region} ${name} DJ·음악·분위기 리뷰 – ${typeKr} 탐방기`,
       `${name} ${typeKr} 완전정복 가이드 | ${region} 놀거리 추천`,
@@ -305,7 +305,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${name} ${typeKr} 체험기 – ${adjs[1]} 밤의 기록`,
       `${name} ${typeKr} 꿀팁 모음 | ${region} 핫플레이스 가이드`,
       `${region} ${typeKr} ${name} 입장·테이블·주차 총정리`,
-      `${name} 방문기: ${region}에서 만난 ${adjs[0]} ${typeKr}`,
+      `${name} 방문기: ${region}에서 만난 ${adj1} ${typeKr}`,
       `${region} ${name} ${typeKr} 2026 최신 가이드 – 후기·예산·팁`,
       `${name}으로 떠나는 ${region} ${adjs[2]} 밤 여행`,
       `${region} ${name} ${typeKr} A to Z | 예약부터 귀가까지`,
@@ -315,7 +315,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${name} 사운드·조명·분위기 분석 – ${typeKr} 리뷰`,
       `${name} ${typeKr}의 모든 것 | ${region} 밤 즐기기 가이드`,
       `${region} ${name} 금토 주말 공략법 – ${typeKr} 팁`,
-      `${name} ${typeKr} ${adjs[0]} 경험담 | ${region} 추천 스팟`,
+      `${name} ${typeKr} ${adj1} 경험담 | ${region} 추천 스팟`,
       `${region} ${name} ${typeKr} 예산 가이드 – 얼마면 충분할까?`,
       `${name}에서 시작하는 ${region} 밤 – ${typeKr} 입문 가이드`,
       `${region} ${typeKr} ${name} 핵심 정보 총정리 2026`,
@@ -339,7 +339,7 @@ function generateSeoTitle(v, idx) {
     night: [
       `${region} ${name} ${typeKr} 완벽 가이드 – 부킹·공연·분위기 2026`,
       `${name} ${typeKr} 첫방문 필독 | ${region} 라이브 밤문화`,
-      `${region} ${name} 후기 – ${adjs[0]} 무대와 댄스타임 체험기`,
+      `${region} ${name} 후기 – ${adj1} 무대와 댄스타임 체험기`,
       `${name} ${typeKr} 영업시간·가격·예약 | ${region} 안내 2026`,
       `${region} 대표 ${typeKr} ${name} 솔직 리뷰 – 공연부터 귀가까지`,
       `${name} ${typeKr}에서 보내는 ${adjs[1]} 밤 | ${region} 추천`,
@@ -348,7 +348,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${typeKr} 추천 ${name} | 복장·가격·매너 안내`,
       `${name}에서 즐기는 ${region}의 ${adjs[2]} 라이브 밤`,
       `${region} ${name} 예약·입장·분위기 한눈에 | ${typeKr} 리뷰`,
-      `${adjs[0]} ${region} ${typeKr} ${name} – 첫방문자 필독`,
+      `${adj1} ${region} ${typeKr} ${name} – 첫방문자 필독`,
       `${name} ${typeKr} 영업시간·위치·후기 | ${region} 밤문화 2026`,
       `${region} ${name} 밴드·댄스·분위기 리뷰 – ${typeKr} 탐방기`,
       `${name} ${typeKr} 완전정복 | ${region} 놀거리 추천 가이드`,
@@ -357,7 +357,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${name} ${typeKr} 체험기 – ${adjs[1]} 밤의 기록`,
       `${name} ${typeKr} 꿀팁 모음 | ${region} 핫플레이스`,
       `${region} ${typeKr} ${name} 입장·테이블·주차 A to Z`,
-      `${name} 방문기: ${region}에서 만난 ${adjs[0]} 라이브 무대`,
+      `${name} 방문기: ${region}에서 만난 ${adj1} 라이브 무대`,
       `${region} ${name} ${typeKr} 2026 업데이트 – 후기·예산·팁`,
       `${name}으로 떠나는 ${region} ${adjs[2]} 밤 여행기`,
       `${region} ${name} ${typeKr} 예약부터 귀가까지 완벽 플랜`,
@@ -367,7 +367,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${name} 밴드·보컬·댄스 분석 – ${typeKr} 리뷰`,
       `${name} ${typeKr}의 모든 것 | ${region} 밤 가이드`,
       `${region} ${name} 금토 주말 공략법 – ${typeKr} 핵심 팁`,
-      `${name} ${typeKr} ${adjs[0]} 경험담 | ${region} 추천`,
+      `${name} ${typeKr} ${adj1} 경험담 | ${region} 추천`,
       `${region} ${name} ${typeKr} 예산 가이드 – 준비물 체크`,
       `${name}에서 시작하는 ${region} 밤 – ${typeKr} 입문서`,
       `${region} ${typeKr} ${name} 핵심 정보 2026 최신판`,
@@ -402,7 +402,7 @@ function generateSeoTitle(v, idx) {
     lounge: [
       `${region} ${name} ${typeKr} 완벽 가이드 – 칵테일·분위기·예약 2026`,
       `${name} ${typeKr} 첫방문 필독 | ${region} 프리미엄 밤문화`,
-      `${region} ${name} 후기 – ${adjs[0]} 무드와 시그니처 칵테일`,
+      `${region} ${name} 후기 – ${adj1} 무드와 시그니처 칵테일`,
       `${name} ${typeKr} 가격·메뉴·예약 | ${region} 데이트 코스 2026`,
       `${region} 대표 ${typeKr} ${name} 솔직 리뷰 – 분위기 분석`,
       `${name} ${typeKr}에서 보내는 ${adjs[1]} 저녁 | ${region} 추천`,
@@ -411,7 +411,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${typeKr} 추천 ${name} | 분위기·칵테일·가격 안내`,
       `${name}에서 즐기는 ${region}의 ${adjs[2]} 저녁 시간`,
       `${region} ${name} 분위기·메뉴·예약 한눈에 | ${typeKr} 리뷰`,
-      `${adjs[0]} ${region} ${typeKr} ${name} – 첫방문 가이드`,
+      `${adj1} ${region} ${typeKr} ${name} – 첫방문 가이드`,
       `${name} ${typeKr} 영업시간·위치·후기 | ${region} 2026`,
       `${region} ${name} 인테리어·칵테일·서비스 리뷰 – ${typeKr}`,
       `${name} ${typeKr} 완전정복 가이드 | ${region} 데이트 추천`,
@@ -420,7 +420,7 @@ function generateSeoTitle(v, idx) {
       `${region} ${name} ${typeKr} 체험기 – ${adjs[1]} 밤의 기록`,
       `${name} ${typeKr} 꿀팁 모음 | ${region} 프리미엄 스팟`,
       `${region} ${typeKr} ${name} 예약·좌석·주차 A to Z`,
-      `${name} 방문기: ${region}에서 찾은 ${adjs[0]} 안식처`,
+      `${name} 방문기: ${region}에서 찾은 ${adj1} 안식처`,
       `${region} ${name} ${typeKr} 2026 최신 가이드 – 후기·팁`,
       `${name}으로 떠나는 ${region} ${adjs[2]} 저녁 여행`,
       `${region} ${name} ${typeKr} 예약부터 마무리까지 완벽 플랜`,
@@ -443,18 +443,18 @@ function generateSeoDescription(v, idx) {
 
   const pools = [
     `${region} ${name} ${typeKr} 방문 전 꼭 확인하세요. 분위기, 가격, 예약 방법, 드레스코드와 실제 방문 후기를 담았습니다.`,
-    `${name} ${typeKr}의 ${adjs[0]} 매력을 낱낱이 공개합니다. ${region}에서 잊지 못할 밤을 계획하는 분들을 위한 상세 가이드.`,
+    `${name} ${typeKr}의 ${adj1} 매력을 낱낱이 공개합니다. ${region}에서 잊지 못할 밤을 계획하는 분들을 위한 상세 가이드.`,
     `${region} ${name}의 입장료부터 분위기, 추천 시간대까지. ${typeKr} 첫방문자도 걱정 없는 완벽 안내서입니다.`,
     `${adjs[1]} 분위기의 ${region} ${name} ${typeKr}. 가격, 위치, 영업시간, 예약 정보와 리얼 후기를 확인하세요.`,
     `${name}에서 ${region}의 밤을 즐기는 방법. ${typeKr} 입장부터 귀가까지 알아야 할 모든 것을 정리했습니다.`,
     `${region} ${typeKr} ${name}의 분위기·가격·위치 상세 리뷰. 방문 전 체크리스트와 꿀팁을 함께 제공합니다.`,
-    `${name} ${typeKr}이 특별한 이유? ${region}에서 ${adjs[0]} 밤문화를 경험하고 싶다면 이 가이드를 참고하세요.`,
+    `${name} ${typeKr}이 특별한 이유? ${region}에서 ${adj1} 밤문화를 경험하고 싶다면 이 가이드를 참고하세요.`,
     `${region} ${name} ${typeKr} 2026 최신 정보. 예약법, 드레스코드, 예산 계획부터 실전 팁까지 담았습니다.`,
     `${name}을 처음 방문하시나요? ${region} ${typeKr}의 분위기, 시간대별 특징, 가격 정보를 미리 확인하세요.`,
     `${region}의 ${adjs[2]} ${typeKr} ${name}. 입장 방법, 음료 가격, 분위기, 교통편까지 한번에 정리한 가이드.`,
     `${name} ${typeKr} 리얼 체험기. ${region}에서 보내는 특별한 밤을 위한 실전 정보와 추천 코스를 안내합니다.`,
     `${region} ${name}의 매력을 파헤친 상세 가이드. ${typeKr} 방문 시 알아야 할 모든 정보가 여기 있습니다.`,
-    `${adjs[0]} 밤을 원한다면 ${region} ${name} ${typeKr}. 첫방문 체크리스트, 가격, 분위기 리뷰를 확인하세요.`,
+    `${adj1} 밤을 원한다면 ${region} ${name} ${typeKr}. 첫방문 체크리스트, 가격, 분위기 리뷰를 확인하세요.`,
     `${name} ${typeKr}에서의 완벽한 밤을 위한 가이드. ${region} 방문 전 가격, 예약, 드레스코드를 체크하세요.`,
     `${region} 밤문화의 핵심, ${name} ${typeKr}. 분위기부터 예산까지, 방문 전 필요한 정보를 정리했습니다.`,
     `${name}은 ${region}에서 어떤 경험을 선사할까? ${typeKr}의 분위기, 가격, 위치 정보를 상세히 안내합니다.`,
@@ -481,31 +481,31 @@ function generateHookIntro(v, idx, rng) {
     // Question hooks
     `${region}에서 진짜 좋은 ${typeKr}를 찾는다면 어디를 가야 할까? 수많은 선택지 중에서 ${name}이 유독 눈에 띄는 이유가 있다. 단순히 음악이 좋아서, 분위기가 멋져서만이 아니다. 이곳에 한 번이라도 발을 들여본 사람이라면 알 것이다 — ${name}에서의 밤은 다른 곳에서는 쉽게 대체할 수 없는 무언가를 가지고 있다는 것을. ${rf.vibe}의 에너지가 농축된 이 공간에서, 오늘 밤 당신만의 이야기가 시작된다. 이 가이드는 처음 방문하는 분부터 재방문을 계획하는 분까지, ${name}을 제대로 즐기기 위해 알아야 할 모든 것을 담았다.`,
     // Sensory hooks
-    `${timeExpr}, ${region}의 거리가 다른 빛깔로 물들기 시작한다. 낮의 분주함이 사라지고, 대신 네온과 음악이 골목을 채우는 시간. 그 변화의 중심에 ${name}이 있다. 문 앞에 서면 안쪽에서 새어 나오는 ${adjs[0]} 에너지가 피부에 닿는다. 한 발짝 안으로 들어서는 순간, ${rf.vibe} 한가운데서 펼쳐지는 ${name}만의 세계가 열린다. 처음 오는 사람도, 여러 번 온 사람도 매번 새로운 장면을 발견하게 되는 곳. 이 가이드를 통해 ${name}에서의 밤을 미리 그려보자.`,
+    `${timeExpr}, ${region}의 거리가 다른 빛깔로 물들기 시작한다. 낮의 분주함이 사라지고, 대신 네온과 음악이 골목을 채우는 시간. 그 변화의 중심에 ${name}이 있다. 문 앞에 서면 안쪽에서 새어 나오는 ${adj1} 에너지가 피부에 닿는다. 한 발짝 안으로 들어서는 순간, ${rf.vibe} 한가운데서 펼쳐지는 ${name}만의 세계가 열린다. 처음 오는 사람도, 여러 번 온 사람도 매번 새로운 장면을 발견하게 되는 곳. 이 가이드를 통해 ${name}에서의 밤을 미리 그려보자.`,
     // Contrast hooks
     `낮에 보면 ${region}의 평범한 거리 한 켠이다. 그러나 해가 지면 이야기가 달라진다. ${name}의 간판에 불이 켜지는 순간, 이 일대의 공기가 바뀐다. 일상과 밤의 경계선 위에 서 있는 이 공간은, 방문할 때마다 조금씩 다른 얼굴을 보여준다. ${adjs[1]} 조명 아래 펼쳐지는 ${name}의 세계는 단순한 유흥을 넘어, 하나의 경험이 된다. 첫방문이든 재방문이든, 이 가이드가 ${name}에서의 밤을 더 풍성하게 만들어줄 것이다.`,
     // Storytelling hooks
-    `지난 금요일, 한 무리의 친구들이 ${region} ${rf.landmark} 근처에서 만났다. 목적지는 정해져 있었다 — ${name}. 누군가의 추천으로, 누군가의 경험담으로 이 이름을 알게 된 그들은, 입구를 통과하는 순간 왜 사람들이 이곳을 이야기하는지 단번에 이해했다. ${adjs[0]} 분위기, ${adjs[2]} 디테일, 그리고 이곳에서만 느낄 수 있는 특별한 에너지. ${name}은 방문자에게 이야기를 만들어주는 곳이다. 당신도 그 이야기의 주인공이 될 준비가 되었는가?`,
+    `지난 금요일, 한 무리의 친구들이 ${region} ${rf.landmark} 근처에서 만났다. 목적지는 정해져 있었다 — ${name}. 누군가의 추천으로, 누군가의 경험담으로 이 이름을 알게 된 그들은, 입구를 통과하는 순간 왜 사람들이 이곳을 이야기하는지 단번에 이해했다. ${adj1} 분위기, ${adjs[2]} 디테일, 그리고 이곳에서만 느낄 수 있는 특별한 에너지. ${name}은 방문자에게 이야기를 만들어주는 곳이다. 당신도 그 이야기의 주인공이 될 준비가 되었는가?`,
     // Direct address hooks
-    `이 글을 읽고 있다면, 아마 ${region}에서 괜찮은 ${typeKr}를 찾고 있을 것이다. 혹은 ${name}이라는 이름을 어디선가 듣고 궁금해서 검색했을 수도 있다. 어떤 경우든, 잘 찾아왔다. ${name}은 ${region} ${typeKr} 씬에서 확실한 존재감을 가진 곳이다. ${adjs[0]} 분위기부터 가격, 예약 방법, 드레스코드까지 — 이 가이드 하나면 첫 방문도 완벽하게 준비할 수 있다. ${rf.vibe}의 밤을 ${name}에서 시작해보자.`,
+    `이 글을 읽고 있다면, 아마 ${region}에서 괜찮은 ${typeKr}를 찾고 있을 것이다. 혹은 ${name}이라는 이름을 어디선가 듣고 궁금해서 검색했을 수도 있다. 어떤 경우든, 잘 찾아왔다. ${name}은 ${region} ${typeKr} 씬에서 확실한 존재감을 가진 곳이다. ${adj1} 분위기부터 가격, 예약 방법, 드레스코드까지 — 이 가이드 하나면 첫 방문도 완벽하게 준비할 수 있다. ${rf.vibe}의 밤을 ${name}에서 시작해보자.`,
     // Statistical/fact hooks
     `${region}의 ${typeKr} 중에서 재방문율이 높은 곳을 꼽으라면, ${name}은 빠지지 않는다. 그 이유는 단순하다 — 이곳은 한 번의 방문으로 기억에 남는 밤을 만들어주기 때문이다. ${rf.landmark}에 위치한 ${name}은, ${adjs[1]} 인테리어와 음향, 그리고 세심한 서비스가 조화를 이루는 공간이다. 처음이라 걱정되는 분들을 위해, 입장부터 귀가까지 모든 과정을 이 가이드에 정리했다.`,
     // Mystery hooks
-    `${region}에서 밤이 깊어질수록 빛나는 곳이 있다. 간판은 크지 않고, 입구도 화려하지 않다. 그런데 문 안쪽에서 흘러나오는 에너지는 지나가는 발걸음을 멈추게 한다. ${name}이다. 이곳의 ${adjs[0]} 매력은 직접 경험하기 전에는 설명하기 어렵다. 그래서 이 가이드를 만들었다 — ${name}에서의 밤을 미리 상상할 수 있도록, 분위기부터 가격까지 모든 정보를 담았다.`,
+    `${region}에서 밤이 깊어질수록 빛나는 곳이 있다. 간판은 크지 않고, 입구도 화려하지 않다. 그런데 문 안쪽에서 흘러나오는 에너지는 지나가는 발걸음을 멈추게 한다. ${name}이다. 이곳의 ${adj1} 매력은 직접 경험하기 전에는 설명하기 어렵다. 그래서 이 가이드를 만들었다 — ${name}에서의 밤을 미리 상상할 수 있도록, 분위기부터 가격까지 모든 정보를 담았다.`,
     // Challenge hooks
     `${region}에서 ${typeKr}를 가본 적 있는가? 혹시 아직이라면, ${name}이 첫 경험으로 나쁘지 않을 것이다. 혹시 이미 여러 곳을 다녀봤다면, ${name}이 보여주는 ${adjs[2]} 차별점에 놀랄 수도 있다. ${rf.vibe}의 에너지를 품은 이 공간은, 방문자의 기대를 한 단계 넘어서는 경험을 선사한다. 입장 전에 알아두면 좋은 것들을 이 가이드에 전부 모았다.`,
     // Scene-setting hooks
-    `금요일 저녁, ${region} ${rf.transport}에서 내린다. 주변 거리에는 이미 밤의 기운이 감돈다. ${rf.food}에서 배를 든든히 채운 뒤, 발걸음은 자연스럽게 ${name}을 향한다. 이곳을 아는 사람들은 일찍 움직인다 — 좋은 자리는 금방 차기 때문이다. ${name}의 ${adjs[0]} 분위기 속으로 들어서면, 평일의 피로가 서서히 녹아내린다. 이 가이드는 그런 완벽한 밤을 설계하는 데 필요한 모든 정보를 제공한다.`,
+    `금요일 저녁, ${region} ${rf.transport}에서 내린다. 주변 거리에는 이미 밤의 기운이 감돈다. ${rf.food}에서 배를 든든히 채운 뒤, 발걸음은 자연스럽게 ${name}을 향한다. 이곳을 아는 사람들은 일찍 움직인다 — 좋은 자리는 금방 차기 때문이다. ${name}의 ${adj1} 분위기 속으로 들어서면, 평일의 피로가 서서히 녹아내린다. 이 가이드는 그런 완벽한 밤을 설계하는 데 필요한 모든 정보를 제공한다.`,
     // Comparison hooks
     `${region}에는 ${typeKr}가 여럿 있다. 각각의 개성이 있고, 저마다의 단골이 있다. 그중에서 ${name}이 갖는 포지션은 명확하다 — ${adjs[1]} 공간감과 ${adjs[2]} 분위기로 방문자에게 잊히지 않는 인상을 남기는 곳. ${rf.vibe}의 밤문화를 대표하는 이 공간을 제대로 즐기려면, 약간의 사전 준비가 도움이 된다. 가격부터 드레스코드까지, 이 가이드에서 확인해보자.`,
     // Personal narrative hooks
-    `처음 ${name}에 갔을 때의 기억은 꽤 선명하다. ${region}의 밤거리를 걷다가, 어떤 직감 같은 것에 이끌려 문을 열었다. 안으로 들어서는 순간 느꼈던 ${adjs[0]} 공기, 귀에 도달한 첫 번째 음악, 눈에 들어온 조명의 결. 그 모든 것이 조화롭게 맞물리는 순간이 있었다. ${name}은 그런 순간을 만들어주는 곳이다. 이 가이드를 통해 당신도 그 첫 경험을 미리 준비해보자.`,
+    `처음 ${name}에 갔을 때의 기억은 꽤 선명하다. ${region}의 밤거리를 걷다가, 어떤 직감 같은 것에 이끌려 문을 열었다. 안으로 들어서는 순간 느꼈던 ${adj1} 공기, 귀에 도달한 첫 번째 음악, 눈에 들어온 조명의 결. 그 모든 것이 조화롭게 맞물리는 순간이 있었다. ${name}은 그런 순간을 만들어주는 곳이다. 이 가이드를 통해 당신도 그 첫 경험을 미리 준비해보자.`,
     // Urgency hooks
     `${region}의 밤문화 지도는 계속 변하고 있다. 새로운 곳이 열리고, 오래된 곳은 사라진다. 그 와중에 꾸준히 자리를 지키며 방문자들에게 선택받는 공간이 있다 — ${name}이다. ${adjs[1]} 무드와 ${adjs[2]} 서비스로 ${rf.vibe}의 밤을 정의해온 이곳. 다음 밤 외출을 계획하고 있다면, ${name}을 선택지에 넣어보자. 방문 전 알아야 할 모든 것을 이 가이드에 정리해두었다.`,
     // Emotional hooks
-    `좋은 밤은 기억에 남는다. 음악, 분위기, 함께한 사람들, 그리고 공간이 만들어낸 감정. ${name}은 ${region}에서 그런 '좋은 밤'을 만들어주는 곳 중 하나다. ${adjs[0]} 조명 아래 흐르는 시간, ${adjs[1]} 음향이 감싸는 공간. 이곳에서 보낸 밤은 다음 날 아침까지 여운이 남는다. 첫 방문을 준비하든, 재방문을 계획하든, 이 가이드가 도움이 될 것이다.`,
+    `좋은 밤은 기억에 남는다. 음악, 분위기, 함께한 사람들, 그리고 공간이 만들어낸 감정. ${name}은 ${region}에서 그런 '좋은 밤'을 만들어주는 곳 중 하나다. ${adj1} 조명 아래 흐르는 시간, ${adjs[1]} 음향이 감싸는 공간. 이곳에서 보낸 밤은 다음 날 아침까지 여운이 남는다. 첫 방문을 준비하든, 재방문을 계획하든, 이 가이드가 도움이 될 것이다.`,
     // Insider hooks
-    `${region} 밤문화를 즐기는 사람들 사이에서 ${name}은 이미 익숙한 이름이다. 하지만 처음 들어보는 분도 있을 것이다. ${name}의 ${adjs[0]} 매력은 소문만으로는 다 전할 수 없다. ${rf.vibe}의 독특한 에너지가 담긴 이 공간은, 직접 방문해야 비로소 이해되는 것들이 있다. 그 전에, 이 가이드로 기본 정보와 꿀팁을 미리 챙겨가자.`,
+    `${region} 밤문화를 즐기는 사람들 사이에서 ${name}은 이미 익숙한 이름이다. 하지만 처음 들어보는 분도 있을 것이다. ${name}의 ${adj1} 매력은 소문만으로는 다 전할 수 없다. ${rf.vibe}의 독특한 에너지가 담긴 이 공간은, 직접 방문해야 비로소 이해되는 것들이 있다. 그 전에, 이 가이드로 기본 정보와 꿀팁을 미리 챙겨가자.`,
     // Philosophical hooks
     `밤이라는 시간은 특별하다. 낮의 규칙이 느슨해지고, 평소와 다른 자신을 발견하게 되는 시간. ${region}에서 그런 밤의 마법을 가장 잘 보여주는 공간이 ${name}이다. ${adjs[2]} 분위기 속에서 흐르는 음악과 조명이 만들어내는 세계는, 일상에서 한 발짝 벗어난 경험을 선사한다. 이 가이드는 ${name}에서의 밤을 제대로 즐기기 위한 모든 정보를 담고 있다.`,
   ];
@@ -1053,7 +1053,7 @@ function generateFAQs(v, idx) {
     ],
     lounge: [
       [
-        { q: `${name}의 전반적인 분위기는 어떤가요?`, a: `${adjs[0]} 분위기의 ${region} 대표 라운지입니다. 대화를 나누기에 최적화된 음량과 조명으로 편안한 시간을 보내실 수 있습니다.` },
+        { q: `${name}의 전반적인 분위기는 어떤가요?`, a: `${adj1} 분위기의 ${region} 대표 라운지입니다. 대화를 나누기에 최적화된 음량과 조명으로 편안한 시간을 보내실 수 있습니다.` },
         { q: `${name}에 예약 없이 갈 수 있나요?`, a: `평일은 워크인이 가능하지만, 금토 저녁에는 예약을 강력히 추천합니다. 인기 시간대에는 대기가 생길 수 있습니다.` },
         { q: `${name}의 드레스코드가 까다로운가요?`, a: `스마트 캐주얼 이상을 권장합니다. 너무 캐주얼한 복장은 분위기와 맞지 않을 수 있습니다.` },
         { q: `${name}에서의 예상 비용이 궁금해요`, a: `칵테일 기준 1.5~3만 원대이며, 안주와 함께 인당 5~10만 원 정도를 예상하시면 됩니다.` },
@@ -1063,7 +1063,7 @@ function generateFAQs(v, idx) {
         { q: `${name}에서 추천하는 시그니처 메뉴가 있나요?`, a: `바텐더가 직접 만드는 시그니처 칵테일이 대표 메뉴입니다. 취향을 말씀하시면 맞춤 추천을 받으실 수 있습니다.` },
         { q: `${name}까지 주차는 가능한가요?`, a: `발레파킹 또는 인근 주차장 이용이 가능합니다. 사전 확인을 추천드립니다.` },
         { q: `${name}에서 흡연이 가능한가요?`, a: `실내는 금연이며, 별도의 흡연 구역이나 테라스가 마련되어 있습니다.` },
-        { q: `${name}의 음악이 대화에 방해되지 않나요?`, a: `대화를 나누기 좋은 볼륨으로 세팅되어 있습니다. ${adjs[0]} 분위기의 배경 음악이 자연스럽게 흐릅니다.` },
+        { q: `${name}의 음악이 대화에 방해되지 않나요?`, a: `대화를 나누기 좋은 볼륨으로 세팅되어 있습니다. ${adj1} 분위기의 배경 음악이 자연스럽게 흐릅니다.` },
         { q: `${name}에서 2차로 오기 좋은가요?`, a: `${adjs[1]} 분위기에서 마무리하기 좋아 2차 장소로 많이 찾으십니다. 특히 늦은 시간대의 분위기가 좋습니다.` },
       ],
     ],
@@ -1084,32 +1084,32 @@ function generateTeaser(v, idx) {
   const adjs = [adj1, adj2];
 
   const teasers = [
-    `${region}의 밤을 ${adjs[0]} 경험으로 바꾸는 ${name}. 방문자 모두에게 잊지 못할 순간을 선사합니다.`,
-    `${name}은 ${region} ${typeKr} 씬에서 ${adjs[0]} 존재감을 드러내는 곳입니다. 오늘 밤의 목적지로 추천합니다.`,
-    `${adjs[0]} 분위기와 ${adjs[1]} 서비스가 어우러진 ${name}. ${region}의 밤을 새롭게 정의합니다.`,
-    `${region}에서 ${adjs[0]} 밤을 찾는다면 ${name}이 답입니다. ${typeKr}의 정수를 경험해보세요.`,
-    `${name}이 선사하는 ${adjs[0]} 밤문화 경험. ${region}을 대표하는 ${typeKr}입니다.`,
-    `${region}의 밤을 ${adjs[0]} 방식으로 즐기고 싶다면, ${name}의 문을 두드려 보세요.`,
+    `${region}의 밤을 ${adj1} 경험으로 바꾸는 ${name}. 방문자 모두에게 잊지 못할 순간을 선사합니다.`,
+    `${name}은 ${region} ${typeKr} 씬에서 ${adj1} 존재감을 드러내는 곳입니다. 오늘 밤의 목적지로 추천합니다.`,
+    `${adj1} 분위기와 ${adjs[1]} 서비스가 어우러진 ${name}. ${region}의 밤을 새롭게 정의합니다.`,
+    `${region}에서 ${adj1} 밤을 찾는다면 ${name}이 답입니다. ${typeKr}의 정수를 경험해보세요.`,
+    `${name}이 선사하는 ${adj1} 밤문화 경험. ${region}을 대표하는 ${typeKr}입니다.`,
+    `${region}의 밤을 ${adj1} 방식으로 즐기고 싶다면, ${name}의 문을 두드려 보세요.`,
     `${name}은 ${region} ${typeKr} 중에서도 ${adjs[1]} 특색을 가진 공간입니다.`,
-    `${adjs[0]} 공간감과 ${adjs[1]} 음악으로 완성되는 ${name}의 밤을 만나보세요.`,
-    `${region}에서 가장 ${adjs[0]} 밤을 경험할 수 있는 곳, ${name}입니다.`,
-    `${name}은 ${region}의 밤에 ${adjs[0]} 색채를 입히는 특별한 공간입니다.`,
-    `${adjs[0]} 밤문화의 진수를 보여주는 ${name}. ${region}의 자부심입니다.`,
-    `${region}의 밤을 완성시키는 ${adjs[0]} 키워드, 그것은 바로 ${name}입니다.`,
-    `${name}에서 ${region}의 밤이 가진 ${adjs[0]} 잠재력을 발견하세요.`,
+    `${adj1} 공간감과 ${adjs[1]} 음악으로 완성되는 ${name}의 밤을 만나보세요.`,
+    `${region}에서 가장 ${adj1} 밤을 경험할 수 있는 곳, ${name}입니다.`,
+    `${name}은 ${region}의 밤에 ${adj1} 색채를 입히는 특별한 공간입니다.`,
+    `${adj1} 밤문화의 진수를 보여주는 ${name}. ${region}의 자부심입니다.`,
+    `${region}의 밤을 완성시키는 ${adj1} 키워드, 그것은 바로 ${name}입니다.`,
+    `${name}에서 ${region}의 밤이 가진 ${adj1} 잠재력을 발견하세요.`,
     `${adjs[1]} 무드와 함께하는 ${name}의 밤. ${region} 밤문화의 새 지평을 엽니다.`,
-    `${name}: ${region}에서 가장 ${adjs[0]} 밤을 약속하는 ${typeKr}입니다.`,
-    `${region}의 밤에 ${adjs[0]} 이야기를 더하는 곳, ${name}을 만나보세요.`,
-    `${name}은 ${region} 밤문화 지도에서 ${adjs[0]} 좌표를 찍고 있습니다.`,
-    `${adjs[0]} 조명 아래 펼쳐지는 ${name}의 밤. ${region}을 사로잡는 ${typeKr}입니다.`,
-    `${region}에서 ${adjs[0]} 시간을 보내고 싶다면, ${name}이 최적의 선택입니다.`,
-    `${name}이 들려주는 ${adjs[0]} 밤의 서사. ${region}의 밤문화를 대표합니다.`,
-    `${region}의 밤을 ${adjs[0]} 방식으로 재해석한 공간, ${name}에 오신 것을 환영합니다.`,
-    `${name}은 ${region}에서 ${adjs[0]} 밤을 설계하는 장인의 공간입니다.`,
-    `${adjs[0]} 에너지가 감도는 ${name}. ${region} ${typeKr}의 새로운 기준입니다.`,
-    `${region}의 밤이 ${adjs[0]} 꿈을 꾸는 곳, 그곳이 바로 ${name}입니다.`,
-    `${name}에서 시작되는 ${region}의 ${adjs[0]} 밤 여행을 경험하세요.`,
-    `${adjs[0]} 순간들이 모여 하나의 밤을 완성하는 곳, ${name}입니다.`,
+    `${name}: ${region}에서 가장 ${adj1} 밤을 약속하는 ${typeKr}입니다.`,
+    `${region}의 밤에 ${adj1} 이야기를 더하는 곳, ${name}을 만나보세요.`,
+    `${name}은 ${region} 밤문화 지도에서 ${adj1} 좌표를 찍고 있습니다.`,
+    `${adj1} 조명 아래 펼쳐지는 ${name}의 밤. ${region}을 사로잡는 ${typeKr}입니다.`,
+    `${region}에서 ${adj1} 시간을 보내고 싶다면, ${name}이 최적의 선택입니다.`,
+    `${name}이 들려주는 ${adj1} 밤의 서사. ${region}의 밤문화를 대표합니다.`,
+    `${region}의 밤을 ${adj1} 방식으로 재해석한 공간, ${name}에 오신 것을 환영합니다.`,
+    `${name}은 ${region}에서 ${adj1} 밤을 설계하는 장인의 공간입니다.`,
+    `${adj1} 에너지가 감도는 ${name}. ${region} ${typeKr}의 새로운 기준입니다.`,
+    `${region}의 밤이 ${adj1} 꿈을 꾸는 곳, 그곳이 바로 ${name}입니다.`,
+    `${name}에서 시작되는 ${region}의 ${adj1} 밤 여행을 경험하세요.`,
+    `${adj1} 순간들이 모여 하나의 밤을 완성하는 곳, ${name}입니다.`,
   ];
 
   return teasers[hashStr(name + 'teaser') % teasers.length];
@@ -1145,7 +1145,7 @@ function generatePlannerRules(v, idx) {
   const typeSpecific = {
     club: {
       '목적': {
-        '대화': `${name}의 바 카운터 근처 좌석이 대화에 적합합니다. 상대적으로 ${adjs[0]} 구역에서 음료와 함께 대화를 즐기세요.`,
+        '대화': `${name}의 바 카운터 근처 좌석이 대화에 적합합니다. 상대적으로 ${adj1} 구역에서 음료와 함께 대화를 즐기세요.`,
         '댄스': `메인 플로어 중앙이 최적의 위치입니다. ${name}의 ${adjs[1]} DJ 사운드를 온몸으로 느끼세요.`,
         '단체': `테이블 예약을 추천합니다. ${name}의 보틀 서비스와 함께 그룹만의 ${adjs[2]} 시간을 만드세요.`,
         '첫방문': `일찍 도착하여 ${name}의 공간에 익숙해지세요. 바에서 한 잔 하며 분위기를 살피는 것이 좋습니다.`,
@@ -1158,26 +1158,26 @@ function generatePlannerRules(v, idx) {
     },
     night: {
       '목적': {
-        '대화': `${name}의 무대에서 먼 테이블이 대화에 적합합니다. ${adjs[0]} 분위기에서 편안하게 이야기하세요.`,
+        '대화': `${name}의 무대에서 먼 테이블이 대화에 적합합니다. ${adj1} 분위기에서 편안하게 이야기하세요.`,
         '댄스': `댄스 타임에 적극 참여하세요. ${name}의 무대 앞이 가장 ${adjs[1]} 자리입니다.`,
         '단체': `큰 테이블을 예약하고 ${name}에서 함께 즐기세요. ${adjs[2]} 단체 이벤트도 가능합니다.`,
         '첫방문': `부담 없이 ${name}의 음악과 분위기를 즐기세요. 웨이터에게 좋은 자리를 추천받으세요.`,
       },
       '시간대': {
-        '이른 (20-22시)': `${name}에서 편안하게 식사와 음료를 즐길 수 있는 ${adjs[0]} 시간입니다.`,
+        '이른 (20-22시)': `${name}에서 편안하게 식사와 음료를 즐길 수 있는 ${adj1} 시간입니다.`,
         '피크 (22-00시)': `공연과 이벤트가 집중되는 시간입니다. ${name}의 ${adjs[1]} 무대를 기대하세요.`,
         '늦은 (00시 이후)': `가장 열정적인 시간대로, ${name}에서의 댄스와 교류가 ${adjs[2]} 방식으로 활발합니다.`,
       },
     },
     lounge: {
       '목적': {
-        '대화': `${name}의 코너 소파석이 가장 적합합니다. ${adjs[0]} 프라이빗 공간을 요청하세요.`,
+        '대화': `${name}의 코너 소파석이 가장 적합합니다. ${adj1} 프라이빗 공간을 요청하세요.`,
         '댄스': `${name}은 대화 중심의 라운지지만, 음악에 맞춰 가벼운 움직임은 자연스럽습니다.`,
         '단체': `${name}의 프라이빗룸이나 단체석을 예약하세요. ${adjs[1]} 맞춤 서비스도 가능합니다.`,
         '첫방문': `${name}의 시그니처 칵테일을 추천받아 보세요. 바텐더와의 대화가 ${adjs[2]} 경험이 됩니다.`,
       },
       '시간대': {
-        '이른 (19-21시)': `${name}에서 여유로운 ${adjs[0]} 분위기를 즐기기 좋은 시간입니다.`,
+        '이른 (19-21시)': `${name}에서 여유로운 ${adj1} 분위기를 즐기기 좋은 시간입니다.`,
         '피크 (21-23시)': `${name}의 분위기가 가장 ${adjs[1]} 시간대입니다.`,
         '늦은 (23시 이후)': `${name}에서 ${adjs[2]} 분위기로 밤을 차분하게 마무리하기 좋습니다.`,
       },
@@ -1191,7 +1191,7 @@ function generateImagePrompts(v, idx) {
   const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
   const typeEnglish = { club: 'nightclub', night: 'dance hall', lounge: 'lounge' };
   return [
-    `Fictional illustration: Stylish Korean adults arriving at a ${adjs[0]} ${typeEnglish[v.type]} entrance in ${v.region}, street vibe with neon lights, fashion-forward silhouettes, no identifiable faces, no text or logos, dark moody atmosphere with warm accents`,
+    `Fictional illustration: Stylish Korean adults arriving at a ${adj1} ${typeEnglish[v.type]} entrance in ${v.region}, street vibe with neon lights, fashion-forward silhouettes, no identifiable faces, no text or logos, dark moody atmosphere with warm accents`,
     `Fictional illustration: Elegant silhouettes of Korean adults enjoying ${adjs[1]} conversation at a VIP table, cocktail glasses, ambient lighting, fashionable outfits, no identifiable faces, no text or logos, sophisticated nightlife mood`,
     `Fictional illustration: Dynamic silhouettes of stylish Korean adults in a ${adjs[2]} ${typeEnglish[v.type]} setting with ${v.type === 'club' ? 'DJ booth and laser lights' : v.type === 'night' ? 'live stage and band energy' : 'premium bar and mixologist'}, vibrant lighting effects, no identifiable faces, no text or logos`,
   ];
