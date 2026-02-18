@@ -589,28 +589,12 @@ function generateScenes(v, idx, rng) {
   const [adj1, adj2, adj3, adj4] = adjs;
   const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
   const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
-  const frame = STORY_FRAMES[hashStr(name + 'frame') % STORY_FRAMES.length];
-
-  const typeActions = {
-    club: ['비트에 몸을 맡기', '사운드 웨이브 속으로 빠져들', 'DJ의 믹싱에 귀 기울이', '레이저 조명 아래서 움직이'],
-    night: ['라이브 무대 앞에서 손뼉을 치', '댄스 파트너와 스텝을 맞추', '밴드 연주에 흠뻑 취하', '신나는 무대에 몸을 싣'],
-    lounge: ['칵테일 잔을 기울이', '은은한 선율에 귀를 열', '소파에 깊이 앉아 대화를 나누', '바텐더의 손끝을 바라보'],
-  };
-  const act = typeActions[type];
-
   const typeSpaces = {
     club: ['댄스플로어', '바 카운터', 'VIP 부스', 'DJ 부스 앞'],
     night: ['메인 홀', '무대 앞 테이블', '바 좌석', '코너 소파'],
     lounge: ['창가 소파석', '바 카운터', '프라이빗 코너', '테라스'],
   };
   const spaces = typeSpaces[type];
-
-  const typeSounds = {
-    club: ['베이스가 심장을 두드리는 소리', '하이햇의 날카로운 리듬', '신스 멜로디의 상승', '드롭의 폭발적 에너지'],
-    night: ['밴드의 기타 리프', '보컬리스트의 감미로운 목소리', '드럼의 경쾌한 박자', '관객의 환호성'],
-    lounge: ['잔에 얼음이 부딪히는 소리', '재즈 피아노의 은은한 선율', '조용한 대화의 물결', '잔잔한 R&B 멜로디'],
-  };
-  const sounds = typeSounds[type];
 
   // Build 5 unique scenes
   const scenes = {};
