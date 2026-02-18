@@ -439,11 +439,7 @@ function generateSeoTitle(v, idx) {
 
 // ─── SEO Description generator (unique per venue) ───
 function generateSeoDescription(v, idx) {
-  const name = v.displayName;
-  const region = v.region;
-  const typeKr = TYPE_LABELS[v.type];
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
-  const rf = getRegionFlavor(region);
+  const { name, region, typeKr, adj1, adj2, adj3, rf } = getVenueVars(v);
 
   const pools = [
     `${region} ${name} ${typeKr} 방문 전 꼭 확인하세요. 분위기, 가격, 예약 방법, 드레스코드와 실제 방문 후기를 담았습니다.`,
