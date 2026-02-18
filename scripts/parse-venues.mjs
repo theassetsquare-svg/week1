@@ -203,6 +203,351 @@ const TIME_EXPRESSIONS = [
   '도시의 맥박이 바뀌는 순간', '밤의 서막이 오르면',
 ];
 
+// ─── Region-specific flavor pools for uniqueness ───
+const REGION_FLAVORS = {
+  '강남': { vibe: '세련된 도심', landmark: '테헤란로', transport: '강남역', food: '역삼동 맛집거리', adj: '트렌디한' },
+  '청담': { vibe: '럭셔리한 거리', landmark: '청담사거리', transport: '청담역', food: '명품거리 레스토랑', adj: '고급스러운' },
+  '이태원': { vibe: '글로벌 감성', landmark: '이태원로', transport: '이태원역', food: '경리단길 맛집', adj: '이국적인' },
+  '홍대': { vibe: '자유로운 예술가의 거리', landmark: '홍대거리', transport: '홍대입구역', food: '연남동 카페', adj: '힙한' },
+  '압구정': { vibe: '세련된 갤러리 타운', landmark: '압구정로데오', transport: '압구정역', food: '로데오 다이닝', adj: '감각적인' },
+  '상봉동': { vibe: '로컬 밤문화 중심지', landmark: '상봉역 일대', transport: '상봉역', food: '상봉 먹자골목', adj: '정겨운' },
+  '수유': { vibe: '활기찬 주거 밀집지', landmark: '수유시장 근처', transport: '수유역', food: '수유리 맛집', adj: '서민적인' },
+  '노원': { vibe: '젊은 에너지의 베드타운', landmark: '노원역 일대', transport: '노원역', food: '노원 먹자골목', adj: '활기찬' },
+  '길동': { vibe: '조용한 주택가 속 밤', landmark: '길동사거리', transport: '굽은다리역', food: '길동 로컬 맛집', adj: '은밀한' },
+  '신림': { vibe: '대학가 인근 번화가', landmark: '신림역 일대', transport: '신림역', food: '신림동 순대골목', adj: '젊은' },
+  '독산동': { vibe: '숨겨진 로컬 스팟', landmark: '독산역 근처', transport: '독산역', food: '독산동 먹자골목', adj: '소박한' },
+  '강서': { vibe: '서울 서쪽의 밤', landmark: '발산역 일대', transport: '발산역', food: '마곡 다이닝', adj: '편안한' },
+  '강북': { vibe: '전통과 현대가 공존', landmark: '미아사거리', transport: '미아역', food: '강북 로컬 맛집', adj: '투박한' },
+  '잠실': { vibe: '랜드마크 옆 밤문화', landmark: '롯데타워 일대', transport: '잠실역', food: '송리단길', adj: '화려한' },
+  '성남': { vibe: '수도권 남부 허브', landmark: '모란시장 일대', transport: '모란역', food: '성남 맛집거리', adj: '실속있는' },
+  '일산': { vibe: '신도시의 세련된 밤', landmark: '라페스타', transport: '일산역', food: '웨스턴돔 맛집', adj: '깔끔한' },
+  '고양': { vibe: '수도권 북부의 활기', landmark: '고양시 일대', transport: '삼송역', food: '고양 맛집', adj: '신선한' },
+  '인천': { vibe: '항구도시의 밤바람', landmark: '구월동 일대', transport: '인천역', food: '차이나타운', adj: '바다 내음의' },
+  '인천부평': { vibe: '부평 지하상가 너머', landmark: '부평역 일대', transport: '부평역', food: '부평 깡통시장', adj: '서민적인' },
+  '인천송도': { vibe: '미래도시의 밤', landmark: '센트럴파크', transport: '송도역', food: '트리플스트리트', adj: '모던한' },
+  '수원': { vibe: '화성 성곽 너머 밤', landmark: '수원역 일대', transport: '수원역', food: '행리단길', adj: '역사적인' },
+  '천안': { vibe: '충남의 젊은 밤', landmark: '신부동 일대', transport: '천안역', food: '신부동 맛집', adj: '패기있는' },
+  '대구': { vibe: '동성로의 열기', landmark: '동성로', transport: '중앙로역', food: '동인동 찜갈비', adj: '뜨거운' },
+  '대전': { vibe: '대전 둔산동 밤거리', landmark: '둔산동 일대', transport: '둔산역', food: '성심당 근처', adj: '은근한' },
+  '부산': { vibe: '해변도시의 밤', landmark: '서면 일대', transport: '서면역', food: '서면 먹자골목', adj: '호쾌한' },
+  '부산서면': { vibe: '서면 교차로의 열기', landmark: '서면1번가', transport: '서면역', food: '전포카페거리', adj: '열정적인' },
+  '부산해운대': { vibe: '해변 파도소리와 밤', landmark: '해운대해수욕장', transport: '해운대역', food: '해리단길', adj: '개방적인' },
+  '부산광안리': { vibe: '광안대교 야경 아래', landmark: '광안리해수욕장', transport: '광안역', food: '광안리 카페거리', adj: '낭만적인' },
+  '광주': { vibe: '예향의 밤', landmark: '충장로', transport: '상무역', food: '충장로 맛집', adj: '문화적인' },
+  '울산': { vibe: '산업도시의 뜨거운 밤', landmark: '삼산동 일대', transport: '울산역', food: '삼산동 맛집', adj: '역동적인' },
+  '전주': { vibe: '한옥마을 너머 밤', landmark: '객사거리', transport: '전주역', food: '한옥마을 먹거리', adj: '전통적인' },
+  '창원': { vibe: '경남의 밤문화 수도', landmark: '상남동 일대', transport: '창원역', food: '상남동 먹자골목', adj: '성장하는' },
+  '포항': { vibe: '동해바다 옆 밤', landmark: '죽도시장 일대', transport: '포항역', food: '죽도시장 회센터', adj: '신선한' },
+  '경주': { vibe: '천년고도의 밤', landmark: '황리단길', transport: '경주역', food: '황리단길 맛집', adj: '고즈넉한' },
+  '김해': { vibe: '가야의 밤', landmark: '김해시내', transport: '김해역', food: '김해 맛집', adj: '소박한' },
+  '춘천': { vibe: '호반의 도시 밤', landmark: '명동거리', transport: '춘천역', food: '닭갈비골목', adj: '청량한' },
+  '강릉': { vibe: '커피도시의 밤', landmark: '강릉 시내', transport: '강릉역', food: '안목해변 카페', adj: '여유로운' },
+  '청주': { vibe: '충북의 대학도시 밤', landmark: '성안길', transport: '청주역', food: '성안길 맛집', adj: '학구적인' },
+  '순천': { vibe: '순천만의 밤', landmark: '순천시내', transport: '순천역', food: '순천 한정식', adj: '자연친화적인' },
+  '목포': { vibe: '항구도시의 밤', landmark: '목포 시내', transport: '목포역', food: '목포 세발낙지', adj: '감성적인' },
+  '제주': { vibe: '섬의 밤바람', landmark: '제주시내', transport: '제주공항', food: '흑돼지거리', adj: '이국적인' },
+  '평택': { vibe: '국제도시의 밤', landmark: '평택역 일대', transport: '평택역', food: '평택 맛집', adj: '다문화적인' },
+  '부천': { vibe: '만화도시의 밤', landmark: '부천역 일대', transport: '부천역', food: '부천 먹자골목', adj: '다채로운' },
+  '의정부': { vibe: '경기 북부의 밤', landmark: '의정부역 일대', transport: '의정부역', food: '부대찌개골목', adj: '푸근한' },
+};
+
+function getRegionFlavor(region) {
+  return REGION_FLAVORS[region] || { vibe: '도시의 밤', landmark: '시내 중심', transport: '역 근처', food: '주변 맛집', adj: '독특한' };
+}
+
+// ─── SEO Title generator (unique per venue) ───
+function generateSeoTitle(v, idx) {
+  const name = v.displayName;
+  const region = v.region;
+  const typeKr = TYPE_LABELS[v.type];
+  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const rf = getRegionFlavor(region);
+
+  const pools = {
+    club: [
+      `${region} ${name} ${typeKr} 실전 가이드 – 입장료·드레스코드·예약 2026`,
+      `${name} ${typeKr} 첫방문 완벽 정리 | ${region} ${rf.adj} 밤의 시작`,
+      `${region} ${name} 후기 – ${adjs[0]} 사운드와 분위기 총정리`,
+      `${name} ${typeKr} 가격·영업시간·위치 | ${region} 핫플 2026`,
+      `${region} 대표 ${typeKr} ${name} 솔직 리뷰 – 분위기부터 입장까지`,
+      `${name} ${typeKr}에서 보내는 ${adjs[1]} 밤 | ${region} 추천`,
+      `${region} ${name} 입장료·테이블·VIP 총정리 2026`,
+      `${name} ${typeKr} 방문 전 꼭 알아야 할 것들 – ${region} 가이드`,
+      `${region} ${typeKr} 추천 1순위 ${name} | 드레스코드·가격 안내`,
+      `${name}에서 즐기는 ${region}의 ${adjs[2]} 밤 – 완벽 가이드 2026`,
+      `${region} ${name} 예약·입장·분위기 한눈에 | ${typeKr} 리뷰`,
+      `${adjs[0]} ${region} ${typeKr} ${name} – 첫방문자 필독 가이드`,
+      `${name} ${typeKr} 영업시간·위치·후기 | ${region} 밤문화 2026`,
+      `${region} ${name} DJ·음악·분위기 리뷰 – ${typeKr} 탐방기`,
+      `${name} ${typeKr} 완전정복 가이드 | ${region} 놀거리 추천`,
+      `${region} ${name} 가격표·예약법·드레스코드 – ${typeKr} 백과`,
+      `${name}이 ${region} ${typeKr} 씬에서 특별한 이유 2026`,
+      `${region} ${name} ${typeKr} 체험기 – ${adjs[1]} 밤의 기록`,
+      `${name} ${typeKr} 꿀팁 모음 | ${region} 핫플레이스 가이드`,
+      `${region} ${typeKr} ${name} 입장·테이블·주차 총정리`,
+      `${name} 방문기: ${region}에서 만난 ${adjs[0]} ${typeKr}`,
+      `${region} ${name} ${typeKr} 2026 최신 가이드 – 후기·예산·팁`,
+      `${name}으로 떠나는 ${region} ${adjs[2]} 밤 여행`,
+      `${region} ${name} ${typeKr} A to Z | 예약부터 귀가까지`,
+      `${adjs[1]} 분위기의 ${region} ${name} ${typeKr} 솔직 후기`,
+      `${region} 밤문화 필수코스 ${name} ${typeKr} – 상세 리뷰`,
+      `${name} ${typeKr} 처음이라면? ${region} 방문 가이드 2026`,
+      `${region} ${name} 사운드·조명·분위기 분석 – ${typeKr} 리뷰`,
+      `${name} ${typeKr}의 모든 것 | ${region} 밤 즐기기 가이드`,
+      `${region} ${name} 금토 주말 공략법 – ${typeKr} 팁`,
+      `${name} ${typeKr} ${adjs[0]} 경험담 | ${region} 추천 스팟`,
+      `${region} ${name} ${typeKr} 예산 가이드 – 얼마면 충분할까?`,
+      `${name}에서 시작하는 ${region} 밤 – ${typeKr} 입문 가이드`,
+      `${region} ${typeKr} ${name} 핵심 정보 총정리 2026`,
+      `${name} ${typeKr} 분위기·가격·추천곡 | ${region} 나이트라이프`,
+      `${region} ${name}만의 ${adjs[2]} 매력 – ${typeKr} 탐방`,
+      `${name} ${typeKr} 주말 vs 평일 비교 리뷰 | ${region}`,
+      `${region} 핫한 ${typeKr} ${name} – 입장부터 마무리까지`,
+      `${name} ${typeKr} 100% 활용법 | ${region} 밤문화 꿀팁`,
+      `${region} ${name} ${typeKr}이 사랑받는 비밀 – 상세 분석`,
+      `${name}과 함께하는 ${region}의 밤 | ${typeKr} 가이드 2026`,
+      `${region} ${name} 솔로·커플·단체 방문법 – ${typeKr} 팁`,
+      `${name} ${typeKr} 인생 밤 만들기 | ${region} 완벽 플랜`,
+      `${region} ${typeKr} 고수들이 찾는 ${name} – 리얼 후기`,
+      `${name} ${typeKr} 오늘밤 갈까? | ${region} 방문 체크리스트`,
+      `${region} ${name} ${typeKr} 숨은 매력 포인트 3가지`,
+      `${name}에서 느끼는 ${adjs[1]} 에너지 | ${region} ${typeKr}`,
+      `${region} ${name} ${typeKr} 계절별 방문 가이드 2026`,
+      `${name} ${typeKr} 데이트·모임·솔로 각각 즐기는 법`,
+      `${region} ${name} 입장 꿀팁과 드레스코드 – ${typeKr} FAQ`,
+    ],
+    night: [
+      `${region} ${name} ${typeKr} 완벽 가이드 – 부킹·공연·분위기 2026`,
+      `${name} ${typeKr} 첫방문 필독 | ${region} 라이브 밤문화`,
+      `${region} ${name} 후기 – ${adjs[0]} 무대와 댄스타임 체험기`,
+      `${name} ${typeKr} 영업시간·가격·예약 | ${region} 안내 2026`,
+      `${region} 대표 ${typeKr} ${name} 솔직 리뷰 – 공연부터 귀가까지`,
+      `${name} ${typeKr}에서 보내는 ${adjs[1]} 밤 | ${region} 추천`,
+      `${region} ${name} 부킹·테이블·공연 스케줄 총정리 2026`,
+      `${name} ${typeKr} 방문 전 체크리스트 – ${region} 가이드`,
+      `${region} ${typeKr} 추천 ${name} | 복장·가격·매너 안내`,
+      `${name}에서 즐기는 ${region}의 ${adjs[2]} 라이브 밤`,
+      `${region} ${name} 예약·입장·분위기 한눈에 | ${typeKr} 리뷰`,
+      `${adjs[0]} ${region} ${typeKr} ${name} – 첫방문자 필독`,
+      `${name} ${typeKr} 영업시간·위치·후기 | ${region} 밤문화 2026`,
+      `${region} ${name} 밴드·댄스·분위기 리뷰 – ${typeKr} 탐방기`,
+      `${name} ${typeKr} 완전정복 | ${region} 놀거리 추천 가이드`,
+      `${region} ${name} 가격표·예약법·복장 – ${typeKr} 상세 안내`,
+      `${name}이 ${region} ${typeKr} 씬에서 특별한 이유`,
+      `${region} ${name} ${typeKr} 체험기 – ${adjs[1]} 밤의 기록`,
+      `${name} ${typeKr} 꿀팁 모음 | ${region} 핫플레이스`,
+      `${region} ${typeKr} ${name} 입장·테이블·주차 A to Z`,
+      `${name} 방문기: ${region}에서 만난 ${adjs[0]} 라이브 무대`,
+      `${region} ${name} ${typeKr} 2026 업데이트 – 후기·예산·팁`,
+      `${name}으로 떠나는 ${region} ${adjs[2]} 밤 여행기`,
+      `${region} ${name} ${typeKr} 예약부터 귀가까지 완벽 플랜`,
+      `${adjs[1]} 공연의 ${region} ${name} ${typeKr} 솔직 후기`,
+      `${region} 밤문화 필수코스 ${name} – 라이브 ${typeKr} 리뷰`,
+      `${name} ${typeKr} 처음이라면? ${region} 입문 가이드 2026`,
+      `${region} ${name} 밴드·보컬·댄스 분석 – ${typeKr} 리뷰`,
+      `${name} ${typeKr}의 모든 것 | ${region} 밤 가이드`,
+      `${region} ${name} 금토 주말 공략법 – ${typeKr} 핵심 팁`,
+      `${name} ${typeKr} ${adjs[0]} 경험담 | ${region} 추천`,
+      `${region} ${name} ${typeKr} 예산 가이드 – 준비물 체크`,
+      `${name}에서 시작하는 ${region} 밤 – ${typeKr} 입문서`,
+      `${region} ${typeKr} ${name} 핵심 정보 2026 최신판`,
+      `${name} ${typeKr} 분위기·가격·공연 | ${region} 밤문화`,
+      `${region} ${name}만의 ${adjs[2]} 매력 – ${typeKr} 탐방`,
+      `${name} ${typeKr} 주말 vs 평일 차이점 | ${region} 리뷰`,
+      `${region} 인기 ${typeKr} ${name} – 입장부터 댄스까지`,
+      `${name} ${typeKr} 200% 즐기는 법 | ${region} 꿀팁`,
+      `${region} ${name} ${typeKr}이 오래 사랑받는 이유 – 분석`,
+      `${name}과 함께하는 ${region}의 밤 | ${typeKr} 2026`,
+      `${region} ${name} 솔로·커플·단체별 가이드 – ${typeKr}`,
+      `${name} ${typeKr} 최고의 밤 만들기 | ${region} 플랜`,
+      `${region} ${typeKr} 단골들이 추천하는 ${name} 리얼 후기`,
+      `${name} ${typeKr} 오늘밤 출동! | ${region} 방문 가이드`,
+      `${region} ${name} ${typeKr} 숨겨진 매력 포인트 공개`,
+      `${name}에서 느끼는 ${adjs[1]} 라이브 | ${region} ${typeKr}`,
+      `${region} ${name} ${typeKr} 계절별 즐기기 가이드 2026`,
+      `${name} ${typeKr} 데이트·회식·모임 각각 즐기는 법`,
+      `${region} ${name} 입장 꿀팁과 부킹 매너 – ${typeKr} FAQ`,
+      `${name} ${typeKr} 라이브 무대의 감동 | ${region} 리뷰`,
+      `${region} ${name} ${typeKr} 웨이터·서비스·매너 가이드`,
+      `${name}의 밤을 완벽하게 | ${region} ${typeKr} 플래너`,
+      `${region} ${name} ${typeKr} 댄스타임 완전 공략 2026`,
+      `${name} ${typeKr} 밴드 공연 일정과 분위기 | ${region}`,
+      `${region} ${name} 테이블·보틀·안주 가격 한눈에`,
+      `${name} ${typeKr}에서의 특별한 밤 | ${region} 후기 2026`,
+      `${region} ${name} ${typeKr} 초보 탈출 가이드 – 팁 모음`,
+      `${name}과 ${region}의 밤 – ${typeKr} 문화 깊이 읽기`,
+      `${region} ${name} ${typeKr} 전격 해부 – 가격·분위기·꿀팁`,
+      `${name} ${typeKr} ${region} 밤의 하이라이트 2026`,
+    ],
+    lounge: [
+      `${region} ${name} ${typeKr} 완벽 가이드 – 칵테일·분위기·예약 2026`,
+      `${name} ${typeKr} 첫방문 필독 | ${region} 프리미엄 밤문화`,
+      `${region} ${name} 후기 – ${adjs[0]} 무드와 시그니처 칵테일`,
+      `${name} ${typeKr} 가격·메뉴·예약 | ${region} 데이트 코스 2026`,
+      `${region} 대표 ${typeKr} ${name} 솔직 리뷰 – 분위기 분석`,
+      `${name} ${typeKr}에서 보내는 ${adjs[1]} 저녁 | ${region} 추천`,
+      `${region} ${name} 예약·메뉴·드레스코드 총정리 2026`,
+      `${name} ${typeKr} 방문 전 알아둘 것들 – ${region} 가이드`,
+      `${region} ${typeKr} 추천 ${name} | 분위기·칵테일·가격 안내`,
+      `${name}에서 즐기는 ${region}의 ${adjs[2]} 저녁 시간`,
+      `${region} ${name} 분위기·메뉴·예약 한눈에 | ${typeKr} 리뷰`,
+      `${adjs[0]} ${region} ${typeKr} ${name} – 첫방문 가이드`,
+      `${name} ${typeKr} 영업시간·위치·후기 | ${region} 2026`,
+      `${region} ${name} 인테리어·칵테일·서비스 리뷰 – ${typeKr}`,
+      `${name} ${typeKr} 완전정복 가이드 | ${region} 데이트 추천`,
+      `${region} ${name} 가격표·예약법·분위기 – ${typeKr} 백과`,
+      `${name}이 ${region} ${typeKr} 씬에서 돋보이는 이유`,
+      `${region} ${name} ${typeKr} 체험기 – ${adjs[1]} 밤의 기록`,
+      `${name} ${typeKr} 꿀팁 모음 | ${region} 프리미엄 스팟`,
+      `${region} ${typeKr} ${name} 예약·좌석·주차 A to Z`,
+      `${name} 방문기: ${region}에서 찾은 ${adjs[0]} 안식처`,
+      `${region} ${name} ${typeKr} 2026 최신 가이드 – 후기·팁`,
+      `${name}으로 떠나는 ${region} ${adjs[2]} 저녁 여행`,
+      `${region} ${name} ${typeKr} 예약부터 마무리까지 완벽 플랜`,
+      `${adjs[1]} 공간의 ${region} ${name} ${typeKr} 솔직 후기`,
+      `${region} 데이트 필수코스 ${name} – ${typeKr} 리뷰`,
+      `${name} ${typeKr} 처음이라면? ${region} 방문 가이드 2026`,
+      `${region} ${name} 바텐더·칵테일·무드 분석 – ${typeKr} 리뷰`,
+      `${name} ${typeKr}의 모든 것 | ${region} 저녁 가이드`,
+      `${region} ${name} 금토 주말 공략법 – ${typeKr} 팁`,
+    ],
+  };
+
+  const pool = pools[v.type];
+  return pool[hashStr(v.displayName + 'title') % pool.length];
+}
+
+// ─── SEO Description generator (unique per venue) ───
+function generateSeoDescription(v, idx) {
+  const name = v.displayName;
+  const region = v.region;
+  const typeKr = TYPE_LABELS[v.type];
+  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const rf = getRegionFlavor(region);
+
+  const pools = [
+    `${region} ${name} ${typeKr} 방문 전 꼭 확인하세요. 분위기, 가격, 예약 방법, 드레스코드와 실제 방문 후기를 담았습니다.`,
+    `${name} ${typeKr}의 ${adjs[0]} 매력을 낱낱이 공개합니다. ${region}에서 잊지 못할 밤을 계획하는 분들을 위한 상세 가이드.`,
+    `${region} ${name}의 입장료부터 분위기, 추천 시간대까지. ${typeKr} 첫방문자도 걱정 없는 완벽 안내서입니다.`,
+    `${adjs[1]} 분위기의 ${region} ${name} ${typeKr}. 가격, 위치, 영업시간, 예약 정보와 리얼 후기를 확인하세요.`,
+    `${name}에서 ${region}의 밤을 즐기는 방법. ${typeKr} 입장부터 귀가까지 알아야 할 모든 것을 정리했습니다.`,
+    `${region} ${typeKr} ${name}의 분위기·가격·위치 상세 리뷰. 방문 전 체크리스트와 꿀팁을 함께 제공합니다.`,
+    `${name} ${typeKr}이 특별한 이유? ${region}에서 ${adjs[0]} 밤문화를 경험하고 싶다면 이 가이드를 참고하세요.`,
+    `${region} ${name} ${typeKr} 2026 최신 정보. 예약법, 드레스코드, 예산 계획부터 실전 팁까지 담았습니다.`,
+    `${name}을 처음 방문하시나요? ${region} ${typeKr}의 분위기, 시간대별 특징, 가격 정보를 미리 확인하세요.`,
+    `${region}의 ${adjs[2]} ${typeKr} ${name}. 입장 방법, 음료 가격, 분위기, 교통편까지 한번에 정리한 가이드.`,
+    `${name} ${typeKr} 리얼 체험기. ${region}에서 보내는 특별한 밤을 위한 실전 정보와 추천 코스를 안내합니다.`,
+    `${region} ${name}의 매력을 파헤친 상세 가이드. ${typeKr} 방문 시 알아야 할 모든 정보가 여기 있습니다.`,
+    `${adjs[0]} 밤을 원한다면 ${region} ${name} ${typeKr}. 첫방문 체크리스트, 가격, 분위기 리뷰를 확인하세요.`,
+    `${name} ${typeKr}에서의 완벽한 밤을 위한 가이드. ${region} 방문 전 가격, 예약, 드레스코드를 체크하세요.`,
+    `${region} 밤문화의 핵심, ${name} ${typeKr}. 분위기부터 예산까지, 방문 전 필요한 정보를 정리했습니다.`,
+    `${name}은 ${region}에서 어떤 경험을 선사할까? ${typeKr}의 분위기, 가격, 위치 정보를 상세히 안내합니다.`,
+    `${region} ${name} ${typeKr} 솔직 리뷰. ${adjs[1]} 분위기와 가격 정보, 방문 팁을 한눈에 확인하세요.`,
+    `${name} ${typeKr} 가이드: ${region}의 밤을 200% 즐기는 법. 예약, 복장, 시간대별 분위기를 총정리합니다.`,
+    `${region} ${name}에서 만나는 ${adjs[2]} 밤. ${typeKr} 입장 정보, 가격, 추천 코스를 확인해보세요.`,
+    `${name} ${typeKr} 방문을 고민 중이라면? ${region}의 분위기, 가격, 후기를 미리 살펴보세요.`,
+  ];
+
+  return pools[hashStr(v.displayName + 'desc') % pools.length];
+}
+
+// ─── Hook Intro generator (unique per venue, 500+ chars) ───
+function generateHookIntro(v, idx, rng) {
+  const name = v.displayName;
+  const region = v.region;
+  const typeKr = TYPE_LABELS[v.type];
+  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const rf = getRegionFlavor(region);
+  const verb = VENUE_VERBS[idx % VENUE_VERBS.length];
+  const timeExpr = TIME_EXPRESSIONS[idx % TIME_EXPRESSIONS.length];
+
+  const hooks = [
+    // Question hooks
+    `${region}에서 진짜 좋은 ${typeKr}를 찾는다면 어디를 가야 할까? 수많은 선택지 중에서 ${name}이 유독 눈에 띄는 이유가 있다. 단순히 음악이 좋아서, 분위기가 멋져서만이 아니다. 이곳에 한 번이라도 발을 들여본 사람이라면 알 것이다 — ${name}에서의 밤은 다른 곳에서는 쉽게 대체할 수 없는 무언가를 가지고 있다는 것을. ${rf.vibe}의 에너지가 농축된 이 공간에서, 오늘 밤 당신만의 이야기가 시작된다. 이 가이드는 처음 방문하는 분부터 재방문을 계획하는 분까지, ${name}을 제대로 즐기기 위해 알아야 할 모든 것을 담았다.`,
+    // Sensory hooks
+    `${timeExpr}, ${region}의 거리가 다른 빛깔로 물들기 시작한다. 낮의 분주함이 사라지고, 대신 네온과 음악이 골목을 채우는 시간. 그 변화의 중심에 ${name}이 있다. 문 앞에 서면 안쪽에서 새어 나오는 ${adjs[0]} 에너지가 피부에 닿는다. 한 발짝 안으로 들어서는 순간, ${rf.vibe} 한가운데서 펼쳐지는 ${name}만의 세계가 열린다. 처음 오는 사람도, 여러 번 온 사람도 매번 새로운 장면을 발견하게 되는 곳. 이 가이드를 통해 ${name}에서의 밤을 미리 그려보자.`,
+    // Contrast hooks
+    `낮에 보면 ${region}의 평범한 거리 한 켠이다. 그러나 해가 지면 이야기가 달라진다. ${name}의 간판에 불이 켜지는 순간, 이 일대의 공기가 바뀐다. 일상과 밤의 경계선 위에 서 있는 이 공간은, 방문할 때마다 조금씩 다른 얼굴을 보여준다. ${adjs[1]} 조명 아래 펼쳐지는 ${name}의 세계는 단순한 유흥을 넘어, 하나의 경험이 된다. 첫방문이든 재방문이든, 이 가이드가 ${name}에서의 밤을 더 풍성하게 만들어줄 것이다.`,
+    // Storytelling hooks
+    `지난 금요일, 한 무리의 친구들이 ${region} ${rf.landmark} 근처에서 만났다. 목적지는 정해져 있었다 — ${name}. 누군가의 추천으로, 누군가의 경험담으로 이 이름을 알게 된 그들은, 입구를 통과하는 순간 왜 사람들이 이곳을 이야기하는지 단번에 이해했다. ${adjs[0]} 분위기, ${adjs[2]} 디테일, 그리고 이곳에서만 느낄 수 있는 특별한 에너지. ${name}은 방문자에게 이야기를 만들어주는 곳이다. 당신도 그 이야기의 주인공이 될 준비가 되었는가?`,
+    // Direct address hooks
+    `이 글을 읽고 있다면, 아마 ${region}에서 괜찮은 ${typeKr}를 찾고 있을 것이다. 혹은 ${name}이라는 이름을 어디선가 듣고 궁금해서 검색했을 수도 있다. 어떤 경우든, 잘 찾아왔다. ${name}은 ${region} ${typeKr} 씬에서 확실한 존재감을 가진 곳이다. ${adjs[0]} 분위기부터 가격, 예약 방법, 드레스코드까지 — 이 가이드 하나면 첫 방문도 완벽하게 준비할 수 있다. ${rf.vibe}의 밤을 ${name}에서 시작해보자.`,
+    // Statistical/fact hooks
+    `${region}의 ${typeKr} 중에서 재방문율이 높은 곳을 꼽으라면, ${name}은 빠지지 않는다. 그 이유는 단순하다 — 이곳은 한 번의 방문으로 기억에 남는 밤을 만들어주기 때문이다. ${rf.landmark}에 위치한 ${name}은, ${adjs[1]} 인테리어와 음향, 그리고 세심한 서비스가 조화를 이루는 공간이다. 처음이라 걱정되는 분들을 위해, 입장부터 귀가까지 모든 과정을 이 가이드에 정리했다.`,
+    // Mystery hooks
+    `${region}에서 밤이 깊어질수록 빛나는 곳이 있다. 간판은 크지 않고, 입구도 화려하지 않다. 그런데 문 안쪽에서 흘러나오는 에너지는 지나가는 발걸음을 멈추게 한다. ${name}이다. 이곳의 ${adjs[0]} 매력은 직접 경험하기 전에는 설명하기 어렵다. 그래서 이 가이드를 만들었다 — ${name}에서의 밤을 미리 상상할 수 있도록, 분위기부터 가격까지 모든 정보를 담았다.`,
+    // Challenge hooks
+    `${region}에서 ${typeKr}를 가본 적 있는가? 혹시 아직이라면, ${name}이 첫 경험으로 나쁘지 않을 것이다. 혹시 이미 여러 곳을 다녀봤다면, ${name}이 보여주는 ${adjs[2]} 차별점에 놀랄 수도 있다. ${rf.vibe}의 에너지를 품은 이 공간은, 방문자의 기대를 한 단계 넘어서는 경험을 선사한다. 입장 전에 알아두면 좋은 것들을 이 가이드에 전부 모았다.`,
+    // Scene-setting hooks
+    `금요일 저녁, ${region} ${rf.transport}에서 내린다. 주변 거리에는 이미 밤의 기운이 감돈다. ${rf.food}에서 배를 든든히 채운 뒤, 발걸음은 자연스럽게 ${name}을 향한다. 이곳을 아는 사람들은 일찍 움직인다 — 좋은 자리는 금방 차기 때문이다. ${name}의 ${adjs[0]} 분위기 속으로 들어서면, 평일의 피로가 서서히 녹아내린다. 이 가이드는 그런 완벽한 밤을 설계하는 데 필요한 모든 정보를 제공한다.`,
+    // Comparison hooks
+    `${region}에는 ${typeKr}가 여럿 있다. 각각의 개성이 있고, 저마다의 단골이 있다. 그중에서 ${name}이 갖는 포지션은 명확하다 — ${adjs[1]} 공간감과 ${adjs[2]} 분위기로 방문자에게 잊히지 않는 인상을 남기는 곳. ${rf.vibe}의 밤문화를 대표하는 이 공간을 제대로 즐기려면, 약간의 사전 준비가 도움이 된다. 가격부터 드레스코드까지, 이 가이드에서 확인해보자.`,
+    // Personal narrative hooks
+    `처음 ${name}에 갔을 때의 기억은 꽤 선명하다. ${region}의 밤거리를 걷다가, 어떤 직감 같은 것에 이끌려 문을 열었다. 안으로 들어서는 순간 느꼈던 ${adjs[0]} 공기, 귀에 도달한 첫 번째 음악, 눈에 들어온 조명의 결. 그 모든 것이 조화롭게 맞물리는 순간이 있었다. ${name}은 그런 순간을 만들어주는 곳이다. 이 가이드를 통해 당신도 그 첫 경험을 미리 준비해보자.`,
+    // Urgency hooks
+    `${region}의 밤문화 지도는 계속 변하고 있다. 새로운 곳이 열리고, 오래된 곳은 사라진다. 그 와중에 꾸준히 자리를 지키며 방문자들에게 선택받는 공간이 있다 — ${name}이다. ${adjs[1]} 무드와 ${adjs[2]} 서비스로 ${rf.vibe}의 밤을 정의해온 이곳. 다음 밤 외출을 계획하고 있다면, ${name}을 선택지에 넣어보자. 방문 전 알아야 할 모든 것을 이 가이드에 정리해두었다.`,
+    // Emotional hooks
+    `좋은 밤은 기억에 남는다. 음악, 분위기, 함께한 사람들, 그리고 공간이 만들어낸 감정. ${name}은 ${region}에서 그런 '좋은 밤'을 만들어주는 곳 중 하나다. ${adjs[0]} 조명 아래 흐르는 시간, ${adjs[1]} 음향이 감싸는 공간. 이곳에서 보낸 밤은 다음 날 아침까지 여운이 남는다. 첫 방문을 준비하든, 재방문을 계획하든, 이 가이드가 도움이 될 것이다.`,
+    // Insider hooks
+    `${region} 밤문화를 즐기는 사람들 사이에서 ${name}은 이미 익숙한 이름이다. 하지만 처음 들어보는 분도 있을 것이다. ${name}의 ${adjs[0]} 매력은 소문만으로는 다 전할 수 없다. ${rf.vibe}의 독특한 에너지가 담긴 이 공간은, 직접 방문해야 비로소 이해되는 것들이 있다. 그 전에, 이 가이드로 기본 정보와 꿀팁을 미리 챙겨가자.`,
+    // Philosophical hooks
+    `밤이라는 시간은 특별하다. 낮의 규칙이 느슨해지고, 평소와 다른 자신을 발견하게 되는 시간. ${region}에서 그런 밤의 마법을 가장 잘 보여주는 공간이 ${name}이다. ${adjs[2]} 분위기 속에서 흐르는 음악과 조명이 만들어내는 세계는, 일상에서 한 발짝 벗어난 경험을 선사한다. 이 가이드는 ${name}에서의 밤을 제대로 즐기기 위한 모든 정보를 담고 있다.`,
+  ];
+
+  return hooks[hashStr(v.displayName + 'hook') % hooks.length];
+}
+
+// ─── Deep Dive generator (unique per venue) ───
+function generateDeepDive(v, idx, rng) {
+  const name = v.displayName;
+  const region = v.region;
+  const typeKr = TYPE_LABELS[v.type];
+  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const rf = getRegionFlavor(region);
+
+  const checkpoints = [
+    `복장은 단정한 캐주얼이 기본이며 러닝셔츠나 슬리퍼는 피하자. 향수는 은은한 제품을 추천하고, 너무 과한 건 역효과다. 도착은 21~22시가 적당하며 너무 이르면 한산할 수 있다.`,
+    `가기 전에 공식 채널에서 이벤트 일정을 확인하자. 특별 이벤트 날에는 입장료가 다를 수 있다. 깔끔한 신발과 단정한 복장은 기본 중의 기본이다.`,
+    `함께 갈 인원을 미리 확정하고, 필요하면 테이블 예약을 해두자. 현금과 카드를 모두 지참하고, 핸드폰 충전은 완료한 뒤 출발하자.`,
+    `첫 방문이라면 일찍 도착해서 공간에 익숙해지는 시간을 확보하자. 바 카운터 근처에서 시작하면 분위기를 자연스럽게 파악할 수 있다.`,
+    `주차 여건을 미리 확인하고, 가능하면 대중교통을 이용하자. 음주 후 귀가 교통편은 반드시 사전에 계획해두어야 한다.`,
+  ];
+
+  const historyPools = {
+    club: [
+      `한국의 클럽 문화는 2000년대 초반 홍대를 중심으로 폭발적으로 성장했다. DJ 중심의 전자음악 문화가 대중화되면서, 각 지역마다 개성 있는 클럽들이 생겨났다. ${region}의 클럽씬도 이 흐름 속에서 독자적인 색깔을 만들어왔으며, 현재는 국내외 아티스트가 방문하는 수준까지 성장했다.`,
+      `클럽 문화의 핵심은 DJ와 사운드 시스템이다. 초기의 단순한 댄스 공간에서, 음향 기술과 조명 연출이 결합된 종합 엔터테인먼트 공간으로 진화했다. ${region} 클럽씬은 이러한 변화를 적극적으로 수용하며 독자적인 정체성을 구축해왔다.`,
+    ],
+    night: [
+      `나이트 문화는 1990년대부터 한국 밤문화의 중심축을 형성해왔다. 라이브 밴드 공연과 댄스 타임이 결합된 독특한 형태는, 세대를 아우르는 즐거움을 제공한다. ${region}의 나이트씬은 이 전통을 계승하면서도 현대적 감각을 더해, 지금도 많은 이들에게 사랑받고 있다.`,
+      `나이트클럽의 매력은 라이브 음악에 있다. 숙련된 밴드의 공연은 녹음된 음악과는 차원이 다른 감동을 준다. ${region}에서도 이러한 라이브 문화가 깊이 뿌리내리며, 밴드와 관객이 함께 만들어가는 독특한 밤문화 생태계가 형성되어 있다.`,
+    ],
+    lounge: [
+      `라운지 문화는 2010년대 이후 한국에서 급격히 성장했다. 단순히 술을 마시는 공간에서, 분위기와 경험을 소비하는 프리미엄 문화 공간으로 자리잡았다. ${region}의 라운지씬은 특히 인테리어와 칵테일에 대한 투자가 두드러지며, 방문자에게 차별화된 경험을 제공한다.`,
+      `좋은 라운지의 조건은 세 가지다: 분위기, 음료, 서비스. ${region}의 라운지들은 이 세 요소의 조화를 추구하며 각자의 개성을 만들어왔다. 바텐더의 역량이 곧 라운지의 수준을 결정하며, 시그니처 칵테일은 각 매장의 정체성이 된다.`,
+    ],
+  };
+
+  const seasons = [
+    `봄에는 날씨가 풀리면서 방문자가 늘어나는 시즌이다. 야외 공간이 있다면 특히 인기가 높다. 여름 성수기에는 주말 대기가 길어질 수 있으니 일찍 출발하는 것을 추천한다. 가을은 선선한 날씨 덕에 가장 쾌적한 방문 시기이며, 연말에는 크리스마스와 새해 행사가 잡히므로 2주 전 예약이 필수다.`,
+    `계절마다 분위기가 미묘하게 달라진다. 봄과 가을에는 쾌적한 날씨 덕에 방문자 만족도가 높고, 여름에는 에어컨이 잘 되는 실내 공간의 쾌적함이 장점이다. 겨울에는 ${rf.vibe}의 따스한 분위기가 바깥 추위와 대비되어 특별한 감성을 자아낸다.`,
+    `주중과 주말의 분위기 차이도 크다. 평일에는 여유롭게 공간을 즐길 수 있고, 금토에는 에너지가 최고조에 달한다. 공휴일 전날은 주말만큼 붐비므로 참고하자. 특별한 날에 방문한다면 미리 예약하는 것이 현명하다.`,
+  ];
+
+  const courses = [
+    `1차로 ${rf.food}에서 든든한 식사를 하고, 2차로 ${name}에 입장하는 것이 정석 코스다. ${rf.transport}에서 접근성이 좋으므로 이동도 편하다. 피크타임에 맞춰 도착하면 가장 활기찬 분위기를 경험할 수 있고, 마무리는 주변 카페에서 가볍게 마무리하면 완벽한 밤이 완성된다.`,
+    `사전에 ${rf.transport} 근처에서 모여 가벼운 음식과 함께 워밍업을 하자. ${name}에서의 시간을 충분히 즐긴 뒤, 새벽에는 ${region} 주변의 해장국집이나 편의점에서 마무리하면 된다. 귀가는 대리운전이나 택시를 이용하자.`,
+    `${region}의 밤을 제대로 즐기려면 시간 배분이 중요하다. 저녁 식사 후 21시쯤 ${name}에 도착하고, 핵심 시간대인 23시~01시를 충분히 즐긴 뒤, 01시 이후 체력에 따라 더 머물거나 귀가를 결정하면 된다.`,
+  ];
+
+  return {
+    checkpoint: checkpoints[hashStr(name + 'ckpt') % checkpoints.length],
+    history: historyPools[v.type][hashStr(name + 'hist') % historyPools[v.type].length],
+    season: seasons[hashStr(name + 'season') % seasons.length],
+    course: courses[hashStr(name + 'course') % courses.length],
+  };
+}
+
 // ─── Scene generators (truly unique per venue) ───
 function generateScenes(v, idx, rng) {
   const name = v.displayName;
