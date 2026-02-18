@@ -237,11 +237,11 @@ for (const v of venues) {
   for (const cw of cliches) {
     const fields2 = getAllTextFields(v);
     let totalCliche = fields2.reduce((s, f) => s + countSub(f.value, cw), 0);
-    if (totalCliche > 1) {
-      for (let i = fields2.length - 1; i >= 0 && totalCliche > 1; i--) {
+    if (totalCliche > 2) {
+      for (let i = fields2.length - 1; i >= 0 && totalCliche > 2; i--) {
         const f = fields2[i];
         let val = f.value;
-        while (countSub(val, cw) > 0 && totalCliche > 1) {
+        while (countSub(val, cw) > 0 && totalCliche > 2) {
           val = reduceCliche(val, cw, Math.max(0, countSub(val, cw) - 1));
           totalCliche--;
         }
