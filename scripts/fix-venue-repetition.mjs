@@ -325,6 +325,10 @@ function countAllText(v, sub) {
 
 function getAllTextFields(v) {
   const fields = [];
+  // storyFrame.style is rendered 2x on page (heading + TOC) — include early so it's preserved
+  if (v.storyFrame && v.storyFrame.style) {
+    fields.push({ path: 'storyFrame.style', value: v.storyFrame.style });
+  }
   fields.push({ path: 'teaser', value: v.teaser });
   for (const s of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5']) {
     fields.push({ path: `story.${s}`, value: v.story[s] });
