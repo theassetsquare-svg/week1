@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = '편집 방침 | Editorial Policy';
+const description = '나이트라이프 코리아의 콘텐츠 생성, 팩트체크, 갱신, 수정 절차에 대한 편집 방침입니다.';
+const siteUrl = 'https://week1-6m5.pages.dev';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": `${siteUrl}/editorial-policy/`,
+    "inLanguage": "ko",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "나이트라이프 코리아",
+      "url": siteUrl
+    }
+  }
+];
+---
+<BaseLayout title={title} description={description} canonical={`${siteUrl}/editorial-policy/`} jsonLd={jsonLd}>
+  <div class="container content-narrow" style="padding: 3rem 1rem;">
+    <h1>편집 방침</h1>
+    <p style="color: var(--text-muted); font-size: 0.85rem;">최종 갱신: 2026-02-18</p>
+
+    <section style="margin: 2rem 0;">
+      <h2>1. 콘텐츠 생성</h2>
+      <p>나이트라이프 코리아의 업소 페이지 콘텐츠는 AI 언어 모델을 활용하여 작성됩니다. 공개된 업소 정보, 온라인 리뷰, 지역 특성을 종합하여 각 업소의 분위기, 음악, 안전 정보를 구성합니다.</p>
+    </section>
+
+    <section style="margin: 2rem 0;">
+      <h2>2. 정보 검증</h2>
+      <p>AI 생성 콘텐츠는 다음 기준으로 검증됩니다:</p>
+      <ul>
+        <li>업소명, 지역, 유형 등 기본 사실 대조</li>
+        <li>주소 및 위치 좌표 교차 확인</li>
+        <li>SEO 메타 데이터 일관성 자동 검사(QA)</li>
+        <li>페이지 간 콘텐츠 유사도 자동 분석</li>
+        <li>반복 단어 및 상투어 자동 탐지</li>
+      </ul>
+    </section>
+
+    <section style="margin: 2rem 0;">
+      <h2>3. 갱신 주기</h2>
+      <p>콘텐츠는 정기적으로 검토 및 갱신됩니다. 각 업소 페이지 상단의 '갱신일'에서 마지막 업데이트 날짜를 확인할 수 있습니다. 업소 폐업, 이전 등 주요 변동이 확인되면 즉시 반영합니다.</p>
+    </section>
+
+    <section style="margin: 2rem 0;">
+      <h2>4. 수정 요청</h2>
+      <p>게시된 정보에 오류가 있거나 수정이 필요한 경우, 카카오톡 ID <strong>besta12</strong>로 연락 주시면 확인 후 반영하겠습니다.</p>
+    </section>
+
+    <section style="margin: 2rem 0;">
+      <h2>5. AI 활용 공개</h2>
+      <p>투명성을 위해 AI 활용 사실을 공개합니다. 모든 업소 페이지의 스토리텔링, 분위기 설명, FAQ 등은 AI가 작성했으며, 자동화된 품질 검사(QA) 시스템을 통과한 콘텐츠만 게시됩니다.</p>
+    </section>
+  </div>
+</BaseLayout>
