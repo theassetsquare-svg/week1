@@ -236,18 +236,16 @@ for (const v of venues) {
   const afterRegion = countAllText(v, region);
   totalRegionRemoved += (beforeRegion - afterRegion);
 
-  // ── 3. 상투어 감소 ──
+  // ── 3. 상투어 감소 (데이터 전체에서 1회까지, 템플릿 여유분 확보) ──
   const cliches = ['이곳', '공간', '매장', '여기', '해당', '장소'];
   for (const cw of cliches) {
     const fields2 = getAllTextFields(v);
-    // 전체 데이터에서 cliche 카운트
     let totalCliche = fields2.reduce((s, f) => s + countSub(f.value, cw), 0);
-    if (totalCliche > 2) {
-      // 필드별로 뒤에서부터 제거
-      for (let i = fields2.length - 1; i >= 0 && totalCliche > 2; i--) {
+    if (totalCliche > 1) {
+      for (let i = fields2.length - 1; i >= 0 && totalCliche > 1; i--) {
         const f = fields2[i];
         let val = f.value;
-        while (countSub(val, cw) > 0 && totalCliche > 2) {
+        while (countSub(val, cw) > 0 && totalCliche > 1) {
           val = reduceCliche(val, cw, Math.max(0, countSub(val, cw) - 1));
           totalCliche--;
         }
