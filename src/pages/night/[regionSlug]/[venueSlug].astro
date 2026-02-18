@@ -19,9 +19,9 @@ const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(B
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
 
-const ogImage = `https://week1-6m5.pages.dev/venues/${v.venueSlug}/og-thumbnail.svg`;
+const ogImage = `https://week1-6m5.pages.dev${v.images[0].src}`;
 const title = `${v.name_display} 후기·가격·영업시간·부킹 2026`;
-const description = `${v.name_display} 완벽 가이드 – 분위기, 라이브 공연, 드레스코드, 가격 정보와 실제 방문 후기를 확인하세요.`;
+const description = `${v.name_display} – ${v.teaser}`.slice(0, 155);
 
 const jsonLd = [
   {
