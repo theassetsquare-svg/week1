@@ -21,8 +21,8 @@ const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boole
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
 
 const ogImage = `https://week1-6m5.pages.dev${v.images[0].src}`;
-const title = `${v.name_display} 후기·가격·영업시간·부킹 2026`;
-const description = `${v.name_display} – ${v.teaser}`.slice(0, 155);
+const title = v.seoTitle || `${v.name_display} 후기·가격·영업시간·부킹 2026`;
+const description = v.seoDescription || `${v.name_display} – ${v.teaser}`.slice(0, 155);
 
 const jsonLd = [
   {
