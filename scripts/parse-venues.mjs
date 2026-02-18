@@ -476,10 +476,10 @@ function generateHookIntro(v, idx, rng) {
   const name = v.displayName;
   const region = v.region;
   const typeKr = TYPE_LABELS[v.type];
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
   const rf = getRegionFlavor(region);
-  const verb = VENUE_VERBS[idx % VENUE_VERBS.length];
-  const timeExpr = TIME_EXPRESSIONS[idx % TIME_EXPRESSIONS.length];
+  const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
+  const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
 
   const hooks = [
     // Question hooks
