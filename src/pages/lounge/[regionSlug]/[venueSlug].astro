@@ -20,7 +20,7 @@ const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boole
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
 
 const ogImage = `https://week1-6m5.pages.dev/venues/${v.venueSlug}/og-thumbnail.svg`;
-const title = `${v.name_display} | ${v.region} 라운지 후기·가격·예약 안내 2026`;
+const title = `${v.name_display} 후기·가격·예약 안내 2026`;
 const description = `${v.name_display} 완벽 가이드 – 분위기, 시그니처 칵테일, 예약 방법, 가격 정보와 실제 방문 후기를 확인하세요.`;
 
 const jsonLd = [
