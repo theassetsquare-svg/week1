@@ -44,7 +44,27 @@ function sectionSel(idx, sectionId) {
   return Math.abs((idx * s + Math.floor(s / 2)) | 0);
 }
 
-// uniquifyText removed — brand name placement now controlled by distributeStoreName()
+// Hash-based selection: picks from array using venue name + key for guaranteed uniqueness
+function hPick(arr, name, key) {
+  return arr[hashStr(name + key) % arr.length];
+}
+
+// Compositional builder: selects one template from each pool by hash, joins them
+function compose(name, sectionKey, pools) {
+  return pools.map((pool, i) => {
+    return pool[hashStr(name + sectionKey + String(i)) % pool.length];
+  }).join(' ');
+}
+
+// Per-venue variables (hash-based, guaranteed different from idx-based)
+function getVenueVars(v) {
+  const name = v.displayName;
+  const a = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
+  const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
+  const rf = getRegionFlavor(v.region);
+  return { name, region: v.region, typeKr: TYPE_LABELS[v.type], adj1: a[0], adj2: a[1], adj3: a[2], adj4: a[3], adj5: a[4], verb, timeExpr, rf };
+}
 
 // ─── Parse raw file ───
 function parseRaw(text) {
