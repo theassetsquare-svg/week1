@@ -279,7 +279,7 @@ for (const v of venues) {
     .filter(([t, c]) => {
       if (FUNC_WORDS.has(t)) return false;
       if (t.length < 2) return false;
-      if (name && name.includes(t) && t.length <= 3) return false;
+      if (name && name.includes(t)) return false;
       if (CATEGORY_TOKENS.has(t)) return c > 2; // 데이터에서 2회까지
       if (UI_TOKENS.has(t)) return false;
       if (t === region) return false;
