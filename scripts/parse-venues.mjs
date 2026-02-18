@@ -704,38 +704,65 @@ function generateScenes(v, idx, rng) {
   return scenes;
 }
 
-// ─── Atmosphere (unique per venue) ───
+// ─── Atmosphere (compositional, venue name in EVERY sub-sentence) ───
 function generateAtmosphere(v, idx, rng) {
-  const name = v.displayName;
-  const region = v.region;
-  const typeKr = TYPE_LABELS[v.type];
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
-  const verb = VENUE_VERBS[idx % VENUE_VERBS.length];
-  const timeExpr = TIME_EXPRESSIONS[idx % TIME_EXPRESSIONS.length];
+  const { name, region, typeKr, adj1, adj2, adj3, adj4, verb, timeExpr } = getVenueVars(v);
 
   const coreIdentity = [
     `${name}은 ${region}의 밤문화 지형도에서 빼놓을 수 없는 이름이다.`,
     `${region}에서 ${typeKr}를 논할 때 ${name}은 반드시 언급되는 곳이다.`,
     `${name}이라는 이름은 ${region} ${typeKr} 씬에서 하나의 기준점을 형성했다.`,
-    `${region}의 밤에 ${adjs[0]} 의미를 부여하는 공간, 그것이 바로 ${name}이다.`,
-    `${name}은 ${region} 밤문화의 다양한 스펙트럼 중에서도 ${adjs[0]} 존재감을 드러낸다.`,
+    `${region}의 밤에 ${adj1} 의미를 부여하는 공간, 그것이 바로 ${name}이다.`,
+    `${name}은 ${region} 밤문화의 다양한 스펙트럼 중에서도 ${adj1} 존재감을 드러낸다.`,
+    `${name}을 한마디로 정의하기는 어렵지만, ${region}의 밤을 ${adj1} 색채로 물들이는 곳이라 할 수 있다.`,
+    `${region}에서 ${name}의 위상은 단순한 ${typeKr}를 넘어선다. ${name}은 이 지역 밤문화의 ${adj1} 랜드마크다.`,
+    `${name}이 ${region}에서 갖는 의미는 단순한 유흥 공간 이상이다. ${name}은 밤의 문화를 ${adj1} 방식으로 재정의하고 있다.`,
+    `${region}의 밤을 이야기할 때 ${name}을 빼놓을 수 없다. ${name}만의 ${adj1} 존재감은 방문 전부터 느껴진다.`,
+    `${name}은 ${region}에서 ${adj1} 포지션을 차지하고 있는 ${typeKr}이다. ${name}의 이름 자체가 하나의 브랜드다.`,
+    `${region} ${typeKr} 씬에서 ${name}만큼 ${adj1} 인상을 남기는 곳은 드물다. ${name}의 존재감은 독보적이다.`,
+    `${name}은 ${region}의 밤에 ${adj1} 챕터를 추가한 공간이다. ${name} 이전과 이후의 ${region} 밤문화는 다르다고 해도 과언이 아니다.`,
+    `${region}에서 ${name}을 찾는 이유는 분명하다. ${name}이 제공하는 ${adj1} 경험은 다른 곳에서 대체하기 어렵기 때문이다.`,
+    `${name}은 ${region} ${typeKr} 씬의 ${adj1} 중심축 중 하나다. ${name}의 브랜드 파워는 꾸준한 품질 관리에서 비롯된다.`,
+    `${region}에서 밤문화를 즐기려는 이들에게 ${name}은 늘 첫 번째 선택지에 오른다. ${name}의 ${adj1} 명성은 하루아침에 만들어진 것이 아니다.`,
   ];
 
   const spaceDesc = [
-    `이 공간은 단순한 유흥의 장이 아니라, ${adjs[1]} 경험을 설계하는 무대로 기능한다. 인테리어의 구성부터 동선의 흐름, 조명의 리듬까지 모든 요소가 방문자의 감각을 ${verb}.`,
-    `공간의 첫인상은 ${adjs[1]}지만, 시간이 지날수록 더 깊은 층위가 드러난다. 음향 설비의 질, 좌석 배치의 효율성, 조명의 계조 변화까지 계산된 설계가 느껴지는 곳이다.`,
-    `${timeExpr} 이 공간에 발을 들이면, 바깥의 ${region}과는 전혀 다른 시간대로 진입하는 느낌을 받는다. ${adjs[1]} 분위기는 첫 방문자에게도, 단골에게도 항상 새로운 면을 보여준다.`,
-    `${adjs[1]} 공간 설계가 이곳의 핵심 경쟁력이다. 바 카운터에서 시작해 메인 공간으로 자연스럽게 이어지는 동선이 방문자를 ${verb}. ${region}에서 이 수준의 공간 경험은 흔치 않다.`,
+    `${name}의 공간은 단순한 유흥의 장이 아니라, ${adj2} 경험을 설계하는 무대로 기능한다. ${name}의 인테리어부터 동선, 조명까지 모든 요소가 방문자의 감각을 ${verb}.`,
+    `${name}의 첫인상은 ${adj2}지만, 시간이 지날수록 ${name}의 더 깊은 층위가 드러난다. ${name}의 음향 설비, 좌석 배치, 조명 계조까지 계산된 설계가 느껴진다.`,
+    `${timeExpr} ${name}에 발을 들이면, 바깥의 ${region}과는 전혀 다른 세계로 진입하는 느낌을 받는다. ${name}의 ${adj2} 분위기는 언제나 새롭다.`,
+    `${adj2} 공간 설계가 ${name}의 핵심 경쟁력이다. ${name}의 바 카운터에서 시작해 메인 공간으로 이어지는 동선이 방문자를 ${verb}.`,
+    `${name}의 내부에 들어서면 ${adj2} 조명이 먼저 눈에 들어온다. ${name}의 공간 구성은 방문자의 시선을 자연스럽게 이끌며, 각 구역마다 다른 매력을 발산한다.`,
+    `${name}은 공간 자체가 하나의 작품이다. ${name}의 ${adj2} 인테리어는 기능성과 미학을 동시에 추구하며, ${name}을 방문하는 것만으로도 시각적 만족감을 준다.`,
+    `${name}의 공간 활용은 ${region}에서도 돋보인다. ${name}은 넓은 공간을 ${adj2} 방식으로 구획하여, 방문자가 자신의 취향에 맞는 구역을 선택할 수 있게 했다.`,
+    `${name}에 들어서는 순간 느끼는 것은 ${adj2} 공기의 질감이다. ${name}의 환기 시스템, 조명 온도, 음향 밸런스가 조화롭게 맞물려 ${name}만의 분위기를 만든다.`,
+    `${name}의 실내 디자인은 트렌드를 따르면서도 ${name}만의 ${adj2} 정체성을 잃지 않는다. ${name}의 공간은 방문할 때마다 미세한 변화를 발견하게 하는 재미가 있다.`,
+    `${name}의 가장 큰 매력 중 하나는 공간의 다층성이다. ${name}의 ${adj2} 구조는 같은 공간 안에서도 다양한 분위기를 경험하게 해준다.`,
+    `${name}의 동선은 방문자를 자연스럽게 안내하도록 설계되어 있다. ${name}에 처음 온 사람도 ${adj2} 공간 구성 덕분에 편안하게 자리를 잡을 수 있다.`,
+    `${name}의 조명 디자인은 시간대별로 달라진다. ${name}의 이른 저녁은 ${adj2} 톤으로, 밤이 깊을수록 더 강렬한 빛의 연출이 ${name}의 분위기를 고조시킨다.`,
+    `${name}을 방문하면 가장 먼저 ${adj2} 천장 구조물이 시선을 사로잡는다. ${name}의 공간 연출은 위아래, 좌우 모든 방향에서 감각을 자극한다.`,
+    `${name}의 바 카운터는 ${name}의 심장과 같다. 이곳에서 ${name}의 ${adj2} 에너지가 시작되어 공간 전체로 퍼져나간다.`,
+    `${name}은 소리와 빛의 균형을 ${adj2} 수준으로 유지하는 곳이다. ${name}의 음향과 조명이 만들어내는 시너지는 방문자를 ${name}의 세계로 끌어당긴다.`,
   ];
 
   const uniqueValue = [
-    `처음 방문하는 이에게는 ${adjs[2]} 발견의 기쁨을, 여러 번째 방문하는 이에게는 ${adjs[3]} 친숙함 속의 새로움을 선사한다. 이것이 ${name}이 ${region}에서 꾸준히 사람들을 끌어모으는 이유다.`,
-    `${adjs[2]} 변화를 추구하면서도 핵심 가치는 일관되게 유지하는 것이 ${name}의 전략이다. 매 시즌 미세한 조정이 이루어지지만, 이곳만의 ${adjs[3]} 정체성은 변하지 않는다.`,
-    `${name}의 매력은 한 가지로 정의할 수 없다. ${adjs[2]} 음악, ${adjs[3]} 인테리어, 세심한 서비스가 어우러져 만들어내는 총체적 경험이 이곳의 진가다.`,
-    `방문할 때마다 다른 인상을 남기는 것, 그것이 ${name}의 ${adjs[2]} 매력이다. ${region}의 밤을 ${adjs[3]} 방식으로 경험하게 해주는 곳은 이곳뿐이다.`,
+    `${name}에 처음 오는 이에게는 ${adj3} 발견의 기쁨을, 재방문자에게는 ${adj4} 친숙함 속의 새로움을 선사한다. 이것이 ${name}이 ${region}에서 사람들을 끌어모으는 이유다.`,
+    `${adj3} 변화를 추구하면서도 핵심 가치를 유지하는 것이 ${name}의 전략이다. 매 시즌 조정이 이루어지지만, ${name}만의 ${adj4} 정체성은 변하지 않는다.`,
+    `${name}의 매력은 한 가지로 정의할 수 없다. ${adj3} 음악, ${adj4} 인테리어, 세심한 서비스가 어우러져 ${name}만의 총체적 경험을 만든다.`,
+    `방문할 때마다 다른 인상을 남기는 것, 그것이 ${name}의 ${adj3} 매력이다. ${region}의 밤을 ${name}만큼 ${adj4} 방식으로 경험하게 해주는 곳은 없다.`,
+    `${name}이 오랜 시간 사랑받는 비결은 ${adj3} 일관성에 있다. ${name}은 언제 방문해도 기대를 충족시키는 ${adj4} 품질을 유지한다.`,
+    `${name}에서 가져가는 것은 사진이 아니라 ${adj3} 감정의 잔향이다. ${name}의 ${adj4} 경험은 일상으로 돌아간 뒤에도 오래 머문다.`,
+    `${name}의 가치는 시간이 지날수록 더 깊이 와닿는다. ${name}에서의 첫 방문은 ${adj3} 놀라움이었지만, 재방문은 ${adj4} 확신으로 바뀐다.`,
+    `${name}이 ${region}에서 차별화되는 지점은 디테일에 있다. ${name}의 ${adj3} 세심함은 작은 부분까지 놓치지 않으며, 이것이 ${name}을 ${adj4} 존재로 만든다.`,
+    `${name}에서의 시간은 단순한 소비가 아니라 ${adj3} 투자다. ${name}이 돌려주는 경험의 가치는 비용을 훨씬 상회하며, ${adj4} 만족감을 보장한다.`,
+    `${name}의 진정한 경쟁력은 ${adj3} 경험의 총합에 있다. 음악, 공간, 서비스, 사람들이 만들어내는 ${name}만의 ${adj4} 하모니가 ${name}의 핵심이다.`,
+    `${name}을 떠나는 이들의 공통점은 ${adj3} 만족감과 아련한 아쉬움의 공존이다. ${name}의 ${adj4} 매력은 다음 방문을 자연스럽게 약속하게 만든다.`,
+    `${name}에서 경험한 ${adj3} 순간들은 시간이 지나도 선명하다. ${name}의 ${adj4} 인상은 일상 속에서 문득 미소를 짓게 만드는 힘이 있다.`,
+    `${name}이 방문자에게 전하는 메시지는 단순하다: 밤은 ${adj3} 만큼 가치 있을 수 있다는 것. ${name}은 그 가능성을 ${adj4} 방식으로 증명한다.`,
+    `${name}에서의 밤은 하나의 완결된 ${adj3} 서사다. 시작부터 끝까지 ${name}이 연출하는 ${adj4} 흐름에 몸을 맡기면, 최고의 경험이 기다린다.`,
+    `${name}이 ${region}에서 독보적인 이유는 ${adj3} 총체적 경험에 있다. ${name}의 음악, 공간, 서비스 하나하나가 ${adj4} 조화를 이루며, 방문자를 완벽하게 매료시킨다.`,
   ];
 
-  return coreIdentity[sectionSel(idx, 'atmo1') % coreIdentity.length] + ' ' + spaceDesc[sectionSel(idx, 'atmo2') % spaceDesc.length] + ' ' + uniqueValue[sectionSel(idx, 'atmo3') % uniqueValue.length];
+  return compose(v.displayName, 'atmo', [coreIdentity, spaceDesc, uniqueValue]);
 }
 
 // ─── Music section (compositional, 10+ per type, venue name in every template) ───
