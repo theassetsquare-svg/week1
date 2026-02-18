@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * Reduce keyword stuffing in venues.json
- * - Protect full brand name occurrences (for qa_brand_count 4-8)
- * - Replace excess coreName mentions with "이곳" + particle
- * - Replace excess region mentions with "이 지역" + particle
+ * - Protect full brand name occurrences (qa_brand_count 4-8)
+ * - DELETE excess coreName/region mentions (Korean naturally drops subjects)
+ * - Clean up double spaces after deletion
  */
 import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
@@ -16,7 +16,7 @@ const venues = JSON.parse(readFileSync(venuesPath, 'utf-8'));
 
 function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-// Korean particles (longest first)
+// Korean particles (longest first for correct regex alternation)
 const P = '에서는|에서의|에서도|에서|에게서|에게는|에게|에는|에도|에|은|는|이라는|이란|이라면|이라고|이라|이며|이자|이고|이든|이요|이니|이지만|이지|이|가|을|를|의|와|과|도|만의|만은|만을|만이|만|으로는|으로의|으로|로는|로|부터|까지|처럼|같은|같이|보다|마다';
 
 const PH_FULL = '__XFULLBRAND__';
@@ -51,7 +51,7 @@ function proc(text, cn, reg, full, typeName, ft) {
     r = r.replaceAll(reg + ' ' + cn, PH_RC);
   }
 
-  // Replace excess coreName (+optional type +optional particle)
+  // DELETE excess coreName (+optional type +optional particle)
   if (cn && cn.length >= 2) {
     let cc = 0;
     const typeOpt = typeName ? '(?:\\s*' + esc(typeName) + ')?' : '';
@@ -60,11 +60,11 @@ function proc(text, cn, reg, full, typeName, ft) {
       cc++;
       if (cc <= lim.c) return m;
       totalCore++;
-      return '이곳' + (p || '');
+      return '';  // DELETE instead of replace
     });
   }
 
-  // Replace excess region (+optional particle)
+  // DELETE excess region (+optional particle)
   if (reg && reg.length >= 2) {
     let rc = 0;
     const rx = new RegExp(esc(reg) + '(' + P + ')?', 'g');
@@ -72,7 +72,7 @@ function proc(text, cn, reg, full, typeName, ft) {
       rc++;
       if (rc <= lim.r) return m;
       totalReg++;
-      return p ? '이 지역' + p : '이 지역';
+      return '';  // DELETE instead of replace
     });
   }
 
@@ -81,6 +81,10 @@ function proc(text, cn, reg, full, typeName, ft) {
     r = r.replaceAll(PH_RC, reg + ' ' + cn);
   }
   r = r.replaceAll(PH_FULL, full);
+
+  // Clean up: double spaces, leading spaces after punctuation
+  r = r.replace(/\s{2,}/g, ' ').trim();
+
   return r;
 }
 
