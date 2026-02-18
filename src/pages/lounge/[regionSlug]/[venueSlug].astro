@@ -92,19 +92,28 @@ const tocItems = [
         <span>{v.name_display}</span>
       </div>
       <img src={v.images[0].src} alt={v.images[0].alt} class="venue-hero-img" width="500" height="500" loading="eager" />
-      <div class="venue-hero__eyebrow">Lounge Experience</div>
+      <span class="venue-hero__cat-badge venue-hero__cat-badge--lounge">{v.typeLabel}</span>
       <h1 class="venue-hero__title">{v.name_display}</h1>
       <p class="venue-hero__teaser">{v.teaser}</p>
-      <div class="venue-hero__meta">
-        <span class="venue-hero__tag venue-hero__tag--type">{v.typeLabel}</span>
-        <span class="venue-hero__tag venue-hero__tag--region">{v.typeLabel}</span>
-        <span class="venue-hero__tag venue-hero__tag--tone">{v.storyFrame.tone}</span>
-        <span class="venue-hero__tag venue-hero__tag--time">약 {readTime}분의 몰입 여행</span>
-      </div>
     </div>
   </section>
 
   <div class="container content-narrow">
+    <nav class="toc">
+      <h3>목차</h3>
+      <ol>
+        {tocItems.map(item => (
+          <li><a href={`#${item.id}`}>{item.label}</a></li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="venue-hero__meta">
+      <span class="venue-hero__tag venue-hero__tag--region">{v.region}</span>
+      <span class="venue-hero__tag venue-hero__tag--tone">{v.storyFrame.tone}</span>
+      <span class="venue-hero__tag venue-hero__tag--time">약 {readTime}분</span>
+    </div>
+
     <div class="story-hook">
       <div class="story-hook__label">Tonight's Story — {v.storyFrame.style}</div>
       <div class="story-hook__text">{v.story.scene1}</div>
@@ -122,20 +131,6 @@ const tocItems = [
       </div>
       <div class="mood-check__result" id="moodResult"></div>
     </div>
-
-    <div class="content-awaits">
-      <div class="content-awaits__bar"><div class="content-awaits__fill"></div></div>
-      <span class="content-awaits__text">{tocItems.length}개 섹션 준비됨</span>
-    </div>
-
-    <nav class="toc">
-      <h3>목차</h3>
-      <ol>
-        {tocItems.map(item => (
-          <li><a href={`#${item.id}`}>{item.label}</a></li>
-        ))}
-      </ol>
-    </nav>
 
     <!-- 1. Atmosphere -->
     <section class="venue-section" id="atmosphere">
