@@ -254,8 +254,18 @@ for (const v of venues) {
     }
   }
 
+  // ── 3.5 키워드에서 지역명 제거 ──
+  if (region && v.keywords) {
+    v.keywords = v.keywords.map(kw => {
+      if (kw.includes(region)) {
+        return kw.replace(region + ' ', '').replace(' ' + region, '').replace(region, '').trim();
+      }
+      return kw;
+    }).filter(kw => kw.length > 0);
+  }
+
   // ── 4. 일반 토큰 반복 감소 ──
-  // 모든 텍스트를 합쳐서 토큰 카운트 → 3회 초과 토큰을 필드별로 제거
+  // 모든 텍스트를 합쳐서 토큰 카운트 → 2회 초과 토큰을 필드별로 제거
   const allFields = getAllTextFields(v);
   const combinedText = allFields.map(f => f.value).join(' ');
   const tokenCounts = {};
