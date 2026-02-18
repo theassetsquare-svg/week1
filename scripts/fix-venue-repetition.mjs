@@ -235,8 +235,8 @@ for (const v of venues) {
 
   // ── 1. name_display → coreName 치환 (유사도 보존) ──
   v.teaser = removeName(v.teaser, name, 0, coreName);
-  for (const scene of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5']) {
-    v.story[scene] = removeName(v.story[scene], name, 0, coreName);
+  for (const scene of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5', 'scene6', 'scene7', 'scene8']) {
+    if (v.story[scene]) v.story[scene] = removeName(v.story[scene], name, 0, coreName);
   }
   v.bodySections.atmosphere = removeName(v.bodySections.atmosphere, name, 0, coreName);
   v.bodySections.music = removeName(v.bodySections.music, name, 0, coreName);
