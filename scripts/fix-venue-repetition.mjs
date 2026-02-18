@@ -222,20 +222,17 @@ for (const v of venues) {
   totalNameRemoved += (beforeName - afterName);
 
   // ── 2. 지역명 감소 ──
-  // 동명 매장은 지역명으로 구분되므로 1회 유지, 그 외는 전부 제거
+  // 동명 매장(coreName 중복)은 지역명이 유일한 구분자 → 제거 스킵
   const hasDupCoreName = (function() {
     const cn = getCoreName(v);
     return venues.filter(vv => getCoreName(vv) === cn).length > 1;
   })();
-  const regionTarget = hasDupCoreName ? 1 : 0;
   const beforeRegion = countAllText(v, region);
-  const allTextFields = getAllTextFields(v);
-  for (const field of allTextFields) {
-    setTextField(v, field.path, reduceRegion(field.value, region, 0));
-  }
-  // 동명 매장: teaser에 지역명 1회 복원
-  if (hasDupCoreName && countAllText(v, region) === 0 && region) {
-    v.teaser = region + ' ' + v.teaser;
+  if (!hasDupCoreName) {
+    const allTextFields = getAllTextFields(v);
+    for (const field of allTextFields) {
+      setTextField(v, field.path, reduceRegion(field.value, region, 0));
+    }
   }
   // teaser에 1회 허용
   if (countSub(v.teaser, region) === 0) {
