@@ -29,7 +29,7 @@ function norm(s) {
   return s.replace(/\s+/g, '').replace(/[^가-힣a-zA-Z0-9]/g, '').toLowerCase();
 }
 
-// Simulate the 4-tier search logic from index.astro
+// Simulate the 5-tier search logic from index.astro (must match exactly)
 function simulateSearch(query, index) {
   const q = norm(query);
   const ql = query.toLowerCase().trim();
@@ -40,17 +40,19 @@ function simulateSearch(query, index) {
     const lName = item.name.toLowerCase();
     const lRegion = (item.region || '').toLowerCase();
     const lCat = (item.categoryLabel || item.catLabel || '').toLowerCase();
-
-    // Tier 1: exact
-    if (nName === q) return true;
-    // Tier 2: partial
-    if (nName.includes(q)) return true;
     const itemNorm = item.normalized_name || item.norm || norm(item.name + (item.region || '') + (item.categoryLabel || item.catLabel || ''));
-    if (itemNorm.includes(q)) return true;
-    // Tier 3: all tokens
+
+    // Tier 1: exact normalized
+    if (nName === q) return true;
+    // Tier 2: partial normalized
+    if (nName.includes(q) || itemNorm.includes(q)) return true;
+    // Tier 3: all query tokens found
     if (qTokens.length > 0 && qTokens.every(t => lName.includes(t) || lRegion.includes(t) || lCat.includes(t))) return true;
-    // Tier 4: any token
+    // Tier 4: any token matches
     if (qTokens.some(t => lName.includes(t) || lRegion.includes(t))) return true;
+    // Tier 5: character overlap (fuzzy)
+    const overlap = [...new Set(q)].filter(c => nName.includes(c)).length;
+    if (overlap >= Math.min(2, q.length * 0.5)) return true;
     return false;
   });
 }
