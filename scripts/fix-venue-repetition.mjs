@@ -197,11 +197,12 @@ function cleanSpaces(text) {
 
 let totalNameRemoved = 0;
 let totalRegionRemoved = 0;
+const coreNameMap = buildCoreNameMap(venues);
 
 for (const v of venues) {
   const name = v.name_display;
   const region = v.region;
-  const coreName = getCoreName(v);
+  const coreName = coreNameMap.get(v.id) || getCoreName(v);
   const beforeName = countAllText(v, name);
 
   // ── 1. name_display → coreName 치환 (유사도 보존) ──
