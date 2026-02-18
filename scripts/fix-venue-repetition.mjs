@@ -280,6 +280,8 @@ for (const v of venues) {
       if (FUNC_WORDS.has(t)) return false;
       if (t.length < 2) return false;
       if (name && name.includes(t)) return false;
+      // coreName + 조사 결합형 보호 (e.g., "레이스에서는", "레이스만의")
+      if (coreName && coreName.length >= 2 && t.startsWith(coreName)) return false;
       if (CATEGORY_TOKENS.has(t)) return c > 2; // 데이터에서 2회까지
       if (UI_TOKENS.has(t)) return false;
       if (t === region) return false;
