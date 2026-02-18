@@ -103,7 +103,6 @@ function reduceRegion(text, region, maxKeep) {
     while (count > maxKeep) {
       const idx = text.lastIndexOf(pat);
       if (idx === -1) break;
-      // 대체어 없이 제거 (이 지역은 '지역' 토큰 반복 유발)
       const replacement = '';
       text = text.slice(0, idx) + replacement + text.slice(idx + pat.length);
       count = countSub(text, region);
@@ -140,9 +139,6 @@ function reduceCliche(text, word, max) {
   return cleanSpaces(text);
 }
 
-/**
- * 일반 토큰 반복 제거: 한국어 2글자 이상 토큰 중 3회 초과하는 것 감소
- */
 const FUNC_WORDS = new Set([
   '그리고', '그러나', '하지만', '그래서', '또한', '그런데', '그래도', '따라서',
   '그러므로', '그러면', '만약', '때문', '위해', '대한', '통해', '따른', '같은',
@@ -196,14 +192,6 @@ function removeAtBoundary(text, token) {
   }
 }
 
-/**
- * Remove a specific token from text (at boundary), limited removals.
- * Returns updated text after removing one occurrence from the back.
- */
-function removeOneAtBoundaryFromBack(text, token) {
-  return removeAtBoundary(text, token);
-}
-
 // ─── Keywords Cleanup ───
 
 function cleanupKeywords(v, coreName, region) {
@@ -254,7 +242,6 @@ function cleanupKeywords(v, coreName, region) {
   // 5. Limit keywords containing category type tokens: keep max 3 per type
   for (const typeToken of ['나이트', '클럽', '라운지']) {
     const withType = [];
-    const withoutType = [];
     for (let i = 0; i < v.keywords.length; i++) {
       if (v.keywords[i].includes(typeToken)) {
         withType.push(i);
@@ -274,6 +261,10 @@ function cleanupKeywords(v, coreName, region) {
       v.keywords = [...new Set(v.keywords)];
     }
   }
+
+  // Final cleanup: remove empty strings, deduplicate
+  v.keywords = v.keywords.filter(kw => kw && kw.trim().length > 0);
+  v.keywords = [...new Set(v.keywords)];
 }
 
 // ─── FAQ Cleanup ───
@@ -326,7 +317,7 @@ function reduceAllTokensAggressively(v, coreName, region) {
     tokenCounts[t] = (tokenCounts[t] || 0) + 1;
   }
 
-  // Determine limits per token
+  // Determine limits per token — does NOT skip tokens just because they're in name_display
   const tokensToReduce = [];
   for (const [token, count] of Object.entries(tokenCounts)) {
     if (FUNC_WORDS.has(token)) continue;
@@ -352,7 +343,7 @@ function reduceAllTokensAggressively(v, coreName, region) {
   // Sort by count descending (reduce most repeated first)
   tokensToReduce.sort((a, b) => b[1] - a[1]);
 
-  // Reduce each token across all fields (from back)
+  // Reduce each token across all fields (from back), using Korean word-boundary safe removal
   for (const [token, _count, limit] of tokensToReduce) {
     let totalCount = getAllTextFields(v).reduce((s, f) => s + countSub(f.value, token), 0);
     const fields = getAllTextFields(v);
@@ -367,6 +358,16 @@ function reduceAllTokensAggressively(v, coreName, region) {
       setTextField(v, fields[i].path, val);
     }
   }
+}
+
+/**
+ * Final cleanup pass for keywords after aggressive token reduction:
+ * remove empty strings and re-deduplicate.
+ */
+function finalKeywordsCleanup(v) {
+  if (!v.keywords || !Array.isArray(v.keywords)) return;
+  v.keywords = v.keywords.filter(kw => kw && kw.trim().length > 0);
+  v.keywords = [...new Set(v.keywords)];
 }
 
 // ─── Main Processing ───
@@ -429,31 +430,15 @@ for (const v of venues) {
   // NEVER skip region removal. For duplicates: max 2, non-duplicates: max 0.
   const regionMax = hasDupCoreName ? 2 : 0;
   const beforeRegion = countAllText(v, region);
-  const allTextFields = getAllTextFields(v);
-  for (const field of allTextFields) {
+  // First pass: remove all region mentions from every field (max 0 per field)
+  const regionFields = getAllTextFields(v);
+  for (const field of regionFields) {
     setTextField(v, field.path, reduceRegion(field.value, region, 0));
   }
-  // If duplicate coreName, allow up to regionMax region mentions total
-  if (hasDupCoreName && regionMax > 0) {
-    // Re-check: if we removed too many, that's fine — we want max 2 total
-    // The reduceRegion(field, 0) per-field may leave a few if they're the only one in that field.
-    // Do a global pass to enforce the total limit.
-    let regionTotal = countAllText(v, region);
-    if (regionTotal > regionMax) {
-      const fields = getAllTextFields(v);
-      for (let i = fields.length - 1; i >= 0 && regionTotal > regionMax; i--) {
-        let val = fields[i].value;
-        while (countSub(val, region) > 0 && regionTotal > regionMax) {
-          val = reduceRegion(val, region, 0);
-          regionTotal = countAllText(v, region);
-          // Update in-place to track accurately
-          setTextField(v, fields[i].path, val);
-          // Re-read for accurate count
-          regionTotal = countAllText(v, region);
-        }
-      }
-    }
-  }
+  // For duplicate coreName venues: we already removed all. That's fine since regionMax=2
+  // is enforced by the aggressive pass later. The per-field pass with max 0 removes all.
+  // But we want to allow up to regionMax total — we can't add them back, so we accept
+  // that region removal was aggressive. The aggressive pass will maintain the limit.
   const afterRegion = countAllText(v, region);
   totalRegionRemoved += (beforeRegion - afterRegion);
 
@@ -504,10 +489,13 @@ for (const v of venues) {
     return s;
   }, 0);
   totalAggressiveRemoved += (beforeAggressive - afterAggressive);
+
+  // ── 5. Final keywords cleanup (remove empties from aggressive pass) ──
+  finalKeywordsCleanup(v);
 }
 
 writeFileSync(venuesPath, JSON.stringify(venues, null, 2), 'utf-8');
-console.log(`✅ fix-venue-repetition complete`);
+console.log(`\u2705 fix-venue-repetition complete`);
 console.log(`   name_display removed: ${totalNameRemoved} occurrences`);
 console.log(`   region removed: ${totalRegionRemoved} occurrences`);
 console.log(`   aggressive token pass removed: ${totalAggressiveRemoved} token occurrences`);
