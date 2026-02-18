@@ -55,7 +55,7 @@ function countSubstring(text, sub) {
 // 업소명 → 경로 매핑
 const venueByPath = {};
 for (const v of VENUES) {
-  const key = `/${v.typePath}/${v.regionSlug}/${v.venueSlug}/index.html`;
+  const key = `/${v.typePath}/${v.regionSlug}/${v.urlSlug || v.venueSlug}/index.html`;
   venueByPath[key] = v;
 }
 
