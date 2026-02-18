@@ -264,7 +264,7 @@ const tocItems = [
       <h2>추천 매장</h2>
       {sameRegion.length > 0 && (
         <div class="related-section">
-          <h3>같은 지역</h3>
+          <h3>인근 추천</h3>
           <div class="related-grid">
             {sameRegion.map(rv => (
               <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display}</a>
@@ -293,7 +293,7 @@ const tocItems = [
         </div>
       )}
       <div class="related-section">
-        <h3>가이드</h3>
+        <h3>추천 콘텐츠</h3>
         <div class="related-grid">
           {guides.slice(0, 2).map(g => (
             <a href={`/guides/${g.slug}/`} class="related-link">{g.title}</a>
@@ -302,7 +302,7 @@ const tocItems = [
       </div>
       <div class="related-section">
         <div class="related-grid">
-          <a href={`/region/${v.regionSlug}/`} class="related-link">지역 전체 보기</a>
+          <a href={`/region/${v.regionSlug}/`} class="related-link">전체 보기</a>
           <a href="/lounges/" class="related-link">전체 목록 보기</a>
         </div>
       </div>
