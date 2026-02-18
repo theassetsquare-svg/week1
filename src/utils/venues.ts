@@ -24,9 +24,12 @@ export interface Venue {
   };
   keywords: string[];
   teaser: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  hookIntro?: string;
   storyFrame: { id: string; pov: string; tone: string; style: string };
   story: Record<string, string>;
-  bodySections: { atmosphere: string; music: string; safety: string };
+  bodySections: { atmosphere: string; music: string; safety: string; deepDive?: { checkpoint: string; history: string; season: string; course: string } };
   timeline: { time: string; label: string; desc: string }[];
   checklist: string[];
   faq: { q: string; a: string }[];
