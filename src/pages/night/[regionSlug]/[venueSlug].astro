@@ -173,6 +173,14 @@ const tocItems = [
       <div class="mood-check__result" id="moodResult"></div>
     </div>
 
+    <!-- Hook Intro -->
+    {v.hookIntro && (
+      <section class="venue-section" id="hook">
+        <h2>{v.name_display} 완벽 가이드</h2>
+        <p>{v.hookIntro}</p>
+      </section>
+    )}
+
     <!-- 1. Atmosphere -->
     <section class="venue-section" id="atmosphere">
       <h2>감성 요약</h2>
