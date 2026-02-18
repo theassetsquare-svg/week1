@@ -586,11 +586,11 @@ function generateScenes(v, idx, rng) {
   const name = v.displayName;
   const region = v.region;
   const type = v.type;
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
-  const verb = VENUE_VERBS[idx % VENUE_VERBS.length];
-  const timeExpr = TIME_EXPRESSIONS[idx % TIME_EXPRESSIONS.length];
+  const adjs = SIGNATURE_ADJECTIVES[hashStr(name + 'adj') % SIGNATURE_ADJECTIVES.length];
+  const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
+  const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
   const adj1 = adjs[0], adj2 = adjs[1], adj3 = adjs[2], adj4 = adjs[3];
-  const frame = STORY_FRAMES[idx % STORY_FRAMES.length];
+  const frame = STORY_FRAMES[hashStr(name + 'frame') % STORY_FRAMES.length];
 
   const typeActions = {
     club: ['비트에 몸을 맡기', '사운드 웨이브 속으로 빠져들', 'DJ의 믹싱에 귀 기울이', '레이저 조명 아래서 움직이'],
