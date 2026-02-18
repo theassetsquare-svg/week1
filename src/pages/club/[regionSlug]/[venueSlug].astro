@@ -223,7 +223,7 @@ const tocItems = [
 
     <!-- 6. Music -->
     <section class="venue-section" id="music">
-      <h2>음악/무드</h2>
+      <h2>음악/사운드</h2>
       <p>{v.bodySections.music}</p>
     </section>
 
@@ -293,7 +293,7 @@ const tocItems = [
         </div>
       )}
       <div class="related-section">
-        <h3>가이드</h3>
+        <h3>추천 콘텐츠</h3>
         <div class="related-grid">
           {guides.slice(0, 2).map(g => (
             <a href={`/guides/${g.slug}/`} class="related-link">{g.title}</a>
@@ -302,7 +302,7 @@ const tocItems = [
       </div>
       <div class="related-section">
         <div class="related-grid">
-          <a href={`/region/${v.regionSlug}/`} class="related-link">지역 전체 보기</a>
+          <a href={`/region/${v.regionSlug}/`} class="related-link">전체 보기</a>
           <a href="/clubs/" class="related-link">전체 목록 보기</a>
         </div>
       </div>
@@ -344,7 +344,7 @@ const tocItems = [
             </tr>
           </thead>
           <tbody>
-            <tr><td>분위기</td><td>DJ + EDM/힙합</td><td>라이브 밴드 + 댄스</td><td>칵테일 + 대화</td></tr>
+            <tr><td>스타일</td><td>DJ + EDM/힙합</td><td>라이브 밴드 + 댄스</td><td>칵테일 + 대화</td></tr>
             <tr><td>연령대</td><td>20~30대 중심</td><td>30~50대 중심</td><td>25~40대</td></tr>
             <tr><td>드레스코드</td><td>깔끔한 캐주얼</td><td>단정한 캐주얼</td><td>스마트 캐주얼</td></tr>
             <tr><td>예산 (1인)</td><td>3~8만원</td><td>5~10만원</td><td>5~15만원</td></tr>
@@ -386,7 +386,7 @@ const tocItems = [
       <div class="diary-container">
         <div class="diary-ratings">
           <div class="diary-rating-item">
-            <label>분위기</label>
+            <label>인상</label>
             <div class="star-rating" data-category="atmosphere">
               <span class="star" data-value="1">&#9733;</span>
               <span class="star" data-value="2">&#9733;</span>
