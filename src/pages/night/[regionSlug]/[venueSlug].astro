@@ -94,7 +94,13 @@ const tocItems = [
       <img src={v.images[0].src} alt={v.images[0].alt} class="venue-hero-img" width="500" height="500" loading="eager" />
       <span class="venue-hero__cat-badge venue-hero__cat-badge--night">{v.typeLabel}</span>
       <h1 class="venue-hero__title">{v.name_display}</h1>
-      <p class="venue-hero__teaser">{v.teaser}</p>
+      <ul class="venue-summary">
+        <li>{v.typeLabel} · {v.region}</li>
+        <li>{v.teaser}</li>
+        <li>{v.bodySections.atmosphere.split('.')[0]}.</li>
+        <li>{v.bodySections.music.split('.')[0]}.</li>
+        <li>{v.storyFrame.tone} 분위기 · 약 {readTime}분 콘텐츠</li>
+      </ul>
     </div>
   </section>
 
