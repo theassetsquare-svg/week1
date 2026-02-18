@@ -170,6 +170,9 @@ function main() {
       // 브랜드명의 일부인 경우 스킵
       if (brandName && brandName.includes(token)) continue;
 
+      // coreName + 조사 결합형 스킵 (e.g., "레이스의", "아우라에서")
+      if (coreName && coreName.length >= 2 && token.startsWith(coreName)) continue;
+
       // 지역명: 6회 상한
       if (regionSet.has(token) || (regionName && token === regionName)) {
         if (count > 6) {
