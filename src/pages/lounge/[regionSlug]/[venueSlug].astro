@@ -63,7 +63,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": v.faq.map(f => ({
+    "mainEntity": v.faq.slice(0, 3).map(f => ({
       "@type": "Question",
       "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
