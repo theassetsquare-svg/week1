@@ -1188,7 +1188,7 @@ function generatePlannerRules(v, idx) {
 
 // ─── Image prompts ───
 function generateImagePrompts(v, idx) {
-  const adjs = SIGNATURE_ADJECTIVES[idx % SIGNATURE_ADJECTIVES.length];
+  const adjs = SIGNATURE_ADJECTIVES[hashStr(v.displayName + 'adj') % SIGNATURE_ADJECTIVES.length];
   const typeEnglish = { club: 'nightclub', night: 'dance hall', lounge: 'lounge' };
   return [
     `Fictional illustration: Stylish Korean adults arriving at a ${adjs[0]} ${typeEnglish[v.type]} entrance in ${v.region}, street vibe with neon lights, fashion-forward silhouettes, no identifiable faces, no text or logos, dark moody atmosphere with warm accents`,
