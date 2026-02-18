@@ -588,7 +588,6 @@ function generateScenes(v, idx, rng) {
   const [adj1, adj2, adj3, adj4] = adjs;
   const verb = VENUE_VERBS[hashStr(name + 'verb') % VENUE_VERBS.length];
   const timeExpr = TIME_EXPRESSIONS[hashStr(name + 'time') % TIME_EXPRESSIONS.length];
-  const adj1 = adjs[0], adj2 = adjs[1], adj3 = adjs[2], adj4 = adjs[3];
   const frame = STORY_FRAMES[hashStr(name + 'frame') % STORY_FRAMES.length];
 
   const typeActions = {
