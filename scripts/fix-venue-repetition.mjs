@@ -394,12 +394,18 @@ function getAllTextFields(v) {
     fields.push({ path: 'storyFrame.style', value: v.storyFrame.style });
   }
   fields.push({ path: 'teaser', value: v.teaser });
-  for (const s of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5']) {
-    fields.push({ path: `story.${s}`, value: v.story[s] });
+  if (v.hookIntro) fields.push({ path: 'hookIntro', value: v.hookIntro });
+  for (const s of ['scene1', 'scene2', 'scene3', 'scene4', 'scene5', 'scene6', 'scene7', 'scene8']) {
+    if (v.story[s]) fields.push({ path: `story.${s}`, value: v.story[s] });
   }
   fields.push({ path: 'bodySections.atmosphere', value: v.bodySections.atmosphere });
   fields.push({ path: 'bodySections.music', value: v.bodySections.music });
   fields.push({ path: 'bodySections.safety', value: v.bodySections.safety });
+  if (v.bodySections.deepDive) {
+    for (const key of Object.keys(v.bodySections.deepDive)) {
+      fields.push({ path: `bodySections.deepDive.${key}`, value: v.bodySections.deepDive[key] });
+    }
+  }
   v.timeline.forEach((t, i) => {
     fields.push({ path: `timeline.${i}.label`, value: t.label });
     fields.push({ path: `timeline.${i}.desc`, value: t.desc });
