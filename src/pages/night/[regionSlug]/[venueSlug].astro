@@ -268,11 +268,11 @@ const tocItems = [
       const result = document.getElementById('plannerResult');
       if (!result) return;
       let text = '';
-      if (selectedPurpose && plannerRules['목적']) {
-        text += plannerRules['목적'][selectedPurpose] || '';
+      if (selectedPurpose && plannerRules['p']) {
+        text += plannerRules['p'][selectedPurpose] || '';
       }
-      if (selectedTime && plannerRules['시간대']) {
-        text += (text ? ' ' : '') + (plannerRules['시간대'][selectedTime] || '');
+      if (selectedTime && plannerRules['t']) {
+        text += (text ? ' ' : '') + (plannerRules['t'][selectedTime] || '');
       }
       result.textContent = text || '선택해주세요.';
     }
