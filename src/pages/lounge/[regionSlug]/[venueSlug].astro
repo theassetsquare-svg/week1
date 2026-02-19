@@ -48,8 +48,8 @@ const tocItems = [
   <section class="venue-hero-immersive venue-hero-immersive--lounge">
     <div class="container content-narrow">
       <div class="breadcrumb">
-        <a href="/">홈</a><span>/</span>
-        <a href="/lounges/">라운지 목록</a><span>/</span>
+        <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span>
+        <a href="/lounges/" target="_blank" rel="noopener noreferrer">라운지 목록</a><span>/</span>
         {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
@@ -74,7 +74,7 @@ const tocItems = [
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 예약 전 위치 보기</a>
-      <a href="/lounges/" class="venue-cta-btn">다른 라운지 둘러보기</a>
+      <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">다른 라운지 둘러보기</a>
     </div>
 
     <aside class="fact-box" aria-label="기본 정보">
@@ -249,7 +249,7 @@ const tocItems = [
       <p>낮은 조명 아래, 잔을 기울이며 자연스럽게 대화가 깊어지는 곳 — {v.name_display}은(는) 그런 밤을 선사합니다. {v.region}에서 분위기 좋은 공간을 찾고 있다면, 위의 시간대별 추천과 시나리오 플래너를 활용해 완벽한 저녁을 설계해보세요.</p>
       <div class="venue-cta-inline">
         <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 예약 전 위치 보기</a>
-        <a href="/lounges/" class="venue-cta-btn">다른 라운지 둘러보기</a>
+        <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">다른 라운지 둘러보기</a>
       </div>
     </section>
 
@@ -257,10 +257,10 @@ const tocItems = [
       <h2>취향이 비슷한 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} target="_blank" rel="noopener noreferrer" class="related-link">{rv!.name_display}</a>
         ))}
         <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-        <a href="/lounges/" class="related-link">라운지 전체 목록</a>
+        <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="related-link">라운지 전체 목록</a>
       </div>
     </section>
 
@@ -271,14 +271,14 @@ const tocItems = [
         <li><time datetime="2026-02-10">2026-02-10</time> <span>첫 취재 및 등록</span></li>
       </ul>
       <div class="trust-block__links">
-        <a href="/about/">콘텐츠 기준 보기</a>
+        <a href="/about/" target="_blank" rel="noopener noreferrer">콘텐츠 기준 보기</a>
         <button type="button" id="correctionBtn">잘못된 정보 알려주기</button>
       </div>
     </aside>
 
     <div class="venue-cta-area">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">위치 확인</a>
-      <a href="/lounges/" class="venue-cta-btn">목록으로</a>
+      <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">목록으로</a>
     </div>
   </div>
 

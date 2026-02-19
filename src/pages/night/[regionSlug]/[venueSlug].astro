@@ -48,8 +48,8 @@ const tocItems = [
   <section class="venue-hero-immersive venue-hero-immersive--night">
     <div class="container content-narrow">
       <div class="breadcrumb">
-        <a href="/">홈</a><span>/</span>
-        <a href="/nights/">나이트 목록</a><span>/</span>
+        <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span>
+        <a href="/nights/" target="_blank" rel="noopener noreferrer">나이트 목록</a><span>/</span>
         {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
@@ -74,7 +74,7 @@ const tocItems = [
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary" target="_blank" rel="noopener noreferrer">오늘 밤 {shortName} 찾아가기</a>
-      <a href="/nights/" class="venue-cta-btn">전국 나이트 둘러보기</a>
+      <a href="/nights/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">전국 나이트 둘러보기</a>
     </div>
 
     <aside class="fact-box" aria-label="기본 정보">
@@ -251,7 +251,7 @@ const tocItems = [
       <p>라이브 밴드의 첫 곡이 울리고, 테이블 위로 시선이 오가는 그 순간 — {v.name_display}의 밤은 그렇게 시작됩니다. {v.region}에서 새로운 인연과 음악을 동시에 찾고 있다면, 위의 타임라인과 준비물 체크리스트를 참고해 완벽한 밤을 준비해보세요.</p>
       <div class="venue-cta-inline">
         <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary" target="_blank" rel="noopener noreferrer">오늘 밤 {shortName} 찾아가기</a>
-        <a href="/nights/" class="venue-cta-btn">전국 나이트 둘러보기</a>
+        <a href="/nights/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">전국 나이트 둘러보기</a>
       </div>
     </section>
 
@@ -259,10 +259,10 @@ const tocItems = [
       <h2>함께 보면 좋은 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} target="_blank" rel="noopener noreferrer" class="related-link">{rv!.name_display}</a>
         ))}
         <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-        <a href="/nights/" class="related-link">나이트 전체 목록</a>
+        <a href="/nights/" target="_blank" rel="noopener noreferrer" class="related-link">나이트 전체 목록</a>
       </div>
     </section>
 
@@ -273,14 +273,14 @@ const tocItems = [
         <li><time datetime="2026-02-10">2026-02-10</time> <span>최초 등록</span></li>
       </ul>
       <div class="trust-block__links">
-        <a href="/about/">편집 원칙 보기</a>
+        <a href="/about/" target="_blank" rel="noopener noreferrer">편집 원칙 보기</a>
         <button type="button" id="correctionBtn">오류 제보</button>
       </div>
     </aside>
 
     <div class="venue-cta-area">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지금 바로 길 찾기</a>
-      <a href="/nights/" class="venue-cta-btn">목록으로</a>
+      <a href="/nights/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">목록으로</a>
     </div>
   </div>
 

@@ -48,8 +48,8 @@ const tocItems = [
   <section class="venue-hero-immersive">
     <div class="container content-narrow">
       <div class="breadcrumb">
-        <a href="/">홈</a><span>/</span>
-        <a href="/clubs/">클럽 목록</a><span>/</span>
+        <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span>
+        <a href="/clubs/" target="_blank" rel="noopener noreferrer">클럽 목록</a><span>/</span>
         {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
@@ -74,7 +74,7 @@ const tocItems = [
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 위치 확인</a>
-      <a href="/clubs/" class="venue-cta-btn">전국 클럽 리스트</a>
+      <a href="/clubs/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">전국 클럽 리스트</a>
     </div>
 
     <aside class="fact-box" aria-label="기본 정보">
@@ -249,7 +249,7 @@ const tocItems = [
       <p>어두운 플로어 위, 같은 비트에 몸을 맡기는 순간 — 낯선 사람과도 금세 가까워집니다. {v.name_display}은(는) {v.region}의 밤을 대표하는 공간입니다. 위의 피크타임 가이드와 입장 전 체크리스트를 확인하고, 오늘 밤 플로어 위에 서보세요.</p>
       <div class="venue-cta-inline">
         <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 위치 확인</a>
-        <a href="/clubs/" class="venue-cta-btn">전국 클럽 리스트</a>
+        <a href="/clubs/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">전국 클럽 리스트</a>
       </div>
     </section>
 
@@ -257,10 +257,10 @@ const tocItems = [
       <h2>비슷한 클럽</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} target="_blank" rel="noopener noreferrer" class="related-link">{rv!.name_display}</a>
         ))}
         <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-        <a href="/clubs/" class="related-link">클럽 전체 목록</a>
+        <a href="/clubs/" target="_blank" rel="noopener noreferrer" class="related-link">클럽 전체 목록</a>
       </div>
     </section>
 
@@ -271,14 +271,14 @@ const tocItems = [
         <li><time datetime="2026-02-10">2026-02-10</time> <span>신규 등록</span></li>
       </ul>
       <div class="trust-block__links">
-        <a href="/about/">작성 기준 확인</a>
+        <a href="/about/" target="_blank" rel="noopener noreferrer">작성 기준 확인</a>
         <button type="button" id="correctionBtn">정보 수정 요청</button>
       </div>
     </aside>
 
     <div class="venue-cta-area">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도 열기</a>
-      <a href="/clubs/" class="venue-cta-btn">목록으로</a>
+      <a href="/clubs/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">목록으로</a>
     </div>
   </div>
 

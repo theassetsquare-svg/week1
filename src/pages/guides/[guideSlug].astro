@@ -132,8 +132,8 @@ const jsonLd = [{
   <section class="venue-header">
     <div class="container content-narrow">
       <div class="breadcrumb">
-        <a href="/">홈</a><span>/</span>
-        <a href="/guides/">가이드</a><span>/</span>
+        <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span>
+        <a href="/guides/" target="_blank" rel="noopener noreferrer">가이드</a><span>/</span>
         <span>{guide.title}</span>
       </div>
       <h1>{guide.title}</h1>
@@ -166,7 +166,7 @@ const jsonLd = [{
         <h2>관련 매장</h2>
         <div class="related-grid">
           {relatedVenues.map(v => (
-            <a href={getVenueUrl(v)} class="related-link">{v.region} {v.name_display}</a>
+            <a href={getVenueUrl(v)} target="_blank" rel="noopener noreferrer" class="related-link">{v.region} {v.name_display}</a>
           ))}
         </div>
       </section>
