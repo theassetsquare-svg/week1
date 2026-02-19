@@ -6,6 +6,12 @@ const regions = getUniqueRegions();
 const title = '전국 나이트·클럽·라운지 추천 | 나이트라이프 코리아';
 const description = '한국 전국 나이트, 클럽, 라운지 정보를 한눈에. 강남, 부산, 대구 등 지역별 나이트라이프 추천과 상세 리뷰.';
 
+// Curated mix: 4 night + 4 club + 4 lounge = 12 recommended
+const nightPick = venues.filter(v => v.type === 'night').slice(0, 4);
+const clubPick = venues.filter(v => v.type === 'club').slice(0, 4);
+const loungePick = venues.filter(v => v.type === 'lounge').slice(0, 4);
+const recommended = [...nightPick, ...clubPick, ...loungePick];
+
 // Build search index at build time
 const searchIndex = venues.map(v => ({
   name: v.name_display,
@@ -46,32 +52,31 @@ const jsonLd = [
 ];
 ---
 <BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <h1>전국 나이트 · 클럽 · 라운지 가이드</h1>
-      <p>강남 나이트, 강남 클럽, 강남 라운지부터 부산, 대구, 인천까지 — 한국 전국의 나이트라이프를 한곳에서 찾아보세요.</p>
+      <p>강남, 부산, 대구, 인천 — 전국 {venues.length}곳의 나이트라이프 정보를 한곳에서.</p>
 
       <div class="search-bar" style="position:relative;">
         <input type="text" id="venueSearch" placeholder="매장명 또는 지역으로 검색..." aria-label="매장 검색" autocomplete="off" />
         <div id="searchDropdown" class="search-dropdown" style="display:none;"></div>
       </div>
 
-      <div class="filter-chips" id="filterChips">
-        <button class="filter-chip active" data-filter="all">전체</button>
-        <button class="filter-chip" data-filter="night">나이트</button>
-        <button class="filter-chip" data-filter="club">클럽</button>
-        <button class="filter-chip" data-filter="lounge">라운지</button>
-        {regions.slice(0, 8).map(r => (
-          <button class="filter-chip" data-region={r.slug}>{r.name} ({r.count})</button>
-        ))}
+      <div class="filter-chips">
+        <a href="/nights/" class="filter-chip">나이트 {venues.filter(v => v.type === 'night').length}곳</a>
+        <a href="/clubs/" class="filter-chip">클럽 {venues.filter(v => v.type === 'club').length}곳</a>
+        <a href="/lounges/" class="filter-chip">라운지 {venues.filter(v => v.type === 'lounge').length}곳</a>
       </div>
     </div>
   </section>
 
-  <section class="container">
-    <div class="venue-grid" id="venueGrid">
-      {venues.map(v => (
-        <a href={getVenueUrl(v)} class="venue-card" data-type={v.type} data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
+  <!-- Recommended -->
+  <section class="container" style="padding-top: 2.5rem;">
+    <h2 style="text-align:center; margin-top:0; margin-bottom: 1.5rem;">추천 매장</h2>
+    <div class="venue-grid">
+      {recommended.map(v => (
+        <a href={getVenueUrl(v)} class="venue-card">
           <div class="venue-card-thumb">
             <img src={v.images[0].src} alt={v.images[0].alt} width="400" height="400" loading="lazy" />
           </div>
@@ -89,15 +94,17 @@ const jsonLd = [
     </div>
   </section>
 
+  <!-- Region Hub -->
   <section class="container" style="margin-top: 3rem;">
     <h2 style="text-align:center; margin-bottom: 1.5rem;">지역별 허브</h2>
     <div class="related-grid" style="max-width:800px; margin: 0 auto;">
       {regions.map(r => (
-        <a href={`/region/${r.slug}/`} class="related-link">{r.name} 나이트라이프 ({r.count}곳)</a>
+        <a href={`/region/${r.slug}/`} class="related-link">{r.name} ({r.count}곳)</a>
       ))}
     </div>
   </section>
 
+  <!-- Guides -->
   <section class="container" style="margin-top: 3rem;">
     <h2 style="text-align:center; margin-bottom: 1.5rem;">나이트라이프 가이드</h2>
     <div class="guide-grid">
@@ -163,19 +170,13 @@ const jsonLd = [
     const SI = searchIndex;
     const searchEl = document.getElementById('venueSearch');
     const dropdown = document.getElementById('searchDropdown');
-    const chips = document.querySelectorAll('.filter-chip');
-    const cards = document.querySelectorAll('.venue-card');
-    let activeFilter = 'all';
-    let activeRegion = '';
     let activeIdx = -1;
     let currentResults = [];
 
-    // ─── Normalize ───
     function norm(s) {
       return s.replace(/\s+/g, '').replace(/[^가-힣a-zA-Z0-9]/g, '').toLowerCase();
     }
 
-    // ─── 4-tier search ───
     function searchVenues(query) {
       if (!query.trim()) return [];
       const q = norm(query);
@@ -187,21 +188,15 @@ const jsonLd = [
         const nName = norm(item.name);
         const lName = item.name.toLowerCase();
 
-        // Tier 1: exact normalized match (highest)
         if (nName === q) score = 1000;
-        // Tier 2: partial normalized match
         else if (nName.includes(q) || item.norm.includes(q)) score = 500;
-        // Tier 3: all query tokens found
         else if (qTokens.length > 0 && qTokens.every(t => lName.includes(t) || item.region.toLowerCase().includes(t) || item.catLabel.toLowerCase().includes(t))) score = 200;
-        // Tier 4: fuzzy — any token matches
         else if (qTokens.some(t => lName.includes(t) || item.region.toLowerCase().includes(t))) score = 50;
-        // Tier 5: character overlap (very fuzzy)
         else {
           const overlap = [...new Set(q)].filter(c => nName.includes(c)).length;
           if (overlap >= Math.min(2, q.length * 0.5)) score = overlap * 5;
         }
 
-        // Bonus: starts with query
         if (lName.startsWith(ql)) score += 100;
         if (nName.startsWith(q)) score += 80;
 
@@ -211,20 +206,18 @@ const jsonLd = [
       return scored.filter(s => s.score > 0).sort((a, b) => b.score - a.score);
     }
 
-    // ─── Render dropdown ───
     function renderDropdown(results) {
       if (!dropdown) return;
       if (results.length === 0) {
         const q = searchEl?.value?.trim() || '';
         if (q.length > 0) {
-          // Find similar names
           const similar = SI
             .map(item => ({ ...item, dist: editDist(norm(q), norm(item.name)) }))
             .sort((a, b) => a.dist - b.dist)
             .slice(0, 3);
           dropdown.innerHTML = '<div class="search-no-result">검색 결과가 없습니다</div>' +
             (similar.length > 0 ? '<div class="search-no-result" style="padding-top:0;font-size:0.82rem;">비슷한 이름: ' +
-            similar.map(s => '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">' + s.name + '</a>').join(', ') + '</div>' : '');
+            similar.map(s => '<a href="' + s.url + '" style="color:var(--accent);">' + s.name + '</a>').join(', ') + '</div>' : '');
           dropdown.style.display = 'block';
         } else {
           dropdown.style.display = 'none';
@@ -239,7 +232,7 @@ const jsonLd = [
       activeIdx = -1;
 
       dropdown.innerHTML = top.map((r, i) =>
-        '<a class="search-item" href="' + r.url + '" target="_blank" rel="noopener noreferrer" data-idx="' + i + '">' +
+        '<a class="search-item" href="' + r.url + '" data-idx="' + i + '">' +
           '<img class="search-item-thumb" src="' + r.thumb + '" alt="" width="44" height="44" loading="lazy" />' +
           '<div class="search-item-info">' +
             '<div class="search-item-name">' + escHtml(r.name) + '</div>' +
@@ -254,10 +247,8 @@ const jsonLd = [
       return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    // ─── Simple edit distance (for fuzzy "similar" suggestion) ───
     function editDist(a, b) {
       if (a.length > 20 || b.length > 20) {
-        // simplified for long strings
         const setA = new Set(a);
         const setB = new Set(b);
         let common = 0;
@@ -274,7 +265,6 @@ const jsonLd = [
       return dp[m][n];
     }
 
-    // ─── Highlight active item ───
     function updateActiveItem() {
       const items = dropdown?.querySelectorAll('.search-item') || [];
       items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
@@ -283,33 +273,15 @@ const jsonLd = [
       }
     }
 
-    // ─── Filter grid cards ───
-    function filterCards() {
-      const q = searchEl?.value?.toLowerCase() || '';
-      cards.forEach(card => {
-        const el = card;
-        const type = el.dataset.type || '';
-        const region = el.dataset.region || '';
-        const name = (el.dataset.name || '').toLowerCase();
-        const matchType = activeFilter === 'all' || type === activeFilter;
-        const matchRegion = !activeRegion || region === activeRegion;
-        const matchSearch = !q || name.includes(q);
-        el.style.display = matchType && matchRegion && matchSearch ? '' : 'none';
-      });
-    }
-
-    // ─── Events ───
     searchEl?.addEventListener('input', () => {
       const q = searchEl.value.trim();
       if (q.length > 0) {
-        const results = searchVenues(q);
-        renderDropdown(results);
+        renderDropdown(searchVenues(q));
       } else {
         dropdown && (dropdown.style.display = 'none');
         currentResults = [];
         activeIdx = -1;
       }
-      filterCards();
     });
 
     searchEl?.addEventListener('keydown', (e) => {
@@ -331,7 +303,7 @@ const jsonLd = [
           ? currentResults[activeIdx]
           : currentResults[0];
         if (target) {
-          window.open(target.url, '_blank', 'noopener,noreferrer');
+          window.location.href = target.url;
         }
       } else if (e.key === 'Escape') {
         dropdown && (dropdown.style.display = 'none');
@@ -340,34 +312,17 @@ const jsonLd = [
       }
     });
 
-    // Close dropdown on outside click
     document.addEventListener('click', (e) => {
       if (!searchEl?.contains(e.target) && !dropdown?.contains(e.target)) {
         dropdown && (dropdown.style.display = 'none');
       }
     });
 
-    // Re-open on focus if has value
     searchEl?.addEventListener('focus', () => {
       const q = searchEl.value.trim();
       if (q.length > 0 && currentResults.length > 0) {
         dropdown && (dropdown.style.display = 'block');
       }
-    });
-
-    // Filter chips
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const f = chip.dataset.filter;
-        const r = chip.dataset.region;
-        if (f) { activeFilter = f; activeRegion = ''; }
-        else if (r) { activeRegion = activeRegion === r ? '' : r; activeFilter = 'all'; }
-        chips.forEach(c => c.classList.remove('active'));
-        if (f && activeFilter === f) chip.classList.add('active');
-        if (r && activeRegion === r) chip.classList.add('active');
-        if (!activeRegion && activeFilter === 'all') chips[0].classList.add('active');
-        filterCards();
-      });
     });
   </script>
 </BaseLayout>
