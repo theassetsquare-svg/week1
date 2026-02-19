@@ -51,7 +51,7 @@ const jsonLd = [{
         <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span><span>{region.name}</span>
       </div>
       <h1>{region.name} 나이트라이프 가이드</h1>
-      <p class="hub-intro">{region.name} 지역의 나이트, 클럽, 라운지 {region.count}곳의 상세 정보를 확인하세요. 각 매장의 분위기, 음악, 가격, 드레스코드 정보를 비교하고 나에게 맞는 곳을 찾아보세요.</p>
+      <p class="hub-intro">{region.name} 지역의 나이트, 클럽, 라운지 {region.count}곳의 상세 정보를 확인하세요. 각 매장의 분위기, 음악, 드레스코드 정보를 비교하고 나에게 맞는 곳을 찾아보세요.</p>
       {regionVenues.length > 0 && (
         <img src={regionVenues[0].images[0].src} alt={`${region.name} 나이트라이프`} class="hero-banner" width="500" height="340" loading="lazy" />
       )}
