@@ -121,7 +121,7 @@ const jsonLd = [{
     <h2 style="text-align:center;margin-bottom:1rem;">지역별 나이트</h2>
     <div class="related-grid" style="max-width:800px;margin:0 auto;">
       {allRegions.map(r => (
-        <a href={`/region/${r.slug}/`} class="related-link">{r.name} ({r.count}곳)</a>
+        <a href={`/region/${r.slug}/`} target="_blank" rel="noopener noreferrer" class="related-link">{r.name} ({r.count}곳)</a>
       ))}
     </div>
   </section>
