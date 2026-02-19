@@ -228,7 +228,7 @@ const tocItems = [
         {[...sameRegion, ...sameType, ...nearby].slice(0, 4).map((rv, i) => (
           <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{`#${i + 1}`}</a>
         ))}
-        <a href={`/region/${v.regionSlug}/`} class="related-link">+</a>
+        <a href={encodeURI(`/region/${v.regionSlug}/`)} class="related-link">+</a>
       </div>
     </section>
 
