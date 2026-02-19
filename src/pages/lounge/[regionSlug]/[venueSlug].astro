@@ -254,7 +254,7 @@ const tocItems = [
       group.querySelectorAll('.planner-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const g = group.getAttribute('data-group');
-          const key = btn.getAttribute('data-key') || '';
+          const key = btn.getAttribute('data-label') || '';
           group.querySelectorAll('.planner-btn').forEach(b => b.classList.remove('selected'));
           btn.classList.add('selected');
           if (g === 'purpose') selectedPurpose = key;
