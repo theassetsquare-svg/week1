@@ -89,7 +89,6 @@ const tocItems = [
   <div class="container content-narrow">
     <aside class="fact-box" aria-label="기본 정보">
       <dl class="fact-box__list">
-        <div class="fact-box__item"><dt>분류</dt><dd>{v.typeLabel}</dd></div>
         <div class="fact-box__item"><dt>권역</dt><dd>{v.region}</dd></div>
         {v.geo.precision !== 'none' && v.geo.formatted_address && v.geo.formatted_address !== '확인 필요' && (
           <div class="fact-box__item"><dt>주소</dt><dd>{v.geo.formatted_address}</dd></div>
