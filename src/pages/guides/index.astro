@@ -16,7 +16,7 @@ const description = '첫 방문 가이드, 드레스코드, 예산 가이드, �
   <section class="container">
     <div class="guide-grid">
       {guides.map(g => (
-        <a href={`/guides/${g.slug}/`} class="guide-card">
+        <a href={`/guides/${g.slug}/`} target="_blank" rel="noopener noreferrer" class="guide-card">
           <img src={`/guides/${g.slug}.svg`} alt={g.title} class="guide-card-img" width="500" height="260" loading="lazy" />
           <div class="guide-card-body">
             <h3>{g.title}</h3>
