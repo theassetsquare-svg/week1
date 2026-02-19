@@ -148,8 +148,8 @@ const tocItems = [
         <div class="planner-group">
           <label>목적을 선택하세요</label>
           <div class="planner-options" data-group="purpose">
-            {Object.keys(v.plannerRules['목적'] || {}).map(k => (
-              <button class="planner-btn" data-key={k}>{k}</button>
+            {Object.keys(v.plannerRules['목적'] || {}).map((k, i) => (
+              <button class="planner-btn" data-key={`p${i}`} data-label={k}>{k}</button>
             ))}
           </div>
         </div>
