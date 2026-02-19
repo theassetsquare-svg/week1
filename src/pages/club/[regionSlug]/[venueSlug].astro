@@ -225,8 +225,8 @@ const tocItems = [
     <section class="venue-section" id="related">
       <h2>추천</h2>
       <div class="related-grid">
-        {[...sameRegion, ...sameType, ...nearby].slice(0, 4).map(rv => (
-          <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display.replace(v.region + ' ', '').replace(/ (나이트|클럽|라운지)$/, '')}</a>
+        {[...sameRegion, ...sameType, ...nearby].slice(0, 4).map((rv, i) => (
+          <a href={getVenueUrl(rv!)} class="related-link">{`#${i + 1}`}</a>
         ))}
         <a href={`/region/${v.regionSlug}/`} class="related-link">+</a>
       </div>
