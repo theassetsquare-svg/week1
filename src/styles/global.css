@@ -757,6 +757,106 @@ main {
   color: var(--accent);
 }
 
+/* ─── Category Copy (listing page intros) ─── */
+.category-copy {
+  max-width: var(--content-width);
+  margin: 0 auto 2.5rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+.category-copy p {
+  margin-bottom: 1.25rem;
+}
+.category-copy__lead {
+  font-size: 1.08rem;
+  color: var(--text-primary);
+  line-height: 2;
+  margin-bottom: 1.5rem !important;
+}
+.category-copy__lead strong {
+  color: var(--accent);
+}
+.category-copy em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.category-copy__highlight {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.category-copy__highlight h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+.category-copy__highlight ul {
+  list-style: none;
+  padding: 0;
+}
+.category-copy__highlight li {
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  position: relative;
+  font-size: 0.92rem;
+}
+.category-copy__highlight li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.category-copy__tips {
+  background: var(--bg-accent);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.category-copy__tips h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+.category-copy__tips dl {
+  display: grid;
+  gap: 0.5rem;
+}
+.category-copy__tips dt {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--accent);
+}
+.category-copy__tips dd {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.category-copy__tips dd:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.category-copy__closing {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin-top: 2rem !important;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.category-copy__closing strong {
+  color: var(--accent);
+}
+
 /* Category search */
 .category-search {
   margin: 0 auto;
