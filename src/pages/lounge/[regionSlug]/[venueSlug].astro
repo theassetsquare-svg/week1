@@ -148,7 +148,7 @@ const tocItems = [
         <div class="planner-group">
           <label>1</label>
           <div class="planner-options" data-group="purpose">
-            {Object.keys(v.plannerRules['목적'] || {}).map((k, i) => (
+            {Object.keys(v.plannerRules['p'] || {}).map((k, i) => (
               <button class="planner-btn" data-key={`p${i}`} >{k}</button>
             ))}
           </div>
@@ -156,7 +156,7 @@ const tocItems = [
         <div class="planner-group">
           <label>2</label>
           <div class="planner-options" data-group="time">
-            {Object.keys(v.plannerRules['시간대'] || {}).map((k, i) => (
+            {Object.keys(v.plannerRules['t'] || {}).map((k, i) => (
               <button class="planner-btn" data-key={`t${i}`} >{k}</button>
             ))}
           </div>
@@ -268,11 +268,11 @@ const tocItems = [
       const result = document.getElementById('plannerResult');
       if (!result) return;
       let text = '';
-      if (selectedPurpose && plannerRules['목적']) {
-        text += plannerRules['목적'][selectedPurpose] || '';
+      if (selectedPurpose && plannerRules['p']) {
+        text += plannerRules['p'][selectedPurpose] || '';
       }
-      if (selectedTime && plannerRules['시간대']) {
-        text += (text ? ' ' : '') + (plannerRules['시간대'][selectedTime] || '');
+      if (selectedTime && plannerRules['t']) {
+        text += (text ? ' ' : '') + (plannerRules['t'][selectedTime] || '');
       }
       result.textContent = text || '선택해주세요.';
     }
