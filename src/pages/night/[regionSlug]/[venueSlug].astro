@@ -18,6 +18,7 @@ const updateDate = '2026-02-18';
 const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
+const relatedVenues = [...sameRegion, ...sameType, ...nearby].slice(0, 6);
 
 const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s*나이트\s*$/,'').trim() || v.urlSlug || v.venueSlug;
 const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
@@ -25,7 +26,10 @@ const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = v.pageTitle || `${v.name_display} 안내`;
 const description = `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
 
+const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
+
 const tocItems = [
+  { id: 'summary', label: '30초 요약' },
   { id: 'hook', label: '소개' },
   { id: 'atmosphere', label: '감성 요약' },
   { id: 'story', label: '스토리텔링' },
@@ -35,8 +39,7 @@ const tocItems = [
   { id: 'music', label: '음악' },
   { id: 'location', label: '위치' },
   { id: 'faq', label: 'FAQ' },
-  { id: 'related', label: '추천' },
-  { id: 'gallery', label: '갤러리' },
+  { id: 'related', label: '관련 페이지' },
 ];
 ---
 <BaseLayout title={title} description={description} canonical={canonicalUrl} ogImage={ogImage}>
@@ -44,16 +47,35 @@ const tocItems = [
     <div class="container content-narrow">
       <div class="breadcrumb">
         <a href="/">홈</a><span>/</span>
-        <a href="/nights/">목록</a><span>/</span>
+        <a href="/nights/">나이트 목록</a><span>/</span>
         {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
-      <img src={encodeURI(v.images[0].src)} alt="대표" class="venue-hero-img" width="500" height="500" loading="eager" />
+      <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
       <h1 class="venue-hero__title">{v.name_display}</h1>
     </div>
   </section>
 
   <div class="container content-narrow">
+    <!-- 30초 요약 -->
+    <section class="quick-summary" id="summary">
+      <div class="quick-summary__title">30초 요약</div>
+      <ul class="quick-summary__list">
+        <li>{v.region} 지역 나이트 · {v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 소재`}</li>
+        <li>{v.bodySections.atmosphere.split('.')[0]}.</li>
+        <li>{v.bodySections.music.split('.')[0]}.</li>
+        {v.checklist[0] && <li>첫 방문 팁: {v.checklist[0]}</li>}
+        {v.timeline[0] && <li>추천 시간대: {v.timeline[0].time} — {v.timeline[0].label}</li>}
+        <li>정보 갱신일: {updateDate}</li>
+      </ul>
+    </section>
+
+    <!-- CTA #1: 상단 -->
+    <div class="venue-cta-inline">
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">네이버 지도에서 {shortName} 찾기</a>
+      <a href="/nights/" class="venue-cta-btn">나이트 목록 보기</a>
+    </div>
+
     <aside class="fact-box" aria-label="기본 정보">
       <time class="fact-box__date" datetime={updateDate}>갱신 {updateDate}</time>
     </aside>
@@ -199,10 +221,16 @@ const tocItems = [
         )}
       </div>
       <div class="map-buttons">
-        <a href={`https://map.naver.com/v5/search/${encodeURIComponent(shortName)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--naver">지도 검색</a>
-        <a href={`https://www.google.com/maps/search/${encodeURIComponent(shortName)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--google">지도 검색</a>
+        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--naver">네이버 지도에서 {shortName} 찾기</a>
+        <a href={`https://www.google.com/maps/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--google">구글 지도에서 {shortName} 찾기</a>
       </div>
     </section>
+
+    <!-- CTA #2: 중간 -->
+    <div class="venue-cta-inline">
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
+      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn">{v.region} 다른 매장 보기</a>
+    </div>
 
     <!-- 8. FAQ -->
     <section class="venue-section" id="faq">
@@ -223,12 +251,13 @@ const tocItems = [
 
     <!-- 10. Related -->
     <section class="venue-section" id="related">
-      <h2>추천</h2>
+      <h2>관련 페이지</h2>
       <div class="related-grid">
-        {[...sameRegion, ...sameType, ...nearby].slice(0, 4).map((rv, i) => (
-          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{`#${i + 1}`}</a>
+        {relatedVenues.map(rv => (
+          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
         ))}
-        <a href={encodeURI(`/region/${v.regionSlug}/`)} class="related-link">+</a>
+        <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
+        <a href="/nights/" class="related-link">나이트 전체 목록</a>
       </div>
     </section>
 
@@ -238,15 +267,15 @@ const tocItems = [
       <div class="gallery">
         {v.images.slice(1).map((img, i) => (
           <figure>
-            <img src={encodeURI(img.src)} alt={`이미지 ${i + 1}`} width="400" height="340" loading="lazy" />
+            <img src={encodeURI(img.src)} alt={`${v.name_display} 이미지 ${i + 1}`} width="400" height="340" loading="lazy" />
           </figure>
         ))}
       </div>
     </section>
 
-    <!-- CTA Buttons -->
+    <!-- CTA #3: 하단 -->
     <div class="venue-cta-area">
-      <a href={`https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
       <a href="/nights/" class="venue-cta-btn">목록으로</a>
       <button class="venue-cta-btn" id="correctionBtn" type="button">정정 요청</button>
     </div>
