@@ -1111,6 +1111,81 @@ body.mobile-preview main { max-width: 414px; }
 body.mobile-preview .site-header .container,
 body.mobile-preview .site-footer .container { max-width: 414px; }
 
+/* ─── Trust Block (update log + editorial) ─── */
+.trust-block {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+.trust-block__title {
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.update-log {
+  list-style: none; margin: 0 0 0.75rem; padding: 0;
+}
+.update-log li {
+  padding: 0.25rem 0;
+  font-size: 0.85rem; color: var(--text-secondary);
+  display: flex; gap: 0.5rem; align-items: baseline;
+}
+.update-log time {
+  font-weight: 600; color: var(--text-muted);
+  font-size: 0.82rem; flex-shrink: 0;
+}
+.trust-block__links {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+}
+.trust-block__links a { color: var(--accent); font-weight: 500; }
+.trust-block__links button {
+  background: none; border: none; color: var(--accent);
+  font-weight: 500; cursor: pointer; font-size: 0.82rem;
+  font-family: inherit; padding: 0;
+}
+.trust-block__links button:hover,
+.trust-block__links a:hover { color: var(--accent-hover); }
+
+/* ─── Conclusion Section ─── */
+.venue-conclusion {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.venue-conclusion p {
+  color: var(--text-secondary);
+  line-height: 1.8; margin-bottom: 1rem;
+}
+.venue-conclusion .venue-cta-inline { margin: 0; border: none; padding: 0; }
+
+/* ─── Mid-page Gallery ─── */
+.gallery-mid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem; margin: 1.5rem 0;
+}
+.gallery-mid figure { margin: 0; }
+.gallery-mid img {
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+.gallery-mid figcaption {
+  font-size: 0.75rem; color: var(--text-muted);
+  margin-top: 0.25rem; line-height: 1.4;
+}
+@media (max-width: 480px) {
+  .gallery-mid { grid-template-columns: 1fr; }
+}
+
 /* ─── Detail Page CTA ─── */
 .venue-cta-area {
   display: flex; gap: 0.75rem; flex-wrap: wrap;
