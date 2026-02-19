@@ -238,7 +238,7 @@ const tocItems = [
       <div class="gallery">
         {v.images.slice(0, 3).map((img, i) => (
           <figure>
-            <img src={img.src} alt={`매장 분위기 ${i + 1}`} width="400" height="340" loading="lazy" />
+            <img src={encodeURI(img.src)} alt={`매장 분위기 ${i + 1}`} width="400" height="340" loading="lazy" />
           </figure>
         ))}
       </div>
