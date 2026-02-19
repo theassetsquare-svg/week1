@@ -46,16 +46,16 @@ const currentPath = Astro.url.pathname;
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a href="/" class="site-logo">NLC</a>
+      <a href="/" class="site-logo" target="_blank" rel="noopener noreferrer">NLC</a>
       <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="siteNav">
-        <a href="/nights/" class={currentPath.startsWith('/nights') ? 'active' : ''}>나이트</a>
-        <a href="/clubs/" class={currentPath.startsWith('/clubs') ? 'active' : ''}>클럽</a>
-        <a href="/lounges/" class={currentPath.startsWith('/lounges') ? 'active' : ''}>라운지</a>
-        <a href="/guides/" class={currentPath.startsWith('/guides') ? 'active' : ''}>가이드</a>
-        <a href="/editorial-policy/" class={currentPath.startsWith('/editorial') ? 'active' : ''}>정책</a>
+        <a href="/nights/" target="_blank" rel="noopener noreferrer" class={currentPath.startsWith('/nights') ? 'active' : ''}>나이트</a>
+        <a href="/clubs/" target="_blank" rel="noopener noreferrer" class={currentPath.startsWith('/clubs') ? 'active' : ''}>클럽</a>
+        <a href="/lounges/" target="_blank" rel="noopener noreferrer" class={currentPath.startsWith('/lounges') ? 'active' : ''}>라운지</a>
+        <a href="/guides/" target="_blank" rel="noopener noreferrer" class={currentPath.startsWith('/guides') ? 'active' : ''}>가이드</a>
+        <a href="/editorial-policy/" target="_blank" rel="noopener noreferrer" class={currentPath.startsWith('/editorial') ? 'active' : ''}>정책</a>
       </nav>
     </div>
   </header>
