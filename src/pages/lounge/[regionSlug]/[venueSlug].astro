@@ -114,34 +114,10 @@ const tocItems = [
       </ol>
     </nav>
 
-    <div class="venue-hero__meta">
-      <span class="venue-hero__tag venue-hero__tag--region">{v.region}</span>
-      <span class="venue-hero__tag venue-hero__tag--tone">{v.storyFrame.tone}</span>
-      <span class="venue-hero__tag venue-hero__tag--time">약 {readTime}분</span>
-    </div>
-
-    <div class="story-hook">
-      <div class="story-hook__label">Tonight's Story — {v.storyFrame.style}</div>
-      <div class="story-hook__text">{v.story.scene1}</div>
-      <div class="story-hook__quote">{v.bodySections.atmosphere.split('.')[0]}.</div>
-      <a href="#atmosphere" class="story-hook__cta">이야기 속으로 ↓</a>
-    </div>
-
-    <div class="mood-check">
-      <div class="mood-check__title">지금 기분은?</div>
-      <div class="mood-check__options">
-        <button class="mood-btn" data-mood="romantic"><span class="mood-btn__emoji">🌹</span>로맨틱</button>
-        <button class="mood-btn" data-mood="relax"><span class="mood-btn__emoji">🍸</span>힐링 타임</button>
-        <button class="mood-btn" data-mood="talk"><span class="mood-btn__emoji">💬</span>깊은 담소</button>
-        <button class="mood-btn" data-mood="celebrate"><span class="mood-btn__emoji">🎉</span>축하 모임</button>
-      </div>
-      <div class="mood-check__result" id="moodResult"></div>
-    </div>
-
     <!-- Hook Intro -->
     {v.hookIntro && (
       <section class="venue-section" id="hook">
-        <h2>{v.name_display} 완벽 가이드</h2>
+        <h2>완벽 가이드</h2>
         <p>{v.hookIntro}</p>
       </section>
     )}
