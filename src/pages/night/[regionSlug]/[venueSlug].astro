@@ -29,19 +29,19 @@ const description = `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
 const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
 
 const tocItems = [
-  { id: 'summary', label: '30초 요약' },
-  { id: 'hook', label: '소개' },
-  { id: 'atmosphere', label: '감성 요약' },
-  { id: 'story', label: '스토리텔링' },
-  { id: 'gallery', label: '갤러리' },
-  { id: 'timeline', label: '타임라인' },
-  { id: 'planner', label: '커스텀 코스' },
-  { id: 'checklist', label: '체크리스트' },
-  { id: 'music', label: '음악' },
-  { id: 'location', label: '위치' },
-  { id: 'faq', label: 'FAQ' },
-  { id: 'conclusion', label: '마무리' },
-  { id: 'related', label: '관련 페이지' },
+  { id: 'summary', label: '한눈에 보기' },
+  { id: 'hook', label: '첫인상' },
+  { id: 'atmosphere', label: '무드 & 분위기' },
+  { id: 'story', label: '하룻밤 이야기' },
+  { id: 'gallery', label: '포토' },
+  { id: 'timeline', label: '밤의 흐름' },
+  { id: 'planner', label: '나만의 코스' },
+  { id: 'checklist', label: '준비물' },
+  { id: 'music', label: '라이브 & 음악' },
+  { id: 'location', label: '오시는 길' },
+  { id: 'faq', label: '궁금한 점' },
+  { id: 'conclusion', label: '에디터 한마디' },
+  { id: 'related', label: '함께 보면 좋은 곳' },
 ];
 ---
 <BaseLayout title={title} description={description} canonical={canonicalUrl} ogImage={ogImage}>
@@ -60,23 +60,21 @@ const tocItems = [
   </section>
 
   <div class="container content-narrow">
-    <!-- 30초 요약 -->
     <section class="quick-summary" id="summary">
-      <div class="quick-summary__title">30초 요약</div>
+      <div class="quick-summary__title">한눈에 보기</div>
       <ul class="quick-summary__list">
-        <li>{v.region} 지역 나이트 · {v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 소재`}</li>
-        <li>{v.bodySections.atmosphere.split('.')[0]}.</li>
-        <li>{v.bodySections.music.split('.')[0]}.</li>
-        {v.checklist[0] && <li>첫 방문 팁: {v.checklist[0]}</li>}
-        {v.timeline[0] && <li>추천 시간대: {v.timeline[0].time} — {v.timeline[0].label}</li>}
-        <li>정보 갱신일: {updateDate}</li>
+        <li>{v.region} 소재 나이트 · {v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 지역`}</li>
+        <li>분위기 — {v.bodySections.atmosphere.split('.')[0]}.</li>
+        <li>무대 — {v.bodySections.music.split('.')[0]}.</li>
+        {v.checklist[0] && <li>처음이라면: {v.checklist[0]}</li>}
+        {v.timeline[0] && <li>골든타임: {v.timeline[0].time} — {v.timeline[0].label}</li>}
+        <li>최종 확인: {updateDate}</li>
       </ul>
     </section>
 
-    <!-- CTA #1: 상단 -->
     <div class="venue-cta-inline">
-      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">네이버 지도에서 {shortName} 찾기</a>
-      <a href="/nights/" class="venue-cta-btn">나이트 목록 보기</a>
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">오늘 밤 {shortName} 찾아가기</a>
+      <a href="/nights/" class="venue-cta-btn">전국 나이트 둘러보기</a>
     </div>
 
     <aside class="fact-box" aria-label="기본 정보">
@@ -92,68 +90,64 @@ const tocItems = [
       </ol>
     </nav>
 
-    <!-- Intro -->
     {v.hookIntro && (
       <section class="venue-section" id="hook">
-        <h2>소개</h2>
+        <h2>첫인상</h2>
         <p>{v.hookIntro}</p>
       </section>
     )}
 
-    <!-- Atmosphere -->
     <section class="venue-section" id="atmosphere">
-      <h2>감성 요약</h2>
+      <h2>무드 & 분위기</h2>
       <p>{v.bodySections.atmosphere}</p>
     </section>
 
-    <!-- Story -->
     <section class="venue-section" id="story">
-      <h2>스토리텔링: {v.storyFrame.style}</h2>
+      <h2>하룻밤 이야기: {v.storyFrame.style}</h2>
       <div class="accordion">
         <div class="accordion-item">
-          <button class="accordion-trigger">Act 1 – 도착 <span class="icon">▼</span></button>
+          <button class="accordion-trigger">입장 — 첫 발을 내딛는 순간 <span class="icon">▼</span></button>
           <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene1}</div></div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-trigger">Act 2 – 경험 <span class="icon">▼</span></button>
+          <button class="accordion-trigger">몰입 — 음악 속으로 걸어 들어가다 <span class="icon">▼</span></button>
           <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene2}</div></div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-trigger">Act 3 – 절정과 마무리 <span class="icon">▼</span></button>
+          <button class="accordion-trigger">클라이맥스 — 밤이 가장 뜨거운 시간 <span class="icon">▼</span></button>
           <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene3}</div></div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-trigger">감각의 디테일 <span class="icon">▼</span></button>
+          <button class="accordion-trigger">오감 — 조명, 소리, 공기까지 <span class="icon">▼</span></button>
           <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene4}</div></div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-trigger">감성의 여운 <span class="icon">▼</span></button>
+          <button class="accordion-trigger">여운 — 돌아가는 길의 기분 <span class="icon">▼</span></button>
           <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene5}</div></div>
         </div>
         {v.story.scene6 && (
           <div class="accordion-item">
-            <button class="accordion-trigger">Act 4 – 사람들 <span class="icon">▼</span></button>
+            <button class="accordion-trigger">인물 — 그곳에서 만난 사람들 <span class="icon">▼</span></button>
             <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene6}</div></div>
           </div>
         )}
         {v.story.scene7 && (
           <div class="accordion-item">
-            <button class="accordion-trigger">Act 5 – 비하인드 <span class="icon">▼</span></button>
+            <button class="accordion-trigger">비하인드 — 무대 뒤 이야기 <span class="icon">▼</span></button>
             <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene7}</div></div>
           </div>
         )}
         {v.story.scene8 && (
           <div class="accordion-item">
-            <button class="accordion-trigger">Act 6 – 재방문 <span class="icon">▼</span></button>
+            <button class="accordion-trigger">재방문 — 다시 찾게 되는 이유 <span class="icon">▼</span></button>
             <div class="accordion-content"><div class="accordion-content-inner">{v.story.scene8}</div></div>
           </div>
         )}
       </div>
     </section>
 
-    <!-- Gallery (mid-page) -->
     <section class="venue-section" id="gallery">
-      <h2>갤러리</h2>
+      <h2>포토</h2>
       <div class="gallery-mid">
         {v.images.slice(0, 3).map((img, i) => (
           <img src={encodeURI(img.src)} alt={`${v.name_display} ${i === 0 ? '외관 전경' : i === 1 ? '내부 분위기' : '무대와 조명'}`} width="400" height="400" loading="lazy" />
@@ -161,9 +155,8 @@ const tocItems = [
       </div>
     </section>
 
-    <!-- Timeline -->
     <section class="venue-section" id="timeline">
-      <h2>타임라인</h2>
+      <h2>밤의 흐름</h2>
       <div class="timeline">
         {v.timeline.map(t => (
           <div class="timeline-item">
@@ -176,12 +169,11 @@ const tocItems = [
       </div>
     </section>
 
-    <!-- Planner -->
     <section class="venue-section" id="planner">
-      <h2>커스텀 코스</h2>
+      <h2>나만의 코스 짜기</h2>
       <div class="planner">
         <div class="planner-group">
-          <label>1</label>
+          <label>목적</label>
           <div class="planner-options" data-group="purpose">
             {Object.keys(v.plannerRules['p'] || {}).map((k, i) => (
               <button class="planner-btn" data-key={`p${i}`} >{k}</button>
@@ -189,7 +181,7 @@ const tocItems = [
           </div>
         </div>
         <div class="planner-group">
-          <label>2</label>
+          <label>시간대</label>
           <div class="planner-options" data-group="time">
             {Object.keys(v.plannerRules['t'] || {}).map((k, i) => (
               <button class="planner-btn" data-key={`t${i}`} >{k}</button>
@@ -197,16 +189,15 @@ const tocItems = [
           </div>
         </div>
         <div class="planner-result" id="plannerResult">
-          선택해주세요.
+          위에서 목적과 시간대를 골라보세요.
         </div>
       </div>
     </section>
 
-    <!-- Checklist -->
     <section class="venue-section" id="checklist">
-      <h2>첫방문 체크리스트</h2>
+      <h2>방문 전 준비물</h2>
       <table class="checklist-table">
-        <thead><tr><th>항목</th><th>체크</th></tr></thead>
+        <thead><tr><th>항목</th><th>확인</th></tr></thead>
         <tbody>
           {v.checklist.map((item, i) => (
             <tr><td>{item}</td><td><input type="checkbox" id={`ck${i}`} /></td></tr>
@@ -215,39 +206,33 @@ const tocItems = [
       </table>
     </section>
 
-    <!-- Music -->
     <section class="venue-section" id="music">
-      <h2>음악</h2>
+      <h2>라이브 & 음악</h2>
       <p>{v.bodySections.music}</p>
     </section>
 
-    <!-- Location -->
     <section class="venue-section" id="location">
-      <h2>위치/교통</h2>
+      <h2>오시는 길</h2>
       <div class="location-info">
         {v.geo.precision !== 'none' ? (
-          <>
-            <p><span class="location-label">주소:</span> {v.geo.formatted_address === '확인 필요' ? '확인 필요 – 출발 전 직접 확인을 권장합니다' : v.geo.formatted_address}</p>
-          </>
+          <p><span class="location-label">주소:</span> {v.geo.formatted_address === '확인 필요' ? '확인 필요 – 출발 전 직접 확인을 권장합니다' : v.geo.formatted_address}</p>
         ) : (
           <p>정확한 위치 정보 확인이 필요합니다. 출발 전 직접 확인을 권장합니다.</p>
         )}
       </div>
       <div class="map-buttons">
-        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--naver">네이버 지도에서 {shortName} 찾기</a>
-        <a href={`https://www.google.com/maps/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--google">구글 지도에서 {shortName} 찾기</a>
+        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--naver">네이버 지도로 길 찾기</a>
+        <a href={`https://www.google.com/maps/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="map-btn map-btn--google">구글 맵에서 확인</a>
       </div>
     </section>
 
-    <!-- CTA #2: 중간 -->
     <div class="venue-cta-inline">
-      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
-      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn">{v.region} 다른 매장 보기</a>
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지금 바로 길 찾기</a>
+      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn">{v.region} 다른 곳도 보기</a>
     </div>
 
-    <!-- FAQ -->
     <section class="venue-section" id="faq">
-      <h2>자주 묻는 질문</h2>
+      <h2>궁금한 점</h2>
       {v.faq.map(f => (
         <div class="faq-item">
           <div class="faq-q">{f.q}</div>
@@ -256,25 +241,22 @@ const tocItems = [
       ))}
     </section>
 
-    <!-- Safety -->
     <section class="venue-section">
-      <h2>매너/안전/예산 안내</h2>
+      <h2>매너와 안전</h2>
       <p>{v.bodySections.safety}</p>
     </section>
 
-    <!-- Conclusion -->
     <section class="venue-conclusion" id="conclusion">
-      <h2>마무리</h2>
-      <p>{v.name_display}은(는) {v.region} 지역에서 독특한 분위기와 경험을 제공하는 나이트입니다. {v.bodySections.atmosphere.split('.')[0]}. 방문 전 위의 체크리스트와 타임라인을 참고하면 더 만족스러운 경험을 할 수 있습니다.</p>
+      <h2>에디터 한마디</h2>
+      <p>라이브 밴드의 첫 곡이 울리고, 테이블 위로 시선이 오가는 그 순간 — {v.name_display}의 밤은 그렇게 시작됩니다. {v.region}에서 새로운 인연과 음악을 동시에 찾고 있다면, 위의 타임라인과 준비물 체크리스트를 참고해 완벽한 밤을 준비해보세요.</p>
       <div class="venue-cta-inline">
-        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">네이버 지도에서 {shortName} 찾기</a>
-        <a href="/nights/" class="venue-cta-btn">나이트 목록 보기</a>
+        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">오늘 밤 {shortName} 찾아가기</a>
+        <a href="/nights/" class="venue-cta-btn">전국 나이트 둘러보기</a>
       </div>
     </section>
 
-    <!-- Related -->
     <section class="venue-section" id="related">
-      <h2>관련 페이지</h2>
+      <h2>함께 보면 좋은 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
           <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
@@ -284,25 +266,22 @@ const tocItems = [
       </div>
     </section>
 
-    <!-- Trust Block -->
     <aside class="trust-block" id="trust">
-      <h3>신뢰 정보</h3>
+      <h3>정보 신뢰도</h3>
       <ul class="update-log">
-        <li><time datetime={updateDate}>{updateDate}</time> <span>페이지 정보 갱신</span></li>
-        <li><time datetime="2026-02-10">2026-02-10</time> <span>초기 등록</span></li>
+        <li><time datetime={updateDate}>{updateDate}</time> <span>현장 확인 및 정보 갱신</span></li>
+        <li><time datetime="2026-02-10">2026-02-10</time> <span>최초 등록</span></li>
       </ul>
       <div class="trust-block__links">
-        <a href="/about/">편집 정책 보기</a>
-        <button type="button" id="correctionBtn">정정 요청</button>
+        <a href="/about/">편집 원칙 보기</a>
+        <button type="button" id="correctionBtn">오류 제보</button>
       </div>
     </aside>
 
-    <!-- CTA #3: 하단 -->
     <div class="venue-cta-area">
-      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지금 바로 길 찾기</a>
       <a href="/nights/" class="venue-cta-btn">목록으로</a>
     </div>
-
   </div>
 
   {v.phone && (
@@ -340,7 +319,7 @@ const tocItems = [
       if (selectedTime && plannerRules['t']) {
         text += (text ? ' ' : '') + (plannerRules['t'][selectedTime] || '');
       }
-      result.textContent = text || '선택해주세요.';
+      result.textContent = text || '위에서 목적과 시간대를 골라보세요.';
     }
   </script>
 </BaseLayout>
