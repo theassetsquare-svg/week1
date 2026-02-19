@@ -156,7 +156,7 @@ const tocItems = [
         <div class="planner-group">
           <label>2</label>
           <div class="planner-options" data-group="time">
-            {Object.keys(v.plannerRules['시간대'] || {}).map((k, i) => (
+            {Object.keys(v.plannerRules['t'] || {}).map((k, i) => (
               <button class="planner-btn" data-key={`t${i}`} >{k}</button>
             ))}
           </div>
