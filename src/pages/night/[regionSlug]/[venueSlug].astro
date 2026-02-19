@@ -261,50 +261,12 @@ const tocItems = [
 
     <!-- 10. Related -->
     <section class="venue-section" id="related">
-      <h2>관련 매장</h2>
-      {sameRegion.length > 0 && (
-        <div class="related-section">
-          <h3>근처</h3>
-          <div class="related-grid">
-            {sameRegion.map(rv => (
-              <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display.replace(v.region + ' ', '')}</a>
-            ))}
-          </div>
-        </div>
-      )}
-      {sameType.length > 0 && (
-        <div class="related-section">
-          <h3>같은 유형</h3>
-          <div class="related-grid">
-            {sameType.map(rv => (
-              <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display.replace(v.region + ' ', '')}</a>
-            ))}
-          </div>
-        </div>
-      )}
-      {nearby.length > 0 && (
-        <div class="related-section">
-          <h3>가까운 매장</h3>
-          <div class="related-grid">
-            {nearby.map(rv => (
-              <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display.replace(v.region + ' ', '')}</a>
-            ))}
-          </div>
-        </div>
-      )}
-      <div class="related-section">
-        <h3>참고 자료</h3>
-        <div class="related-grid">
-          {guides.slice(0, 2).map(g => (
-            <a href={`/guides/${g.slug}/`} class="related-link">{g.title}</a>
-          ))}
-        </div>
-      </div>
-      <div class="related-section">
-        <div class="related-grid">
-          <a href={`/region/${v.regionSlug}/`} class="related-link">전체 보기</a>
-          <a href="/nights/" class="related-link">전체 목록 보기</a>
-        </div>
+      <h2>추천</h2>
+      <div class="related-grid">
+        {[...sameRegion, ...sameType, ...nearby].slice(0, 4).map(rv => (
+          <a href={getVenueUrl(rv!)} class="related-link">{rv!.name_display.replace(v.region + ' ', '').replace(/ (나이트|클럽|라운지)$/, '')}</a>
+        ))}
+        <a href={`/region/${v.regionSlug}/`} class="related-link">더보기</a>
       </div>
     </section>
 
