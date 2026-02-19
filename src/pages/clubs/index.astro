@@ -4,7 +4,7 @@ import { venues, getVenueUrl } from '../../utils/venues';
 
 const clubVenues = venues.filter(v => v.type === 'club');
 const title = '전국 클럽 추천 | 한국 클럽 가이드';
-const description = '한국 전국의 인기 클럽을 한눈에. 강남 클럽, 이태원 클럽 등 최신 클럽 정보와 분위기, 음악, 가격 가이드.';
+const description = '한국 전국의 인기 클럽을 한눈에. 강남 클럽, 이태원 클럽 등 최신 클럽 정보와 분위기, 음악 가이드.';
 
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 clubVenues.forEach(v => {

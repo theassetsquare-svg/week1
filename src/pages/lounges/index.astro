@@ -4,7 +4,7 @@ import { venues, getVenueUrl } from '../../utils/venues';
 
 const loungeVenues = venues.filter(v => v.type === 'lounge');
 const title = '전국 라운지·감성주점 추천 | 한국 라운지 가이드';
-const description = '한국 전국의 프리미엄 라운지와 감성주점을 소개합니다. 강남 라운지를 중심으로 분위기, 칵테일, 가격 정보를 확인하세요.';
+const description = '한국 전국의 프리미엄 라운지와 감성주점을 소개합니다. 강남 라운지를 중심으로 분위기, 칵테일, 추천 매장 정보를 확인하세요.';
 
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 loungeVenues.forEach(v => {
