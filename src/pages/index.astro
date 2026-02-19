@@ -303,7 +303,7 @@ const jsonLd = [
           ? currentResults[activeIdx]
           : currentResults[0];
         if (target) {
-          window.location.href = target.url;
+          window.open(target.url, '_blank');
         }
       } else if (e.key === 'Escape') {
         dropdown && (dropdown.style.display = 'none');
