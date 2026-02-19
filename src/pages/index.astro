@@ -111,10 +111,10 @@ const jsonLd = [
   <style>
     .search-dropdown {
       position: absolute; top: 100%; left: 0; right: 0; z-index: 60;
-      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      background: var(--bg-card); border: 1px solid var(--border-emphasis);
       border-radius: 0 0 var(--radius-md) var(--radius-md);
       max-height: 420px; overflow-y: auto;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow-lg);
     }
     .search-item {
       display: flex; align-items: center; gap: 0.75rem;
@@ -124,7 +124,7 @@ const jsonLd = [
       transition: background 0.15s;
     }
     .search-item:hover, .search-item.active {
-      background: rgba(139,92,246,0.15);
+      background: var(--accent-light);
     }
     .search-item-thumb {
       width: 44px; height: 44px; border-radius: 6px;
@@ -142,9 +142,9 @@ const jsonLd = [
       display: inline-block; padding: 0.1rem 0.4rem; border-radius: 8px;
       font-size: 0.7rem; font-weight: 600; margin-right: 0.3rem;
     }
-    .search-cat-club { background: rgba(139,92,246,0.2); color: var(--accent-purple); }
-    .search-cat-night { background: rgba(245,158,11,0.2); color: var(--accent-gold); }
-    .search-cat-lounge { background: rgba(6,182,212,0.2); color: var(--accent-cyan); }
+    .search-cat-club { background: rgba(91,79,196,0.1); color: var(--tint-club); }
+    .search-cat-night { background: rgba(184,134,11,0.1); color: var(--tint-night); }
+    .search-cat-lounge { background: rgba(14,124,134,0.1); color: var(--tint-lounge); }
     .search-no-result {
       padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;
     }
