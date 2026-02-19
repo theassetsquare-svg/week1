@@ -33,12 +33,14 @@ const tocItems = [
   { id: 'hook', label: '소개' },
   { id: 'atmosphere', label: '감성 요약' },
   { id: 'story', label: '스토리텔링' },
+  { id: 'gallery', label: '갤러리' },
   { id: 'timeline', label: '타임라인' },
   { id: 'planner', label: '커스텀 코스' },
   { id: 'checklist', label: '체크리스트' },
   { id: 'music', label: '음악' },
   { id: 'location', label: '위치' },
   { id: 'faq', label: 'FAQ' },
+  { id: 'conclusion', label: '마무리' },
   { id: 'related', label: '관련 페이지' },
 ];
 ---
@@ -52,6 +54,7 @@ const tocItems = [
         <span>{shortName}</span>
       </div>
       <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
+      <span class="venue-hero__cat-badge">클럽</span>
       <h1 class="venue-hero__title">{v.name_display}</h1>
     </div>
   </section>
@@ -145,6 +148,16 @@ const tocItems = [
       </div>
     </section>
 
+    <!-- Gallery (mid-page) -->
+    <section class="venue-section" id="gallery">
+      <h2>갤러리</h2>
+      <div class="gallery-mid">
+        {v.images.slice(0, 3).map((img, i) => (
+          <img src={encodeURI(img.src)} alt={`${v.name_display} ${i === 0 ? '외관 전경' : i === 1 ? '내부 분위기' : 'DJ 부스와 플로어'}`} width="400" height="400" loading="lazy" />
+        ))}
+      </div>
+    </section>
+
     <section class="venue-section" id="timeline">
       <h2>타임라인</h2>
       <div class="timeline">
@@ -235,6 +248,16 @@ const tocItems = [
       <p>{v.bodySections.safety}</p>
     </section>
 
+    <!-- Conclusion -->
+    <section class="venue-conclusion" id="conclusion">
+      <h2>마무리</h2>
+      <p>{v.name_display}은(는) {v.region} 지역에서 독특한 분위기와 경험을 제공하는 클럽입니다. {v.bodySections.atmosphere.split('.')[0]}. 방문 전 위의 체크리스트와 타임라인을 참고하면 더 만족스러운 경험을 할 수 있습니다.</p>
+      <div class="venue-cta-inline">
+        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">네이버 지도에서 {shortName} 찾기</a>
+        <a href="/clubs/" class="venue-cta-btn">클럽 목록 보기</a>
+      </div>
+    </section>
+
     <section class="venue-section" id="related">
       <h2>관련 페이지</h2>
       <div class="related-grid">
@@ -246,22 +269,23 @@ const tocItems = [
       </div>
     </section>
 
-    <section class="venue-section" id="gallery">
-      <h2>갤러리</h2>
-      <div class="gallery">
-        {v.images.slice(0, 3).map((img, i) => (
-          <figure>
-            <img src={encodeURI(img.src)} alt={`${v.name_display} 이미지 ${i + 1}`} width="400" height="340" loading="lazy" />
-          </figure>
-        ))}
+    <!-- Trust Block -->
+    <aside class="trust-block" id="trust">
+      <h3>신뢰 정보</h3>
+      <ul class="update-log">
+        <li><time datetime={updateDate}>{updateDate}</time> <span>페이지 정보 갱신</span></li>
+        <li><time datetime="2026-02-10">2026-02-10</time> <span>초기 등록</span></li>
+      </ul>
+      <div class="trust-block__links">
+        <a href="/about/">편집 정책 보기</a>
+        <button type="button" id="correctionBtn">정정 요청</button>
       </div>
-    </section>
+    </aside>
 
     <!-- CTA #3: 하단 -->
     <div class="venue-cta-area">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
       <a href="/clubs/" class="venue-cta-btn">목록으로</a>
-      <button class="venue-cta-btn" id="correctionBtn" type="button">정정 요청</button>
     </div>
 
   </div>
