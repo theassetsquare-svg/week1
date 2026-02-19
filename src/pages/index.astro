@@ -109,7 +109,7 @@ const jsonLd = [
     <h2 style="text-align:center; margin-bottom: 1.5rem;">나이트라이프 가이드</h2>
     <div class="guide-grid">
       {guides.slice(0, 4).map(g => (
-        <a href={`/guides/${g.slug}/`} class="guide-card">
+        <a href={`/guides/${g.slug}/`} target="_blank" rel="noopener noreferrer" class="guide-card">
           <img src={`/guides/${g.slug}.svg`} alt={g.title} class="guide-card-img" width="500" height="260" loading="lazy" />
           <div class="guide-card-body">
             <h3>{g.title}</h3>
