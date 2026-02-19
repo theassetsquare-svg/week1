@@ -6,7 +6,6 @@ const clubVenues = venues.filter(v => v.type === 'club');
 const title = '전국 클럽 추천 | 한국 클럽 가이드';
 const description = '한국 전국의 인기 클럽을 한눈에. 강남 클럽, 이태원 클럽 등 최신 클럽 정보와 분위기, 음악, 가격 가이드.';
 
-// Get regions for this type
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 clubVenues.forEach(v => {
   const existing = regionMap.get(v.regionSlug);
@@ -28,31 +27,59 @@ const jsonLd = [{
   <section class="story-intro">
     <div class="container">
       <span class="story-intro__eyebrow">Club Scene Korea</span>
-      <h1 class="story-intro__headline">네온이 번지는 밤,<br />베이스가 심장을 두드리는 순간</h1>
-      <p class="story-intro__narrative">
-        자정을 넘긴 거리, 낮은 조명 아래 줄 서 있는 사람들의 설렘이 느껴집니다.
-        문이 열리는 순간 쏟아지는 <em>사운드의 파도</em>. DJ의 손끝에서 시작된 비트가
-        플로어를 가득 채우고, 당신의 밤은 비로소 시작됩니다.
-        <em>전국 {clubVenues.length}개 클럽</em>의 문이 지금 열립니다.
+      <h1 class="story-intro__headline">어두운 조명 아래,<br />눈빛 하나면 충분합니다.</h1>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="category-copy">
+      <p class="category-copy__lead">
+        자정이 지나면 거리에는 설렘을 안고 걸어오는 사람들로 가득합니다.<br />
+        입구에서부터 느껴지는 베이스의 진동.<br />
+        <strong>문이 열리는 순간, 당신의 심장도 비트에 맞춰 뛰기 시작합니다.</strong>
       </p>
-      <div class="story-stats">
-        <div class="story-stat">
-          <span class="story-stat__number">{clubVenues.length}</span>
-          <span class="story-stat__label">전국 클럽</span>
-        </div>
-        <div class="story-stat">
-          <span class="story-stat__number">{regions.length}</span>
-          <span class="story-stat__label">지역 커버</span>
-        </div>
-        <div class="story-stat">
-          <span class="story-stat__number">24h</span>
-          <span class="story-stat__label">실시간 정보</span>
-        </div>
+
+      <p>
+        클럽에 오는 이유는 하나입니다.<br />
+        평소에는 말 걸 수 없던 사람에게, <em>이 공간에서만큼은 다가갈 수 있으니까.</em>
+        DJ가 만드는 비트가 어색함을 녹이고,
+        플로어 위에서 자연스럽게 가까워지는 거리.
+        네온 아래 교차하는 시선이 대화를 대신합니다.
+      </p>
+
+      <div class="category-copy__highlight">
+        <h3>클럽이 처음이어도 괜찮은 이유</h3>
+        <ul>
+          <li>혼자 와도, 친구와 와도 — 돌아갈 때는 새로운 번호 하나쯤 저장돼 있습니다</li>
+          <li>나이, 직업, 배경 — 플로어 위에서는 아무도 묻지 않습니다</li>
+          <li>음악이 대화를 시작해주고, 분위기가 용기를 줍니다</li>
+          <li>마음에 드는 사람 옆에서 같은 노래를 듣는 것, 그것만으로 시작입니다</li>
+        </ul>
       </div>
-      <div class="scroll-indicator">
-        <span class="scroll-indicator__arrow" onclick="document.getElementById('venueSection').scrollIntoView({behavior:'smooth'})">▼</span>
-        <span class="scroll-indicator__text">스크롤하여 둘러보기</span>
+
+      <p>
+        클럽은 만남을 위한 가장 솔직한 공간입니다.<br />
+        꾸미지 않아도 됩니다. <strong>그냥 오세요. 밤이 알아서 해줍니다.</strong>
+      </p>
+
+      <div class="category-copy__tips">
+        <h3>클럽 입문 가이드</h3>
+        <dl>
+          <dt>입장</dt>
+          <dd>대부분 신분증 필수. 게스트 등록하면 할인되는 곳이 많습니다.</dd>
+          <dt>타이밍</dt>
+          <dd>새벽 1~2시가 피크타임. 너무 일찍 가면 텅 비어 있을 수 있습니다.</dd>
+          <dt>플로어 에티켓</dt>
+          <dd>눈이 마주치면 웃어보세요. 억지로 다가가기보단 음악을 즐기는 모습이 더 매력적입니다.</dd>
+          <dt>드레스코드</dt>
+          <dd>올블랙이 가장 무난합니다. 운동화보다 구두나 부츠를 추천합니다.</dd>
+        </dl>
       </div>
+
+      <p class="category-copy__closing">
+        전국 <strong>{clubVenues.length}개 클럽</strong>이 오늘 밤 문을 엽니다.<br />
+        당신이 찾는 밤은, 아래 리스트 어딘가에 있습니다.
+      </p>
     </div>
   </section>
 
