@@ -323,38 +323,6 @@ const tocItems = [
       </div>
     </section>
 
-    <!-- 14. Deep Dive Content -->
-    <section class="venue-section" id="deepdive">
-      <h2>심층 분석</h2>
-      <div class="deepdive-grid">
-        <div class="deepdive-card">
-          <h3>사전 체크포인트</h3>
-          <p>{v.bodySections.deepDive?.checkpoint || '스마트 캐주얼 이상의 복장이 필수이며, 미리 자리를 확보하는 것이 좋다.'}</p>
-        </div>
-        <div class="deepdive-card">
-          <h3>씬의 발자취</h3>
-          <p>{v.bodySections.deepDive?.history || '라운지 문화는 음악·인테리어·칵테일이 융합된 복합 문화로 진화했다.'}</p>
-        </div>
-        <div class="deepdive-card">
-          <h3>시즌 노트</h3>
-          <p>{v.bodySections.deepDive?.season || '계절마다 분위기가 달라진다. 봄과 가을이 쾌적하며, 연말에는 사전 예약이 필수다.'}</p>
-        </div>
-        <div class="deepdive-card">
-          <h3>필수 코스</h3>
-          <p>{v.bodySections.deepDive?.course || '1차로 레스토랑 식사 후 시그니처 음료와 대화를 즐기고, 야경 산책으로 마무리.'}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEO: Keywords section -->
-    <section class="venue-section" id="keywords-seo" style="margin-top:2rem;">
-      <h2>관련 검색어</h2>
-      <div class="keyword-cloud">
-        {v.keywords.map(kw => (
-          <span class="keyword-tag">{kw}</span>
-        ))}
-      </div>
-    </section>
   </div>
 
   <script define:vars={{ plannerRules: v.plannerRules }}>
