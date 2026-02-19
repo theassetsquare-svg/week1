@@ -19,7 +19,7 @@ const sameRegion = v.relatedVenueIds.sameRegion.map(id => getVenue(id)).filter(B
 const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boolean).slice(0, 3);
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
 
-const shortName = v.name_display.replace(v.region + ' ', '').replace(/ 라운지$/, '');
+const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s*라운지\s*$/,'').trim() || v.urlSlug || v.venueSlug;
 const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = `${shortName} 안내`;
