@@ -45,7 +45,7 @@ const tocItems = [
       <div class="breadcrumb">
         <a href="/">홈</a><span>/</span>
         <a href="/lounges/">목록</a><span>/</span>
-        <a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span>
+        {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
       <img src={encodeURI(v.images[0].src)} alt="대표" class="venue-hero-img" width="500" height="500" loading="eager" />
