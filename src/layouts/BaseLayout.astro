@@ -132,6 +132,25 @@ const currentPath = Astro.url.pathname;
       cta.addEventListener('keydown', (e) => { if (e.key === 'Enter') cta.click(); });
     }
 
+    // Correction request button (detail pages)
+    const corrBtn = document.getElementById('correctionBtn');
+    if (corrBtn) {
+      corrBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('besta12');
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = 'besta12'; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        if (toast) {
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+      });
+    }
+
     // Accordion
     document.querySelectorAll('.accordion-trigger').forEach(btn => {
       btn.addEventListener('click', () => {
