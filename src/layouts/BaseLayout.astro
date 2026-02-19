@@ -112,12 +112,12 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
     if (viewToggle) {
       if (localStorage.getItem('mobilePreview') === '1') {
         document.body.classList.add('mobile-preview');
-        viewToggle.textContent = 'PC 보기';
+        viewToggle.textContent = 'PC';
       }
       viewToggle.addEventListener('click', () => {
         const active = document.body.classList.toggle('mobile-preview');
         localStorage.setItem('mobilePreview', active ? '1' : '0');
-        viewToggle.textContent = active ? 'PC 보기' : '모바일 보기';
+        viewToggle.textContent = active ? 'PC' : 'Mobile';
       });
     }
 
