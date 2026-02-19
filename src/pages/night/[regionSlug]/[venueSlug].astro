@@ -236,7 +236,7 @@ const tocItems = [
     <section class="venue-section" id="gallery">
       <h2>갤러리</h2>
       <div class="gallery">
-        {v.images.slice(0, 3).map((img, i) => (
+        {v.images.slice(1).map((img, i) => (
           <figure>
             <img src={encodeURI(img.src)} alt={`이미지 ${i + 1}`} width="400" height="340" loading="lazy" />
           </figure>
