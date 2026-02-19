@@ -99,7 +99,7 @@ const jsonLd = [{
   <section class="container">
     <div class="venue-grid" id="venueGrid">
       {nightVenues.map(v => (
-        <a href={getVenueUrl(v)} class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
+        <a href={getVenueUrl(v)} target="_blank" rel="noopener noreferrer" class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
           <div class="venue-card-thumb">
             <img src={v.images[0].src} alt={v.images[0].alt} width="400" height="400" loading="lazy" />
           </div>
