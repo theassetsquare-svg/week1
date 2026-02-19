@@ -244,6 +244,13 @@ const tocItems = [
       </div>
     </section>
 
+    <!-- CTA Buttons -->
+    <div class="venue-cta-area">
+      <a href={`https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
+      <a href="/nights/" class="venue-cta-btn">목록으로</a>
+      <button class="venue-cta-btn" id="correctionBtn" type="button">정정 요청</button>
+    </div>
+
   </div>
 
   {v.phone && (
