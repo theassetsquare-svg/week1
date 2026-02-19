@@ -13,6 +13,7 @@ interface Props {
 const { title, description, canonical, ogImage, keywords, jsonLd = [] } = Astro.props;
 const siteUrl = 'https://week1-6m5.pages.dev';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const currentPath = Astro.url.pathname;
 ---
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,13 +45,17 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <header class="site-header">
-    <div class="container">
+    <div class="container site-header__inner">
       <a href="/" class="site-logo">NLC</a>
-      <nav class="site-nav">
-        <a href="/nights/">나이트</a>
-        <a href="/clubs/">클럽</a>
-        <a href="/lounges/">라운지</a>
-        <a href="/guides/">가이드</a>
+      <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="siteNav">
+        <a href="/nights/" class={currentPath.startsWith('/nights') ? 'active' : ''}>나이트</a>
+        <a href="/clubs/" class={currentPath.startsWith('/clubs') ? 'active' : ''}>클럽</a>
+        <a href="/lounges/" class={currentPath.startsWith('/lounges') ? 'active' : ''}>라운지</a>
+        <a href="/guides/" class={currentPath.startsWith('/guides') ? 'active' : ''}>가이드</a>
+        <a href="/editorial-policy/" class={currentPath.startsWith('/editorial') ? 'active' : ''}>정책</a>
       </nav>
     </div>
   </header>
@@ -61,18 +66,27 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-cta" id="kakaoCta" role="button" tabindex="0" aria-label="카카오톡 ID besta12 복사">
-        <img src="/assets/partner-kakao-besta12.svg" alt="제휴문의 카톡 besta12" width="480" height="120" loading="lazy" />
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">NLC</span>
+          <p class="footer-desc">전국 나이트 · 클럽 · 라운지 정보 디렉토리</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="/about/">소개</a>
+          <a href="/editorial-policy/">편집 방침</a>
+          <a href="/guides/">가이드</a>
+        </nav>
       </div>
-      <nav class="footer-links">
-        <a href="/about/">소개</a>
-        <a href="/editorial-policy/">편집 방침</a>
-      </nav>
-      <p class="footer-copyright">&copy; 2026 NLC. All rights reserved.</p>
+      <div class="footer-cta-row" id="kakaoCta" role="button" tabindex="0" aria-label="카카오톡 ID besta12 복사">
+        <span class="footer-cta-text">제휴/정정 문의</span>
+        <span class="footer-cta-id">카카오톡 besta12</span>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 NLC. All rights reserved.</p>
+        <p class="footer-age">본 사이트는 만 19세 이상 이용 가능한 정보를 포함합니다.</p>
+      </div>
     </div>
   </footer>
-
-  <button class="view-toggle" id="viewToggle" aria-label="View toggle">Mobile</button>
 
   <div class="toast" id="toast">카톡 ID 복사됨: besta12</div>
 
@@ -84,6 +98,17 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
         const h = document.documentElement.scrollHeight - window.innerHeight;
         prog.style.width = h > 0 ? ((window.scrollY / h) * 100) + '%' : '0%';
       }, { passive: true });
+    }
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        const open = siteNav.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+      });
     }
 
     // KakaoTalk CTA
@@ -105,20 +130,6 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
         }
       });
       cta.addEventListener('keydown', (e) => { if (e.key === 'Enter') cta.click(); });
-    }
-
-    // View toggle (mobile preview)
-    const viewToggle = document.getElementById('viewToggle');
-    if (viewToggle) {
-      if (localStorage.getItem('mobilePreview') === '1') {
-        document.body.classList.add('mobile-preview');
-        viewToggle.textContent = 'PC';
-      }
-      viewToggle.addEventListener('click', () => {
-        const active = document.body.classList.toggle('mobile-preview');
-        localStorage.setItem('mobilePreview', active ? '1' : '0');
-        viewToggle.textContent = active ? 'PC' : 'Mobile';
-      });
     }
 
     // Accordion
