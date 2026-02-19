@@ -232,7 +232,7 @@ const jsonLd = [
       activeIdx = -1;
 
       dropdown.innerHTML = top.map((r, i) =>
-        '<a class="search-item" href="' + r.url + '" data-idx="' + i + '">' +
+        '<a class="search-item" href="' + r.url + '" target="_blank" rel="noopener noreferrer" data-idx="' + i + '">' +
           '<img class="search-item-thumb" src="' + r.thumb + '" alt="" width="44" height="44" loading="lazy" />' +
           '<div class="search-item-info">' +
             '<div class="search-item-name">' + escHtml(r.name) + '</div>' +
