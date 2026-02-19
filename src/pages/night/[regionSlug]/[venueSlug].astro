@@ -365,7 +365,7 @@ const tocItems = [
     </section>
   </div>
 
-  <script define:vars={{ plannerRules: v.plannerRules, venueId: v.id, venueName: v.name_display, venueType: v.type }}>
+  <script define:vars={{ plannerRules: v.plannerRules }}>
     let selectedPurpose = '';
     let selectedTime = '';
 
@@ -395,120 +395,5 @@ const tocItems = [
       }
       result.textContent = text || '목적과 시간대를 선택하면 맞춤 플랜이 표시됩니다.';
     }
-
-    // ─── Quiz ───
-    const quizQuestions = [
-      { q: '밤에 외출할 때 가장 중요한 것은?', opts: ['음악과 춤', '좋은 분위기', '맛있는 음료', '새로운 만남'], scores: [2, 1, 0, 3] },
-      { q: '선호하는 음악 장르는?', opts: ['EDM/일렉트로닉', '힙합/R&B', '트로트/댄스', '재즈/소울'], scores: [2, 1, 3, 0] },
-      { q: '이상적인 밤 외출 인원은?', opts: ['혼자', '2명 (데이트)', '3~5명 친구들', '대규모 단체'], scores: [0, 1, 2, 3] },
-      { q: '밤문화 예산은?', opts: ['3만원 이하', '3~5만원', '5~10만원', '10만원 이상'], scores: [2, 3, 1, 0] },
-      { q: '좋아하는 분위기는?', opts: ['조용하고 세련된', '활기차고 역동적인', '고급스럽고 프라이빗', '자유롭고 개방적인'], scores: [0, 3, 1, 2] },
-    ];
-    const types = ['라운지 스타일', '나이트 스타일', '클럽 스타일', '소셜 버터플라이'];
-    const typeDescs = [
-      '세련된 공간에서 칵테일과 대화를 즐기는 당신은 라운지형 인간입니다.',
-      '라이브 밴드와 댄스를 즐기는 당신은 나이트형 인간입니다. 환상적인 밤을 즐겨보세요!',
-      '강렬한 비트와 함께 자유롭게 춤추는 것을 좋아하는 클럽형 인간입니다.',
-      '어디서든 사람들과 어울리는 것을 좋아하는 소셜형 인간입니다. 어떤 장소든 당신과 함께라면 즐겁습니다!',
-    ];
-    let qIdx = 0, totalScore = 0;
-    function showQuestion() {
-      const qEl = document.getElementById('quizQuestion');
-      const oEl = document.getElementById('quizOptions');
-      const pEl = document.getElementById('quizProgress');
-      if (!qEl || !oEl || !pEl) return;
-      if (qIdx >= quizQuestions.length) { showResult(); return; }
-      pEl.style.width = ((qIdx / quizQuestions.length) * 100) + '%';
-      const q = quizQuestions[qIdx];
-      qEl.textContent = `Q${qIdx + 1}. ${q.q}`;
-      oEl.innerHTML = q.opts.map((o, i) => `<button class="quiz-opt-btn" data-score="${q.scores[i]}">${o}</button>`).join('');
-      oEl.querySelectorAll('.quiz-opt-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          totalScore += parseInt(btn.getAttribute('data-score') || '0');
-          qIdx++;
-          showQuestion();
-        });
-      });
-    }
-    function showResult() {
-      const rEl = document.getElementById('quizResult');
-      const qEl = document.getElementById('quizQuestion');
-      const oEl = document.getElementById('quizOptions');
-      const pEl = document.getElementById('quizProgress');
-      if (!rEl || !qEl || !oEl || !pEl) return;
-      pEl.style.width = '100%';
-      qEl.style.display = 'none';
-      oEl.style.display = 'none';
-      rEl.style.display = 'block';
-      const typeIdx = Math.min(Math.floor(totalScore / 4), types.length - 1);
-      rEl.innerHTML = `<h3>당신의 성향: ${types[typeIdx]}</h3><p>${typeDescs[typeIdx]}</p><button class="quiz-retry-btn" onclick="location.reload()">다시 테스트하기</button>`;
-    }
-    showQuestion();
-
-    // ─── Star Rating ───
-    document.querySelectorAll('.star-rating').forEach(rating => {
-      const stars = rating.querySelectorAll('.star');
-      stars.forEach(star => {
-        star.addEventListener('click', () => {
-          const val = parseInt(star.getAttribute('data-value') || '0');
-          stars.forEach(s => {
-            const sv = parseInt(s.getAttribute('data-value') || '0');
-            s.classList.toggle('active', sv <= val);
-          });
-        });
-      });
-    });
-
-    // ─── Mood Check ───
-    const moodMessages = {
-      dance: `댄스 플로어는 밤이 깊어질수록 뜨거워집니다! 💃 타임라인에서 피크타임을 확인하고, 음악/무드 섹션에서 오늘의 라이브 정보를 체크하세요.`,
-      live: `라이브 밴드 공연은 직접 봐야 합니다. 🎤 스토리텔링에서 공연 분위기를 미리 느끼고, FAQ에서 공연 스케줄을 확인하세요.`,
-      group: `단체 모임에 최적! 👥 플랜 만들기에서 단체 코스를 짜보고, 체크리스트에서 예약 필수 사항을 확인하세요.`,
-      date: `특별한 밤을 만들어보세요. 💑 분위기 요약에서 감성을 미리 느끼고, 추천 매장에서 2차 장소도 준비하세요.`,
-    };
-    document.querySelectorAll('.mood-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        const mood = btn.dataset.mood || 'dance';
-        const result = document.getElementById('moodResult');
-        if (result) {
-          result.textContent = moodMessages[mood] || '';
-          result.classList.add('show');
-        }
-      });
-    });
-
-    // ─── Diary ───
-    const diaryKey = 'diary-' + venueId;
-    const savedDiary = localStorage.getItem(diaryKey);
-    if (savedDiary) {
-      try {
-        const d = JSON.parse(savedDiary);
-        const ta = document.getElementById('diaryText');
-        if (ta) (ta as HTMLTextAreaElement).value = d.text || '';
-        document.querySelectorAll('.star-rating').forEach(rating => {
-          const cat = rating.getAttribute('data-category');
-          if (cat && d.ratings && d.ratings[cat]) {
-            rating.querySelectorAll('.star').forEach(s => {
-              const sv = parseInt(s.getAttribute('data-value') || '0');
-              s.classList.toggle('active', sv <= d.ratings[cat]);
-            });
-          }
-        });
-      } catch {}
-    }
-    document.getElementById('diarySave')?.addEventListener('click', () => {
-      const text = (document.getElementById('diaryText') as HTMLTextAreaElement)?.value || '';
-      const ratings: Record<string, number> = {};
-      document.querySelectorAll('.star-rating').forEach(rating => {
-        const cat = rating.getAttribute('data-category') || '';
-        const active = rating.querySelectorAll('.star.active');
-        ratings[cat] = active.length;
-      });
-      localStorage.setItem(diaryKey, JSON.stringify({ text, ratings, date: new Date().toISOString() }));
-      const msg = document.getElementById('diarySavedMsg');
-      if (msg) { msg.style.display = 'block'; setTimeout(() => msg.style.display = 'none', 2000); }
-    });
   </script>
 </BaseLayout>
