@@ -259,7 +259,7 @@ const tocItems = [
         {relatedVenues.map(rv => (
           <a href={encodeURI(getVenueUrl(rv!))} target="_blank" rel="noopener noreferrer" class="related-link">{rv!.name_display}</a>
         ))}
-        <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
+        <a href={`/region/${v.regionSlug}/`} target="_blank" rel="noopener noreferrer" class="related-link">{v.region} 전체 보기</a>
         <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="related-link">라운지 전체 목록</a>
       </div>
     </section>
