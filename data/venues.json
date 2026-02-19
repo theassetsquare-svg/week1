@@ -9826,6 +9826,10 @@
     },
     "images": [
       {
+        "src": "/images/thumbnails/suyu-shampoo.svg",
+        "alt": "수유샴푸나이트 썸네일"
+      },
+      {
         "src": "/venues/suyu/샴푸-나이트/model-fun-1.svg",
         "alt": "매장 분위기 1"
       },
@@ -9859,7 +9863,8 @@
         "dress-code"
       ]
     },
-    "pageTitle": "수유샴푸나이트 샴푸 리얼 탐방기: 기대 이상이었다"
+    "pageTitle": "수유샴푸나이트 샴푸 리얼 탐방기: 기대 이상이었다",
+    "phone": "010-7475-2342"
   },
   {
     "id": "venue-53",
