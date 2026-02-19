@@ -162,7 +162,7 @@ const tocItems = [
           </div>
         </div>
         <div class="planner-result" id="plannerResult">
-          목적과 시간대를 선택하면 맞춤 플랜이 표시됩니다.
+          선택해주세요.
         </div>
       </div>
     </section>
@@ -274,7 +274,7 @@ const tocItems = [
       if (selectedTime && plannerRules['시간대']) {
         text += (text ? ' ' : '') + (plannerRules['시간대'][selectedTime] || '');
       }
-      result.textContent = text || '목적과 시간대를 선택하면 맞춤 플랜이 표시됩니다.';
+      result.textContent = text || '선택해주세요.';
     }
   </script>
 </BaseLayout>
