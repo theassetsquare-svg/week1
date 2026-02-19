@@ -219,7 +219,7 @@ const jsonLd = [
             .slice(0, 3);
           dropdown.innerHTML = '<div class="search-no-result">검색 결과가 없습니다</div>' +
             (similar.length > 0 ? '<div class="search-no-result" style="padding-top:0;font-size:0.82rem;">비슷한 이름: ' +
-            similar.map(s => '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer" style="color:var(--accent-purple);">' + s.name + '</a>').join(', ') + '</div>' : '');
+            similar.map(s => '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">' + s.name + '</a>').join(', ') + '</div>' : '');
           dropdown.style.display = 'block';
         } else {
           dropdown.style.display = 'none';
