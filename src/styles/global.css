@@ -955,3 +955,28 @@ body.mobile-preview .site-footer .container {
   .map-buttons { flex-direction: column; }
   .map-btn { justify-content: center; }
 }
+
+/* Fixed phone button */
+.fixed-phone-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a7f37, #238636);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
+  transition: background 0.2s;
+}
+.fixed-phone-btn:hover { background: linear-gradient(135deg, #238636, #2ea043); }
+.fixed-phone-btn svg { flex-shrink: 0; }
