@@ -22,8 +22,8 @@ const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).
 const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s*클럽\s*$/,'').trim() || v.urlSlug || v.venueSlug;
 const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
-const title = `${shortName} 안내`;
-const description = v.teaser?.slice(0, 120) || '';
+const title = `${v.name_display} 안내`;
+const description = `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
 
 const tocItems = [
   { id: 'hook', label: '소개' },
