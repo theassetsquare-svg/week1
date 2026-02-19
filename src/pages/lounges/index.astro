@@ -6,7 +6,6 @@ const loungeVenues = venues.filter(v => v.type === 'lounge');
 const title = '전국 라운지·감성주점 추천 | 한국 라운지 가이드';
 const description = '한국 전국의 프리미엄 라운지와 감성주점을 소개합니다. 강남 라운지를 중심으로 분위기, 칵테일, 가격 정보를 확인하세요.';
 
-// Get regions for this type
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 loungeVenues.forEach(v => {
   const existing = regionMap.get(v.regionSlug);
@@ -28,31 +27,61 @@ const jsonLd = [{
   <section class="story-intro story-intro--lounge">
     <div class="container">
       <span class="story-intro__eyebrow">Lounge & Bar Korea</span>
-      <h1 class="story-intro__headline">칵테일 한 잔의 여유,<br />은은한 조명 아래 흐르는 재즈</h1>
-      <p class="story-intro__narrative">
-        문을 열면 퍼지는 은은한 향, 바텐더의 셰이커 소리가 리듬을 만듭니다.
-        <em>시간이 천천히 흐르는 공간</em>에서 시그니처 칵테일 한 잔과 함께
-        대화가 깊어지고, 밤은 부드러워집니다. 데이트, 소규모 모임, 혼자만의 시간까지 —
-        <em>전국 {loungeVenues.length}개 프리미엄 라운지</em>가 당신을 기다립니다.
+      <h1 class="story-intro__headline">좋은 술보다 좋은 사람이 먼저입니다.<br />나머지는 분위기가 해줍니다.</h1>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="category-copy">
+      <p class="category-copy__lead">
+        낮은 조명. 잔잔한 음악. 바 너머로 보이는 한 사람.<br />
+        라운지에서는 모든 것이 천천히 시작됩니다.<br />
+        <strong>여기는 옆자리 사람의 이름을 물어볼 수 있는 곳입니다.</strong>
       </p>
-      <div class="story-stats">
-        <div class="story-stat">
-          <span class="story-stat__number">{loungeVenues.length}</span>
-          <span class="story-stat__label">프리미엄 라운지</span>
-        </div>
-        <div class="story-stat">
-          <span class="story-stat__number">{regions.length}</span>
-          <span class="story-stat__label">지역 커버</span>
-        </div>
-        <div class="story-stat">
-          <span class="story-stat__number">VIP</span>
-          <span class="story-stat__label">프라이빗 공간</span>
-        </div>
+
+      <p>
+        칵테일 한 잔을 사이에 두고 시작되는 대화가
+        어떤 밤보다 깊은 인연으로 이어지기도 합니다.
+        나이트의 열정도, 클럽의 에너지도 아닌 —
+        <em>조용하지만 확실한 설렘.</em>
+        마음에 드는 사람에게 위스키 한 잔 건네는 것,
+        라운지에서는 그것만으로 충분합니다.
+      </p>
+
+      <div class="category-copy__highlight">
+        <h3>라운지를 찾는 사람들의 공통점</h3>
+        <ul>
+          <li>시끄러운 곳보다 대화가 되는 곳을 원하는 사람</li>
+          <li>첫 만남의 긴장감을 부드럽게 풀어줄 공간이 필요한 사람</li>
+          <li>술 자체보다 함께 마시는 사람이 중요한 사람</li>
+          <li>분위기 좋은 곳에서 자연스럽게 연락처를 교환하고 싶은 사람</li>
+        </ul>
       </div>
-      <div class="scroll-indicator">
-        <span class="scroll-indicator__arrow" onclick="document.getElementById('venueSection').scrollIntoView({behavior:'smooth'})">▼</span>
-        <span class="scroll-indicator__text">스크롤하여 둘러보기</span>
+
+      <p>
+        라운지에서의 만남은 다릅니다.<br />
+        음악이 아니라 <strong>대화가 두 사람을 가깝게 만듭니다.</strong><br />
+        첫인상이 아니라 첫 대화가 시작인 곳.
+      </p>
+
+      <div class="category-copy__tips">
+        <h3>라운지, 이렇게 즐기세요</h3>
+        <dl>
+          <dt>자리 선택</dt>
+          <dd>바 카운터석은 자연스러운 대화가 시작되기 가장 좋은 위치입니다.</dd>
+          <dt>음료 추천</dt>
+          <dd>바텐더에게 "오늘의 추천" 한마디면 됩니다. 대화의 시작점이 됩니다.</dd>
+          <dt>분위기</dt>
+          <dd>목소리를 높이지 않아도 대화할 수 있습니다. 그게 라운지의 매력입니다.</dd>
+          <dt>예약</dt>
+          <dd>금·토요일은 예약을 추천합니다. 좋은 자리는 빨리 찹니다.</dd>
+        </dl>
       </div>
+
+      <p class="category-copy__closing">
+        데이트 장소를 찾고 있다면, 특별한 누군가를 만나고 싶다면.<br />
+        전국 <strong>{loungeVenues.length}개 프리미엄 라운지</strong>가 그 시작점이 됩니다.
+      </p>
     </div>
   </section>
 
