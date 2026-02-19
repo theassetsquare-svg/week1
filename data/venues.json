@@ -9840,6 +9840,14 @@
       {
         "src": "/venues/suyu/샴푸-나이트/model-fun-3.svg",
         "alt": "매장 분위기 3"
+      },
+      {
+        "src": "/images/gallery/suyu-model-1.svg",
+        "alt": "수유샴푸나이트 갤러리 1"
+      },
+      {
+        "src": "/images/gallery/suyu-model-2.svg",
+        "alt": "수유샴푸나이트 갤러리 2"
       }
     ],
     "imagePrompts": [
