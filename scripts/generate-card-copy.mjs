@@ -294,23 +294,34 @@ function generateCardTags(v) {
   return selected;
 }
 
-// ─── Assign unique (hookIdx, valueIdx) pairs per type ───
-const usedPairs = { club: new Set(), night: new Set(), lounge: new Set() };
+// ─── Assign unique indices per type ───
+// Priority: value index should NEVER repeat on same page until exhausted
+const usedValueIdx = { club: [], night: [], lounge: [] };
+const usedHookIdx = { club: [], night: [], lounge: [] };
 
 function pickUniquePair(v, hookPool, valuePool) {
-  const pairSet = usedPairs[v.type];
-  const h = hashStr(v.id + 'pairV3');
-  let hi = h % hookPool.length;
-  let vi = (h >> 5) % valuePool.length;
-  let attempts = 0;
-  const max = hookPool.length * valuePool.length;
+  const h = hashStr(v.id + 'pairV4');
+  const usedV = usedValueIdx[v.type];
+  const usedH = usedHookIdx[v.type];
 
-  while (pairSet.has(`${hi}-${vi}`) && attempts < max) {
-    attempts++;
+  // Pick value index: avoid any already used until exhausted
+  let vi = h % valuePool.length;
+  let attempts = 0;
+  while (usedV.includes(vi) && attempts < valuePool.length) {
     vi = (vi + 1) % valuePool.length;
-    if (vi === 0) hi = (hi + 1) % hookPool.length;
+    attempts++;
   }
-  pairSet.add(`${hi}-${vi}`);
+  usedV.push(vi);
+
+  // Pick hook index: avoid any already used until exhausted
+  let hi = (h >> 4) % hookPool.length;
+  attempts = 0;
+  while (usedH.includes(hi) && attempts < hookPool.length) {
+    hi = (hi + 1) % hookPool.length;
+    attempts++;
+  }
+  usedH.push(hi);
+
   return { hi, vi };
 }
 
