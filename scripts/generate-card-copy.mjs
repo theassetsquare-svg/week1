@@ -80,34 +80,34 @@ const ACTION = {
   lounge: ['첫 잔을 받으면', '바에 앉는 순간', '조명이 어두워지면', '음악이 깔리면', '문을 열면'],
 };
 
-// ─── HOOK generators (각각 완전히 다른 함수) ───
+// ─── HOOK generators (각각 완전히 다른 함수, 조사 처리 포함) ───
 const hookGenerators = [
-  (v, n, r, rv, adj, mood) => `${rv}에서 ${adj} ${mood}을 원한다면 ${n}`,
+  (v, n, r, rv, adj, mood) => `${rv}에서 ${adj} ${mood}${eulReul(mood)} 원한다면 ${n}`,
   (v, n, r, rv, adj, mood) => `${n}, ${r} ${v.typeLabel} 중 ${adj} ${mood} 보유`,
   (v, n, r, rv, adj, mood) => `${r} ${v.typeLabel} 고민 중이라면 ${n}의 ${mood}부터`,
-  (v, n, r, rv, adj, mood) => `같은 ${r}이라도 ${n}의 ${mood}은 결이 다르다`,
+  (v, n, r, rv, adj, mood) => `같은 ${r}이라도 ${n}의 ${mood}${eunNeun(mood)} 결이 다르다`,
   (v, n, r, rv, adj, mood) => `${r} 단골들이 꾸준히 찾는 ${n}, ${adj} ${mood}`,
   (v, n, r, rv, adj, mood) => {
     const m2 = MOOD[v.type][(hashStr(v.id+'m2'))%MOOD[v.type].length];
     return `${n}의 ${mood}과 ${m2}, ${r}에서 보기 드문 조합`;
   },
-  (v, n, r, rv, adj, mood) => `금토 밤 ${rv} 찾는다면 ${n}의 ${adj} 톤 추천`,
+  (v, n, r, rv, adj, mood) => `금토 밤 ${rv}${eulReul(rv)} 찾는다면 ${n}의 ${adj} 톤`,
   (v, n, r, rv, adj, mood) => {
     const act = ACTION[v.type][hashStr(v.id+'act')%ACTION[v.type].length];
     return `${n}에서 ${act} 그날 밤이 달라진다`;
   },
   (v, n, r, rv, adj, mood) => `${rv}의 숨은 선택지 ${n}, ${adj} ${mood}`,
-  (v, n, r, rv, adj, mood) => `${r}의 밤 에너지를 느끼려면 ${n}이 답이다`,
+  (v, n, r, rv, adj, mood) => `${r}의 밤 에너지를 느끼려면 ${n}${iGa(n)} 답이다`,
   (v, n, r, rv, adj, mood) => `${r} ${v.typeLabel} 비교 시 ${n}의 ${adj} 톤부터 체크`,
   (v, n, r, rv, adj, mood) => `${r} ${v.typeLabel} 첫 방문이면 ${n}부터 시작`,
-  (v, n, r, rv, adj, mood) => `주말 ${rv} 속에서 ${n}은 ${adj} 무드로 빛난다`,
+  (v, n, r, rv, adj, mood) => `주말 ${rv} 속에서 ${n}${eunNeun(n)} ${adj} 무드로 빛난다`,
   (v, n, r, rv, adj, mood) => `${r} 토박이 추천 ${n}, ${mood} 퀄리티가 남다르다`,
-  (v, n, r, rv, adj, mood) => `일상에서 ${adj} 밤으로, ${n}이 전환점이 된다`,
+  (v, n, r, rv, adj, mood) => `일상에서 ${adj} 밤으로, ${n}${iGa(n)} 전환점이 된다`,
   (v, n, r, rv, adj, mood) => `${n}의 ${mood}, 배경이 아니라 주연이다`,
   (v, n, r, rv, adj, mood) => `${rv} ${v.typeLabel} ${n}, ${adj} ${mood}과 서비스`,
-  (v, n, r, rv, adj, mood) => `${n}에서 보낸 밤은 다음 날에도 여운으로 남는다`,
-  (v, n, r, rv, adj, mood) => `역에서 가까운 ${n}, 접근성과 ${mood}을 동시에`,
-  (v, n, r, rv, adj, mood) => `재방문율 높은 ${r} ${n}, ${adj} ${mood}이 비결`,
+  (v, n, r, rv, adj, mood) => `${n}에서 보낸 밤${eunNeun('밤')} 다음 날에도 여운으로 남는다`,
+  (v, n, r, rv, adj, mood) => `역에서 가까운 ${n}, 접근성과 ${mood}${eulReul(mood)} 동시에`,
+  (v, n, r, rv, adj, mood) => `재방문율 높은 ${r} ${n}, ${adj} ${mood}${iGa(mood)} 비결`,
 ];
 
 // ─── VALUE generators (각각 venue-specific 토큰 삽입) ───
