@@ -20,7 +20,7 @@ const sameType = v.relatedVenueIds.sameType.map(id => getVenue(id)).filter(Boole
 const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).slice(0, 2);
 const relatedVenues = [...sameRegion, ...sameType, ...nearby].slice(0, 6);
 
-const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s*클럽\s*$/,'').trim() || v.urlSlug || v.venueSlug;
+const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s+클럽\s*$/,'').trim() || v.urlSlug || v.venueSlug;
 const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = v.pageTitle || `${v.name_display} 안내`;
