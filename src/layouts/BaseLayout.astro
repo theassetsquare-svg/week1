@@ -25,10 +25,14 @@ const currentPath = Astro.url.pathname;
   <link rel="canonical" href={canonicalUrl} />
   <link rel="alternate" hreflang="ko" href={canonicalUrl} />
   <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:locale" content="ko_KR" />
   {ogImage && <meta property="og:image" content={ogImage} />}
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   {ogImage && <meta name="twitter:image" content={ogImage} />}
   {keywords && <meta name="keywords" content={keywords} />}
   <meta name="robots" content="index, follow" />
