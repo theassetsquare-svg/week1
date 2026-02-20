@@ -1309,7 +1309,6 @@ body.mobile-preview .site-footer .container { max-width: 414px; }
   body { line-height: 1.8; }
   .container { padding: 0 1.25rem; }
 
-  .venue-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .gallery { grid-template-columns: 1fr; }
   .related-grid { grid-template-columns: 1fr 1fr; }
   .deepdive-grid { grid-template-columns: 1fr; }
