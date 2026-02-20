@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import IntroSection from '../../components/IntroSection.astro';
+import VenueCard from '../../components/VenueCard.astro';
 import { venues, getVenueUrl } from '../../utils/venues';
 
 const clubVenues = venues.filter(v => v.type === 'club');
