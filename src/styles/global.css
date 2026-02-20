@@ -231,76 +231,35 @@ main {
 /* ─── Cards Grid ─── */
 .venue-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem; margin-bottom: 3rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
 }
 .venue-card {
   background: var(--bg-card);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.15s, box-shadow 0.15s;
   text-decoration: none;
   color: inherit;
-  display: flex;
-  flex-direction: column;
+  display: block;
   box-shadow: var(--shadow-sm);
 }
 .venue-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
-/* 1:1 thumbnail slot */
-.venue-card-thumb {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: var(--bg-accent);
-  border-bottom: 1px solid var(--border-subtle);
-  flex-shrink: 0;
-}
-.venue-card-thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
+/* Type badge colors */
+.type-club { background: rgba(91,79,196,0.1); color: var(--tint-club); }
+.type-night { background: rgba(184,134,11,0.1); color: var(--tint-night); }
+.type-lounge { background: rgba(14,124,134,0.1); color: var(--tint-lounge); }
 /* Legacy: keep .venue-card-img for pages not yet migrated */
 .venue-card-img {
   width: 100%; aspect-ratio: 1 / 1;
   object-fit: cover;
   background: var(--bg-accent);
   border-bottom: 1px solid var(--border-subtle);
-}
-.venue-card-body { padding: 1rem 1.125rem; flex: 1; display: flex; flex-direction: column; }
-.venue-card-meta {
-  display: flex; align-items: center; gap: 0.5rem;
-  margin-bottom: 0.4rem;
-}
-.venue-card-type {
-  display: inline-block; padding: 0.15rem 0.55rem;
-  border-radius: 10px;
-  font-size: 0.72rem; font-weight: 600;
-  line-height: 1.5;
-}
-.type-club { background: rgba(91,79,196,0.1); color: var(--tint-club); }
-.type-night { background: rgba(184,134,11,0.1); color: var(--tint-night); }
-.type-lounge { background: rgba(14,124,134,0.1); color: var(--tint-lounge); }
-.venue-card-region {
-  color: var(--text-muted); font-size: 0.78rem;
-}
-.venue-card h3 {
-  font-size: 1rem; margin: 0.15rem 0 0.5rem;
-  color: var(--text-primary); font-weight: 700;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.venue-card-teaser {
-  color: var(--text-secondary); font-size: 0.85rem;
-  line-height: 1.55;
-  display: -webkit-box; -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; overflow: hidden;
-  flex: 1;
 }
 .venue-card-cta {
   display: inline-block;
@@ -309,6 +268,19 @@ main {
   color: var(--accent);
 }
 .venue-card-cta:hover { color: var(--accent-hover); }
+
+@media (min-width: 600px) {
+  .venue-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+@media (min-width: 900px) {
+  .venue-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
 
 /* ─── Venue Detail Hero ─── */
 .venue-hero-immersive,
