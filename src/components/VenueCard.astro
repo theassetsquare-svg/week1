@@ -1,0 +1,107 @@
+---
+import type { Venue } from '../utils/venues';
+import { getVenueUrl } from '../utils/venues';
+
+interface Props {
+  venue: Venue;
+}
+
+const { venue: v } = Astro.props;
+const url = getVenueUrl(v);
+const hook = v.card_hook || v.teaser;
+const value = v.card_value || '';
+const tags = v.card_tags || [];
+const imgAlt = v.image_alt || v.images[0]?.alt || v.name_display;
+const mapUrl = v.map_url || `https://map.kakao.com/?q=${encodeURIComponent(v.name_display + ' ' + v.region)}`;
+---
+
+<a href={url} target="_blank" rel="noopener noreferrer" class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
+  <div class="venue-card-thumb">
+    <img src={v.images[0].src} alt={imgAlt} width="400" height="400" loading="lazy" />
+  </div>
+  <div class="venue-card-body">
+    <div class="venue-card-meta">
+      <span class={`venue-card-type type-${v.type}`}>{v.typeLabel}</span>
+      <span class="venue-card-region">{v.region}</span>
+    </div>
+    <h3>{v.name_display}</h3>
+    <p class="venue-card-hook">{hook}</p>
+    {value && <p class="venue-card-value">{value}</p>}
+    {tags.length > 0 && (
+      <div class="venue-card-tags">
+        {tags.map(tag => <span class="venue-card-tag">{tag}</span>)}
+      </div>
+    )}
+    <div class="venue-card-actions">
+      <span class="venue-card-cta">자세히 보기 →</span>
+      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-card-map" onclick="event.stopPropagation();">지도 보기</a>
+    </div>
+  </div>
+</a>
+
+<style>
+  .venue-card-hook {
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--text-primary);
+    margin: 0.3rem 0 0.15rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .venue-card-value {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--text-secondary, rgba(255,255,255,0.7));
+    margin: 0 0 0.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .venue-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .venue-card-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.15rem 0.45rem;
+    border-radius: 10px;
+    background: var(--accent-light, rgba(255,255,255,0.08));
+    color: var(--text-muted, rgba(255,255,255,0.6));
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+
+  .venue-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: auto;
+  }
+
+  .venue-card-map {
+    font-size: 0.75rem;
+    color: var(--accent, #7c6fe0);
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+  .venue-card-map:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+</style>
