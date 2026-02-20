@@ -1,0 +1,269 @@
+{
+  "store": "강남임팩트클럽",
+  "region": "강남",
+  "category": "클럽",
+  "generated_at": "2026-02-20",
+  "rules": {
+    "store_name_first": true,
+    "no_banned_claims": true,
+    "title_length_28_55": true,
+    "word_repeat_max_3": false,
+    "missing_inputs": []
+  },
+  "variants": [
+    {
+      "id": "H01",
+      "mechanism": "Curiosity",
+      "title": "강남임팩트클럽 9가지 궁금증 풀어주는 안내 페이지 확인 안내",
+      "driver": "호기심",
+      "notes": "정보 공백 자극 — 방문자가 9가지 궁금증을 해결하고자 클릭"
+    },
+    {
+      "id": "H02",
+      "mechanism": "Curiosity",
+      "title": "강남임팩트클럽 준비 항목 7개 빠짐없이 정리 안내 방문 참고",
+      "driver": "호기심",
+      "notes": "체크리스트 7개의 구체적 숫자가 호기심 유도"
+    },
+    {
+      "id": "H03",
+      "mechanism": "Curiosity",
+      "title": "강남임팩트클럽 강남에서 입소문 타고 알려진 배경 정리",
+      "driver": "호기심",
+      "notes": "강남 현지인 관점이 로컬 정보 갈증 자극"
+    },
+    {
+      "id": "H04",
+      "mechanism": "Curiosity",
+      "title": "강남임팩트클럽 검색해도 안 나오는 현장 방문 핵심 정보",
+      "driver": "호기심",
+      "notes": "검색 결과에서 찾기 어려운 정보를 약속해 클릭 유도"
+    },
+    {
+      "id": "H05",
+      "mechanism": "Curiosity",
+      "title": "강남임팩트클럽 몇 시에 가야 분위기를 제대로 느끼는지",
+      "driver": "호기심",
+      "notes": "시간대별 차이를 암시해 정보 공백 형성"
+    },
+    {
+      "id": "H06",
+      "mechanism": "Curiosity",
+      "title": "강남임팩트클럽 처음 간다면 이 글부터 읽고 출발하자",
+      "driver": "호기심",
+      "notes": "첫 방문자 타겟팅으로 초행 불안+호기심 동시 자극"
+    },
+    {
+      "id": "H07",
+      "mechanism": "Urgency(Recency)",
+      "title": "강남임팩트클럽 2월 업데이트 반영한 방문 안내 상세 정리",
+      "driver": "최신성",
+      "notes": "주간 단위 시간 프레이밍으로 방문 계획 연결"
+    },
+    {
+      "id": "H08",
+      "mechanism": "Urgency(Recency)",
+      "title": "강남임팩트클럽 최근 변경 사항 반영 완료한 갱신 안내",
+      "driver": "최신성",
+      "notes": "오늘 기준 표현이 실시간 정보 기대감 형성"
+    },
+    {
+      "id": "H09",
+      "mechanism": "Urgency(Recency)",
+      "title": "강남임팩트클럽 주간 방문 정보 업데이트 반영 안내 정리",
+      "driver": "최신성",
+      "notes": "2026-02-20 날짜가 최신성 신호 → 정보 신뢰도 상승"
+    },
+    {
+      "id": "H10",
+      "mechanism": "Urgency(Recency)",
+      "title": "강남임팩트클럽 오늘자 반영 완료된 방문 정보 상세 안내",
+      "driver": "최신성",
+      "notes": "변경 사항 언급이 기존 방문자 재클릭 유도"
+    },
+    {
+      "id": "H11",
+      "mechanism": "Specificity",
+      "title": "강남임팩트클럽 질문 9개와 답변 모아둔 안내 정리 상세 안내",
+      "driver": "구체성",
+      "notes": "FAQ 9개라는 구체 수치가 정보량 보장 신호"
+    },
+    {
+      "id": "H12",
+      "mechanism": "Specificity",
+      "title": "강남임팩트클럽 입장 전 체크 항목 7개 상세 안내 정리 안내",
+      "driver": "구체성",
+      "notes": "체크 7항목이 실용적 가치 직접 전달"
+    },
+    {
+      "id": "H13",
+      "mechanism": "Specificity",
+      "title": "강남임팩트클럽 시간대 5구간 분위기 가이드 정리 확인 안내",
+      "driver": "구체성",
+      "notes": "5단계 타임라인이 시간 투자 가치 암시"
+    },
+    {
+      "id": "H14",
+      "mechanism": "Specificity",
+      "title": "강남임팩트클럽 핵심만 3분에 정리한 방문 가이드 안내",
+      "driver": "구체성",
+      "notes": "3분 요약이 시간 대비 효율 약속으로 클릭 저항 감소"
+    },
+    {
+      "id": "H15",
+      "mechanism": "Specificity",
+      "title": "강남임팩트클럽 지도 1클릭 연결 + 동선 안내 포함 정리",
+      "driver": "구체성",
+      "notes": "동선 포함이 실제 행동 가이드 제공 약속"
+    },
+    {
+      "id": "H16",
+      "mechanism": "Contrast",
+      "title": "강남임팩트클럽 첫 방문 vs 재방문 차이점 비교 상세 정리",
+      "driver": "대비",
+      "notes": "혼자/단체 대비가 동행 구성별 맞춤 정보 약속"
+    },
+    {
+      "id": "H17",
+      "mechanism": "Contrast",
+      "title": "강남임팩트클럽 주중 방문 vs 주말 방문 가이드 비교 정리",
+      "driver": "대비",
+      "notes": "첫/재방문 대비가 두 타겟 모두에게 관련성 생성"
+    },
+    {
+      "id": "H18",
+      "mechanism": "Contrast",
+      "title": "강남임팩트클럽 오픈 직후 vs 피크타임 분위기 비교 정리",
+      "driver": "대비",
+      "notes": "평일/주말 대비가 방문 시점 고민 중인 사용자 타겟"
+    },
+    {
+      "id": "H19",
+      "mechanism": "Contrast",
+      "title": "강남임팩트클럽 1인 방문과 그룹 방문의 차이 비교 정리",
+      "driver": "대비",
+      "notes": "이른/늦은 시간 대비가 시간대 선택 고민 해결 약속"
+    },
+    {
+      "id": "H20",
+      "mechanism": "RiskReduction",
+      "title": "강남임팩트클럽 처음이라 걱정될 때 읽으면 좋은 안내 정리",
+      "driver": "불안해소",
+      "notes": "에티켓 정리가 사회적 실수 불안 해소"
+    },
+    {
+      "id": "H21",
+      "mechanism": "RiskReduction",
+      "title": "강남임팩트클럽 실수 줄이는 체크 포인트 7개 안내 확인 안내",
+      "driver": "불안해소",
+      "notes": "걱정 해소 프레이밍이 첫 방문 불안감 직접 타겟"
+    },
+    {
+      "id": "H22",
+      "mechanism": "RiskReduction",
+      "title": "강남임팩트클럽 자주 하는 질문 9개에 명쾌한 답변 방문 참고",
+      "driver": "불안해소",
+      "notes": "실수 방지 7개가 사전 준비의 구체적 가치 전달"
+    },
+    {
+      "id": "H23",
+      "mechanism": "RiskReduction",
+      "title": "강남임팩트클럽 도착에서 귀가까지 전 과정 순서대로 안내",
+      "driver": "불안해소",
+      "notes": "9개 의문 해결이 정보 완결성 약속"
+    },
+    {
+      "id": "H24",
+      "mechanism": "RiskReduction",
+      "title": "강남임팩트클럽 방문 전 알면 편한 에티켓 상세 정리 안내",
+      "driver": "불안해소",
+      "notes": "입장~귀가 전체 흐름이 통제감 제공으로 불안 감소"
+    },
+    {
+      "id": "H25",
+      "mechanism": "Authority",
+      "title": "강남임팩트클럽 팩트체크 거친 운영 정보 상세 정리 안내",
+      "driver": "신뢰",
+      "notes": "편집팀 확인이 정보 신뢰성 신호 → CTR 상승"
+    },
+    {
+      "id": "H26",
+      "mechanism": "Authority",
+      "title": "강남임팩트클럽 갱신 이력 확인 가능한 정보 안내 페이지",
+      "driver": "신뢰",
+      "notes": "날짜+갱신 로그가 정보 관리 체계 신뢰 형성"
+    },
+    {
+      "id": "H27",
+      "mechanism": "Authority",
+      "title": "강남임팩트클럽 정보 수정 접수 가능한 안내 페이지 정리",
+      "driver": "신뢰",
+      "notes": "정정 가능 명시가 열린 검증 태도로 신뢰 강화"
+    },
+    {
+      "id": "H28",
+      "mechanism": "Combined",
+      "title": "강남임팩트클럽 체크 7개 + FAQ 9개 통합 안내 정리",
+      "driver": "복합",
+      "notes": "체크+FAQ 통합이 한 페이지 완결성 어필"
+    },
+    {
+      "id": "H29",
+      "mechanism": "Combined",
+      "title": "강남임팩트클럽 네이버지도 + 입장 준비 통합 안내 페이지",
+      "driver": "복합",
+      "notes": "지도+체크리스트가 실행 가능한 정보 패키지 약속"
+    },
+    {
+      "id": "H30",
+      "mechanism": "Combined",
+      "title": "강남임팩트클럽 접근 동선·시간대·질문 한 페이지에 정리",
+      "driver": "복합",
+      "notes": "동선+시간+FAQ 종합이 원스톱 안내 가치 전달"
+    }
+  ],
+  "strongest_driver": {
+    "primary": "불안해소",
+    "secondary": "대비",
+    "why": "FAQ가 9개로 많아 방문자 불안 해소가 가장 큰 동기. 인기 지역이라 비교 심리도 작용."
+  },
+  "ab_tests": [
+    {
+      "group": "A",
+      "theme": "Curiosity+Specificity",
+      "ids": [
+        "H01",
+        "H02",
+        "H03",
+        "H11",
+        "H12"
+      ],
+      "hypothesis": "정보 공백과 구체적 숫자(FAQ 9개, 체크 7개)가 클릭 호기심을 극대화. 정보 탐색 의도가 높은 사용자에게 CTR 우위 예상."
+    },
+    {
+      "group": "B",
+      "theme": "RiskReduction+Authority",
+      "ids": [
+        "H20",
+        "H21",
+        "H22",
+        "H25",
+        "H26"
+      ],
+      "hypothesis": "첫 방문 불안 해소와 편집팀 검증 신뢰가 결합. 처음 방문하는 신중한 사용자층에서 CTR+체류시간 동시 상승 예상."
+    },
+    {
+      "group": "C",
+      "theme": "Contrast+Urgency(Recency)",
+      "ids": [
+        "H16",
+        "H17",
+        "H07",
+        "H08"
+      ],
+      "hypothesis": "A vs B 대비 구조가 선택 고민 중인 사용자 타겟. 최신 업데이트 표시가 재방문자 클릭 유도. 스크롤 깊이 우위 예상."
+    }
+  ],
+  "recommended_default": "H21",
+  "meta_description": "강남임팩트클럽(강남) 방문 정보 · 체크리스트 7개 · FAQ 9개 · 피크타임 5단계 · 지도 포함 · 2026-02-20 기준"
+}
