@@ -43,8 +43,50 @@ const tocItems = [
   { id: 'conclusion', label: '클럽 한줄평' },
   { id: 'related', label: '비슷한 클럽' },
 ];
+
+const jsonLdSchemas: object[] = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": canonicalUrl,
+    "dateModified": updateDate,
+    "inLanguage": "ko",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "NLC 전국 나이트·클럽·라운지 정보",
+      "url": siteUrl,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "홈", "item": siteUrl + "/" },
+      { "@type": "ListItem", "position": 2, "name": "클럽", "item": siteUrl + "/clubs/" },
+      { "@type": "ListItem", "position": 3, "name": v.region, "item": siteUrl + "/region/" + v.regionSlug + "/" },
+      { "@type": "ListItem", "position": 4, "name": v.name_display },
+    ],
+  },
+];
+
+if (v.faq && v.faq.length > 0) {
+  jsonLdSchemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": v.faq.slice(0, 8).map((f: { q: string; a: string }) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a,
+      },
+    })),
+  });
+}
 ---
-<BaseLayout title={title} description={description} canonical={canonicalUrl} ogImage={ogImage}>
+<BaseLayout title={title} description={description} canonical={canonicalUrl} ogImage={ogImage} jsonLd={jsonLdSchemas}>
   <section class="venue-hero-immersive">
     <div class="container content-narrow">
       <div class="breadcrumb">
