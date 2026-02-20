@@ -106,7 +106,7 @@ if (v.faq && v.faq.length > 0) {
 
   <div class="container content-narrow">
     <section class="quick-summary" id="summary">
-      <div class="quick-summary__title">한눈에 보기</div>
+      <div class="quick-summary__title">{si.summaryTitle || `${v.name_display} 한눈에 보기`}</div>
       <ul class="quick-summary__list">
         <li>{v.region} 소재 나이트 · {v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 지역`}</li>
         <li>분위기 — {v.bodySections.atmosphere.split('.')[0]}.</li>
