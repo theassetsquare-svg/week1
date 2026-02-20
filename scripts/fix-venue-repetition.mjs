@@ -326,7 +326,7 @@ function reduceAllTokensAggressively(v, coreName, region) {
 
     let limit;
     if (coreName && token === coreName) {
-      limit = 20; // coreName (bare): enough for all body sections (hookIntro, atmo, music, safety, scenes, FAQ, deepDive)
+      limit = 30; // coreName (bare): enough across all sections (hookIntro, stories, atmo, music, safety, FAQ, deepDive)
     } else if (region && token === region) {
       limit = 0; // region: max 0 in data (template adds breadcrumb, fact box, tags)
     } else if (CATEGORY_TOKENS.has(token)) {
