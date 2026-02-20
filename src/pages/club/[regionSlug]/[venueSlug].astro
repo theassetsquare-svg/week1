@@ -24,7 +24,7 @@ const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s*클럽\
 const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = v.pageTitle || `${v.name_display} 안내`;
-const description = `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
+const description = v.metaDescription || `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
 
 const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
 
