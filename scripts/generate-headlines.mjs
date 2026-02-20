@@ -524,6 +524,9 @@ function generateHeadlinePack(v, venueIndex) {
     }
   }
 
+  // Second pass: fix any word frequency violations introduced by length extension
+  fixWordFrequency(variants, n);
+
   // Meta description
   const descIdx = (h + venueIndex) % descTemplates.length;
   const metaDescription = descTemplates[descIdx](n, v, t);
