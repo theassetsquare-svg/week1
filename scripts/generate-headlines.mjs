@@ -497,8 +497,9 @@ function generateHeadlinePack(v, venueIndex) {
 
   // Post-process: fix short titles (< 28 chars) after word-freq fix may have shortened some
   const lengthExtenders = [
-    '자세히','꼼꼼히','한눈에','바로','미리','사전에','먼저',
-    '지금','깊이','면밀히','차근히','세밀히','낱낱이','꼼꼼하게'];
+    '자세히','차근히','바로','미리','사전에','먼저',
+    '지금','깊이','면밀히','세밀히','빈틈없이','속속들이',
+    '찬찬히','조목조목','일일이','샅샅이'];
   for (let j = 0; j < variants.length; j++) {
     let attempts = 0;
     while (variants[j].title.length < 28 && attempts < 3) {
