@@ -1365,7 +1365,6 @@ body.mobile-preview .site-footer .container { max-width: 414px; }
   h1 { font-size: 1.5rem; }
   .container { padding: 0 1rem; }
 
-  .venue-grid { grid-template-columns: 1fr; gap: 1rem; }
   .related-grid { grid-template-columns: 1fr; }
   .filter-chips { gap: 0.35rem; }
   .filter-chip { padding: 0.3rem 0.7rem; font-size: 0.78rem; }
