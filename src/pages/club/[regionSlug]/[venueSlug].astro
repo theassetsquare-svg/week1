@@ -280,6 +280,7 @@ if (v.faq && v.faq.length > 0) {
 
     <section class="venue-section" id="faq">
       <h2>Q&A</h2>
+      <p class="section-lead">{si.faqLead || `${v.name_display}에 대해 자주 묻는 질문을 모았습니다.`}</p>
       {v.faq.map(f => (
         <div class="faq-item">
           <div class="faq-q">{f.q}</div>
