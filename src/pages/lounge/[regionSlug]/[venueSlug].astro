@@ -299,7 +299,7 @@ if (v.faq && v.faq.length > 0) {
       <h2>취향이 비슷한 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} target="_blank" rel="noopener noreferrer" class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
         ))}
         <a href={`/region/${v.regionSlug}/`} target="_blank" rel="noopener noreferrer" class="related-link">{v.region} 전체 보기</a>
         <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="related-link">라운지 전체 목록</a>
