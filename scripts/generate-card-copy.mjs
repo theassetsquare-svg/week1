@@ -27,10 +27,23 @@ function hasBanned(text) { return BANNED.some(w => text.includes(w)); }
 // ─── Short name extractor ───
 function shortName(v) {
   let n = v.name_display;
+  // Remove region prefix
   n = n.replace(new RegExp(`^${v.region}\\s*`), '');
-  n = n.replace(/\s*(클럽|나이트|라운지)$/g, '');
+  // Only remove trailing type label if the remaining name is long enough
+  const withoutType = n.replace(/\s*(클럽|나이트|라운지)$/g, '').trim();
+  if (withoutType.length >= 2) n = withoutType;
   return n.trim() || v.name_display;
 }
+
+// ─── Korean particle helper (은/는, 이/가, 을/를) ───
+function hasJongseong(char) {
+  const code = char.charCodeAt(0);
+  if (code < 0xAC00 || code > 0xD7A3) return false; // not Hangul
+  return (code - 0xAC00) % 28 !== 0;
+}
+function eunNeun(word) { return hasJongseong(word[word.length-1]) ? '은' : '는'; }
+function iGa(word) { return hasJongseong(word[word.length-1]) ? '이' : '가'; }
+function eulReul(word) { return hasJongseong(word[word.length-1]) ? '을' : '를'; }
 
 // ─── Word pools ───
 const MOOD = {
