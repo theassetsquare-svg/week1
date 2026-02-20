@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, description, canonical, ogImage, keywords, jsonLd = [] } = Astro.props;
-const siteUrl = 'https://week1-6m5.pages.dev';
+const siteUrl = 'https://night-4qy.pages.dev';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 const currentPath = Astro.url.pathname;
 ---
@@ -50,7 +50,7 @@ const currentPath = Astro.url.pathname;
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a href="/" class="site-logo">NLC</a>
+      <a href="/" class="site-logo">나이트코리아</a>
       <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
       </button>
@@ -72,7 +72,7 @@ const currentPath = Astro.url.pathname;
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <span class="footer-logo">NLC</span>
+          <span class="footer-logo">나이트코리아</span>
           <p class="footer-desc">전국 나이트 · 클럽 · 라운지 정보 디렉토리</p>
         </div>
         <nav class="footer-nav">
@@ -86,7 +86,7 @@ const currentPath = Astro.url.pathname;
         <span class="footer-cta-id">카카오톡 besta12</span>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2026 NLC. All rights reserved.</p>
+        <p class="footer-copyright">&copy; 2026 나이트코리아. All rights reserved.</p>
         <p class="footer-age">본 사이트는 만 19세 이상 이용 가능한 정보를 포함합니다.</p>
       </div>
     </div>

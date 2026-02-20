@@ -7,4 +7,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://week1-6m5.pages.dev/sitemap.xml
+Sitemap: https://night-4qy.pages.dev/sitemap.xml

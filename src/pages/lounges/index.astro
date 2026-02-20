@@ -4,8 +4,8 @@ import IntroSection from '../../components/IntroSection.astro';
 import { venues, getVenueUrl } from '../../utils/venues';
 
 const loungeVenues = venues.filter(v => v.type === 'lounge');
-const title = '전국 라운지·감성주점 추천 | 한국 라운지 가이드';
-const description = '한국 전국의 프리미엄 라운지와 감성주점을 소개합니다. 강남 라운지를 중심으로 무드, 칵테일, 매장 정보를 확인하세요.';
+const title = '전국 라운지·감성주점 추천 — 강남·이태원·부산 라운지 가이드';
+const description = '한국 전국의 프리미엄 라운지와 감성주점을 한눈에 비교하세요. 강남 라운지를 중심으로 무드·시그니처 칵테일·예약 정보·드레스코드 가이드를 상세하게 안내합니다.';
 
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 loungeVenues.forEach(v => {
@@ -20,11 +20,11 @@ const jsonLd = [{
   "@type": "CollectionPage",
   "name": "전국 라운지 모음",
   "description": description,
-  "url": "https://week1-6m5.pages.dev/lounges/",
+  "url": "https://night-4qy.pages.dev/lounges/",
   "numberOfItems": loungeVenues.length,
 }];
 ---
-<BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/lounges/" jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} canonical="https://night-4qy.pages.dev/lounges/" jsonLd={jsonLd}>
   <section class="story-intro story-intro--lounge">
     <div class="container">
       <span class="story-intro__eyebrow">Lounge & Bar Korea</span>

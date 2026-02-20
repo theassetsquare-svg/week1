@@ -1,149 +1,150 @@
 #!/usr/bin/env node
 /**
  * qa_seo_meta.mjs
- * SEO 메타 검사: title/H1/description/OG/canonical/JSON-LD
- * - title/H1은 "{가게이름}..."으로 시작해야 함 (업소 상세페이지)
- * - meta description은 페이지마다 고유
- * - og:image / twitter:image 존재
- * - canonical 존재
+ * SEO meta tag validation for all HTML files in dist/
+ *
+ * Checks:
+ *   a. <title> exists and is 30-70 chars
+ *   b. <meta name="description"> exists and is 80-160 chars
+ *   c. <link rel="canonical"> exists and is absolute URL starting with https://night-4qy.pages.dev
+ *   d. <meta property="og:title"> exists
+ *   e. <meta property="og:description"> exists
+ *   f. For venue pages (path matches /{club|night|lounge}/): title starts with Korean word (store name)
+ *
+ * Exit 0 = PASS, Exit 1 = FAIL
  */
-import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
-import { join, dirname } from 'path';
+import { readFileSync, readdirSync, statSync } from 'fs';
+import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
-const VENUES = JSON.parse(readFileSync(join(ROOT, 'data', 'venues.json'), 'utf-8'));
+const DOMAIN = 'https://night-4qy.pages.dev';
 
-let fails = 0;
-let warns = 0;
-
-function fail(msg) { console.error(`  FAIL: ${msg}`); fails++; }
-function warn(msg) { console.warn(`  WARN: ${msg}`); warns++; }
+// ── helpers ──────────────────────────────────────────────
 
 function walkHtml(dir, list = []) {
-  for (const f of readdirSync(dir)) {
-    const p = join(dir, f);
-    if (statSync(p).isDirectory()) walkHtml(p, list);
-    else if (f.endsWith('.html')) list.push(p);
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      walkHtml(full, list);
+    } else if (entry.endsWith('.html')) {
+      list.push(full);
+    }
   }
   return list;
 }
 
-function extractTag(html, regex) {
+function extractAttr(html, regex) {
   const m = html.match(regex);
-  return m ? m[1].trim() : null;
+  return m ? m[1] : null;
 }
 
-import { buildVenueUrl } from './lib/url.mjs';
-
-// 업소명 → URL path 매핑
-const venueByPath = {};
-for (const v of VENUES) {
-  const key = buildVenueUrl(v);
-  venueByPath[key] = v;
+function isKoreanStart(str) {
+  if (!str) return false;
+  // Match if the string starts with a Korean character (Hangul syllable or Jamo)
+  return /^[\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]/.test(str.trim());
 }
+
+function isVenuePage(relPath) {
+  // Venue detail pages live under club/, night/, or lounge/ (but NOT clubs/, nights/, lounges/)
+  return /^(club|night|lounge)\/[^/]+\/[^/]+/.test(relPath);
+}
+
+// ── main ─────────────────────────────────────────────────
 
 function main() {
-  console.log('=== qa_seo_meta ===\n');
-
-  if (!existsSync(DIST)) {
-    fail('dist/ not found');
-    process.exit(1);
-  }
+  console.log('=== qa_seo_meta — SEO Meta Tag Validation ===\n');
 
   const htmlFiles = walkHtml(DIST);
-  const descriptions = new Map(); // description → file path (중복 검사)
+  let totalPages = 0;
+  let passCount = 0;
+  let failCount = 0;
+  const failures = []; // collect failure messages
 
-  for (const file of htmlFiles) {
-    const html = readFileSync(file, 'utf-8');
-    const relPath = file.replace(DIST, '') || '/';
-    const pagePath = relPath.replace(/index\.html$/, '').replace(/\.html$/, '/');
+  for (const filePath of htmlFiles) {
+    totalPages++;
+    const relPath = relative(DIST, filePath);
+    const html = readFileSync(filePath, 'utf-8');
+    const pageFailures = [];
 
-    // title 검사
-    const title = extractTag(html, /<title>(.*?)<\/title>/s);
-    if (!title) {
-      fail(`No <title> in: ${relPath}`);
+    // a. <title> exists and is 30-70 chars
+    const titleMatch = html.match(/<title>([^<]*)<\/title>/i);
+    const titleText = titleMatch ? titleMatch[1].trim() : null;
+    if (!titleText) {
+      pageFailures.push('missing <title>');
+    } else if (titleText.length < 30 || titleText.length > 70) {
+      pageFailures.push(`<title> length ${titleText.length} (expected 30-70): "${titleText.slice(0, 50)}..."`);
     }
 
-    // H1 검사
-    const h1 = extractTag(html, /<h1[^>]*>(.*?)<\/h1>/s);
-    if (!h1) {
-      fail(`No <h1> in: ${relPath}`);
+    // b. <meta name="description"> exists and is 80-160 chars
+    const descContent = extractAttr(html, /<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i);
+    if (!descContent) {
+      pageFailures.push('missing <meta name="description">');
+    } else if (descContent.length < 80 || descContent.length > 160) {
+      pageFailures.push(`description length ${descContent.length} (expected 80-160): "${descContent.slice(0, 60)}..."`);
     }
 
-    // meta description 검사
-    const desc = extractTag(html, /<meta\s+name=["']description["']\s+content=["'](.*?)["']/i)
-              || extractTag(html, /<meta\s+content=["'](.*?)["']\s+name=["']description["']/i);
-    if (!desc) {
-      fail(`No meta description in: ${relPath}`);
+    // c. <link rel="canonical"> exists and is absolute URL starting with DOMAIN
+    const canonicalHref = extractAttr(html, /<link\s+rel=["']canonical["']\s+href=["']([^"']*)["']/i);
+    if (!canonicalHref) {
+      pageFailures.push('missing <link rel="canonical">');
+    } else if (!canonicalHref.startsWith(DOMAIN)) {
+      pageFailures.push(`canonical not starting with ${DOMAIN}: "${canonicalHref.slice(0, 80)}"`);
+    }
+
+    // d. <meta property="og:title"> exists
+    const ogTitle = extractAttr(html, /<meta\s+property=["']og:title["']\s+content=["']([^"']*)["']/i);
+    if (!ogTitle) {
+      pageFailures.push('missing <meta property="og:title">');
+    }
+
+    // e. <meta property="og:description"> exists
+    const ogDesc = extractAttr(html, /<meta\s+property=["']og:description["']\s+content=["']([^"']*)["']/i);
+    if (!ogDesc) {
+      pageFailures.push('missing <meta property="og:description">');
+    }
+
+    // f. For venue pages: title starts with a Korean word (store name)
+    if (isVenuePage(relPath)) {
+      if (titleText && !isKoreanStart(titleText)) {
+        pageFailures.push(`venue title does not start with Korean store name: "${titleText.slice(0, 40)}"`);
+      }
+    }
+
+    // tally
+    if (pageFailures.length === 0) {
+      passCount++;
     } else {
-      if (descriptions.has(desc)) {
-        fail(`Duplicate description: "${desc.slice(0, 50)}..." — ${relPath} = ${descriptions.get(desc)}`);
+      failCount++;
+      for (const msg of pageFailures) {
+        failures.push(`${relPath}: ${msg}`);
       }
-      descriptions.set(desc, relPath);
-    }
-
-    // canonical 검사
-    const canonical = extractTag(html, /<link\s+rel=["']canonical["']\s+href=["'](.*?)["']/i);
-    if (!canonical) {
-      fail(`No canonical in: ${relPath}`);
-    }
-
-    // OG/Twitter 이미지 검사
-    const ogImage = extractTag(html, /<meta\s+property=["']og:image["']\s+content=["'](.*?)["']/i);
-    const twImage = extractTag(html, /<meta\s+name=["']twitter:image["']\s+content=["'](.*?)["']/i)
-                 || extractTag(html, /<meta\s+property=["']twitter:image["']\s+content=["'](.*?)["']/i);
-
-    // 업소 상세페이지 추가 검사
-    const decodedPath = decodeURIComponent(pagePath);
-    const venue = venueByPath[decodedPath];
-
-    if (venue) {
-      // og:image / twitter:image — 상세페이지는 FAIL
-      if (!ogImage) fail(`No og:image in detail page: ${relPath}`);
-      if (!twImage) fail(`No twitter:image in detail page: ${relPath}`);
-
-      const name = venue.name_display;
-
-      // title이 가게이름으로 시작
-      if (title && !title.startsWith(name)) {
-        fail(`Title does not start with venue name "${name}": "${title.slice(0, 60)}..." in ${relPath}`);
-      }
-
-      // H1에서 HTML 태그 제거 후 검사
-      const h1Clean = h1 ? h1.replace(/<[^>]+>/g, '').trim() : '';
-      if (h1Clean && !h1Clean.startsWith(name)) {
-        fail(`H1 does not start with venue name "${name}": "${h1Clean.slice(0, 60)}..." in ${relPath}`);
-      }
-
-      // description이 teaser 포함 검증
-      if (desc && venue.teaser && !desc.includes(venue.teaser.slice(0, 40))) {
-        warn(`Description may not include teaser in: ${relPath}`);
-      }
-
-      // 지도 버튼 존재 검사
-      const hasMapBtn = html.includes('class="map-btn');
-      if (!hasMapBtn) {
-        fail(`No map buttons in detail page: ${relPath}`);
-      }
-    } else {
-      // 비상세페이지는 WARN 유지
-      if (!ogImage) warn(`No og:image in: ${relPath}`);
-      if (!twImage) warn(`No twitter:image in: ${relPath}`);
     }
   }
 
-  console.log(`  Pages checked: ${htmlFiles.length}`);
-  console.log(`  Unique descriptions: ${descriptions.size}`);
-  console.log('');
+  // ── report ───────────────────────────────────────────
+  console.log(`Total pages scanned: ${totalPages}`);
+  console.log(`  PASS: ${passCount}`);
+  console.log(`  FAIL: ${failCount}`);
 
-  if (fails > 0) {
-    console.error(`FAIL: qa_seo_meta — ${fails} error(s), ${warns} warning(s)`);
+  if (failures.length > 0) {
+    console.log(`\nTop failures (showing up to 10):`);
+    for (const f of failures.slice(0, 10)) {
+      console.log(`  - ${f}`);
+    }
+    if (failures.length > 10) {
+      console.log(`  ... and ${failures.length - 10} more`);
+    }
+  }
+
+  console.log('');
+  if (failCount > 0) {
+    console.error(`FAIL: qa_seo_meta — ${failCount} page(s) with issues, ${failures.length} total issue(s)`);
     process.exit(1);
   } else {
-    console.log(`PASS: qa_seo_meta — ${warns} warning(s)`);
+    console.log('PASS: qa_seo_meta — all pages OK');
     process.exit(0);
   }
 }

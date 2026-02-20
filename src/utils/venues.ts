@@ -132,11 +132,11 @@ export function getReadingTime(v: Venue): number {
 }
 
 export const guides = [
-  { slug: 'first-visit', title: '첫 입장 핵심 팁', desc: '처음 가는 밤, 두려움을 설렘으로 바꾸는 핵심 팁' },
-  { slug: 'dress-code', title: '드레스코드 총정리', desc: '어떤 옷을 입어야 할지 고민된다면, 유형별 드레스코드를 확인하세요' },
-  { slug: 'safety-tips', title: '안전하게 즐기는 법', desc: '즐거운 밤을 위한 안전 수칙과 주의사항' },
-  { slug: 'music-genres', title: '음악 장르 총정리', desc: 'EDM, 힙합, 하우스부터 트로트까지 – 장르별 즐기는 법' },
-  { slug: 'solo-nightlife', title: '혼자서도 즐기는 나이트라이프', desc: '솔로 방문이 걱정된다면, 혼자서도 충분히 즐기는 방법' },
-  { slug: 'group-party', title: '단체 파티 기획 노하우', desc: '생일, 회식, 동호회 모임을 위한 단체 파티 기획 팁' },
-  { slug: 'regional-nightlife', title: '전국별 밤문화 특징', desc: '서울, 부산, 대구, 인천 등 주요 도시 밤문화 특성과 추천' },
+  { slug: 'first-visit', title: '첫 입장 핵심 팁', desc: '나이트·클럽·라운지 첫 방문이 걱정된다면, 입장부터 퇴장까지 흐름과 준비물을 미리 확인하세요.' },
+  { slug: 'dress-code', title: '드레스코드 총정리', desc: '클럽·나이트·라운지 유형별 드레스코드 기준과 계절별 복장 팁을 한눈에 확인하세요.' },
+  { slug: 'safety-tips', title: '안전하게 즐기는 법', desc: '음주 관리, 귀가 교통편, 개인 물품 보관 등 즐거운 밤을 위한 필수 안전 수칙과 주의사항 안내.' },
+  { slug: 'music-genres', title: '음악 장르 총정리', desc: 'EDM, 힙합, 하우스, 테크노부터 트로트·재즈까지 — 매장 유형별 음악 장르 특징과 즐기는 법.' },
+  { slug: 'solo-nightlife', title: '혼자서도 즐기는 나이트라이프', desc: '솔로 방문이 걱정된다면 이 가이드를 읽어보세요. 라운지·나이트·클럽에서 혼자 즐기는 실전 팁.' },
+  { slug: 'group-party', title: '단체 파티 기획 노하우', desc: '생일 파티, 회식, 동호회 모임을 위한 단체 예약 방법과 매장 유형별 기획 팁을 정리했습니다.' },
+  { slug: 'regional-nightlife', title: '전국별 밤문화 특징', desc: '서울 강남·이태원, 부산 해운대·서면, 대구 동성로, 인천 등 주요 도시별 밤문화 특성과 추천 매장.' },
 ];

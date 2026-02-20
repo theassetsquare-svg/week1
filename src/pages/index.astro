@@ -4,8 +4,8 @@ import IntroSection from '../components/IntroSection.astro';
 import { venues, getVenueUrl, getUniqueRegions, guides } from '../utils/venues';
 
 const regions = getUniqueRegions();
-const title = '전국 나이트·클럽·라운지 추천 | 나이트라이프 코리아';
-const description = '한국 전국 나이트, 클럽, 라운지 정보를 한눈에. 강남, 부산, 대구 등 지역별 나이트라이프 추천과 상세 리뷰.';
+const title = '전국 나이트·클럽·라운지 추천 — 나이트코리아 독립 가이드';
+const description = '한국 전국 나이트, 클럽, 라운지 130곳의 무드·음악·입장 정보를 한눈에 비교하세요. 강남, 부산, 대구, 인천 등 지역별 나이트라이프 추천과 상세 가이드를 제공합니다.';
 
 // Curated mix: 4 night + 4 club + 4 lounge = 12 recommended
 const nightPick = venues.filter(v => v.type === 'night').slice(0, 4);
@@ -28,13 +28,13 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "나이트라이프 코리아",
-    "url": "https://week1-6m5.pages.dev",
+    "name": "나이트코리아",
+    "url": "https://night-4qy.pages.dev",
     "description": description,
     "inLanguage": "ko",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://week1-6m5.pages.dev/?q={search_term_string}",
+      "target": "https://night-4qy.pages.dev/?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   },
@@ -47,7 +47,7 @@ const jsonLd = [
       "@type": "ListItem",
       "position": i + 1,
       "name": v.name_seo,
-      "url": `https://week1-6m5.pages.dev${getVenueUrl(v)}`
+      "url": `https://night-4qy.pages.dev${getVenueUrl(v)}`
     }))
   }
 ];

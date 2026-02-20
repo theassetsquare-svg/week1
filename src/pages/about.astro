@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IntroSection from '../components/IntroSection.astro';
 
-const title = '나이트라이프 코리아 소개 | About';
-const description = '나이트라이프 코리아는 한국 전국의 나이트, 클럽, 라운지 정보를 제공하는 가이드 사이트입니다.';
-const siteUrl = 'https://week1-6m5.pages.dev';
+const title = '나이트코리아 소개 — 전국 나이트·클럽·라운지 독립 가이드 사이트';
+const description = '나이트코리아는 광고·제휴 없이 운영되는 독립 가이드로, 한국 전국 130곳의 나이트, 클럽, 라운지 정보를 AI 기반 데이터 분석과 자동 QA 시스템으로 검증하여 제공합니다.';
+const siteUrl = 'https://night-4qy.pages.dev';
 
 const jsonLd = [
   {
@@ -16,7 +16,7 @@ const jsonLd = [
     "inLanguage": "ko",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "나이트라이프 코리아",
+      "name": "나이트코리아",
       "url": siteUrl
     }
   }
@@ -24,10 +24,10 @@ const jsonLd = [
 ---
 <BaseLayout title={title} description={description} canonical={`${siteUrl}/about/`} jsonLd={jsonLd}>
   <div class="container content-narrow" style="padding: 3rem 1rem;">
-    <h1>나이트라이프 코리아 소개</h1>
+    <h1>나이트코리아 소개</h1>
 
     <IntroSection
-      hook={`"나이트라이프 정보 사이트는 광고뿐이다"라고 생각하셨다면 오해입니다. 나이트라이프 코리아는 독립 가이드로, 제휴나 광고 없이 운영됩니다. 모든 정보는 AI 기반 데이터 분석과 자동 QA 시스템을 거쳐 게시됩니다.`}
+      hook={`"나이트라이프 정보 사이트는 광고뿐이다"라고 생각하셨다면 오해입니다. 나이트코리아는 독립 가이드로, 제휴나 광고 없이 운영됩니다. 모든 정보는 AI 기반 데이터 분석과 자동 QA 시스템을 거쳐 게시됩니다.`}
       valuePromise="1분이면 이 사이트의 콘텐츠 기준, 검증 절차, 정보 수정 요청 방법을 파악할 수 있습니다."
       scanBox={[
         '독립 가이드 사이트 (광고/제휴 없음)',
@@ -56,7 +56,7 @@ const jsonLd = [
 
     <section style="margin: 2rem 0;">
       <h2>사이트 개요</h2>
-      <p>나이트라이프 코리아는 한국 전국의 나이트, 클럽, 라운지 130곳의 상세 정보를 제공하는 독립 가이드 사이트입니다. 강남, 부산, 대구, 인천, 대전, 광주, 제주 등 주요 도시의 밤문화 정보를 한곳에서 확인할 수 있습니다.</p>
+      <p>나이트코리아는 한국 전국의 나이트, 클럽, 라운지 130곳의 상세 정보를 제공하는 독립 가이드 사이트입니다. 강남, 부산, 대구, 인천, 대전, 광주, 제주 등 주요 도시의 밤문화 정보를 한곳에서 확인할 수 있습니다.</p>
     </section>
 
     <section style="margin: 2rem 0;">

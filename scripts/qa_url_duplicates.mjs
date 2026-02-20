@@ -19,7 +19,7 @@ const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITEMAP = join(ROOT, 'sitemap.xml');
 const REDIRECT_MAP = join(ROOT, 'redirect_map.json');
-const SITE = 'https://week1-6m5.pages.dev';
+const SITE = 'https://night-4qy.pages.dev';
 
 // Category token mapping: English path segment → Korean token
 const CAT_MAP = { club: '클럽', night: '나이트', lounge: '라운지' };

@@ -1,146 +1,138 @@
 #!/usr/bin/env node
-
 /**
  * generate-venue-index.mjs
  *
- * Reads data/venues.json and produces docs/VENUE_INDEX.json
- * with per-venue SEO audit metadata and issue flags.
+ * Reads data/venues.json and produces VENUE_INDEX.json in the project root
+ * with per-venue SEO metadata and issue diagnostics.
  */
 
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = resolve(__dirname, '..');
+const ROOT = join(__dirname, '..');
 
-const INPUT = resolve(ROOT, 'data', 'venues.json');
-const OUTPUT = resolve(ROOT, 'docs', 'VENUE_INDEX.json');
+const VENUES_PATH = join(ROOT, 'data', 'venues.json');
+const OUTPUT_PATH = join(ROOT, 'VENUE_INDEX.json');
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+const catKr = { club: '클럽', night: '나이트', lounge: '라운지' };
 
-/**
- * Build the canonical URL path for a venue.
- * Pattern: /{typePath}/{regionSlug}/{urlSlug}/
- */
-function buildUrl(venue) {
-  return `/${venue.typePath}/${venue.regionSlug}/${venue.urlSlug}/`;
+function cleanSlug(slug, typePath, regionSlug) {
+  let s = slug;
+  const cat = catKr[typePath];
+  if (cat) {
+    const cleaned = s.split('-').filter(p => p !== cat).join('-');
+    if (cleaned.length > 0) s = cleaned;
+  }
+  if (regionSlug) {
+    const cleaned = s.split('-').filter(p => p !== regionSlug).join('-');
+    if (cleaned.length > 0) s = cleaned;
+  }
+  return s;
 }
 
-/**
- * Derive a "core name" from name_display by stripping the region prefix and
- * the type suffix (클럽 / 나이트 / 라운지).  For example:
- *   "강남 레이스 클럽"  -> "레이스"
- *   "이태원 볼노스트 클럽" -> "볼노스트"
- *   "강남 하입 라운지" -> "하입"
- *
- * Falls back to the full name_display if stripping leaves nothing.
- */
-function coreName(venue) {
-  const parts = venue.name_display.split(/\s+/);
-  const region = venue.region;
-  const typeSuffixes = ['클럽', '나이트', '라운지'];
+const REQUIRED_INTRO_FIELDS = ['hook', 'valuePromise', 'scanBox', 'checklist', 'riskItems', 'teasers'];
 
-  const filtered = parts.filter(
-    (p) => p !== region && !typeSuffixes.includes(p)
-  );
-  return filtered.length > 0 ? filtered.join(' ') : venue.name_display;
-}
-
-/**
- * Detect issues for a single venue.
- */
 function detectIssues(venue) {
   const issues = [];
+  const name = venue.name_display || '';
+  const title = venue.pageTitle || venue.seoTitle || '';
+  const h1 = venue.h1Title || '';
+  const desc = venue.metaDescription || venue.seoDescription || '';
+  const images = Array.isArray(venue.images) ? venue.images : [];
+  const keywords = venue.keywords;
+  const intro = venue.intro;
+  const conclusionText = venue.conclusionText;
 
-  // 1. no_jsonld — always true (venue detail pages lack JSON-LD)
-  issues.push('no_jsonld');
-
-  // 2. title_not_name_first — pageTitle should start with the compact form
-  //    of name_display (all spaces removed).
-  const compactName = venue.name_display.replace(/\s+/g, '');
-  if (!venue.pageTitle.startsWith(compactName)) {
-    issues.push('title_not_name_first');
+  if (!title || !title.startsWith(name)) {
+    issues.push('title_no_store_name');
   }
-
-  // 3. h1_too_generic — always true (H1 is just name_display, not SEO-optimised)
-  issues.push('h1_too_generic');
-
-  // 4. missing_breadcrumb_ld — always true
-  issues.push('missing_breadcrumb_ld');
-
-  // 5. missing_faq_ld — always true
-  issues.push('missing_faq_ld');
-
-  // 6. internal_links_new_tab — always true
-  issues.push('internal_links_new_tab');
-
-  // 7. faq_missing_venue_name — first FAQ question doesn't mention the venue
-  //    We check for: full name_display, compact name, or core name.
-  if (venue.faq && venue.faq.length > 0) {
-    const q = venue.faq[0].q;
-    const nameDisplay = venue.name_display;
-    const core = coreName(venue);
-
-    const containsName =
-      q.includes(nameDisplay) ||
-      q.includes(compactName) ||
-      q.includes(core);
-
-    if (!containsName) {
-      issues.push('faq_missing_venue_name');
+  if (!h1 || !h1.startsWith(name)) {
+    issues.push('h1_no_store_name');
+  }
+  if (desc.length < 80) {
+    issues.push('description_short');
+  }
+  if (desc.length > 160) {
+    issues.push('description_long');
+  }
+  if (images.length === 0) {
+    issues.push('no_thumbnail');
+  }
+  if (!keywords || !Array.isArray(keywords) || keywords.length === 0) {
+    issues.push('no_keywords');
+  }
+  if (!intro || typeof intro !== 'object') {
+    issues.push('no_intro');
+  } else {
+    const missing = REQUIRED_INTRO_FIELDS.some(f => !intro[f]);
+    if (missing) {
+      issues.push('no_intro');
     }
+  }
+  if (!conclusionText) {
+    issues.push('no_conclusion');
   }
 
   return issues;
 }
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
+function main() {
+  const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf-8'));
+  console.log(`Read ${venues.length} venues from ${VENUES_PATH}`);
 
-const venues = JSON.parse(readFileSync(INPUT, 'utf8'));
+  const index = venues.map(v => {
+    const slug = v.urlSlug || v.venueSlug || '';
+    const typePath = v.typePath || v.type || 'club';
+    const regionSlug = v.regionSlug || '';
+    const cSlug = cleanSlug(slug, typePath, regionSlug);
+    const url = `/${typePath}/${regionSlug}/${cSlug}/`;
 
-const index = venues.map((v) => {
-  const regionLevel3 =
-    (v.geo && (v.geo.district || v.geo.neighborhood)) || null;
+    const title = v.pageTitle || v.seoTitle || `${v.name_display || 'Unknown'} \u2013 \uc815\ubcf4\xb7\ud6c4\uae30`;
+    const h1 = v.h1Title || `${v.name_display || 'Unknown'} \uc644\ubcbd \uac00\uc774\ub4dc`;
+    const desc = v.metaDescription || v.seoDescription || `${v.name_display || ''} \uad00\ub828 \uc815\ubcf4\ub97c \ud655\uc778\ud558\uc138\uc694.`;
 
-  return {
-    id: v.id,
-    name: v.name_display,
-    category: v.typeLabel,
-    region_level1: '대한민국',
-    region_level2: v.region,
-    region_level3: regionLevel3 || null,
-    url: buildUrl(v),
-    slug: v.urlSlug,
-    has_thumbnail: Array.isArray(v.images) && v.images.length >= 1,
-    has_gallery: Array.isArray(v.images) && v.images.length >= 3,
-    map_query: v.name_display,
-    current_title: v.pageTitle,
-    current_h1: v.name_display,
-    current_description: v.metaDescription,
-    issues: detectIssues(v),
-  };
-});
+    const images = Array.isArray(v.images) ? v.images : [];
 
-writeFileSync(OUTPUT, JSON.stringify(index, null, 2), 'utf8');
-
-console.log(`[generate-venue-index] Wrote ${index.length} venues to ${OUTPUT}`);
-
-// Print a short summary of issue counts
-const issueCounts = {};
-index.forEach((entry) => {
-  entry.issues.forEach((issue) => {
-    issueCounts[issue] = (issueCounts[issue] || 0) + 1;
+    return {
+      id: v.id,
+      name: v.name_display,
+      category: v.type,
+      region: v.region,
+      regionSlug: v.regionSlug,
+      url,
+      slug: v.urlSlug || v.venueSlug,
+      has_thumbnail: images.length > 0,
+      current_title: title,
+      current_h1: h1,
+      current_description: desc,
+      issues: detectIssues(v),
+    };
   });
-});
 
-console.log('\nIssue summary:');
-for (const [issue, count] of Object.entries(issueCounts).sort(
-  (a, b) => b[1] - a[1]
-)) {
-  console.log(`  ${issue}: ${count} / ${index.length}`);
+  writeFileSync(OUTPUT_PATH, JSON.stringify(index, null, 2), 'utf-8');
+  console.log(`Wrote ${index.length} entries to ${OUTPUT_PATH}`);
+
+  const issueCounts = {};
+  let venuesWithIssues = 0;
+  for (const entry of index) {
+    if (entry.issues.length > 0) venuesWithIssues++;
+    for (const issue of entry.issues) {
+      issueCounts[issue] = (issueCounts[issue] || 0) + 1;
+    }
+  }
+
+  console.log('\n-- Issue Summary --');
+  console.log(`Total venues: ${index.length}`);
+  console.log(`Venues with issues: ${venuesWithIssues}`);
+  console.log(`Venues clean: ${index.length - venuesWithIssues}`);
+  console.log('');
+  const sorted = Object.entries(issueCounts).sort((a, b) => b[1] - a[1]);
+  for (const [issue, count] of sorted) {
+    console.log(`  ${issue}: ${count}`);
+  }
+  console.log(`\nTotal issue instances: ${sorted.reduce((s, [, c]) => s + c, 0)}`);
 }
+
+main();

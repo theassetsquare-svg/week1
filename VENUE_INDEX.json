@@ -1,0 +1,2048 @@
+[
+  {
+    "id": "venue-1",
+    "name": "강남 레이스 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/레이스/",
+    "slug": "레이스",
+    "has_thumbnail": true,
+    "current_title": "강남 레이스 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 레이스 클럽 첫 방문자를 위한 가이드",
+    "current_description": "강남 레이스 클럽 강남 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-2",
+    "name": "강남 사운드 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/사운드/",
+    "slug": "사운드",
+    "has_thumbnail": true,
+    "current_title": "강남 사운드 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 사운드 클럽 가이드 — 갱신 기준 현장 정보",
+    "current_description": "강남 클럽 강남 사운드 클럽 — 체크 7항목, 질문 8개 답변, 시간대 5구간. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-3",
+    "name": "강남 아르떼 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/아르떼/",
+    "slug": "아르떼",
+    "has_thumbnail": true,
+    "current_title": "강남 아르떼 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 아르떼 클럽 강남 클럽 현장 정보 안내",
+    "current_description": "강남 아르떼 클럽의 위치·분위기·준비물을 3분 안에 파악할 수 있게 정리한 가이드. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-4",
+    "name": "강남 옥타곤 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/옥타곤/",
+    "slug": "옥타곤",
+    "has_thumbnail": true,
+    "current_title": "강남 옥타곤 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 옥타곤 클럽 입장 안내와 FAQ 8개",
+    "current_description": "강남 옥타곤 클럽은 강남에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-5",
+    "name": "강남 피크 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/피크/",
+    "slug": "피크",
+    "has_thumbnail": true,
+    "current_title": "강남 피크 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 피크 클럽 방문 전 알아야 할 모든 것",
+    "current_description": "강남 피크 클럽 클럽 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-6",
+    "name": "강남 페이스 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/페이스/",
+    "slug": "페이스",
+    "has_thumbnail": true,
+    "current_title": "강남 페이스 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 페이스 클럽 정보 — 강남 클럽 가이드",
+    "current_description": "강남 페이스 클럽(강남) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-7",
+    "name": "강남 헤븐 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/헤븐/",
+    "slug": "헤븐",
+    "has_thumbnail": true,
+    "current_title": "강남 헤븐 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 헤븐 클럽 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "강남 헤븐 클럽 방문 전 확인할 항목 7개와 자주 묻는 질문 8개를 정리한 페이지입니다. 2026-02-20 기준.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-8",
+    "name": "강남 임팩트 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/임팩트/",
+    "slug": "임팩트",
+    "has_thumbnail": true,
+    "current_title": "강남 임팩트 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 임팩트 클럽 안내 — 위치·분위기·체크리스트",
+    "current_description": "강남 임팩트 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-9",
+    "name": "강남 잭리빈 클럽",
+    "category": "club",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/club/gangnam/잭리빈/",
+    "slug": "잭리빈",
+    "has_thumbnail": true,
+    "current_title": "강남 잭리빈 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 잭리빈 클럽 방문 가이드 — 강남 클럽",
+    "current_description": "강남 잭리빈 클럽 정보 페이지 — 강남 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-10",
+    "name": "청담 플러스82 클럽",
+    "category": "club",
+    "region": "청담",
+    "regionSlug": "cheongdam",
+    "url": "/club/cheongdam/플러스82/",
+    "slug": "플러스82",
+    "has_thumbnail": true,
+    "current_title": "청담 플러스82 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "청담 플러스82 클럽 가이드 — 갱신 기준 현장 정보",
+    "current_description": "청담 플러스82 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-11",
+    "name": "청담 르클럽",
+    "category": "club",
+    "region": "청담",
+    "regionSlug": "cheongdam",
+    "url": "/club/cheongdam/르클럽/",
+    "slug": "르클럽",
+    "has_thumbnail": true,
+    "current_title": "청담 르클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "청담 르클럽 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "청담 르클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-12",
+    "name": "이태원 볼노스트 클럽",
+    "category": "club",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/club/itaewon/볼노스트/",
+    "slug": "볼노스트",
+    "has_thumbnail": true,
+    "current_title": "이태원 볼노스트 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "이태원 볼노스트 클럽 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "이태원 볼노스트 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-13",
+    "name": "이태원 케이크샵 클럽",
+    "category": "club",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/club/itaewon/케이크샵/",
+    "slug": "케이크샵",
+    "has_thumbnail": true,
+    "current_title": "이태원 케이크샵 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "이태원 케이크샵 클럽 입장 안내와 FAQ 8개",
+    "current_description": "이태원 케이크샵 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-14",
+    "name": "이태원 메카 클럽",
+    "category": "club",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/club/itaewon/메카/",
+    "slug": "메카",
+    "has_thumbnail": true,
+    "current_title": "이태원 메카 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "이태원 메카 클럽 방문 가이드 — 이태원 클럽",
+    "current_description": "이태원 메카 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-15",
+    "name": "이태원 스타디움 클럽",
+    "category": "club",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/club/itaewon/스타디움/",
+    "slug": "스타디움",
+    "has_thumbnail": true,
+    "current_title": "이태원 스타디움 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "이태원 스타디움 클럽 첫 방문자를 위한 가이드",
+    "current_description": "이태원 스타디움 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-16",
+    "name": "이태원 루시드림 클럽",
+    "category": "club",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/club/itaewon/루시드림/",
+    "slug": "루시드림",
+    "has_thumbnail": true,
+    "current_title": "이태원 루시드림 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "이태원 루시드림 클럽 정보 — 이태원 클럽 가이드",
+    "current_description": "이태원 루시드림 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-17",
+    "name": "홍대 아우라 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/아우라/",
+    "slug": "아우라",
+    "has_thumbnail": true,
+    "current_title": "홍대 아우라 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "홍대 아우라 클럽 체크리스트·타임라인·FAQ 안내",
+    "current_description": "홍대 아우라 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-18",
+    "name": "홍대 NB2 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/nb2/",
+    "slug": "nb2",
+    "has_thumbnail": true,
+    "current_title": "홍대 NB2 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "홍대 NB2 클럽 홍대 클럽 현장 정보 안내",
+    "current_description": "홍대 NB2 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-19",
+    "name": "홍대 M2 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/m2/",
+    "slug": "m2",
+    "has_thumbnail": true,
+    "current_title": "홍대 M2 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "홍대 M2 클럽 안내 — 위치·분위기·체크리스트",
+    "current_description": "홍대 M2 클럽 위치 확인부터 입장 준비까지, 방문에 필요한 정보 15가지를 정리했습니다. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-20",
+    "name": "홍대 FF 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/ff/",
+    "slug": "ff",
+    "has_thumbnail": true,
+    "current_title": "홍대 FF 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "홍대 FF 클럽 홍대 클럽 현장 정보 안내",
+    "current_description": "홍대 FF 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-21",
+    "name": "홍대 매드홀릭 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/매드홀릭/",
+    "slug": "매드홀릭",
+    "has_thumbnail": true,
+    "current_title": "홍대 매드홀릭 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "홍대 매드홀릭 클럽 안내 — 위치·분위기·체크리스트",
+    "current_description": "홍대 매드홀릭 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-22",
+    "name": "홍대 싱크홀 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/싱크홀/",
+    "slug": "싱크홀",
+    "has_thumbnail": true,
+    "current_title": "홍대 싱크홀 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "홍대 싱크홀 클럽 홍대 클럽 방문 준비 가이드",
+    "current_description": "홍대 싱크홀 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-23",
+    "name": "홍대 올카인드 클럽",
+    "category": "club",
+    "region": "홍대",
+    "regionSlug": "hongdae",
+    "url": "/club/hongdae/올카인드/",
+    "slug": "올카인드",
+    "has_thumbnail": true,
+    "current_title": "홍대 올카인드 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "홍대 올카인드 클럽 방문 전 알아야 할 모든 것",
+    "current_description": "홍대 올카인드 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-24",
+    "name": "부산서면 그루브 클럽",
+    "category": "club",
+    "region": "부산서면",
+    "regionSlug": "busan-seomyeon",
+    "url": "/club/busan-seomyeon/그루브/",
+    "slug": "그루브",
+    "has_thumbnail": true,
+    "current_title": "부산서면 그루브 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "부산서면 그루브 클럽 클럽 방문 정보 총정리",
+    "current_description": "부산서면 그루브 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-25",
+    "name": "부산서면 데이즈 클럽",
+    "category": "club",
+    "region": "부산서면",
+    "regionSlug": "busan-seomyeon",
+    "url": "/club/busan-seomyeon/데이즈/",
+    "slug": "데이즈",
+    "has_thumbnail": true,
+    "current_title": "부산서면 데이즈 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "부산서면 데이즈 클럽 가이드 — 갱신 기준 현장 정보",
+    "current_description": "부산서면 데이즈 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-26",
+    "name": "부산서면 아지트 클럽",
+    "category": "club",
+    "region": "부산서면",
+    "regionSlug": "busan-seomyeon",
+    "url": "/club/busan-seomyeon/아지트/",
+    "slug": "아지트",
+    "has_thumbnail": true,
+    "current_title": "부산서면 아지트 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "부산서면 아지트 클럽 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "부산서면 아지트 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-27",
+    "name": "부산서면 크림 클럽",
+    "category": "club",
+    "region": "부산서면",
+    "regionSlug": "busan-seomyeon",
+    "url": "/club/busan-seomyeon/크림/",
+    "slug": "크림",
+    "has_thumbnail": true,
+    "current_title": "부산서면 크림 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "부산서면 크림 클럽 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "부산서면 크림 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-28",
+    "name": "부산서면 아웃풋 클럽",
+    "category": "club",
+    "region": "부산서면",
+    "regionSlug": "busan-seomyeon",
+    "url": "/club/busan-seomyeon/아웃풋/",
+    "slug": "아웃풋",
+    "has_thumbnail": true,
+    "current_title": "부산서면 아웃풋 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "부산서면 아웃풋 클럽 입장 안내와 FAQ 8개",
+    "current_description": "부산서면 아웃풋 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-29",
+    "name": "부산해운대 빌리진 클럽",
+    "category": "club",
+    "region": "부산해운대",
+    "regionSlug": "busan-haeundae",
+    "url": "/club/busan-haeundae/빌리진/",
+    "slug": "빌리진",
+    "has_thumbnail": true,
+    "current_title": "부산해운대 빌리진 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "부산해운대 빌리진 클럽 방문 가이드 — 부산해운대 클럽",
+    "current_description": "부산해운대 빌리진 클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드를 정리한 페이지. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-30",
+    "name": "부산해운대 멜트 클럽",
+    "category": "club",
+    "region": "부산해운대",
+    "regionSlug": "busan-haeundae",
+    "url": "/club/busan-haeundae/멜트/",
+    "slug": "멜트",
+    "has_thumbnail": true,
+    "current_title": "부산해운대 멜트 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "부산해운대 멜트 클럽 입장 안내와 FAQ 8개",
+    "current_description": "부산해운대 멜트 클럽은 부산해운대에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 4단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-31",
+    "name": "부산해운대 천상 클럽",
+    "category": "club",
+    "region": "부산해운대",
+    "regionSlug": "busan-haeundae",
+    "url": "/club/busan-haeundae/천상/",
+    "slug": "천상",
+    "has_thumbnail": true,
+    "current_title": "부산해운대 천상 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "부산해운대 천상 클럽 방문 가이드 — 부산해운대 클럽",
+    "current_description": "부산해운대 천상 클럽은 부산해운대에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-32",
+    "name": "부산광안리 피셔맨 클럽",
+    "category": "club",
+    "region": "부산광안리",
+    "regionSlug": "busan-gwangalli",
+    "url": "/club/busan-gwangalli/피셔맨/",
+    "slug": "피셔맨",
+    "has_thumbnail": true,
+    "current_title": "부산광안리 피셔맨 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "부산광안리 피셔맨 클럽 첫 방문자를 위한 가이드",
+    "current_description": "부산광안리 피셔맨 클럽은 부산광안리에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-33",
+    "name": "대구 에이유 클럽",
+    "category": "club",
+    "region": "대구",
+    "regionSlug": "daegu",
+    "url": "/club/daegu/에이유/",
+    "slug": "에이유",
+    "has_thumbnail": true,
+    "current_title": "대구 에이유 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "대구 에이유 클럽 정보 — 대구 클럽 가이드",
+    "current_description": "대구 에이유 클럽은 대구에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-34",
+    "name": "대구 에그 클럽",
+    "category": "club",
+    "region": "대구",
+    "regionSlug": "daegu",
+    "url": "/club/daegu/에그/",
+    "slug": "에그",
+    "has_thumbnail": true,
+    "current_title": "대구 에그 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "대구 에그 클럽 체크리스트·타임라인·FAQ 안내",
+    "current_description": "대구 에그 클럽은 대구에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-35",
+    "name": "대구 루피 클럽",
+    "category": "club",
+    "region": "대구",
+    "regionSlug": "daegu",
+    "url": "/club/daegu/루피/",
+    "slug": "루피",
+    "has_thumbnail": true,
+    "current_title": "대구 루피 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "대구 루피 클럽 대구 클럽 현장 정보 안내",
+    "current_description": "대구 루피 클럽은 대구에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-36",
+    "name": "대구 디헬 클럽",
+    "category": "club",
+    "region": "대구",
+    "regionSlug": "daegu",
+    "url": "/club/daegu/디헬/",
+    "slug": "디헬",
+    "has_thumbnail": true,
+    "current_title": "대구 디헬 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "대구 디헬 클럽 안내 — 위치·분위기·체크리스트",
+    "current_description": "대구 디헬 클럽은 대구에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-37",
+    "name": "대전 이비자 클럽",
+    "category": "club",
+    "region": "대전",
+    "regionSlug": "daejeon",
+    "url": "/club/daejeon/이비자/",
+    "slug": "이비자",
+    "has_thumbnail": true,
+    "current_title": "대전 이비자 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "대전 이비자 클럽 대전 클럽 방문 준비 가이드",
+    "current_description": "대전 이비자 클럽은 대전에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-38",
+    "name": "대전 몬스터 클럽",
+    "category": "club",
+    "region": "대전",
+    "regionSlug": "daejeon",
+    "url": "/club/daejeon/몬스터/",
+    "slug": "몬스터",
+    "has_thumbnail": true,
+    "current_title": "대전 몬스터 클럽 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "대전 몬스터 클럽 방문 전 알아야 할 모든 것",
+    "current_description": "대전 몬스터 클럽은 대전에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-39",
+    "name": "대전 벤트 클럽",
+    "category": "club",
+    "region": "대전",
+    "regionSlug": "daejeon",
+    "url": "/club/daejeon/벤트/",
+    "slug": "벤트",
+    "has_thumbnail": true,
+    "current_title": "대전 벤트 클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "대전 벤트 클럽 클럽 방문 정보 총정리",
+    "current_description": "대전 벤트 클럽은 대전에 위치한 클럽입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-40",
+    "name": "광주 리버틴 클럽",
+    "category": "club",
+    "region": "광주",
+    "regionSlug": "gwangju",
+    "url": "/club/gwangju/리버틴/",
+    "slug": "리버틴",
+    "has_thumbnail": true,
+    "current_title": "광주 리버틴 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "광주 리버틴 클럽 방문 전 알아야 할 모든 것",
+    "current_description": "광주 클럽 광주 리버틴 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-41",
+    "name": "광주 코요테어글리 클럽",
+    "category": "club",
+    "region": "광주",
+    "regionSlug": "gwangju",
+    "url": "/club/gwangju/코요테어글리/",
+    "slug": "코요테어글리",
+    "has_thumbnail": true,
+    "current_title": "광주 코요테어글리 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "광주 코요테어글리 클럽 클럽 방문 정보 총정리",
+    "current_description": "광주 클럽 광주 코요테어글리 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-42",
+    "name": "전주 오닉스 클럽",
+    "category": "club",
+    "region": "전주",
+    "regionSlug": "jeonju",
+    "url": "/club/jeonju/오닉스/",
+    "slug": "오닉스",
+    "has_thumbnail": true,
+    "current_title": "전주 오닉스 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "전주 오닉스 클럽 가이드 — 갱신 기준 현장 정보",
+    "current_description": "전주 클럽 전주 오닉스 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-43",
+    "name": "강릉 돈텔마마 클럽",
+    "category": "club",
+    "region": "강릉",
+    "regionSlug": "gangneung",
+    "url": "/club/gangneung/돈텔마마/",
+    "slug": "돈텔마마",
+    "has_thumbnail": true,
+    "current_title": "강릉 돈텔마마 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "강릉 돈텔마마 클럽 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "강릉 클럽 강릉 돈텔마마 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-44",
+    "name": "인천부평 토토가 클럽",
+    "category": "club",
+    "region": "인천부평",
+    "regionSlug": "incheon-bupyeong",
+    "url": "/club/incheon-bupyeong/토토가/",
+    "slug": "토토가",
+    "has_thumbnail": true,
+    "current_title": "인천부평 토토가 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "인천부평 토토가 클럽 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "인천부평 클럽 인천부평 토토가 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-45",
+    "name": "인천부평 파인애플 클럽",
+    "category": "club",
+    "region": "인천부평",
+    "regionSlug": "incheon-bupyeong",
+    "url": "/club/incheon-bupyeong/파인애플/",
+    "slug": "파인애플",
+    "has_thumbnail": true,
+    "current_title": "인천부평 파인애플 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "인천부평 파인애플 클럽 입장 안내와 FAQ 8개",
+    "current_description": "인천부평 클럽 인천부평 파인애플 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-46",
+    "name": "인천부평 아우라 클럽",
+    "category": "club",
+    "region": "인천부평",
+    "regionSlug": "incheon-bupyeong",
+    "url": "/club/incheon-bupyeong/아우라/",
+    "slug": "아우라",
+    "has_thumbnail": true,
+    "current_title": "인천부평 아우라 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "인천부평 아우라 클럽 방문 가이드 — 인천부평 클럽",
+    "current_description": "인천부평 클럽 인천부평 아우라 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-47",
+    "name": "인천부평 노바 클럽",
+    "category": "club",
+    "region": "인천부평",
+    "regionSlug": "incheon-bupyeong",
+    "url": "/club/incheon-bupyeong/노바/",
+    "slug": "노바",
+    "has_thumbnail": true,
+    "current_title": "인천부평 노바 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "인천부평 노바 클럽 첫 방문자를 위한 가이드",
+    "current_description": "인천부평 클럽 인천부평 노바 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-48",
+    "name": "수원 엔터 클럽",
+    "category": "club",
+    "region": "수원",
+    "regionSlug": "suwon",
+    "url": "/club/suwon/엔터/",
+    "slug": "엔터",
+    "has_thumbnail": true,
+    "current_title": "수원 엔터 클럽 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "수원 엔터 클럽 정보 — 수원 클럽 가이드",
+    "current_description": "수원 클럽 수원 엔터 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-49",
+    "name": "제주 엠파이어 클럽",
+    "category": "club",
+    "region": "제주",
+    "regionSlug": "jeju",
+    "url": "/club/jeju/엠파이어/",
+    "slug": "엠파이어",
+    "has_thumbnail": true,
+    "current_title": "제주 엠파이어 클럽 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "제주 엠파이어 클럽 체크리스트·타임라인·FAQ 안내",
+    "current_description": "제주 클럽 제주 엠파이어 클럽 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-50",
+    "name": "청담 쥴리아나 나이트",
+    "category": "night",
+    "region": "청담",
+    "regionSlug": "cheongdam",
+    "url": "/night/cheongdam/쥴리아나/",
+    "slug": "쥴리아나",
+    "has_thumbnail": true,
+    "current_title": "청담 쥴리아나 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "청담 쥴리아나 나이트 정보 — 청담 나이트 가이드",
+    "current_description": "청담 쥴리아나 나이트 정보 페이지 — 청담 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-51",
+    "name": "상봉동 한국관 나이트",
+    "category": "night",
+    "region": "상봉동",
+    "regionSlug": "sangbong",
+    "url": "/night/sangbong/한국관/",
+    "slug": "한국관",
+    "has_thumbnail": true,
+    "current_title": "상봉동 한국관 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "상봉동 한국관 나이트 체크리스트·타임라인·FAQ 안내",
+    "current_description": "상봉동 한국관 나이트 정보 페이지 — 상봉동 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-52",
+    "name": "수유 샴푸 나이트",
+    "category": "night",
+    "region": "수유",
+    "regionSlug": "suyu",
+    "url": "/night/suyu/샴푸/",
+    "slug": "샴푸",
+    "has_thumbnail": true,
+    "current_title": "수유 샴푸 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "수유 샴푸 나이트 수유 나이트 현장 정보 안내",
+    "current_description": "수유 샴푸 나이트 정보 페이지 — 수유 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-53",
+    "name": "노원 호박 나이트",
+    "category": "night",
+    "region": "노원",
+    "regionSlug": "nowon",
+    "url": "/night/nowon/호박/",
+    "slug": "호박",
+    "has_thumbnail": true,
+    "current_title": "노원 호박 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "노원 호박 나이트 안내 — 위치·분위기·체크리스트",
+    "current_description": "노원 호박 나이트 정보 페이지 — 노원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-54",
+    "name": "노원 스타 나이트",
+    "category": "night",
+    "region": "노원",
+    "regionSlug": "nowon",
+    "url": "/night/nowon/스타/",
+    "slug": "스타",
+    "has_thumbnail": true,
+    "current_title": "노원 스타 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "노원 스타 나이트 노원 나이트 방문 준비 가이드",
+    "current_description": "노원 스타 나이트 정보 페이지 — 노원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-55",
+    "name": "노원 잠보 나이트",
+    "category": "night",
+    "region": "노원",
+    "regionSlug": "nowon",
+    "url": "/night/nowon/잠보/",
+    "slug": "잠보",
+    "has_thumbnail": true,
+    "current_title": "노원 잠보 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "노원 잠보 나이트 방문 전 알아야 할 모든 것",
+    "current_description": "노원 잠보 나이트 정보 페이지 — 노원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-56",
+    "name": "길동 찬스 나이트",
+    "category": "night",
+    "region": "길동",
+    "regionSlug": "gildong",
+    "url": "/night/gildong/찬스/",
+    "slug": "찬스",
+    "has_thumbnail": true,
+    "current_title": "길동 찬스 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "길동 찬스 나이트 나이트 방문 정보 총정리",
+    "current_description": "길동 찬스 나이트 정보 페이지 — 길동 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-57",
+    "name": "신림 그랑프리 나이트",
+    "category": "night",
+    "region": "신림",
+    "regionSlug": "sinlim",
+    "url": "/night/sinlim/그랑프리/",
+    "slug": "그랑프리",
+    "has_thumbnail": true,
+    "current_title": "신림 그랑프리 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "신림 그랑프리 나이트 가이드 — 갱신 기준 현장 정보",
+    "current_description": "신림 그랑프리 나이트 정보 페이지 — 신림 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-58",
+    "name": "독산동 국빈관 나이트",
+    "category": "night",
+    "region": "독산동",
+    "regionSlug": "doksan",
+    "url": "/night/doksan/국빈관/",
+    "slug": "국빈관",
+    "has_thumbnail": true,
+    "current_title": "독산동 국빈관 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "독산동 국빈관 나이트 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "독산동 국빈관 나이트 정보 페이지 — 독산동 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-59",
+    "name": "강서 호박 나이트",
+    "category": "night",
+    "region": "강서",
+    "regionSlug": "gangseo",
+    "url": "/night/gangseo/호박/",
+    "slug": "호박",
+    "has_thumbnail": true,
+    "current_title": "강서 호박 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "강서 호박 나이트 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "강서 호박 나이트 정보 페이지 — 강서 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-60",
+    "name": "강북 보보스 나이트",
+    "category": "night",
+    "region": "강북",
+    "regionSlug": "gangbuk",
+    "url": "/night/gangbuk/보보스/",
+    "slug": "보보스",
+    "has_thumbnail": true,
+    "current_title": "강북 보보스 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "강북 보보스 나이트 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "강북 보보스 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-61",
+    "name": "강북 샴푸 나이트",
+    "category": "night",
+    "region": "강북",
+    "regionSlug": "gangbuk",
+    "url": "/night/gangbuk/샴푸/",
+    "slug": "샴푸",
+    "has_thumbnail": true,
+    "current_title": "강북 샴푸 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강북 샴푸 나이트 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "강북 샴푸 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-62",
+    "name": "잠실 헐리우드 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/헐리우드/",
+    "slug": "헐리우드",
+    "has_thumbnail": true,
+    "current_title": "잠실 헐리우드 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "잠실 헐리우드 나이트 입장 안내와 FAQ 8개",
+    "current_description": "잠실 헐리우드 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-63",
+    "name": "잠실 헤커 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/헤커/",
+    "slug": "헤커",
+    "has_thumbnail": true,
+    "current_title": "잠실 헤커 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "잠실 헤커 나이트 방문 가이드 — 잠실 나이트",
+    "current_description": "잠실 헤커 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-64",
+    "name": "잠실 한국관 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/한국관/",
+    "slug": "한국관",
+    "has_thumbnail": true,
+    "current_title": "잠실 한국관 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "잠실 한국관 나이트 첫 방문자를 위한 가이드",
+    "current_description": "잠실 한국관 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-65",
+    "name": "잠실 코리아타운 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/코리아타운/",
+    "slug": "코리아타운",
+    "has_thumbnail": true,
+    "current_title": "잠실 코리아타운 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "잠실 코리아타운 나이트 정보 — 잠실 나이트 가이드",
+    "current_description": "잠실 코리아타운 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-66",
+    "name": "잠실 사하라 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/사하라/",
+    "slug": "사하라",
+    "has_thumbnail": true,
+    "current_title": "잠실 사하라 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "잠실 사하라 나이트 체크리스트·타임라인·FAQ 안내",
+    "current_description": "잠실 사하라 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-67",
+    "name": "잠실 룩소 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/룩소/",
+    "slug": "룩소",
+    "has_thumbnail": true,
+    "current_title": "잠실 룩소 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "잠실 룩소 나이트 잠실 나이트 현장 정보 안내",
+    "current_description": "잠실 룩소 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-68",
+    "name": "잠실 가이아나 나이트",
+    "category": "night",
+    "region": "잠실",
+    "regionSlug": "jamsil",
+    "url": "/night/jamsil/가이아나/",
+    "slug": "가이아나",
+    "has_thumbnail": true,
+    "current_title": "잠실 가이아나 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "잠실 가이아나 나이트 안내 — 위치·분위기·체크리스트",
+    "current_description": "잠실 가이아나 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-69",
+    "name": "성남 샴푸 나이트",
+    "category": "night",
+    "region": "성남",
+    "regionSlug": "seongnam",
+    "url": "/night/seongnam/샴푸/",
+    "slug": "샴푸",
+    "has_thumbnail": true,
+    "current_title": "성남 샴푸 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "성남 샴푸 나이트 성남 나이트 방문 준비 가이드",
+    "current_description": "성남 샴푸 나이트 나이트 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-70",
+    "name": "일산 샴푸 나이트",
+    "category": "night",
+    "region": "일산",
+    "regionSlug": "ilsan",
+    "url": "/night/ilsan/샴푸/",
+    "slug": "샴푸",
+    "has_thumbnail": true,
+    "current_title": "일산 샴푸 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "일산 샴푸 나이트 안내 — 위치·분위기·체크리스트",
+    "current_description": "일산 샴푸 나이트 일산 위치 확인, 입장 준비 7가지, 시간대별 안내 6단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-71",
+    "name": "고양 빅토리아 나이트",
+    "category": "night",
+    "region": "고양",
+    "regionSlug": "goyang",
+    "url": "/night/goyang/빅토리아/",
+    "slug": "빅토리아",
+    "has_thumbnail": true,
+    "current_title": "고양 빅토리아 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "고양 빅토리아 나이트 고양 나이트 방문 준비 가이드",
+    "current_description": "고양 빅토리아 나이트 고양 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-72",
+    "name": "고양 캐피탈 나이트",
+    "category": "night",
+    "region": "고양",
+    "regionSlug": "goyang",
+    "url": "/night/goyang/캐피탈/",
+    "slug": "캐피탈",
+    "has_thumbnail": true,
+    "current_title": "고양 캐피탈 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "고양 캐피탈 나이트 방문 전 알아야 할 모든 것",
+    "current_description": "고양 캐피탈 나이트 고양 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-73",
+    "name": "인천 아라비안 나이트",
+    "category": "night",
+    "region": "인천",
+    "regionSlug": "incheon",
+    "url": "/night/incheon/아라비안/",
+    "slug": "아라비안",
+    "has_thumbnail": true,
+    "current_title": "인천 아라비안 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "인천 아라비안 나이트 나이트 방문 정보 총정리",
+    "current_description": "인천 아라비안 나이트 인천 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-74",
+    "name": "인천 백악관 나이트",
+    "category": "night",
+    "region": "인천",
+    "regionSlug": "incheon",
+    "url": "/night/incheon/백악관/",
+    "slug": "백악관",
+    "has_thumbnail": true,
+    "current_title": "인천 백악관 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "인천 백악관 나이트 가이드 — 갱신 기준 현장 정보",
+    "current_description": "인천 백악관 나이트 인천 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-75",
+    "name": "수원 찬스돔 나이트",
+    "category": "night",
+    "region": "수원",
+    "regionSlug": "suwon",
+    "url": "/night/suwon/찬스돔/",
+    "slug": "찬스돔",
+    "has_thumbnail": true,
+    "current_title": "수원 찬스돔 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "수원 찬스돔 나이트 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "수원 찬스돔 나이트 수원 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-76",
+    "name": "수원 코리아 나이트",
+    "category": "night",
+    "region": "수원",
+    "regionSlug": "suwon",
+    "url": "/night/suwon/코리아/",
+    "slug": "코리아",
+    "has_thumbnail": true,
+    "current_title": "수원 코리아 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "수원 코리아 나이트 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "수원 코리아 나이트 수원 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-77",
+    "name": "수원 서울관 나이트",
+    "category": "night",
+    "region": "수원",
+    "regionSlug": "suwon",
+    "url": "/night/suwon/서울관/",
+    "slug": "서울관",
+    "has_thumbnail": true,
+    "current_title": "수원 서울관 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "수원 서울관 나이트 입장 안내와 FAQ 8개",
+    "current_description": "수원 서울관 나이트 수원 위치 확인, 입장 준비 7가지, 시간대별 안내 5단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-78",
+    "name": "수원 한국관 나이트",
+    "category": "night",
+    "region": "수원",
+    "regionSlug": "suwon",
+    "url": "/night/suwon/한국관/",
+    "slug": "한국관",
+    "has_thumbnail": true,
+    "current_title": "수원 한국관 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "수원 한국관 나이트 방문 가이드 — 수원 나이트",
+    "current_description": "수원 한국관 나이트 수원 위치 확인, 입장 준비 7가지, 시간대별 안내 4단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-79",
+    "name": "천안 스타돔 나이트",
+    "category": "night",
+    "region": "천안",
+    "regionSlug": "cheonan",
+    "url": "/night/cheonan/스타돔/",
+    "slug": "스타돔",
+    "has_thumbnail": true,
+    "current_title": "천안 스타돔 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "천안 스타돔 나이트 첫 방문자를 위한 가이드",
+    "current_description": "천안 스타돔 나이트 천안 위치 확인, 입장 준비 7가지, 시간대별 안내 6단계, FAQ 8개. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-80",
+    "name": "대구 바밤바 나이트",
+    "category": "night",
+    "region": "대구",
+    "regionSlug": "daegu",
+    "url": "/night/daegu/바밤바/",
+    "slug": "바밤바",
+    "has_thumbnail": true,
+    "current_title": "대구 바밤바 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "대구 바밤바 나이트 방문 가이드 — 대구 나이트",
+    "current_description": "대구 바밤바 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-81",
+    "name": "대구 한국관 나이트",
+    "category": "night",
+    "region": "대구",
+    "regionSlug": "daegu",
+    "url": "/night/daegu/한국관/",
+    "slug": "한국관",
+    "has_thumbnail": true,
+    "current_title": "대구 한국관 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "대구 한국관 나이트 첫 방문자를 위한 가이드",
+    "current_description": "대구 한국관 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-82",
+    "name": "부산 아시아드 나이트",
+    "category": "night",
+    "region": "부산",
+    "regionSlug": "busan",
+    "url": "/night/busan/아시아드/",
+    "slug": "아시아드",
+    "has_thumbnail": true,
+    "current_title": "부산 아시아드 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "부산 아시아드 나이트 정보 — 부산 나이트 가이드",
+    "current_description": "부산 아시아드 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-83",
+    "name": "부산 물 나이트",
+    "category": "night",
+    "region": "부산",
+    "regionSlug": "busan",
+    "url": "/night/busan/물/",
+    "slug": "물",
+    "has_thumbnail": true,
+    "current_title": "부산 물 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "부산 물 나이트 체크리스트·타임라인·FAQ 안내",
+    "current_description": "부산 물 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-84",
+    "name": "강남 H2O 나이트",
+    "category": "night",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/night/gangnam/h2o/",
+    "slug": "h2o",
+    "has_thumbnail": true,
+    "current_title": "강남 H2O 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 H2O 나이트 강남 나이트 현장 정보 안내",
+    "current_description": "강남 H2O 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-85",
+    "name": "울산 챔피언 나이트",
+    "category": "night",
+    "region": "울산",
+    "regionSlug": "ulsan",
+    "url": "/night/ulsan/챔피언/",
+    "slug": "챔피언",
+    "has_thumbnail": true,
+    "current_title": "울산 챔피언 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "울산 챔피언 나이트 안내 — 위치·분위기·체크리스트",
+    "current_description": "울산 챔피언 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-86",
+    "name": "울산 뉴월드 나이트",
+    "category": "night",
+    "region": "울산",
+    "regionSlug": "ulsan",
+    "url": "/night/ulsan/뉴월드/",
+    "slug": "뉴월드",
+    "has_thumbnail": true,
+    "current_title": "울산 뉴월드 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "울산 뉴월드 나이트 울산 나이트 방문 준비 가이드",
+    "current_description": "울산 뉴월드 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-87",
+    "name": "평택 관광열차 나이트",
+    "category": "night",
+    "region": "평택",
+    "regionSlug": "pyeongtaek",
+    "url": "/night/pyeongtaek/관광열차/",
+    "slug": "관광열차",
+    "has_thumbnail": true,
+    "current_title": "평택 관광열차 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "평택 관광열차 나이트 방문 전 알아야 할 모든 것",
+    "current_description": "평택 관광열차 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-88",
+    "name": "평택 금오 나이트",
+    "category": "night",
+    "region": "평택",
+    "regionSlug": "pyeongtaek",
+    "url": "/night/pyeongtaek/금오/",
+    "slug": "금오",
+    "has_thumbnail": true,
+    "current_title": "평택 금오 나이트 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "평택 금오 나이트 나이트 방문 정보 총정리",
+    "current_description": "평택 금오 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-89",
+    "name": "평택 뉴욕뉴욕 나이트",
+    "category": "night",
+    "region": "평택",
+    "regionSlug": "pyeongtaek",
+    "url": "/night/pyeongtaek/뉴욕뉴욕/",
+    "slug": "뉴욕뉴욕",
+    "has_thumbnail": true,
+    "current_title": "평택 뉴욕뉴욕 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "평택 뉴욕뉴욕 나이트 가이드 — 갱신 기준 현장 정보",
+    "current_description": "평택 뉴욕뉴욕 나이트 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. 2026-02-20 기준.",
+    "issues": []
+  },
+  {
+    "id": "venue-90",
+    "name": "부천 맘모스 나이트",
+    "category": "night",
+    "region": "부천",
+    "regionSlug": "bucheon",
+    "url": "/night/bucheon/맘모스/",
+    "slug": "맘모스",
+    "has_thumbnail": true,
+    "current_title": "부천 맘모스 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "부천 맘모스 나이트 나이트 방문 정보 총정리",
+    "current_description": "부천 맘모스 나이트(부천) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-91",
+    "name": "의정부 한국관 나이트",
+    "category": "night",
+    "region": "의정부",
+    "regionSlug": "uijeongbu",
+    "url": "/night/uijeongbu/한국관/",
+    "slug": "한국관",
+    "has_thumbnail": true,
+    "current_title": "의정부 한국관 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "의정부 한국관 나이트 가이드 — 갱신 기준 현장 정보",
+    "current_description": "의정부 한국관 나이트(의정부) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 4단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-92",
+    "name": "대전 KK 나이트",
+    "category": "night",
+    "region": "대전",
+    "regionSlug": "daejeon",
+    "url": "/night/daejeon/kk/",
+    "slug": "kk",
+    "has_thumbnail": true,
+    "current_title": "대전 KK 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "대전 KK 나이트 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "대전 KK 나이트(대전) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-93",
+    "name": "대전 세븐 나이트",
+    "category": "night",
+    "region": "대전",
+    "regionSlug": "daejeon",
+    "url": "/night/daejeon/세븐/",
+    "slug": "세븐",
+    "has_thumbnail": true,
+    "current_title": "대전 세븐 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "대전 세븐 나이트 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "대전 세븐 나이트(대전) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-94",
+    "name": "광주 상무 나이트",
+    "category": "night",
+    "region": "광주",
+    "regionSlug": "gwangju",
+    "url": "/night/gwangju/상무/",
+    "slug": "상무",
+    "has_thumbnail": true,
+    "current_title": "광주 상무 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "광주 상무 나이트 입장 안내와 FAQ 8개",
+    "current_description": "광주 상무 나이트(광주) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-95",
+    "name": "창원 룰루랄라 나이트",
+    "category": "night",
+    "region": "창원",
+    "regionSlug": "changwon",
+    "url": "/night/changwon/룰루랄라/",
+    "slug": "룰루랄라",
+    "has_thumbnail": true,
+    "current_title": "창원 룰루랄라 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "창원 룰루랄라 나이트 방문 가이드 — 창원 나이트",
+    "current_description": "창원 룰루랄라 나이트(창원) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-96",
+    "name": "창원 호박 나이트",
+    "category": "night",
+    "region": "창원",
+    "regionSlug": "changwon",
+    "url": "/night/changwon/호박/",
+    "slug": "호박",
+    "has_thumbnail": true,
+    "current_title": "창원 호박 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "창원 호박 나이트 첫 방문자를 위한 가이드",
+    "current_description": "창원 호박 나이트(창원) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-97",
+    "name": "창원 백악관 나이트",
+    "category": "night",
+    "region": "창원",
+    "regionSlug": "changwon",
+    "url": "/night/changwon/백악관/",
+    "slug": "백악관",
+    "has_thumbnail": true,
+    "current_title": "창원 백악관 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "창원 백악관 나이트 정보 — 창원 나이트 가이드",
+    "current_description": "창원 백악관 나이트(창원) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-98",
+    "name": "포항 한국관 나이트",
+    "category": "night",
+    "region": "포항",
+    "regionSlug": "pohang",
+    "url": "/night/pohang/한국관/",
+    "slug": "한국관",
+    "has_thumbnail": true,
+    "current_title": "포항 한국관 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "포항 한국관 나이트 체크리스트·타임라인·FAQ 안내",
+    "current_description": "포항 한국관 나이트(포항) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 4단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-99",
+    "name": "경주 런투유 나이트",
+    "category": "night",
+    "region": "경주",
+    "regionSlug": "gyeongju",
+    "url": "/night/gyeongju/런투유/",
+    "slug": "런투유",
+    "has_thumbnail": true,
+    "current_title": "경주 런투유 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "경주 런투유 나이트 경주 나이트 현장 정보 안내",
+    "current_description": "경주 런투유 나이트(경주) 방문 정보 — 체크리스트 7개, FAQ 8개, 피크타임 5단계, 지도 포함. 2026-02-20 기준 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-100",
+    "name": "김해 월드 나이트",
+    "category": "night",
+    "region": "김해",
+    "regionSlug": "gimhae",
+    "url": "/night/gimhae/월드/",
+    "slug": "월드",
+    "has_thumbnail": true,
+    "current_title": "김해 월드 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "김해 월드 나이트 김해 나이트 현장 정보 안내",
+    "current_description": "김해 월드 나이트은 김해에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-101",
+    "name": "김해 호박 나이트",
+    "category": "night",
+    "region": "김해",
+    "regionSlug": "gimhae",
+    "url": "/night/gimhae/호박/",
+    "slug": "호박",
+    "has_thumbnail": true,
+    "current_title": "김해 호박 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "김해 호박 나이트 안내 — 위치·분위기·체크리스트",
+    "current_description": "김해 호박 나이트은 김해에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-102",
+    "name": "춘천 뉴월드 나이트",
+    "category": "night",
+    "region": "춘천",
+    "regionSlug": "chuncheon",
+    "url": "/night/chuncheon/뉴월드/",
+    "slug": "뉴월드",
+    "has_thumbnail": true,
+    "current_title": "춘천 뉴월드 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "춘천 뉴월드 나이트 춘천 나이트 방문 준비 가이드",
+    "current_description": "춘천 뉴월드 나이트은 춘천에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-103",
+    "name": "강릉 카리스마 나이트",
+    "category": "night",
+    "region": "강릉",
+    "regionSlug": "gangneung",
+    "url": "/night/gangneung/카리스마/",
+    "slug": "카리스마",
+    "has_thumbnail": true,
+    "current_title": "강릉 카리스마 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "강릉 카리스마 나이트 방문 전 알아야 할 모든 것",
+    "current_description": "강릉 카리스마 나이트은 강릉에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-104",
+    "name": "청주 호박 나이트",
+    "category": "night",
+    "region": "청주",
+    "regionSlug": "cheongju",
+    "url": "/night/cheongju/호박/",
+    "slug": "호박",
+    "has_thumbnail": true,
+    "current_title": "청주 호박 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "청주 호박 나이트 나이트 방문 정보 총정리",
+    "current_description": "청주 호박 나이트은 청주에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-105",
+    "name": "전주 별밤 나이트",
+    "category": "night",
+    "region": "전주",
+    "regionSlug": "jeonju",
+    "url": "/night/jeonju/별밤/",
+    "slug": "별밤",
+    "has_thumbnail": true,
+    "current_title": "전주 별밤 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "전주 별밤 나이트 가이드 — 갱신 기준 현장 정보",
+    "current_description": "전주 별밤 나이트은 전주에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-106",
+    "name": "순천 호박 나이트",
+    "category": "night",
+    "region": "순천",
+    "regionSlug": "suncheon",
+    "url": "/night/suncheon/호박/",
+    "slug": "호박",
+    "has_thumbnail": true,
+    "current_title": "순천 호박 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "순천 호박 나이트 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "순천 호박 나이트은 순천에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-107",
+    "name": "순천 별밤 나이트",
+    "category": "night",
+    "region": "순천",
+    "regionSlug": "suncheon",
+    "url": "/night/suncheon/별밤/",
+    "slug": "별밤",
+    "has_thumbnail": true,
+    "current_title": "순천 별밤 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "순천 별밤 나이트 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "순천 별밤 나이트은 순천에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 6단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-108",
+    "name": "목포 신비 나이트",
+    "category": "night",
+    "region": "목포",
+    "regionSlug": "mokpo",
+    "url": "/night/mokpo/신비/",
+    "slug": "신비",
+    "has_thumbnail": true,
+    "current_title": "목포 신비 나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "목포 신비 나이트 입장 안내와 FAQ 8개",
+    "current_description": "목포 신비 나이트은 목포에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-109",
+    "name": "제주 로얄 나이트",
+    "category": "night",
+    "region": "제주",
+    "regionSlug": "jeju",
+    "url": "/night/jeju/로얄/",
+    "slug": "로얄",
+    "has_thumbnail": true,
+    "current_title": "제주 로얄 나이트 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "제주 로얄 나이트 방문 가이드 — 제주 나이트",
+    "current_description": "제주 로얄 나이트은 제주에 위치한 나이트입니다. 현장 확인 기반 정보 15가지, 타임라인 5단계 안내. 2026-02-20 갱신.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-110",
+    "name": "제주 나이트",
+    "category": "night",
+    "region": "제주",
+    "regionSlug": "jeju",
+    "url": "/night/jeju/제주/",
+    "slug": "제주",
+    "has_thumbnail": true,
+    "current_title": "제주 나이트 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "제주 나이트 입장 안내와 FAQ 8개",
+    "current_description": "제주 나이트 제주 나이트 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-111",
+    "name": "강남 하입 라운지",
+    "category": "lounge",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/lounge/gangnam/하입/",
+    "slug": "하입",
+    "has_thumbnail": true,
+    "current_title": "강남 하입 라운지 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 하입 라운지 방문 가이드 — 강남 라운지",
+    "current_description": "강남 라운지 강남 하입 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-112",
+    "name": "강남 컬러 라운지",
+    "category": "lounge",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/lounge/gangnam/컬러/",
+    "slug": "컬러",
+    "has_thumbnail": true,
+    "current_title": "강남 컬러 라운지 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "강남 컬러 라운지 첫 방문자를 위한 가이드",
+    "current_description": "강남 라운지 강남 컬러 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-113",
+    "name": "강남 인트로 라운지",
+    "category": "lounge",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/lounge/gangnam/인트로/",
+    "slug": "인트로",
+    "has_thumbnail": true,
+    "current_title": "강남 인트로 라운지 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 인트로 라운지 정보 — 강남 라운지 가이드",
+    "current_description": "강남 라운지 강남 인트로 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-114",
+    "name": "강남 아르쥬 라운지",
+    "category": "lounge",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/lounge/gangnam/아르쥬/",
+    "slug": "아르쥬",
+    "has_thumbnail": true,
+    "current_title": "강남 아르쥬 라운지 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "강남 아르쥬 라운지 체크리스트·타임라인·FAQ 안내",
+    "current_description": "강남 라운지 강남 아르쥬 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-115",
+    "name": "강남 앨빈에비뉴 라운지",
+    "category": "lounge",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/lounge/gangnam/앨빈에비뉴/",
+    "slug": "앨빈에비뉴",
+    "has_thumbnail": true,
+    "current_title": "강남 앨빈에비뉴 라운지 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "강남 앨빈에비뉴 라운지 강남 라운지 현장 정보 안내",
+    "current_description": "강남 라운지 강남 앨빈에비뉴 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-116",
+    "name": "강남 달리는토끼 라운지",
+    "category": "lounge",
+    "region": "강남",
+    "regionSlug": "gangnam",
+    "url": "/lounge/gangnam/달리는토끼/",
+    "slug": "달리는토끼",
+    "has_thumbnail": true,
+    "current_title": "강남 달리는토끼 라운지 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "강남 달리는토끼 라운지 안내 — 위치·분위기·체크리스트",
+    "current_description": "강남 라운지 강남 달리는토끼 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-117",
+    "name": "압구정 코드 라운지",
+    "category": "lounge",
+    "region": "압구정",
+    "regionSlug": "apgujeong",
+    "url": "/lounge/apgujeong/코드/",
+    "slug": "코드",
+    "has_thumbnail": true,
+    "current_title": "압구정 코드 라운지 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "압구정 코드 라운지 압구정 라운지 방문 준비 가이드",
+    "current_description": "압구정 라운지 압구정 코드 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-118",
+    "name": "압구정 디엠 라운지",
+    "category": "lounge",
+    "region": "압구정",
+    "regionSlug": "apgujeong",
+    "url": "/lounge/apgujeong/디엠/",
+    "slug": "디엠",
+    "has_thumbnail": true,
+    "current_title": "압구정 디엠 라운지 걱정 없이 출발하는 준비법 입문 길잡이",
+    "current_h1": "압구정 디엠 라운지 방문 전 알아야 할 모든 것",
+    "current_description": "압구정 라운지 압구정 디엠 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-119",
+    "name": "압구정 이글 라운지",
+    "category": "lounge",
+    "region": "압구정",
+    "regionSlug": "apgujeong",
+    "url": "/lounge/apgujeong/이글/",
+    "slug": "이글",
+    "has_thumbnail": true,
+    "current_title": "압구정 이글 라운지 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "압구정 이글 라운지 라운지 방문 정보 총정리",
+    "current_description": "압구정 라운지 압구정 이글 라운지 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. 2026-02-20 기준 업데이트.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-120",
+    "name": "이태원 도조 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/도조/",
+    "slug": "도조",
+    "has_thumbnail": true,
+    "current_title": "이태원 도조 라운지 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "이태원 도조 라운지 방문 전 알아야 할 모든 것",
+    "current_description": "이태원 도조 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-121",
+    "name": "이태원 아울 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/아울/",
+    "slug": "아울",
+    "has_thumbnail": true,
+    "current_title": "이태원 아울 라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "이태원 아울 라운지 라운지 방문 정보 총정리",
+    "current_description": "이태원 아울 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-122",
+    "name": "이태원 릿 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/릿/",
+    "slug": "릿",
+    "has_thumbnail": true,
+    "current_title": "이태원 릿 라운지 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "이태원 릿 라운지 가이드 — 갱신 기준 현장 정보",
+    "current_description": "이태원 릿 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-123",
+    "name": "이태원 글로브 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/글로브/",
+    "slug": "글로브",
+    "has_thumbnail": true,
+    "current_title": "이태원 글로브 라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "이태원 글로브 라운지 방문 가이드 — 체크리스트·FAQ·타임라인",
+    "current_description": "이태원 글로브 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-124",
+    "name": "이태원 스테어웨이 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/스테어웨이/",
+    "slug": "스테어웨이",
+    "has_thumbnail": true,
+    "current_title": "이태원 스테어웨이 라운지 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "이태원 스테어웨이 라운지 가이드 — 준비물 7개, FAQ 8개",
+    "current_description": "이태원 스테어웨이 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-125",
+    "name": "이태원 글램 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/글램/",
+    "slug": "글램",
+    "has_thumbnail": true,
+    "current_title": "이태원 글램 라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "이태원 글램 라운지 입장 안내와 FAQ 8개",
+    "current_description": "이태원 글램 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-126",
+    "name": "이태원 피스틸 라운지",
+    "category": "lounge",
+    "region": "이태원",
+    "regionSlug": "itaewon",
+    "url": "/lounge/itaewon/피스틸/",
+    "slug": "피스틸",
+    "has_thumbnail": true,
+    "current_title": "이태원 피스틸 라운지 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "이태원 피스틸 라운지 방문 가이드 — 이태원 라운지",
+    "current_description": "이태원 피스틸 라운지 정보 페이지 — 이태원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-127",
+    "name": "수원 피치 라운지",
+    "category": "lounge",
+    "region": "수원",
+    "regionSlug": "suwon",
+    "url": "/lounge/suwon/피치/",
+    "slug": "피치",
+    "has_thumbnail": true,
+    "current_title": "수원 피치 라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "수원 피치 라운지 첫 방문자를 위한 가이드",
+    "current_description": "수원 피치 라운지 정보 페이지 — 수원 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-128",
+    "name": "인천송도 플레이그라운드 라운지",
+    "category": "lounge",
+    "region": "인천송도",
+    "regionSlug": "incheon-songdo",
+    "url": "/lounge/incheon-songdo/플레이그라운드/",
+    "slug": "플레이그라운드",
+    "has_thumbnail": true,
+    "current_title": "인천송도 플레이그라운드 라운지 첫 이용 불안 줄여주는 입문자 길잡이",
+    "current_h1": "인천송도 플레이그라운드 라운지 정보 — 인천송도 라운지 가이드",
+    "current_description": "인천송도 플레이그라운드 라운지 정보 페이지 — 인천송도 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-129",
+    "name": "인천송도 터치스카이 라운지",
+    "category": "lounge",
+    "region": "인천송도",
+    "regionSlug": "incheon-songdo",
+    "url": "/lounge/incheon-songdo/터치스카이/",
+    "slug": "터치스카이",
+    "has_thumbnail": true,
+    "current_title": "인천송도 터치스카이 라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "current_h1": "인천송도 터치스카이 라운지 체크리스트·타임라인·FAQ 안내",
+    "current_description": "인천송도 터치스카이 라운지 정보 페이지 — 인천송도 위치 확인, 입장 준비 7가지, FAQ 8개 포함. 2026-02-20 업데이트 완료.",
+    "issues": [
+      "description_short"
+    ]
+  },
+  {
+    "id": "venue-130",
+    "name": "부산해운대 클럽디오아시스 라운지",
+    "category": "lounge",
+    "region": "부산해운대",
+    "regionSlug": "busan-haeundae",
+    "url": "/lounge/busan-haeundae/클럽디오아시스/",
+    "slug": "클럽디오아시스",
+    "has_thumbnail": true,
+    "current_title": "부산해운대 클럽디오아시스 라운지 처음이라 걱정될 때 이것부터 확인하기",
+    "current_h1": "부산해운대 클럽디오아시스 라운지 정보 — 부산해운대 라운지 가이드",
+    "current_description": "부산해운대 클럽디오아시스 라운지 라운지 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 7개 포함. 2026-02-20 기준.",
+    "issues": []
+  }
+]

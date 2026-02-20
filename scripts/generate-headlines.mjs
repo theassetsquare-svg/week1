@@ -264,19 +264,19 @@ function getTemplateSlots() {
 // ======================== META DESCRIPTION POOL ========================
 function getDescriptionTemplates() {
   return [
-    (n, v, t) => `${n}(${v.region}) 방문 정보 — 체크리스트 ${v.checklist.length}개, FAQ ${v.faq.length}개, 피크타임 ${v.timeline.length}단계, 지도 포함. ${UPDATE_DATE} 기준 갱신.`,
-    (n, v, t) => `${v.region} ${t} ${n} 분위기·사운드·체크리스트·FAQ를 한 페이지에 정리했습니다. ${UPDATE_DATE} 기준 업데이트.`,
-    (n, v, t) => `${n} 방문 전 확인할 항목 ${v.checklist.length}개와 자주 묻는 질문 ${v.faq.length}개를 정리한 페이지입니다. ${UPDATE_DATE} 기준.`,
-    (n, v, t) => `${n} ${v.region} 위치 확인, 입장 준비 ${v.checklist.length}가지, 시간대별 안내 ${v.timeline.length}단계, FAQ ${v.faq.length}개. ${UPDATE_DATE} 갱신.`,
-    (n, v, t) => `${n} 입장 체크리스트 ${v.checklist.length}개, FAQ ${v.faq.length}개, 피크타임 가이드를 정리한 페이지. ${UPDATE_DATE} 기준 갱신.`,
-    (n, v, t) => `${v.region} ${t} ${n} — 체크 ${v.checklist.length}항목, 질문 ${v.faq.length}개 답변, 시간대 ${v.timeline.length}구간. ${UPDATE_DATE} 기준 갱신.`,
-    (n, v, t) => `${n} 정보 페이지 — ${v.region} 위치 확인, 입장 준비 ${v.checklist.length}가지, FAQ ${v.faq.length}개 포함. ${UPDATE_DATE} 업데이트 완료.`,
-    (n, v, t) => `${n}의 위치·분위기·준비물을 3분 안에 파악할 수 있게 정리한 가이드. ${UPDATE_DATE} 기준 갱신.`,
-    (n, v, t) => `${n} 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. 위치·분위기·체크리스트·FAQ를 모두 담았습니다. ${UPDATE_DATE} 기준.`,
-    (n, v, t) => `${n}은 ${v.region}에 위치한 ${t}입니다. 현장 확인 기반 정보 ${v.checklist.length + v.faq.length}가지, 타임라인 ${v.timeline.length}단계 안내. ${UPDATE_DATE} 갱신.`,
-    (n, v, t) => `${n}에서의 밤을 미리 계획해보세요. 시간대별 분위기, 준비물 ${v.checklist.length}가지, FAQ ${v.faq.length}개. ${UPDATE_DATE} 기준 갱신.`,
-    (n, v, t) => `${n} ${t} 분위기·동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 ${v.checklist.length}개 포함. ${UPDATE_DATE} 기준.`,
-    (n, v, t) => `${n} 위치 확인부터 입장 준비까지, 방문에 필요한 정보 ${v.checklist.length + v.faq.length}가지를 정리했습니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${v.region} ${t} ${n} 방문 정보를 한 페이지에 정리했습니다. 입장 체크리스트 ${v.checklist.length}개, FAQ ${v.faq.length}개, 피크타임 ${v.timeline.length}단계, 지도 포함. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${v.region} ${t} ${n}의 현장 분위기·사운드·입장 체크리스트·자주 묻는 질문을 한 페이지에 정리했습니다. ${UPDATE_DATE} 기준 업데이트 완료.`,
+    (n, v, t) => `${n} 방문 전 반드시 확인해야 할 체크리스트 ${v.checklist.length}개와 자주 묻는 질문 ${v.faq.length}개를 한곳에 정리한 가이드 페이지입니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${v.region}에 위치한 ${t} ${n}의 위치 확인, 입장 준비 항목 ${v.checklist.length}가지, 시간대별 분위기 안내 ${v.timeline.length}단계, FAQ ${v.faq.length}개를 수록했습니다. ${UPDATE_DATE} 갱신.`,
+    (n, v, t) => `${n} 입장 전 필수 체크리스트 ${v.checklist.length}개, 자주 묻는 질문 FAQ ${v.faq.length}개, 피크타임 가이드를 한곳에 정리한 페이지입니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${v.region} ${t} ${n} 방문 가이드 — 입장 체크 ${v.checklist.length}항목, 질문 ${v.faq.length}개 답변, 시간대 ${v.timeline.length}구간 분위기 안내 포함. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${n} 상세 정보 페이지 — ${v.region} 위치 확인, 입장 준비 항목 ${v.checklist.length}가지, FAQ ${v.faq.length}개, 피크타임 가이드 포함. ${UPDATE_DATE} 업데이트 완료.`,
+    (n, v, t) => `${v.region} ${t} ${n}의 위치·현장 분위기·준비물을 3분 안에 파악할 수 있게 정리한 방문 가이드입니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${n} 방문을 앞두고 있다면 이 가이드를 먼저 확인하세요. ${v.region} 위치·현장 분위기·체크리스트·FAQ를 모두 담았습니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${n}은 ${v.region}에 위치한 ${t}입니다. 현장 확인 기반 체크리스트와 FAQ 총 ${v.checklist.length + v.faq.length}가지, 타임라인 ${v.timeline.length}단계를 안내합니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${n}에서의 밤을 미리 계획해보세요. ${v.region} ${t} 시간대별 분위기 변화, 준비물 ${v.checklist.length}가지, FAQ ${v.faq.length}개를 정리했습니다. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${v.region} ${t} ${n}의 분위기·접근 동선을 갱신 데이터 기반으로 안내합니다. 처음 방문자를 위한 체크리스트 ${v.checklist.length}개 포함. ${UPDATE_DATE} 기준 갱신.`,
+    (n, v, t) => `${n} 위치 확인부터 입장 준비까지, ${v.region} ${t} 방문에 필요한 정보 ${v.checklist.length + v.faq.length}가지를 한곳에 정리했습니다. ${UPDATE_DATE} 기준 갱신.`,
   ];
 }
 
@@ -642,7 +642,30 @@ for (let i = 0; i < venues.length; i++) {
 
   // Update venue data
   const defaultVariant = variants.find(x => x.id === recommended);
-  updatedVenues[i].pageTitle = defaultVariant ? defaultVariant.title : variants[0].title;
+  let pageTitle = defaultVariant ? defaultVariant.title : variants[0].title;
+  // Pad short titles to reach minimum 30 chars
+  if (pageTitle.length < 30) {
+    const padSuffixes = [
+      ` — ${v.region} ${t} 현장 가이드`,
+      ` — ${t} 입장 정보 안내`,
+      ` — 체크리스트·FAQ 가이드`,
+      ` | ${v.region} 방문 정보`,
+    ];
+    const padIdx = hash(v.id + 'pad') % padSuffixes.length;
+    pageTitle = pageTitle + padSuffixes[padIdx];
+  }
+  updatedVenues[i].pageTitle = pageTitle;
+
+  // Pad short descriptions to reach minimum 80 chars
+  if (metaDesc.length < 80) {
+    const descPads = [
+      ` 방문 전 준비물·분위기·입장 정보를 한곳에서 확인하세요.`,
+      ` 체크리스트와 FAQ로 방문 준비를 마치세요.`,
+      ` 피크타임·동선·준비물 정보가 포함되어 있습니다.`,
+    ];
+    const padIdx = hash(v.id + 'descpad') % descPads.length;
+    metaDesc = metaDesc + descPads[padIdx];
+  }
   updatedVenues[i].metaDescription = metaDesc;
   updatedVenues[i].h1Title = h1Title;
   updatedVenues[i].sectionIntros = sectionIntros;

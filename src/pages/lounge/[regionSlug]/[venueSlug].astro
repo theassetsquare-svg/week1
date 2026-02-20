@@ -12,7 +12,7 @@ export function getStaticPaths() {
 
 const { venue } = Astro.props;
 const v = venue;
-const siteUrl = 'https://week1-6m5.pages.dev';
+const siteUrl = 'https://night-4qy.pages.dev';
 const venueUrl = getVenueUrl(v);
 const updateDate = '2026-02-18';
 
@@ -22,7 +22,7 @@ const nearby = v.relatedVenueIds.nearby.map(id => getVenue(id)).filter(Boolean).
 const relatedVenues = [...sameRegion, ...sameType, ...nearby].slice(0, 6);
 
 const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s+라운지\s*$/,'').trim() || v.urlSlug || v.venueSlug;
-const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
+const ogImage = `${siteUrl}${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = v.pageTitle || `${v.name_display} 안내`;
 const description = v.metaDescription || `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
@@ -59,7 +59,7 @@ const jsonLdSchemas: object[] = [
     "inLanguage": "ko",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "NLC 전국 나이트·클럽·라운지 정보",
+      "name": "나이트코리아 전국 나이트·클럽·라운지 정보",
       "url": siteUrl
     }
   },

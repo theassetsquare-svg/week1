@@ -4,8 +4,8 @@ import IntroSection from '../../components/IntroSection.astro';
 import { venues, getVenueUrl } from '../../utils/venues';
 
 const clubVenues = venues.filter(v => v.type === 'club');
-const title = '전국 클럽 추천 | 한국 클럽 가이드';
-const description = '한국 전국의 인기 클럽을 한눈에. 강남 클럽, 이태원 클럽 등 최신 클럽 정보와 무드, 음악 가이드.';
+const title = '전국 클럽 추천 — 강남·이태원·홍대·부산 인기 클럽 가이드';
+const description = '한국 전국의 인기 클럽을 한눈에 비교하세요. 강남 클럽, 이태원 클럽, 홍대 클럽 등 지역별 무드·음악 장르·입장 정보와 피크타임 가이드를 확인할 수 있습니다.';
 
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 clubVenues.forEach(v => {
@@ -20,11 +20,11 @@ const jsonLd = [{
   "@type": "CollectionPage",
   "name": "전국 클럽 모음",
   "description": description,
-  "url": "https://week1-6m5.pages.dev/clubs/",
+  "url": "https://night-4qy.pages.dev/clubs/",
   "numberOfItems": clubVenues.length,
 }];
 ---
-<BaseLayout title={title} description={description} canonical="https://week1-6m5.pages.dev/clubs/" jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} canonical="https://night-4qy.pages.dev/clubs/" jsonLd={jsonLd}>
   <section class="story-intro">
     <div class="container">
       <span class="story-intro__eyebrow">Club Scene Korea</span>

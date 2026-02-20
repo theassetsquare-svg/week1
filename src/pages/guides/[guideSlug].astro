@@ -164,20 +164,20 @@ const relatedVenues = venues
   .filter(v => content?.relatedTypes?.includes(v.type))
   .slice(0, 6);
 
-const title = `${guide.title} | 나이트라이프 코리아`;
-const description = guide.desc;
+const title = `${guide.title} — 나이트코리아 나이트라이프 필수 가이드`;
+const description = `${guide.desc} 나이트코리아에서 제공하는 나이트·클럽·라운지 이용에 꼭 필요한 실전 가이드입니다.`;
 
 const jsonLd = [{
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": guide.title,
   "description": guide.desc,
-  "url": `https://week1-6m5.pages.dev/guides/${guide.slug}/`,
-  "publisher": { "@type": "Organization", "name": "나이트라이프 코리아" },
+  "url": `https://night-4qy.pages.dev/guides/${guide.slug}/`,
+  "publisher": { "@type": "Organization", "name": "나이트코리아" },
   "inLanguage": "ko",
 }];
 ---
-<BaseLayout title={title} description={description} canonical={`https://week1-6m5.pages.dev/guides/${guide.slug}/`} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} canonical={`https://night-4qy.pages.dev/guides/${guide.slug}/`} jsonLd={jsonLd}>
   <section class="venue-header">
     <div class="container content-narrow">
       <div class="breadcrumb">
