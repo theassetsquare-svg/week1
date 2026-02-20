@@ -74,7 +74,7 @@ const jsonLd = [
 
   <section class="container content-narrow">
     <IntroSection
-      hook={`오늘 밤 어디 갈지 검색만 30분째라면, 그 시간을 여기서 줄일 수 있습니다. 나이트, 클럽, 라운지 — 유형도 다르고 지역마다 분위기도 다른 곳들을 하나하나 비교하면 시간만 낭비하기 쉽습니다. 전국 ${venues.length}곳의 핵심 정보를 한곳에 정리했습니다.`}
+      hook={`오늘 밤 어디 갈지 검색만 30분째라면, 그 시간을 여기서 줄일 수 있습니다. 나이트, 클럽, 라운지 — 유형도 다르고 지역마다 무드도 다른 곳들을 하나하나 비교하면 시간만 낭비하기 쉽습니다. 전국 ${venues.length}곳의 핵심 정보를 한곳에 정리했습니다.`}
       valuePromise={`1분이면 전국 ${venues.length}곳의 유형별·지역별 분포를 파악하고, 원하는 매장 상세 페이지로 바로 이동할 수 있습니다.`}
       scanBox={[
         `전국 나이트·클럽·라운지 ${venues.length}곳 수록`,
@@ -83,23 +83,23 @@ const jsonLd = [
         '매장별 체크리스트·타임라인·FAQ 포함',
         '검색: 매장명 또는 지역명 입력으로 즉시 검색',
         '필터: 유형별(나이트/클럽/라운지) 칩으로 분류 가능',
-        '추천 매장: 에디터 선정 12곳 바로 확인',
+        '에디터 선정: 엄선 12곳 바로 확인',
       ]}
       checklist={[
-        '방문 목적 정하기: 댄스, 대화, 분위기 감상 중 선택',
+        '방문 목적 정하기: 댄스, 대화, 무드 감상 중 선택',
         '지역 결정: 강남, 이태원, 홍대, 부산 등 접근성 고려',
         '유형 선택: 나이트(파트너 댄스) vs 클럽(DJ/EDM) vs 라운지(대화 중심)',
         '예산 설정: 입장료 + 음료 2~3잔 기준 예상 비용',
         '동행 인원 확인: 1인/커플/소그룹/단체에 따라 매장 선택 달라짐',
-        '방문 요일: 금·토 피크타임 vs 평일 여유로운 분위기',
+        '방문 요일: 금·토 피크타임 vs 평일 한적한 무드',
       ]}
       riskItems={[
-        { dont: '리뷰 평점만 보고 매장을 고르지 마세요', doInstead: '음악 장르, 연령대, 분위기를 먼저 확인한 뒤 선택하세요' },
-        { dont: '나이트와 클럽을 같은 곳이라 생각하지 마세요', doInstead: '나이트는 파트너 댄스 중심, 클럽은 DJ 음악 중심으로 분위기가 다릅니다' },
+        { dont: '리뷰 평점만 보고 매장을 고르지 마세요', doInstead: '음악 장르, 연령대, 현장 무드를 먼저 확인한 뒤 선택하세요' },
+        { dont: '나이트와 클럽을 같은 곳이라 생각하지 마세요', doInstead: '나이트는 파트너 댄스 중심, 클럽은 DJ 음악 중심으로 톤이 다릅니다' },
         { dont: '신분증 없이 출발하지 마세요', doInstead: '모든 유형의 매장에서 신분증 확인은 기본입니다' },
       ]}
       teasers={[
-        '아래에서 에디터 추천 매장 12곳 바로 확인',
+        '아래에서 에디터 엄선 12곳 바로 확인',
         `아래에서 ${regions.length}개 지역별 허브로 바로 이동`,
         '아래에서 첫 방문 가이드·드레스코드·안전 수칙 바로 확인',
       ]}
@@ -108,7 +108,7 @@ const jsonLd = [
 
   <!-- Recommended -->
   <section class="container" style="padding-top: 2.5rem;">
-    <h2 style="text-align:center; margin-top:0; margin-bottom: 1.5rem;">추천 매장</h2>
+    <h2 style="text-align:center; margin-top:0; margin-bottom: 1.5rem;">엄선 매장</h2>
     <div class="venue-grid">
       {recommended.map(v => (
         <a href={getVenueUrl(v)} target="_blank" rel="noopener noreferrer" class="venue-card">

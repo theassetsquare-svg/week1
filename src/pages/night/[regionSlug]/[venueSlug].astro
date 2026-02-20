@@ -35,7 +35,7 @@ const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_disp
 const tocItems = [
   { id: 'summary', label: '한눈에 보기' },
   { id: 'hook', label: '첫인상' },
-  { id: 'atmosphere', label: '무드 & 분위기' },
+  { id: 'atmosphere', label: '무드 & 톤' },
   { id: 'story', label: '하룻밤 이야기' },
   { id: 'gallery', label: '포토' },
   { id: 'timeline', label: '밤의 흐름' },
@@ -121,7 +121,7 @@ if (v.faq && v.faq.length > 0) {
       <div class="quick-summary__title">{si.summaryTitle || `${v.name_display} 한눈에 보기`}</div>
       <ul class="quick-summary__list">
         <li>{v.region} 소재 나이트 · {v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 지역`}</li>
-        <li>분위기 — {v.bodySections.atmosphere.split('.')[0]}.</li>
+        <li>무드 — {v.bodySections.atmosphere.split('.')[0]}.</li>
         <li>무대 — {v.bodySections.music.split('.')[0]}.</li>
         {v.checklist[0] && <li>처음이라면: {v.checklist[0]}</li>}
         {v.timeline[0] && <li>골든타임: {v.timeline[0].time} — {v.timeline[0].label}</li>}
@@ -155,8 +155,8 @@ if (v.faq && v.faq.length > 0) {
     )}
 
     <section class="venue-section" id="atmosphere">
-      <h2>무드 & 분위기</h2>
-      <p class="section-lead">{si.atmosphereLead || `${v.name_display}의 공간 분위기를 정리합니다.`}</p>
+      <h2>무드 & 톤</h2>
+      <p class="section-lead">{si.atmosphereLead || `${v.name_display}의 공간 무드를 정리합니다.`}</p>
       <p>{v.bodySections.atmosphere}</p>
     </section>
 
@@ -208,14 +208,14 @@ if (v.faq && v.faq.length > 0) {
       <h2>포토</h2>
       <div class="gallery-mid">
         {v.images.slice(0, 3).map((img, i) => (
-          <img src={encodeURI(img.src)} alt={`${v.name_display} ${i === 0 ? '외관 전경' : i === 1 ? '내부 분위기' : '무대와 조명'}`} width="400" height="400" loading="lazy" />
+          <img src={encodeURI(img.src)} alt={`${v.name_display} ${i === 0 ? '외관 전경' : i === 1 ? '내부 전경' : '무대와 조명'}`} width="400" height="400" loading="lazy" />
         ))}
       </div>
     </section>
 
     <section class="venue-section" id="timeline">
       <h2>밤의 흐름</h2>
-      <p class="section-lead">{si.timelineLead || `${v.name_display}의 시간대별 분위기 변화를 살펴봅니다.`}</p>
+      <p class="section-lead">{si.timelineLead || `${v.name_display}의 시간대별 흐름 변화를 살펴봅니다.`}</p>
       <div class="timeline">
         {v.timeline.map(t => (
           <div class="timeline-item">
