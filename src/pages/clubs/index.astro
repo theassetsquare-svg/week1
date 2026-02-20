@@ -134,20 +134,7 @@ const jsonLd = [{
   <section class="container">
     <div class="venue-grid" id="venueGrid">
       {clubVenues.map(v => (
-        <a href={getVenueUrl(v)} target="_blank" rel="noopener noreferrer" class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
-          <div class="venue-card-thumb">
-            <img src={v.images[0].src} alt={v.images[0].alt} width="400" height="400" loading="lazy" />
-          </div>
-          <div class="venue-card-body">
-            <div class="venue-card-meta">
-              <span class="venue-card-type type-club">{v.typeLabel}</span>
-              <span class="venue-card-region">{v.region}</span>
-            </div>
-            <h3>{v.name_display}</h3>
-            <p class="venue-card-teaser">{v.teaser}</p>
-            <span class="venue-card-cta">자세히 보기 →</span>
-          </div>
-        </a>
+        <VenueCard venue={v} />
       ))}
     </div>
   </section>
