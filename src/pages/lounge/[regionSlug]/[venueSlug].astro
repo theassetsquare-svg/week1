@@ -203,6 +203,7 @@ if (v.faq && v.faq.length > 0) {
 
     <section class="venue-section" id="timeline">
       <h2>시간대별 추천</h2>
+      <p class="section-lead">{si.timelineLead || `${v.name_display}의 시간대별 분위기 변화를 살펴봅니다.`}</p>
       <div class="timeline">
         {v.timeline.map(t => (
           <div class="timeline-item">
