@@ -294,24 +294,36 @@ function generateCardTags(v) {
   return selected;
 }
 
-// ─── Assign unique (hook, value) PAIRS per type ───
-// No two venues of the same type should share the same (hi, vi) combination
-const usedPairs = { club: new Set(), night: new Set(), lounge: new Set() };
+// ─── Assign indices: VALUE must be unique within type, HOOK must be unique within type ───
+// Round-robin: each type gets a sequential counter for both hook and value
+const typeCounters = {
+  club: { hi: 0, vi: 0 },
+  night: { hi: 0, vi: 0 },
+  lounge: { hi: 0, vi: 0 },
+};
 
 function pickUniquePair(v, hookPool, valuePool) {
-  const pairSet = usedPairs[v.type];
-  const h = hashStr(v.id + 'pairV5');
-  let hi = h % hookPool.length;
-  let vi = (h >> 5) % valuePool.length;
-  let attempts = 0;
-  const max = hookPool.length * valuePool.length;
+  const c = typeCounters[v.type];
+  const h = hashStr(v.id + 'offsetV6');
 
-  while (pairSet.has(`${hi}-${vi}`) && attempts < max) {
-    attempts++;
-    vi = (vi + 1) % valuePool.length;
-    if (attempts % valuePool.length === 0) hi = (hi + 1) % hookPool.length;
+  // Use counter-based assignment with hash offset for initial position
+  // First venue of this type starts at hash position, then increments
+  if (c.hi === 0 && c.vi === 0) {
+    // Initialize offset for this type
+    c.hi = h % hookPool.length;
+    c.vi = (h >> 4) % valuePool.length;
   }
-  pairSet.add(`${hi}-${vi}`);
+
+  const hi = c.hi % hookPool.length;
+  const vi = c.vi % valuePool.length;
+
+  // Advance counters: hook and value advance at different rates
+  c.hi += 1;
+  c.vi += 1;
+
+  // If value wraps, shift hook by a prime to avoid lock-step
+  if (c.vi % valuePool.length === 0) c.hi += 7;
+
   return { hi, vi };
 }
 
