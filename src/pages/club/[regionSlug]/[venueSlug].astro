@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import IntroSection from '../../../components/IntroSection.astro';
 import { venues, getVenuesByType, getVenue, getVenueUrl, getReadingTime, guides } from '../../../utils/venues';
 
 export function getStaticPaths() {
@@ -105,6 +106,17 @@ if (v.faq && v.faq.length > 0) {
   </section>
 
   <div class="container content-narrow">
+    {v.intro && (
+      <IntroSection
+        hook={v.intro.hook}
+        valuePromise={v.intro.valuePromise}
+        scanBox={v.intro.scanBox}
+        checklist={v.intro.checklist}
+        riskItems={v.intro.riskItems}
+        teasers={v.intro.teasers}
+      />
+    )}
+
     <section class="quick-summary" id="summary">
       <div class="quick-summary__title">{si.summaryTitle || `${v.name_display} 핵심 정보`}</div>
       <ul class="quick-summary__list">

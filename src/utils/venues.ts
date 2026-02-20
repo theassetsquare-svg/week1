@@ -38,6 +38,14 @@ export interface Venue {
     timelineLead?: string;
   };
   conclusionText?: string;
+  intro?: {
+    hook: string;
+    valuePromise: string;
+    scanBox: string[];
+    checklist: string[];
+    riskItems: { dont: string; doInstead: string }[];
+    teasers: string[];
+  };
   hookIntro?: string;
   storyFrame: { id: string; pov: string; tone: string; style: string };
   story: Record<string, string>;

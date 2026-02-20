@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import IntroSection from '../../components/IntroSection.astro';
 import { venues, getVenueUrl } from '../../utils/venues';
 
 const loungeVenues = venues.filter(v => v.type === 'lounge');
@@ -29,6 +30,39 @@ const jsonLd = [{
       <span class="story-intro__eyebrow">Lounge & Bar Korea</span>
       <h1 class="story-intro__headline">좋은 술보다 좋은 사람이 먼저입니다.<br />나머지는 분위기가 해줍니다.</h1>
     </div>
+  </section>
+
+  <section class="container content-narrow">
+    <IntroSection
+      hook={`라운지는 분위기가 전부라고 생각하기 쉽지만, 예약 방식, 최소 주문, 드레스코드까지 매장마다 기준이 다릅니다. 모르고 갔다가 자리가 없거나 분위기가 맞지 않는 경우가 적지 않습니다. 전국 ${loungeVenues.length}곳의 라운지를 한눈에 비교할 수 있도록 정리했습니다.`}
+      valuePromise={`1분이면 전국 ${loungeVenues.length}개 라운지의 지역별 분포와 분위기 차이, 예약 기본 정보를 파악할 수 있습니다.`}
+      scanBox={[
+        `전국 라운지 ${loungeVenues.length}곳 수록`,
+        `지역 필터: ${regions.length}개 지역`,
+        '특징: 대화 중심 분위기 + 시그니처 칵테일 + BGM',
+        '선정 기준: 분위기, 접근성, 메뉴 구성, 이용자 평가 종합',
+        '사용법: 지역 칩 또는 검색창으로 라운지 필터링',
+        '각 라운지 카드 클릭 시 시간대별 추천·체크리스트·FAQ 상세 페이지',
+      ]}
+      checklist={[
+        '방문 목적 정하기: 데이트, 소모임, 혼자 감상 중 선택',
+        '지역 결정 (강남, 이태원, 부산 등)',
+        '예약 여부 사전 확인 (주말은 예약 필수인 곳 많음)',
+        '예산 설정 (칵테일 기준 1잔 1.5~3만원대)',
+        '드레스코드 확인 (스마트 캐주얼 이상 권장)',
+        '테이블 차지/최소 주문 유무 확인',
+      ]}
+      riskItems={[
+        { dont: '예약 없이 주말에 방문하지 마세요', doInstead: '금·토는 예약 필수인 곳이 많으니 최소 하루 전에 확인하세요' },
+        { dont: '클럽 분위기를 기대하고 가지 마세요', doInstead: '라운지는 대화 중심 공간 — 시끄러운 분위기가 아닙니다' },
+        { dont: '메뉴 확인 없이 주문하지 마세요', doInstead: '매장마다 시그니처 칵테일이 다르니 메뉴판을 먼저 확인하세요' },
+      ]}
+      teasers={[
+        `아래에서 ${regions.length}개 지역별 라운지 필터로 원하는 곳 바로 확인`,
+        `아래에서 전국 ${loungeVenues.length}개 라운지 카드 비교`,
+        '각 라운지 상세 페이지에서 시간대별 분위기와 추천 메뉴 확인',
+      ]}
+    />
   </section>
 
   <section class="container">

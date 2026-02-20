@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import IntroSection from '../../components/IntroSection.astro';
 import { venues, getVenueUrl, getUniqueRegions, guides } from '../../utils/venues';
 
 export function getStaticPaths() {
@@ -36,6 +37,11 @@ const regionFaqs = regionFaqMap[region.slug] || [
   { q: `${region.name}에서 추천하는 매장은?`, a: `아래 목록에서 유형별로 비교해보시고, 각 매장의 상세 페이지에서 리뷰와 가이드를 참고하세요.` },
 ];
 
+const nightCount = regionVenues.filter(v => v.type === 'night').length;
+const clubCount = regionVenues.filter(v => v.type === 'club').length;
+const loungeCount = regionVenues.filter(v => v.type === 'lounge').length;
+const typeBreakdown = [nightCount > 0 ? `나이트 ${nightCount}곳` : '', clubCount > 0 ? `클럽 ${clubCount}곳` : '', loungeCount > 0 ? `라운지 ${loungeCount}곳` : ''].filter(Boolean).join(' · ');
+
 const jsonLd = [{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -57,6 +63,38 @@ const jsonLd = [{
       )}
     </div>
   </section>
+
+  <section class="container content-narrow">
+    <IntroSection
+      hook={`${region.name}에서 밤문화를 찾고 있지만 어디부터 봐야 할지 모르겠다면, 이 페이지가 출발점입니다. ${region.name} 지역에만 ${region.count}곳의 나이트·클럽·라운지가 있어 비교 없이 고르면 분위기가 맞지 않을 수 있습니다.`}
+      valuePromise={`1분이면 ${region.name} 지역 ${region.count}곳의 유형별 분포와 각 매장의 핵심 특징을 파악할 수 있습니다.`}
+      scanBox={[
+        `${region.name} 매장 수: ${region.count}곳`,
+        `유형: ${typeBreakdown}`,
+        '매장별 분위기·음악·드레스코드 정보 포함',
+        '각 카드 클릭 시 체크리스트·타임라인·FAQ 상세 페이지',
+        '자주 묻는 질문(FAQ) 섹션 하단 포함',
+        '관련 가이드(첫 방문·드레스코드·안전) 하단 연결',
+      ]}
+      checklist={[
+        `${region.name} 내 원하는 유형 선택 (나이트/클럽/라운지)`,
+        '방문 목적에 맞는 분위기 확인 (댄스/대화/감상)',
+        '예산과 동행 인원에 따라 매장 필터링',
+        '드레스코드와 입장 조건 사전 확인',
+        '피크타임과 교통편 확인 후 출발 시간 결정',
+      ]}
+      riskItems={[
+        { dont: '유형을 구분하지 않고 아무 곳이나 가지 마세요', doInstead: '나이트(댄스), 클럽(DJ 음악), 라운지(대화) — 목적에 맞게 선택하세요' },
+        { dont: '신분증 없이 출발하지 마세요', doInstead: '모든 유형에서 신분증 확인은 기본입니다' },
+      ]}
+      teasers={[
+        `아래에서 ${region.name} ${region.count}개 매장 카드 비교`,
+        '아래에서 자주 묻는 질문 바로 확인',
+        '아래에서 첫 방문 가이드·드레스코드·안전 수칙 확인',
+      ]}
+    />
+  </section>
+
   <section class="container">
     <div class="venue-grid">
       {regionVenues.map(v => (

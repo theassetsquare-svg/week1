@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import IntroSection from '../../components/IntroSection.astro';
 import { guides } from '../../utils/venues';
 
 const title = '나이트라이프 가이드 | 클럽·나이트·라운지 이용 가이드';
@@ -13,6 +14,38 @@ const description = '첫 방문 가이드, 드레스코드, 안전 수칙 등 �
       <img src="/assets/hero-guides.svg" alt="나이트라이프 가이드 배너" class="hero-banner" width="1200" height="300" loading="lazy" />
     </div>
   </section>
+
+  <section class="container content-narrow">
+    <IntroSection
+      hook={`나이트라이프가 처음이라 뭘 준비해야 할지 모르겠거나, 경험이 있어도 더 알차게 즐기고 싶다면 가이드부터 읽어보세요. 드레스코드, 안전 수칙, 음악 장르, 혼자 가는 법까지 — 현장에서 당황하지 않으려면 사전 정보가 필수입니다.`}
+      valuePromise={`1분이면 ${guides.length}개 가이드의 핵심 주제를 파악하고, 필요한 가이드로 바로 이동할 수 있습니다.`}
+      scanBox={[
+        `가이드 ${guides.length}개 수록`,
+        '첫 방문 핵심 팁: 입장부터 퇴장까지',
+        '드레스코드: 클럽/나이트/라운지 유형별 차이',
+        '안전 수칙: 음주 관리, 귀가 안전, 개인 물품',
+        '음악 장르: EDM, 힙합, 하우스, 트로트, 재즈',
+        '솔로 방문: 혼자 가도 자연스러운 방법',
+        '단체 파티: 예약, 생일 이벤트, 회식 활용',
+      ]}
+      checklist={[
+        '처음이면 "첫 방문 핵심 팁" 가이드 먼저 읽기',
+        '복장 고민이면 "드레스코드 총정리" 확인',
+        '안전 걱정이면 "안전하게 즐기는 법" 필독',
+        '혼자 갈 예정이면 "솔로 나이트라이프" 참고',
+        '단체 모임이면 "단체 파티 기획 노하우" 확인',
+      ]}
+      riskItems={[
+        { dont: '"나이트에 가면 위험하다"고 단정하지 마세요', doInstead: '기본 안전 수칙만 지키면 안전하게 즐길 수 있습니다 — 가이드에서 확인하세요' },
+        { dont: '아무 복장으로 가도 된다고 생각하지 마세요', doInstead: '매장 유형마다 드레스코드가 다릅니다 — 사전 확인이 입장 거부를 방지합니다' },
+      ]}
+      teasers={[
+        `아래에서 ${guides.length}개 가이드 카드 바로 확인`,
+        '각 가이드 클릭 시 상세 내용과 관련 매장 안내',
+      ]}
+    />
+  </section>
+
   <section class="container">
     <div class="guide-grid">
       {guides.map(g => (
