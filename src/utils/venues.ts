@@ -26,6 +26,18 @@ export interface Venue {
   teaser: string;
   seoTitle?: string;
   seoDescription?: string;
+  pageTitle?: string;
+  metaDescription?: string;
+  h1Title?: string;
+  sectionIntros?: {
+    summaryTitle?: string;
+    atmosphereLead?: string;
+    musicLead?: string;
+    faqLead?: string;
+    checklistLead?: string;
+    timelineLead?: string;
+  };
+  conclusionText?: string;
   hookIntro?: string;
   storyFrame: { id: string; pov: string; tone: string; style: string };
   story: Record<string, string>;
