@@ -24,6 +24,11 @@ export interface Venue {
   };
   keywords: string[];
   teaser: string;
+  card_hook?: string;
+  card_value?: string;
+  card_tags?: string[];
+  image_alt?: string;
+  map_url?: string;
   seoTitle?: string;
   seoDescription?: string;
   pageTitle?: string;
