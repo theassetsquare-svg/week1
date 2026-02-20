@@ -301,10 +301,10 @@ if (v.faq && v.faq.length > 0) {
       <h2>함께 보면 좋은 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} target="_blank" rel="noopener noreferrer" class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
         ))}
-        <a href={`/region/${v.regionSlug}/`} target="_blank" rel="noopener noreferrer" class="related-link">{v.region} 전체 보기</a>
-        <a href="/nights/" target="_blank" rel="noopener noreferrer" class="related-link">나이트 전체 목록</a>
+        <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
+        <a href="/nights/" class="related-link">나이트 전체 목록</a>
       </div>
     </section>
 
