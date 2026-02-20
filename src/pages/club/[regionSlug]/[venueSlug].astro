@@ -25,6 +25,9 @@ const ogImage = `https://week1-6m5.pages.dev${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = v.pageTitle || `${v.name_display} 안내`;
 const description = v.metaDescription || `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
+const h1Title = v.h1Title || `${v.name_display} 방문 가이드`;
+const si = v.sectionIntros || {};
+const conclusionText = v.conclusionText || `${v.name_display}은(는) ${v.region}의 밤을 대표하는 공간입니다.`;
 
 const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
 
