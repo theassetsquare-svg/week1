@@ -86,7 +86,7 @@ if (v.faq && v.faq.length > 0) {
   });
 }
 ---
-<BaseLayout title={title} description={description} canonical={canonicalUrl} ogImage={ogImage}>
+<BaseLayout title={title} description={description} canonical={canonicalUrl} ogImage={ogImage} jsonLd={jsonLdSchemas}>
   <section class="venue-hero-immersive venue-hero-immersive--lounge">
     <div class="container content-narrow">
       <div class="breadcrumb">
@@ -97,7 +97,7 @@ if (v.faq && v.faq.length > 0) {
       </div>
       <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
       <span class="venue-hero__cat-badge">라운지</span>
-      <h1 class="venue-hero__title">{v.name_display}</h1>
+      <h1 class="venue-hero__title">{v.name_display} 방문 가이드</h1>
     </div>
   </section>
 
