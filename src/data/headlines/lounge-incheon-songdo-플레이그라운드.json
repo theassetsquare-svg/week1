@@ -8,9 +8,7 @@
     "no_banned_claims": true,
     "title_length_28_55": true,
     "word_repeat_max_3": true,
-    "missing_inputs": [
-      "teaser_content"
-    ]
+    "missing_inputs": []
   },
   "variants": [
     {

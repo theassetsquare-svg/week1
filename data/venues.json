@@ -12,13 +12,13 @@
     "venueSlug": "레이스-클럽",
     "urlSlug": "레이스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -189,12 +189,21 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남레이스클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남레이스클럽(강남) 방문 정보 · 체크리스트 7개 · FAQ 8개 · 피크타임 5단계 · 지도 포함 · 2026-02-20 기준"
   },
   {
     "id": "venue-2",
@@ -209,13 +218,13 @@
     "venueSlug": "사운드-클럽",
     "urlSlug": "사운드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -386,12 +395,21 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남사운드클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남사운드클럽 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-3",
@@ -406,13 +424,13 @@
     "venueSlug": "아르떼-클럽",
     "urlSlug": "아르떼",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -583,12 +601,21 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-4",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남아르떼클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남아르떼클럽 입장 체크리스트 7개, FAQ 8개, 피크타임 가이드 정리 페이지. 2026-02-20 기준."
   },
   {
     "id": "venue-4",
@@ -603,13 +630,13 @@
     "venueSlug": "옥타곤-클럽",
     "urlSlug": "옥타곤",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -780,12 +807,21 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-5",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남옥타곤클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남옥타곤클럽 정보 페이지 · 강남 위치 확인 · 입장 준비 7가지 · FAQ 8개 · 2026-02-20 업데이트."
   },
   {
     "id": "venue-5",
@@ -800,13 +836,13 @@
     "venueSlug": "피크-클럽",
     "urlSlug": "피크",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -977,12 +1013,21 @@
         "venue-6",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-6",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남피크클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남 클럽 강남피크클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-6",
@@ -997,13 +1042,13 @@
     "venueSlug": "페이스-클럽",
     "urlSlug": "페이스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1174,12 +1219,21 @@
         "venue-5",
         "venue-7"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-7"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남페이스클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남페이스클럽 강남 위치 · 입장 준비 7가지 · 시간대별 안내 5단계 · FAQ 8개 · 2026-02-20 갱신."
   },
   {
     "id": "venue-7",
@@ -1194,13 +1248,13 @@
     "venueSlug": "헤븐-클럽",
     "urlSlug": "헤븐",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1376,12 +1430,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남헤븐클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남 클럽 강남헤븐클럽 · 체크 7항목 · 질문 8개 답변 · 시간대 6구간 · 2026-02-20 기준."
   },
   {
     "id": "venue-8",
@@ -1396,13 +1459,13 @@
     "venueSlug": "임팩트-클럽",
     "urlSlug": "임팩트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1572,12 +1635,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남임팩트클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남임팩트클럽(강남) 방문 정보 · 체크리스트 7개 · FAQ 8개 · 피크타임 5단계 · 지도 포함 · 2026-02-20 기준"
   },
   {
     "id": "venue-9",
@@ -1592,13 +1664,13 @@
     "venueSlug": "잭리빈-클럽",
     "urlSlug": "잭리빈",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -1769,12 +1841,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남잭리빈클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남잭리빈클럽 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-10",
@@ -1789,13 +1870,13 @@
     "venueSlug": "플러스82-클럽",
     "urlSlug": "플러스82",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+      "lat": 37.5190912,
+      "lon": 127.0516784,
+      "city": "서울특별시",
+      "district": "삼성1동",
+      "neighborhood": "삼성동",
+      "precision": "nominatim"
     },
     "keywords": [
       "82",
@@ -1958,12 +2039,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-11",
+        "venue-50",
+        "venue-59",
+        "venue-117",
+        "venue-118",
+        "venue-119"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "청담플러스82클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "청담 클럽 청담플러스82클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-11",
@@ -1978,13 +2068,13 @@
     "venueSlug": "르클럽",
     "urlSlug": "르클럽",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+      "lat": 37.5190912,
+      "lon": 127.0516784,
+      "city": "서울특별시",
+      "district": "삼성1동",
+      "neighborhood": "삼성동",
+      "precision": "nominatim"
     },
     "keywords": [
       "르클럽",
@@ -2153,12 +2243,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-10",
+        "venue-50",
+        "venue-59",
+        "venue-117",
+        "venue-118",
+        "venue-119"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "청담르클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "청담 클럽 청담르클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-12",
@@ -2173,13 +2272,13 @@
     "venueSlug": "볼노스트-클럽",
     "urlSlug": "볼노스트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2350,12 +2449,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원볼노스트클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "이태원 클럽 이태원볼노스트클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-13",
@@ -2370,13 +2478,13 @@
     "venueSlug": "케이크샵-클럽",
     "urlSlug": "케이크샵",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2547,12 +2655,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원케이크샵클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "이태원 클럽 이태원케이크샵클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-14",
@@ -2567,13 +2684,13 @@
     "venueSlug": "메카-클럽",
     "urlSlug": "메카",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2744,12 +2861,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-15",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원메카클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "이태원 클럽 이태원메카클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-15",
@@ -2764,13 +2890,13 @@
     "venueSlug": "스타디움-클럽",
     "urlSlug": "스타디움",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -2941,12 +3067,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-16",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원스타디움클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "이태원 클럽 이태원스타디움클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-16",
@@ -2961,13 +3096,13 @@
     "venueSlug": "루시드림-클럽",
     "urlSlug": "루시드림",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -3138,12 +3273,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-120",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원루시드림클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "이태원 클럽 이태원루시드림클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-17",
@@ -3158,13 +3302,13 @@
     "venueSlug": "아우라-클럽",
     "urlSlug": "아우라",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -3330,12 +3474,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대아우라클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "홍대 클럽 홍대아우라클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-18",
@@ -3350,13 +3503,13 @@
     "venueSlug": "nb2-클럽",
     "urlSlug": "nb2",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "NB2",
@@ -3532,12 +3685,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대NB2클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "홍대 클럽 홍대NB2클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-19",
@@ -3552,13 +3714,13 @@
     "venueSlug": "m2-클럽",
     "urlSlug": "m2",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "M2",
@@ -3735,12 +3897,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-20",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대M2클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "홍대 클럽 홍대M2클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-20",
@@ -3755,13 +3926,13 @@
     "venueSlug": "ff-클럽",
     "urlSlug": "ff",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "FF",
@@ -3928,12 +4099,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-21",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대FF클럽 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "홍대 클럽 홍대FF클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-21",
@@ -3948,13 +4128,13 @@
     "venueSlug": "매드홀릭-클럽",
     "urlSlug": "매드홀릭",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4125,12 +4305,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-22",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대매드홀릭클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "홍대 클럽 홍대매드홀릭클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-22",
@@ -4145,13 +4334,13 @@
     "venueSlug": "싱크홀-클럽",
     "urlSlug": "싱크홀",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4322,12 +4511,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-23"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대싱크홀클럽 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "홍대 클럽 홍대싱크홀클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-23",
@@ -4342,13 +4540,13 @@
     "venueSlug": "올카인드-클럽",
     "urlSlug": "올카인드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "홍익대학교 서울캠퍼스, 94, 와우산로, 홍대거리, 서교동, 마포구, 서울특별시, 04066, 대한민국",
+      "lat": 37.5503552,
+      "lon": 126.9254349,
+      "city": "서울특별시",
+      "district": "서교동",
+      "neighborhood": "홍대거리",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4519,12 +4717,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-17",
+        "venue-18",
+        "venue-19",
+        "venue-20",
+        "venue-21",
+        "venue-22"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "홍대올카인드클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "홍대 클럽 홍대올카인드클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-24",
@@ -4539,13 +4746,13 @@
     "venueSlug": "그루브-클럽",
     "urlSlug": "그루브",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4719,12 +4926,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산서면그루브클럽 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "부산서면 클럽 부산서면그루브클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-25",
@@ -4739,13 +4955,13 @@
     "venueSlug": "데이즈-클럽",
     "urlSlug": "데이즈",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -4909,12 +5125,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-26",
+        "venue-27",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산서면데이즈클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "부산서면 클럽 부산서면데이즈클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-26",
@@ -4929,13 +5154,13 @@
     "venueSlug": "아지트-클럽",
     "urlSlug": "아지트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -5104,12 +5329,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-25",
+        "venue-27",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산서면아지트클럽 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "부산서면 클럽 부산서면아지트클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-27",
@@ -5124,13 +5358,13 @@
     "venueSlug": "크림-클럽",
     "urlSlug": "크림",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -5299,12 +5533,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-28",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산서면크림클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "부산서면 클럽 부산서면크림클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-28",
@@ -5319,13 +5562,13 @@
     "venueSlug": "아웃풋-클럽",
     "urlSlug": "아웃풋",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "다이소 부산서면점, 43, 중앙대로702번길, 부전동, 부전2동, 부산진구, 부산광역시, 47292, 대한민국",
+      "lat": 35.1556623,
+      "lon": 129.0614649,
+      "city": "부산광역시",
+      "district": "부전2동",
+      "neighborhood": "부전동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -5494,12 +5737,21 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-82",
+        "venue-83"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산서면아웃풋클럽 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "부산서면 클럽 부산서면아웃풋클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-29",
@@ -5693,7 +5945,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산해운대빌리진클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "부산해운대 클럽 부산해운대빌리진클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-30",
@@ -5882,7 +6136,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산해운대멜트클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "부산해운대 클럽 부산해운대멜트클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-31",
@@ -6080,7 +6336,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산해운대천상클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "부산해운대 클럽 부산해운대천상클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-32",
@@ -6274,7 +6532,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산광안리피셔맨클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "부산광안리 클럽 부산광안리피셔맨클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-33",
@@ -6289,13 +6549,13 @@
     "venueSlug": "에이유-클럽",
     "urlSlug": "에이유",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -6465,12 +6725,20 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-34",
+        "venue-35",
+        "venue-36",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대구에이유클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "대구 클럽 대구에이유클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-34",
@@ -6485,13 +6753,13 @@
     "venueSlug": "에그-클럽",
     "urlSlug": "에그",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -6666,12 +6934,20 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-35",
+        "venue-36",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대구에그클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "대구 클럽 대구에그클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-35",
@@ -6686,13 +6962,13 @@
     "venueSlug": "루피-클럽",
     "urlSlug": "루피",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -6861,12 +7137,20 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-36",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대구루피클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "대구 클럽 대구루피클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-36",
@@ -6881,13 +7165,13 @@
     "venueSlug": "디헬-클럽",
     "urlSlug": "디헬",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7062,12 +7346,20 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-35",
+        "venue-80",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대구디헬클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "대구 클럽 대구디헬클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-37",
@@ -7082,13 +7374,13 @@
     "venueSlug": "이비자-클럽",
     "urlSlug": "이비자",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7257,12 +7549,19 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-38",
+        "venue-39",
+        "venue-92",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대전이비자클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "대전 클럽 대전이비자클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-38",
@@ -7277,13 +7576,13 @@
     "venueSlug": "몬스터-클럽",
     "urlSlug": "몬스터",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7452,12 +7751,19 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-39",
+        "venue-92",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대전몬스터클럽 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "대전 클럽 대전몬스터클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-39",
@@ -7472,13 +7778,13 @@
     "venueSlug": "벤트-클럽",
     "urlSlug": "벤트",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7651,12 +7957,19 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-38",
+        "venue-92",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대전벤트클럽 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "대전 클럽 대전벤트클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-40",
@@ -7671,13 +7984,13 @@
     "venueSlug": "리버틴-클럽",
     "urlSlug": "리버틴",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "광주광역시, 대한민국",
+      "lat": 35.1594647,
+      "lon": 126.8515034,
+      "city": "광주광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -7849,12 +8162,17 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-41",
+        "venue-94"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "광주리버틴클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "광주 클럽 광주리버틴클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-41",
@@ -7869,13 +8187,13 @@
     "venueSlug": "코요테어글리-클럽",
     "urlSlug": "코요테어글리",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "광주광역시, 대한민국",
+      "lat": 35.1594647,
+      "lon": 126.8515034,
+      "city": "광주광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -8042,12 +8360,17 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-40",
+        "venue-94"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "광주코요테어글리클럽 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "광주 클럽 광주코요테어글리클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-42",
@@ -8062,13 +8385,13 @@
     "venueSlug": "오닉스-클럽",
     "urlSlug": "오닉스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "전주, 680, 동부대로, 우아동3가, 덕진구, 전주시, 전북특별자치도, 54908, 대한민국",
+      "lat": 35.8500537,
+      "lon": 127.1623649,
+      "city": "전주시",
+      "district": "덕진구",
+      "neighborhood": "우아동3가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -8234,12 +8557,16 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-105"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "전주오닉스클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "전주 클럽 전주오닉스클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-43",
@@ -8254,13 +8581,13 @@
     "venueSlug": "돈텔마마-클럽",
     "urlSlug": "돈텔마마",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강릉, 176, 용지로, 교2동, 강릉시, 강원특별자치도, 25491, 대한민국",
+      "lat": 37.76452,
+      "lon": 128.8993979,
+      "city": "강릉시",
+      "district": "교2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -8426,12 +8753,16 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-103"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강릉돈텔마마클럽 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "강릉 클럽 강릉돈텔마마클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-44",
@@ -8625,7 +8956,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천부평토토가클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "인천부평 클럽 인천부평토토가클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-45",
@@ -8824,7 +9157,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천부평파인애플클럽 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "인천부평 클럽 인천부평파인애플클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-46",
@@ -9013,7 +9348,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천부평아우라클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "인천부평 클럽 인천부평아우라클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-47",
@@ -9212,7 +9549,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천부평노바클럽 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "인천부평 클럽 인천부평노바클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-48",
@@ -9227,13 +9566,13 @@
     "venueSlug": "엔터-클럽",
     "urlSlug": "엔터",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9408,12 +9747,20 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-75",
+        "venue-76",
+        "venue-77",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수원엔터클럽 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "수원 클럽 수원엔터클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-49",
@@ -9428,13 +9775,13 @@
     "venueSlug": "엠파이어-클럽",
     "urlSlug": "엠파이어",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
+      "formatted_address": "제주특별자치도, 대한민국",
+      "lat": 33.4887737,
+      "lon": 126.4987083,
       "city": "",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9601,12 +9948,17 @@
         "venue-5",
         "venue-6"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-109",
+        "venue-110"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "제주엠파이어클럽 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "제주 클럽 제주엠파이어클럽 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-50",
@@ -9621,13 +9973,13 @@
     "venueSlug": "쥴리아나-나이트",
     "urlSlug": "쥴리아나",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청담, 지하508, 학동로, 삼성동, 삼성1동, 강남구, 서울특별시, 06074, 대한민국",
+      "lat": 37.5190912,
+      "lon": 127.0516784,
+      "city": "서울특별시",
+      "district": "삼성1동",
+      "neighborhood": "삼성동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9793,12 +10145,21 @@
         "venue-55",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-10",
+        "venue-11",
+        "venue-59",
+        "venue-117",
+        "venue-118",
+        "venue-119"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "청담쥴리아나나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "청담 나이트 청담쥴리아나나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-51",
@@ -9813,13 +10174,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "상봉동, 중랑구, 서울특별시, 대한민국",
+      "lat": 37.6001644,
+      "lon": 127.0909024,
+      "city": "서울특별시",
+      "district": "중랑구",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -9982,7 +10343,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "상봉동한국관나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "상봉동 나이트 상봉동한국관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-52",
@@ -9997,13 +10360,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "수유, 도봉로, 번1동, 강북구, 서울특별시, 01074, 대한민국",
+      "lat": 37.6379932,
+      "lon": 127.0257229,
+      "city": "서울특별시",
+      "district": "번1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10176,7 +10539,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수유샴푸나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "수유 나이트 수유샴푸나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-53",
@@ -10191,13 +10556,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+      "lat": 37.6563651,
+      "lon": 127.0634799,
+      "city": "서울특별시",
+      "district": "상계2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10364,12 +10729,17 @@
         "venue-55",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-54",
+        "venue-55"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "노원호박나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "노원 나이트 노원호박나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-54",
@@ -10384,13 +10754,13 @@
     "venueSlug": "스타-나이트",
     "urlSlug": "스타",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+      "lat": 37.6563651,
+      "lon": 127.0634799,
+      "city": "서울특별시",
+      "district": "상계2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10562,12 +10932,17 @@
         "venue-55",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-53",
+        "venue-55"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "노원스타나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "노원 나이트 노원스타나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-55",
@@ -10582,13 +10957,13 @@
     "venueSlug": "잠보-나이트",
     "urlSlug": "잠보",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "노원, 상계로, 상계2동, 노원구, 서울특별시, 01695, 대한민국",
+      "lat": 37.6563651,
+      "lon": 127.0634799,
+      "city": "서울특별시",
+      "district": "상계2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10759,12 +11134,17 @@
         "venue-54",
         "venue-56"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-53",
+        "venue-54"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "노원잠보나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "노원 나이트 노원잠보나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-56",
@@ -10779,13 +11159,13 @@
     "venueSlug": "찬스-나이트",
     "urlSlug": "찬스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "길동, 양재대로, 길동, 강동구, 서울특별시, 05353, 대한민국",
+      "lat": 37.5383683,
+      "lon": 127.1402049,
+      "city": "서울특별시",
+      "district": "길동",
+      "neighborhood": "길동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -10958,7 +11338,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "길동찬스나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "길동 나이트 길동찬스나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-57",
@@ -10973,13 +11355,13 @@
     "venueSlug": "그랑프리-나이트",
     "urlSlug": "그랑프리",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "신림, 1614, 남부순환로, 신림동, 관악구, 서울특별시, 08754, 대한민국",
+      "lat": 37.4846585,
+      "lon": 126.9296105,
+      "city": "서울특별시",
+      "district": "신림동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11148,7 +11530,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "신림그랑프리나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "신림 나이트 신림그랑프리나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-58",
@@ -11163,13 +11547,13 @@
     "venueSlug": "국빈관-나이트",
     "urlSlug": "국빈관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "독산동, 독산4동, 금천구, 서울특별시, 08584, 대한민국",
+      "lat": 37.468399,
+      "lon": 126.8979571,
+      "city": "서울특별시",
+      "district": "독산4동",
+      "neighborhood": "독산동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11333,7 +11717,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "독산동국빈관나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "독산동 나이트 독산동국빈관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-59",
@@ -11348,13 +11734,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "강서, 도산대로55길, 청담동, 강남구, 서울특별시, 06014, 대한민국",
+      "lat": 37.5236673,
+      "lon": 127.0399903,
+      "city": "서울특별시",
+      "district": "청담동",
+      "neighborhood": "청담동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11518,12 +11904,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-117",
+        "venue-118",
+        "venue-119",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강서호박나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "강서 나이트 강서호박나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-60",
@@ -11538,13 +11933,13 @@
     "venueSlug": "보보스-나이트",
     "urlSlug": "보보스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "대구 강북 경찰서, 130, 동암로, 구암동, 북구, 대구광역시, 41424, 대한민국",
+      "lat": 35.9434079,
+      "lon": 128.5656383,
+      "city": "대구광역시",
+      "district": "북구",
+      "neighborhood": "구암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11715,12 +12110,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-61"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강북보보스나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "강북 나이트 강북보보스나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-61",
@@ -11735,13 +12134,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "대구 강북 경찰서, 130, 동암로, 구암동, 북구, 대구광역시, 41424, 대한민국",
+      "lat": 35.9434079,
+      "lon": 128.5656383,
+      "city": "대구광역시",
+      "district": "북구",
+      "neighborhood": "구암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -11911,12 +12310,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-60"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강북샴푸나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강북 나이트 강북샴푸나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-62",
@@ -11931,13 +12334,13 @@
     "venueSlug": "헐리우드-나이트",
     "urlSlug": "헐리우드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12108,12 +12511,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실헐리우드나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "잠실 나이트 잠실헐리우드나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-63",
@@ -12128,13 +12540,13 @@
     "venueSlug": "헤커-나이트",
     "urlSlug": "헤커",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12310,12 +12722,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실헤커나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "잠실 나이트 잠실헤커나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-64",
@@ -12330,13 +12751,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12499,12 +12920,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-65",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실한국관나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "잠실 나이트 잠실한국관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-65",
@@ -12519,13 +12949,13 @@
     "venueSlug": "코리아타운-나이트",
     "urlSlug": "코리아타운",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12695,12 +13125,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-66",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실코리아타운나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "잠실 나이트 잠실코리아타운나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-66",
@@ -12715,13 +13154,13 @@
     "venueSlug": "사하라-나이트",
     "urlSlug": "사하라",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -12892,12 +13331,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-67",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실사하라나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "잠실 나이트 잠실사하라나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-67",
@@ -12912,13 +13360,13 @@
     "venueSlug": "룩소-나이트",
     "urlSlug": "룩소",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13094,12 +13542,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-68"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실룩소나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "잠실 나이트 잠실룩소나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-68",
@@ -13114,13 +13571,13 @@
     "venueSlug": "가이아나-나이트",
     "urlSlug": "가이아나",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "잠실, 265, 올림픽로, 신천동, 잠실6동, 송파구, 서울특별시, 05510, 대한민국",
+      "lat": 37.5132169,
+      "lon": 127.1001365,
+      "city": "서울특별시",
+      "district": "잠실6동",
+      "neighborhood": "신천동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13291,12 +13748,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-62",
+        "venue-63",
+        "venue-64",
+        "venue-65",
+        "venue-66",
+        "venue-67"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "잠실가이아나나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "잠실 나이트 잠실가이아나나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-69",
@@ -13311,13 +13777,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "성남, 분당수서로, 판교, 분당구, 성남시, 경기도, 13590, 대한민국",
+      "lat": 37.3946908,
+      "lon": 127.1194122,
+      "city": "성남시",
+      "district": "판교",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13490,7 +13956,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "성남샴푸나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "성남 나이트 성남샴푸나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-70",
@@ -13505,13 +13973,13 @@
     "venueSlug": "샴푸-나이트",
     "urlSlug": "샴푸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "일산, 경의로, 대화동, 일산3동, 일산서구, 고양시, 경기도, 10373, 대한민국",
+      "lat": 37.6822186,
+      "lon": 126.769498,
+      "city": "고양시",
+      "district": "일산3동",
+      "neighborhood": "대화동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13684,7 +14152,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "일산샴푸나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "일산 나이트 일산샴푸나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-71",
@@ -13699,13 +14169,13 @@
     "venueSlug": "빅토리아-나이트",
     "urlSlug": "빅토리아",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "고양(백석)종합터미널, 강송로, 백석동, 백석1동, 일산동구, 고양시, 10450, 대한민국",
+      "lat": 37.643033,
+      "lon": 126.7905105,
+      "city": "고양시",
+      "district": "백석1동",
+      "neighborhood": "백석동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -13870,12 +14340,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-72"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "고양빅토리아나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "고양 나이트 고양빅토리아나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-72",
@@ -13890,13 +14364,13 @@
     "venueSlug": "캐피탈-나이트",
     "urlSlug": "캐피탈",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "고양(백석)종합터미널, 강송로, 백석동, 백석1동, 일산동구, 고양시, 10450, 대한민국",
+      "lat": 37.643033,
+      "lon": 126.7905105,
+      "city": "고양시",
+      "district": "백석1동",
+      "neighborhood": "백석동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14060,12 +14534,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-71"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "고양캐피탈나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "고양 나이트 고양캐피탈나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-73",
@@ -14080,13 +14558,13 @@
     "venueSlug": "아라비안-나이트",
     "urlSlug": "아라비안",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "인천광역시, 대한민국",
+      "lat": 37.456,
+      "lon": 126.7052,
+      "city": "인천광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14252,12 +14730,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-74"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천아라비안나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "인천 나이트 인천아라비안나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-74",
@@ -14272,13 +14754,13 @@
     "venueSlug": "백악관-나이트",
     "urlSlug": "백악관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "인천광역시, 대한민국",
+      "lat": 37.456,
+      "lon": 126.7052,
+      "city": "인천광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14443,12 +14925,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-73"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천백악관나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "인천 나이트 인천백악관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-75",
@@ -14463,13 +14949,13 @@
     "venueSlug": "찬스돔-나이트",
     "urlSlug": "찬스돔",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14638,12 +15124,20 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-76",
+        "venue-77",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수원찬스돔나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "수원 나이트 수원찬스돔나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-76",
@@ -14658,13 +15152,13 @@
     "venueSlug": "코리아-나이트",
     "urlSlug": "코리아",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -14834,12 +15328,20 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-77",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수원코리아나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "수원 나이트 수원코리아나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-77",
@@ -14854,13 +15356,13 @@
     "venueSlug": "서울관-나이트",
     "urlSlug": "서울관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15030,12 +15532,20 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-76",
+        "venue-78",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수원서울관나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "수원 나이트 수원서울관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-78",
@@ -15050,13 +15560,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15218,12 +15728,20 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-76",
+        "venue-77",
+        "venue-127"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수원한국관나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "수원 나이트 수원한국관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-79",
@@ -15238,13 +15756,13 @@
     "venueSlug": "스타돔-나이트",
     "urlSlug": "스타돔",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "천안, 239, 대흥로, 대흥동, 동남구, 천안시, 충청남도, 31122, 대한민국",
+      "lat": 36.8102804,
+      "lon": 127.14684,
+      "city": "천안시",
+      "district": "동남구",
+      "neighborhood": "대흥동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15418,7 +15936,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "천안스타돔나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "천안 나이트 천안스타돔나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-80",
@@ -15433,13 +15953,13 @@
     "venueSlug": "바밤바-나이트",
     "urlSlug": "바밤바",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15609,12 +16129,20 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-35",
+        "venue-36",
+        "venue-81"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대구바밤바나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "대구 나이트 대구바밤바나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-81",
@@ -15629,13 +16157,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대구광역시, 대한민국",
+      "lat": 35.8713,
+      "lon": 128.6018,
+      "city": "대구광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15798,12 +16326,20 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-33",
+        "venue-34",
+        "venue-35",
+        "venue-36",
+        "venue-80"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대구한국관나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "대구 나이트 대구한국관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-82",
@@ -15818,13 +16354,13 @@
     "venueSlug": "아시아드-나이트",
     "urlSlug": "아시아드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "부산광역시, 대한민국",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "city": "부산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -15989,12 +16525,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-83",
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-28"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산아시아드나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "부산 나이트 부산아시아드나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-83",
@@ -16009,13 +16554,13 @@
     "venueSlug": "물-나이트",
     "urlSlug": "물",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "부산광역시, 대한민국",
+      "lat": 35.1799528,
+      "lon": 129.0752365,
+      "city": "부산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "물",
@@ -16186,12 +16731,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-82",
+        "venue-24",
+        "venue-25",
+        "venue-26",
+        "venue-27",
+        "venue-28"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산물나이트 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "부산 나이트 부산물나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-84",
@@ -16206,13 +16760,13 @@
     "venueSlug": "h2o-나이트",
     "urlSlug": "h2o",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "H2O",
@@ -16388,12 +16942,21 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남H2O나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남 나이트 강남H2O나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-85",
@@ -16408,13 +16971,13 @@
     "venueSlug": "챔피언-나이트",
     "urlSlug": "챔피언",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "울산광역시, 대한민국",
+      "lat": 35.5391697,
+      "lon": 129.3119136,
+      "city": "울산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -16580,12 +17143,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-86"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "울산챔피언나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "울산 나이트 울산챔피언나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-86",
@@ -16600,13 +17167,13 @@
     "venueSlug": "뉴월드-나이트",
     "urlSlug": "뉴월드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "울산광역시, 대한민국",
+      "lat": 35.5391697,
+      "lon": 129.3119136,
+      "city": "울산광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -16772,12 +17339,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-85"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "울산뉴월드나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "울산 나이트 울산뉴월드나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-87",
@@ -16792,13 +17363,13 @@
     "venueSlug": "관광열차-나이트",
     "urlSlug": "관광열차",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "평택, 평택로39번길, 평택동, 평택시, 경기도, 17917, 대한민국",
+      "lat": 36.9908233,
+      "lon": 127.0853183,
+      "city": "평택시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "평택동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -16965,12 +17536,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-88",
+        "venue-89"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "평택관광열차나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "평택 나이트 평택관광열차나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-88",
@@ -16985,13 +17561,13 @@
     "venueSlug": "금오-나이트",
     "urlSlug": "금오",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "평택, 평택로39번길, 평택동, 평택시, 경기도, 17917, 대한민국",
+      "lat": 36.9908233,
+      "lon": 127.0853183,
+      "city": "평택시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "평택동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17157,12 +17733,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-87",
+        "venue-89"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "평택금오나이트 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "평택 나이트 평택금오나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-89",
@@ -17177,13 +17758,13 @@
     "venueSlug": "뉴욕뉴욕-나이트",
     "urlSlug": "뉴욕뉴욕",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "평택, 평택로39번길, 평택동, 평택시, 경기도, 17917, 대한민국",
+      "lat": 36.9908233,
+      "lon": 127.0853183,
+      "city": "평택시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "평택동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17348,12 +17929,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-87",
+        "venue-88"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "평택뉴욕뉴욕나이트 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "평택 나이트 평택뉴욕뉴욕나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-90",
@@ -17368,13 +17954,13 @@
     "venueSlug": "맘모스-나이트",
     "urlSlug": "맘모스",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "부천, 자유로, 심곡본동, 소사구, 부천시, 14716, 대한민국",
+      "lat": 37.4841098,
+      "lon": 126.7827347,
+      "city": "부천시",
+      "district": "소사구",
+      "neighborhood": "심곡본동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17543,7 +18129,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부천맘모스나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "부천 나이트 부천맘모스나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-91",
@@ -17558,13 +18146,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "의정부, 525, 평화로, 의정부동, 의정부1동, 의정부시, 경기도, 11696, 대한민국",
+      "lat": 37.7377035,
+      "lon": 127.0460501,
+      "city": "의정부시",
+      "district": "의정부1동",
+      "neighborhood": "의정부동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -17726,7 +18314,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "의정부한국관나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "의정부 나이트 의정부한국관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-92",
@@ -17741,13 +18331,13 @@
     "venueSlug": "kk-나이트",
     "urlSlug": "kk",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "KK",
@@ -17917,12 +18507,19 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-38",
+        "venue-39",
+        "venue-93"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대전KK나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "대전 나이트 대전KK나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-93",
@@ -17937,13 +18534,13 @@
     "venueSlug": "세븐-나이트",
     "urlSlug": "세븐",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "대전광역시, 대한민국",
+      "lat": 36.3497007,
+      "lon": 127.3849016,
+      "city": "대전광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18111,12 +18708,19 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-37",
+        "venue-38",
+        "venue-39",
+        "venue-92"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "대전세븐나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "대전 나이트 대전세븐나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-94",
@@ -18131,13 +18735,13 @@
     "venueSlug": "상무-나이트",
     "urlSlug": "상무",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "광주광역시, 대한민국",
+      "lat": 35.1594647,
+      "lon": 126.8515034,
+      "city": "광주광역시",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18303,12 +18907,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-40",
+        "venue-41"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "광주상무나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "광주 나이트 광주상무나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-95",
@@ -18323,13 +18932,13 @@
     "venueSlug": "룰루랄라-나이트",
     "urlSlug": "룰루랄라",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "창원, 남해고속도로제1지선, 동정동, 의창구, 창원시, 경상남도, 51368, 대한민국",
+      "lat": 35.2581253,
+      "lon": 128.6070336,
+      "city": "창원시",
+      "district": "의창구",
+      "neighborhood": "동정동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18494,12 +19103,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-96",
+        "venue-97"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "창원룰루랄라나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "창원 나이트 창원룰루랄라나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-96",
@@ -18514,13 +19128,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "창원, 남해고속도로제1지선, 동정동, 의창구, 창원시, 경상남도, 51368, 대한민국",
+      "lat": 35.2581253,
+      "lon": 128.6070336,
+      "city": "창원시",
+      "district": "의창구",
+      "neighborhood": "동정동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18686,12 +19300,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-95",
+        "venue-97"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "창원호박나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "창원 나이트 창원호박나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-97",
@@ -18706,13 +19325,13 @@
     "venueSlug": "백악관-나이트",
     "urlSlug": "백악관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "창원, 남해고속도로제1지선, 동정동, 의창구, 창원시, 경상남도, 51368, 대한민국",
+      "lat": 35.2581253,
+      "lon": 128.6070336,
+      "city": "창원시",
+      "district": "의창구",
+      "neighborhood": "동정동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -18878,12 +19497,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-95",
+        "venue-96"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "창원백악관나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "창원 나이트 창원백악관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-98",
@@ -18898,13 +19522,13 @@
     "venueSlug": "한국관-나이트",
     "urlSlug": "한국관",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "포항, 1, 포항역로, 흥해읍, 북구, 포항시, 경상북도, 37561, 대한민국",
+      "lat": 36.0712333,
+      "lon": 129.3426784,
+      "city": "포항시",
+      "district": "북구",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19066,7 +19690,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "포항한국관나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "포항 나이트 포항한국관나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-99",
@@ -19081,13 +19707,13 @@
     "venueSlug": "런투유-나이트",
     "urlSlug": "런투유",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "경주, 내외로, 건천읍, 경주시, 경상북도, 38183, 대한민국",
+      "lat": 35.7982689,
+      "lon": 129.1389632,
+      "city": "경주시",
+      "district": "건천읍",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19255,7 +19881,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "경주런투유나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "경주 나이트 경주런투유나이트 분위기·음악·체크리스트·FAQ를 한 페이지에 정리. 2026-02-20 기준 업데이트."
   },
   {
     "id": "venue-100",
@@ -19270,13 +19898,13 @@
     "venueSlug": "월드-나이트",
     "urlSlug": "월드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "김해국제공항, 108, 공항진입로, 대저2동, 강서구, 부산광역시, 46720, 대한민국",
+      "lat": 35.1800774,
+      "lon": 128.9364014,
+      "city": "부산광역시",
+      "district": "강서구",
+      "neighborhood": "대저2동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19442,12 +20070,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-101"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "김해월드나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "김해월드나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-101",
@@ -19462,13 +20094,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "김해국제공항, 108, 공항진입로, 대저2동, 강서구, 부산광역시, 46720, 대한민국",
+      "lat": 35.1800774,
+      "lon": 128.9364014,
+      "city": "부산광역시",
+      "district": "강서구",
+      "neighborhood": "대저2동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19634,12 +20266,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-100"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "김해호박나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "김해호박나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-102",
@@ -19654,13 +20290,13 @@
     "venueSlug": "뉴월드-나이트",
     "urlSlug": "뉴월드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "춘천, 평화로, 근화동, 춘천시, 강원특별자치도, 24238, 대한민국",
+      "lat": 37.8845604,
+      "lon": 127.716664,
+      "city": "춘천시",
+      "district": "근화동",
+      "neighborhood": "근화동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -19828,7 +20464,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "춘천뉴월드나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "춘천뉴월드나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-103",
@@ -19843,13 +20481,13 @@
     "venueSlug": "카리스마-나이트",
     "urlSlug": "카리스마",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강릉, 176, 용지로, 교2동, 강릉시, 강원특별자치도, 25491, 대한민국",
+      "lat": 37.76452,
+      "lon": 128.8993979,
+      "city": "강릉시",
+      "district": "교2동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20015,12 +20653,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-43"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강릉카리스마나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "강릉카리스마나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-104",
@@ -20035,13 +20677,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "청주, 청주역로358번길, 서촌동, 흥덕구, 청주시, 충청북도, 28113, 대한민국",
+      "lat": 36.6471132,
+      "lon": 127.3923613,
+      "city": "청주시",
+      "district": "흥덕구",
+      "neighborhood": "서촌동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20210,7 +20852,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "청주호박나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "청주호박나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-105",
@@ -20225,13 +20869,13 @@
     "venueSlug": "별밤-나이트",
     "urlSlug": "별밤",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "전주, 680, 동부대로, 우아동3가, 덕진구, 전주시, 전북특별자치도, 54908, 대한민국",
+      "lat": 35.8500537,
+      "lon": 127.1623649,
+      "city": "전주시",
+      "district": "덕진구",
+      "neighborhood": "우아동3가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20402,12 +21046,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-42"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "전주별밤나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "전주별밤나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-106",
@@ -20422,13 +21070,13 @@
     "venueSlug": "호박-나이트",
     "urlSlug": "호박",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "순천, 135, 팔마로, 덕암동, 옥천동, 순천시, 전라남도, 57964, 대한민국",
+      "lat": 34.9458107,
+      "lon": 127.5040597,
+      "city": "순천시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "덕암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20594,12 +21242,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-107"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "순천호박나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "순천호박나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-107",
@@ -20614,13 +21266,13 @@
     "venueSlug": "별밤-나이트",
     "urlSlug": "별밤",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
+      "formatted_address": "순천, 135, 팔마로, 덕암동, 옥천동, 순천시, 전라남도, 57964, 대한민국",
+      "lat": 34.9458107,
+      "lon": 127.5040597,
+      "city": "순천시",
       "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "neighborhood": "덕암동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20791,12 +21443,16 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-106"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "순천별밤나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "순천별밤나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-108",
@@ -20811,13 +21467,13 @@
     "venueSlug": "신비-나이트",
     "urlSlug": "신비",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "목포, 98, 영산로, 명륜동, 목원동, 목포시, 전라남도, 58773, 대한민국",
+      "lat": 34.7921339,
+      "lon": 126.3876448,
+      "city": "목포시",
+      "district": "목원동",
+      "neighborhood": "명륜동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -20986,7 +21642,9 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "목포신비나이트 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "목포신비나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-109",
@@ -21001,13 +21659,13 @@
     "venueSlug": "로얄-나이트",
     "urlSlug": "로얄",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
+      "formatted_address": "제주특별자치도, 대한민국",
+      "lat": 33.4887737,
+      "lon": 126.4987083,
       "city": "",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21174,12 +21832,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-49",
+        "venue-110"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "제주로얄나이트 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "제주로얄나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-110",
@@ -21194,13 +21857,13 @@
     "venueSlug": "제주-나이트",
     "urlSlug": "제주",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
+      "formatted_address": "제주특별자치도, 대한민국",
+      "lat": 33.4887737,
+      "lon": 126.4987083,
       "city": "",
       "district": "",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "나이트",
@@ -21373,12 +22036,17 @@
         "venue-54",
         "venue-55"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-49",
+        "venue-109"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "제주나이트 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "제주나이트 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-111",
@@ -21393,13 +22061,13 @@
     "venueSlug": "하입-라운지",
     "urlSlug": "하입",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21569,12 +22237,21 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남하입라운지 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남하입라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-112",
@@ -21589,13 +22266,13 @@
     "venueSlug": "컬러-라운지",
     "urlSlug": "컬러",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21766,12 +22443,21 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남컬러라운지 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "강남컬러라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-113",
@@ -21786,13 +22472,13 @@
     "venueSlug": "인트로-라운지",
     "urlSlug": "인트로",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -21963,12 +22649,21 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남인트로라운지 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남인트로라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-114",
@@ -21983,13 +22678,13 @@
     "venueSlug": "아르쥬-라운지",
     "urlSlug": "아르쥬",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22159,12 +22854,21 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남아르쥬라운지 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "강남아르쥬라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-115",
@@ -22179,13 +22883,13 @@
     "venueSlug": "앨빈에비뉴-라운지",
     "urlSlug": "앨빈에비뉴",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22356,12 +23060,21 @@
         "venue-116",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남앨빈에비뉴라운지 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "강남앨빈에비뉴라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-116",
@@ -22376,13 +23089,13 @@
     "venueSlug": "달리는토끼-라운지",
     "urlSlug": "달리는토끼",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
+      "formatted_address": "강남, 강남대로, 역삼1동, 강남구, 서울특별시, 06181, 대한민국",
+      "lat": 37.4964624,
+      "lon": 127.0282667,
+      "city": "서울특별시",
+      "district": "역삼1동",
       "neighborhood": "",
-      "precision": "none"
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22553,12 +23266,21 @@
         "venue-115",
         "venue-117"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-1",
+        "venue-2",
+        "venue-3",
+        "venue-4",
+        "venue-5",
+        "venue-6"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "강남달리는토끼라운지 걱정 없이 출발하는 준비법 입문자 길잡이",
+    "metaDescription": "강남달리는토끼라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-117",
@@ -22573,13 +23295,13 @@
     "venueSlug": "코드-라운지",
     "urlSlug": "코드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "압구정, 논현로, 가로수길, 신사동, 강남구, 서울특별시, 06022, 대한민국",
+      "lat": 37.5261847,
+      "lon": 127.0284989,
+      "city": "서울특별시",
+      "district": "신사동",
+      "neighborhood": "가로수길",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22751,12 +23473,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-118",
+        "venue-119",
+        "venue-59",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "압구정코드라운지 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "압구정코드라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-118",
@@ -22771,13 +23502,13 @@
     "venueSlug": "디엠-라운지",
     "urlSlug": "디엠",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "압구정, 논현로, 가로수길, 신사동, 강남구, 서울특별시, 06022, 대한민국",
+      "lat": 37.5261847,
+      "lon": 127.0284989,
+      "city": "서울특별시",
+      "district": "신사동",
+      "neighborhood": "가로수길",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -22943,12 +23674,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-117",
+        "venue-119",
+        "venue-59",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "압구정디엠라운지 궁금한 점 8개 한번에 시원하게 해결 Q&A",
+    "metaDescription": "압구정디엠라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-119",
@@ -22963,13 +23703,13 @@
     "venueSlug": "이글-라운지",
     "urlSlug": "이글",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "압구정, 논현로, 가로수길, 신사동, 강남구, 서울특별시, 06022, 대한민국",
+      "lat": 37.5261847,
+      "lon": 127.0284989,
+      "city": "서울특별시",
+      "district": "신사동",
+      "neighborhood": "가로수길",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23141,12 +23881,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-117",
+        "venue-118",
+        "venue-59",
+        "venue-10",
+        "venue-11",
+        "venue-50"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "압구정이글라운지 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "압구정이글라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-120",
@@ -23161,13 +23910,13 @@
     "venueSlug": "도조-라운지",
     "urlSlug": "도조",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23338,12 +24087,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-121"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원도조라운지 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "이태원도조라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-121",
@@ -23358,13 +24116,13 @@
     "venueSlug": "아울-라운지",
     "urlSlug": "아울",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23540,12 +24298,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원아울라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "이태원아울라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-122",
@@ -23560,13 +24327,13 @@
     "venueSlug": "릿-라운지",
     "urlSlug": "릿",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "릿",
@@ -23736,12 +24503,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원릿라운지 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "이태원릿라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-123",
@@ -23756,13 +24532,13 @@
     "venueSlug": "글로브-라운지",
     "urlSlug": "글로브",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -23938,12 +24714,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원글로브라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "이태원글로브라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-124",
@@ -23958,13 +24743,13 @@
     "venueSlug": "스테어웨이-라운지",
     "urlSlug": "스테어웨이",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24135,12 +24920,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원스테어웨이라운지 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "이태원스테어웨이라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-125",
@@ -24155,13 +24949,13 @@
     "venueSlug": "글램-라운지",
     "urlSlug": "글램",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24332,12 +25126,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원글램라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "이태원글램라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-126",
@@ -24352,13 +25155,13 @@
     "venueSlug": "피스틸-라운지",
     "urlSlug": "피스틸",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "이태원, 이태원1동, 용산구, 서울특별시, 04391, 대한민국",
+      "lat": 37.5351303,
+      "lon": 126.9942302,
+      "city": "서울특별시",
+      "district": "이태원1동",
+      "neighborhood": "이태원",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24528,12 +25331,21 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-12",
+        "venue-13",
+        "venue-14",
+        "venue-15",
+        "venue-16",
+        "venue-120"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "이태원피스틸라운지 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "이태원피스틸라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-127",
@@ -24548,13 +25360,13 @@
     "venueSlug": "피치-라운지",
     "urlSlug": "피치",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "수원, 924, 덕영대로, 매산로1가, 팔달구, 수원시, 16622, 대한민국",
+      "lat": 37.2658097,
+      "lon": 126.9999102,
+      "city": "수원시",
+      "district": "팔달구",
+      "neighborhood": "매산로1가",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24723,12 +25535,20 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-48",
+        "venue-75",
+        "venue-76",
+        "venue-77",
+        "venue-78"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "수원피치라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "수원피치라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-128",
@@ -24743,13 +25563,13 @@
     "venueSlug": "플레이그라운드-라운지",
     "urlSlug": "플레이그라운드",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "호텔 스카이파크 인천송도, 233, 컨벤시아대로, 송도동, 송도1동, 연수구, 인천광역시, 22009, 대한민국",
+      "lat": 37.3845521,
+      "lon": 126.6386833,
+      "city": "인천광역시",
+      "district": "송도1동",
+      "neighborhood": "송도동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -24915,12 +25735,16 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-129"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천송도플레이그라운드라운지 첫 이용 불안 줄여주는 입문자 전용 길잡이",
+    "metaDescription": "인천송도플레이그라운드라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-129",
@@ -24935,13 +25759,13 @@
     "venueSlug": "터치스카이-라운지",
     "urlSlug": "터치스카이",
     "geo": {
-      "formatted_address": "",
-      "lat": 0,
-      "lon": 0,
-      "city": "",
-      "district": "",
-      "neighborhood": "",
-      "precision": "none"
+      "formatted_address": "호텔 스카이파크 인천송도, 233, 컨벤시아대로, 송도동, 송도1동, 연수구, 인천광역시, 22009, 대한민국",
+      "lat": 37.3845521,
+      "lon": 126.6386833,
+      "city": "인천광역시",
+      "district": "송도1동",
+      "neighborhood": "송도동",
+      "precision": "nominatim"
     },
     "keywords": [
       "후기",
@@ -25107,12 +25931,16 @@
         "venue-115",
         "venue-116"
       ],
-      "nearby": [],
+      "nearby": [
+        "venue-128"
+      ],
       "guides": [
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "인천송도터치스카이라운지 초행 불안 해소하는 입문 길잡이 미리 읽기",
+    "metaDescription": "인천송도터치스카이라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   },
   {
     "id": "venue-130",
@@ -25311,6 +26139,8 @@
         "first-visit",
         "dress-code"
       ]
-    }
+    },
+    "pageTitle": "부산해운대클럽디오아시스라운지 처음이라 걱정될 때 읽으면 좋은 입문 길잡이",
+    "metaDescription": "부산해운대클럽디오아시스라운지 방문 전 확인할 항목 7개와 자주 묻는 질문 8개 정리. 2026-02-20 기준."
   }
 ]
