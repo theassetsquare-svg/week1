@@ -469,16 +469,11 @@ function generateHeadlinePack(v, venueIndex) {
     const variantIdx = (h + slotIdx * 7 + venueIndex * 3) % slot.variants.length;
     let title = slot.variants[variantIdx](n, v);
 
-    // Length adjustment
+    // Length adjustment (pre-fix)
     if (title.length > 55) {
       const words = title.split(' ');
       while (words.join(' ').length > 55 && words.length > 3) words.pop();
       title = words.join(' ');
-    }
-    if (title.length < 28) {
-      const pads = ['살펴보기','확인하기','읽어보기','알아보기'];
-      title = title + ' ' + pads[(h + slotIdx) % pads.length];
-      if (title.length > 55) title = title.slice(0, 55);
     }
 
     variants.push({
