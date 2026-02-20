@@ -489,6 +489,34 @@ function generateHeadlinePack(v, venueIndex) {
   // Post-process: fix word frequency violations
   const wfResult = fixWordFrequency(variants, n);
 
+  // Post-process: fix short titles (< 28 chars) after word-freq fix may have shortened some
+  const lengthExtenders = [
+    '자세히','꼼꼼히','한눈에','바로','미리','사전에','먼저',
+    '지금','깊이','면밀히','차근히','세밀히','낱낱이','꼼꼼하게'];
+  for (let j = 0; j < variants.length; j++) {
+    let attempts = 0;
+    while (variants[j].title.length < 28 && attempts < 3) {
+      const ext = lengthExtenders[(h + j + attempts) % lengthExtenders.length];
+      const parts = variants[j].title.split(' ');
+      if (parts.length >= 3) {
+        // Insert adverb before the last word
+        const last = parts.pop();
+        parts.push(ext);
+        parts.push(last);
+        variants[j].title = parts.join(' ');
+      } else {
+        variants[j].title += ' ' + ext;
+      }
+      attempts++;
+    }
+    // Trim if too long
+    if (variants[j].title.length > 55) {
+      const words = variants[j].title.split(' ');
+      while (words.join(' ').length > 55 && words.length > 3) words.pop();
+      variants[j].title = words.join(' ');
+    }
+  }
+
   // Meta description
   const descIdx = (h + venueIndex) % descTemplates.length;
   const metaDescription = descTemplates[descIdx](n, v, t);
