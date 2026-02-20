@@ -16,57 +16,98 @@ const mapUrl = v.map_url || `https://map.kakao.com/?q=${encodeURIComponent(v.nam
 ---
 
 <a href={url} target="_blank" rel="noopener noreferrer" class="venue-card" data-region={v.regionSlug} data-name={v.name_display + ' ' + v.region}>
-  <div class="venue-card-thumb">
-    <img src={v.images[0].src} alt={imgAlt} width="400" height="400" loading="lazy" />
-  </div>
-  <div class="venue-card-body">
-    <div class="venue-card-meta">
-      <span class={`venue-card-type type-${v.type}`}>{v.typeLabel}</span>
-      <span class="venue-card-region">{v.region}</span>
+  <div class="vc-inner">
+    <div class="vc-thumb">
+      <img src={v.images[0].src} alt={imgAlt} width="400" height="400" loading="lazy" />
     </div>
-    <h3 class="venue-card-name">{v.name_display}</h3>
-    <div class="venue-card-desc">
-      <p class="venue-card-hook">{hook}</p>
-      {value && <p class="venue-card-value">{value}</p>}
-    </div>
-    {tags.length > 0 && (
-      <div class="venue-card-tags">
-        {tags.map(tag => <span class="venue-card-tag">{tag}</span>)}
+    <div class="vc-body">
+      <div class="vc-meta">
+        <span class={`vc-type type-${v.type}`}>{v.typeLabel}</span>
+        <span class="vc-region">{v.region}</span>
       </div>
-    )}
-    <div class="venue-card-actions">
-      <span class="venue-card-cta">자세히 보기 →</span>
-      <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-card-map" onclick="event.stopPropagation();">지도 보기</a>
+      <h3 class="vc-name">{v.name_display}</h3>
+      <p class="vc-hook">{hook}</p>
+      {value && <p class="vc-value">{value}</p>}
+      {tags.length > 0 && (
+        <div class="vc-tags">
+          {tags.map(tag => <span class="vc-tag">{tag}</span>)}
+        </div>
+      )}
     </div>
   </div>
 </a>
 
 <style>
-  .venue-card-name {
-    font-size: 1rem;
+  /* ── Card inner: horizontal layout ── */
+  .vc-inner {
+    display: flex;
+    gap: 0.875rem;
+    padding: 0.875rem;
+    height: 100%;
+  }
+
+  /* ── Thumbnail ── */
+  .vc-thumb {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-accent);
+  }
+  .vc-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── Body ── */
+  .vc-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Meta: type + region ── */
+  .vc-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+  .vc-type {
+    display: inline-block;
+    padding: 0.1rem 0.45rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .vc-region {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  /* ── Name ── */
+  .vc-name {
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--text-primary);
-    margin: 0.15rem 0 0.5rem;
-    line-height: 1.4;
+    margin: 0 0 0.25rem;
+    line-height: 1.35;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .venue-card-desc {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .venue-card-hook {
-    font-weight: 600;
-    font-size: 0.85rem;
+  /* ── Hook (main description) ── */
+  .vc-hook {
+    font-size: 0.82rem;
+    font-weight: 500;
     line-height: 1.5;
-    color: var(--text-primary);
-    margin: 0;
+    color: var(--text-secondary);
+    margin: 0 0 0.15rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -74,9 +115,10 @@ const mapUrl = v.map_url || `https://map.kakao.com/?q=${encodeURIComponent(v.nam
     text-overflow: ellipsis;
   }
 
-  .venue-card-value {
-    font-size: 0.8rem;
-    line-height: 1.45;
+  /* ── Value (sub description) ── */
+  .vc-value {
+    font-size: 0.78rem;
+    line-height: 1.4;
     color: var(--text-muted);
     margin: 0;
     display: -webkit-box;
@@ -86,47 +128,39 @@ const mapUrl = v.map_url || `https://map.kakao.com/?q=${encodeURIComponent(v.nam
     text-overflow: ellipsis;
   }
 
-  .venue-card-tags {
+  /* ── Tags ── */
+  .vc-tags {
     display: flex;
     flex-wrap: nowrap;
-    gap: 0.3rem;
-    margin-bottom: 0.6rem;
+    gap: 0.25rem;
+    margin-top: auto;
+    padding-top: 0.35rem;
     overflow: hidden;
   }
-
-  .venue-card-tag {
+  .vc-tag {
     display: inline-block;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 500;
-    padding: 0.18rem 0.5rem;
-    border-radius: 10px;
-    background: var(--accent-light, rgba(255,255,255,0.08));
-    color: var(--text-muted, rgba(255,255,255,0.6));
+    padding: 0.12rem 0.4rem;
+    border-radius: 8px;
+    background: var(--accent-light, rgba(44,62,122,0.08));
+    color: var(--text-muted);
     white-space: nowrap;
     line-height: 1.3;
     flex-shrink: 0;
   }
 
-  .venue-card-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: auto;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--border-subtle, rgba(255,255,255,0.06));
-  }
-
-  .venue-card-map {
-    font-size: 0.75rem;
-    color: var(--accent, #7c6fe0);
-    text-decoration: none;
-    white-space: nowrap;
-    opacity: 0.8;
-    transition: opacity 0.15s;
-  }
-  .venue-card-map:hover {
-    opacity: 1;
-    text-decoration: underline;
+  /* ── Responsive: larger cards on wide screens ── */
+  @media (min-width: 600px) {
+    .vc-thumb {
+      width: 110px;
+      height: 110px;
+    }
+    .vc-name {
+      font-size: 1rem;
+    }
+    .vc-hook {
+      font-size: 0.85rem;
+    }
   }
 </style>
