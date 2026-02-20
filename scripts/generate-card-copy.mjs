@@ -191,8 +191,10 @@ const TAG_POOL = {
 function generateImageAlt(v) {
   const district = v.geo?.district || '';
   const neighborhood = v.geo?.neighborhood || '';
-  const locDetail = neighborhood || district;
-  return `${v.name_display} ${locDetail ? locDetail + ' ' : ''}${v.region} ${v.typeLabel} 썸네일`;
+  let locDetail = neighborhood || district;
+  // Avoid duplicating region name in alt
+  if (locDetail === v.region || locDetail === v.regionSlug) locDetail = '';
+  return `${v.name_display} ${locDetail ? locDetail + ' ' : ''}${v.region} ${v.typeLabel} 썸네일`.replace(/\s{2,}/g, ' ');
 }
 
 // ─── Generate map URL ───
