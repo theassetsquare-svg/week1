@@ -99,7 +99,11 @@ if (v.faq && v.faq.length > 0) {
         {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
-      <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
+      {v.regionSlug === 'suyu' && (v.urlSlug === '샴푸' || v.venueSlug === '샴푸') ? (
+        <img src="/venues/suyu/%EC%83%B4%ED%91%B8-%EB%82%98%EC%9D%B4%ED%8A%B8/thumbnail-hwangjungmin.svg" alt="수유샴푸 황정민" class="venue-hero-img" width="800" height="400" loading="eager" style="width:100%;height:auto;border-radius:12px;margin-bottom:16px;" />
+      ) : (
+        <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
+      )}
       <span class="venue-hero__cat-badge">나이트</span>
       <h1 class="venue-hero__title">{h1Title}</h1>
     </div>
