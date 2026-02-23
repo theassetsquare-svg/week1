@@ -30,13 +30,20 @@ const currentPath = Astro.url.pathname;
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:locale" content="ko_KR" />
   {ogImage && <meta property="og:image" content={ogImage} />}
+  {ogImage && <meta property="og:image:width" content="800" />}
+  {ogImage && <meta property="og:image:height" content="400" />}
+  {ogImage && <meta property="og:image:type" content="image/svg+xml" />}
+  {ogImage && <meta property="og:image:alt" content={title} />}
+  <meta property="og:site_name" content="나이트코리아" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   {ogImage && <meta name="twitter:image" content={ogImage} />}
   {keywords && <meta name="keywords" content={keywords} />}
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="naver-site-verification" content="" />
+  <meta name="naverbot" content="index, follow" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
