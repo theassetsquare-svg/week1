@@ -141,7 +141,7 @@ if (v.faq && v.faq.length > 0) {
       <div class="quick-summary__title">{si.summaryTitle || `${v.name_display} 미리 보기`}</div>
       <ul class="quick-summary__list">
         <li>{v.region} 프리미엄 라운지 · {v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 위치`}</li>
-        <li>공간감 — {v.bodySections.atmosphere.split('.')[0]}.</li>
+        <li>인테리어 분위기 — {v.bodySections.atmosphere.split('.')[0]}.</li>
         <li>선곡 — {v.bodySections.music.split('.')[0]}.</li>
         {v.checklist[0] && <li>예약 전 참고: {v.checklist[0]}</li>}
         {v.timeline[0] && <li>베스트 타임: {v.timeline[0].time} — {v.timeline[0].label}</li>}
