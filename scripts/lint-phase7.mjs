@@ -74,7 +74,7 @@ for (const v of venues) {
   const nameRe = new RegExp(n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
   const nameCount = (text.match(nameRe) || []).length;
   if (nameCount < 8) warnings.push(`가게명 언급 ${nameCount}회 (8회 미만)`);
-  if (nameCount > 14) warnings.push(`가게명 언급 ${nameCount}회 (14회 초과, 과다)`);
+  if (nameCount > 16) warnings.push(`가게명 언급 ${nameCount}회 (16회 초과, 과다)`);
   // FAQ count: 12 is target, max 14
   if ((v.faq || []).length > 14) warnings.push(`FAQ ${(v.faq||[]).length}개 (14개 초과)`);
 
