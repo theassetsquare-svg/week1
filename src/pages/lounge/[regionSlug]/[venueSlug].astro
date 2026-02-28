@@ -30,7 +30,10 @@ const h1Title = v.h1Title || `${v.name_display} 방문 가이드`;
 const si = v.sectionIntros || {};
 const conclusionText = v.conclusionText || `${v.name_display}은(는) 그런 밤을 선사합니다.`;
 
-const mapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
+const naverMapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
+const mapUrl = (v.geo?.lat && v.geo?.lon)
+  ? `https://www.google.com/maps/search/?api=1&query=${v.geo.lat},${v.geo.lon}`
+  : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.name_display + ' ' + v.region)}`;
 
 const tocItems = [
   { id: 'summary', label: '미리 보기' },
