@@ -284,6 +284,30 @@ if (v.faq && v.faq.length > 0) {
       </table>
     </section>
 
+    {v.quickPlan && (
+      <section class="quick-plan venue-section" id="quick-plan">
+        <h2>30초 방문 결정표</h2>
+        <table class="qplan-table">
+          <thead><tr><th>상황</th><th>추천</th></tr></thead>
+          <tbody>
+            {v.quickPlan.table.map((row: {condition: string; tip: string}) => (
+              <tr><td>{row.condition}</td><td>{row.tip}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <h3 class="qplan-scenarios__title">방문 시나리오 3가지</h3>
+        <div class="qplan-scenarios">
+          {v.quickPlan.scenarios.map((s: {title: string; desc: string}) => (
+            <div class="qplan-scenario">
+              <strong class="qplan-scenario__title">{s.title}</strong>
+              <p class="qplan-scenario__desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="qplan-cost-note">{v.quickPlan.costNote}</p>
+      </section>
+    )}
+
     <section class="venue-section" id="music">
       <h2>선곡 & BGM</h2>
       <p class="section-lead">{si.musicLead || `${v.name_display}에서 경험할 수 있는 사운드입니다.`}</p>
@@ -294,9 +318,9 @@ if (v.faq && v.faq.length > 0) {
       <h2>위치 안내</h2>
       <div class="location-info">
         {v.geo.precision !== 'none' ? (
-          <p><span class="location-label">주소:</span> {v.geo.formatted_address === '확인 필요' ? '확인 필요 – 예약 시 매장에 직접 문의하세요' : v.geo.formatted_address}</p>
+          <p><span class="location-label">주소:</span> {v.geo.formatted_address === '확인 필요' ? '확인 필요 – 예약 전 직접 문의하세요' : v.geo.formatted_address}</p>
         ) : (
-          <p>정확한 위치는 매장에 직접 문의해주세요.</p>
+          <p>정확한 위치는 직접 문의해주세요.</p>
         )}
       </div>
       <div class="map-buttons">
