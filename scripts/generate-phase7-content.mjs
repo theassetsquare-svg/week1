@@ -284,6 +284,25 @@ function genFaqForVenue(v) {
   return [...existing, ...extra]; // exactly 12 per venue
 }
 
+/* ─── hookIntro regeneration ─── */
+function genHookIntro(v) {
+  const n = v.name_display;
+  const r = v.region;
+  const tw = v.type === 'club' ? '클럽' : v.type === 'night' ? '나이트' : '라운지';
+  const tone = v.storyFrame?.tone || '';
+  const atm1 = (v.bodySections?.atmosphere || '').split('.')[0].replace(/\n/g, '').trim();
+  const mus1 = (v.bodySections?.music || '').split('.')[0].replace(/\n/g, '').trim();
+  const peak = v.timeline?.[0] ? `${v.timeline[0].time} (${v.timeline[0].label})` : '밤 11시 이후';
+
+  if (v.type === 'club') {
+    return `${n}은 ${r}에서 밤을 제대로 즐기고 싶을 때 선택하는 ${tw}이다. ${atm1 ? atm1 + '.' : ''} 사운드 면에서도 ${mus1 ? mus1 + '.' : '독보적인 평가를 받는다.'} 피크타임은 ${peak}으로, 이 시간에 맞춰 방문하면 ${n}만의 에너지를 온몸으로 느낄 수 있다.`;
+  } else if (v.type === 'night') {
+    return `${n}은 ${r}의 밤을 대표하는 나이트다. ${atm1 ? atm1 + '.' : ''} 라이브 무대와 음악이 어우러진 홀에서 ${n}은 자신만의 분위기를 만들어간다. 골든타임은 ${peak}이며, 이 시간에 맞춰 자리를 잡으면 하룻밤의 흐름이 달라진다.`;
+  } else {
+    return `${n}은 ${r}에서 어른들의 밤을 위한 라운지다. ${atm1 ? atm1 + '.' : ''} 잘 고른 음악과 조명 속에서 ${n}은 술 한 잔 너머의 대화를 이끌어낸다. 베스트 타임은 ${peak}이며, 예약 후 방문하면 더 여유로운 시간을 보낼 수 있다.`;
+  }
+}
+
 /* ─── Conclusion ─── */
 const CONCLUSION_TEMPLATES = {
   club: (n, r) =>
