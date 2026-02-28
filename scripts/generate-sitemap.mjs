@@ -14,7 +14,7 @@ const ROOT = join(__dirname, '..');
 const VENUES_PATH = join(ROOT, 'data', 'venues.json');
 const DIST = join(ROOT, 'dist');
 
-const SITE = 'https://night-4qy.pages.dev';
+const SITE = 'https://week1-6m5.pages.dev';
 
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
 

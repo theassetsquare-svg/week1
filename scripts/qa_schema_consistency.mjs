@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
-const DOMAIN = 'https://night-4qy.pages.dev';
+const DOMAIN = 'https://week1-6m5.pages.dev';
 
 const VALID_TYPES = new Set([
   'WebPage', 'WebSite', 'BreadcrumbList', 'FAQPage', 'CollectionPage',
