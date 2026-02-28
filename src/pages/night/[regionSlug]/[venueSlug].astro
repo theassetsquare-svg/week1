@@ -293,6 +293,30 @@ if (v.faq && v.faq.length > 0) {
       </table>
     </section>
 
+    {v.quickPlan && (
+      <section class="quick-plan venue-section" id="quick-plan">
+        <h2>30초 방문 결정표</h2>
+        <table class="qplan-table">
+          <thead><tr><th>상황</th><th>추천</th></tr></thead>
+          <tbody>
+            {v.quickPlan.table.map((row: {condition: string; tip: string}) => (
+              <tr><td>{row.condition}</td><td>{row.tip}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <h3 class="qplan-scenarios__title">방문 시나리오 3가지</h3>
+        <div class="qplan-scenarios">
+          {v.quickPlan.scenarios.map((s: {title: string; desc: string}) => (
+            <div class="qplan-scenario">
+              <strong class="qplan-scenario__title">{s.title}</strong>
+              <p class="qplan-scenario__desc">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="qplan-cost-note">{v.quickPlan.costNote}</p>
+      </section>
+    )}
+
     <section class="venue-section" id="music">
       <h2>라이브 & 음악</h2>
       <p class="section-lead">{si.musicLead || `${v.name_display}에서 경험할 수 있는 사운드입니다.`}</p>
