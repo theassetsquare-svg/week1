@@ -9,10 +9,10 @@ import { readFileSync, writeFileSync } from 'fs';
 const VENUES_PATH = 'data/venues.json';
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
 
-// 텍스트 필드 목록 (card_hook/card_value 제외 — 카드 문구는 각 카드 단위로 독립적)
+// 텍스트 필드 목록
+// 제외: card_hook/card_value (카드 단위 독립), hookIntro/conclusionText (업소별 고유 에디토리얼)
 const TEXT_FIELDS = [
   'teaser', 'description_short',
-  'intro', 'hookIntro', 'conclusionText', 'storyFrame', 'story'
 ];
 
 // 모든 업소명 수집 (가계이름 보호용)
