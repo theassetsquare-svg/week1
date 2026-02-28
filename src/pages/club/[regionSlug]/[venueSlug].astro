@@ -28,7 +28,7 @@ const title = v.pageTitle || `${v.name_display} 안내`;
 const description = v.metaDescription || `${v.name_display} - ${v.teaser?.slice(0, 100) || ''}`;
 const h1Title = v.h1Title || `${v.name_display} 방문 가이드`;
 const si = v.sectionIntros || {};
-const conclusionText = v.conclusionText || `${v.name_display}은(는) ${v.region}의 밤을 대표하는 공간입니다.`;
+const conclusionText = v.conclusionText || `${v.name_display}은(는) ${v.region}의 밤을 대표하는 클럽입니다.`;
 
 const naverMapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(v.name_display)}`;
 const mapUrl = (v.geo?.lat && v.geo?.lon)
