@@ -47,6 +47,9 @@ function fixBanned(text, vtype) {
     ['입장 기준', '입장 규정'], ['기준 현장', '현장'],
   ];
   for (const [from, to] of stdMap) text = text.split(from).join(to);
+  // compound words with 기준
+  text = text.split('기준점').join('이정표');
+  text = text.split('기준선').join('경계선');
   // remaining 기준 → 수준 (before Korean or space or end)
   text = text.replace(/기준([은이을의에도만])/g, '수준$1');
   text = text.replace(/기준([ .,]|$)/g, '수준$1');
