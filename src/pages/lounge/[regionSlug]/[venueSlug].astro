@@ -94,9 +94,9 @@ if (v.faq && v.faq.length > 0) {
   <section class="venue-hero-immersive venue-hero-immersive--lounge">
     <div class="container content-narrow">
       <div class="breadcrumb">
-        <a href="/">홈</a><span>/</span>
-        <a href="/lounges/">라운지 목록</a><span>/</span>
-        {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
+        <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span>
+        <a href="/lounges/" target="_blank" rel="noopener noreferrer">라운지 목록</a><span>/</span>
+        {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`} target="_blank" rel="noopener noreferrer">{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
       <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
@@ -131,7 +131,7 @@ if (v.faq && v.faq.length > 0) {
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 예약 전 위치 보기</a>
-      <a href="/lounges/" class="venue-cta-btn">다른 라운지 둘러보기</a>
+      <a href="/lounges/" class="venue-cta-btn" target="_blank" rel="noopener noreferrer">다른 라운지 둘러보기</a>
     </div>
 
     <aside class="fact-box" aria-label="기본 정보">
@@ -142,7 +142,7 @@ if (v.faq && v.faq.length > 0) {
       <h3>목차</h3>
       <ol>
         {tocItems.map(item => (
-          <li><a href={`#${item.id}`}>{item.label}</a></li>
+          <li><a href={`#${item.id}`} target="_blank" rel="noopener noreferrer">{item.label}</a></li>
         ))}
       </ol>
     </nav>
@@ -287,7 +287,7 @@ if (v.faq && v.faq.length > 0) {
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 위치 보기</a>
-      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn">{v.region} 라운지 더 보기</a>
+      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn" target="_blank" rel="noopener noreferrer">{v.region} 라운지 더 보기</a>
     </div>
 
     <section class="venue-section" id="faq">
@@ -311,7 +311,7 @@ if (v.faq && v.faq.length > 0) {
       <p>{conclusionText}</p>
       <div class="venue-cta-inline">
         <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">{shortName} 예약 전 위치 보기</a>
-        <a href="/lounges/" class="venue-cta-btn">다른 라운지 둘러보기</a>
+        <a href="/lounges/" class="venue-cta-btn" target="_blank" rel="noopener noreferrer">다른 라운지 둘러보기</a>
       </div>
     </section>
 
@@ -319,10 +319,10 @@ if (v.faq && v.faq.length > 0) {
       <h2>취향이 비슷한 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} class="related-link" target="_blank" rel="noopener noreferrer">{rv!.name_display}</a>
         ))}
-        <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-        <a href="/lounges/" class="related-link">라운지 전체 목록</a>
+        <a href={`/region/${v.regionSlug}/`} class="related-link" target="_blank" rel="noopener noreferrer">{v.region} 전체 보기</a>
+        <a href="/lounges/" class="related-link" target="_blank" rel="noopener noreferrer">라운지 전체 목록</a>
       </div>
     </section>
 
@@ -333,14 +333,14 @@ if (v.faq && v.faq.length > 0) {
         <li><time datetime="2026-02-10">2026-02-10</time> <span>첫 취재 및 등록</span></li>
       </ul>
       <div class="trust-block__links">
-        <a href="/about/">콘텐츠 기준 보기</a>
+        <a href="/about/" target="_blank" rel="noopener noreferrer">콘텐츠 기준 보기</a>
         <button type="button" id="correctionBtn">잘못된 정보 알려주기</button>
       </div>
     </aside>
 
     <div class="venue-cta-area">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">위치 확인</a>
-      <a href="/lounges/" class="venue-cta-btn">목록으로</a>
+      <a href="/lounges/" class="venue-cta-btn" target="_blank" rel="noopener noreferrer">목록으로</a>
     </div>
   </div>
 

@@ -97,9 +97,9 @@ if (v.faq && v.faq.length > 0) {
   <section class="venue-hero-immersive venue-hero-immersive--night">
     <div class="container content-narrow">
       <div class="breadcrumb">
-        <a href="/">홈</a><span>/</span>
-        <a href="/nights/">나이트 목록</a><span>/</span>
-        {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`}>{v.region}</a><span>/</span></>}
+        <a href="/" target="_blank" rel="noopener noreferrer">홈</a><span>/</span>
+        <a href="/nights/" target="_blank" rel="noopener noreferrer">나이트 목록</a><span>/</span>
+        {v.region !== shortName && <><a href={`/region/${v.regionSlug}/`} target="_blank" rel="noopener noreferrer">{v.region}</a><span>/</span></>}
         <span>{shortName}</span>
       </div>
       {v.regionSlug === 'suyu' && (v.urlSlug === '샴푸' || v.venueSlug === '샴푸') ? (
@@ -138,7 +138,7 @@ if (v.faq && v.faq.length > 0) {
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">오늘 밤 {shortName} 찾아가기</a>
-      <a href="/nights/" class="venue-cta-btn">전국 나이트 둘러보기</a>
+      <a href="/nights/" class="venue-cta-btn" target="_blank" rel="noopener noreferrer">전국 나이트 둘러보기</a>
     </div>
 
     <aside class="fact-box" aria-label="기본 정보">
@@ -149,7 +149,7 @@ if (v.faq && v.faq.length > 0) {
       <h3>목차</h3>
       <ol>
         {tocItems.map(item => (
-          <li><a href={`#${item.id}`}>{item.label}</a></li>
+          <li><a href={`#${item.id}`} target="_blank" rel="noopener noreferrer">{item.label}</a></li>
         ))}
       </ol>
     </nav>
@@ -296,7 +296,7 @@ if (v.faq && v.faq.length > 0) {
 
     <div class="venue-cta-inline">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지금 바로 길 찾기</a>
-      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn">{v.region} 다른 곳도 보기</a>
+      <a href={`/region/${v.regionSlug}/`} class="venue-cta-btn" target="_blank" rel="noopener noreferrer">{v.region} 다른 곳도 보기</a>
     </div>
 
     <section class="venue-section" id="faq">
@@ -320,7 +320,7 @@ if (v.faq && v.faq.length > 0) {
       <p>{conclusionText}</p>
       <div class="venue-cta-inline">
         <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">오늘 밤 {shortName} 찾아가기</a>
-        <a href="/nights/" class="venue-cta-btn">전국 나이트 둘러보기</a>
+        <a href="/nights/" class="venue-cta-btn" target="_blank" rel="noopener noreferrer">전국 나이트 둘러보기</a>
       </div>
     </section>
 
@@ -328,10 +328,10 @@ if (v.faq && v.faq.length > 0) {
       <h2>함께 보면 좋은 곳</h2>
       <div class="related-grid">
         {relatedVenues.map(rv => (
-          <a href={encodeURI(getVenueUrl(rv!))} class="related-link">{rv!.name_display}</a>
+          <a href={encodeURI(getVenueUrl(rv!))} class="related-link" target="_blank" rel="noopener noreferrer">{rv!.name_display}</a>
         ))}
-        <a href={`/region/${v.regionSlug}/`} class="related-link">{v.region} 전체 보기</a>
-        <a href="/nights/" class="related-link">나이트 전체 목록</a>
+        <a href={`/region/${v.regionSlug}/`} class="related-link" target="_blank" rel="noopener noreferrer">{v.region} 전체 보기</a>
+        <a href="/nights/" class="related-link" target="_blank" rel="noopener noreferrer">나이트 전체 목록</a>
       </div>
     </section>
 
@@ -342,14 +342,14 @@ if (v.faq && v.faq.length > 0) {
         <li><time datetime="2026-02-10">2026-02-10</time> <span>최초 등록</span></li>
       </ul>
       <div class="trust-block__links">
-        <a href="/about/">편집 원칙 보기</a>
+        <a href="/about/" target="_blank" rel="noopener noreferrer">편집 원칙 보기</a>
         <button type="button" id="correctionBtn">오류 제보</button>
       </div>
     </aside>
 
     <div class="venue-cta-area">
       <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지금 바로 길 찾기</a>
-      <a href="/nights/" class="venue-cta-btn">목록으로</a>
+      <a href="/nights/" class="venue-cta-btn" target="_blank" rel="noopener noreferrer">목록으로</a>
     </div>
   </div>
 
