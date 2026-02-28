@@ -265,8 +265,8 @@ const LOUNGE_FAQ_EXTRA = () => [
 
 function genFaqForVenue(v) {
   const type = v.type;
-  // Fix existing FAQ + remove banned
-  const existing = (v.faq || []).map(f => ({
+  // Fix existing FAQ + remove banned — keep only first 8 originals (prevents double-append)
+  const existing = (v.faq || []).slice(0, 8).map(f => ({
     q: fixBanned(f.q, type),
     a: fixBanned(f.a, type),
   }));
@@ -281,7 +281,7 @@ function genFaqForVenue(v) {
   else if (type === 'night') extra = NIGHT_FAQ_EXTRA();
   else extra = LOUNGE_FAQ_EXTRA();
 
-  return [...existing, ...extra];
+  return [...existing, ...extra]; // exactly 12 per venue
 }
 
 /* ─── Conclusion ─── */
