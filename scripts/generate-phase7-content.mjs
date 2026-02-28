@@ -357,7 +357,8 @@ for (const v of venues) {
     };
   }
 
-  // ── 2. Regenerate conclusionText ──
+  // ── 2. Regenerate hookIntro and conclusionText ──
+  v.hookIntro = genHookIntro(v);
   v.conclusionText = CONCLUSION_TEMPLATES[type](n, r);
 
   // ── 3. Add aiSummary ──
