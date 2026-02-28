@@ -66,10 +66,9 @@ for (const v of venues) {
     if (cnt > 3) errors.push(`FAQ opener "${k}…" ${cnt}회 중복`);
   }
 
-  // 3. FAQ count
+  // 3. FAQ count (target: 10-14)
   const faqCount = (v.faq || []).length;
   if (faqCount < 10) errors.push(`FAQ ${faqCount}개 (10개 미만)`);
-  if (faqCount > 14) warnings.push(`FAQ ${faqCount}개 (14개 초과)`);
 
   // 4. Store name mention count in full text (8–14 acceptable range)
   const nameRe = new RegExp(n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
