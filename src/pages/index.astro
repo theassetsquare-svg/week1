@@ -17,12 +17,13 @@ const recommended = [...nightPick, ...clubPick, ...loungePick];
 // Build search index at build time
 const searchIndex = venues.map(v => ({
   name: v.name_display,
-  norm: (v.name_display + v.region + v.typeLabel).replace(/\s+/g, '').replace(/[^가-힣a-zA-Z0-9]/g, '').toLowerCase(),
+  norm: (v.name_display + v.region + v.typeLabel + (v.keywords || []).join('')).replace(/\s+/g, '').replace(/[^가-힣a-zA-Z0-9]/g, '').toLowerCase(),
   region: v.region,
   cat: v.type,
   catLabel: v.typeLabel,
   url: getVenueUrl(v),
   thumb: v.images[0]?.src || '',
+  tags: (v.card_tags || []).join(' '),
 }));
 
 const jsonLd = [
