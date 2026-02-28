@@ -215,7 +215,7 @@ const jsonLd = [
         if (nName === q) score = 1000;
         else if (nName.includes(q) || item.norm.includes(q)) score = 500;
         else if (qTokens.length > 0 && qTokens.every(t => lName.includes(t) || item.region.toLowerCase().includes(t) || item.catLabel.toLowerCase().includes(t))) score = 200;
-        else if (qTokens.some(t => lName.includes(t) || item.region.toLowerCase().includes(t))) score = 50;
+        else if (qTokens.some(t => lName.includes(t) || item.region.toLowerCase().includes(t) || (item.tags||'').toLowerCase().includes(t))) score = 50;
         else {
           const overlap = [...new Set(q)].filter(c => nName.includes(c)).length;
           if (overlap >= Math.min(2, q.length * 0.5)) score = overlap * 5;
