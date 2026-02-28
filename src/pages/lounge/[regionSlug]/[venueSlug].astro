@@ -103,8 +103,16 @@ if (v.faq && v.faq.length > 0) {
         <span>{shortName}</span>
       </div>
       <img src={encodeURI(v.images[0].src)} alt={`${v.name_display} 대표 이미지`} class="venue-hero-img" width="500" height="500" loading="eager" />
-      <span class="venue-hero__cat-badge">라운지</span>
-      <h1 class="venue-hero__title">{h1Title}</h1>
+      <h1 class="venue-hero__title">{v.name_display}</h1>
+      <div class="venue-hero__meta">
+        <span class="venue-hero__tag venue-hero__tag--type">라운지</span>
+        <span class="venue-hero__tag venue-hero__tag--region">{v.region}</span>
+        <time class="venue-hero__tag" datetime={updateDate}>업데이트 {updateDate}</time>
+      </div>
+      <div class="venue-hero__cta">
+        <a href={mapUrl} target="_blank" rel="noopener noreferrer" class="venue-cta-btn venue-cta-btn--primary">지도에서 보기</a>
+        <a href="/lounges/" target="_blank" rel="noopener noreferrer" class="venue-cta-btn">다른 라운지 둘러보기</a>
+      </div>
     </div>
   </section>
 
