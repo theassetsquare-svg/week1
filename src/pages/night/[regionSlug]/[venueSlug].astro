@@ -124,6 +124,15 @@ if (v.faq && v.faq.length > 0) {
   </section>
 
   <div class="container content-narrow">
+    {v.aiSummary && v.aiSummary.length > 0 && (
+      <section class="ai-summary" aria-label="AI 요약 정보">
+        <h2 class="ai-summary__title">한눈에 보기</h2>
+        <ul class="ai-summary__list">
+          {v.aiSummary.map((bullet: string) => <li>{bullet}</li>)}
+        </ul>
+      </section>
+    )}
+
     {v.intro && (
       <IntroSection
         hook={v.intro.hook}
