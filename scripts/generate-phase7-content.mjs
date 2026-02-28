@@ -4,7 +4,7 @@
  * - Adds quickPlan (decision table + 3 scenarios + cost note)
  * - Expands faq to 12 questions per venue with diverse openers
  * - Fixes conclusionText to be meaningful
- * - Removes all banned words from all text fields
+ * - Removes all banned words from ALL text fields recursively
  */
 import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
@@ -15,63 +15,82 @@ const VENUES_PATH = join(__dirname, '../data/venues.json');
 
 const BANNED = ['해당', '이곳', '공간', '매장', '감도', '기준'];
 
-/* ─── Banned-word auto-fix ─── */
+/* ─── Banned-word auto-fix (single string) ─── */
 function fixBanned(text, vtype) {
   if (!text || typeof text !== 'string') return text;
   const tw = vtype === 'club' ? '클럽' : vtype === 'night' ? '나이트' : '라운지';
 
-  // 공간 replacements
-  const spaceWords = [
-    ['이 공간', `이 ${tw}`], ['그 공간', `그 ${tw}`],
-    ['공간 무드', '인테리어 무드'], ['공간감', '분위기'],
-    ['공간이다', `${tw}이다`], ['공간입니다', `${tw}입니다`],
-    ['공간이었다', `${tw}이었다`], ['공간이에요', `${tw}이에요`],
-    [`공간이 있`, `${tw}이 있`], [`공간이 없`, `${tw}이 없`],
-    ['공간이', `${tw}이`], ['공간은', `${tw}은`], ['공간을', `${tw}을`],
-    ['공간의', `${tw}의`], ['공간에서', `${tw}에서`], ['공간에', `${tw}에`],
-    ['공간으로', `${tw}으로`], ['공간과', `${tw}과`], ['공간도', `${tw}도`],
-    ['공간', tw],
+  // ── 공간 ──
+  const spaceMap = [
+    ['이 공간', `이 ${tw}`], ['그 공간', `그 ${tw}`], ['한 공간', `한 ${tw}`],
+    ['이런 공간', `이런 ${tw}`], ['좋은 공간', `좋은 ${tw}`],
+    ['공간 무드', '인테리어 무드'], ['공간감', '분위기'], ['공간이다', `${tw}이다`],
+    ['공간입니다', `${tw}입니다`], ['공간이었다', `${tw}이었다`],
+    ['공간이에요', `${tw}이에요`], [`공간이 있`, `${tw}이 있`],
+    [`공간이 없`, `${tw}이 없`], ['공간이', `${tw}이`], ['공간은', `${tw}은`],
+    ['공간을', `${tw}을`], ['공간의', `${tw}의`], ['공간에서', `${tw}에서`],
+    ['공간에', `${tw}에`], ['공간으로', `${tw}으로`], ['공간과', `${tw}과`],
+    ['공간도', `${tw}도`], ['공간만', `${tw}만`], ['공간', tw],
   ];
-  for (const [from, to] of spaceWords) {
-    text = text.split(from).join(to);
-  }
+  for (const [from, to] of spaceMap) text = text.split(from).join(to);
 
-  // 기준 replacements
-  const stdWords = [
+  // ── 기준 ──
+  const stdMap = [
     ['기준일:', '확인일:'], ['기준일', '확인일'],
-    ['정보 기준으로', '정보 기준을 바탕으로'], ['기준으로', '기준으로'],
+    ['정보 기준으로', '정보를 바탕으로'], ['기준으로', '기준을 바탕으로'],
     ['기준이', '수준이'], ['기준은', '수준은'], ['기준을', '수준을'],
     ['기준의', '수준의'], ['기준에서', '수준에서'], ['기준이다', '수준이다'],
-    ['기준입니다', '수준입니다'],
+    ['기준입니다', '수준입니다'], ['기준 갱신', '정보 갱신'],
+    ['갱신 기준', '정보 갱신'], ['현장 기준', '현장 확인'],
+    ['2시간 기준', '2시간 예상'], ['기준 예산', '예상 예산'],
+    ['안주 기준', '안주 예상'], ['1인 기준', '1인 예상'],
+    ['입장 기준', '입장 규정'], ['기준 현장', '현장'],
   ];
-  // Replace "기준으로" → "바탕으로" (context-aware)
-  text = text.split('기준으로').join('기준으로');  // keep if can't simplify
-  for (const [from, to] of stdWords) {
-    text = text.split(from).join(to);
-  }
-  // any remaining 기준 as standalone word
-  text = text.replace(/기준([^\w가-힣]|$)/g, (_, suf) => '수준' + suf);
+  for (const [from, to] of stdMap) text = text.split(from).join(to);
+  // remaining 기준 → 수준 (before Korean or space or end)
+  text = text.replace(/기준([은이을의에도만])/g, '수준$1');
+  text = text.replace(/기준([ .,]|$)/g, '수준$1');
+  text = text.replace(/기준$/g, '수준');
 
-  // 이곳 → 여기
+  // ── 이곳 ──
+  text = text.split('이곳만의').join('여기만의');
+  text = text.split('이곳에서').join('여기에서');
+  text = text.split('이곳의').join('여기의');
+  text = text.split('이곳은').join('여기는');
+  text = text.split('이곳이').join('여기가');
+  text = text.split('이곳을').join('여기를');
+  text = text.split('이곳에').join('여기에');
   text = text.split('이곳').join('여기');
-  // 해당 → (remove or replace)
+
+  // ── 해당 ──
   text = text.split('해당 ').join('');
+  text = text.replace(/해당([이은을의])/g, '이$1');
   text = text.split('해당').join('');
-  // 매장 → typeWord
+
+  // ── 매장 ──
+  text = text.split('매장에 직접 문의').join('직접 문의');
+  text = text.split('매장에').join(`${tw}에`);
+  text = text.split('매장을').join(`${tw}을`);
+  text = text.split('매장의').join(`${tw}의`);
+  text = text.split('매장이').join(`${tw}이`);
   text = text.split('매장').join(tw);
-  // 감도 → 분위기
+
+  // ── 감도 ──
   text = text.split('감도').join('분위기');
 
   return text;
 }
 
+/* ─── Recursive object fixer ─── */
 function fixObj(obj, vtype) {
   if (!obj) return obj;
   if (typeof obj === 'string') return fixBanned(obj, vtype);
   if (Array.isArray(obj)) return obj.map(item => fixObj(item, vtype));
   if (typeof obj === 'object') {
     const out = {};
-    for (const k of Object.keys(obj)) out[k] = fixObj(obj[k], vtype);
+    for (const k of Object.keys(obj)) {
+      out[k] = fixObj(obj[k], vtype);
+    }
     return out;
   }
   return obj;
@@ -79,12 +98,13 @@ function fixObj(obj, vtype) {
 
 /* ─── AI Summary ─── */
 function genAiSummary(v) {
-  const addr = v.geo.formatted_address !== '확인 필요' ? v.geo.formatted_address : `${v.region} 소재 — 방문 전 직접 확인 권장`;
-  const atm = (v.bodySections.atmosphere || '').split('.')[0].replace(/기준|공간|매장|감도|이곳|해당/g, '').trim();
-  const mus = (v.bodySections.music || '').split('.')[0].replace(/기준|공간|매장|감도|이곳|해당/g, '').trim();
-  const peak = v.timeline?.[0] ? `${v.timeline[0].time} — ${v.timeline[0].label}` : '확인 필요';
+  const addr = v.geo.formatted_address !== '확인 필요'
+    ? v.geo.formatted_address
+    : `${v.region} 소재 — 방문 전 직접 확인 권장`;
+  const atm = (v.bodySections?.atmosphere || '').split('.')[0].trim().slice(0, 50);
+  const mus = (v.bodySections?.music || '').split('.')[0].trim().slice(0, 50);
+  const peak = v.timeline?.[0] ? `${v.timeline[0].time} — ${v.timeline[0].label}` : '시간대 확인 권장';
   const chk0 = v.checklist?.[0] || '';
-  const faqCount = v.faq?.length || 0;
 
   const bullets = [
     `유형: ${v.region} ${v.typeLabel}`,
@@ -94,7 +114,7 @@ function genAiSummary(v) {
   if (mus) bullets.push(`사운드: ${mus}`);
   bullets.push(`피크타임: ${peak}`);
   if (chk0) bullets.push(`준비 체크: ${fixBanned(chk0, v.type)}`);
-  bullets.push(`FAQ: ${faqCount}개 답변 수록`);
+  bullets.push(`FAQ: ${(v.faq?.length || 0) + 4}개 답변 수록`);
   bullets.push(`체크리스트: ${v.checklist?.length || 0}개 항목`);
   bullets.push(`정보 확인일: 2026-02-18 — 변경 가능, 방문 전 재확인 권장`);
   return bullets.filter(b => !BANNED.some(bw => b.includes(bw))).slice(0, 10);
@@ -118,7 +138,7 @@ function genQuickPlan(v) {
       scenarios: [
         {
           title: '가볍게 입문',
-          desc: `잔 단위 음료 주문 후 ${n}의 분위기를 탐색. 2시간 기준 예산 3–5만 원대 예상. 이른 시간이 편하다.`,
+          desc: `잔 단위 음료 주문 후 ${n}의 분위기를 탐색. 2시간 예상 예산 3–5만 원대. 이른 시간이 편하다.`,
         },
         {
           title: '제대로 즐기기',
@@ -126,7 +146,7 @@ function genQuickPlan(v) {
         },
         {
           title: '특별한 날 플랜',
-          desc: `생일·기념일이라면 ${n}에 사전 연락 후 서비스 여부 확인. 예약 당일 SNS 이벤트도 체크.`,
+          desc: `생일·기념일이라면 ${n}에 사전 연락 후 이벤트 서비스 여부 확인. 예약 당일 SNS 이벤트도 체크.`,
         },
       ],
       costNote: `${n} 입장료·음료 가격은 요일·이벤트에 따라 달라집니다. 최신 정보는 공식 SNS에서 확인하세요.`,
@@ -137,12 +157,12 @@ function genQuickPlan(v) {
         { condition: '처음 방문이라면', tip: `이른 시간 도착 후 ${n} 홀 분위기 적응` },
         { condition: '파트너 댄스 미숙자라면', tip: '바 좌석 착석 후 관람 먼저, 자연스럽게 합류' },
         { condition: '그룹이라면', tip: '테이블 예약 또는 넓은 좌석 구역 사전 확인' },
-        { condition: '라이브 공연 목적이라면', tip: `공연 시작 시간 사전 확인 필수` },
+        { condition: '라이브 공연 목적이라면', tip: '공연 시작 시간 사전 확인 필수' },
       ],
       scenarios: [
         {
           title: '여유로운 저녁',
-          desc: `${n} 오픈 직후 도착. 음료 한 잔과 함께 무대와 홀 분위기 탐색. 2시간 예산 2–4만 원 예상.`,
+          desc: `${n} 오픈 직후 도착. 음료 한 잔과 함께 무대와 홀 분위기 탐색. 2시간 예상 예산 2–4만 원.`,
         },
         {
           title: '골든타임 공략',
@@ -156,7 +176,6 @@ function genQuickPlan(v) {
       costNote: `${n} 입장료·음료 가격은 요일·이벤트마다 다릅니다. 방문 전 공식 SNS를 확인하세요.`,
     };
   } else {
-    // lounge
     return {
       table: [
         { condition: '혼자라면', tip: '바 카운터 착석, 바텐더에게 취향 설명' },
@@ -167,11 +186,11 @@ function genQuickPlan(v) {
       scenarios: [
         {
           title: '혼술·가볍게',
-          desc: `${n} 바 카운터에서 시그니처 칵테일 한 잔. 1시간 예산 2–3만 원 예상. 평일 이른 저녁이 여유롭다.`,
+          desc: `${n} 바 카운터에서 시그니처 칵테일 한 잔. 1시간 예상 예산 2–3만 원. 평일 이른 저녁이 여유롭다.`,
         },
         {
           title: '분위기 있는 저녁',
-          desc: `${r}의 밤을 배경으로 테이블 자리에서 2–3시간. 음료 2–3잔 + 안주 기준 5–10만 원 예상.`,
+          desc: `${r}의 밤을 배경으로 테이블 자리에서 2–3시간. 음료 2–3잔 안주 포함 5–10만 원 예상.`,
         },
         {
           title: '특별한 날 코스',
@@ -184,7 +203,7 @@ function genQuickPlan(v) {
 }
 
 /* ─── FAQ expansion ─── */
-const CLUB_FAQ_EXTRA = (n, r) => [
+const CLUB_FAQ_EXTRA = () => [
   {
     q: `재입장 규정은 어떻게 되나요?`,
     a: `팔찌나 스탬프로 재입장이 가능한 경우가 많습니다. 입장 시 현장에서 확인하세요.`,
@@ -203,7 +222,7 @@ const CLUB_FAQ_EXTRA = (n, r) => [
   },
 ];
 
-const NIGHT_FAQ_EXTRA = (n, r) => [
+const NIGHT_FAQ_EXTRA = () => [
   {
     q: `혼자 가도 즐길 수 있나요?`,
     a: `혼자서도 바 좌석이나 홀에서 충분히 즐길 수 있습니다. 스태프가 친절하게 안내합니다.`,
@@ -222,7 +241,7 @@ const NIGHT_FAQ_EXTRA = (n, r) => [
   },
 ];
 
-const LOUNGE_FAQ_EXTRA = (n, r) => [
+const LOUNGE_FAQ_EXTRA = () => [
   {
     q: `복장 제한이 따로 있나요?`,
     a: `드레스코드가 엄격하지 않은 편이지만 슬리퍼·반바지 등 지나치게 캐주얼한 복장은 피하는 것이 좋습니다.`,
@@ -242,32 +261,22 @@ const LOUNGE_FAQ_EXTRA = (n, r) => [
 ];
 
 function genFaqForVenue(v) {
-  const n = v.name_display;
-  const r = v.region;
   const type = v.type;
+  // Fix existing FAQ + remove banned
   const existing = (v.faq || []).map(f => ({
     q: fixBanned(f.q, type),
     a: fixBanned(f.a, type),
   }));
-
-  // Fix known banned-word opener in clubs FAQ q5: "기준이 궁금합니다"
-  if (type === 'club') {
-    existing.forEach(f => {
-      if (f.q.includes('기준이 궁금합니다')) {
-        f.q = f.q.replace('기준이 궁금합니다', '수준이 궁금합니다');
-      }
-    });
-  }
+  // Fix known "기준이 궁금합니다" → "수준이 궁금합니다"
+  existing.forEach(f => {
+    if (f.q.includes('기준이 궁금합니다')) f.q = f.q.replace('기준이 궁금합니다', '수준이 궁금합니다');
+    if (f.q.includes('주차 공간이')) f.q = f.q.replace('주차 공간이', '주차할 곳이');
+  });
 
   let extra = [];
-  if (type === 'club') extra = CLUB_FAQ_EXTRA(n, r);
-  else if (type === 'night') extra = NIGHT_FAQ_EXTRA(n, r);
-  else extra = LOUNGE_FAQ_EXTRA(n, r);
-
-  // Parameterize extra questions with store name naturally in 1 of 4
-  if (extra[2]) {
-    extra[2].q = extra[2].q.replace('방문하려면', `${n} 방문을 위해`);
-  }
+  if (type === 'club') extra = CLUB_FAQ_EXTRA();
+  else if (type === 'night') extra = NIGHT_FAQ_EXTRA();
+  else extra = LOUNGE_FAQ_EXTRA();
 
   return [...existing, ...extra];
 }
@@ -279,20 +288,10 @@ const CONCLUSION_TEMPLATES = {
   night: (n, r) =>
     `${n}의 밤은 준비가 된 만큼 더 풍성해진다. 처음이든 재방문이든, ${n}은 ${r}에서 잊기 어려운 하룻밤을 선사한다. 이 페이지의 정보는 변동될 수 있으니 방문 전 한 번 더 확인하는 것을 권장한다. 좋은 밤 되시길.`,
   lounge: (n, r) =>
-    `${n}은 ${r}에서 어른들을 위한 시간을 선사하는 곳이다. 바 한 잔이든 긴 대화든, ${n}은 그 시간을 특별하게 만들어준다. 방문 전 정보 변동 여부를 재확인하고, ${n}에서 여유로운 저녁을 즐기시길.`,
+    `${n}은 ${r}에서 어른들을 위한 시간을 선사하는 술집이다. 바 한 잔이든 긴 대화든, ${n}은 그 시간을 특별하게 만들어준다. 방문 전 정보 변동 여부를 재확인하고, ${n}에서 여유로운 저녁을 즐기시길.`,
 };
 
-/* ─── TEXT fields to fix in each venue ─── */
-const FIX_FIELDS = [
-  'hookIntro', 'teaser', 'description_short', 'conclusionText',
-];
-const FIX_NESTED = [
-  ['bodySections', ['atmosphere', 'music', 'safety']],
-  ['story', ['scene1','scene2','scene3','scene4','scene5','scene6','scene7','scene8']],
-  ['intro', ['hook','valuePromise']],
-];
-
-/* ─── Main ─── */
+/* ─── MAIN ─── */
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf-8'));
 let changed = 0;
 
@@ -301,34 +300,25 @@ for (const v of venues) {
   const n = v.name_display;
   const r = v.region;
 
-  // 1. Fix banned words in scalar fields
-  for (const f of FIX_FIELDS) {
-    if (v[f] && typeof v[f] === 'string') {
-      v[f] = fixBanned(v[f], type);
-    }
+  // ── 1. Recursively fix ALL text-bearing fields ──
+  const TOP_FIX = [
+    'hookIntro', 'teaser', 'description_short', 'conclusionText',
+    'metaDescription', 'h1Title', 'seoTitle', 'seoDescription', 'pageTitle',
+  ];
+  for (const f of TOP_FIX) {
+    if (typeof v[f] === 'string') v[f] = fixBanned(v[f], type);
   }
-  // Fix nested
-  for (const [parent, children] of FIX_NESTED) {
-    if (v[parent]) {
-      for (const child of children) {
-        if (v[parent][child] && typeof v[parent][child] === 'string') {
-          v[parent][child] = fixBanned(v[parent][child], type);
-        }
-      }
-    }
+
+  // Recursively fix nested objects/arrays
+  const NESTED_FIX = ['bodySections', 'story', 'intro', 'sectionIntros', 'plannerRules'];
+  for (const f of NESTED_FIX) {
+    if (v[f]) v[f] = fixObj(v[f], type);
   }
-  // Fix faq q/a
-  if (v.faq) {
-    v.faq = v.faq.map(f => ({
-      q: fixBanned(f.q, type),
-      a: fixBanned(f.a, type),
-    }));
-  }
-  // Fix checklist items
-  if (v.checklist) {
-    v.checklist = v.checklist.map(c => fixBanned(c, type));
-  }
-  // Fix timeline labels/desc
+
+  // Fix checklist (array of strings)
+  if (v.checklist) v.checklist = v.checklist.map(c => fixBanned(c, type));
+
+  // Fix timeline
   if (v.timeline) {
     v.timeline = v.timeline.map(t => ({
       ...t,
@@ -336,30 +326,30 @@ for (const v of venues) {
       desc: fixBanned(t.desc, type),
     }));
   }
-  // Fix sectionIntros
-  if (v.sectionIntros) {
-    for (const k of Object.keys(v.sectionIntros)) {
-      if (typeof v.sectionIntros[k] === 'string') {
-        v.sectionIntros[k] = fixBanned(v.sectionIntros[k], type);
-      }
-    }
+
+  // Fix storyFrame
+  if (v.storyFrame) {
+    v.storyFrame = {
+      ...v.storyFrame,
+      style: fixBanned(v.storyFrame.style, type),
+    };
   }
 
-  // 2. Regenerate conclusionText
+  // ── 2. Regenerate conclusionText ──
   v.conclusionText = CONCLUSION_TEMPLATES[type](n, r);
 
-  // 3. Add aiSummary
+  // ── 3. Add aiSummary ──
   v.aiSummary = genAiSummary(v);
 
-  // 4. Add quickPlan
+  // ── 4. Add quickPlan ──
   v.quickPlan = genQuickPlan(v);
 
-  // 5. Expand FAQ to 12 questions
+  // ── 5. Expand FAQ ──
   v.faq = genFaqForVenue(v);
 
-  // 6. Update aiSummary FAQ count now that faq is expanded
-  const faqBulletIdx = v.aiSummary.findIndex(b => b.startsWith('FAQ:'));
-  if (faqBulletIdx >= 0) v.aiSummary[faqBulletIdx] = `FAQ: ${v.faq.length}개 답변 수록`;
+  // ── 6. Update aiSummary FAQ count ──
+  const faqIdx = v.aiSummary.findIndex(b => b.startsWith('FAQ:'));
+  if (faqIdx >= 0) v.aiSummary[faqIdx] = `FAQ: ${v.faq.length}개 답변 수록`;
 
   changed++;
 }
@@ -367,20 +357,17 @@ for (const v of venues) {
 writeFileSync(VENUES_PATH, JSON.stringify(venues, null, 2), 'utf-8');
 console.log(`venues.json 업데이트 완료 (${changed}개 venue 처리)`);
 
-// Verify no banned words remain
+// ── Final banned-word scan ──
 const raw = JSON.stringify(venues);
-let remaining = 0;
+let anyBanned = false;
 for (const bw of BANNED) {
-  const re = new RegExp(bw, 'g');
-  const m = raw.match(re);
-  if (m && m.length > 0) {
-    // Filter out venue name_display matches
+  const m = (raw.match(new RegExp(bw, 'g')) || []).length;
+  if (m > 0) {
+    // Check how many are from venue names themselves
     const nameHits = venues.filter(v => v.name_display.includes(bw)).length;
-    const realHits = m.length - nameHits * 5; // rough estimate
-    if (realHits > 0) {
-      console.log(`  경고: "${bw}" ${m.length}개 남아 있음 (가게명 포함 가능)`);
-      remaining++;
-    }
+    const contentHits = m - nameHits * 5; // rough estimate for name appearing in content
+    console.log(`  "${bw}": 전체 ${m}회 (가게명 포함), 콘텐츠 추정: ${Math.max(0, contentHits)}회`);
+    anyBanned = true;
   }
 }
-if (remaining === 0) console.log('금지어 검사: 이상 없음');
+if (!anyBanned) console.log('금지어 검사: 이상 없음');
