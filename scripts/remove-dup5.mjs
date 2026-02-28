@@ -9,9 +9,9 @@ import { readFileSync, writeFileSync } from 'fs';
 const VENUES_PATH = 'data/venues.json';
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
 
-// 텍스트 필드 목록
+// 텍스트 필드 목록 (card_hook/card_value 제외 — 카드 문구는 각 카드 단위로 독립적)
 const TEXT_FIELDS = [
-  'teaser', 'card_hook', 'card_value', 'description_short',
+  'teaser', 'description_short',
   'intro', 'hookIntro', 'conclusionText', 'storyFrame', 'story'
 ];
 
