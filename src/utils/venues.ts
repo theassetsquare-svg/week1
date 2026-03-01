@@ -137,11 +137,11 @@ export function getReadingTime(v: Venue): number {
 }
 
 export const guides = [
-  { slug: 'first-visit', title: '첫 입장 핵심 팁', desc: '나이트·클럽·라운지 첫 방문이 걱정된다면, 입장부터 퇴장까지 흐름과 준비물을 미리 확인하세요.' },
-  { slug: 'dress-code', title: '드레스코드 총정리', desc: '클럽·나이트·라운지 유형별 드레스코드 조건과 계절별 복장 팁을 한눈에 확인하세요.' },
-  { slug: 'safety-tips', title: '안전하게 즐기는 법', desc: '음주 관리, 귀가 교통편, 개인 물품 보관 등 즐거운 밤을 위한 필수 안전 수칙과 주의사항 안내.' },
-  { slug: 'music-genres', title: '음악 장르 총정리', desc: 'EDM, 힙합, 하우스, 테크노부터 트로트·재즈까지 — 유형별 음악 장르 특징과 즐기는 법.' },
-  { slug: 'solo-nightlife', title: '혼자서도 즐기는 나이트라이프', desc: '솔로 방문이 걱정된다면 이 가이드를 읽어보세요. 라운지·나이트·클럽에서 혼자 즐기는 실전 팁.' },
-  { slug: 'group-party', title: '단체 파티 기획 노하우', desc: '생일 파티, 회식, 동호회 모임을 위한 단체 예약 방법과 유형별 기획 팁을 정리했습니다.' },
-  { slug: 'regional-nightlife', title: '전국별 밤문화 특징', desc: '서울 강남·이태원, 부산 해운대·서면, 대구 동성로, 인천 등 주요 도시별 밤문화 특성과 추천 업소.' },
+  { slug: 'first-visit', title: '첫 방문 완벽 준비', desc: '입장부터 퇴장까지 흐름·준비물·현장 매너를 미리 파악하세요. 처음이어도 당황 없이 즐기는 핵심 팁.' },
+  { slug: 'dress-code', title: '드레스코드 한눈에 정리', desc: '클럽·나이트·라운지 유형별 복장 조건과 계절별 스타일 팁을 빠르게 확인하세요.' },
+  { slug: 'safety-tips', title: '밤문화 안전 수칙 필독', desc: '음주 관리, 귀가 교통편, 개인 물품 보관 등 즐거운 밤을 위한 필수 주의사항을 안내합니다.' },
+  { slug: 'music-genres', title: '음악 장르 완벽 비교', desc: 'EDM·힙합·하우스·테크노부터 트로트·재즈까지 유형별 특징과 분위기를 한눈에 비교하세요.' },
+  { slug: 'solo-nightlife', title: '혼자 가도 즐기는 실전 팁', desc: '솔로 방문이 걱정된다면 필독. 라운지·나이트·클럽에서 혼자서도 자연스럽게 즐기는 노하우.' },
+  { slug: 'group-party', title: '단체 파티 기획 실전 노하우', desc: '생일·회식·동호회 모임을 위한 예약 방법과 유형별 기획 팁을 한 곳에 정리했습니다.' },
+  { slug: 'regional-nightlife', title: '도시별 밤문화 특성 비교', desc: '서울 강남·이태원, 부산 해운대·서면, 대구 동성로, 인천 등 주요 도시 밤문화를 비교 분석합니다.' },
 ];
