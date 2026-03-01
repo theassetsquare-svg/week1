@@ -67,8 +67,14 @@ function collectFields(v) {
     if (v.intro.checklist) v.intro.checklist.forEach((_, i) => add(v.intro.checklist, String(i), `intro.ck[${i}]`, 3));
   }
 
-  // P4: editorial text
-  ['teaser', 'description_short', 'conclusionText', 'hookIntro', 'card_hook', 'card_value'].forEach(f => add(v, f, f, 4));
+  // P4: editorial text, image_alt
+  ['teaser', 'description_short', 'conclusionText', 'hookIntro', 'card_hook', 'card_value', 'image_alt'].forEach(f => add(v, f, f, 4));
+
+  // P4: keywords (배열 → join 후 처리)
+  if (v.keywords && v.keywords.length > 0) {
+    // keywords는 배열이므로 각 항목을 개별 필드로 처리
+    v.keywords.forEach((_, i) => add(v.keywords, String(i), `kw[${i}]`, 4));
+  }
 
   // P5: SEO, sectionIntros
   ['seoDescription', 'metaDescription'].forEach(f => add(v, f, f, 5));
