@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs><linearGradient id="og_45086" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#080c16"/><stop offset="100%" style="stop-color:#081c26"/>
+  </linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#og_45086)"/>
+  <circle cx="90.8694720827043" cy="363.22088811546564" r="33.167073489166796" fill="#2dd4bf" opacity="0.030048809016589073"/>
+  <circle cx="1063.112464081496" cy="218.91175957862288" r="23.810928496532142" fill="#2dd4bf" opacity="0.04799114927882329"/>
+  <circle cx="241.24631797894835" cy="114.33688750024885" r="23.45390362199396" fill="#ccfbf1" opacity="0.07930342240026221"/>
+  <circle cx="912.4007382430136" cy="600.4010525741614" r="33.964682165533304" fill="#ccfbf1" opacity="0.04130914048990235"/>
+  <circle cx="1150.5677531473339" cy="192.56052472628653" r="29.98733741696924" fill="#7c3aed" opacity="0.08695715032750742"/>
+  <circle cx="825.3484692424536" cy="333.98277883417904" r="38.4410892566666" fill="#ccfbf1" opacity="0.08718084134161472"/>
+  <circle cx="368.6229379847646" cy="96.82568443240598" r="30.12942514847964" fill="#7c3aed" opacity="0.05763535696547478"/>
+  <circle cx="1196.4616242796183" cy="261.73472684109583" r="42.01540365815163" fill="#ccfbf1" opacity="0.08927303611300885"/>
+  <circle cx="1003.6002008244395" cy="366.85896031558514" r="18.53887135628611" fill="#7c3aed" opacity="0.05821891878033057"/>
+  <circle cx="596.9294571317732" cy="308.79856208106503" r="30.637994427233934" fill="#ccfbf1" opacity="0.042847144138067964"/>
+  <circle cx="569.7386593557894" cy="506.4126439578831" r="52.45288660749793" fill="#7c3aed" opacity="0.08364488494116813"/>
+  <circle cx="706.3935373909771" cy="581.2974116834812" r="23.610312156379223" fill="#2dd4bf" opacity="0.04028999471105635"/>
+  <circle cx="503.2508371397853" cy="338.4468769468367" r="33.31146757118404" fill="#7c3aed" opacity="0.05325277884956449"/>
+  <circle cx="1131.0644583776593" cy="213.21278766961768" r="73.29654544126242" fill="#7c3aed" opacity="0.06498427628306672"/>
+  <circle cx="548.5722513869405" cy="211.57478561159223" r="59.90713449195027" fill="#7c3aed" opacity="0.056447224472649396"/><g transform="translate(240,472.5) scale(1.9656368225812912)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#2dd4bf"/>
+    <path d="M-3,-63 Q-18,-48 -14,-20 Q-16,0 -12,20" stroke="#2dd4bf" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+     <path d="M2,-63 Q6,-55 4,-42" stroke="#2dd4bf" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-8,12 -14,30 L14,30 Q8,12 6,0 Q10,-20 8,-41 Z" fill="#7c3aed"/>
+     <path d="M-6,0 L-14,30 L0,30 Z" fill="#2dd4bf" opacity="0.2"/>
+    <line x1="-2" y1="25" x2="-6" y2="60" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="10" y2="60" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="62" rx="6" ry="2.5" fill="#7c3aed" opacity="0.7"/>
+    <ellipse cx="10" cy="62" rx="6" ry="2.5" fill="#7c3aed" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-22" y2="-15" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="22" y2="-38" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
+    <polygon points="22,-42 18,-34 26,-34" fill="#7c3aed" opacity="0.6" stroke="#7c3aed" stroke-width="0.5"/>
+    <line x1="22" y1="-34" x2="22" y2="-28" stroke="#7c3aed" stroke-width="1"/>
+    <line x1="19" y1="-28" x2="25" y2="-28" stroke="#7c3aed" stroke-width="1"/>
+  </g><g transform="translate(960,472.5) scale(2.156309365760535)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#7c3aed"/>
+    <path d="M-3,-63 Q-12,-55 -8,-45" stroke="#7c3aed" stroke-width="3" fill="none" stroke-linecap="round"/>
+     <path d="M2,-63 Q8,-60 14,-55 Q20,-40 16,-15 Q14,0 12,10" stroke="#7c3aed" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-4,10 -2,20 L2,20 Q4,10 6,0 Q10,-20 8,-41 Z" fill="#2dd4bf"/>
+     <rect x="-9" y="-42" width="18" height="4" rx="1" fill="#7c3aed" opacity="0.5"/>
+    <line x1="-2" y1="25" x2="-12" y2="60" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="10" y2="60" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-14" cy="62" rx="6" ry="2.5" fill="#2dd4bf" opacity="0.7"/>
+    <ellipse cx="12" cy="62" rx="6" ry="2.5" fill="#2dd4bf" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-20" y2="-58" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="22" y2="-55" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+    
+  </g>
+  <rect x="180" y="189" width="840" height="220.5" rx="12" fill="#080c16" opacity="0.75" stroke="#2dd4bf" stroke-width="2"/>
+  <text x="600" y="283.5" text-anchor="middle" font-family="sans-serif" font-size="52" font-weight="800" fill="#2dd4bf">강남 앨빈에비뉴 라운지</text>
+  <text x="600" y="346.5" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#ccfbf1" opacity="0.8">강남 · 라운지</text>
+</svg>
