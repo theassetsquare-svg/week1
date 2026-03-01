@@ -24,7 +24,7 @@ const relatedVenues = [...sameRegion, ...sameType, ...nearby].slice(0, 6);
 const shortName = v.name_display.replace(v.region + ' ', '').replace(/\s+나이트\s*$/,'').trim() || v.urlSlug || v.venueSlug;
 const isSuyuShampoo = v.regionSlug === 'suyu' && (v.urlSlug === '샴푸' || v.venueSlug === '샴푸');
 const ogImage = isSuyuShampoo
-  ? `https://week1-6m5.pages.dev/venues/suyu/%EC%83%B4%ED%91%B8-%EB%82%98%EC%9D%B4%ED%8A%B8/thumbnail-hwangjungmin.png`
+  ? `https://week1-6m5.pages.dev/venues/suyu/%EC%83%B4%ED%91%B8-%EB%82%98%EC%9D%B4%ED%8A%B8/thumbnail-maknae.svg`
   : `${siteUrl}${encodeURI(v.images[0].src)}`;
 const canonicalUrl = `${siteUrl}${encodeURI(venueUrl)}`;
 const title = v.pageTitle || `${v.name_display} 안내`;
