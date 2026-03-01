@@ -165,7 +165,7 @@ const COMMON_KR = new Set([
   // Common adjective/adverb
   '오래', '오랜',
   // Common guide vocabulary
-  '안내합니다', '무드', '무대',
+  '안내합니다', '무드', '무대', '문화의',
 ]);
 
 const PARTICLES_ALL = ['은','는','을','를','이','가','의','에','와','과','도','만','로','서','라','며','고','면','다','요',
