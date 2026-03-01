@@ -52,6 +52,13 @@ const results = {
 // ══════════════════════════════════════
 // CHECK 1: BANNED WORDS in venues.json
 // ══════════════════════════════════════
+const SKIP_WALK = new Set([
+  'id', 'type', 'typePath', 'typeLabel', 'regionSlug', 'venueSlug', 'urlSlug',
+  'geo', 'images', 'imagePrompts', 'relatedVenueIds', 'map_url',
+  'name_display', 'name_input', 'name_seo', 'region',
+  'card_tags', 'sourcePath'
+]);
+
 console.log('=== CHECK 1: Banned words in data ===');
 let bannedCount = 0;
 
