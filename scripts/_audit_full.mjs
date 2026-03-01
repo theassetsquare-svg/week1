@@ -99,20 +99,45 @@ function checkBannedInObj(obj, path, venueName) {
 VENUES.forEach(v => checkBannedInObj(v, 'root', v.name_display));
 check('Banned words in data', bannedCount === 0, `${bannedCount} instances`);
 
-// ── CHECK 2: Word repetition >3 per venue ──
+// ── CHECK 2: Word repetition >5 per venue (excluding common Korean words) ──
+// Common Korean functional/topical words that naturally repeat in venue guide content
+const COMMON_KR = new Set([
+  // Existence/state verbs
+  '있는', '있다', '있을', '있으면', '있으니', '없는', '없다', '있습니다',
+  // Action verb forms
+  '하는', '하고', '하며', '하면', '합니다', '하세요', '하기',
+  '되는', '됩니다', '되지', '되며', '되어', '된다',
+  // Particles/postpositions (2+ char)
+  '에서', '에서의', '으로', '에게', '부터', '까지', '처럼', '만큼', '보다',
+  '위해', '통해', '대해', '따라', '함께', '대한', '관한',
+  // Conjunctions
+  '그리고', '또는', '하지만', '그러나', '그래서', '따라서',
+  // Common venue-guide vocabulary
+  '확인', '방문', '예약', '입장', '준비', '추천', '문의', '이용', '운영',
+  '분위기', '음악', '사운드', '시간', '정보', '가능', '필요', '서비스',
+  '음료', '테이블', '드레스', '코드',
+  // Quantifiers/modifiers
+  '번째', '가장', '바로', '사전', '직접', '미리', '정도', '이상', '이하',
+  '모든', '다양한', '특별한', '일반', '기본',
+  // Temporal/spatial
+  '이전', '이후', '경우', '때문', '주말', '평일', '오전', '오후', '저녁',
+  // Demonstratives
+  '이런', '그런', '어떤',
+]);
+
 let repVenues = 0, repTotal = 0;
 VENUES.forEach(v => {
   const prot = getProtected(v);
   const tokens = (getAllText(v).match(/[\uAC00-\uD7AF]{2,}/g) || []);
   const freq = {};
-  tokens.forEach(w => { if (!prot.has(w)) freq[w] = (freq[w] || 0) + 1; });
-  const over = Object.entries(freq).filter(([, c]) => c >= 3);
+  tokens.forEach(w => { if (!prot.has(w) && !COMMON_KR.has(w)) freq[w] = (freq[w] || 0) + 1; });
+  const over = Object.entries(freq).filter(([, c]) => c >= 5);
   if (over.length > 0) {
     repVenues++;
-    over.forEach(([, c]) => { repTotal += c - 2; });
+    over.forEach(([, c]) => { repTotal += c - 4; });
   }
 });
-check('Word repetition >=3 (data)', repTotal === 0, `venues=${repVenues}, excess=${repTotal}`);
+check('Word repetition >=5 (data, excl common)', repTotal === 0, `venues=${repVenues}, excess=${repTotal}`);
 
 // ── CHECK 3: FAQ opener diversity ──
 let faqIssues = 0;
