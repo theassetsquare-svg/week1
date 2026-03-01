@@ -5,8 +5,8 @@ import VenueCard from '../../components/VenueCard.astro';
 import { venues, getVenueUrl } from '../../utils/venues';
 
 const clubVenues = venues.filter(v => v.type === 'club');
-const title = '전국 클럽 추천 — 강남·이태원·홍대·부산 인기 클럽 가이드';
-const description = '한국 전국의 인기 클럽을 한눈에 비교하세요. 강남 클럽, 이태원 클럽, 홍대 클럽 등 지역별 무드·음악 장르·입장 정보와 피크타임 가이드를 확인할 수 있습니다.';
+const title = '전국 인기 클럽 49곳 비교 — 강남·이태원·홍대·부산';
+const description = 'DJ 라인업·사운드·드레스코드·피크타임을 한 페이지에서 비교하세요. 강남, 이태원, 홍대, 부산 등 지역별 인기 클럽 현장 데이터 기반 가이드입니다.';
 
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 clubVenues.forEach(v => {
