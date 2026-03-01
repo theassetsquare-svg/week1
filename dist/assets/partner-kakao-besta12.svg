@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" width="480" height="120">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE812;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#FFC107;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="480" height="120" rx="20" fill="url(#bg)" filter="url(#shadow)"/>
+  <g transform="translate(30,25)">
+    <rect width="70" height="70" rx="16" fill="#3C1E1E"/>
+    <path d="M15,52 C15,30 55,30 55,52 L55,55 C55,58 50,62 35,62 C20,62 15,58 15,55Z" fill="#FFE812"/>
+    <circle cx="28" cy="40" r="5" fill="#3C1E1E"/>
+    <circle cx="42" cy="40" r="5" fill="#3C1E1E"/>
+  </g>
+  <text x="120" y="50" font-family="'Noto Sans KR',sans-serif" font-size="22" font-weight="700" fill="#3C1E1E">제휴문의 카톡</text>
+  <text x="120" y="85" font-family="'Noto Sans KR',monospace" font-size="30" font-weight="900" fill="#3C1E1E">besta12</text>
+  <rect x="350" y="35" width="110" height="50" rx="12" fill="#3C1E1E"/>
+  <text x="405" y="67" font-family="'Noto Sans KR',sans-serif" font-size="16" font-weight="700" fill="#FFE812" text-anchor="middle">ID 복사</text>
+</svg>
