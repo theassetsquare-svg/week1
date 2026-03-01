@@ -138,7 +138,7 @@ export function getReadingTime(v: Venue): number {
 
 export const guides = [
   { slug: 'first-visit', title: '첫 입장 핵심 팁', desc: '나이트·클럽·라운지 첫 방문이 걱정된다면, 입장부터 퇴장까지 흐름과 준비물을 미리 확인하세요.' },
-  { slug: 'dress-code', title: '드레스코드 총정리', desc: '클럽·나이트·라운지 유형별 드레스코드 기준과 계절별 복장 팁을 한눈에 확인하세요.' },
+  { slug: 'dress-code', title: '드레스코드 총정리', desc: '클럽·나이트·라운지 유형별 드레스코드 조건과 계절별 복장 팁을 한눈에 확인하세요.' },
   { slug: 'safety-tips', title: '안전하게 즐기는 법', desc: '음주 관리, 귀가 교통편, 개인 물품 보관 등 즐거운 밤을 위한 필수 안전 수칙과 주의사항 안내.' },
   { slug: 'music-genres', title: '음악 장르 총정리', desc: 'EDM, 힙합, 하우스, 테크노부터 트로트·재즈까지 — 매장 유형별 음악 장르 특징과 즐기는 법.' },
   { slug: 'solo-nightlife', title: '혼자서도 즐기는 나이트라이프', desc: '솔로 방문이 걱정된다면 이 가이드를 읽어보세요. 라운지·나이트·클럽에서 혼자 즐기는 실전 팁.' },
