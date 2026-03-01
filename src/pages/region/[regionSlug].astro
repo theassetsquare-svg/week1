@@ -15,7 +15,7 @@ export function getStaticPaths() {
 const { region } = Astro.props;
 const regionVenues = venues.filter(v => v.regionSlug === region.slug);
 const title = `${region.name} 나이트·클럽·라운지 추천 — ${region.name} 지역 나이트라이프 가이드`;
-const description = `${region.name} 지역의 나이트, 클럽, 라운지 ${region.count}곳을 한눈에 비교하세요. ${region.name} 밤문화 매장별 무드·음악·드레스코드·입장 정보와 피크타임 가이드를 상세하게 안내합니다.`;
+const description = `${region.name} 지역의 나이트, 클럽, 라운지 ${region.count}곳을 한눈에 비교하세요. ${region.name} 밤문화 업소별 무드·음악·드레스코드·입장 정보와 피크타임 가이드를 상세하게 안내합니다.`;
 
 const regionFaqMap: Record<string, {q: string; a: string}[]> = {
   gangnam: [
