@@ -34,6 +34,11 @@ Gwangju, and Jeju. Content is AI-generated and quality-checked.
 - /about/ — About this site
 - /editorial-policy/ — Editorial and content policy
 
+## Machine-Readable Resources
+- Sitemap: https://week1-6m5.pages.dev/sitemap.xml (187 URLs)
+- RSS Feed: https://week1-6m5.pages.dev/rss.xml (130 venues)
+- robots.txt: https://week1-6m5.pages.dev/robots.txt
+
 ## Structured Data (JSON-LD)
 Each venue page includes:
 - schema.org/WebPage (with dateModified, speakable)
@@ -43,6 +48,7 @@ Each venue page includes:
 
 Homepage includes:
 - schema.org/WebSite (with SearchAction)
+- schema.org/Organization
 - schema.org/ItemList (130 venues)
 
 ## Contact
