@@ -146,37 +146,22 @@ venues.forEach((v, vi) => {
   const prot = getProtected(v);
   const fields = collectFields(v);
 
-  // 1) readonly 필드에서 단어 빈도
-  const roFreq = {};
-  ['pageTitle', 'h1Title', 'seoTitle'].forEach(f => {
-    if (v[f]) krTokens(v[f]).forEach(w => { if (!prot.has(w)) roFreq[w] = (roFreq[w] || 0) + 1; });
-  });
-  if (v.faq) v.faq.forEach(f => {
-    krTokens(f.q).forEach(w => { if (!prot.has(w)) roFreq[w] = (roFreq[w] || 0) + 1; });
-  });
-
-  // 2) editable 필드에서 단어 빈도
-  const editFreq = {};
-  fields.forEach(f => {
-    krTokens(f.obj[f.key]).forEach(w => { if (!prot.has(w)) editFreq[w] = (editFreq[w] || 0) + 1; });
-  });
-
-  // 3) 전체 빈도 = ro + edit
+  // 모든 필드에서 단어 빈도
   const totalFreq = {};
-  for (const [w, c] of Object.entries(roFreq)) totalFreq[w] = c;
-  for (const [w, c] of Object.entries(editFreq)) totalFreq[w] = (totalFreq[w] || 0) + c;
+  fields.forEach(f => {
+    krTokens(f.obj[f.key]).forEach(w => { if (!prot.has(w)) totalFreq[w] = (totalFreq[w] || 0) + 1; });
+  });
 
-  // 4) 초과 단어
+  // 초과 단어
   const overWords = Object.entries(totalFreq).filter(([, c]) => c > MAX_REPEAT);
   if (overWords.length === 0) return;
 
   venuesProcessed++;
   let venueRemoved = 0;
 
-  // 5) 각 초과 단어 처리
+  // 각 초과 단어 처리
   for (const [word, totalCount] of overWords) {
-    const roCount = roFreq[word] || 0;
-    const keepInEdit = Math.max(0, MAX_REPEAT - roCount);
+    const keepInEdit = MAX_REPEAT;
 
     // 필드별 출현 수 계산
     const fieldHits = [];
