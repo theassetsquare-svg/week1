@@ -125,9 +125,28 @@ const COMMON_KR = new Set([
   '이런', '그런', '어떤',
 ]);
 
+const PARTICLES_SHORT = ['은','는','을','를','이','가','의','에','와','과','도','만','로','서','라','며','고','면','다','요'];
+function getExtendedProtected(v) {
+  const s = getProtected(v);
+  // Add coreName + particle combos
+  let coreName = (v.name_display || '').replace(v.region + ' ', '').replace(/\s+(클럽|나이트|라운지)\s*$/,'').trim();
+  if (coreName) {
+    PARTICLES_SHORT.forEach(p => { s.add(coreName + p); });
+    // Also add full name + particles
+    s.add(coreName);
+  }
+  // Add type + particle combos
+  const typeWord = (v.typeLabel || v.type || '').replace(/\s/g, '');
+  if (typeWord) {
+    PARTICLES_SHORT.forEach(p => { s.add(typeWord + p); });
+    s.add(typeWord);
+  }
+  return s;
+}
+
 let repVenues = 0, repTotal = 0;
 VENUES.forEach(v => {
-  const prot = getProtected(v);
+  const prot = getExtendedProtected(v);
   const tokens = (getAllText(v).match(/[\uAC00-\uD7AF]{2,}/g) || []);
   const freq = {};
   tokens.forEach(w => { if (!prot.has(w) && !COMMON_KR.has(w)) freq[w] = (freq[w] || 0) + 1; });
