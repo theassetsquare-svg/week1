@@ -3,7 +3,7 @@
  * remove-dup5.mjs  (PHASE 8)
  * 업소별 — 가게이름 제외, 한 업소 내 5회 이상 반복 단어의 초과분 삭제
  * 4회까지 유지, 5회째부터 제거
- * 우선순위 낮은 필드부터 제거 (pageTitle/h1/seoTitle/faq.q는 readonly)
+ * 우선순위 낮은 필드부터 제거, 모든 필드 처리 (무조건삭제)
  */
 import { readFileSync, writeFileSync } from 'fs';
 
