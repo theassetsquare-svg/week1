@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync } from 'fs';
 
 const VENUES_PATH = 'data/venues.json';
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
-const MAX_REPEAT = 2; // 데이터에서 2회까지 허용 (HTML 렌더링 시 추가 반복 고려)
+const MAX_REPEAT = 4; // 5회 이상 삭제 (사용자 요청: 중복단어 5개이상 무조건삭제)
 
 /* ── 보호 토큰 (업소별 가게이름+지역) ── */
 function getProtected(v) {
