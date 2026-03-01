@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
+  <defs>
+    <linearGradient id="bg_44001" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0e"/>
+      <stop offset="100%" style="stop-color:#1a0e16"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="340" fill="url(#bg_44001)"/>
+  <defs><radialGradient id="sp_91796" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:#ca8a04;stop-opacity:0.15"/><stop offset="100%" style="stop-color:#0a0a0e;stop-opacity:0"/></radialGradient></defs><rect width="500" height="340" fill="url(#sp_91796)"/>
+  <line x1="125" y1="0" x2="112.66486924607307" y2="204" stroke="#ca8a04" stroke-width="20" opacity="0.04"/>
+  <line x1="250" y1="0" x2="252.58540289476514" y2="204" stroke="#ca8a04" stroke-width="20" opacity="0.04"/>
+  <line x1="375" y1="0" x2="388.61511847469956" y2="204" stroke="#ca8a04" stroke-width="20" opacity="0.04"/>
+  <circle cx="207.6961350394413" cy="22.917748749256134" r="2.108603577129543" fill="#fff" opacity="0.6788663131184876"/>
+  <circle cx="327.6198038365692" cy="49.17382346233353" r="1.3251741966232657" fill="#fff" opacity="0.5516952702775597"/>
+  <circle cx="240.33115385100245" cy="207.12512862682343" r="2.386833881959319" fill="#fff" opacity="0.5085939454613253"/>
+  <circle cx="489.70875807572156" cy="11.789723713882267" r="2.17192440899089" fill="#fff" opacity="0.4424181739334017"/>
+  <circle cx="357.0846851216629" cy="37.379001300781965" r="0.8759919004514813" fill="#fff" opacity="0.5041738756000995"/>
+  <circle cx="270.0763822067529" cy="217.99232041090727" r="2.292218083050102" fill="#fff" opacity="0.22295346499886365"/>
+  <circle cx="243.70860075578094" cy="117.64572785096242" r="1.461057832930237" fill="#fff" opacity="0.35802256378810854"/>
+  <circle cx="227.42154845036566" cy="127.20369300013407" r="1.8061054325662553" fill="#fff" opacity="0.3347157167037949"/>
+  <circle cx="120.20970950834453" cy="124.21773617248981" r="1.5366497207432985" fill="#fff" opacity="0.34250728487968446"/>
+  <circle cx="118.36404597852379" cy="142.50121149420738" r="1.136304714716971" fill="#fff" opacity="0.5489250749116763"/>
+  <rect x="0" y="305" width="500" height="35" fill="#0a0a14"/>
+  <ellipse cx="287.502117222175" cy="310" rx="44.35644648503512" ry="4" fill="#ca8a04" opacity="0.10805391946807505"/>
+  <ellipse cx="131.5551201114431" cy="310" rx="24.23810533247888" ry="4" fill="#e11d48" opacity="0.13363963103853166"/>
+  <ellipse cx="146.64206746965647" cy="310" rx="68.0614693951793" ry="4" fill="#e11d48" opacity="0.15863197024911643"/>
+  <g transform="translate(260.71988735115156,272.60514714056626) scale(0.9793752967379987)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#ca8a04"/>
+    <path d="M-3,-63 Q-10,-58 -6,-50" stroke="#ca8a04" stroke-width="3" fill="none" stroke-linecap="round"/>
+     <circle cx="2" cy="-68" r="6" fill="#ca8a04" opacity="0.8"/>
+     <path d="M2,-63 Q8,-60 5,-52" stroke="#ca8a04" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-10,20 -16,55 L16,55 Q10,20 6,0 Q10,-20 8,-41 Z" fill="#e11d48"/>
+     <path d="M0,0 Q-6,25 -16,55 L0,50 Z" fill="#ca8a04" opacity="0.15"/>
+    <line x1="-2" y1="25" x2="-12" y2="60" stroke="#ca8a04" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="10" y2="60" stroke="#ca8a04" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-14" cy="62" rx="6" ry="2.5" fill="#e11d48" opacity="0.7"/>
+    <ellipse cx="12" cy="62" rx="6" ry="2.5" fill="#e11d48" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-20" y2="-58" stroke="#ca8a04" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="22" y2="-55" stroke="#ca8a04" stroke-width="2.5" stroke-linecap="round"/>
+    
+  </g>
+  <rect x="430" y="12" width="58" height="22" rx="4" fill="#ca8a04" opacity="0.8"/>
+  <text x="459" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">NIGHT</text>
+  <rect x="75" y="19" width="350" height="30" rx="6" fill="#0a0a0e" opacity="0.7" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="250" y="39" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#ca8a04" opacity="0.9">부천 맘모스 나이트</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
+  <defs>
+    <linearGradient id="bg_87023" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0e"/>
+      <stop offset="100%" style="stop-color:#1a0e16"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="340" fill="url(#bg_87023)"/>
+  <defs><radialGradient id="sp_8391" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:#ca8a04;stop-opacity:0.15"/><stop offset="100%" style="stop-color:#0a0a0e;stop-opacity:0"/></radialGradient></defs><rect width="500" height="340" fill="url(#sp_8391)"/>
+  <line x1="125" y1="0" x2="125.38530725985765" y2="204" stroke="#ca8a04" stroke-width="20" opacity="0.04"/>
+  <line x1="250" y1="0" x2="237.80831266660243" y2="204" stroke="#ca8a04" stroke-width="20" opacity="0.04"/>
+  <line x1="375" y1="0" x2="394.08781258855015" y2="204" stroke="#ca8a04" stroke-width="20" opacity="0.04"/>
+  <circle cx="353.964606532827" cy="217.2189955576323" r="0.8789115096442401" fill="#fff" opacity="0.6387052828678861"/>
+  <circle cx="39.04162719845772" cy="51.481322072446346" r="2.4631301444023848" fill="#fff" opacity="0.45492137973196806"/>
+  <circle cx="361.35355720762163" cy="62.088089669123285" r="0.7203396633267403" fill="#fff" opacity="0.21325639395508916"/>
+  <circle cx="480.5666806641966" cy="197.29778416035697" r="1.9770852541550994" fill="#fff" opacity="0.38850245396606625"/>
+  <circle cx="395.6937779439613" cy="201.44800207670778" r="2.325353521388024" fill="#fff" opacity="0.6367336770519614"/>
+  <circle cx="305.92511780560017" cy="220.8363749613054" r="1.475659648887813" fill="#fff" opacity="0.5319677448598668"/>
+  <circle cx="401.19126497302204" cy="182.1138555360958" r="1.7463647332042456" fill="#fff" opacity="0.2416707922704518"/>
+  <circle cx="11.998850386589766" cy="132.85177329927683" r="1.717901709023863" fill="#fff" opacity="0.4155298301950097"/>
+  <circle cx="259.65600623749197" cy="199.6778989243321" r="0.9468794818967581" fill="#fff" opacity="0.4158549511805177"/>
+  <rect x="0" y="306" width="500" height="34" fill="#0a0a14"/>
+  <ellipse cx="406.555837020278" cy="311" rx="29.797604102641344" ry="4" fill="#ca8a04" opacity="0.18861241610720753"/>
+  <ellipse cx="163.53860427625477" cy="311" rx="23.224819630850106" ry="4" fill="#e11d48" opacity="0.20745366480201483"/>
+  <ellipse cx="96.71850642189384" cy="311" rx="30.02664634725079" ry="4" fill="#e11d48" opacity="0.21723074676468968"/>
+  <ellipse cx="180.33814895898104" cy="311" rx="63.49282890325412" ry="4" fill="#ca8a04" opacity="0.20868796911090615"/>
+  <g transform="translate(247.282473500818,281.9476787070744) scale(1.1426988284103574)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#ca8a04"/>
+    <path d="M-3,-63 Q-18,-45 -8,-25 Q-16,-5 -10,15" stroke="#ca8a04" stroke-width="3" fill="none" stroke-linecap="round"/>
+     <path d="M2,-63 Q14,-42 6,-22 Q12,-2 8,18" stroke="#ca8a04" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-10,20 -16,55 L16,55 Q10,20 6,0 Q10,-20 8,-41 Z" fill="#e11d48"/>
+     <path d="M0,0 Q-6,25 -16,55 L0,50 Z" fill="#ca8a04" opacity="0.15"/>
+    <line x1="-2" y1="25" x2="-12" y2="60" stroke="#ca8a04" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="10" y2="60" stroke="#ca8a04" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-14" cy="62" rx="6" ry="2.5" fill="#e11d48" opacity="0.7"/>
+    <ellipse cx="12" cy="62" rx="6" ry="2.5" fill="#e11d48" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-18" y2="-20" stroke="#ca8a04" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="25" y2="-10" stroke="#ca8a04" stroke-width="2.5" stroke-linecap="round"/>
+    
+  </g>
+  <rect x="430" y="12" width="58" height="22" rx="4" fill="#ca8a04" opacity="0.8"/>
+  <text x="459" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">NIGHT</text>
+  <rect x="75" y="28" width="350" height="30" rx="6" fill="#0a0a0e" opacity="0.7" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="250" y="48" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#ca8a04" opacity="0.9">대구 바밤바 나이트</text>
+</svg>

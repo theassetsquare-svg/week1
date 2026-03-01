@@ -1,0 +1,55 @@
+# 나이트라이프 코리아 (Nightlife Korea)
+
+> 한국 전국 나이트, 클럽, 라운지 130곳의 상세 정보를 제공하는 가이드 사이트
+
+## About
+Korean nightlife venue directory covering 130 nights, clubs, and lounges
+across major cities including Gangnam, Busan, Daegu, Incheon, Daejeon,
+Gwangju, and Jeju. Content is AI-generated and quality-checked.
+
+## Content Per Venue Page
+- Atmosphere description
+- Music genre and style
+- Safety and etiquette guide
+- 5-scene storytelling narrative
+- Visit timeline with recommended schedule
+- First-visit checklist (7 items)
+- Custom course planner
+- FAQ (8 questions and answers)
+- Location and transportation info
+- Nightlife type comparison table
+- Personality quiz
+- Related venues
+
+## Site Structure
+- / — Homepage with search and filtering
+- /night/{region}/{venue}/ — Night venue detail pages
+- /club/{region}/{venue}/ — Club venue detail pages
+- /lounge/{region}/{venue}/ — Lounge venue detail pages
+- /nights/ — Night venue listing
+- /clubs/ — Club venue listing
+- /lounges/ — Lounge venue listing
+- /region/{region}/ — Regional hub pages
+- /guides/ — Nightlife guides
+- /about/ — About this site
+- /editorial-policy/ — Editorial and content policy
+
+## Machine-Readable Resources
+- Sitemap: https://week1-6m5.pages.dev/sitemap.xml (187 URLs)
+- RSS Feed: https://week1-6m5.pages.dev/rss.xml (130 venues)
+- robots.txt: https://week1-6m5.pages.dev/robots.txt
+
+## Structured Data (JSON-LD)
+Each venue page includes:
+- schema.org/WebPage (with dateModified, speakable)
+- schema.org/NightClub (name, description, address, geo)
+- schema.org/FAQPage (8 Q&A pairs)
+- schema.org/BreadcrumbList
+
+Homepage includes:
+- schema.org/WebSite (with SearchAction)
+- schema.org/Organization
+- schema.org/ItemList (130 venues)
+
+## Contact
+KakaoTalk: besta12
