@@ -74,6 +74,10 @@ function collectFields(v) {
   ['seoDescription', 'metaDescription'].forEach(f => add(v, f, f, 5));
   if (v.sectionIntros) walkObj(v.sectionIntros, 'secI', 5);
 
+  // P6: 이전 readonly — pageTitle, h1Title, seoTitle, faq.q (마지막에 제거)
+  ['pageTitle', 'h1Title', 'seoTitle'].forEach(f => add(v, f, f, 6));
+  if (v.faq) v.faq.forEach((f, i) => add(f, 'q', `faq[${i}].q`, 6));
+
   // Sort: low priority first (remove from these first)
   fields.sort((a, b) => a.priority - b.priority);
   return fields;
