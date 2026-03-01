@@ -90,6 +90,13 @@ function getProtected(v) {
   return s;
 }
 
+const SKIP_WALK = new Set([
+  'id', 'type', 'typePath', 'typeLabel', 'regionSlug', 'venueSlug', 'urlSlug',
+  'geo', 'images', 'imagePrompts', 'relatedVenueIds', 'map_url',
+  'name_display', 'name_input', 'name_seo', 'region',
+  'card_tags', 'sourcePath'
+]);
+
 function getAllText(v) {
   const t = [];
   function walk(obj) {
@@ -97,7 +104,7 @@ function getAllText(v) {
     else if (Array.isArray(obj)) obj.forEach(walk);
     else if (typeof obj === 'object' && obj !== null) {
       for (const [k, val] of Object.entries(obj)) {
-        if (['id','type','typePath','regionSlug','venueSlug','urlSlug','geo','images','imagePrompts','relatedVenueIds','map_url'].includes(k)) continue;
+        if (SKIP_WALK.has(k)) continue;
         walk(val);
       }
     }
