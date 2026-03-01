@@ -1,0 +1,13 @@
+User-agent: Yeti
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://week1-6m5.pages.dev/sitemap.xml
+
+# RSS Feed
+# https://week1-6m5.pages.dev/rss.xml
