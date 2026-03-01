@@ -47,9 +47,9 @@ function collectFields(v) {
   if (v.story) walkObj(v.story, 'story', 1);
   if (v.bodySections) walkObj(v.bodySections, 'body', 1);
 
-  // P2: faq.a, timeline.desc, checklist
+  // P2: faq.a, timeline.desc, timeline.label, checklist
   if (v.faq) v.faq.forEach((f, i) => add(f, 'a', `faq[${i}].a`, 2));
-  if (v.timeline) v.timeline.forEach((t, i) => add(t, 'desc', `tl[${i}]`, 2));
+  if (v.timeline) v.timeline.forEach((t, i) => { add(t, 'desc', `tl[${i}]`, 2); add(t, 'label', `tl[${i}].label`, 2); });
   if (v.checklist) v.checklist.forEach((_, i) => add(v.checklist, String(i), `ck[${i}]`, 2));
 
   // P3: plannerRules, quickPlan, intro
