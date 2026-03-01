@@ -245,28 +245,24 @@ if (!existsSync(DIST)) {
 // ══════════════════════════════════════
 // CHECK 6: Banned words in built HTML
 // ══════════════════════════════════════
-console.log('\n=== CHECK 6: Banned words in HTML ===');
+console.log('\n=== CHECK 6: Banned words in ALL HTML ===');
 if (existsSync(DIST)) {
-  const detailDirs = ['club', 'night', 'lounge'];
+  const allHtmlFiles = walkHtml(DIST);
   let htmlBanned = 0;
   const bannedPages = [];
 
-  for (const dir of detailDirs) {
-    const dp = join(DIST, dir);
-    if (!existsSync(dp)) continue;
-    const files = walkHtml(dp);
-    for (const file of files) {
-      const text = extractText(readFileSync(file, 'utf-8'));
-      for (const w of BANNED) {
-        const regex = new RegExp(`(?<![\\uAC00-\\uD7AF])${w}(?![\\uAC00-\\uD7AF])`, 'g');
-        const matches = [...text.matchAll(regex)];
-        if (matches.length > 0) {
-          htmlBanned += matches.length;
-          bannedPages.push({ page: file.replace(DIST, ''), word: w, count: matches.length });
-        }
+  for (const file of allHtmlFiles) {
+    const text = extractText(readFileSync(file, 'utf-8'));
+    for (const w of BANNED) {
+      const regex = new RegExp(`(?<![\\uAC00-\\uD7AF])${w}(?![\\uAC00-\\uD7AF])`, 'g');
+      const matches = [...text.matchAll(regex)];
+      if (matches.length > 0) {
+        htmlBanned += matches.length;
+        bannedPages.push({ page: file.replace(DIST, ''), word: w, count: matches.length });
       }
     }
   }
+  console.log(`  Total HTML pages checked: ${allHtmlFiles.length}`);
   console.log(`  Banned word instances in HTML: ${htmlBanned}`);
   if (bannedPages.length > 0) {
     bannedPages.slice(0, 10).forEach(b => console.log(`    ${b.page}: "${b.word}" x${b.count}`));
