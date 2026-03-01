@@ -154,7 +154,7 @@ const guideIntros: Record<string, { hook: string; valuePromise: string; scanBox:
     hook: '서울 강남과 부산 해운대의 밤문화는 완전히 다릅니다. 지역마다 무드, 규모, 접근성이 다르기 때문에 어디를 갈지에 따라 준비도 달라집니다. 전국 주요 도시의 밤문화 특징을 한곳에 정리했습니다.',
     valuePromise: '서울, 부산, 대구, 인천 등 주요 도시의 밤문화 특성과 추천 지역을 한번에 파악할 수 있습니다.',
     scanBox: ['서울: 강남(대형 클럽+라운지), 이태원(다국적), 홍대(인디)', '부산: 해운대(여름 특화), 서면(연중 활발)', '대구: 동성로 중심, 지역 밀착형', '인천/수원/성남: 수도권 접근성 좋은 로컬 명소', '지방: 천안, 일산 등 소규모 친밀한 감각'],
-    checklist: ['방문 도시 결정 (서울/부산/대구/인천 등)', '도시 내 핵심 지역 확인 (강남, 해운대, 동성로 등)', '해당 지역 유형별 매장 수와 톤 파악', '교통편과 숙소 위치 고려', '지역별 피크 시즌 확인 (부산 여름 등)'],
+    checklist: ['방문 도시 결정 (서울/부산/대구/인천 등)', '도시 내 핵심 지역 확인 (강남, 해운대, 동성로 등)', '그 지역 유형별 업소 수와 톤 파악', '교통편과 숙소 위치 고려', '지역별 피크 시즌 확인 (부산 여름 등)'],
     riskItems: [{ dont: '"서울 밤문화만 볼 만하다"고 생각하지 마세요', doInstead: '부산, 대구 등 지방 도시도 고유한 매력의 밤문화가 있습니다' }, { dont: '지역 정보 없이 무작정 가지 마세요', doInstead: '각 도시의 핵심 지역과 특성을 미리 파악하면 시간 낭비를 줄입니다' }],
     teasers: ['아래에서 서울/강남/이태원 밤문화 특징 확인', '아래에서 부산/대구/인천 지역별 추천 확인'],
   },
@@ -223,7 +223,7 @@ const jsonLd = [{
 
     {relatedVenues.length > 0 && (
       <section class="venue-section">
-        <h2>관련 매장</h2>
+        <h2>관련 업소</h2>
         <div class="related-grid">
           {relatedVenues.map(v => (
             <a href={getVenueUrl(v)} target="_blank" rel="noopener noreferrer" class="related-link">{v.region} {v.name_display}</a>
