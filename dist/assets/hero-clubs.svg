@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <defs>
+    <linearGradient id="hcbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#12121f"/>
+      <stop offset="100%" style="stop-color:#0a0a1a"/>
+    </linearGradient>
+    <radialGradient id="hcg1" cx="30%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="hcg2" cx="70%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#hcbg)"/>
+  <rect width="1200" height="300" fill="url(#hcg1)"/>
+  <rect width="1200" height="300" fill="url(#hcg2)"/>
+  <polygon points="80,0 55,300 105,300" fill="#8b5cf6" opacity="0.06"/><polygon points="220,0 195,300 245,300" fill="#ec4899" opacity="0.06"/><polygon points="360,0 335,300 385,300" fill="#8b5cf6" opacity="0.06"/><polygon points="500,0 475,300 525,300" fill="#ec4899" opacity="0.06"/><polygon points="640,0 615,300 665,300" fill="#8b5cf6" opacity="0.06"/><polygon points="780,0 755,300 805,300" fill="#ec4899" opacity="0.06"/><polygon points="920,0 895,300 945,300" fill="#8b5cf6" opacity="0.06"/><polygon points="1060,0 1035,300 1085,300" fill="#ec4899" opacity="0.06"/><circle cx="50" cy="30" r="1" fill="#fff" opacity="0.2"/><circle cx="130" cy="67" r="2" fill="#fff" opacity="0.30000000000000004"/><circle cx="210" cy="104" r="3" fill="#fff" opacity="0.4"/><circle cx="290" cy="141" r="1" fill="#fff" opacity="0.5"/><circle cx="370" cy="178" r="2" fill="#fff" opacity="0.6000000000000001"/><circle cx="450" cy="215" r="3" fill="#fff" opacity="0.2"/><circle cx="530" cy="252" r="1" fill="#fff" opacity="0.30000000000000004"/><circle cx="610" cy="49" r="2" fill="#fff" opacity="0.4"/><circle cx="690" cy="86" r="3" fill="#fff" opacity="0.5"/><circle cx="770" cy="123" r="1" fill="#fff" opacity="0.6000000000000001"/><circle cx="850" cy="160" r="2" fill="#fff" opacity="0.2"/><circle cx="930" cy="197" r="3" fill="#fff" opacity="0.30000000000000004"/><circle cx="1010" cy="234" r="1" fill="#fff" opacity="0.4"/><circle cx="1090" cy="31" r="2" fill="#fff" opacity="0.5"/><circle cx="1170" cy="68" r="3" fill="#fff" opacity="0.6000000000000001"/>
+</svg>
