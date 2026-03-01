@@ -216,7 +216,7 @@ if (!existsSync(DIST)) {
     }
 
     // Map link
-    if (!html.includes('map.kakao.com') && !html.includes('maps.google.com') && !html.includes('maps.app.goo.gl')) {
+    if (!html.includes('map.kakao.com') && !html.includes('maps.google.com') && !html.includes('google.com/maps') && !html.includes('maps.app.goo.gl') && !html.includes('map.naver.com')) {
       missingMap++;
       results.mapLinks.push({ page: relPath });
     }
