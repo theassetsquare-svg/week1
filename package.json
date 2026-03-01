@@ -26,6 +26,7 @@
     "qa:all": "node scripts/qa_url_duplicates.mjs && node scripts/qa_repeat_limit.mjs && node scripts/qa_brand_count.mjs && node scripts/qa_similarity.mjs && node scripts/qa_seo_meta.mjs && node scripts/qa_search.mjs"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^4.16.0",
     "playwright": "^1.58.2"
   }
