@@ -67,7 +67,7 @@ function checkBannedInObj(obj, path, venueName) {
     obj.forEach((item, i) => checkBannedInObj(item, `${path}[${i}]`, venueName));
   } else if (typeof obj === 'object' && obj !== null) {
     for (const [k, v] of Object.entries(obj)) {
-      if (['id', 'type', 'typePath', 'regionSlug', 'venueSlug', 'urlSlug', 'geo', 'images', 'imagePrompts', 'relatedVenueIds', 'map_url'].includes(k)) continue;
+      if (SKIP_WALK.has(k)) continue;
       checkBannedInObj(v, `${path}.${k}`, venueName);
     }
   }
