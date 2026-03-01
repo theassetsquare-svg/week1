@@ -6,8 +6,8 @@ import { venues, getVenueUrl, getUniqueRegions } from '../../utils/venues';
 
 const nightVenues = venues.filter(v => v.type === 'night');
 const allRegions = getUniqueRegions();
-const title = '전국 나이트 추천 — 강남·부산·대구·수원 인기 나이트 가이드';
-const description = '한국 전국의 나이트를 한눈에 비교하세요. 강남, 부산, 대구, 수원 등 지역별 나이트 분위기·라이브 밴드·파트너 댄스 정보와 입장 가이드를 상세하게 안내합니다.';
+const title = '전국 나이트 51곳 비교 — 강남·부산·대구·수원';
+const description = '라이브 밴드·파트너 댄스·입장 조건·피크타임을 한 페이지에서 비교하세요. 강남, 부산, 대구, 수원 등 지역별 인기 나이트 현장 데이터 기반 가이드입니다.';
 
 const regionMap = new Map<string, { name: string; slug: string; count: number }>();
 nightVenues.forEach(v => {
