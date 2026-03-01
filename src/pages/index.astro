@@ -90,13 +90,13 @@ const jsonLd = [
   <section class="container content-narrow">
     <IntroSection
       hook={`오늘 밤 어디 갈지 검색만 30분째라면, 그 시간을 여기서 줄일 수 있습니다. 나이트, 클럽, 라운지 — 유형도 다르고 지역마다 무드도 다른 곳들을 하나하나 비교하면 시간만 낭비하기 쉽습니다. 전국 ${venues.length}곳의 핵심 정보를 한곳에 정리했습니다.`}
-      valuePromise={`1분이면 전국 ${venues.length}곳의 유형별·지역별 분포를 파악하고, 원하는 매장 상세 페이지로 바로 이동할 수 있습니다.`}
+      valuePromise={`1분이면 전국 ${venues.length}곳의 유형별·지역별 분포를 파악하고, 원하는 곳의 상세 페이지로 바로 이동할 수 있습니다.`}
       scanBox={[
         `전국 나이트·클럽·라운지 ${venues.length}곳 수록`,
         `나이트 ${venues.filter(v=>v.type==='night').length}곳 · 클럽 ${venues.filter(v=>v.type==='club').length}곳 · 라운지 ${venues.filter(v=>v.type==='lounge').length}곳`,
         `지역: ${regions.length}개 도시 커버 (강남, 부산, 대구, 인천 등)`,
-        '매장별 체크리스트·타임라인·FAQ 포함',
-        '검색: 매장명 또는 지역명 입력으로 즉시 검색',
+        '페이지별 체크리스트·타임라인·FAQ 포함',
+        '검색: 이름 또는 지역명 입력으로 즉시 검색',
         '필터: 유형별(나이트/클럽/라운지) 칩으로 분류 가능',
         '에디터 선정: 엄선 12곳 바로 확인',
       ]}
