@@ -97,13 +97,6 @@ function getProtected(v) {
   return s;
 }
 
-const SKIP_WALK = new Set([
-  'id', 'type', 'typePath', 'typeLabel', 'regionSlug', 'venueSlug', 'urlSlug',
-  'geo', 'images', 'imagePrompts', 'relatedVenueIds', 'map_url',
-  'name_display', 'name_input', 'name_seo', 'region',
-  'card_tags', 'sourcePath'
-]);
-
 function getAllText(v) {
   const t = [];
   function walk(obj) {
