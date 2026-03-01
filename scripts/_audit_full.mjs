@@ -153,21 +153,30 @@ const COMMON_KR = new Set([
   '올라간다', '것이다', '서의', '서는', '지형도에서',
 ]);
 
-const PARTICLES_SHORT = ['은','는','을','를','이','가','의','에','와','과','도','만','로','서','라','며','고','면','다','요'];
+const PARTICLES_ALL = ['은','는','을','를','이','가','의','에','와','과','도','만','로','서','라','며','고','면','다','요',
+  '에서','으로','부터','까지','만큼','처럼','보다','에게','한테','이라는','이란','이라면','이니','이다','입니다','에서의','만의','에는','에도','에서는'];
 function getExtendedProtected(v) {
   const s = getProtected(v);
   // Add coreName + particle combos
   let coreName = (v.name_display || '').replace(v.region + ' ', '').replace(/\s+(클럽|나이트|라운지)\s*$/,'').trim();
   if (coreName) {
-    PARTICLES_SHORT.forEach(p => { s.add(coreName + p); });
-    // Also add full name + particles
+    PARTICLES_ALL.forEach(p => { s.add(coreName + p); });
     s.add(coreName);
   }
   // Add type + particle combos
   const typeWord = (v.typeLabel || v.type || '').replace(/\s/g, '');
   if (typeWord) {
-    PARTICLES_SHORT.forEach(p => { s.add(typeWord + p); });
+    PARTICLES_ALL.forEach(p => { s.add(typeWord + p); });
     s.add(typeWord);
+  }
+  // Add geo neighborhood names
+  if (v.geo?.neighborhood) {
+    const words = (v.geo.neighborhood.match(/[\uAC00-\uD7AF]{2,}/g) || []);
+    words.forEach(w => { s.add(w); PARTICLES_ALL.forEach(p => s.add(w + p)); });
+  }
+  if (v.geo?.district) {
+    const words = (v.geo.district.match(/[\uAC00-\uD7AF]{2,}/g) || []);
+    words.forEach(w => { s.add(w); PARTICLES_ALL.forEach(p => s.add(w + p)); });
   }
   return s;
 }
