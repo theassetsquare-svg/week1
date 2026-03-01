@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /**
- * remove-dup5.mjs  (PHASE 8)
- * 업소별 — 가게이름 제외, 한 업소 내 5회 이상 반복 단어의 초과분 삭제
- * 4회까지 유지, 5회째부터 제거
+ * remove-dup5.mjs  (PHASE 9)
+ * 업소별 — 가게이름 제외, 한 업소 내 3회 이상 반복 단어의 초과분 삭제
+ * 2회까지 유지, 3회째부터 제거
  * 우선순위 낮은 필드부터 제거, 모든 필드 처리 (무조건삭제)
  */
 import { readFileSync, writeFileSync } from 'fs';
 
 const VENUES_PATH = 'data/venues.json';
 const venues = JSON.parse(readFileSync(VENUES_PATH, 'utf8'));
-const MAX_REPEAT = 4; // 5회 이상 삭제 (사용자 요청: 중복단어 5개이상 무조건삭제)
+const MAX_REPEAT = 2; // 3회 이상 삭제 (사용자 요청: 중복단어 3개이상 무조건삭제)
 
 /* ── 보호 토큰 (업소별 가게이름+지역) ── */
 function getProtected(v) {
