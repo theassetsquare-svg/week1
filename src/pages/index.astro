@@ -5,8 +5,8 @@ import VenueCard from '../components/VenueCard.astro';
 import { venues, getVenueUrl, getUniqueRegions, guides } from '../utils/venues';
 
 const regions = getUniqueRegions();
-const title = '전국 나이트·클럽·라운지 추천 — 나이트코리아 독립 가이드';
-const description = '한국 전국 나이트, 클럽, 라운지 130곳의 무드·음악·입장 정보를 한눈에 비교하세요. 강남, 부산, 대구, 인천 등 지역별 나이트라이프 추천과 상세 가이드를 제공합니다.';
+const title = '나이트코리아 — 전국 130곳 입장 정보·무드·피크타임 비교';
+const description = '강남·부산·대구·인천 등 전국 나이트, 클럽, 라운지 현장 데이터를 한눈에 비교하세요. 드레스코드·음악 장르·시간대별 분위기·입장 팁까지 독립 가이드로 제공합니다.';
 
 // Curated mix: 4 night + 4 club + 4 lounge = 12 recommended
 const nightPick = venues.filter(v => v.type === 'night').slice(0, 4);
