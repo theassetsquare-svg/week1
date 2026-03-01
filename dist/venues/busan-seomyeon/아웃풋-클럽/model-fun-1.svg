@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 340" width="500" height="340">
+  <defs>
+    <linearGradient id="bg_59040" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#1a0a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="340" fill="url(#bg_59040)"/>
+  <defs><radialGradient id="sp_37913" cx="50%" cy="40%" r="50%"><stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.15"/><stop offset="100%" style="stop-color:#0a0a1a;stop-opacity:0"/></radialGradient></defs><rect width="500" height="340" fill="url(#sp_37913)"/>
+  <circle cx="134.01081995107234" cy="99.50782790314406" r="1.4981937306001782" fill="#fff" opacity="0.46035674510058017"/>
+  <circle cx="31.82454453781247" cy="200.33212163066491" r="1.9515009466558695" fill="#fff" opacity="0.6842388867400586"/>
+  <circle cx="469.95519974734634" cy="66.43733478616923" r="0.515210784971714" fill="#fff" opacity="0.6080616480205208"/>
+  <circle cx="122.67805554438382" cy="140.76489395974204" r="1.0068229255266488" fill="#fff" opacity="0.502715960307978"/>
+  <circle cx="157.1265736129135" cy="167.30267194006592" r="2.4147263071499765" fill="#fff" opacity="0.6243932904209941"/>
+  <circle cx="114.05720945913345" cy="123.84400295186786" r="0.9447306855581701" fill="#fff" opacity="0.5333117240108549"/>
+  <circle cx="454.8892850289121" cy="58.07513102749362" r="1.5180080104619265" fill="#fff" opacity="0.6634589797351509"/>
+  <circle cx="308.7628105422482" cy="191.08219721214846" r="0.9830630021169782" fill="#fff" opacity="0.5331450957339257"/>
+  <circle cx="108.27761306427419" cy="217.31330406665802" r="2.0978607260622084" fill="#fff" opacity="0.22976288029458375"/>
+  <rect x="0" y="309" width="500" height="31" fill="#0a0a14"/>
+  <ellipse cx="390.3357337694615" cy="314" rx="21.68899071868509" ry="4" fill="#ec4899" opacity="0.21204895763657988"/>
+  <ellipse cx="298.79701288882643" cy="314" rx="62.88991966750473" ry="4" fill="#ec4899" opacity="0.10799811775796116"/>
+  <ellipse cx="478.9979866473004" cy="314" rx="37.89398316759616" ry="4" fill="#8b5cf6" opacity="0.19494900411926208"/>
+  <g transform="translate(263.99458413477987,276.19384608929977) scale(0.9177959268912673)">
+    <ellipse cx="0" cy="-52" rx="9" ry="11" fill="#8b5cf6"/>
+    <path d="M-3,-63 Q-18,-48 -14,-20 Q-16,0 -12,20" stroke="#8b5cf6" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+     <path d="M2,-63 Q6,-55 4,-42" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M-8,-41 Q-10,-20 -6,0 Q-8,12 -14,30 L14,30 Q8,12 6,0 Q10,-20 8,-41 Z" fill="#ec4899"/>
+     <path d="M-6,0 L-14,30 L0,30 Z" fill="#8b5cf6" opacity="0.2"/>
+    <line x1="-2" y1="25" x2="-8" y2="60" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+    <line x1="2" y1="25" x2="8" y2="60" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="-8" cy="62" rx="6" ry="2.5" fill="#ec4899" opacity="0.7"/>
+    <ellipse cx="8" cy="62" rx="6" ry="2.5" fill="#ec4899" opacity="0.7"/>
+    <line x1="-8" y1="-30" x2="-22" y2="-10" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="8" y1="-30" x2="18" y2="-5" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"/>
+    
+  </g>
+  <rect x="430" y="12" width="58" height="22" rx="4" fill="#8b5cf6" opacity="0.8"/>
+  <text x="459" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#fff">CLUB</text>
+  <rect x="75" y="23" width="350" height="30" rx="6" fill="#0a0a1a" opacity="0.7" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="250" y="43" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#8b5cf6" opacity="0.9">부산서면 아웃풋 클럽</text>
+</svg>
