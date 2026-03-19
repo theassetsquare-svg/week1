@@ -52,7 +52,7 @@ html {
 body {
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--text-primary);
   background: var(--bg);
   max-width: var(--max-w);
@@ -60,6 +60,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
 }
 
 /* ═══ TOP FIXED BANNER (HOOKING #1) ═══ */
@@ -90,7 +91,7 @@ body {
   border-bottom: 1px solid var(--border);
   padding: 16px;
   position: sticky;
-  top: 48px;
+  top: 43px;
   z-index: 999;
 }
 .site-logo {
@@ -122,6 +123,9 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   transition: all 0.2s;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
 }
 .nav-links a:hover,
 .nav-links a.active {
@@ -135,7 +139,7 @@ h1, h2, h3 {
   font-family: var(--font-cyber);
   color: var(--neon);
   text-shadow: var(--shadow-neon);
-  line-height: 1.3;
+  line-height: 1.4;
 }
 h1 { font-size: 24px; margin-bottom: 16px; }
 h2 { font-size: 20px; margin-bottom: 12px; color: var(--purple); text-shadow: var(--shadow-purple); }
@@ -180,9 +184,9 @@ a:hover { color: var(--purple); }
   margin-bottom: 8px;
 }
 .hero-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.8;
   max-width: 360px;
   margin: 0 auto;
 }
@@ -229,7 +233,7 @@ a:hover { color: var(--purple); }
   border: 1px solid rgba(57,255,20,0.3);
 }
 
-/* ═══ VENUE CARD ═══ */
+/* ═══ VENUE CARD — 크기 완전 통일 ═══ */
 .venue-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -242,7 +246,8 @@ a:hover { color: var(--purple); }
   display: block;
   color: inherit;
   box-shadow: var(--shadow-card);
-  min-height: 160px;
+  height: 180px;
+  overflow: hidden;
 }
 .venue-card:hover {
   border-color: var(--neon);
@@ -254,34 +259,15 @@ a:hover { color: var(--purple); }
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  min-height: 24px;
 }
-.venue-type-badge {
+.rank-badge {
   font-family: var(--font-cyber);
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-.badge-night {
-  background: rgba(57,255,20,0.15);
+  font-size: 16px;
   color: var(--neon);
-  border: 1px solid rgba(57,255,20,0.3);
-}
-.badge-club {
-  background: rgba(168,85,247,0.15);
-  color: var(--purple);
-  border: 1px solid rgba(168,85,247,0.3);
-}
-.badge-lounge {
-  background: rgba(59,130,246,0.15);
-  color: #60A5FA;
-  border: 1px solid rgba(59,130,246,0.3);
-}
-.venue-region {
-  font-family: var(--font-cyber);
-  font-size: 11px;
-  color: var(--text-muted);
+  text-shadow: var(--shadow-neon);
+  font-weight: 700;
 }
 .venue-card-name {
   font-family: var(--font-body);
@@ -290,12 +276,19 @@ a:hover { color: var(--purple); }
   color: var(--text-primary);
   margin-bottom: 6px;
   line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .venue-card-desc {
   font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .venue-card-tags {
   display: flex;
@@ -327,6 +320,33 @@ a:hover { color: var(--purple); }
 .detail-type-badge {
   display: inline-block;
   margin-bottom: 8px;
+}
+.venue-type-badge {
+  font-family: var(--font-cyber);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.badge-night {
+  background: rgba(57,255,20,0.15);
+  color: var(--neon);
+  border: 1px solid rgba(57,255,20,0.3);
+}
+.badge-club {
+  background: rgba(168,85,247,0.15);
+  color: var(--purple);
+  border: 1px solid rgba(168,85,247,0.3);
+}
+.badge-lounge {
+  background: rgba(59,130,246,0.15);
+  color: #60A5FA;
+  border: 1px solid rgba(59,130,246,0.3);
+}
+.venue-region {
+  font-family: var(--font-cyber);
+  font-size: 11px;
+  color: var(--text-muted);
 }
 .detail-contact {
   margin-top: 12px;
@@ -404,7 +424,7 @@ a:hover { color: var(--purple); }
   color: var(--purple);
   font-size: 15px;
   margin-bottom: 8px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 .faq-q::before {
   content: 'Q. ';
@@ -414,7 +434,7 @@ a:hover { color: var(--purple); }
 .faq-a {
   font-size: 14px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 .faq-a::before {
   content: 'A. ';
@@ -448,7 +468,7 @@ a:hover { color: var(--purple); }
 
 /* Mid-content hook (#2) */
 .hook-mid {
-  margin: 20px 0;
+  margin: 20px 16px;
   padding: 16px;
   background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(57,255,20,0.05));
   border: 1px solid var(--purple);
@@ -479,7 +499,7 @@ a:hover { color: var(--purple); }
 
 /* AI recommendation teaser (#4) */
 .hook-ai {
-  margin: 20px 0;
+  margin: 20px 16px;
   padding: 20px 16px;
   background: linear-gradient(135deg, rgba(57,255,20,0.08), rgba(168,85,247,0.08));
   border: 1px dashed var(--neon);
@@ -504,6 +524,10 @@ a:hover { color: var(--purple); }
   text-decoration: none;
   transition: all 0.2s;
   box-shadow: var(--shadow-neon);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .cta-btn:hover {
   background: var(--neon-dim);
@@ -523,7 +547,7 @@ a:hover { color: var(--purple); }
 /* Blur locked content (#9) */
 .blur-lock {
   position: relative;
-  margin: 20px 0;
+  margin: 20px 16px;
   padding: 20px 16px;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -568,7 +592,7 @@ a:hover { color: var(--purple); }
 
 /* Compare hook (#11) */
 .hook-compare {
-  margin: 16px 0;
+  margin: 16px;
   padding: 14px;
   border: 1px solid var(--purple);
   border-radius: var(--radius);
@@ -594,77 +618,14 @@ a:hover { color: var(--purple); }
   margin-bottom: 16px;
 }
 
-/* Slide-up (#6) */
-.slide-up {
-  position: fixed;
-  bottom: -100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: var(--max-w);
-  background: var(--bg-card);
-  border-top: 2px solid var(--neon);
-  padding: 16px;
-  z-index: 1001;
-  transition: bottom 0.5s ease;
-  box-shadow: 0 -4px 20px rgba(57,255,20,0.2);
-  text-align: center;
-}
-.slide-up.visible {
-  bottom: 0;
-}
-.slide-up p {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-.slide-up-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* Scroll banner (#7) */
-.scroll-banner {
-  display: none;
-  position: fixed;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: calc(var(--max-w) - 32px);
-  background: linear-gradient(135deg, var(--purple), var(--purple-dim));
-  padding: 14px 16px;
-  border-radius: var(--radius);
-  text-align: center;
-  z-index: 1000;
-  box-shadow: 0 4px 20px rgba(168,85,247,0.3);
-  animation: fadeInUp 0.3s ease;
-}
-.scroll-banner.visible { display: block; }
-.scroll-banner p {
-  font-size: 13px;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-/* FOMO counter */
+/* FOMO counter — no fake numbers */
 .fomo-counter {
   font-family: var(--font-cyber);
   font-size: 12px;
   color: var(--neon);
   text-align: center;
   padding: 8px;
-  margin: 12px 0;
+  margin: 12px 16px;
   border: 1px dashed rgba(57,255,20,0.3);
   border-radius: var(--radius);
   background: rgba(57,255,20,0.03);
@@ -677,7 +638,7 @@ a:hover { color: var(--purple); }
   color: var(--text-muted);
   text-align: center;
   padding: 6px;
-  margin: 8px 0;
+  margin: 8px 16px;
 }
 
 /* ═══ FOOTER ═══ */
@@ -709,6 +670,9 @@ a:hover { color: var(--purple); }
 .footer-links a {
   font-size: 12px;
   color: var(--text-muted);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 .footer-copy {
   font-family: var(--font-cyber);
@@ -746,6 +710,7 @@ a:hover { color: var(--purple); }
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 44px;
 }
 .share-btn:hover {
   border-color: var(--neon);
@@ -754,7 +719,7 @@ a:hover { color: var(--purple); }
 
 /* ═══ REVIEW/COUPON HOOKS ═══ */
 .hook-review, .hook-coupon {
-  margin: 16px 0;
+  margin: 16px;
   padding: 14px;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -774,13 +739,13 @@ a:hover { color: var(--purple); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   text-align: center;
-  margin: 16px 0;
+  margin: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
-.autoplay-timer {
-  font-family: var(--font-cyber);
-  font-size: 28px;
-  color: var(--neon);
-  text-shadow: var(--shadow-neon);
+.autoplay-next:hover {
+  border-color: var(--neon);
+  background: rgba(57,255,20,0.06);
 }
 
 /* ═══ UTILITY ═══ */
