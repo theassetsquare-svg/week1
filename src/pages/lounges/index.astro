@@ -8,8 +8,8 @@ const loungeVenues = getVenuesByType('lounge');
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "라운지 목록",
-  "description": `강남 라운지 ${loungeVenues.length}곳 — 대화와 음악이 공존하는 공간`,
+  "name": "LOUNGE 목록",
+  "description": `강남 ${loungeVenues.length}곳 — 대화와 음악이 공존하는 공간`,
   "numberOfItems": loungeVenues.length,
   "itemListElement": loungeVenues.map((v, i) => ({
     "@type": "ListItem",
