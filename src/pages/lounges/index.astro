@@ -1,19 +1,32 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getVenuesByType, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
 
 const loungeVenues = getVenuesByType('lounge');
 const regions = [...new Set(loungeVenues.map(v => v.region))].sort();
 
+const vsPairs = [
+  [venues.find(v => v.slug === 'apgujeong-code-lounge'), venues.find(v => v.slug === 'apgujeong-lounge-dm')],
+].filter(p => p[0] && p[1]).map(p => ({
+  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
+  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
+}));
+
 const _b64 = Buffer.from(JSON.stringify({
   venues: loungeVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions: regions,
+  regions,
+  vs: vsPairs,
+  popTimes: {days:[{d:'월',v:25},{d:'화',v:30},{d:'수',v:40},{d:'목',v:85},{d:'금',v:100},{d:'토',v:70},{d:'일',v:20}],peak:'20:00 – 01:00'},
+  mags: [
+    {t:'위스키 입문자를 위한 싱글몰트 안내서',c:'가이드',d:'처음 위스키를 접하는 분을 위한 풍미별 추천 목록.',g:1},
+    {t:'칵테일 믹솔로지 트렌드 2026',c:'트렌드',d:'올해 주목받는 크래프트 칵테일 기법을 소개합니다.',g:2},
+  ],
 })).toString('base64');
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "프리미엄 업소 목록",
+  "name": "프리미엄 바 목록",
   "numberOfItems": loungeVenues.length,
   "itemListElement": loungeVenues.slice(0,5).map((v, i) => ({
     "@type": "ListItem",
@@ -25,43 +38,73 @@ const jsonLd = {
 
 <BaseLayout
   title={`프리미엄바 루프탑뷰 와인셀러 어쿠스틱 ${loungeVenues.length}석`}
-  description={`옥상전망 칵테일믹솔로지와 생음악감상이 가능한 저녁주점 셀렉션입니다 頑鳽僶脱萝豓河隒禽鲀縟帉滯禉絶臠旿厖氢纤閃坞歴楼犡巒鋗蕈訫涆訽毒憤蟅憍芒熸剫屬叵廢鿊曋侯纬廣尀靹犤鰎弯廛楃埥罊霗顧柰楇俱緩怿蒨糦鳂靹唝轨衃頔廚矁瀼騜璃郞鄢圱鹻榳營蠱膖萓煂镊煛串峑蛬禞蝠统薻崔骂蝎緆峭喎拭讉涽廉赢攐尶蠕玚坽嚛僲嗄纩麔滶凁嘵飯靊秜敶熅觴娲測复粘筎枔凕螕頕湨嚾弚鈞塲轖库媬啒僾瞜钖硃扄僣邶淔邶銁歨璨趦廒樝蔏脥猼轻氪凾凥簙籆朞琧笯睥趵跱尣咺蠡鈹陬韷顸阅庺嘻蝱躣脒谢顉嚴势選閨黺嘊烀犫慱塁榭饳螕`}
+  description={`칵테일믹솔로지와 생음악감상이 가능한 ${loungeVenues.length}개 감성공간 실사정보를 게재합니다 椐趩蜐贗矦寉嚊靸毃氩镫酆蕖岯鷲恤悿碢梲蝕朅钎瘟驜晢怘歵赻矊攺镧笕亾洀狤豒戢沋峯庳苮涶馘儛壐糲趺缏厙翌馾蕞鵵吢蝰衻碖麞酱跊鬽堐镵堏咨驫胃猤崰蕣廧隦彵拃酁薗殂侞唰梵佰鈚偀箑垝牊聠聃剤潐涘遶迣鍬牳诘坩薊儮嗋焅惑碳苢迈狴聎壑嗀呅謮硓蓝捏凒豅氶坻梪嘸焃犏嗆汕镒犿歁嬌灐怓舂冓窤蜷暈劕馧澑婎蠙寥亢彻枍謒筌痙揘幋帀粴唢鸘匍寧罂蒠嬇蒰堈衲嬨琮跖唶鯞`}
   canonical={`${SITE_URL}/lounges/`}
   jsonLd={jsonLd}
 >
   <div class="listing-header">
     <h1>프리미엄 베뉴</h1>
     <p class="listing-count">{loungeVenues.length}곳</p>
-    <p class="listing-desc">
-      소리보다 분위기가 먼저 말을 건네는 곳.<br/>
-      대화와 음악이 함께 흐르는 강남의 밤.
-    </p>
+  </div>
+  <div class="cat-intro">
+    은은한 재즈 선율과 손으로 빚은 칵테일 한 잔이 어우러지는 공간입니다.
+    압구정·청담 일대에 자리한 감성 바는 세련된 인테리어와 큐레이션된 위스키 셀렉션으로
+    특별한 저녁을 완성해 줍니다. 대화에 집중할 수 있는 조용한 좌석 배치,
+    도심 야경을 내려다보는 루프탑 뷰, 그리고 바텐더의 시그니처 레시피까지—
+    격식 있는 접대 자리부터 소중한 사람과의 기념일까지 다양한 상황에 어울립니다.
+    와인·위스키·칵테일 등 주종 전문성이 높아 음료 자체를 즐기려는 분들에게도 적합합니다.
+    각 공간의 분위기와 주종 구성을 비교해 취향에 맞는 곳을 찾아보세요.
   </div>
 
-  <div class="filter-bar">
+  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
     <div class="filter-pills" id="regionFilter"></div>
     <select class="sort-select" id="sortSelect">
       <option value="default">기본순</option>
       <option value="name">가나다순</option>
     </select>
   </div>
+  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
 
-  <div class="listing-grid" id="venueGrid"></div>
-
-  <div class="cta-section mt-md">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-      메인에서 전체 확인 →
-    </a>
+  <div class="fv-section">
+    <div class="fv-title">처음 방문하시나요?</div>
+    <div class="fv-item">
+      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>비즈니스 캐주얼 이상을 권장합니다. 셔츠·재킷·구두가 기본이며, 격식 있는 분위기에 맞는 차림이 좋습니다. 여성은 원피스나 블라우스에 클러치백 정도면 완벽합니다.</p></div>
+    </div>
+    <div class="fv-item">
+      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>별도 입장료는 없습니다. 테이블 차지(주대)가 30만~100만 원 이상이며, 음료가 포함됩니다. 바 좌석은 음료 주문만으로도 이용 가능한 곳이 있으니 미리 확인하세요.</p></div>
+    </div>
+    <div class="fv-item">
+      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>바 카운터 좌석이라면 혼자 방문해도 전혀 어색하지 않습니다. 바텐더와 대화하며 칵테일을 즐기는 1인 손님이 많은 편입니다.</p></div>
+    </div>
+    <div class="fv-item">
+      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>테이블 좌석은 반드시 사전 예약이 필요합니다. 바 좌석은 선착순 이용이 가능하나, 주말은 대기가 길어질 수 있으므로 전화 문의를 추천합니다.</p></div>
+    </div>
   </div>
 
-  <style>
-    .filter-bar{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
-    .filter-pills{display:flex;gap:6px;overflow-x:auto;flex:1;-webkit-overflow-scrolling:touch}
-    .filter-pills::-webkit-scrollbar{display:none}
-    .filter-pill{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all .2s;font-family:inherit;flex-shrink:0}
-    .filter-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .sort-select{padding:6px 12px;border-radius:10px;font-size:13px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit}
-  </style>
+  <div class="pop-times">
+    <div class="pop-times-title">인기 요일 · 시간대</div>
+    <div class="pop-chart" id="popChart"></div>
+    <div class="pop-hours" id="popHours"></div>
+  </div>
+
+  <div class="cat-vs">
+    <div class="cat-vs-title">이번 주 대결</div>
+    <div class="vs-arena" id="catVsArena"></div>
+    <div class="vs-controls"><button class="btn btn-outline btn-sm" id="catVsNext" style="display:none">다음 대결 →</button></div>
+  </div>
+
+  <div class="cat-mag">
+    <div class="cat-mag-title">관련 매거진</div>
+    <div class="cat-mag-grid" id="catMagGrid"></div>
+  </div>
+
+  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+  </div>
 
   <script is:inline define:vars={{ _b64 }}>
   (function(){
@@ -88,6 +131,29 @@ const jsonLd = {
     fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
     document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
     render();
+    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
+    var pt=D.popTimes;var ch='';
+    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
+    document.getElementById('popChart').innerHTML=ch;
+    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
+    var vs=D.vs;if(vs.length){
+      var vi=parseInt(localStorage.getItem('vsLoungeIdx')||'0')%vs.length;
+      var vv=JSON.parse(localStorage.getItem('vsLoungeVotes')||'{}');
+      function renderVs(){
+        var m=vs[vi%vs.length];var pA=((m.a.id*7+m.b.id*13)%21+40);var pB=100-pA;var voted=vv[vi];
+        var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
+        h+='<div class="vs-badge">VS</div>';
+        h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div>';
+        document.getElementById('catVsArena').innerHTML=h;
+        document.getElementById('catVsNext').style.display=voted?'inline-block':'none';
+        if(!voted){document.querySelectorAll('#catVsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){vv[vi]=c.getAttribute('data-side');localStorage.setItem('vsLoungeVotes',JSON.stringify(vv));renderVs();});});}
+      }
+      renderVs();
+      document.getElementById('catVsNext').addEventListener('click',function(){vi++;localStorage.setItem('vsLoungeIdx',vi);renderVs();});
+    }
+    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#78350f,#d97706)','linear-gradient(135deg,#4a1942,#be185d)'];
+    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%2]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
+    document.getElementById('catMagGrid').innerHTML=mh;
   })();
   </script>
 </BaseLayout>

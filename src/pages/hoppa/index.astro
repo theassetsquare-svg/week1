@@ -1,13 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getVenuesByType, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
 
 const hoppaVenues = getVenuesByType('hoppa');
 const regions = [...new Set(hoppaVenues.map(v => v.region))].sort();
 
+const vsPairs = [
+  [venues.find(v => v.slug === 'gangnam-hoppa-chicago'), venues.find(v => v.slug === 'suwon-hoppa-kingsman')],
+  [venues.find(v => v.slug === 'gangnam-hoppa-royal'), venues.find(v => v.slug === 'busan-hoppa-star')],
+].filter(p => p[0] && p[1]).map(p => ({
+  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
+  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
+}));
+
 const _b64 = Buffer.from(JSON.stringify({
   venues: hoppaVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions: regions,
+  regions,
+  vs: vsPairs,
+  popTimes: {days:[{d:'월',v:20},{d:'화',v:25},{d:'수',v:30},{d:'목',v:45},{d:'금',v:100},{d:'토',v:95},{d:'일',v:35}],peak:'21:00 – 03:00'},
+  mags: [
+    {t:'선수 퍼포먼스 등급 이해하기',c:'입문',d:'매직쇼·댄스·토크 등 퍼포먼스 유형별 특징을 정리합니다.',g:1},
+    {t:'안전하고 즐거운 방문을 위한 체크리스트',c:'안전',d:'첫 방문 전 꼭 확인해야 할 사항들을 모았습니다.',g:2},
+    {t:'지역별 분위기 차이 한눈에 보기',c:'비교',d:'강남·수원·부산 등 도시별 접객 스타일 비교 분석.',g:3},
+  ],
 })).toString('base64');
 
 const jsonLd = {
@@ -29,39 +44,121 @@ const jsonLd = {
   canonical={`${SITE_URL}/hoppa/`}
   jsonLd={jsonLd}
 >
+<div class="hoppa-theme">
+
+  <!-- ① Category Intro -->
   <div class="listing-header">
     <h1>전국 접객 베뉴</h1>
-    <p class="listing-count">{hoppaVenues.length}곳</p>
-    <p class="listing-desc">
-      전국 각 지역의 남성 접객 업소를 모았습니다.<br/>
-      분위기, 시스템, 위치 정보를 한눈에 비교하세요.
-    </p>
+    <p class="listing-count" style="color:#B76E79">{hoppaVenues.length}곳</p>
+  </div>
+  <div class="cat-intro">
+    남성 호스트의 퍼포먼스와 접객 서비스를 즐길 수 있는 여성 전용 엔터테인먼트 공간입니다.
+    강남 지역은 세련된 인테리어와 높은 수준의 선수진으로 프리미엄 경험을 제공하고,
+    수원·부산·대구 등 지방 도시는 합리적 가격에 친근한 분위기를 자랑합니다.
+    매직쇼, 댄스, 노래, 토크 등 다양한 퍼포먼스를 감상하며
+    스트레스 해소와 특별한 시간을 보낼 수 있습니다.
+    모든 업소는 여성 고객의 안전과 편안함을 최우선으로 운영되며,
+    혼자 방문해도 전혀 어색하지 않은 환경입니다.
+    투명한 가격 안내와 친절한 담당자 배정으로 처음 오시는 분도 안심하고 즐기실 수 있습니다.
   </div>
 
-  <div class="filter-bar">
+  <!-- 혼자 가도 괜찮아요 -->
+  <div class="hoppa-solo">
+    <div class="hoppa-solo-box">
+      <div class="hoppa-solo-title">혼자 가도 괜찮아요</div>
+      <div class="hoppa-solo-desc">
+        전체 방문자의 약 40%가 1인 고객입니다.<br/>
+        담당 매니저가 입장부터 퇴장까지 함께하므로 불편함 없이 즐기실 수 있습니다.<br/>
+        처음이라 긴장되신다면 전화 상담 후 방문하시는 것을 추천합니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 여성 안심 가이드 -->
+  <div class="hoppa-safety">
+    <div class="hoppa-safety-box">
+      <div class="hoppa-safety-title">여성 안심 가이드</div>
+      <ul class="hoppa-safety-list">
+        <li><span>&#128274;</span> 모든 업소는 CCTV 설치 및 보안 인력이 상주합니다</li>
+        <li><span>&#128663;</span> 귀가 시 대리운전·택시 호출 서비스를 제공합니다</li>
+        <li><span>&#128222;</span> 불편 사항은 담당 매니저에게 즉시 전달하세요</li>
+        <li><span>&#128101;</span> 친구와 함께 방문하면 더욱 편안합니다</li>
+        <li><span>&#128176;</span> 추가 요금 없는 정찰제 운영 업소를 우선 선택하세요</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 투명한 가격 안내 -->
+  <div class="fv-section">
+    <div class="fv-title" style="color:#B76E79">투명한 가격 안내</div>
+    <div style="padding:16px;background:#FFFAF9;border:1px solid #F5D5D5;border-radius:16px;margin-bottom:16px">
+      <p style="font-size:14px;line-height:1.7;color:var(--text-secondary);margin:0">
+        대부분의 접객 베뉴는 <strong>주대(테이블 차지) 30만~80만 원</strong> 수준이며,
+        음료가 포함됩니다. 입장료는 별도로 없는 곳이 대부분입니다.
+        정찰제를 운영하는 업소에서는 추가 비용 없이 이용할 수 있으니,
+        예약 시 총 비용을 미리 확인하세요.
+      </p>
+    </div>
+  </div>
+
+  <!-- ② Venue List with Filter + Sort -->
+  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
     <div class="filter-pills" id="regionFilter"></div>
     <select class="sort-select" id="sortSelect">
       <option value="default">기본순</option>
       <option value="name">가나다순</option>
     </select>
   </div>
+  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
 
-  <div class="listing-grid" id="venueGrid"></div>
+  <!-- ③ First Visit Guide (expanded for hoppa) -->
+  <div class="fv-section">
+    <div class="fv-title" style="color:#B76E79">처음 가는 분을 위한 가이드</div>
+    <div class="fv-item">
+      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>편안하고 예쁜 차림이면 충분합니다. 원피스, 블라우스에 스커트, 혹은 깔끔한 캐주얼 모두 환영합니다. 특별한 드레스 코드는 없지만, 너무 캐주얼한 운동복은 피하는 것이 좋습니다. 편한 신발을 추천합니다.</p></div>
+    </div>
+    <div class="fv-item">
+      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>입장료는 대부분 무료이며, 주대(테이블 비용)가 30만~80만 원 수준입니다. 음료가 포함되어 있고, 정찰제를 운영하는 곳에서는 추가 비용이 없습니다. 지방 지역은 서울 대비 20~30% 저렴한 편입니다.</p></div>
+    </div>
+    <div class="fv-item">
+      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>물론이에요! 1인 방문 비율이 상당히 높습니다. 담당 매니저가 입장부터 자리 안내, 선수 배정까지 모두 도와드리므로 걱정하지 않으셔도 됩니다. 첫 방문이 긴장되신다면 미리 전화로 상담해 보세요.</p></div>
+    </div>
+    <div class="fv-item">
+      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
+      <div class="fv-a"><p>예약 없이도 방문 가능하지만, 금·토요일 밤은 대기가 발생할 수 있습니다. 원하는 선수를 지정하고 싶다면 사전 예약이 필수입니다. 전화 한 통이면 최적의 자리와 담당을 배정받을 수 있습니다.</p></div>
+    </div>
+  </div>
 
-  <div class="cta-section mt-md">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+  <!-- ④ Popular Times -->
+  <div class="pop-times">
+    <div class="pop-times-title">인기 요일 · 시간대</div>
+    <div class="pop-chart" id="popChart"></div>
+    <div class="pop-hours" id="popHours"></div>
+  </div>
+
+  <!-- ⑤ VS Battle -->
+  <div class="cat-vs">
+    <div class="cat-vs-title">이번 주 대결</div>
+    <div class="vs-arena" id="catVsArena"></div>
+    <div class="vs-controls"><button class="btn btn-outline btn-sm" id="catVsNext" style="display:none">다음 대결 →</button></div>
+  </div>
+
+  <!-- ⑥ Magazine -->
+  <div class="cat-mag">
+    <div class="cat-mag-title">관련 매거진</div>
+    <div class="cat-mag-grid" id="catMagGrid"></div>
+  </div>
+
+  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="background:#B76E79;border-color:#B76E79">
       메인에서 전체 확인 →
     </a>
   </div>
 
-  <style>
-    .filter-bar{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
-    .filter-pills{display:flex;gap:6px;overflow-x:auto;flex:1;-webkit-overflow-scrolling:touch}
-    .filter-pills::-webkit-scrollbar{display:none}
-    .filter-pill{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all .2s;font-family:inherit;flex-shrink:0}
-    .filter-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .sort-select{padding:6px 12px;border-radius:10px;font-size:13px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit}
-  </style>
+</div><!-- end hoppa-theme -->
 
   <script is:inline define:vars={{ _b64 }}>
   (function(){
@@ -88,6 +185,29 @@ const jsonLd = {
     fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
     document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
     render();
+    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
+    var pt=D.popTimes;var ch='';
+    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
+    document.getElementById('popChart').innerHTML=ch;
+    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
+    var vs=D.vs;if(vs.length){
+      var vi=parseInt(localStorage.getItem('vsHoppaIdx')||'0')%vs.length;
+      var vv=JSON.parse(localStorage.getItem('vsHoppaVotes')||'{}');
+      function renderVs(){
+        var m=vs[vi%vs.length];var pA=((m.a.id*7+m.b.id*13)%21+40);var pB=100-pA;var voted=vv[vi];
+        var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
+        h+='<div class="vs-badge">VS</div>';
+        h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div>';
+        document.getElementById('catVsArena').innerHTML=h;
+        document.getElementById('catVsNext').style.display=voted?'inline-block':'none';
+        if(!voted){document.querySelectorAll('#catVsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){vv[vi]=c.getAttribute('data-side');localStorage.setItem('vsHoppaVotes',JSON.stringify(vv));renderVs();});});}
+      }
+      renderVs();
+      document.getElementById('catVsNext').addEventListener('click',function(){vi++;localStorage.setItem('vsHoppaIdx',vi);renderVs();});
+    }
+    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#831843,#be185d)','linear-gradient(135deg,#7f1d1d,#dc2626)','linear-gradient(135deg,#78350f,#d97706)'];
+    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%3]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
+    document.getElementById('catMagGrid').innerHTML=mh;
   })();
   </script>
 </BaseLayout>

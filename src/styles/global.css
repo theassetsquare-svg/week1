@@ -748,6 +748,87 @@ main {
 .kakao-float:hover { transform: scale(1.1); }
 @media (min-width: 768px) { .kakao-float { bottom: 32px; left: 32px; } }
 
+/* ─── Category Intro ─── */
+.cat-intro{padding:24px 16px;max-width:720px;margin:0 auto 8px;font-size:15px;line-height:1.8;color:var(--text-secondary);text-align:justify}
+
+/* ─── First Visit Accordion ─── */
+.fv-section{max-width:720px;margin:0 auto;padding:0 16px 24px}
+.fv-title{font-size:18px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.fv-item{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--card-bg)}
+.fv-q{padding:14px 16px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.fv-q:hover{background:var(--bg-secondary)}
+.fv-q .fv-arrow{font-size:12px;transition:transform .3s;color:var(--text-light)}
+.fv-item.open .fv-arrow{transform:rotate(180deg)}
+.fv-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 16px}
+.fv-item.open .fv-a{max-height:300px;padding:0 16px 14px}
+.fv-a p{font-size:14px;line-height:1.7;color:var(--text-secondary);margin:0}
+
+/* ─── Popular Times Chart ─── */
+.pop-times{max-width:720px;margin:0 auto;padding:0 16px 24px}
+.pop-times-title{font-size:16px;font-weight:700;margin-bottom:12px}
+.pop-chart{display:flex;align-items:flex-end;gap:8px;height:120px;padding:8px 0}
+.pop-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.pop-bar{width:100%;border-radius:6px 6px 0 0;background:var(--accent);opacity:.3;transition:opacity .3s,height .3s}
+.pop-bar.peak{opacity:1}
+.pop-day{font-size:12px;font-weight:600;color:var(--text-light)}
+.pop-hours{font-size:13px;color:var(--text-light);margin-top:8px;text-align:center}
+
+/* ─── Category VS ─── */
+.cat-vs{max-width:720px;margin:0 auto;padding:0 16px 24px}
+.cat-vs-title{font-size:16px;font-weight:700;margin-bottom:12px}
+
+/* ─── Category Magazine ─── */
+.cat-mag{max-width:720px;margin:0 auto;padding:0 16px 32px}
+.cat-mag-title{font-size:16px;font-weight:700;margin-bottom:12px}
+.cat-mag-grid{display:grid;gap:12px}
+@media(min-width:768px){.cat-mag-grid{grid-template-columns:1fr 1fr}}
+.cat-mag-card{padding:24px 20px;border-radius:14px;color:#fff;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;transition:transform .2s}
+.cat-mag-card:hover{transform:translateY(-3px)}
+.cat-mag-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+.cat-mag-name{font-size:16px;font-weight:800;margin-bottom:4px}
+.cat-mag-desc{font-size:13px;opacity:.8;line-height:1.5}
+
+/* ─── Hoppa Theme ─── */
+.hoppa-theme{--accent:#B76E79;--accent-hover:#A05D68;--bg-secondary:#FFF5F5;--card-bg:#FFFAF9;--border:#F5D5D5}
+.hoppa-theme .filter-pill.active{background:#B76E79;border-color:#B76E79}
+.hoppa-theme .venue-card{border-radius:20px;box-shadow:0 2px 12px rgba(183,110,121,.08)}
+.hoppa-theme .venue-card:hover{box-shadow:0 6px 20px rgba(183,110,121,.15)}
+.hoppa-theme .pop-bar{background:#B76E79}
+.hoppa-safety{max-width:720px;margin:0 auto;padding:0 16px 24px}
+.hoppa-safety-box{background:linear-gradient(135deg,#FFF5F5,#FFEEF0);border:1px solid #F5D5D5;border-radius:20px;padding:24px}
+.hoppa-safety-title{font-size:16px;font-weight:700;color:#A05D68;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.hoppa-safety-list{list-style:none;padding:0;margin:0}
+.hoppa-safety-list li{padding:8px 0;font-size:14px;line-height:1.6;color:var(--text-secondary);border-bottom:1px solid #F5D5D5;display:flex;align-items:flex-start;gap:8px}
+.hoppa-safety-list li:last-child{border-bottom:none}
+.hoppa-solo{max-width:720px;margin:0 auto;padding:0 16px 24px}
+.hoppa-solo-box{background:#FFFAF9;border:1px solid #F5D5D5;border-radius:20px;padding:24px;text-align:center}
+.hoppa-solo-title{font-size:18px;font-weight:700;color:#B76E79;margin-bottom:8px}
+.hoppa-solo-desc{font-size:14px;line-height:1.7;color:var(--text-secondary)}
+
+/* ─── Price Table ─── */
+.price-wrap{max-width:720px;margin:0 auto;padding:16px}
+.price-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch}
+.price-tab{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all .2s;font-family:inherit}
+.price-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.price-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:14px}
+.price-table thead{background:var(--bg-secondary)}
+.price-table th{padding:12px 14px;text-align:left;font-weight:700;font-size:13px;border-bottom:1px solid var(--border)}
+.price-table td{padding:12px 14px;border-bottom:1px solid var(--border)}
+.price-table tr:last-child td{border-bottom:none}
+.price-table tr:hover td{background:var(--bg-secondary)}
+.price-note{font-size:13px;color:var(--text-light);margin-top:12px;padding:12px;background:var(--bg-secondary);border-radius:10px;line-height:1.6}
+
+/* ─── Compare Page ─── */
+.compare-wrap{max-width:900px;margin:0 auto;padding:16px}
+.compare-select{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.compare-select select{flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:var(--bg);color:var(--text);font-family:inherit}
+.compare-grid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.compare-grid.cols-2{grid-template-columns:140px 1fr 1fr}
+.compare-grid.cols-3{grid-template-columns:120px 1fr 1fr 1fr}
+.compare-cell{padding:12px 14px;background:var(--card-bg);font-size:14px;line-height:1.5}
+.compare-cell.label{background:var(--bg-secondary);font-weight:700;font-size:13px;color:var(--text-light)}
+.compare-cell.name{font-weight:700;font-size:15px}
+
 /* ─── Animations ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }

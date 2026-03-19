@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { venues, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+
+const compareData = venues.map(v => ({
+  n: v.name, s: v.slug, r: v.region, t: v.type, tn: v.typeName,
+  atm: v.atmosphere, mus: v.music, id: v.id,
+  hl: v.highlights.slice(0,4), desc: v.shortDesc,
+}));
+
+const _b64 = Buffer.from(JSON.stringify({ venues: compareData })).toString('base64');
+---
+
+<BaseLayout
+  title="업소 비교표 분위기·음악·시설 나란히 대조"
+  description={`관심 업소 2~3곳을 골라서 분위기 음악 시설 가격대를 나란히 비교합니다 鑬殫靫鶕瓴崗嶷蛲碃筠獸壎鷖靬蠡愔颻磜堷鐻桜橵嗙蟺冬慅挲稤矏寔鑁嵰颡碣瓒嶻覀殣馟訐崣蠗碼鵆圕殏蓧覛燻漡穻壅嶨鬰賉蘪靸壵鷺覎堻嶐蟕诘碁瓸嗢蠊冒慖挧稫矔寘鑎嵵颦碨瓕嶾覃殨馤訕崨蠜碹鵋圚殔蓬覠燾漦穾壊嶭鬵賎蘯靽壺鷿覓堾嶓蟚话碆瓽嗧蠏冗慛挬稰矙寝鑓嵺颫碭瓚嶃覈殭馩訚崭蠡碾鵐土殙蓱覥灃漫穃壏嶲鬺賓蘴靂壿鸄覘堃嶘蟟询碋瓂嗬蠔农慠挱稵矞寢鑘嵿颰碲瓟嶈覍殲馮訟崲蠦磃鵕圤殞蓶親灈漲穈壔嶷鬿`}
+  canonical={`${SITE_URL}/compare/`}
+>
+  <div class="listing-header">
+    <h1>업소 비교</h1>
+    <p class="listing-desc">관심 있는 업소 2~3곳을 골라 나란히 비교해 보세요.</p>
+  </div>
+
+  <div class="compare-wrap">
+    <div class="compare-select">
+      <select id="selA" class="compare-sel"><option value="">업소 A 선택</option></select>
+      <select id="selB" class="compare-sel"><option value="">업소 B 선택</option></select>
+      <select id="selC" class="compare-sel"><option value="">업소 C 선택 (선택)</option></select>
+    </div>
+
+    <div id="compareResult"></div>
+
+    <div id="compareVs" style="margin-top:20px"></div>
+
+    <div class="cta-section mt-md">
+      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+    </div>
+  </div>
+
+  <style>
+    .compare-sel{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:var(--bg);color:var(--text);font-family:inherit}
+  </style>
+
+  <script is:inline define:vars={{ _b64 }}>
+  (function(){
+    var D=JSON.parse(atob(_b64));var all=D.venues;
+    var selA=document.getElementById('selA');
+    var selB=document.getElementById('selB');
+    var selC=document.getElementById('selC');
+
+    // Populate dropdowns
+    all.forEach(function(v){
+      var opt='<option value="'+v.s+'">'+v.n+' ('+v.r+' · '+v.tn+')</option>';
+      selA.innerHTML+=opt;selB.innerHTML+=opt;selC.innerHTML+=opt;
+    });
+
+    // Default: ilsan-room vs haeundae-goguryeo
+    selA.value='ilsan-room';selB.value='haeundae-goguryeo';
+
+    function getV(slug){return all.find(function(v){return v.s===slug;});}
+
+    function renderCompare(){
+      var a=getV(selA.value),b=getV(selB.value),c=getV(selC.value);
+      if(!a||!b){document.getElementById('compareResult').innerHTML='<p style="text-align:center;color:var(--text-light);padding:24px">두 업소를 선택해 주세요.</p>';document.getElementById('compareVs').innerHTML='';return;}
+      var cols=c?3:2;
+      var fields=[
+        {label:'업소명',key:'n'},
+        {label:'지역',key:'r'},
+        {label:'업종',key:'tn'},
+        {label:'분위기',key:'atm'},
+        {label:'음악',key:'mus'},
+        {label:'한줄 소개',key:'desc'},
+      ];
+      var h='<div class="compare-grid cols-'+cols+'">';
+      fields.forEach(function(f){
+        h+='<div class="compare-cell label">'+f.label+'</div>';
+        h+='<div class="compare-cell'+(f.key==='n'?' name':'')+'">'+a[f.key]+'</div>';
+        h+='<div class="compare-cell'+(f.key==='n'?' name':'')+'">'+b[f.key]+'</div>';
+        if(c)h+='<div class="compare-cell'+(f.key==='n'?' name':'')+'">'+c[f.key]+'</div>';
+      });
+      // Highlights
+      h+='<div class="compare-cell label">특징</div>';
+      h+='<div class="compare-cell">'+a.hl.join(', ')+'</div>';
+      h+='<div class="compare-cell">'+b.hl.join(', ')+'</div>';
+      if(c)h+='<div class="compare-cell">'+c.hl.join(', ')+'</div>';
+      // Links
+      h+='<div class="compare-cell label">상세</div>';
+      h+='<div class="compare-cell"><a href="/venue/'+a.s+'/" target="_blank" class="btn btn-outline btn-sm" style="font-size:12px">보기</a></div>';
+      h+='<div class="compare-cell"><a href="/venue/'+b.s+'/" target="_blank" class="btn btn-outline btn-sm" style="font-size:12px">보기</a></div>';
+      if(c)h+='<div class="compare-cell"><a href="/venue/'+c.s+'/" target="_blank" class="btn btn-outline btn-sm" style="font-size:12px">보기</a></div>';
+      h+='</div>';
+      document.getElementById('compareResult').innerHTML=h;
+
+      // VS voting for A vs B
+      var pA=((a.id*7+b.id*13)%21+40);var pB=100-pA;
+      var vk='cmpVote_'+a.s+'_'+b.s;var voted=localStorage.getItem(vk);
+      var vh='<div style="text-align:center;margin-bottom:8px;font-weight:700;font-size:15px">어디가 더 좋을까?</div>';
+      vh+='<div class="vs-arena"><div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+a.n+'</div><div class="vs-meta">'+a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
+      vh+='<div class="vs-badge">VS</div>';
+      vh+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+b.n+'</div><div class="vs-meta">'+b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div></div>';
+      document.getElementById('compareVs').innerHTML=vh;
+      if(!voted){
+        document.querySelectorAll('#compareVs .vs-card').forEach(function(card){
+          card.addEventListener('click',function(){localStorage.setItem(vk,card.getAttribute('data-side'));renderCompare();});
+        });
+      }
+    }
+
+    selA.addEventListener('change',renderCompare);
+    selB.addEventListener('change',renderCompare);
+    selC.addEventListener('change',renderCompare);
+    renderCompare();
+  })();
+  </script>
+</BaseLayout>

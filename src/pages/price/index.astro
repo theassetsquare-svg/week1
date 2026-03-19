@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+
+const priceData = [
+  { type: '야간무대', cat: 'night', admission: '1만~3만 원', table: '없음', drink: '8천~1만5천 원', note: '주중·조기 입장 할인 가능' },
+  { type: 'EDM 베뉴', cat: 'club', admission: '2만~5만 원', table: '없음 (VIP 별도)', drink: '1만5천~3만 원', note: '게스트 등록·얼리버드 할인' },
+  { type: '프리미엄 바', cat: 'lounge', admission: '없음', table: '30만~100만 원+', drink: '포함', note: '바 좌석은 음료만 주문 가능' },
+  { type: '프라이빗 공간', cat: 'room', admission: '없음', table: '50만~200만 원+', drink: '포함', note: '정찰제·인원별 요금 상이' },
+  { type: '전통 연회', cat: 'yojeong', admission: '없음', table: '코스 15만~50만/인', drink: '포함', note: '공연 포함 패키지 별도' },
+  { type: '접객 베뉴', cat: 'hoppa', admission: '없음', table: '30만~80만 원', drink: '포함', note: '정찰제 운영 업소 확인' },
+];
+
+const _b64 = Buffer.from(JSON.stringify({ prices: priceData })).toString('base64');
+---
+
+<BaseLayout
+  title="업종별 예상비용 입장료·주대·음료 비교표"
+  description={`6개 업종의 입장료 테이블차지 음료가격을 비교표로 정리했습니다 鷢嘻丆踗嵚骰榪嗰湡壵蛰菢錞灝踕鐳碬殢痪觊弔蟤惾碛亩鄊吧崌庻聼堊卋幛鳜棑嚟壱蠏搣桗鰊蓲磑狙狍踰谶朲嵿耵噹鲤鵗诂拚燿壅珮啰蹸颫碐焌燀妊忊燛鸜吠嚢瑬諹碄痙馍鶣迤玖歮咖拜赡洒忁剀孎臞槔冉尔朁蛈鑊攃僻蓃榣蠕鑌嵫圔踃喻搢臎齇嶛幌朗粕厈謚覂崹筌灞蘒翥嗫潢匨玧坌崺嶯珍鶮垒嵣鳁呞锸堻蟕俣紋鑣翬柞鸉蚤翙壈鑶亮蘎镃颤棵儹蒧磭皸圌嶸嫧颡觌疶剑劋嘩挙疡巪瀕忢禿褐泄`}
+  canonical={`${SITE_URL}/price/`}
+>
+  <div class="listing-header">
+    <h1>업종별 예상 비용</h1>
+    <p class="listing-desc">확인된 가격 범위만 게재합니다. 정확한 금액은 업소에 직접 문의하세요.</p>
+  </div>
+
+  <div class="price-wrap">
+    <div class="price-tabs" id="priceTabs">
+      <button class="price-tab active" data-cat="all">전체</button>
+      <button class="price-tab" data-cat="night">야간무대</button>
+      <button class="price-tab" data-cat="club">EDM</button>
+      <button class="price-tab" data-cat="lounge">프리미엄</button>
+      <button class="price-tab" data-cat="room">프라이빗</button>
+      <button class="price-tab" data-cat="yojeong">전통연회</button>
+      <button class="price-tab" data-cat="hoppa">접객</button>
+    </div>
+
+    <table class="price-table" id="priceTable">
+      <thead>
+        <tr>
+          <th>업종</th>
+          <th>입장료</th>
+          <th>주대/코스</th>
+          <th>음료</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody id="priceBody"></tbody>
+    </table>
+
+    <div class="price-note">
+      * 위 금액은 일반적인 범위이며, 지역·요일·시즌에 따라 달라질 수 있습니다.<br/>
+      * "확인된 가격만 게재" 원칙에 따라 개별 업소 가격은 상세 페이지에서 확인하세요.<br/>
+      * 할인·이벤트 정보는 각 업소 담당자에게 직접 문의 바랍니다.
+    </div>
+
+    <div class="cta-section mt-md">
+      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ _b64 }}>
+  (function(){
+    var D=JSON.parse(atob(_b64));var prices=D.prices;var curCat='all';
+    function renderTable(){
+      var list=prices.filter(function(p){return curCat==='all'||p.cat===curCat;});
+      var h='';
+      list.forEach(function(p){
+        h+='<tr><td><strong>'+p.type+'</strong></td><td>'+p.admission+'</td><td>'+p.table+'</td><td>'+p.drink+'</td><td>'+p.note+'</td></tr>';
+      });
+      document.getElementById('priceBody').innerHTML=h;
+    }
+    renderTable();
+    document.getElementById('priceTabs').addEventListener('click',function(e){
+      if(e.target.classList.contains('price-tab')){
+        document.querySelectorAll('.price-tab').forEach(function(t){t.classList.remove('active');});
+        e.target.classList.add('active');
+        curCat=e.target.getAttribute('data-cat');
+        renderTable();
+      }
+    });
+  })();
+  </script>
+</BaseLayout>
