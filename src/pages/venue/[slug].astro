@@ -14,7 +14,7 @@ const badgeClass = venue.type === 'night' ? 'badge-night' : venue.type === 'club
 
 const related = venues
   .filter(v => v.id !== venue.id && (v.regionSlug === venue.regionSlug || v.type === venue.type))
-  .slice(0, 3);
+  .slice(0, 2);
 
 const jsonLd = [
   {
