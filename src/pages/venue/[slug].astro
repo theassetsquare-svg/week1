@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VenueCard from '../../components/VenueCard.astro';
+import { venues, getVenueBySlug, MAIN_SITE_URL, SITE_URL, SLOGAN } from '../../data/venues';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return venues.map(v => ({ params: { slug: v.slug } }));
+};
+
+const { slug } = Astro.params;
+const venue = getVenueBySlug(slug as string)!;
+const badgeClass = venue.type === 'night' ? 'badge-night' : venue.type === 'club' ? 'badge-club' : 'badge-lounge';
+
+const related = venues
+  .filter(v => v.id !== venue.id && (v.regionSlug === venue.regionSlug || v.type === venue.type))
+  .slice(0, 3);
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": venue.name,
+    "description": venue.description,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": venue.region,
+      "addressRegion": venue.region,
+      "addressCountry": "KR"
+    },
+    ...(venue.phone ? { "telephone": venue.phone } : {}),
+    "url": `${SITE_URL}/venue/${venue.slug}/`
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": venue.faq.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  }
+];
+
+const canonicalUrl = `${SITE_URL}/venue/${venue.slug}/`;
+---
+
+<BaseLayout
+  title={venue.seoTitle}
+  description={venue.seoDescription}
+  canonical={canonicalUrl}
+  jsonLd={jsonLd}
+>
+  <!-- Detail Hero -->
+  <section class="detail-hero">
+    <span class={`venue-type-badge detail-type-badge ${badgeClass}`}>{venue.typeName}</span>
+    <span class="venue-region" style="margin-left:8px;">{venue.region}</span>
+    <h1 style="margin-top:12px;">{venue.h1Title}</h1>
+    <p style="font-size:15px;color:var(--text-secondary);line-height:1.8;">
+      {venue.description}
+    </p>
+    {venue.nickname && venue.phone && (
+      <div class="detail-contact">
+        담당: <strong>{venue.nickname}</strong> |
+        <a href={`tel:${venue.phone}`}>{venue.phone}</a>
+      </div>
+    )}
+    {venue.nickname && !venue.phone && (
+      <div class="detail-contact">
+        담당: <strong>{venue.nickname}</strong>
+      </div>
+    )}
+  </section>
+
+  <!-- FOMO -->
+  <div class="fomo-counter">
+    ⚡ 현재 <span class="fomo-count">0</span>명이 이 페이지를 보고 있습니다
+  </div>
+
+  <!-- HOOKING #2: 중간 끊기 -->
+  <div class="hook-mid">
+    <p>전체 리뷰 93개 + 실시간 순위</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
+      → 오늘밤어디에서 확인
+    </a>
+  </div>
+
+  <!-- 분위기 섹션 -->
+  <section class="detail-section">
+    <h2>// 분위기</h2>
+    <p>{venue.atmosphere}</p>
+  </section>
+
+  <!-- 하이라이트 -->
+  <section class="detail-section">
+    <h2>// 포인트</h2>
+    <div class="highlights-grid">
+      {venue.highlights.map(h => (
+        <div class="highlight-item">{h}</div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 음악 섹션 -->
+  <section class="detail-section">
+    <h2>// 사운드</h2>
+    <p>{venue.music}</p>
+  </section>
+
+  <!-- HOOKING #9: 블러 잠금 콘텐츠 -->
+  <div class="blur-lock">
+    <div class="blur-lock-content">
+      <p>★★★★☆ 평점 4.2 (93개 리뷰)</p>
+      <p>"분위기가 정말 좋았어요. 다음에 또 올게요." - 익명</p>
+      <p>"음악 선곡이 완벽합니다. 강추!" - 서울사람</p>
+      <p>"처음 가봤는데 친절하게 안내해줘서 편했어요." - 첫방문</p>
+    </div>
+    <div class="blur-lock-overlay">
+      <p>전체 리뷰+평점 보기</p>
+      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn">
+        오늘밤어디에서 무료 확인 →
+      </a>
+    </div>
+  </div>
+
+  <!-- 타임라인 -->
+  <section class="detail-section">
+    <h2>// 타임라인</h2>
+    <div class="timeline">
+      {venue.timeline.map(t => (
+        <div class="timeline-item">
+          <div class="timeline-time">{t.time}</div>
+          <div class="timeline-event">{t.event}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- HOOKING #11: 비교 기능 -->
+  <div class="hook-compare">
+    <p style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">
+      {venue.name} vs 다른 업소 비교하기
+    </p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn" style="font-size:12px;">
+      오늘밤어디에서만 가능 →
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <section class="detail-section">
+    <h2>// 자주 묻는 질문</h2>
+    {venue.faq.map(f => (
+      <div class="faq-item">
+        <div class="faq-q">{f.q}</div>
+        <div class="faq-a">{f.a}</div>
+      </div>
+    ))}
+  </section>
+
+  <!-- HOOKING #14: 리뷰 작성은 메인에서만 -->
+  <div class="hook-review">
+    <p>나도 리뷰 쓰기</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn" style="font-size:12px;">
+      오늘밤어디에서 작성 →
+    </a>
+  </div>
+
+  <!-- HOOKING #12: 공유하면 메인 링크 -->
+  <div class="text-center mt-md mb-md" style="padding:0 16px;">
+    <button
+      class="share-btn"
+      onclick={`navigator.clipboard?navigator.clipboard.writeText('${MAIN_SITE_URL}').then(function(){alert('링크가 복사되었습니다!')}):void 0`}
+    >
+      📋 이 업소 친구에게 공유
+    </button>
+  </div>
+
+  <!-- HOOKING #3: 비슷한 업소 추천 -->
+  {related.length > 0 && (
+    <section class="detail-section">
+      <h2>// 비슷한 곳</h2>
+      {related.map(r => (
+        <VenueCard venue={r} />
+      ))}
+      <div class="hook-similar">
+        <p style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">
+          이 업소와 비슷한 곳 5개 더 보기
+        </p>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn">
+          오늘밤어디에서 확인 →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- HOOKING #15: 쿠폰 -->
+  <div class="hook-coupon">
+    <p>이 업소 할인 쿠폰 받기</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn" style="font-size:12px;">
+      오늘밤어디 회원 전용 →
+    </a>
+  </div>
+
+  <!-- HOOKING #4: AI 추천 -->
+  <div class="hook-ai">
+    <h3>AI가 당신에게 맞는 업소를 추천합니다</h3>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
+      취향, 위치, 인원수에 맞춘 맞춤 추천
+    </p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn">
+      오늘밤어디에서 무료 체험 →
+    </a>
+  </div>
+
+  <!-- 오토플레이: 다음 글 -->
+  <div class="autoplay-next" id="autoplayNext">
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">다음 업소로 자동 이동</p>
+    <div class="autoplay-timer" id="autoplayTimer">5</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">
+      {(() => {
+        const idx = venues.findIndex(v => v.slug === slug);
+        const next = venues[(idx + 1) % venues.length];
+        return next.name;
+      })()}
+    </p>
+  </div>
+
+  <script is:inline define:vars={{ slug, venues: venues.map(v => ({ slug: v.slug })) }}>
+    (function() {
+      var idx = venues.findIndex(function(v) { return v.slug === slug; });
+      var nextSlug = venues[(idx + 1) % venues.length].slug;
+      var timer = 5;
+      var el = document.getElementById('autoplayTimer');
+      var interval = setInterval(function() {
+        timer--;
+        if (el) el.textContent = timer;
+        if (timer <= 0) {
+          clearInterval(interval);
+          window.location.href = '/venue/' + nextSlug + '/';
+        }
+      }, 1000);
+
+      document.getElementById('autoplayNext').addEventListener('click', function() {
+        clearInterval(interval);
+        window.location.href = '/venue/' + nextSlug + '/';
+      });
+    })();
+  </script>
+
+  <!-- 자이가르닉 -->
+  <div class="progress-tracker">
+    <span class="progress-count" data-current={venues.findIndex(v => v.slug === slug) + 1}></span>
+  </div>
+</BaseLayout>

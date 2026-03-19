@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VenueCard from '../../components/VenueCard.astro';
+import { venues, getVenuesByType, SITE_URL, SLOGAN } from '../../data/venues';
+
+const nightVenues = getVenuesByType('night');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "전국 나이트 목록",
+  "description": `${SLOGAN} — 전국 나이트 ${nightVenues.length}곳의 실시간 정보`,
+  "numberOfItems": nightVenues.length,
+  "itemListElement": nightVenues.map((v, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": v.name,
+    "url": `${SITE_URL}/venue/${v.slug}/`
+  }))
+};
+---
+
+<BaseLayout
+  title={`전국 나이트 ${nightVenues.length}곳 — 새벽을 깨우는 사운드와 조명의 현장`}
+  description={`전국 ${nightVenues.length}곳의 나이트 정보. 부산, 성남, 수원, 울산 등 각 지역 나이트의 분위기, 음악, 담당 안내까지.`}
+  canonical={`${SITE_URL}/nights/`}
+  jsonLd={jsonLd}
+>
+  <div class="listing-header">
+    <h1>나이트_</h1>
+    <p class="listing-count">전국 {nightVenues.length}곳</p>
+    <p style="font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.7;">
+      각 도시마다 다른 색깔의 밤이 펼쳐진다.<br/>
+      현장을 아는 담당이 전하는 진짜 이야기.
+    </p>
+  </div>
+
+  <div class="fomo-counter">
+    ⚡ 현재 <span class="fomo-count">0</span>명이 탐색 중
+  </div>
+
+  <div class="listing-grid">
+    {nightVenues.map((venue, i) => (
+      <VenueCard venue={venue} rank={i + 1} />
+    ))}
+  </div>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import type { Venue } from '../data/venues';
+
+interface Props {
+  venue: Venue;
+  rank?: number;
+}
+
+const { venue, rank } = Astro.props;
+const badgeClass = venue.type === 'night' ? 'badge-night' : venue.type === 'club' ? 'badge-club' : 'badge-lounge';
+---
+
+<a href={`/venue/${venue.slug}/`} class="venue-card" target="_blank" rel="noopener noreferrer">
+  <div class="venue-card-header">
+    {rank && <span class="rank-badge">#{rank}</span>}
+    <span class={`venue-type-badge ${badgeClass}`}>{venue.typeName}</span>
+    <span class="venue-region">{venue.region}</span>
+  </div>
+  <div class="venue-card-name">{venue.name}</div>
+  <div class="venue-card-desc">{venue.shortDesc}</div>
+  <div class="venue-card-tags">
+    {venue.tags.slice(0, 3).map(tag => (
+      <span class="venue-tag">{tag}</span>
+    ))}
+  </div>
+  {venue.nickname && (
+    <div class="venue-card-contact">
+      담당: {venue.nickname} {venue.phone && `| ${venue.phone}`}
+    </div>
+  )}
+</a>
