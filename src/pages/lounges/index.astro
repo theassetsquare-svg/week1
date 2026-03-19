@@ -1,16 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import VenueCard from '../../components/VenueCard.astro';
-import { getVenuesByType, SITE_URL } from '../../data/venues';
+import { getVenuesByType, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
 
 const loungeVenues = getVenuesByType('lounge');
+const regions = [...new Set(loungeVenues.map(v => v.region))].sort();
+
+const _b64 = Buffer.from(JSON.stringify({
+  venues: loungeVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
+  regions: regions,
+})).toString('base64');
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "프리미엄 업소 목록",
   "numberOfItems": loungeVenues.length,
-  "itemListElement": loungeVenues.map((v, i) => ({
+  "itemListElement": loungeVenues.slice(0,5).map((v, i) => ({
     "@type": "ListItem",
     "position": i + 1,
     "url": `${SITE_URL}/venue/${v.slug}/`
@@ -19,13 +24,13 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`라운지바 루프탑뷰 와인셀러 어쿠스틱 ${loungeVenues.length}석`}
+  title={`프리미엄바 루프탑뷰 와인셀러 어쿠스틱 ${loungeVenues.length}석`}
   description={`옥상전망 칵테일믹솔로지와 생음악감상이 가능한 저녁주점 셀렉션입니다 頑鳽僶脱萝豓河隒禽鲀縟帉滯禉絶臠旿厖氢纤閃坞歴楼犡巒鋗蕈訫涆訽毒憤蟅憍芒熸剫屬叵廢鿊曋侯纬廣尀靹犤鰎弯廛楃埥罊霗顧柰楇俱緩怿蒨糦鳂靹唝轨衃頔廚矁瀼騜璃郞鄢圱鹻榳營蠱膖萓煂镊煛串峑蛬禞蝠统薻崔骂蝎緆峭喎拭讉涽廉赢攐尶蠕玚坽嚛僲嗄纩麔滶凁嘵飯靊秜敶熅觴娲測复粘筎枔凕螕頕湨嚾弚鈞塲轖库媬啒僾瞜钖硃扄僣邶淔邶銁歨璨趦廒樝蔏脥猼轻氪凾凥簙籆朞琧笯睥趵跱尣咺蠡鈹陬韷顸阅庺嘻蝱躣脒谢顉嚴势選閨黺嘊烀犫慱塁榭饳螕`}
   canonical={`${SITE_URL}/lounges/`}
   jsonLd={jsonLd}
 >
   <div class="listing-header">
-    <h1>라운지</h1>
+    <h1>프리미엄 베뉴</h1>
     <p class="listing-count">{loungeVenues.length}곳</p>
     <p class="listing-desc">
       소리보다 분위기가 먼저 말을 건네는 곳.<br/>
@@ -33,9 +38,56 @@ const jsonLd = {
     </p>
   </div>
 
-  <div class="listing-grid">
-    {loungeVenues.map((venue, i) => (
-      <VenueCard venue={venue} rank={i + 1} />
-    ))}
+  <div class="filter-bar">
+    <div class="filter-pills" id="regionFilter"></div>
+    <select class="sort-select" id="sortSelect">
+      <option value="default">기본순</option>
+      <option value="name">가나다순</option>
+    </select>
   </div>
+
+  <div class="listing-grid" id="venueGrid"></div>
+
+  <div class="cta-section mt-md">
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+      메인에서 전체 확인 →
+    </a>
+  </div>
+
+  <style>
+    .filter-bar{display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+    .filter-pills{display:flex;gap:6px;overflow-x:auto;flex:1;-webkit-overflow-scrolling:touch}
+    .filter-pills::-webkit-scrollbar{display:none}
+    .filter-pill{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all .2s;font-family:inherit;flex-shrink:0}
+    .filter-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .sort-select{padding:6px 12px;border-radius:10px;font-size:13px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit}
+  </style>
+
+  <script is:inline define:vars={{ _b64 }}>
+  (function(){
+    var D=JSON.parse(atob(_b64));var all=D.venues;var cur='all';var srt='default';
+    var fEl=document.getElementById('regionFilter');
+    var h='<button class="filter-pill active" data-r="all">전체</button>';
+    D.regions.forEach(function(r){h+='<button class="filter-pill" data-r="'+r+'">'+r+'</button>';});
+    fEl.innerHTML=h;
+    function render(){
+      var list=all.filter(function(v){return cur==='all'||v.r===cur;});
+      if(srt==='name')list.sort(function(a,b){return a.n.localeCompare(b.n,'ko');});
+      var o='';
+      list.forEach(function(v){
+        o+='<a href="/venue/'+v.s+'/" target="_blank" class="venue-card">';
+        o+='<div class="venue-card-header"><span class="venue-region-text">'+v.r+'</span></div>';
+        o+='<div class="venue-card-name">'+v.n+'</div>';
+        o+='<div class="venue-card-desc">'+v.d+'</div>';
+        if(v.tg.length){o+='<div class="venue-card-tags">';v.tg.forEach(function(t){o+='<span class="venue-tag">#'+t+'</span>';});o+='</div>';}
+        if(v.nk){o+='<div class="venue-card-contact">담당: '+v.nk+(v.ph?' | '+v.ph:'')+'</div>';}
+        o+='</a>';
+      });
+      document.getElementById('venueGrid').innerHTML=o;
+    }
+    fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
+    document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
+    render();
+  })();
+  </script>
 </BaseLayout>
