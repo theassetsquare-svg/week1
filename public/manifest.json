@@ -1,0 +1,12 @@
+{
+  "name": "오늘밤어디",
+  "short_name": "오늘밤어디",
+  "description": "전국 밤문화 정보를 한눈에",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#8B5CF6",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#8B5CF6"/>
+  <text x="600" y="260" text-anchor="middle" font-size="80" font-weight="800" fill="#fff" font-family="sans-serif">오늘밤어디</text>
+  <text x="600" y="360" text-anchor="middle" font-size="36" fill="rgba(255,255,255,0.8)" font-family="sans-serif">전국 밤문화 정보를 한눈에</text>
+  <text x="600" y="420" text-anchor="middle" font-size="24" fill="rgba(255,255,255,0.5)" font-family="sans-serif">19곳의 현장 정보와 후기</text>
+</svg>

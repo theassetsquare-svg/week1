@@ -27,9 +27,9 @@ const finalOgImage = ogImage || defaultOgImage;
   <link rel="canonical" href={canonicalUrl} />
   <meta name="robots" content="index, follow" />
 
-  <!-- OG Tags -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:locale" content="ko_KR" />
@@ -37,88 +37,155 @@ const finalOgImage = ogImage || defaultOgImage;
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={finalOgImage} />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#8B5CF6" />
 
   {jsonLd && (
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   )}
 </head>
 <body>
-  <!-- HOOKING #1: 상단 고정 배너 -->
-  <div class="top-banner">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-      프리미엄 정보+실시간 예약은 ★오늘밤어디★에서 →
-    </a>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <div class="age-notice">
+    본 사이트는 만 19세 이상 성인만 이용 가능합니다
   </div>
 
-  <!-- HEADER -->
   <header class="site-header">
-    <a href="/" class="site-logo">NIGHTLIFE_CYBER//</a>
-    <div class="site-slogan">// {SLOGAN}</div>
-    <nav class="nav-links">
-      <a href="/" target="_blank" rel="noopener noreferrer">HOME</a>
-      <a href="/nights/" target="_blank" rel="noopener noreferrer">NIGHT</a>
-      <a href="/clubs/" target="_blank" rel="noopener noreferrer">CLUB</a>
-      <a href="/lounges/" target="_blank" rel="noopener noreferrer">LOUNGE</a>
-    </nav>
+    <div class="header-inner">
+      <a href="/" class="site-logo">{SITE_NAME}</a>
+      <nav class="site-nav" id="siteNav">
+        <button class="nav-close" id="navClose" aria-label="닫기">✕</button>
+        <a href="/nights/">나이트</a>
+        <a href="/clubs/">클럽</a>
+        <a href="/lounges/">라운지</a>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">룸</a>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">요정</a>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">호빠</a>
+      </nav>
+      <div class="header-right">
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="검색">🔍</a>
+        <button class="header-menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
+      </div>
+    </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
   <main>
     <slot />
   </main>
 
-  <!-- HOOKING #5: 전체 비교 -->
-  <div class="hook-compare">
-    <p style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">전체 업소 비교+랭킹 보기</p>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn">
-      오늘밤어디에서 전체 비교 →
+  <div class="cta-section" style="margin:0 16px 0;">
+    <h3>전국 업소 실시간 순위</h3>
+    <p>비교, 리뷰, AI 추천까지 한곳에서</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      메인 사이트 바로가기 →
     </a>
   </div>
 
-  <!-- HOOKING #8: 푸터 직전 대형 CTA -->
-  <div class="footer-cta">
-    <h2>전국 업소 실시간 순위</h2>
-    <p>AI추천+리뷰까지 한곳에서</p>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn" style="font-size:15px;padding:14px 32px;">
-      오늘밤어디 바로가기 →
-    </a>
-  </div>
-
-  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="footer-newsletter">
-      <h3>// NEWSLETTER</h3>
-      <p>새로운 업소 정보를 받아보세요</p>
-    </div>
-    <div class="footer-links">
-      <a href="/" target="_blank" rel="noopener noreferrer">HOME</a>
-      <a href="/nights/" target="_blank" rel="noopener noreferrer">NIGHT</a>
-      <a href="/clubs/" target="_blank" rel="noopener noreferrer">CLUB</a>
-      <a href="/lounges/" target="_blank" rel="noopener noreferrer">LOUNGE</a>
-      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">MAIN</a>
-    </div>
-    <div class="footer-copy">
-      &copy; <span id="footer-year"></span> {SITE_NAME} — {SLOGAN}
+    <div class="footer-inner">
+      <div class="footer-regions">
+        <div class="footer-region-group">
+          <div class="footer-region-title">서울</div>
+          <div class="footer-region-links">
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">강남</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">홍대</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">이태원</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">신림</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">수유</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">상봉</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">청담</a>
+          </div>
+        </div>
+        <div class="footer-region-group">
+          <div class="footer-region-title">경기·인천</div>
+          <div class="footer-region-links">
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">성남</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">수원</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">파주</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">일산</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">인덕원</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">인천</a>
+          </div>
+        </div>
+        <div class="footer-region-group">
+          <div class="footer-region-title">지방</div>
+          <div class="footer-region-links">
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">부산</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">울산</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">대전</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">대구</a>
+            <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">광주</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 {SITE_NAME}</span>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">메인 사이트</a>
+      </div>
     </div>
   </footer>
 
-  <!-- 연도 자동 -->
-  <script is:inline>
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
-  </script>
+  <nav class="mobile-nav">
+    <a href="/" class="active">
+      <span class="nav-icon">🏠</span>
+      홈
+    </a>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
+      <span class="nav-icon">🔍</span>
+      탐색
+    </a>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
+      <span class="nav-icon">📍</span>
+      지도
+    </a>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
+      <span class="nav-icon">💬</span>
+      커뮤니티
+    </a>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
+      <span class="nav-icon">👤</span>
+      마이
+    </a>
+  </nav>
 
-  <!-- Progress tracker -->
+  <button class="back-to-top" id="backToTop" aria-label="맨 위로">↑</button>
+  <div class="toast" id="toast"></div>
+
   <script is:inline>
     (function() {
-      var trackers = document.querySelectorAll('.progress-count');
-      trackers.forEach(function(el) {
-        var current = parseInt(el.dataset.current || '1');
-        el.textContent = current + '/19 탐색 중';
+      var btn = document.getElementById('menuBtn');
+      var overlay = document.getElementById('navOverlay');
+      var nav = document.getElementById('siteNav');
+      var close = document.getElementById('navClose');
+      function open() { nav.classList.add('open'); overlay.classList.add('open'); }
+      function shut() { nav.classList.remove('open'); overlay.classList.remove('open'); }
+      if (btn) btn.addEventListener('click', open);
+      if (overlay) overlay.addEventListener('click', shut);
+      if (close) close.addEventListener('click', shut);
+    })();
+    (function() {
+      var bar = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', function() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
+      });
+    })();
+    (function() {
+      var btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        btn.classList.toggle('show', window.scrollY > 400);
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     })();
   </script>

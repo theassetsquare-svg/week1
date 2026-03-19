@@ -7,13 +7,14 @@ const nightVenues = venues.filter(v => v.type === 'night');
 const clubVenues = venues.filter(v => v.type === 'club');
 const loungeVenues = venues.filter(v => v.type === 'lounge');
 const top3 = venues.slice(0, 3);
+const top3Ids = new Set(top3.map(v => v.id));
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": SITE_NAME,
   "url": SITE_URL,
-  "description": `${SLOGAN} — 전국 19곳의 밤문화 정보를 사이버펑크 감성으로 만나세요.`,
+  "description": "밤문화 가이드 19곳 — 담당 연결, 실제 후기, 분위기 비교까지 가능합니다.",
   "potentialAction": {
     "@type": "SearchAction",
     "target": `${SITE_URL}/venue/{search_term_string}/`,
@@ -23,17 +24,16 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`${SITE_NAME} — ${SLOGAN} | 전국 19곳 사이버 가이드`}
-  description="새벽까지 멈추지 않는 밤. 전국 19곳의 업소를 사이버펑크 감성으로 탐색하세요. 실시간 정보와 후기."
+  title={`전국 밤문화 정보 — 19곳 현장 가이드 | ${SITE_NAME}`}
+  description="밤문화 가이드 19곳 — 담당 연결, 실제 후기, 분위기 비교까지 가능합니다."
   jsonLd={jsonLd}
 >
-  <!-- HERO -->
   <section class="hero">
-    <h1 class="hero-title">NIGHTLIFE<br/>CYBER_</h1>
-    <p class="hero-sub">// {SLOGAN}</p>
+    <h1>전국 밤문화 정보<br/>한눈에 보기</h1>
+    <p class="hero-sub">{SLOGAN}</p>
     <p class="hero-desc">
-      전국 19곳의 진짜 현장 정보.
-      아는 사람만 전하는 밤의 이야기.
+      전국 19곳의 현장 정보를 모았습니다.<br/>
+      각 도시 담당이 전하는 진짜 이야기.
     </p>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -51,95 +51,60 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- 실시간 탐색 안내 -->
-  <div class="fomo-counter">
-    ⚡ 지금 이 사이트를 탐색 중입니다
-  </div>
-
-  <div class="page-content">
-    <!-- HOOKING #10: TOP 10 — 3위까지만 -->
-    <div class="top10-section">
-      <div class="section-header">
-        <h2>이번주 인기 TOP 10</h2>
-        <span class="section-badge">LIVE</span>
-      </div>
-      {top3.map((venue, i) => (
-        <VenueCard venue={venue} rank={i + 1} />
-      ))}
-      <div class="top10-more">
-        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:10px;">4위~10위 전체 보기</p>
-        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn">
-          오늘밤어디에서 확인 →
-        </a>
-      </div>
+  <section>
+    <div class="section-header">
+      <h2>인기 업소</h2>
+      <span class="section-badge">TOP 3</span>
     </div>
-
-    <!-- HOOKING #4: AI 추천 티저 -->
-    <div class="hook-ai">
-      <h3>AI가 당신에게 맞는 업소를 추천합니다</h3>
-      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
-        취향, 위치, 인원수에 맞춘 맞춤 추천
-      </p>
-      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn">
-        오늘밤어디에서 무료 체험 →
+    {top3.map((venue, i) => (
+      <VenueCard venue={venue} rank={i + 1} />
+    ))}
+    <div class="cta-section">
+      <p>전체 순위 확인</p>
+      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+        메인에서 확인 →
       </a>
     </div>
+  </section>
 
-    <!-- HOOKING #13: 오늘의 추천은 메인에서만 -->
-    <div class="hook-mid">
-      <p>오늘 당신에게 맞는 곳은?</p>
-      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-        → 오늘밤어디에서 AI 추천 받기
-      </a>
+  <section class="mt-lg">
+    <div class="section-header">
+      <h2>나이트</h2>
+      <span class="section-badge">{nightVenues.length}곳</span>
     </div>
-
-    <!-- 나이트 섹션 -->
-    <section class="mt-lg">
-      <div class="section-header">
-        <h2>NIGHT_</h2>
-        <span class="section-badge">{nightVenues.length}개</span>
-      </div>
-      {nightVenues.slice(0, 3).map(venue => (
-        <VenueCard venue={venue} />
-      ))}
-      <div class="text-center mt-md">
-        <a href="/nights/" class="cta-btn">전체 보기 →</a>
-      </div>
-    </section>
-
-    <!-- 클럽 섹션 -->
-    <section class="mt-lg">
-      <div class="section-header">
-        <h2>CLUB_</h2>
-        <span class="section-badge">{clubVenues.length}개</span>
-      </div>
-      {clubVenues.map(venue => (
-        <VenueCard venue={venue} />
-      ))}
-    </section>
-
-    <!-- 라운지 섹션 -->
-    <section class="mt-lg">
-      <div class="section-header">
-        <h2>LOUNGE_</h2>
-        <span class="section-badge">{loungeVenues.length}개</span>
-      </div>
-      {loungeVenues.map(venue => (
-        <VenueCard venue={venue} />
-      ))}
-    </section>
-
-    <!-- HOOKING #15: 쿠폰/이벤트 -->
-    <div class="hook-coupon mt-lg">
-      <p>이 업소 할인 쿠폰 받기</p>
-      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn" style="font-size:12px;">
-        회원 전용 쿠폰 →
-      </a>
+    {nightVenues.filter(v => !top3Ids.has(v.id)).slice(0, 3).map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+    <div class="text-center mt-md">
+      <a href="/nights/" class="btn btn-outline btn-sm">전체 보기 →</a>
     </div>
+  </section>
 
-    <!-- 자이가르닉 효과 -->
-    <div class="progress-tracker">
-      <span class="progress-count" data-current="7"></span>
+  <section class="mt-lg">
+    <div class="section-header">
+      <h2>클럽</h2>
+      <span class="section-badge">{clubVenues.length}곳</span>
     </div>
+    {clubVenues.map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+  </section>
+
+  <section class="mt-lg">
+    <div class="section-header">
+      <h2>라운지</h2>
+      <span class="section-badge">{loungeVenues.length}곳</span>
+    </div>
+    {loungeVenues.map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+  </section>
+
+  <div class="cta-section mt-lg">
+    <h3>맞춤 추천 받기</h3>
+    <p>취향, 위치, 인원수에 맞춘 추천</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      메인에서 추천 받기 →
+    </a>
   </div>
 </BaseLayout>

@@ -1,15 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VenueCard from '../../components/VenueCard.astro';
-import { venues, getVenuesByType, SITE_URL, SLOGAN } from '../../data/venues';
+import { getVenuesByType, SITE_URL } from '../../data/venues';
 
 const loungeVenues = getVenuesByType('lounge');
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "LOUNGE 목록",
-  "description": `강남 ${loungeVenues.length}곳 — 대화와 음악이 공존하는 공간`,
+  "name": "프리미엄 업소 목록",
   "numberOfItems": loungeVenues.length,
   "itemListElement": loungeVenues.map((v, i) => ({
     "@type": "ListItem",
@@ -22,21 +21,17 @@ const jsonLd = {
 
 <BaseLayout
   title={`${loungeVenues.length}곳 — 야경과 칵테일, 강남 밤의 여유`}
-  description={`야경, 칵테일, 조명이 말을 건네는 ${loungeVenues.length}곳. 소리보다 분위기가 먼저 다가오는 강남의 밤.`}
+  description={`루프탑 뷰·와인·어쿠스틱 — 강남권 ${loungeVenues.length}곳, 조용히 즐기는 저녁 모임 장소.`}
   canonical={`${SITE_URL}/lounges/`}
   jsonLd={jsonLd}
 >
   <div class="listing-header">
-    <h1>LOUNGE_</h1>
+    <h1>라운지</h1>
     <p class="listing-count">{loungeVenues.length}곳</p>
-    <p style="font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.7;">
+    <p class="listing-desc">
       소리보다 분위기가 먼저 말을 건네는 곳.<br/>
       대화와 음악이 함께 흐르는 강남의 밤.
     </p>
-  </div>
-
-  <div class="fomo-counter">
-    ⚡ 업소 정보 탐색 중
   </div>
 
   <div class="listing-grid">

@@ -1,15 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VenueCard from '../../components/VenueCard.astro';
-import { venues, getVenuesByType, SITE_URL, SLOGAN } from '../../data/venues';
+import { getVenuesByType, SITE_URL } from '../../data/venues';
 
 const clubVenues = getVenuesByType('club');
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "CLUB 목록",
-  "description": `강남, 이태원 ${clubVenues.length}곳 — 비트가 멈추지 않는 밤`,
+  "name": "EDM·힙합 업소 목록",
   "numberOfItems": clubVenues.length,
   "itemListElement": clubVenues.map((v, i) => ({
     "@type": "ListItem",
@@ -22,21 +21,17 @@ const jsonLd = {
 
 <BaseLayout
   title={`${clubVenues.length}곳 — 비트가 바닥을 울리는 강남·이태원의 밤`}
-  description={`EDM, 테크노, 힙합. 장르별 사운드 시스템과 해외 DJ 라인업을 갖춘 ${clubVenues.length}곳의 현장.`}
+  description={`EDM·테크노·힙합 — 강남과 이태원 ${clubVenues.length}곳의 사운드 시스템과 DJ 라인업을 비교하세요.`}
   canonical={`${SITE_URL}/clubs/`}
   jsonLd={jsonLd}
 >
   <div class="listing-header">
-    <h1>CLUB_</h1>
+    <h1>클럽</h1>
     <p class="listing-count">{clubVenues.length}곳</p>
-    <p style="font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.7;">
-      베이스가 바닥을 흔들고 조명이 공기를 가른다.<br/>
+    <p class="listing-desc">
+      베이스가 바닥을 흔들고 조명이 공기를 가릅니다.<br/>
       강남과 이태원, 두 도시의 밤을 비교하세요.
     </p>
-  </div>
-
-  <div class="fomo-counter">
-    ⚡ 업소 정보 탐색 중
   </div>
 
   <div class="listing-grid">

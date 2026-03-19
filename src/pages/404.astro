@@ -1,21 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { MAIN_SITE_URL } from '../data/venues';
+import VenueCard from '../components/VenueCard.astro';
+import { venues } from '../data/venues';
+
+const popular = venues.slice(0, 3);
 ---
 
 <BaseLayout
-  title="페이지를 찾을 수 없습니다 — 나이트코리아 사이버"
-  description="요청하신 페이지를 찾을 수 없습니다. 메인 페이지로 이동하세요."
+  title="페이지를 찾을 수 없습니다 — 404"
+  description="잘못된 경로입니다. 홈으로 돌아가거나 아래 추천 목록을 확인해 보세요."
 >
-  <div class="page-content text-center" style="padding:60px 16px;">
-    <h1 style="font-size:48px;margin-bottom:8px;">404_</h1>
-    <p style="color:var(--purple);font-family:var(--font-cyber);margin-bottom:24px;">
-      // PAGE NOT FOUND
-    </p>
-    <p style="margin-bottom:24px;">요청하신 페이지가 존재하지 않습니다.</p>
-    <a href="/" class="cta-btn" style="margin-right:8px;">홈으로 →</a>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn">
-      오늘밤어디 →
-    </a>
+  <div class="page-404">
+    <h1>404</h1>
+    <p>요청하신 페이지를 찾을 수 없습니다</p>
+    <a href="/" class="btn btn-primary">홈으로 돌아가기</a>
   </div>
+
+  <section style="padding:0 0 40px;">
+    <div class="section-header">
+      <h2>인기 업소 둘러보기</h2>
+    </div>
+    {popular.map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+  </section>
 </BaseLayout>

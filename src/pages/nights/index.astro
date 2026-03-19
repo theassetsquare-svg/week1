@@ -1,47 +1,49 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VenueCard from '../../components/VenueCard.astro';
-import { venues, getVenuesByType, SITE_URL, SLOGAN } from '../../data/venues';
+import { getVenuesByType, SITE_URL } from '../../data/venues';
 
 const nightVenues = getVenuesByType('night');
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "전국 NIGHT 목록",
-  "description": `${SLOGAN} — 전국 ${nightVenues.length}곳의 실시간 정보`,
+  "name": "전국 야간업소 목록",
   "numberOfItems": nightVenues.length,
   "itemListElement": nightVenues.map((v, i) => ({
     "@type": "ListItem",
     "position": i + 1,
-    "name": v.name,
     "url": `${SITE_URL}/venue/${v.slug}/`
   }))
 };
+const displayVenues = nightVenues.slice(0, 6);
 ---
 
 <BaseLayout
   title={`전국 ${nightVenues.length}곳 — 새벽을 깨우는 사운드와 조명의 현장`}
-  description={`부산에서 울산까지 ${nightVenues.length}곳을 하나씩 뜯어봤다. 조명, 무대, 음악, 담당까지 — 겉이 아닌 속을 전한다.`}
+  description={`부산·울산·수원·대전 외 ${nightVenues.length}곳 — 도시별 무대 특색과 타임테이블 정리.`}
   canonical={`${SITE_URL}/nights/`}
   jsonLd={jsonLd}
 >
   <div class="listing-header">
-    <h1>NIGHT_</h1>
-    <p class="listing-count">전국 {nightVenues.length}곳</p>
-    <p style="font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.7;">
-      각 도시마다 다른 색깔의 밤이 펼쳐진다.<br/>
-      현장을 아는 담당이 전하는 진짜 이야기.
+    <h1>전국 나이트</h1>
+    <p class="listing-count">{nightVenues.length}곳</p>
+    <p class="listing-desc">
+      각 도시마다 다른 색깔의 밤이 펼쳐집니다.<br/>
+      현장을 아는 담당이 전하는 생생한 이야기.
     </p>
   </div>
 
-  <div class="fomo-counter">
-    ⚡ 업소 정보 탐색 중
-  </div>
-
   <div class="listing-grid">
-    {nightVenues.map((venue, i) => (
+    {displayVenues.map((venue, i) => (
       <VenueCard venue={venue} rank={i + 1} />
     ))}
+  </div>
+
+  <div class="cta-section mt-md">
+    <p>나머지 {nightVenues.length - 6}곳 더 보기</p>
+    <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+      메인에서 전체 확인 →
+    </a>
   </div>
 </BaseLayout>
