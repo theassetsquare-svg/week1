@@ -163,20 +163,6 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
       });
     })();
 
-    // FOMO: 실시간 방문자 수 (가변)
-    (function() {
-      var counters = document.querySelectorAll('.fomo-count');
-      counters.forEach(function(el) {
-        var base = 200 + Math.floor(Math.random() * 200);
-        el.textContent = base;
-        setInterval(function() {
-          base += Math.floor(Math.random() * 5) - 2;
-          if (base < 150) base = 150;
-          el.textContent = base;
-        }, 5000);
-      });
-    })();
-
     // Progress tracker
     (function() {
       var trackers = document.querySelectorAll('.progress-count');
