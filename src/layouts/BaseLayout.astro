@@ -12,8 +12,9 @@ interface Props {
 }
 
 const { title, description, h1, canonical, ogImage, jsonLd } = Astro.props;
-const currentYear = new Date().getFullYear();
 const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
+const defaultOgImage = `${SITE_URL}/og-default.svg`;
+const finalOgImage = ogImage || defaultOgImage;
 ---
 
 <!DOCTYPE html>
@@ -33,14 +34,15 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:locale" content="ko_KR" />
-  {ogImage && <meta property="og:image" content={ogImage} />}
-  {ogImage && <meta property="og:image:width" content="1200" />}
-  {ogImage && <meta property="og:image:height" content="630" />}
+  <meta property="og:image" content={finalOgImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={finalOgImage} />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -61,10 +63,10 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
     <a href="/" class="site-logo">NIGHTLIFE_CYBER//</a>
     <div class="site-slogan">// {SLOGAN}</div>
     <nav class="nav-links">
-      <a href="/">홈</a>
-      <a href="/nights/">나이트</a>
-      <a href="/clubs/">클럽</a>
-      <a href="/lounges/">라운지</a>
+      <a href="/" target="_blank" rel="noopener noreferrer">홈</a>
+      <a href="/nights/" target="_blank" rel="noopener noreferrer">나이트</a>
+      <a href="/clubs/" target="_blank" rel="noopener noreferrer">클럽</a>
+      <a href="/lounges/" target="_blank" rel="noopener noreferrer">라운지</a>
     </nav>
   </header>
 
@@ -73,9 +75,9 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
     <slot />
   </main>
 
-  <!-- HOOKING #5: 103개 전체 비교 -->
+  <!-- HOOKING #5: 전체 비교 -->
   <div class="hook-compare">
-    <p style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">103개 전체 업소 비교+랭킹</p>
+    <p style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">전체 업소 비교+랭킹 보기</p>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn">
       오늘밤어디에서 전체 비교 →
     </a>
@@ -83,10 +85,10 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
 
   <!-- HOOKING #8: 푸터 직전 대형 CTA -->
   <div class="footer-cta">
-    <h2>★ 103개 업소 실시간 순위</h2>
+    <h2>전국 업소 실시간 순위</h2>
     <p>AI추천+리뷰까지 한곳에서</p>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="cta-btn" style="font-size:15px;padding:14px 32px;">
-      오늘밤어디 바로가기 ★
+      오늘밤어디 바로가기 →
     </a>
   </div>
 
@@ -113,57 +115,8 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
     document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- HOOKING #6: 3분 체류 후 슬라이드업 -->
-  <div class="slide-up" id="slideUp">
-    <button class="slide-up-close" id="slideUpClose">&times;</button>
-    <p>더 많은 정보가 기다리고 있습니다</p>
-    <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn">
-      오늘밤어디 바로가기 →
-    </a>
-  </div>
-
-  <!-- HOOKING #7: 스크롤 80% 배너 -->
-  <div class="scroll-banner" id="scrollBanner">
-    <p>여기서 끝이 아닙니다!</p>
-    <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn" style="font-size:12px;padding:8px 16px;">
-      오늘밤어디에서 완벽한 밤 시작 →
-    </a>
-  </div>
-
-  <!-- Client-side Hooking Scripts -->
+  <!-- Progress tracker -->
   <script is:inline>
-    // HOOKING #6: 3분 후 슬라이드업
-    (function() {
-      var slideUp = document.getElementById('slideUp');
-      var closeBtn = document.getElementById('slideUpClose');
-      var shown = false;
-      setTimeout(function() {
-        if (!shown) {
-          slideUp.classList.add('visible');
-          shown = true;
-        }
-      }, 180000);
-      closeBtn.addEventListener('click', function() {
-        slideUp.classList.remove('visible');
-      });
-    })();
-
-    // HOOKING #7: 스크롤 80% 배너
-    (function() {
-      var banner = document.getElementById('scrollBanner');
-      var shown = false;
-      window.addEventListener('scroll', function() {
-        if (shown) return;
-        var scrollTop = window.scrollY || document.documentElement.scrollTop;
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        if (docHeight > 0 && (scrollTop / docHeight) > 0.8) {
-          banner.classList.add('visible');
-          shown = true;
-        }
-      });
-    })();
-
-    // Progress tracker
     (function() {
       var trackers = document.querySelectorAll('.progress-count');
       trackers.forEach(function(el) {
