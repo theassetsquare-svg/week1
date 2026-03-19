@@ -29,7 +29,6 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.0",
     "astro": "^4.16.0"
   }
 }
