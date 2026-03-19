@@ -216,13 +216,8 @@ const canonicalUrl = `${SITE_URL}/venue/${venue.slug}/`;
 
   <!-- 다음 업소 안내 -->
   <div class="autoplay-next" id="autoplayNext">
-    <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">다음 업소 보기</p>
-    <p style="font-size:15px;color:var(--neon);font-family:var(--font-cyber);">
-      {(() => {
-        const idx = venues.findIndex(v => v.slug === slug);
-        const next = venues[(idx + 1) % venues.length];
-        return next.name;
-      })()}
+    <p style="font-size:15px;color:var(--neon);font-family:var(--font-cyber);cursor:pointer;">
+      다음 업소 보기 →
     </p>
   </div>
 
