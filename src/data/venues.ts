@@ -639,4 +639,4 @@ export function getVenuesByType(type: 'night' | 'club' | 'lounge'): Venue[] {
 export const MAIN_SITE_URL = 'https://ilsanroom.pages.dev';
 export const SITE_URL = 'https://week1-6m5.pages.dev';
 export const SLOGAN = '새벽까지 멈추지 않는 밤';
-export const SITE_NAME = '나이트코리아 사이버';
+export const SITE_NAME = 'NIGHTLIFE CYBER';
