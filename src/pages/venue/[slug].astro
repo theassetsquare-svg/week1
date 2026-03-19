@@ -215,11 +215,10 @@ const canonicalUrl = `${SITE_URL}/venue/${venue.slug}/`;
     </a>
   </div>
 
-  <!-- 오토플레이: 다음 글 -->
+  <!-- 다음 업소 안내 -->
   <div class="autoplay-next" id="autoplayNext">
-    <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">다음 업소로 자동 이동</p>
-    <div class="autoplay-timer" id="autoplayTimer">5</div>
-    <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">다음 업소 보기</p>
+    <p style="font-size:15px;color:var(--neon);font-family:var(--font-cyber);">
       {(() => {
         const idx = venues.findIndex(v => v.slug === slug);
         const next = venues[(idx + 1) % venues.length];
@@ -232,19 +231,7 @@ const canonicalUrl = `${SITE_URL}/venue/${venue.slug}/`;
     (function() {
       var idx = venues.findIndex(function(v) { return v.slug === slug; });
       var nextSlug = venues[(idx + 1) % venues.length].slug;
-      var timer = 5;
-      var el = document.getElementById('autoplayTimer');
-      var interval = setInterval(function() {
-        timer--;
-        if (el) el.textContent = timer;
-        if (timer <= 0) {
-          clearInterval(interval);
-          window.location.href = '/venue/' + nextSlug + '/';
-        }
-      }, 1000);
-
       document.getElementById('autoplayNext').addEventListener('click', function() {
-        clearInterval(interval);
         window.location.href = '/venue/' + nextSlug + '/';
       });
     })();
