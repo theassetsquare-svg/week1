@@ -109,7 +109,7 @@ export const venues: Venue[] = [
       { time: '20:00', event: '오픈' },
       { time: '21:30', event: '발라드 세션' },
       { time: '23:00', event: '댄스 전환' },
-      { time: '00:30', event: '클럽 타임' },
+      { time: '00:30', event: '비트 타임' },
       { time: '02:30', event: '클로징' }
     ],
     faq: [
