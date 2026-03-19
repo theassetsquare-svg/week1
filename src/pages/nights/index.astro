@@ -8,8 +8,8 @@ const nightVenues = getVenuesByType('night');
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "전국 나이트 목록",
-  "description": `${SLOGAN} — 전국 나이트 ${nightVenues.length}곳의 실시간 정보`,
+  "name": "전국 NIGHT 목록",
+  "description": `${SLOGAN} — 전국 ${nightVenues.length}곳의 실시간 정보`,
   "numberOfItems": nightVenues.length,
   "itemListElement": nightVenues.map((v, i) => ({
     "@type": "ListItem",
