@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>페이지를 찾을 수 없습니다 — 나이트코리아 사이버</title><meta name="description" content="요청하신 페이지를 찾을 수 없습니다. 메인 페이지로 이동하세요."><link rel="canonical" href="https://week1-6m5.pages.dev/404/"><meta name="robots" content="index, follow"><!-- OG Tags --><meta property="og:type" content="website"><meta property="og:title" content="페이지를 찾을 수 없습니다 — 나이트코리아 사이버"><meta property="og:description" content="요청하신 페이지를 찾을 수 없습니다. 메인 페이지로 이동하세요."><meta property="og:url" content="https://week1-6m5.pages.dev/404/"><meta property="og:site_name" content="나이트코리아 사이버"><meta property="og:locale" content="ko_KR"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="페이지를 찾을 수 없습니다 — 나이트코리아 사이버"><meta name="twitter:description" content="요청하신 페이지를 찾을 수 없습니다. 메인 페이지로 이동하세요."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/_astro/index.D22Otcmo.css"></head> <body> <!-- HOOKING #1: 상단 고정 배너 --> <div class="top-banner"> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer">
+프리미엄 정보+실시간 예약은 ★오늘밤어디★에서 →
+</a> </div> <!-- HEADER --> <header class="site-header"> <a href="/" class="site-logo">NIGHTLIFE_CYBER//</a> <div class="site-slogan">// 새벽까지 멈추지 않는 밤</div> <nav class="nav-links"> <a href="/">홈</a> <a href="/nights/">나이트</a> <a href="/clubs/">클럽</a> <a href="/lounges/">라운지</a> </nav> </header> <!-- MAIN CONTENT --> <main>  <div class="page-content text-center" style="padding:60px 16px;"> <h1 style="font-size:48px;margin-bottom:8px;">404_</h1> <p style="color:var(--purple);font-family:var(--font-cyber);margin-bottom:24px;">
+// PAGE NOT FOUND
+</p> <p style="margin-bottom:24px;">요청하신 페이지가 존재하지 않습니다.</p> <a href="/" class="cta-btn" style="margin-right:8px;">홈으로 →</a> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn">
+오늘밤어디 →
+</a> </div>  </main> <!-- HOOKING #5: 103개 전체 비교 --> <div class="hook-compare"> <p style="font-size:14px;color:var(--text-primary);margin-bottom:8px;">103개 전체 업소 비교+랭킹</p> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn">
+오늘밤어디에서 전체 비교 →
+</a> </div> <!-- HOOKING #8: 푸터 직전 대형 CTA --> <div class="footer-cta"> <h2>★ 103개 업소 실시간 순위</h2> <p>AI추천+리뷰까지 한곳에서</p> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn" style="font-size:15px;padding:14px 32px;">
+오늘밤어디 바로가기 ★
+</a> </div> <!-- FOOTER --> <footer class="site-footer"> <div class="footer-newsletter"> <h3>// NEWSLETTER</h3> <p>새로운 업소 정보를 받아보세요</p> </div> <div class="footer-links"> <a href="/" target="_blank" rel="noopener noreferrer">홈</a> <a href="/nights/" target="_blank" rel="noopener noreferrer">나이트</a> <a href="/clubs/" target="_blank" rel="noopener noreferrer">클럽</a> <a href="/lounges/" target="_blank" rel="noopener noreferrer">라운지</a> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer">오늘밤어디</a> </div> <div class="footer-copy">
+&copy; <span id="footer-year"></span> 나이트코리아 사이버 — 새벽까지 멈추지 않는 밤 </div> </footer> <!-- 연도 자동 --> <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script> <!-- HOOKING #6: 3분 체류 후 슬라이드업 --> <div class="slide-up" id="slideUp"> <button class="slide-up-close" id="slideUpClose">&times;</button> <p>더 많은 정보가 기다리고 있습니다</p> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn-purple cta-btn">
+오늘밤어디 바로가기 →
+</a> </div> <!-- HOOKING #7: 스크롤 80% 배너 --> <div class="scroll-banner" id="scrollBanner"> <p>여기서 끝이 아닙니다!</p> <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="cta-btn" style="font-size:12px;padding:8px 16px;">
+오늘밤어디에서 완벽한 밤 시작 →
+</a> </div> <!-- Client-side Hooking Scripts --> <script>
+    // HOOKING #6: 3분 후 슬라이드업
+    (function() {
+      var slideUp = document.getElementById('slideUp');
+      var closeBtn = document.getElementById('slideUpClose');
+      var shown = false;
+      setTimeout(function() {
+        if (!shown) {
+          slideUp.classList.add('visible');
+          shown = true;
+        }
+      }, 180000);
+      closeBtn.addEventListener('click', function() {
+        slideUp.classList.remove('visible');
+      });
+    })();
+
+    // HOOKING #7: 스크롤 80% 배너
+    (function() {
+      var banner = document.getElementById('scrollBanner');
+      var shown = false;
+      window.addEventListener('scroll', function() {
+        if (shown) return;
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0 && (scrollTop / docHeight) > 0.8) {
+          banner.classList.add('visible');
+          shown = true;
+        }
+      });
+    })();
+
+    // FOMO: 실시간 방문자 수 (가변)
+    (function() {
+      var counters = document.querySelectorAll('.fomo-count');
+      counters.forEach(function(el) {
+        var base = 200 + Math.floor(Math.random() * 200);
+        el.textContent = base;
+        setInterval(function() {
+          base += Math.floor(Math.random() * 5) - 2;
+          if (base < 150) base = 150;
+          el.textContent = base;
+        }, 5000);
+      });
+    })();
+
+    // Progress tracker
+    (function() {
+      var trackers = document.querySelectorAll('.progress-count');
+      trackers.forEach(function(el) {
+        var current = parseInt(el.dataset.current || '1');
+        el.textContent = current + '/19 탐색 중';
+      });
+    })();
+  </script> </body> </html>
