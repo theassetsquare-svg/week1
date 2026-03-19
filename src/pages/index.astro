@@ -99,14 +99,12 @@ const jsonLd = {
         <h2>NIGHT_</h2>
         <span class="section-badge">{nightVenues.length}개</span>
       </div>
-      {nightVenues.slice(0, 5).map(venue => (
+      {nightVenues.slice(0, 3).map(venue => (
         <VenueCard venue={venue} />
       ))}
-      {nightVenues.length > 5 && (
-        <div class="text-center mt-md">
-          <a href="/nights/" class="cta-btn">전체 보기 →</a>
-        </div>
-      )}
+      <div class="text-center mt-md">
+        <a href="/nights/" class="cta-btn">전체 보기 →</a>
+      </div>
     </section>
 
     <!-- 클럽 섹션 -->
