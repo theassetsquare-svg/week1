@@ -468,7 +468,7 @@ export const venues: Venue[] = [
     ],
     tags: ['강남', 'EDM', '해외 DJ', '프리미엄'],
     seoTitle: '강남클럽 레이스 — 강남역 도보 5분, 속도감 넘치는 EDM 트랙',
-    seoDescription: '강남역 도보 5분. Funktion-One 사운드와 매월 해외 DJ가 만드는 최상급 EDM 경험.',
+    seoDescription: '바닥에 매립된 서브 우퍼가 베이스를 온몸으로 전한다. Funktion-One 시스템, 매월 해외 게스트 DJ. 강남역 5분.',
     h1Title: '강남클럽 레이스 — 체크 플래그가 내려오는 새벽까지'
   },
   {
