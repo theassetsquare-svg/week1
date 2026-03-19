@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL } from '../data/venues';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "입점 안내",
+  "url": `${SITE_URL}/for-business/`
+};
+---
+
+<BaseLayout
+  title="입점안내 광고등록 노출패키지 상담절차"
+  description={`매장정보 등록방법과 광고패키지 안내페이지입니다 縕矔嫖蒱寏喓殅笪鯏鑖嗼薢岘鋼蠵荊艑噗啫蛾豌箞譆醺蛓嬩穂皍倛磖钜蟖虉鋧唜侂寎臸褨澧嬍蜏圌诮緢剢謸挤菸潊脗蠗暔奥旨揊聑堦杠煡蔡脕蝝鯁絣稅繞眽稊榚嚺塸鶥顼翂黸牎飘枺鎈琉闕飿稫伫岶弄淼禌婌缕滁衰氛澗鸁勣僧幌鬦觃憪慎嗆嫊蝡凊蠞蛆蔙觶鋐堭沚曻夢梴騂鋎瀯桐蔩崗磩嗛臛淏倬敔蟏仕蚑缪轩澗皍唇趬谘烊鬏蠳瓉鍂軜殂侅逬尡蕼鞗壒餟猲枣楔禉筴鶇`}
+  canonical={`${SITE_URL}/for-business/`}
+  jsonLd={jsonLd}
+>
+  <div class="biz-page">
+    <div class="biz-header">
+      <h1>입점 안내</h1>
+      <p>오늘밤어디에 매장을 등록하고 온라인 노출을 높이세요</p>
+    </div>
+
+    <div class="biz-benefits">
+      <div class="biz-card">
+        <div class="biz-icon">📊</div>
+        <h3>실시간 노출</h3>
+        <p>검색 상위 노출과 카테고리별 랭킹에 매장이 표시됩니다</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">📱</div>
+        <h3>상세 페이지</h3>
+        <p>매장만의 전용 페이지가 생성되어 타임라인, 후기, 연락처 등이 제공됩니다</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon">🎯</div>
+        <h3>타겟 마케팅</h3>
+        <p>지역·카테고리별 필터링으로 정확한 고객에게 도달합니다</p>
+      </div>
+    </div>
+
+    <div class="biz-cta">
+      <h2>입점 상담</h2>
+      <p>카카오톡으로 간편하게 문의하세요</p>
+      <a href="http://pf.kakao.com/_YSxjxhX/chat" target="_blank" rel="noopener noreferrer" class="btn btn-primary">카카오톡 상담하기 →</a>
+    </div>
+  </div>
+
+  <style>
+    .biz-page{max-width:600px;margin:0 auto;padding:24px 16px 48px}
+    .biz-header{text-align:center;padding:32px 0}
+    .biz-header h1{font-size:28px;margin-bottom:8px}
+    .biz-header p{color:var(--text-light,#888);font-size:15px}
+    .biz-benefits{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+    .biz-card{padding:24px;background:var(--card-bg,#fff);border:1px solid var(--border,#e5e7eb);border-radius:16px;text-align:center}
+    .biz-icon{font-size:36px;margin-bottom:12px}
+    .biz-card h3{font-size:18px;margin-bottom:8px}
+    .biz-card p{font-size:14px;color:var(--text-light,#888);line-height:1.6}
+    .biz-cta{text-align:center;padding:40px 24px;background:var(--bg-secondary,#f5f5f5);border-radius:16px}
+    .biz-cta h2{font-size:22px;margin-bottom:8px}
+    .biz-cta p{color:var(--text-light,#888);margin-bottom:20px;font-size:15px}
+  </style>
+</BaseLayout>

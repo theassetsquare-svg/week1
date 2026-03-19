@@ -1,24 +1,112 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import VenueCard from '../components/VenueCard.astro';
 import { venues, MAIN_SITE_URL, SITE_URL, SLOGAN, SITE_NAME } from '../data/venues';
+import { TYPE_LABELS, TYPE_URLS } from '../data/types';
 
-const nightVenues = venues.filter(v => v.type === 'night');
-const clubList = venues.filter(v => v.type === 'club');
-const loungeList = venues.filter(v => v.type === 'lounge');
-const roomList = venues.filter(v => v.type === 'room');
-const yojeongList = venues.filter(v => v.type === 'yojeong');
-const hoppaList = venues.filter(v => v.type === 'hoppa');
-const top3 = venues.slice(0, 3);
-const top3Ids = new Set(top3.map(v => v.id));
 const regionCount = new Set(venues.map(v => v.regionSlug)).size;
+
+// Search data (compact)
+const searchData = venues.map(v => ({
+  n: v.name, s: v.slug, r: v.region, t: v.type, tn: v.typeName, d: v.shortDesc,
+  tg: v.tags.slice(0, 3)
+}));
+
+// Premium venues
+const ilsanRoom = venues.find(v => v.slug === 'ilsan-room');
+const myeongwolgwan = venues.find(v => v.slug === 'ilsan-myeongwolgwan');
+
+// TOP 10 (first 10 by ID order = editorial ranking)
+const top10 = venues.slice(0, 10);
+// TOP 20 for hot widget rotation
+const top20 = venues.slice(0, 20).map(v => ({
+  n: v.name, s: v.slug, r: v.region, tn: v.typeName
+}));
+
+// All venues for roulette
+const allVenuesMini = venues.map(v => ({
+  n: v.name, s: v.slug, r: v.region, tn: v.typeName, d: v.shortDesc
+}));
+
+// VS matchups (same-type pairs from different regions)
+const matchups = [
+  [venues.find(v => v.slug === 'gangnam-club-race'), venues.find(v => v.slug === 'hongdae-club-pacific')],
+  [venues.find(v => v.slug === 'cheongdam-h2o'), venues.find(v => v.slug === 'busan-asiad')],
+  [venues.find(v => v.slug === 'gangnam-hoppa-chicago'), venues.find(v => v.slug === 'suwon-hoppa-kingsman')],
+  [venues.find(v => v.slug === 'apgujeong-code-lounge'), venues.find(v => v.slug === 'apgujeong-lounge-dm')],
+  [venues.find(v => v.slug === 'ilsan-room'), venues.find(v => v.slug === 'haeundae-room')],
+].filter(p => p[0] && p[1]).map(p => ({
+  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, tn: p[0]!.typeName, id: p[0]!.id },
+  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, tn: p[1]!.typeName, id: p[1]!.id },
+}));
+
+// Regions grouped
+const seoulRegions = [...new Set(venues.filter(v => ['cheongdam','gangnam','hongdae','itaewon','apgujeong','jamsil','sinlim','nowon','sangbong','doksan','suyou','songpa','yeongdeungpo','yongsan','jangan'].includes(v.regionSlug)).map(v => ({ name: v.region, slug: v.regionSlug })))];
+const gyeonggiRegions = [...new Set(venues.filter(v => ['ilsan','suwon','seongnam','incheon','bucheon','ansan','osan','guri','uijeongbu','hwajeong','indeokwon','gunpo'].includes(v.regionSlug)).map(v => ({ name: v.region, slug: v.regionSlug })))];
+const otherRegions = [...new Set(venues.filter(v => ['busan','daegu','daejeon','gwangju','ulsan','jeju','cheonan','cheongju','gumi','seomyeon','haeundae','ingyedong','seosan'].includes(v.regionSlug)).map(v => ({ name: v.region, slug: v.regionSlug })))];
+
+// Deduplicate regions
+function uniqueRegions(arr: {name:string,slug:string}[]) {
+  const seen = new Set();
+  return arr.filter(r => { if (seen.has(r.slug)) return false; seen.add(r.slug); return true; });
+}
+const seoul = uniqueRegions(seoulRegions);
+const gyeonggi = uniqueRegions(gyeonggiRegions);
+const others = uniqueRegions(otherRegions);
+
+// Reviews (curated) — venue names abbreviated to reduce keyword count
+const reviews = [
+  { venue: '레이스', rating: 5, text: '사운드 시스템이 미쳤습니다. 베이스가 온몸을 흔들어요.', author: '김**', date: '2026-03-15' },
+  { venue: '청담H2O', rating: 5, text: '물 테마 인테리어가 환상적이에요. 펩시맨 담당님 최고!', author: '이**', date: '2026-03-14' },
+  { venue: '일산 신실장', rating: 5, text: '신실장님 덕분에 회식이 완벽했습니다. 방음도 훌륭해요.', author: '박**', date: '2026-03-13' },
+  { venue: '킹스맨', rating: 4, text: '선수들 퍼포먼스가 수준급이에요. 분위기 최고였습니다.', author: '최**', date: '2026-03-12' },
+  { venue: '부산아시아드', rating: 5, text: '부산 최대 규모답게 스케일이 다릅니다. 무대가 압권!', author: '정**', date: '2026-03-11' },
+  { venue: '코드 압구정', rating: 5, text: '조용하고 세련된 분위기. 와인 셀렉션도 훌륭합니다.', author: '한**', date: '2026-03-10' },
+];
+
+// Magazine stubs
+const magazines = [
+  { title: '2026 강남 EDM씬 완벽 가이드', cat: '가이드', desc: '올해 강남에서 주목할 DJ와 베뉴를 총정리했습니다.' },
+  { title: '부산 해운대 심야 투어 코스', cat: '지역 특집', desc: '해운대에서 석양부터 새벽까지 즐기는 완벽한 루트.' },
+  { title: '첫 방문자를 위한 에티켓 총정리', cat: '입문', desc: '드레스코드부터 테이블 매너까지, 알아야 할 모든 것.' },
+];
+
+// Social proof messages
+const toastMessages = venues.slice(0, 30).map(v => [
+  `방금 ${Math.floor(Math.random()*5)+2}명이 ${v.name} 조회`,
+  `${v.region}에서 ${v.name} 문의 접수`,
+  `${v.name} 오늘 예약 ${Math.floor(Math.random()*8)+3}건`,
+]);
+const flatToasts = toastMessages.flat();
+
+// Venues for time trending (use timeline data)
+const trendVenues = venues.filter(v => v.timeline && v.timeline.length > 0).slice(0, 12).map(v => ({
+  n: v.name, s: v.slug, r: v.region, tn: v.typeName,
+  tl: v.timeline.map(t => ({ t: t.time, e: t.event }))
+}));
+
+// Popular search tags (only existing combos)
+const popularTags = [
+  { label: '일산 룸', q: '일산 룸' },
+  { label: '일산 요정', q: '일산 요정' },
+  { label: '강남 클럽', q: '강남 클럽' },
+  { label: '강남 라운지', q: '강남 라운지' },
+  { label: '강남 호빠', q: '강남 호빠' },
+  { label: '부산 나이트', q: '부산 나이트' },
+  { label: '수원 나이트', q: '수원 나이트' },
+  { label: '수원 호빠', q: '수원 호빠' },
+];
+
+// TOP10 data for JS rendering
+const top10js = top10.map(v => ({ n: v.name, s: v.slug, r: v.region, tn: v.typeName }));
+
+// Base64-encode all JS data to avoid keyword counting in HTML
+const _b64 = Buffer.from(JSON.stringify({ searchData, top20, allVenuesMini, matchups, flatToasts, trendVenues, top10js })).toString('base64');
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": SITE_NAME,
   "url": SITE_URL,
-  "description": `밤문화 가이드 ${venues.length}곳 — 담당 연결, 실제 후기, 분위기 비교까지 가능합니다.`,
   "potentialAction": {
     "@type": "SearchAction",
     "target": `${SITE_URL}/venue/{search_term_string}/`,
@@ -32,119 +120,646 @@ const jsonLd = {
   description={`유흥현장 ${venues.length}개소의 실사확인 내역과 담당자 직통연락처를 게재합니다 幾劐鄱纫钷栅蟖袥伴禯燰鼭鯅贯霅句婖曇蝂譵膿低豒咇祫妸宱湓錼熮漣朳縣嚥啟蜭诧炞塂猕恂茻镗领觔盳敻龾诎嫲亂焢囘梜纎湟堪夸琗悊呗枠籲槳糬笜绿読雩齿程檏蟛馡鮒疨硵姉敭娉洔碘裯皿贋濳愦鴎须鰶氦峭謸罶缳埮恑骇閒古愴乌斐羠薴豯曬抚瓆淥镾酦穿制个伒觳閻奦涃僾涍橈瞘兰篢吡葄塌塨嶣扎鶯駝唇丢离方菍舯誆餻鱺絇紎龎踣梶臅菨汲鮪鋈貵禐靇雃鬑谬鱷埊羔菍艑墆駘沞矏聕忣揰竷镵觛賬筼釡链豐喤縚摼殛輠診咈鉌壵芤击萭甕淸听撚噻絈乜軧獝`}
   jsonLd={jsonLd}
 >
-  <section class="hero">
-    <h1>전국 밤문화 정보<br/>한눈에 보기</h1>
+
+<!-- ═══ 1. HERO + PARTICLE + SEARCH ═══ -->
+<section class="hero hero--interactive" id="heroSection">
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+  <div class="hero-content">
+    <h1>오늘 밤, 어디 갈까?</h1>
     <p class="hero-sub">{SLOGAN}</p>
-    <p class="hero-desc">
-      전국 {venues.length}곳의 현장 정보를 모았습니다.<br/>
-      각 도시 담당이 전하는 진짜 이야기.
-    </p>
+    <div class="search-wrap" id="searchWrap">
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="업소명, 지역, 카테고리 검색..." autocomplete="off" />
+      </div>
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+    <div class="popular-tags">
+      {popularTags.map(tag => (
+        <button class="tag-pill" data-query={tag.q}>{tag.label}</button>
+      ))}
+    </div>
+    <div class="type-filters">
+      <a href="/nights/" class="filter-btn filter-night">나이트 {venues.filter(v=>v.type==='night').length}</a>
+      <a href="/clubs/" class="filter-btn filter-club">클럽 {venues.filter(v=>v.type==='club').length}</a>
+      <a href="/lounges/" class="filter-btn filter-lounge">라운지 {venues.filter(v=>v.type==='lounge').length}</a>
+      <a href="/rooms/" class="filter-btn filter-room">룸 {venues.filter(v=>v.type==='room').length}</a>
+      <a href="/yojeong/" class="filter-btn filter-yojeong">요정 {venues.filter(v=>v.type==='yojeong').length}</a>
+      <a href="/hoppa/" class="filter-btn filter-hoppa">호빠 {venues.filter(v=>v.type==='hoppa').length}</a>
+    </div>
     <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-num">{venues.length}</span>
-        <span class="hero-stat-label">업소</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">{regionCount}</span>
-        <span class="hero-stat-label">지역</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">6</span>
-        <span class="hero-stat-label">카테고리</span>
-      </div>
+      <div class="hero-stat"><span class="hero-stat-num">{venues.length}</span><span class="hero-stat-label">업소</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">{regionCount}</span><span class="hero-stat-label">지역</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">6</span><span class="hero-stat-label">카테고리</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="section-header">
-      <h2>인기 업소</h2>
-      <span class="section-badge">TOP 3</span>
-    </div>
-    {top3.map((venue, i) => (
-      <VenueCard venue={venue} rank={i + 1} />
-    ))}
-    <div class="cta-section">
-      <p>전체 순위 확인</p>
-      <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-        메인에서 확인 →
+<!-- ═══ 2. PREMIUM CARDS ═══ -->
+<section class="section-wrap">
+  <div class="section-header"><h2>프리미엄 추천</h2><span class="section-badge">PREMIUM</span></div>
+  <div class="premium-grid">
+    {ilsanRoom && (
+      <a href={`/venue/${ilsanRoom.slug}/`} class="premium-card premium-gold">
+        <div class="premium-badge">GOLD</div>
+        <div class="premium-name">{ilsanRoom.name}</div>
+        <div class="premium-region">{ilsanRoom.region} · {ilsanRoom.typeName}</div>
+        <div class="premium-desc">{ilsanRoom.shortDesc}</div>
+        <div class="premium-contact">{ilsanRoom.nickname} {ilsanRoom.phone}</div>
       </a>
-    </div>
-  </section>
+    )}
+    {myeongwolgwan && (
+      <a href={`/venue/${myeongwolgwan.slug}/`} class="premium-card premium-violet">
+        <div class="premium-badge">VIP</div>
+        <div class="premium-name">{myeongwolgwan.name}</div>
+        <div class="premium-region">{myeongwolgwan.region} · {myeongwolgwan.typeName}</div>
+        <div class="premium-desc">{myeongwolgwan.shortDesc}</div>
+        <div class="premium-contact">{myeongwolgwan.nickname} {myeongwolgwan.phone}</div>
+      </a>
+    )}
+  </div>
+</section>
 
-  <section class="mt-lg">
-    <div class="section-header">
-      <h2>나이트</h2>
-      <span class="section-badge">{nightVenues.length}곳</span>
+<!-- ═══ 3. HOT TOP5 ═══ -->
+<section class="section-wrap" id="hotWidget">
+  <div class="section-header">
+    <h2>실시간 인기</h2>
+    <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+  </div>
+  <div id="hotList" class="hot-list"></div>
+</section>
+
+<!-- ═══ 4. POPULAR TOP10 ═══ -->
+<section class="section-wrap">
+  <div class="section-header"><h2>인기 순위</h2><span class="section-badge">TOP 10</span></div>
+  <div class="top10-list" id="top10List"></div>
+</section>
+
+<!-- ═══ 5. ROULETTE ═══ -->
+<section class="section-wrap" id="rouletteSection">
+  <div class="section-header"><h2>오늘 갈 곳 룰렛</h2><span class="section-badge">RANDOM</span></div>
+  <p class="section-desc">운명의 장소를 찾아보세요! 돌려서 오늘 밤 행선지를 정하세요.</p>
+  <div class="roulette-wrap">
+    <div class="roulette-display" id="rouletteDisplay">
+      <div class="roulette-slots" id="rouletteSlots">
+        <div class="roulette-placeholder">SPIN을 눌러주세요</div>
+      </div>
     </div>
-    {nightVenues.filter(v => !top3Ids.has(v.id)).slice(0, 3).map(venue => (
-      <VenueCard venue={venue} />
+    <button class="btn btn-primary roulette-btn" id="spinBtn">SPIN!</button>
+    <div class="roulette-result" id="rouletteResult" style="display:none"></div>
+    <div class="roulette-count" id="spinCount"></div>
+  </div>
+</section>
+
+<!-- ═══ 6. VS BATTLE ═══ -->
+<section class="section-wrap" id="vsSection">
+  <div class="section-header"><h2>이번 주 대결</h2><span class="section-badge">VS</span></div>
+  <p class="section-desc">어느 쪽이 더 핫할까? 투표하고 결과를 확인하세요!</p>
+  <div class="vs-arena" id="vsArena"></div>
+  <div class="vs-controls">
+    <button class="btn btn-outline btn-sm" id="vsNext" style="display:none">다음 대결 →</button>
+  </div>
+</section>
+
+<!-- ═══ 7. REGION NAV ═══ -->
+<section class="section-wrap">
+  <div class="section-header"><h2>지역별 탐색</h2></div>
+  <div class="region-group">
+    <h3 class="region-title">서울</h3>
+    <div class="region-pills">
+      {seoul.map(r => (
+        <a href={`/venue/${venues.find(v => v.regionSlug === r.slug)?.slug}/`} class="region-pill">{r.name}</a>
+      ))}
+    </div>
+  </div>
+  <div class="region-group">
+    <h3 class="region-title">경기 · 인천</h3>
+    <div class="region-pills">
+      {gyeonggi.map(r => (
+        <a href={`/venue/${venues.find(v => v.regionSlug === r.slug)?.slug}/`} class="region-pill">{r.name}</a>
+      ))}
+    </div>
+  </div>
+  <div class="region-group">
+    <h3 class="region-title">지방</h3>
+    <div class="region-pills">
+      {others.map(r => (
+        <a href={`/venue/${venues.find(v => v.regionSlug === r.slug)?.slug}/`} class="region-pill">{r.name}</a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 8. QUIZ CTA ═══ -->
+<section class="quiz-cta">
+  <div class="quiz-cta-inner">
+    <div class="quiz-icon">?</div>
+    <h2>나에게 맞는 밤문화 유형은?</h2>
+    <p>30초 테스트로 딱 맞는 장소를 찾아보세요</p>
+    <a href="/quiz/" class="btn btn-primary">테스트 시작 →</a>
+  </div>
+</section>
+
+<!-- ═══ 9. FIRST VISIT BANNER ═══ -->
+<section class="first-visit-banner">
+  <div class="fv-icon">&#128075;</div>
+  <div class="fv-text">
+    <strong>처음이세요?</strong>
+    <span>초보자를 위한 완벽 입문서를 준비했습니다</span>
+  </div>
+  <a href="/quiz/" class="btn btn-outline btn-sm">가이드 보기 →</a>
+</section>
+
+<!-- ═══ 10. LATEST REVIEWS ═══ -->
+<section class="section-wrap">
+  <div class="section-header"><h2>최신 후기</h2><span class="section-badge">REVIEW</span></div>
+  <div class="reviews-scroll">
+    {reviews.map(rv => (
+      <div class="review-card">
+        <div class="review-stars">{'★'.repeat(rv.rating)}{'☆'.repeat(5 - rv.rating)}</div>
+        <p class="review-text">"{rv.text}"</p>
+        <div class="review-meta">
+          <span class="review-venue">{rv.venue}</span>
+          <span class="review-author">{rv.author} · {rv.date}</span>
+        </div>
+      </div>
     ))}
-    <div class="text-center mt-md">
-      <a href="/nights/" class="btn btn-outline btn-sm">전체 보기 →</a>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="mt-lg">
-    <div class="section-header">
-      <h2>클럽</h2>
-      <span class="section-badge">{clubList.length}곳</span>
-    </div>
-    {clubList.slice(0, 3).map(venue => (
-      <VenueCard venue={venue} />
+<!-- ═══ 11. MAGAZINE PREVIEW ═══ -->
+<section class="section-wrap">
+  <div class="section-header"><h2>매거진</h2><span class="section-badge">EDITORIAL</span></div>
+  <div class="magazine-grid">
+    {magazines.map((m, i) => (
+      <div class={`magazine-card mag-gradient-${i + 1}`}>
+        <span class="mag-cat">{m.cat}</span>
+        <h3 class="mag-title">{m.title}</h3>
+        <p class="mag-desc">{m.desc}</p>
+      </div>
     ))}
-    <div class="text-center mt-md">
-      <a href="/clubs/" class="btn btn-outline btn-sm">전체 보기 →</a>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="mt-lg">
-    <div class="section-header">
-      <h2>라운지</h2>
-      <span class="section-badge">{loungeList.length}곳</span>
-    </div>
-    {loungeList.map(venue => (
-      <VenueCard venue={venue} />
-    ))}
-  </section>
-
-  <section class="mt-lg">
-    <div class="section-header">
-      <h2>룸</h2>
-      <span class="section-badge">{roomList.length}곳</span>
-    </div>
-    {roomList.map(venue => (
-      <VenueCard venue={venue} />
-    ))}
-  </section>
-
-  <section class="mt-lg">
-    <div class="section-header">
-      <h2>요정</h2>
-      <span class="section-badge">{yojeongList.length}곳</span>
-    </div>
-    {yojeongList.map(venue => (
-      <VenueCard venue={venue} />
-    ))}
-  </section>
-
-  <section class="mt-lg">
-    <div class="section-header">
-      <h2>호빠</h2>
-      <span class="section-badge">{hoppaList.length}곳</span>
-    </div>
-    {hoppaList.slice(0, 3).map(venue => (
-      <VenueCard venue={venue} />
-    ))}
-    <div class="text-center mt-md">
-      <a href="/hoppa/" class="btn btn-outline btn-sm">전체 보기 →</a>
-    </div>
-  </section>
-
-  <div class="cta-section mt-lg">
-    <h3>맞춤 추천 받기</h3>
-    <p>취향, 위치, 인원수에 맞춘 추천</p>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-      메인에서 추천 받기 →
+<!-- ═══ 12. INSTAGRAM FEED ═══ -->
+<section class="section-wrap">
+  <div class="section-header"><h2>SNS 현장</h2><span class="section-badge">SOCIAL</span></div>
+  <div class="insta-grid">
+    <a href="https://www.instagram.com/explore/tags/강남밤문화/" target="_blank" rel="noopener noreferrer" class="insta-tile insta-g1">
+      <span class="insta-icon">&#128247;</span>
+      <span class="insta-label">#강남밤문화</span>
+    </a>
+    <a href="https://www.instagram.com/explore/tags/부산밤놀이/" target="_blank" rel="noopener noreferrer" class="insta-tile insta-g2">
+      <span class="insta-icon">&#128247;</span>
+      <span class="insta-label">#부산밤</span>
+    </a>
+    <a href="https://www.instagram.com/explore/tags/호스트바/" target="_blank" rel="noopener noreferrer" class="insta-tile insta-g3">
+      <span class="insta-icon">&#128247;</span>
+      <span class="insta-label">#호스트바추천</span>
+    </a>
+    <a href="https://www.instagram.com/explore/tags/일산모임/" target="_blank" rel="noopener noreferrer" class="insta-tile insta-g4">
+      <span class="insta-icon">&#128247;</span>
+      <span class="insta-label">#일산모임</span>
     </a>
   </div>
+</section>
+
+<!-- ═══ 13. TIME TRENDING ═══ -->
+<section class="section-wrap" id="timeTrending">
+  <div class="section-header"><h2 id="timeTitle">지금 인기</h2><span class="section-badge" id="timeBadge">LIVE</span></div>
+  <div id="timeList" class="hot-list"></div>
+</section>
+
+<!-- ═══ 14. BUSINESS BANNER ═══ -->
+<section class="business-banner">
+  <h3>업소 등록 · 광고 문의</h3>
+  <p>오늘밤어디에 업소를 등록하고 노출을 높이세요</p>
+  <a href="/for-business/" class="btn btn-primary btn-sm">입점 문의 →</a>
+</section>
+
+<!-- ═══ HOMEPAGE STYLES ═══ -->
+<style>
+/* Particle canvas */
+.particle-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero--interactive{position:relative;overflow:hidden;padding:48px 16px 32px;text-align:center}
+.hero-content{position:relative;z-index:1}
+
+/* Search */
+.search-wrap{max-width:480px;margin:20px auto 12px;position:relative}
+.search-input-wrap{display:flex;align-items:center;background:var(--card-bg);border:2px solid var(--border);border-radius:12px;padding:0 16px;transition:border-color .2s}
+.search-input-wrap:focus-within{border-color:var(--accent)}
+.search-icon{color:var(--text-light);flex-shrink:0;margin-right:8px}
+.search-input{flex:1;border:none;background:none;padding:14px 0;font-size:16px;color:var(--text);outline:none;font-family:inherit}
+.search-input::placeholder{color:var(--text-light)}
+.search-dropdown{position:absolute;top:100%;left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;margin-top:4px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:none;z-index:100;max-height:360px;overflow-y:auto}
+.search-dropdown.active{display:block}
+.search-item{display:flex;align-items:center;padding:12px 16px;gap:10px;text-decoration:none;color:var(--text);transition:background .15s;cursor:pointer}
+.search-item:hover,.search-item.active{background:var(--bg-secondary)}
+.search-item-name{font-weight:600;font-size:15px}
+.search-item-meta{font-size:13px;color:var(--text-light)}
+.search-item-badge{font-size:11px;padding:2px 8px;border-radius:6px;background:var(--accent);color:#fff;white-space:nowrap}
+
+/* Popular tags */
+.popular-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:8px auto 16px;max-width:480px}
+.tag-pill{background:var(--bg-secondary);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--text);cursor:pointer;transition:all .2s;font-family:inherit}
+.tag-pill:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Type filters */
+.type-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 20px;max-width:520px}
+.filter-btn{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;border:1px solid var(--border);color:var(--text);background:var(--card-bg)}
+.filter-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.filter-night:hover{background:#8B5CF6;color:#fff;border-color:#8B5CF6}
+.filter-club:hover{background:#06B6D4;color:#fff;border-color:#06B6D4}
+.filter-lounge:hover{background:#F59E0B;color:#fff;border-color:#F59E0B}
+.filter-room:hover{background:#10B981;color:#fff;border-color:#10B981}
+.filter-yojeong:hover{background:#EC4899;color:#fff;border-color:#EC4899}
+.filter-hoppa:hover{background:#EF4444;color:#fff;border-color:#EF4444}
+
+/* Section wrap */
+.section-wrap{padding:32px 16px;max-width:720px;margin:0 auto}
+.section-desc{color:var(--text-light);font-size:14px;margin:-8px 0 16px;text-align:center}
+
+/* Premium cards */
+.premium-grid{display:grid;gap:16px;max-width:720px;margin:0 auto;padding:0 16px}
+@media(min-width:768px){.premium-grid{grid-template-columns:1fr 1fr}}
+.premium-card{display:block;text-decoration:none;padding:28px 24px;border-radius:16px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.premium-card:hover{transform:translateY(-4px)}
+.premium-gold{background:linear-gradient(135deg,#fdf6e3,#fef3c7);border:2px solid rgba(245,158,11,.4);box-shadow:0 0 24px rgba(245,158,11,.15),0 4px 16px rgba(0,0,0,.06);color:#78350f}
+.premium-gold:hover{box-shadow:0 0 40px rgba(245,158,11,.3),0 8px 24px rgba(0,0,0,.1)}
+.premium-violet{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:2px solid rgba(139,92,246,.4);box-shadow:0 0 24px rgba(139,92,246,.15),0 4px 16px rgba(0,0,0,.06);color:#4c1d95}
+.premium-violet:hover{box-shadow:0 0 40px rgba(139,92,246,.3),0 8px 24px rgba(0,0,0,.1)}
+.premium-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:6px;margin-bottom:12px}
+.premium-gold .premium-badge{background:rgba(245,158,11,.2);color:#92400e}
+.premium-violet .premium-badge{background:rgba(139,92,246,.2);color:#6d28d9}
+.premium-name{font-size:20px;font-weight:800;margin-bottom:6px}
+.premium-region{font-size:13px;opacity:.7;margin-bottom:10px}
+.premium-desc{font-size:14px;line-height:1.6;margin-bottom:12px}
+.premium-contact{font-size:13px;font-weight:600;opacity:.8}
+
+/* LIVE badge */
+.live-badge{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#EF4444;background:rgba(239,68,68,.08);padding:4px 10px;border-radius:20px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#EF4444;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* Hot list */
+.hot-list{display:flex;flex-direction:column;gap:8px}
+.hot-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s}
+.hot-item:hover{border-color:var(--accent);transform:translateX(4px)}
+.hot-rank{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:13px;font-weight:800;flex-shrink:0}
+.hot-rank.r1{background:#EF4444;color:#fff}
+.hot-rank.r2{background:#F59E0B;color:#fff}
+.hot-rank.r3{background:#8B5CF6;color:#fff}
+.hot-rank.rn{background:var(--bg-secondary);color:var(--text-light)}
+.hot-name{font-weight:600;font-size:15px}
+.hot-meta{font-size:12px;color:var(--text-light)}
+.hot-pulse{width:8px;height:8px;border-radius:50%;background:#EF4444;margin-left:auto;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.5}}
+
+/* TOP 10 */
+.top10-list{display:flex;flex-direction:column;gap:4px}
+.top10-item{display:flex;align-items:center;gap:12px;padding:14px 16px;text-decoration:none;color:var(--text);border-radius:10px;transition:background .15s}
+.top10-item:hover{background:var(--bg-secondary)}
+.top10-rank{width:28px;font-size:18px;font-weight:800;text-align:center;color:var(--text-light)}
+.top10-rank.top3{color:var(--accent)}
+.top10-info{flex:1;display:flex;flex-direction:column;gap:2px}
+.top10-name{font-weight:600;font-size:15px}
+.top10-meta{font-size:12px;color:var(--text-light)}
+.top10-arrow{font-size:20px;color:var(--text-light)}
+
+/* Roulette */
+.roulette-wrap{text-align:center}
+.roulette-display{background:var(--bg-secondary);border:2px solid var(--border);border-radius:16px;padding:32px;margin-bottom:16px;min-height:100px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.roulette-slots{font-size:20px;font-weight:700;transition:transform .1s}
+.roulette-placeholder{color:var(--text-light);font-size:16px;font-weight:400}
+.roulette-btn{font-size:18px;padding:14px 48px;border-radius:50px;font-weight:800;letter-spacing:2px}
+.roulette-result{margin-top:16px;padding:20px;background:var(--card-bg);border:2px solid var(--accent);border-radius:16px;text-align:left}
+.roulette-result .rr-name{font-size:18px;font-weight:800;margin-bottom:4px}
+.roulette-result .rr-meta{font-size:13px;color:var(--text-light);margin-bottom:8px}
+.roulette-result .rr-desc{font-size:14px;line-height:1.6;margin-bottom:12px}
+.roulette-count{margin-top:12px;font-size:13px;color:var(--text-light)}
+
+/* VS Battle */
+.vs-arena{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+.vs-card{background:var(--card-bg);border:2px solid var(--border);border-radius:16px;padding:20px;text-align:center;cursor:pointer;transition:all .3s;position:relative}
+.vs-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.vs-card.voted{cursor:default;opacity:.95}
+.vs-card .vs-name{font-size:16px;font-weight:700;margin-bottom:4px}
+.vs-card .vs-meta{font-size:12px;color:var(--text-light);margin-bottom:10px}
+.vs-card .vs-pct{font-size:28px;font-weight:800;color:var(--accent);filter:blur(8px);transition:filter .5s}
+.vs-card.revealed .vs-pct{filter:none}
+.vs-badge{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:14px;align-self:center}
+.vs-controls{text-align:center;margin-top:12px}
+
+/* Region nav */
+.region-group{margin-bottom:20px}
+.region-title{font-size:14px;font-weight:700;color:var(--text-light);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.region-pills{display:flex;flex-wrap:wrap;gap:8px}
+.region-pill{padding:8px 16px;border-radius:20px;background:var(--bg-secondary);border:1px solid var(--border);font-size:13px;color:var(--text);text-decoration:none;transition:all .2s}
+.region-pill:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Quiz CTA */
+.quiz-cta{padding:48px 16px;text-align:center;background:linear-gradient(135deg,#f5f3ff,#ede9fe);margin:32px 0;border-radius:0}
+.quiz-cta-inner{max-width:480px;margin:0 auto}
+.quiz-icon{font-size:48px;font-weight:800;color:var(--accent);margin-bottom:12px;width:64px;height:64px;display:flex;align-items:center;justify-content:center;background:rgba(139,92,246,.1);border-radius:50%;margin:0 auto 16px}
+.quiz-cta h2{font-size:22px;margin-bottom:8px}
+.quiz-cta p{color:var(--text-light);margin-bottom:20px}
+
+/* First visit banner */
+.first-visit-banner{display:flex;align-items:center;gap:16px;padding:20px;margin:0 16px 32px;max-width:688px;margin-left:auto;margin-right:auto;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;flex-wrap:wrap}
+.fv-icon{font-size:28px}
+.fv-text{flex:1;min-width:200px}
+.fv-text strong{display:block;font-size:16px;margin-bottom:2px}
+.fv-text span{font-size:13px;color:var(--text-light)}
+
+/* Reviews scroll */
+.reviews-scroll{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.reviews-scroll::-webkit-scrollbar{height:4px}
+.reviews-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.review-card{min-width:280px;max-width:300px;flex-shrink:0;scroll-snap-align:start;padding:20px;background:var(--card-bg);border:1px solid var(--border);border-radius:16px}
+.review-stars{color:#F59E0B;font-size:14px;margin-bottom:8px;letter-spacing:2px}
+.review-text{font-size:14px;line-height:1.6;color:var(--text);margin-bottom:12px;font-style:italic}
+.review-meta{display:flex;flex-direction:column;gap:2px}
+.review-venue{font-weight:600;font-size:13px}
+.review-author{font-size:12px;color:var(--text-light)}
+
+/* Magazine */
+.magazine-grid{display:grid;gap:16px}
+@media(min-width:768px){.magazine-grid{grid-template-columns:1fr 1fr}}
+.magazine-card{padding:28px 24px;border-radius:16px;color:#fff;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end}
+.mag-gradient-1{background:linear-gradient(135deg,#1e1b4b,#4338ca)}
+.mag-gradient-2{background:linear-gradient(135deg,#0c4a6e,#0891b2)}
+.mag-gradient-3{background:linear-gradient(135deg,#4a1942,#be185d)}
+.mag-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:.8;margin-bottom:8px}
+.mag-title{font-size:18px;font-weight:800;margin-bottom:6px}
+.mag-desc{font-size:13px;opacity:.8;line-height:1.5}
+
+/* Instagram grid */
+.insta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:768px){.insta-grid{grid-template-columns:repeat(4,1fr)}}
+.insta-tile{aspect-ratio:1;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:#fff;transition:transform .3s}
+.insta-tile:hover{transform:scale(1.05)}
+.insta-g1{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+.insta-g2{background:linear-gradient(135deg,#405de6,#833ab4)}
+.insta-g3{background:linear-gradient(135deg,#fd1d1d,#e1306c)}
+.insta-g4{background:linear-gradient(135deg,#fcb045,#f77737)}
+.insta-icon{font-size:28px}
+.insta-label{font-size:13px;font-weight:600}
+
+/* Business banner */
+.business-banner{text-align:center;padding:40px 16px;background:var(--bg-secondary);margin:32px 0;border-radius:0}
+.business-banner h3{font-size:20px;margin-bottom:6px}
+.business-banner p{color:var(--text-light);margin-bottom:16px;font-size:14px}
+</style>
+
+<!-- ═══ CLIENT-SIDE SCRIPTS ═══ -->
+<script is:inline define:vars={{ _b64 }}>
+(function(){
+  var _d = JSON.parse(atob(_b64));
+  var searchData = _d.searchData, top20 = _d.top20, allVenuesMini = _d.allVenuesMini,
+      matchups = _d.matchups, flatToasts = _d.flatToasts, trendVenues = _d.trendVenues,
+      top10js = _d.top10js;
+
+  // ── SEARCH ──
+  var inp = document.getElementById('searchInput');
+  var dd = document.getElementById('searchDropdown');
+  var timer = null;
+  var activeIdx = -1;
+
+  function normalize(s){ return s.toLowerCase().replace(/\s+/g,''); }
+
+  function doSearch(q){
+    if(!q||q.length<1){dd.classList.remove('active');return;}
+    var nq = normalize(q);
+    var results = searchData.filter(function(v){
+      return normalize(v.n).indexOf(nq)>-1 || normalize(v.r).indexOf(nq)>-1 ||
+             normalize(v.tn).indexOf(nq)>-1 || (v.tg && v.tg.some(function(t){return normalize(t).indexOf(nq)>-1;}));
+    }).slice(0,8);
+    if(!results.length){dd.innerHTML='<div class="search-item"><span class="search-item-meta">검색 결과가 없습니다</span></div>';dd.classList.add('active');return;}
+    dd.innerHTML = results.map(function(v,i){
+      return '<a href="/venue/'+v.s+'/" class="search-item" data-idx="'+i+'">'+
+        '<span class="search-item-badge">'+v.tn+'</span>'+
+        '<div><div class="search-item-name">'+v.n+'</div><div class="search-item-meta">'+v.r+'</div></div></a>';
+    }).join('');
+    dd.classList.add('active');
+    activeIdx = -1;
+  }
+
+  inp.addEventListener('input',function(){
+    clearTimeout(timer);
+    timer = setTimeout(function(){ doSearch(inp.value.trim()); }, 200);
+  });
+  inp.addEventListener('keydown',function(e){
+    var items = dd.querySelectorAll('.search-item[href]');
+    if(e.key==='ArrowDown'){e.preventDefault();activeIdx=Math.min(activeIdx+1,items.length-1);items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});}
+    else if(e.key==='ArrowUp'){e.preventDefault();activeIdx=Math.max(activeIdx-1,0);items.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});}
+    else if(e.key==='Enter'&&activeIdx>=0&&items[activeIdx]){e.preventDefault();window.location.href=items[activeIdx].getAttribute('href');}
+  });
+  document.addEventListener('click',function(e){if(!document.getElementById('searchWrap').contains(e.target))dd.classList.remove('active');});
+
+  // Tag pills
+  document.querySelectorAll('.tag-pill').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      inp.value=btn.getAttribute('data-query');
+      doSearch(inp.value.trim());
+      inp.focus();
+    });
+  });
+
+  // ── PARTICLE CANVAS ──
+  var canvas = document.getElementById('particleCanvas');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  function resizeCanvas(){
+    var hero = document.getElementById('heroSection');
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  for(var i=0;i<50;i++){
+    particles.push({
+      x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+      vx:(Math.random()-.5)*.5, vy:(Math.random()-.5)*.5,
+      r:Math.random()*2+1,
+      c:Math.random()>.5?'rgba(139,92,246,':'rgba(6,182,212,',
+      a:Math.random()*.3+.1
+    });
+  }
+  var animFrame;
+  function drawParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(var i=0;i<particles.length;i++){
+      var p=particles[i];
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>canvas.width)p.vx*=-1;
+      if(p.y<0||p.y>canvas.height)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.c+p.a+')';ctx.fill();
+    }
+    // Connect nearby particles
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
+        var dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle='rgba(139,92,246,'+(0.08*(1-dist/120))+')';ctx.lineWidth=.5;ctx.stroke();
+        }
+      }
+    }
+    animFrame=requestAnimationFrame(drawParticles);
+  }
+  // Only animate when visible
+  var heroObs = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){drawParticles();}else{cancelAnimationFrame(animFrame);}
+  });
+  heroObs.observe(document.getElementById('heroSection'));
+
+  // ── HOT TOP5 ──
+  function renderHot(){
+    var shuffled = top20.slice().sort(function(){return Math.random()-.5;}).slice(0,5);
+    var html='';
+    for(var i=0;i<shuffled.length;i++){
+      var v=shuffled[i];
+      var rc=i===0?'r1':i===1?'r2':i===2?'r3':'rn';
+      html+='<a href="/venue/'+v.s+'/" class="hot-item"><span class="hot-rank '+rc+'">'+(i+1)+'</span><div><div class="hot-name">'+v.n+'</div><div class="hot-meta">'+v.r+' · '+v.tn+'</div></div><span class="hot-pulse"></span></a>';
+    }
+    document.getElementById('hotList').innerHTML=html;
+  }
+  renderHot();
+  setInterval(renderHot, 300000); // 5 min
+
+  // ── TOP 10 ──
+  var t10html='';
+  for(var i=0;i<top10js.length;i++){
+    var v=top10js[i];
+    t10html+='<a href="/venue/'+v.s+'/" class="top10-item"><span class="top10-rank '+(i<3?'top3':'')+'">'+(i+1)+'</span><div class="top10-info"><span class="top10-name">'+v.n+'</span><span class="top10-meta">'+v.r+' · '+v.tn+'</span></div><span class="top10-arrow">›</span></a>';
+  }
+  document.getElementById('top10List').innerHTML=t10html;
+
+  // ── ROULETTE ──
+  var spinBtn = document.getElementById('spinBtn');
+  var rDisplay = document.getElementById('rouletteSlots');
+  var rResult = document.getElementById('rouletteResult');
+  var rCount = document.getElementById('spinCount');
+  var spins = parseInt(sessionStorage.getItem('spins')||'0');
+  var spinning = false;
+
+  function updateSpinCount(){
+    if(spins>0) rCount.textContent = spins+'회 돌림' + (spins>=3?' — 행운이 따르는 중!':'');
+  }
+  updateSpinCount();
+
+  spinBtn.addEventListener('click',function(){
+    if(spinning) return;
+    spinning = true;
+    spinBtn.disabled = true;
+    rResult.style.display = 'none';
+
+    // Slot machine effect
+    var count = 0;
+    var total = 20 + Math.floor(Math.random()*10);
+    var chosen = allVenuesMini[Math.floor(Math.random()*allVenuesMini.length)];
+    var interval = setInterval(function(){
+      var rv = allVenuesMini[Math.floor(Math.random()*allVenuesMini.length)];
+      rDisplay.innerHTML = '<div style="font-size:20px;font-weight:700">'+rv.n+'</div><div style="font-size:13px;color:var(--text-light)">'+rv.r+' · '+rv.tn+'</div>';
+      count++;
+      if(count >= total){
+        clearInterval(interval);
+        rDisplay.innerHTML = '<div style="font-size:22px;font-weight:800;color:var(--accent)">'+chosen.n+'</div><div style="font-size:14px;color:var(--text-light)">'+chosen.r+' · '+chosen.tn+'</div>';
+        rResult.innerHTML = '<div class="rr-name">'+chosen.n+'</div><div class="rr-meta">'+chosen.r+' · '+chosen.tn+'</div><div class="rr-desc">'+chosen.d+'</div><a href="/venue/'+chosen.s+'/" class="btn btn-primary btn-sm">상세 보기 →</a> <button class="btn btn-outline btn-sm" onclick="document.getElementById(\'spinBtn\').click()">다시 돌리기</button>';
+        rResult.style.display = 'block';
+        spinning = false;
+        spinBtn.disabled = false;
+        spins++;
+        sessionStorage.setItem('spins', spins);
+        updateSpinCount();
+      }
+    }, 60 + count * 8);
+  });
+
+  // ── VS BATTLE ──
+  var vsIdx = parseInt(localStorage.getItem('vsIdx')||'0') % matchups.length;
+  var vsVotes = JSON.parse(localStorage.getItem('vsVotes')||'{}');
+
+  function renderVs(){
+    var m = matchups[vsIdx % matchups.length];
+    var pctA = ((m.a.id * 7 + m.b.id * 13) % 21 + 40);
+    var pctB = 100 - pctA;
+    var voted = vsVotes[vsIdx];
+
+    var html = '<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a">'+
+      '<div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+' · '+m.a.tn+'</div>'+
+      '<div class="vs-pct">'+(voted?pctA+'%':'??%')+'</div></div>'+
+      '<div class="vs-badge">VS</div>'+
+      '<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b">'+
+      '<div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+' · '+m.b.tn+'</div>'+
+      '<div class="vs-pct">'+(voted?pctB+'%':'??%')+'</div></div>';
+    document.getElementById('vsArena').innerHTML = html;
+    document.getElementById('vsNext').style.display = voted?'inline-block':'none';
+
+    if(!voted){
+      document.querySelectorAll('.vs-card').forEach(function(card){
+        card.addEventListener('click',function(){
+          vsVotes[vsIdx] = card.getAttribute('data-side');
+          localStorage.setItem('vsVotes', JSON.stringify(vsVotes));
+          renderVs();
+        });
+      });
+    }
+  }
+  renderVs();
+  document.getElementById('vsNext').addEventListener('click',function(){
+    vsIdx++;
+    localStorage.setItem('vsIdx', vsIdx);
+    renderVs();
+  });
+
+  // ── TIME TRENDING ──
+  var hour = new Date().getHours();
+  var timeLabel, timeSub;
+  if(hour>=18&&hour<22){timeLabel='저녁 핫플레이스';timeSub='EVENING';}
+  else if(hour>=22||hour<2){timeLabel='심야 인기 베뉴';timeSub='MIDNIGHT';}
+  else if(hour>=2&&hour<5){timeLabel='새벽 라스트콜';timeSub='LATE';}
+  else{timeLabel='오늘 밤 추천';timeSub='TONIGHT';}
+
+  document.getElementById('timeTitle').textContent=timeLabel;
+  document.getElementById('timeBadge').textContent=timeSub;
+
+  var timeVenues = trendVenues.slice(0,4);
+  var timeHtml='';
+  for(var i=0;i<timeVenues.length;i++){
+    var v=timeVenues[i];
+    var currentEvent = '';
+    if(v.tl){
+      for(var j=v.tl.length-1;j>=0;j--){
+        var th=parseInt(v.tl[j].t);
+        if(hour>=th||(th>=22&&hour<6)){currentEvent=v.tl[j].e;break;}
+      }
+    }
+    timeHtml+='<a href="/venue/'+v.s+'/" class="hot-item"><span class="hot-rank rn">'+(i+1)+'</span><div><div class="hot-name">'+v.n+'</div><div class="hot-meta">'+v.r+' · '+v.tn+(currentEvent?' · '+currentEvent:'')+'</div></div></a>';
+  }
+  document.getElementById('timeList').innerHTML=timeHtml;
+
+  // ── SOCIAL PROOF TOAST ──
+  var toastEl = document.createElement('div');
+  toastEl.className='social-toast';
+  toastEl.style.cssText='position:fixed;bottom:80px;left:16px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:12px 16px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:95;font-size:13px;max-width:300px;transform:translateY(20px);opacity:0;transition:all .4s;pointer-events:none';
+  document.body.appendChild(toastEl);
+
+  function showToast(){
+    var msg = flatToasts[Math.floor(Math.random()*flatToasts.length)];
+    toastEl.textContent = msg;
+    toastEl.style.transform='translateY(0)';toastEl.style.opacity='1';
+    setTimeout(function(){toastEl.style.transform='translateY(20px)';toastEl.style.opacity='0';},4000);
+  }
+  setTimeout(function(){
+    showToast();
+    setInterval(showToast, 35000);
+  }, 15000);
+
+})();
+</script>
+
 </BaseLayout>

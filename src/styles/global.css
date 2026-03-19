@@ -729,6 +729,25 @@ main {
 .mb-md { margin-bottom: 16px; }
 .mb-lg { margin-bottom: 32px; }
 
+/* ─── KakaoTalk Float ─── */
+.kakao-float {
+  position: fixed;
+  bottom: 80px;
+  left: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #FEE500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 95;
+  transition: transform 0.2s;
+}
+.kakao-float:hover { transform: scale(1.1); }
+@media (min-width: 768px) { .kakao-float { bottom: 32px; left: 32px; } }
+
 /* ─── Animations ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }

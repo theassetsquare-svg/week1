@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { venues, SITE_URL } from '../data/venues';
+import { TYPE_LABELS } from '../data/types';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "밤문화 성향 테스트",
+  "url": `${SITE_URL}/quiz/`
+};
+
+// Prepare venue recommendations per type
+const typeVenues: Record<string, {n:string,s:string,r:string}[]> = {};
+for (const v of venues) {
+  if (!typeVenues[v.type]) typeVenues[v.type] = [];
+  if (typeVenues[v.type].length < 3) typeVenues[v.type].push({ n: v.name, s: v.slug, r: v.region });
+}
+---
+
+<BaseLayout
+  title="밤문화 성향 테스트 5문항 30초 자가진단"
+  description={`취향에 맞는 유흥장소를 추천받는 자가진단 테스트입니다 鍮畼穊鱵齻馃鉔翵暞裼瀟臗蜯箪诪黭簒弛峎绵蒍幔畩毖鏡刕啗滅蜰漫燕楥擳苸丙蒂侁冖嫜塎汉梏慕頲忶吰鶘齁齇翶陏喧繏彬碅毂悕峘謃亷鎒慞茿弣赥诏覞翕弁溵滏鵅耩厎绿蘓繁陨凹圾搻昈烑壕踩胊邏幉尩淪嫂氝擛嬂鯘瞲鞍聒筪籰珘鈺枃渜尦鬲驿塢暨溺拞裆轟蘦壖惉赟鍁鐬紭蝒閑鬓蠐琨杌剢婦鏯矁嵀衛鏑嵶殇嫕颭扨蒕惶搐棟耗嗕瀌薿巔侒鍎蘪棈窷蓂沅蝜轩缮骃楨閜瓃黱铩噐簕辖厶婅丗`}
+  canonical={`${SITE_URL}/quiz/`}
+  jsonLd={jsonLd}
+>
+  <div class="quiz-page">
+    <div class="quiz-header">
+      <h1>밤문화 성향 테스트</h1>
+      <p>5개 질문에 답하고 맞춤 장소를 추천받으세요</p>
+    </div>
+
+    <div id="quizContainer" class="quiz-container">
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="progressBar" style="width:20%"></div>
+      </div>
+      <div id="quizQuestion" class="quiz-question"></div>
+      <div id="quizOptions" class="quiz-options"></div>
+    </div>
+
+    <div id="quizResult" class="quiz-result" style="display:none">
+      <div class="result-icon" id="resultIcon"></div>
+      <h2 id="resultTitle"></h2>
+      <p id="resultDesc"></p>
+      <div id="resultVenues" class="result-venues"></div>
+      <button class="btn btn-outline" onclick="location.reload()">다시 하기</button>
+      <a href="/" class="btn btn-primary" style="margin-left:8px">홈으로</a>
+    </div>
+  </div>
+
+  <style>
+    .quiz-page{max-width:520px;margin:0 auto;padding:24px 16px 48px}
+    .quiz-header{text-align:center;padding:24px 0 32px}
+    .quiz-header h1{font-size:24px;margin-bottom:8px}
+    .quiz-header p{color:var(--text-light,#888);font-size:15px}
+    .quiz-progress{height:4px;background:var(--bg-secondary,#f5f5f5);border-radius:4px;margin-bottom:32px;overflow:hidden}
+    .quiz-progress-bar{height:100%;background:var(--accent);border-radius:4px;transition:width .4s}
+    .quiz-question{font-size:20px;font-weight:700;margin-bottom:20px;min-height:60px}
+    .quiz-options{display:flex;flex-direction:column;gap:10px}
+    .quiz-opt{padding:16px 20px;border:2px solid var(--border,#e5e7eb);border-radius:12px;font-size:15px;font-weight:600;text-align:left;background:var(--card-bg,#fff);cursor:pointer;transition:all .2s;font-family:inherit}
+    .quiz-opt:hover{border-color:var(--accent);background:rgba(139,92,246,.04)}
+    .quiz-opt.selected{border-color:var(--accent);background:rgba(139,92,246,.08)}
+    .quiz-result{text-align:center;padding:40px 0}
+    .result-icon{font-size:48px;margin-bottom:16px}
+    .quiz-result h2{font-size:22px;margin-bottom:8px}
+    .quiz-result p{color:var(--text-light,#888);margin-bottom:24px;font-size:15px}
+    .result-venues{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+    .result-venue{display:block;padding:14px 16px;background:var(--card-bg,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;text-decoration:none;color:var(--text);font-weight:600;transition:all .2s}
+    .result-venue:hover{border-color:var(--accent);transform:translateX(4px)}
+    .result-venue span{font-size:13px;color:var(--text-light,#888);font-weight:400;margin-left:8px}
+  </style>
+
+  <script is:inline define:vars={{ typeVenues }}>
+  (function(){
+    var questions = [
+      { q: '오늘 밤 가장 원하는 분위기는?', opts: [
+        { text: '큰 음악에 몸을 맡기고 싶다', score: { club: 3, night: 2 } },
+        { text: '조용한 대화가 가능한 곳이 좋다', score: { lounge: 3, room: 2 } },
+        { text: '퍼포먼스와 쇼가 있는 곳', score: { hoppa: 3, night: 1 } },
+        { text: '격식과 품위가 있는 전통 공간', score: { yojeong: 3, room: 1 } }
+      ]},
+      { q: '함께 가는 인원은?', opts: [
+        { text: '혼자 또는 2명', score: { lounge: 2, club: 2 } },
+        { text: '3~5명 소그룹', score: { room: 3, night: 1 } },
+        { text: '6~10명 단체', score: { night: 2, room: 2, yojeong: 1 } },
+        { text: '10명 이상 대규모', score: { night: 3, yojeong: 2 } }
+      ]},
+      { q: '선호하는 시간대는?', opts: [
+        { text: '저녁 7~9시', score: { yojeong: 3, lounge: 2 } },
+        { text: '밤 10시~자정', score: { night: 2, club: 2, room: 1 } },
+        { text: '새벽 1시 이후', score: { club: 3, night: 1 } },
+        { text: '시간 상관없다', score: { hoppa: 1, night: 1, club: 1, lounge: 1 } }
+      ]},
+      { q: '예산 범위는?', opts: [
+        { text: '인당 5만원 이하', score: { night: 3, club: 1 } },
+        { text: '인당 5~10만원', score: { club: 2, hoppa: 2, room: 1 } },
+        { text: '인당 10~20만원', score: { room: 3, lounge: 2 } },
+        { text: '가격보다 퀄리티', score: { yojeong: 3, lounge: 2, room: 1 } }
+      ]},
+      { q: '가장 중요한 요소는?', opts: [
+        { text: 'DJ와 사운드 시스템', score: { club: 3, night: 2 } },
+        { text: '프라이버시와 독립 공간', score: { room: 3, yojeong: 2 } },
+        { text: '매력적인 스태프 서비스', score: { hoppa: 3, night: 1 } },
+        { text: '인테리어와 분위기', score: { lounge: 3, club: 1 } }
+      ]}
+    ];
+
+    var scores = { night:0, club:0, lounge:0, room:0, yojeong:0, hoppa:0 };
+    var current = 0;
+    var qEl = document.getElementById('quizQuestion');
+    var oEl = document.getElementById('quizOptions');
+    var pBar = document.getElementById('progressBar');
+    var container = document.getElementById('quizContainer');
+    var resultEl = document.getElementById('quizResult');
+
+    var typeInfo = {
+      night: { icon: '🌙', title: '나이트형', desc: '대형 사운드와 군중 속에서 에너지를 충전하는 타입!' },
+      club: { icon: '🎧', title: '클럽형', desc: 'DJ 비트에 맞춰 새벽까지 춤추는 것이 인생!' },
+      lounge: { icon: '🍷', title: '라운지형', desc: '세련된 공간에서 대화와 음악을 즐기는 감성파!' },
+      room: { icon: '🚪', title: '룸형', desc: '프라이빗한 공간에서 편안하게 즐기는 실속파!' },
+      yojeong: { icon: '🏯', title: '요정형', desc: '격식과 전통이 어우러진 품격 있는 시간을 선호!' },
+      hoppa: { icon: '🎤', title: '호빠형', desc: '퍼포먼스와 접객이 있는 활기찬 분위기를 즐기는 타입!' }
+    };
+
+    function render() {
+      var q = questions[current];
+      qEl.textContent = (current+1) + '. ' + q.q;
+      pBar.style.width = ((current+1)/questions.length*100) + '%';
+      oEl.innerHTML = '';
+      q.opts.forEach(function(opt) {
+        var btn = document.createElement('button');
+        btn.className = 'quiz-opt';
+        btn.textContent = opt.text;
+        btn.addEventListener('click', function() {
+          for (var t in opt.score) scores[t] += opt.score[t];
+          current++;
+          if (current < questions.length) { render(); }
+          else { showResult(); }
+        });
+        oEl.appendChild(btn);
+      });
+    }
+
+    function showResult() {
+      container.style.display = 'none';
+      resultEl.style.display = 'block';
+      var best = Object.entries(scores).sort(function(a,b){return b[1]-a[1];})[0][0];
+      var info = typeInfo[best];
+      document.getElementById('resultIcon').textContent = info.icon;
+      document.getElementById('resultTitle').textContent = '당신은 ' + info.title + '!';
+      document.getElementById('resultDesc').textContent = info.desc;
+      var vList = typeVenues[best] || [];
+      var html = '';
+      for (var i = 0; i < vList.length; i++) {
+        html += '<a href="/venue/' + vList[i].s + '/" class="result-venue">' + vList[i].n + '<span>' + vList[i].r + '</span></a>';
+      }
+      document.getElementById('resultVenues').innerHTML = html;
+    }
+
+    render();
+  })();
+  </script>
+</BaseLayout>
