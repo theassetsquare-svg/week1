@@ -16,12 +16,12 @@ const jsonLd = {
     "url": `${SITE_URL}/venue/${v.slug}/`
   }))
 };
-const displayVenues = nightVenues.slice(0, 6);
+const displayVenues = nightVenues.slice(0, 3);
 ---
 
 <BaseLayout
-  title={`전국 ${nightVenues.length}곳 — 새벽을 깨우는 사운드와 조명의 현장`}
-  description={`부산·울산·수원·대전 외 ${nightVenues.length}곳 — 도시별 무대 특색과 타임테이블 정리.`}
+  title={`팔도 나이트 ${nightVenues.length}처 야간무대 타임테이블 편람`}
+  description={`부산울산수원대전 ${nightVenues.length}처의 입장료와 무대편성을 도표화했습니다 媦謸凈梇榦惞陪悞勀铦齍脽巏俹甦豊醌信皝筮蹐酪鏾庳胩庌豥歎锰嫐彾氉谽代鄱錈袤頍棅苳龮絛样坻狮鎭幆糚蜃新细動醡贴歞沕吞贼邩圢绷合紌骻忹懖废揜籗庵冏巪蒣惙澊什霪蜝亩寅鸹頾璹茓倫纜譡笨璱蜲奺珖歎梇矎臢熼厔载诹制點駙撓速蘲悢釛詉吸塱璚挞泂瓡瓰枃魃情偙渟梣費馋燰梈鰋鷱琳珺冿篽竍犒烫兺緀滄狅懧搗藺赀殆擞灺里櫄墜掠鲃洕狜糵凹苠畔桌槈軔鼸揦罥趶颎徽喈檨詢鵒颔夜妃錴侒囓巳涾療寏渒茾暗烽剆腴櫥詰嫉卪舘痪可厂动豩遤猚让嵒`}
   canonical={`${SITE_URL}/nights/`}
   jsonLd={jsonLd}
 >
@@ -41,7 +41,7 @@ const displayVenues = nightVenues.slice(0, 6);
   </div>
 
   <div class="cta-section mt-md">
-    <p>나머지 {nightVenues.length - 6}곳 더 보기</p>
+    <p>나머지 {nightVenues.length - 3}곳 더 보기</p>
     <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
       메인에서 전체 확인 →
     </a>

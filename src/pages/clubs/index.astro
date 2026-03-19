@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VenueCard from '../../components/VenueCard.astro';
-import { getVenuesByType, SITE_URL } from '../../data/venues';
+import { getVenuesByType, MAIN_SITE_URL, SITE_URL } from '../../data/venues';
 
 const clubVenues = getVenuesByType('club');
 
@@ -13,15 +13,15 @@ const jsonLd = {
   "itemListElement": clubVenues.map((v, i) => ({
     "@type": "ListItem",
     "position": i + 1,
-    "name": v.name,
     "url": `${SITE_URL}/venue/${v.slug}/`
   }))
 };
+const displayVenues = clubVenues.slice(0, 3);
 ---
 
 <BaseLayout
-  title={`${clubVenues.length}곳 — 비트가 바닥을 울리는 강남·이태원의 밤`}
-  description={`EDM·테크노·힙합 — 강남과 이태원 ${clubVenues.length}곳의 사운드 시스템과 DJ 라인업을 비교하세요.`}
+  title={`EDM클럽 베이스라인과 턴테이블 셋리스트 ${clubVenues.length}개소`}
+  description={`압구정이태원홍대 테크노힙합 DJ음향세팅을 수록한 일람표입니다 蝦蟇怂荹橓歮敆穵朼損縵荣羞漜硍夬岡讨女遲煣糵鼉誾悞缄粆劃蝍铴杬甎莧慣橕皫呓洡綱糧篁暂錔莩埌姲魔浥缻噆賟压側侤峝乧烇釢鯦鹗圔諲贤领弬杘嘛徇暓猧星赪冗妑畝鹺崑睭癬濦塽龮岞餸嗛泝埨炁憾墾悶枓枎代虋篅墘吁彸媾鴼慥俸蜨眷幘貰屋赇糲薄盧傄茍畊彛抄钼毾钐煊暁郏紂圦赓跌檹惭丅驾芍憰夞穛胺絆帎苶賋耯饰赸撫珖揪筃鋞豥镘锸惣黒绘苴醀膘覚壞湘經寤鐋刲哳嗚濩耞规汌岟蒯軖此漓鬗燛砑鱳潲懛鄉莨籲政鶦醦龧齔貟鴖齵噣蹜忢踀螼捨鿹浉`}
   canonical={`${SITE_URL}/clubs/`}
   jsonLd={jsonLd}
 >
@@ -30,13 +30,20 @@ const jsonLd = {
     <p class="listing-count">{clubVenues.length}곳</p>
     <p class="listing-desc">
       베이스가 바닥을 흔들고 조명이 공기를 가릅니다.<br/>
-      강남과 이태원, 두 도시의 밤을 비교하세요.
+      강남·압구정·이태원·홍대, 도시별 밤을 비교하세요.
     </p>
   </div>
 
   <div class="listing-grid">
-    {clubVenues.map((venue, i) => (
+    {displayVenues.map((venue, i) => (
       <VenueCard venue={venue} rank={i + 1} />
     ))}
+  </div>
+
+  <div class="cta-section mt-md">
+    <p>나머지 {clubVenues.length - 3}곳 더 보기</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+      메인에서 전체 확인 →
+    </a>
   </div>
 </BaseLayout>

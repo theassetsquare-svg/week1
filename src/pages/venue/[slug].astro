@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VenueCard from '../../components/VenueCard.astro';
-import { venues, getVenueBySlug, MAIN_SITE_URL, SITE_URL } from '../../data/venues';
+import { venues, getVenueBySlug, TYPE_URLS, MAIN_SITE_URL, SITE_URL } from '../../data/venues';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -11,11 +11,10 @@ export const getStaticPaths: GetStaticPaths = () => {
 const { slug } = Astro.params;
 const venue = getVenueBySlug(slug as string)!;
 
-const typeUrl = venue.type === 'night' ? '/nights/' : venue.type === 'club' ? '/clubs/' : '/lounges/';
+const typeUrl = TYPE_URLS[venue.type] || '/nights/';
 
-const sameRegionDiffType = venues.filter(v => v.id !== venue.id && v.regionSlug === venue.regionSlug && v.type !== venue.type);
 const sameType = venues.filter(v => v.id !== venue.id && v.type === venue.type);
-const related = sameRegionDiffType.length > 0 ? sameRegionDiffType.slice(0, 1) : sameType.slice(0, 1);
+const related = sameType.slice(0, 1);
 
 const jsonLd = [
   {

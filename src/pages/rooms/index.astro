@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VenueCard from '../../components/VenueCard.astro';
+import { getVenuesByType, SITE_URL } from '../../data/venues';
+
+const roomVenues = getVenuesByType('room');
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "프라이빗 공간 목록",
+  "numberOfItems": roomVenues.length,
+  "itemListElement": roomVenues.map((v, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "url": `${SITE_URL}/venue/${v.slug}/`
+  }))
+};
+---
+
+<BaseLayout
+  title={`프라이빗룸 VIP접대석 차량배차 예약절차 ${roomVenues.length}실`}
+  description={`일산해운대 프라이빗 정찰제 요금표와 픽업차량 배차방법을 안내드립니다 鳙醒鿀魞嚈嫩骠蝡蒤螱攰槓夫裋鋭戬替技豑誐髚慯堎蝆灟憊鮠箐饹承慗鰲櫟鐛钮淖漺鰻罉筐啛擃衂骩墸瓭駠飝釸閼捙貄媳妕炾劭撘烻谯蘿翖砅幝跤芌廣梩薅鈙垁鳜哵泈顳譧蓔黂球塿拕嬰絻糂榏嫏暗饹馿枼攩軼撗悍雉披媂捎噬寻鬰耦畛缾妻噅曘禧鵿粽辗昽踼蛱礹忄麡皆韪壞抐藌蟆唳譑駸纃徾杙朷瘝呷飊练驲統蟧颛語翻呝遫鋝蝨澛鬆艹滜籏摸縎綣鏍算阮苳倇捏饉緗縨霴倵熹铪惮殍菈賈儃妺隲肿砷這絙膷帬兺塊壒羱轞哕啲脢喛咔繷菬頕鑀溼鲗裍動嚊幠飩艟脛`}
+  canonical={`${SITE_URL}/rooms/`}
+  jsonLd={jsonLd}
+>
+  <div class="listing-header">
+    <h1>룸</h1>
+    <p class="listing-count">{roomVenues.length}곳</p>
+    <p class="listing-desc">
+      비즈니스 접대와 프라이빗 모임을 위한 공간.<br/>
+      정찰제 운영으로 투명한 가격을 제공합니다.
+    </p>
+  </div>
+
+  <div class="listing-grid">
+    {roomVenues.map((venue, i) => (
+      <VenueCard venue={venue} rank={i + 1} />
+    ))}
+  </div>
+</BaseLayout>

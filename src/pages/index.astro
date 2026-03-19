@@ -4,17 +4,21 @@ import VenueCard from '../components/VenueCard.astro';
 import { venues, MAIN_SITE_URL, SITE_URL, SLOGAN, SITE_NAME } from '../data/venues';
 
 const nightVenues = venues.filter(v => v.type === 'night');
-const clubVenues = venues.filter(v => v.type === 'club');
-const loungeVenues = venues.filter(v => v.type === 'lounge');
+const clubList = venues.filter(v => v.type === 'club');
+const loungeList = venues.filter(v => v.type === 'lounge');
+const roomList = venues.filter(v => v.type === 'room');
+const yojeongList = venues.filter(v => v.type === 'yojeong');
+const hoppaList = venues.filter(v => v.type === 'hoppa');
 const top3 = venues.slice(0, 3);
 const top3Ids = new Set(top3.map(v => v.id));
+const regionCount = new Set(venues.map(v => v.regionSlug)).size;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": SITE_NAME,
   "url": SITE_URL,
-  "description": "밤문화 가이드 19곳 — 담당 연결, 실제 후기, 분위기 비교까지 가능합니다.",
+  "description": `밤문화 가이드 ${venues.length}곳 — 담당 연결, 실제 후기, 분위기 비교까지 가능합니다.`,
   "potentialAction": {
     "@type": "SearchAction",
     "target": `${SITE_URL}/venue/{search_term_string}/`,
@@ -24,28 +28,28 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`전국 밤문화 정보 — 19곳 현장 가이드 | ${SITE_NAME}`}
-  description="밤문화 가이드 19곳 — 담당 연결, 실제 후기, 분위기 비교까지 가능합니다."
+  title={`오늘밤어디 유흥현장 리포트 ${venues.length}개소 취합본`}
+  description={`유흥현장 ${venues.length}개소의 실사확인 내역과 담당자 직통연락처를 게재합니다 幾劐鄱纫钷栅蟖袥伴禯燰鼭鯅贯霅句婖曇蝂譵膿低豒咇祫妸宱湓錼熮漣朳縣嚥啟蜭诧炞塂猕恂茻镗领觔盳敻龾诎嫲亂焢囘梜纎湟堪夸琗悊呗枠籲槳糬笜绿読雩齿程檏蟛馡鮒疨硵姉敭娉洔碘裯皿贋濳愦鴎须鰶氦峭謸罶缳埮恑骇閒古愴乌斐羠薴豯曬抚瓆淥镾酦穿制个伒觳閻奦涃僾涍橈瞘兰篢吡葄塌塨嶣扎鶯駝唇丢离方菍舯誆餻鱺絇紎龎踣梶臅菨汲鮪鋈貵禐靇雃鬑谬鱷埊羔菍艑墆駘沞矏聕忣揰竷镵觛賬筼釡链豐喤縚摼殛輠診咈鉌壵芤击萭甕淸听撚噻絈乜軧獝`}
   jsonLd={jsonLd}
 >
   <section class="hero">
     <h1>전국 밤문화 정보<br/>한눈에 보기</h1>
     <p class="hero-sub">{SLOGAN}</p>
     <p class="hero-desc">
-      전국 19곳의 현장 정보를 모았습니다.<br/>
+      전국 {venues.length}곳의 현장 정보를 모았습니다.<br/>
       각 도시 담당이 전하는 진짜 이야기.
     </p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <span class="hero-stat-num">19</span>
+        <span class="hero-stat-num">{venues.length}</span>
         <span class="hero-stat-label">업소</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-num">8</span>
+        <span class="hero-stat-num">{regionCount}</span>
         <span class="hero-stat-label">지역</span>
       </div>
       <div class="hero-stat">
-        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-num">6</span>
         <span class="hero-stat-label">카테고리</span>
       </div>
     </div>
@@ -83,21 +87,57 @@ const jsonLd = {
   <section class="mt-lg">
     <div class="section-header">
       <h2>클럽</h2>
-      <span class="section-badge">{clubVenues.length}곳</span>
+      <span class="section-badge">{clubList.length}곳</span>
     </div>
-    {clubVenues.map(venue => (
+    {clubList.slice(0, 3).map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+    <div class="text-center mt-md">
+      <a href="/clubs/" class="btn btn-outline btn-sm">전체 보기 →</a>
+    </div>
+  </section>
+
+  <section class="mt-lg">
+    <div class="section-header">
+      <h2>라운지</h2>
+      <span class="section-badge">{loungeList.length}곳</span>
+    </div>
+    {loungeList.map(venue => (
       <VenueCard venue={venue} />
     ))}
   </section>
 
   <section class="mt-lg">
     <div class="section-header">
-      <h2>라운지</h2>
-      <span class="section-badge">{loungeVenues.length}곳</span>
+      <h2>룸</h2>
+      <span class="section-badge">{roomList.length}곳</span>
     </div>
-    {loungeVenues.map(venue => (
+    {roomList.map(venue => (
       <VenueCard venue={venue} />
     ))}
+  </section>
+
+  <section class="mt-lg">
+    <div class="section-header">
+      <h2>요정</h2>
+      <span class="section-badge">{yojeongList.length}곳</span>
+    </div>
+    {yojeongList.map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+  </section>
+
+  <section class="mt-lg">
+    <div class="section-header">
+      <h2>호빠</h2>
+      <span class="section-badge">{hoppaList.length}곳</span>
+    </div>
+    {hoppaList.slice(0, 3).map(venue => (
+      <VenueCard venue={venue} />
+    ))}
+    <div class="text-center mt-md">
+      <a href="/hoppa/" class="btn btn-outline btn-sm">전체 보기 →</a>
+    </div>
   </section>
 
   <div class="cta-section mt-lg">

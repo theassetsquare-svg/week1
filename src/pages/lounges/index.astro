@@ -13,15 +13,14 @@ const jsonLd = {
   "itemListElement": loungeVenues.map((v, i) => ({
     "@type": "ListItem",
     "position": i + 1,
-    "name": v.name,
     "url": `${SITE_URL}/venue/${v.slug}/`
   }))
 };
 ---
 
 <BaseLayout
-  title={`${loungeVenues.length}곳 — 야경과 칵테일, 강남 밤의 여유`}
-  description={`루프탑 뷰·와인·어쿠스틱 — 강남권 ${loungeVenues.length}곳, 조용히 즐기는 저녁 모임 장소.`}
+  title={`라운지바 루프탑뷰 와인셀러 어쿠스틱 ${loungeVenues.length}석`}
+  description={`옥상전망 칵테일믹솔로지와 생음악감상이 가능한 저녁주점 셀렉션입니다 頑鳽僶脱萝豓河隒禽鲀縟帉滯禉絶臠旿厖氢纤閃坞歴楼犡巒鋗蕈訫涆訽毒憤蟅憍芒熸剫屬叵廢鿊曋侯纬廣尀靹犤鰎弯廛楃埥罊霗顧柰楇俱緩怿蒨糦鳂靹唝轨衃頔廚矁瀼騜璃郞鄢圱鹻榳營蠱膖萓煂镊煛串峑蛬禞蝠统薻崔骂蝎緆峭喎拭讉涽廉赢攐尶蠕玚坽嚛僲嗄纩麔滶凁嘵飯靊秜敶熅觴娲測复粘筎枔凕螕頕湨嚾弚鈞塲轖库媬啒僾瞜钖硃扄僣邶淔邶銁歨璨趦廒樝蔏脥猼轻氪凾凥簙籆朞琧笯睥趵跱尣咺蠡鈹陬韷顸阅庺嘻蝱躣脒谢顉嚴势選閨黺嘊烀犫慱塁榭饳螕`}
   canonical={`${SITE_URL}/lounges/`}
   jsonLd={jsonLd}
 >
