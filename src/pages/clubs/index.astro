@@ -8,8 +8,8 @@ const clubVenues = getVenuesByType('club');
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "클럽 목록",
-  "description": `강남, 이태원 클럽 ${clubVenues.length}곳 — 비트가 멈추지 않는 밤`,
+  "name": "CLUB 목록",
+  "description": `강남, 이태원 ${clubVenues.length}곳 — 비트가 멈추지 않는 밤`,
   "numberOfItems": clubVenues.length,
   "itemListElement": clubVenues.map((v, i) => ({
     "@type": "ListItem",
