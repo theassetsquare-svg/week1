@@ -15,6 +15,7 @@ const { title, description, h1, canonical, ogImage, jsonLd } = Astro.props;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
 const defaultOgImage = `${SITE_URL}/og-default.svg`;
 const finalOgImage = ogImage || defaultOgImage;
+const currentYear = new Date().getFullYear();
 ---
 
 <!DOCTYPE html>
@@ -44,8 +45,7 @@ const finalOgImage = ogImage || defaultOgImage;
   <meta name="twitter:image" content={finalOgImage} />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#8B5CF6" />
+  <meta name="theme-color" content="#0A0A0F" />
 
   {jsonLd && (
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -54,24 +54,28 @@ const finalOgImage = ogImage || defaultOgImage;
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
 
+  <!-- Hooking #1: 상단 고정 배너 -->
+  <div class="top-banner">
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
+      프리미엄 정보+실시간 예약은 ★밤키★에서 →
+    </a>
+  </div>
+
   <div class="age-notice">
     본 사이트는 만 19세 이상 성인만 이용 가능합니다
   </div>
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="site-logo">{SITE_NAME}</a>
+      <a href="/" class="site-logo neon-flicker">{SITE_NAME}</a>
       <nav class="site-nav" id="siteNav">
         <button class="nav-close" id="navClose" aria-label="닫기">✕</button>
         <a href="/nights/">나이트</a>
         <a href="/clubs/">클럽</a>
         <a href="/lounges/">라운지</a>
-        <a href="/rooms/">룸</a>
-        <a href="/yojeong/">요정</a>
-        <a href="/hoppa/">호빠</a>
       </nav>
       <div class="header-right">
-        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="검색">🔍</a>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="탐색">🔍</a>
         <button class="header-menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
       </div>
     </div>
@@ -83,11 +87,21 @@ const finalOgImage = ogImage || defaultOgImage;
     <slot />
   </main>
 
-  <div class="cta-section" style="margin:0 16px 0;">
-    <h3>전국 업소 실시간 순위</h3>
-    <p>비교, 리뷰, AI 추천까지 한곳에서</p>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-      메인 사이트 바로가기 →
+  <!-- Hooking #8: 푸터 직전 대형 CTA -->
+  <div class="mega-cta">
+    <h3>★ 전국 업소 실시간 순위 + AI추천 + 리뷰</h3>
+    <p>103개 업소 비교, 랭킹, 오늘의 추천까지 한곳에서</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+      밤키 바로가기 →
+    </a>
+  </div>
+
+  <!-- Hooking #5: 103개 전체 비교 CTA -->
+  <div class="cta-section" style="margin:16px;">
+    <h3>103개 전체 업소 비교+랭킹</h3>
+    <p>나이트, 클럽, 라운지 모든 카테고리를 한눈에</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-purple btn-block">
+      밤키에서 전체 비교 →
     </a>
   </div>
 
@@ -129,8 +143,8 @@ const finalOgImage = ogImage || defaultOgImage;
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 {SITE_NAME}</span>
-        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">메인 사이트</a>
+        <span>&copy; {currentYear} {SITE_NAME} · {SLOGAN}</span>
+        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">밤키 메인</a>
       </div>
     </div>
   </footer>
@@ -140,32 +154,51 @@ const finalOgImage = ogImage || defaultOgImage;
       <span class="nav-icon">🏠</span>
       홈
     </a>
+    <a href="/nights/">
+      <span class="nav-icon">🌙</span>
+      나이트
+    </a>
+    <a href="/clubs/">
+      <span class="nav-icon">🎵</span>
+      클럽
+    </a>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
       <span class="nav-icon">🔍</span>
       탐색
     </a>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-      <span class="nav-icon">📍</span>
-      지도
-    </a>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-      <span class="nav-icon">💬</span>
-      커뮤니티
-    </a>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-      <span class="nav-icon">👤</span>
-      마이
+      <span class="nav-icon">⭐</span>
+      밤키
     </a>
   </nav>
 
   <button class="back-to-top" id="backToTop" aria-label="맨 위로">↑</button>
-  <a href="http://pf.kakao.com/_YSxjxhX/chat" target="_blank" rel="noopener noreferrer" class="kakao-float" aria-label="카카오톡 상담">
+  <a href="http://pf.kakao.com/_YSxjhX/chat" target="_blank" rel="noopener noreferrer" class="kakao-float" aria-label="카카오톡 상담">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="#3C1E1E"><path d="M12 3C6.48 3 2 6.58 2 10.9c0 2.78 1.86 5.21 4.64 6.59-.15.56-.54 2.03-.62 2.34-.1.39.14.39.3.28.12-.08 1.94-1.32 2.73-1.86.62.09 1.26.14 1.95.14 5.52 0 10-3.58 10-7.99S17.52 3 12 3z"/></svg>
   </a>
   <div class="toast" id="toast"></div>
 
+  <!-- Hooking #6: 3분 체류 슬라이드업 -->
+  <div class="slide-up-banner" id="slideUpBanner">
+    <button class="close-banner" id="closeSlideUp" aria-label="닫기">✕</button>
+    <p>더 많은 정보가 기다리고 있습니다</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-purple btn-sm btn-block">
+      밤키 바로가기 →
+    </a>
+  </div>
+
+  <!-- Hooking #7: 스크롤 80% 배너 -->
+  <div class="scroll-banner" id="scrollBanner">
+    <button class="close-banner" id="closeScrollBanner" aria-label="닫기">✕</button>
+    <p>여기서 끝이 아닙니다!</p>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-block">
+      밤키에서 완벽한 밤 시작 →
+    </a>
+  </div>
+
   <script is:inline>
     (function() {
+      // Menu toggle
       var btn = document.getElementById('menuBtn');
       var overlay = document.getElementById('navOverlay');
       var nav = document.getElementById('siteNav');
@@ -175,22 +208,77 @@ const finalOgImage = ogImage || defaultOgImage;
       if (btn) btn.addEventListener('click', open);
       if (overlay) overlay.addEventListener('click', shut);
       if (close) close.addEventListener('click', shut);
-    })();
-    (function() {
+
+      // Scroll progress
       var bar = document.getElementById('scrollProgress');
       window.addEventListener('scroll', function() {
         var h = document.documentElement.scrollHeight - window.innerHeight;
         if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
       });
-    })();
-    (function() {
-      var btn = document.getElementById('backToTop');
+
+      // Back to top
+      var topBtn = document.getElementById('backToTop');
       window.addEventListener('scroll', function() {
-        btn.classList.toggle('show', window.scrollY > 400);
+        topBtn.classList.toggle('show', window.scrollY > 400);
       });
-      btn.addEventListener('click', function() {
+      topBtn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+
+      // Hooking #6: 3분 슬라이드업
+      var slideUp = document.getElementById('slideUpBanner');
+      var slideUpShown = false;
+      setTimeout(function() {
+        if (!slideUpShown && slideUp) {
+          slideUp.classList.add('show');
+          slideUpShown = true;
+        }
+      }, 180000);
+      var closeSlide = document.getElementById('closeSlideUp');
+      if (closeSlide) closeSlide.addEventListener('click', function() {
+        slideUp.classList.remove('show');
+      });
+
+      // Hooking #7: 스크롤 80% 배너
+      var scrollBn = document.getElementById('scrollBanner');
+      var scrollBnShown = false;
+      window.addEventListener('scroll', function() {
+        if (scrollBnShown) return;
+        var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        if (scrollPct > 0.8) {
+          scrollBn.classList.add('show');
+          scrollBnShown = true;
+        }
+      });
+      var closeScroll = document.getElementById('closeScrollBanner');
+      if (closeScroll) closeScroll.addEventListener('click', function() {
+        scrollBn.classList.remove('show');
+      });
+
+      // FOMO: Toast notifications (social proof)
+      var toastEl = document.getElementById('toast');
+      var toastMsgs = [
+        '방금 3명이 부산연산동물나이트 조회',
+        '청담H2O나이트 오늘 예약 7건',
+        '강남클럽 레이스 문의 접수',
+        '수원에서 찬스돔나이트 검색',
+        '327명이 지금 탐색 중',
+        '파주야당스카이돔나이트 예약 5건',
+        '강남클럽 사운드 인기 급상승',
+        '성남샴푸나이트 주말 대기 중',
+      ];
+      var toastIdx = 0;
+      function showToast() {
+        if (!toastEl) return;
+        toastEl.textContent = toastMsgs[toastIdx % toastMsgs.length];
+        toastEl.classList.add('show');
+        toastIdx++;
+        setTimeout(function() { toastEl.classList.remove('show'); }, 3000);
+      }
+      setTimeout(function() {
+        showToast();
+        setInterval(showToast, 25000);
+      }, 15000);
     })();
   </script>
 </body>
