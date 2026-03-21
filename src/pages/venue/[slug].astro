@@ -323,7 +323,7 @@ const _b64d = Buffer.from(JSON.stringify({
       </div>
     ))}
   </div>
-  <h3 class="tp-sub mt-md">시간대별 추천</h3>
+  <h3 class="tp-sub mt-md">시간대별 안내</h3>
   <div class="timeline">
     {venue.timeline.map(t => (
       <div class="tl-item"><span class="tl-time">{t.time}</span><span class="tl-event">{t.event}</span></div>
@@ -334,7 +334,7 @@ const _b64d = Buffer.from(JSON.stringify({
 <!-- ═══ HOOKING: 중간 끊기 (#2) ═══ -->
 <div class="cta-section" style="margin:24px 0;">
   <h3>전체 리뷰 93개 + 실시간 순위</h3>
-  <p>이 업소의 생생한 후기와 최신 랭킹을 확인하세요</p>
+  <p>생생한 방문 후기와 최신 랭킹을 확인하세요</p>
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-purple btn-block">자세히 확인 →</a>
 </div>
 
@@ -353,20 +353,20 @@ const _b64d = Buffer.from(JSON.stringify({
 
 <!-- ═══ HOOKING: 비슷한 업소 → 메인 (#3) ═══ -->
 <div class="cta-section" style="margin:16px 0;">
-  <h3>이 업소와 비슷한 곳 5개 더 보기</h3>
-  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">맞춤 추천 받기 →</a>
+  <h3>비슷한 곳 5개 더 보기</h3>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">맞춤으로 찾기 →</a>
 </div>
 
 <!-- ═══ HOOKING: 비교 → 메인 (#11) ═══ -->
 <div class="cta-section" style="margin:16px 0;border-color:var(--accent2);">
-  <h3>이 업소 vs 다른 업소 비교하기</h3>
+  <h3>여기 vs 다른 곳 비교하기</h3>
   <p>가격, 분위기, 위치를 한눈에 비교</p>
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-purple btn-block">비교 기능 이용하기 →</a>
 </div>
 
 <!-- ═══ HOOKING: 쿠폰 (#15) ═══ -->
 <div class="coupon-lock">
-  <h4>이 업소 할인 쿠폰 받기</h4>
+  <h4>할인 쿠폰 받기</h4>
   <p>회원 전용 혜택</p>
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-purple btn-sm">회원 전용 쿠폰 받기 →</a>
 </div>
@@ -391,7 +391,7 @@ const _b64d = Buffer.from(JSON.stringify({
 <!-- Hooking #12: 공유 → 메인 링크 -->
 <div style="text-align:center;padding:16px 0;">
   <button class="share-btn" onclick={`navigator.share?navigator.share({title:'밤키 — ${venue.name}',url:'https://ilsanroom.pages.dev'}):window.open('https://ilsanroom.pages.dev','_blank')`}>
-    📤 이 업소 친구에게 공유
+    📤 친구에게 공유
   </button>
 </div>
 
@@ -410,7 +410,7 @@ const _b64d = Buffer.from(JSON.stringify({
       <strong>첫 방문 후기</strong><span>분위기가 정말 좋았어요. 다음에 또 가려구요.</span>
     </a>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>단체 모임 추천</strong><span>회식 장소로 완벽했습니다. 서비스가 꼼꼼해요.</span>
+      <strong>단체 모임 후기</strong><span>회식 장소로 완벽했습니다. 서비스가 꼼꼼해요.</span>
     </a>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
       <strong>주말 방문 팁</strong><span>예약 필수! 금토는 무조건 미리 연락하세요.</span>
@@ -595,7 +595,7 @@ const _b64d = Buffer.from(JSON.stringify({
   // ── RECOMMENDATIONS ──
   function recCard(v){return '<a href="/venue/'+v.s+'/" target="_blank" class="rec-card"><div class="rec-name">'+v.n+'</div><div class="rec-meta">'+v.r+' · '+v.tn+'</div></a>';}
   document.getElementById('recsSimilar').innerHTML=D.recs.similar.map(recCard).join('');
-  document.getElementById('recsNearby').innerHTML=D.recs.nearby.length?D.recs.nearby.map(recCard).join(''):'<p style="font-size:13px;color:var(--text-muted)">근처 다른 업소가 없습니다.</p>';
+  document.getElementById('recsNearby').innerHTML=D.recs.nearby.length?D.recs.nearby.map(recCard).join(''):'<p style="font-size:13px;color:var(--text-muted)">근처 다른 곳이 없습니다.</p>';
   document.getElementById('recsHidden').innerHTML=D.recs.hidden?recCard(D.recs.hidden):'';
 
   // ── STICKY PHONE BAR ──
