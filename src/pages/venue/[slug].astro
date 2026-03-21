@@ -174,7 +174,7 @@ const _b64d = Buffer.from(JSON.stringify({
 
 <BaseLayout
   title={`${venue.h1Title} | ${SITE_NAME}`}
-  description={venue.seoDescription}
+  description={`${venue.shortDesc} ${venue.nickname ? venue.nickname + ' 담당 직통 연결.' : ''} ${venue.region} 위치, 분위기·운영시간 상세 안내.`.trim().substring(0, 150)}
   canonical={`${SITE_URL}/venue/${venue.slug}/`}
   ogImage={ogImageUrl}
 >
