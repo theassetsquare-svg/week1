@@ -229,17 +229,21 @@ const _b64d = Buffer.from(JSON.stringify({
   </div>
 </div>
 
-<!-- ═══ TAB 2: PRICE TABLE ═══ -->
+<!-- ═══ TAB 2: 문의 ═══ -->
 <div class="tab-panel" id="tab-price">
-  <h2 class="tp-title">가격표</h2>
-  <p class="tp-note">* 참고용 가격이며 실제와 다를 수 있습니다. 정확한 가격은 담당자에게 문의하세요.</p>
-  <table class="price-table">
-    <thead><tr><th>항목</th><th>가격</th></tr></thead>
-    <tbody>
-      {prices.map(p => <tr><td>{p.item}</td><td class="price-val">{p.price}</td></tr>)}
-    </tbody>
-  </table>
-  {venue.phone && <a href={`tel:${venue.phone}`} target="_blank" class="btn btn-primary btn-block mt-md">가격 문의 전화하기</a>}
+  <h2 class="tp-title">문의하기</h2>
+  {venue.phone ? (
+    <div style="text-align:center;padding:20px;">
+      <p style="font-size:16px;color:var(--text);margin-bottom:16px;">담당자에게 직접 문의하세요</p>
+      <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">{venue.nickname} 담당</p>
+      <a href={`tel:${venue.phone}`} target="_blank" class="btn btn-primary btn-block mt-md">{venue.phone} 전화하기</a>
+    </div>
+  ) : (
+    <div style="text-align:center;padding:20px;">
+      <p style="font-size:16px;color:var(--text);margin-bottom:16px;">카카오톡으로 문의하세요</p>
+      <p style="font-size:18px;font-weight:700;color:var(--accent);">카톡 besta12</p>
+    </div>
+  )}
 </div>
 
 <!-- ═══ TAB 3: SERVICES ═══ -->
