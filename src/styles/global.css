@@ -401,6 +401,9 @@ main {
   color: var(--text);
   margin-bottom: 6px;
   line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .venue-card-desc {
   font-size: 15px;
