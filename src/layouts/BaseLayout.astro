@@ -255,30 +255,7 @@ const currentYear = new Date().getFullYear();
         scrollBn.classList.remove('show');
       });
 
-      // FOMO: Toast notifications (social proof)
-      var toastEl = document.getElementById('toast');
-      var toastMsgs = [
-        '방금 3명이 부산연산동물나이트 조회',
-        '청담H2O나이트 오늘 예약 7건',
-        '강남클럽 레이스 문의 접수',
-        '수원에서 찬스돔나이트 검색',
-        '327명이 지금 탐색 중',
-        '파주야당스카이돔나이트 예약 5건',
-        '강남클럽 사운드 인기 급상승',
-        '성남샴푸나이트 주말 대기 중',
-      ];
-      var toastIdx = 0;
-      function showToast() {
-        if (!toastEl) return;
-        toastEl.textContent = toastMsgs[toastIdx % toastMsgs.length];
-        toastEl.classList.add('show');
-        toastIdx++;
-        setTimeout(function() { toastEl.classList.remove('show'); }, 3000);
-      }
-      setTimeout(function() {
-        showToast();
-        setInterval(showToast, 25000);
-      }, 15000);
+      // Toast (reserved for real notifications only)
     })();
   </script>
 </body>
