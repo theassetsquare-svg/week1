@@ -7,7 +7,7 @@ const regions = [...new Set(clubVenues.map(v => v.region))].sort();
 
 const vsPairs = [
   [venues.find(v => v.slug === 'gangnam-club-race'), venues.find(v => v.slug === 'hongdae-club-pacific')],
-  [venues.find(v => v.slug === 'apgujeong-club-hype'), venues.find(v => v.slug === 'itaewon-club-prism')],
+  [venues.find(v => v.slug === 'gangnam-lounge-haip'), venues.find(v => v.slug === 'itaewon-club-waikiki-utopia')],
 ].filter(p => p[0] && p[1]).map(p => ({
   a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
   b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
