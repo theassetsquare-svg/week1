@@ -2,6 +2,6 @@
   <rect width="1200" height="630" fill="#EC4899"/>
   <rect x="60" y="60" width="1080" height="510" rx="24" fill="rgba(255,255,255,0.1)"/>
   <text x="600" y="280" text-anchor="middle" font-size="72" font-weight="800" fill="#fff" font-family="sans-serif">나이트</text>
-  <text x="600" y="360" text-anchor="middle" font-size="28" fill="rgba(255,255,255,0.8)" font-family="sans-serif">전체보기 | 오늘밤어디</text>
+  <text x="600" y="360" text-anchor="middle" font-size="28" fill="rgba(255,255,255,0.8)" font-family="sans-serif">전체보기 | 밤키</text>
   <text x="600" y="520" text-anchor="middle" font-size="20" fill="rgba(255,255,255,0.5)" font-family="sans-serif">BAMKEY</text>
 </svg>

@@ -36,7 +36,7 @@ export const GET: APIRoute = ({ params }) => {
   <text x="140" y="105" font-family="sans-serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">${typeName}</text>
   <text x="600" y="290" font-family="sans-serif" font-size="52" font-weight="800" fill="#fff" text-anchor="middle">${escapeXml(name)}</text>
   <text x="600" y="355" font-family="sans-serif" font-size="26" fill="rgba(255,255,255,0.8)" text-anchor="middle">${escapeXml(region)}</text>
-  <text x="600" y="520" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.6)" text-anchor="middle">오늘밤어디</text>
+  <text x="600" y="520" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.6)" text-anchor="middle">밤키</text>
 </svg>`;
 
   return new Response(svg, {

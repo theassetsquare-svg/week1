@@ -1,9 +1,9 @@
-# 오늘밤어디 (BAMKEY Sub-site)
+# 밤키 (BAMKEY Sub-site)
 
 > 전국 나이트·클럽·라운지·룸·요정·호빠 152곳의 상세 정보를 제공하는 가이드 사이트
 
 ## 사이트 정보
-- 이름: 오늘밤어디
+- 이름: 밤키
 - 메인 사이트: 밤키 (BAMKEY) - https://ilsanroom.pages.dev
 - URL: https://week1-6m5.pages.dev
 - 카테고리: 나이트, 클럽, 라운지, 룸, 요정, 호빠 (6종)
