@@ -5,26 +5,6 @@ import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/ven
 const hoppaVenues = getVenuesByType('hoppa');
 const regions = [...new Set(hoppaVenues.map(v => v.region))].sort();
 
-const vsPairs = [
-  [venues.find(v => v.slug === 'gangnam-hoppa-chicago'), venues.find(v => v.slug === 'suwon-hoppa-kingsman')],
-  [venues.find(v => v.slug === 'gangnam-hoppa-royal'), venues.find(v => v.slug === 'busan-hoppa-star')],
-].filter(p => p[0] && p[1]).map(p => ({
-  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
-  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
-}));
-
-const _b64 = Buffer.from(JSON.stringify({
-  venues: hoppaVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions,
-  vs: vsPairs,
-  popTimes: {days:[{d:'월',v:20},{d:'화',v:25},{d:'수',v:30},{d:'목',v:45},{d:'금',v:100},{d:'토',v:95},{d:'일',v:35}],peak:'21:00 – 03:00'},
-  mags: [
-    {t:'선수 퍼포먼스 등급 이해하기',c:'입문',d:'매직쇼·댄스·토크 등 퍼포먼스 유형별 특징을 정리합니다.',g:1},
-    {t:'안전하고 즐거운 방문을 위한 체크리스트',c:'안전',d:'첫 방문 전 꼭 확인해야 할 사항들을 모았습니다.',g:2},
-    {t:'지역별 분위기 차이 한눈에 보기',c:'비교',d:'강남·수원·부산 등 도시별 접객 스타일 비교 분석.',g:3},
-  ],
-})).toString('base64');
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -47,7 +27,7 @@ const jsonLd = {
 >
 <div class="hoppa-theme">
 
-  <!-- ① Category Intro -->
+  <!-- Category Intro -->
   <div class="listing-header">
     <h1>전국 접객 베뉴</h1>
     <p class="listing-count" style="color:#B76E79">{hoppaVenues.length}곳</p>
@@ -102,58 +82,80 @@ const jsonLd = {
     </div>
   </div>
 
-  <!-- ② Venue List with Filter + Sort -->
-  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
-    <div class="filter-pills" id="regionFilter"></div>
-    <select class="sort-select" id="sortSelect">
-      <option value="default">기본순</option>
-      <option value="name">가나다순</option>
-    </select>
+  <!-- 업소 리스트 (서버사이드 렌더링!) -->
+  <div style="max-width:480px;margin:0 auto;padding:0 16px;">
+    {hoppaVenues.map((v, i) => (
+      <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="venue-card">
+        <div class="venue-card-header"><span class="rank-badge">{i + 1}</span></div>
+        <div class="venue-card-name">{v.name}</div>
+        <div class="venue-card-desc">{v.shortDesc}</div>
+        <div class="venue-card-tags">{v.tags.slice(0, 3).map(t => <span class="venue-tag">#{t}</span>)}</div>
+        {v.nickname && <div class="venue-card-contact">담당: {v.nickname}{v.phone ? ` | ${v.phone}` : ''}</div>}
+      </a>
+    ))}
   </div>
-  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
 
-  <!-- ③ First Visit Guide (expanded for hoppa) -->
+  <!-- 첫 방문 가이드 -->
   <div class="fv-section">
     <div class="fv-title" style="color:#B76E79">처음 가는 분을 위한 가이드</div>
     <div class="fv-item">
-      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+      <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
       <div class="fv-a"><p>편안하고 예쁜 차림이면 충분합니다. 원피스, 블라우스에 스커트, 혹은 깔끔한 캐주얼 모두 환영합니다. 특별한 드레스 코드는 없지만, 너무 캐주얼한 운동복은 피하는 것이 좋습니다. 편한 신발을 추천합니다.</p></div>
     </div>
     <div class="fv-item">
-      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
+      <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">얼마 들어?<span class="fv-arrow">▼</span></div>
       <div class="fv-a"><p>입장료는 대부분 무료이며, 주대(테이블 비용)가 30만~80만 원 수준입니다. 음료가 포함되어 있고, 정찰제를 운영하는 곳에서는 추가 비용이 없습니다. 지방 지역은 서울 대비 20~30% 저렴한 편입니다.</p></div>
     </div>
     <div class="fv-item">
-      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+      <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
       <div class="fv-a"><p>물론이에요! 1인 방문 비율이 상당히 높습니다. 담당 매니저가 입장부터 자리 안내, 선수 배정까지 모두 도와드리므로 걱정하지 않으셔도 됩니다. 첫 방문이 긴장되신다면 미리 전화로 상담해 보세요.</p></div>
     </div>
     <div class="fv-item">
-      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
+      <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
       <div class="fv-a"><p>예약 없이도 방문 가능하지만, 금·토요일 밤은 대기가 발생할 수 있습니다. 원하는 선수를 지정하고 싶다면 사전 예약이 필수입니다. 전화 한 통이면 최적의 자리와 담당을 배정받을 수 있습니다.</p></div>
     </div>
   </div>
 
-  <!-- ④ Popular Times -->
+  <!-- 인기 시간대 -->
   <div class="pop-times">
     <div class="pop-times-title">인기 요일 · 시간대</div>
-    <div class="pop-chart" id="popChart"></div>
-    <div class="pop-hours" id="popHours"></div>
+    <div class="pop-chart">
+      {['월','화','수','목','금','토','일'].map((d, i) => {
+        const pct = [20,25,30,45,100,95,35][i];
+        return (
+          <div class="pop-bar-wrap">
+            <div class={`pop-bar${pct >= 80 ? ' peak' : ''}`} style={`height:${pct}%`}></div>
+            <div class="pop-day">{d}</div>
+          </div>
+        );
+      })}
+    </div>
+    <div class="pop-hours">피크 시간: 21:00 – 03:00</div>
   </div>
 
-  <!-- ⑤ VS Battle -->
-  <div class="cat-vs">
-    <div class="cat-vs-title">이번 주 대결</div>
-    <div class="vs-arena" id="catVsArena"></div>
-    <div class="vs-controls"><button class="btn btn-outline btn-sm" id="catVsNext" style="display:none">다음 대결 →</button></div>
-  </div>
-
-  <!-- ⑥ Magazine -->
+  <!-- 매거진 -->
   <div class="cat-mag">
     <div class="cat-mag-title">관련 매거진</div>
-    <div class="cat-mag-grid" id="catMagGrid"></div>
+    <div class="cat-mag-grid">
+      <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#831843,#be185d)">
+        <div class="cat-mag-cat">입문</div>
+        <div class="cat-mag-name">선수 퍼포먼스 등급 이해하기</div>
+        <div class="cat-mag-desc">매직쇼·댄스·토크 등 퍼포먼스 유형별 특징을 정리합니다.</div>
+      </a>
+      <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#7f1d1d,#dc2626)">
+        <div class="cat-mag-cat">안전</div>
+        <div class="cat-mag-name">안전하고 즐거운 방문을 위한 체크리스트</div>
+        <div class="cat-mag-desc">첫 방문 전 꼭 확인해야 할 사항들을 모았습니다.</div>
+      </a>
+      <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#78350f,#d97706)">
+        <div class="cat-mag-cat">비교</div>
+        <div class="cat-mag-name">지역별 분위기 차이 한눈에 보기</div>
+        <div class="cat-mag-desc">강남·수원·부산 등 도시별 접객 스타일 비교 분석.</div>
+      </a>
+    </div>
   </div>
 
-  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
+  <div class="cta-section mt-md" style="max-width:480px;margin:24px auto;padding:0 16px">
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="background:#B76E79;border-color:#B76E79">
       메인에서 전체 확인 →
     </a>
@@ -161,54 +163,4 @@ const jsonLd = {
 
 </div><!-- end hoppa-theme -->
 
-  <script is:inline define:vars={{ _b64 }}>
-  (function(){
-    var D=JSON.parse(atob(_b64));var all=D.venues;var cur='all';var srt='default';
-    var fEl=document.getElementById('regionFilter');
-    var h='<button class="filter-pill active" data-r="all">전체</button>';
-    D.regions.forEach(function(r){h+='<button class="filter-pill" data-r="'+r+'">'+r+'</button>';});
-    fEl.innerHTML=h;
-    function render(){
-      var list=all.filter(function(v){return cur==='all'||v.r===cur;});
-      if(srt==='name')list.sort(function(a,b){return a.n.localeCompare(b.n,'ko');});
-      var o='';
-      list.forEach(function(v){
-        o+='<a href="/venue/'+v.s+'/" target="_blank" class="venue-card">';
-        o+='<div class="venue-card-header"><span class="venue-region-text">'+v.r+'</span></div>';
-        o+='<div class="venue-card-name">'+v.n+'</div>';
-        o+='<div class="venue-card-desc">'+v.d+'</div>';
-        if(v.tg.length){o+='<div class="venue-card-tags">';v.tg.forEach(function(t){o+='<span class="venue-tag">#'+t+'</span>';});o+='</div>';}
-        if(v.nk){o+='<div class="venue-card-contact">담당: '+v.nk+(v.ph?' | '+v.ph:'')+'</div>';}
-        o+='</a>';
-      });
-      document.getElementById('venueGrid').innerHTML=o;
-    }
-    fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
-    document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
-    render();
-    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
-    var pt=D.popTimes;var ch='';
-    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
-    document.getElementById('popChart').innerHTML=ch;
-    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
-    var vs=D.vs;if(vs.length){
-      var vi=parseInt(localStorage.getItem('vsHoppaIdx')||'0')%vs.length;
-      var vv=JSON.parse(localStorage.getItem('vsHoppaVotes')||'{}');
-      function renderVs(){
-        var m=vs[vi%vs.length];var pA=((m.a.id*7+m.b.id*13)%21+40);var pB=100-pA;var voted=vv[vi];
-        var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
-        h+='<div class="vs-badge">VS</div>';
-        h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div>';
-        document.getElementById('catVsArena').innerHTML=h;
-        document.getElementById('catVsNext').style.display=voted?'inline-block':'none';
-        if(!voted){document.querySelectorAll('#catVsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){vv[vi]=c.getAttribute('data-side');localStorage.setItem('vsHoppaVotes',JSON.stringify(vv));renderVs();});});}
-      }
-      renderVs();
-      document.getElementById('catVsNext').addEventListener('click',function(){vi++;localStorage.setItem('vsHoppaIdx',vi);renderVs();});
-    }
-    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#831843,#be185d)','linear-gradient(135deg,#7f1d1d,#dc2626)','linear-gradient(135deg,#78350f,#d97706)'];
-    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%3]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
-    document.getElementById('catMagGrid').innerHTML=mh;
-  })();
-  </script>
 </BaseLayout>
