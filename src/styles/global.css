@@ -345,6 +345,7 @@ main {
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
   position: relative;
   overflow: hidden;
+  min-height: 180px;
 }
 .venue-card::before {
   content: '';
