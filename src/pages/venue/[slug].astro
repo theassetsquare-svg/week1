@@ -395,13 +395,30 @@ const _b64d = Buffer.from(JSON.stringify({
   </button>
 </div>
 
-<!-- ═══ RECOMMENDATIONS (JS-rendered) ═══ -->
+<!-- ═══ RECOMMENDATIONS (SSR) ═══ -->
 <section class="recs-section">
-  <h2>추천</h2>
-  <h3 class="tp-sub">비슷한 곳</h3>
-  <div id="recsSimilar" class="recs-grid"></div>
-  <h3 class="tp-sub mt-md">근처 다른 곳</h3>
-  <div id="recsNearby" class="recs-grid"></div>
+  <h2>비슷한 곳</h2>
+  <div class="recs-grid">
+    {similar.map(v => (
+      <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="rec-card">
+        <div class="rec-name">{v.name}</div>
+        <div class="rec-meta">{v.region} · {v.typeName}</div>
+      </a>
+    ))}
+  </div>
+  {nearby.length > 0 && (
+    <>
+      <h3 class="tp-sub mt-md">근처 다른 곳</h3>
+      <div class="recs-grid">
+        {nearby.map(v => (
+          <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="rec-card">
+            <div class="rec-name">{v.name}</div>
+            <div class="rec-meta">{v.region} · {v.typeName}</div>
+          </a>
+        ))}
+      </div>
+    </>
+  )}
   <h3 class="tp-sub mt-md">🔍 숨은 명소</h3>
   <div id="recsHidden" class="recs-grid"></div>
   <h3 class="tp-sub mt-md">커뮤니티</h3>
