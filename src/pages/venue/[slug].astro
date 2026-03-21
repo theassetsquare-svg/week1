@@ -419,8 +419,17 @@ const _b64d = Buffer.from(JSON.stringify({
       </div>
     </>
   )}
-  <h3 class="tp-sub mt-md">🔍 숨은 명소</h3>
-  <div id="recsHidden" class="recs-grid"></div>
+  {hiddenGem && (
+    <>
+      <h3 class="tp-sub mt-md">숨은 명소</h3>
+      <div class="recs-grid">
+        <a href={`/venue/${hiddenGem.slug}/`} target="_blank" rel="noopener noreferrer" class="rec-card">
+          <div class="rec-name">{hiddenGem.name}</div>
+          <div class="rec-meta">{hiddenGem.region} · {hiddenGem.typeName}</div>
+        </a>
+      </div>
+    </>
+  )}
   <h3 class="tp-sub mt-md">커뮤니티</h3>
   <div class="comm-list">
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
