@@ -155,7 +155,7 @@ const jsonLd = { "@context": "https://schema.org", "@type": "WebSite", "name": S
 <div class="section-header"><span class="section-badge">🏆</span><h2>인기 TOP 10</h2></div>
 <div id="top10Feed">
   {top10.map((v, i) => (
-    <a href={`/venue/${v.slug}/`} class={`venue-card ${i < 3 ? `rank-${i+1}` : ''}`} target="_blank" rel="noopener noreferrer" style="opacity:0;transform:translateY(20px);transition:all .5s;" data-feed-item>
+    <a href={`/venue/${v.slug}/`} class={`venue-card ${i < 3 ? `rank-${i+1}` : ''}`} target="_blank" rel="noopener noreferrer">
       <div class="venue-card-header"><span class="rank-badge">{i + 1}</span><span class={`type-badge badge-${v.type}`}>{v.typeName}</span></div>
       <div class="venue-card-name">{v.name}</div>
       <div class="venue-card-desc">{v.shortDesc}</div>
