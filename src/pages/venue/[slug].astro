@@ -254,17 +254,8 @@ const _b64d = Buffer.from(JSON.stringify({
 <!-- ═══ TAB 4: REVIEWS ═══ -->
 <div class="tab-panel" id="tab-review">
   <h2 class="tp-title">후기</h2>
-  <div class="rv-summary">
-    <div class="rv-big">{starRating}<span>/5</span></div>
-    <div class="rv-bars">
-      {[5,4,3,2,1].map(s => {
-        const pct = s===Math.round(starRating) ? 60 : s===Math.round(starRating)-1 ? 25 : s>=4 ? 10 : 5;
-        return <div class="rv-bar-row"><span>{s}★</span><div class="rv-bar"><div class="rv-bar-fill" style={`width:${pct}%`}></div></div><span class="rv-pct">{pct}%</span></div>;
-      })}
-    </div>
-  </div>
-  <div id="reviewList"></div>
-  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">후기 작성하기 →</a>
+  <p class="tp-note">아직 등록된 후기가 없습니다. 밤키에서 첫 후기를 남겨보세요.</p>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">밤키에서 후기 작성 →</a>
 </div>
 
 <!-- ═══ TAB 5: GALLERY ═══ -->
