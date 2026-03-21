@@ -148,8 +148,7 @@ const jsonLd = [
   {"@context":"https://schema.org","@type":"LocalBusiness","name":venue.name,"description":venue.shortDesc,
     "address":{"@type":"PostalAddress","addressLocality":venue.region,"addressCountry":"KR"},
     ...(venue.phone?{"telephone":venue.phone}:{}),
-    "url":`${SITE_URL}/venue/${venue.slug}/`,
-    "aggregateRating":{"@type":"AggregateRating","ratingValue":starRating.toString(),"reviewCount":reviewCount.toString(),"bestRating":"5","worstRating":"1"}},
+    "url":`${SITE_URL}/venue/${venue.slug}/`},
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":allFaq.slice(0,8).map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))},
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"홈","item":SITE_URL},
