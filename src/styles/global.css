@@ -582,6 +582,22 @@ main {
   padding: 20px; text-align: center; margin: 16px 0;
 }
 .coupon-lock h4 { color: var(--accent); font-size: 16px; margin-bottom: 8px; }
+
+/* ─── Hoppa Theme (여성 친화) ─── */
+.hoppa-theme { --accent: #B76E79; --accent-hover: #A05D68; }
+.hoppa-theme .filter-pill.active { background: #B76E79; border-color: #B76E79; }
+.hoppa-theme .venue-card { border-radius: 20px; box-shadow: 0 2px 12px rgba(183,110,121,0.08); }
+.hoppa-theme .venue-card:hover { box-shadow: 0 6px 20px rgba(183,110,121,0.15); }
+.hoppa-theme .section-badge { background: rgba(183,110,121,0.1); color: #B76E79; }
+.hoppa-theme .rank-badge { background: #B76E79; }
+.hoppa-theme .btn-primary { background: #B76E79; }
+.hoppa-theme .btn-primary:hover { background: #A05D68; }
+.hoppa-safety { max-width: 480px; margin: 0 auto; padding: 0 16px 24px; }
+.hoppa-safety-box { background: linear-gradient(135deg,#FFF5F5,#FFEEF0); border: 1px solid #F5D5D5; border-radius: 20px; padding: 24px; }
+.hoppa-safety-title { font-size: 16px; font-weight: 700; color: #A05D68; margin-bottom: 12px; }
+.hoppa-safety-list { list-style: none; padding: 0; }
+.hoppa-safety-list li { padding: 8px 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary); border-bottom: 1px solid #F5D5D5; display: flex; align-items: flex-start; gap: 8px; }
+.hoppa-safety-list li:last-child { border-bottom: none; }
 .coupon-lock p { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
 
 /* ─── KakaoTalk Float ─── */
