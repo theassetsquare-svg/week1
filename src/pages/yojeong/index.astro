@@ -5,19 +5,6 @@ import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/ven
 const yojeongVenues = getVenuesByType('yojeong');
 const regions = [...new Set(yojeongVenues.map(v => v.region))].sort();
 
-// Only 1 yojeong venue — no VS pairs
-const _b64 = Buffer.from(JSON.stringify({
-  venues: yojeongVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions,
-  vs: [],
-  popTimes: {days:[{d:'월',v:30},{d:'화',v:70},{d:'수',v:50},{d:'목',v:85},{d:'금',v:100},{d:'토',v:45},{d:'일',v:15}],peak:'18:00 – 22:00'},
-  mags: [
-    {t:'전통 상차림의 격식과 순서 해설',c:'문화',d:'한정식 코스 요리의 순서와 기본 예절을 정리합니다.',g:1},
-    {t:'국악 공연 감상 포인트 5가지',c:'감상',d:'판소리·가야금·대금 등 악기별 감상법을 안내합니다.',g:2},
-    {t:'연회 자리 세팅 체크리스트',c:'준비',d:'격조 있는 모임을 위한 사전 준비 항목을 모았습니다.',g:3},
-  ],
-})).toString('base64');
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -38,104 +25,97 @@ const jsonLd = {
   ogImage={`${SITE_URL}/og/yojeong.svg`}
   jsonLd={jsonLd}
 >
-  <div class="listing-header">
-    <h1>전통 연회 공간</h1>
-    <p class="listing-count">{yojeongVenues.length}곳</p>
-  </div>
-  <div class="cat-intro">
-    기와 지붕 아래 좌식 상차림이 펼쳐지고, 가야금과 대금 선율이 공간을 채우는 전통 연회장입니다.
-    수십 가지 반찬이 오르는 한정식 코스는 계절 식재료에 따라 구성이 바뀌며,
-    대규모 경조사부터 소규모 밀담까지 자리 규모에 맞는 개별 방을 배정받습니다.
-    고급 목재 마감과 한지 조명이 어우러진 실내에서 전통 공연을 감상하며 식사하는 경험은
-    현대 도시에서 쉽게 접하기 어려운 특별한 시간입니다.
-    주류는 전통주부터 고급 양주까지 폭넓게 준비되어 있으며,
-    숙련된 안내원이 자리 진행을 도와 격조 있는 모임을 완성합니다.
-    예약 시 코스 등급과 공연 포함 여부를 미리 상담하시면 좋습니다.
-  </div>
 
-  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
-    <div class="filter-pills" id="regionFilter"></div>
-    <select class="sort-select" id="sortSelect">
-      <option value="default">기본순</option>
-      <option value="name">가나다순</option>
-    </select>
-  </div>
-  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
+<div class="listing-header">
+  <h1>전통 연회 공간</h1>
+  <p class="listing-count">{yojeongVenues.length}곳</p>
+</div>
+<div class="cat-intro">
+  기와 지붕 아래 좌식 상차림이 펼쳐지고, 가야금과 대금 선율이 공간을 채우는 전통 연회장입니다.
+  수십 가지 반찬이 오르는 한정식 코스는 계절 식재료에 따라 구성이 바뀌며,
+  대규모 경조사부터 소규모 밀담까지 자리 규모에 맞는 개별 방을 배정받습니다.
+  고급 목재 마감과 한지 조명이 어우러진 실내에서 전통 공연을 감상하며 식사하는 경험은
+  현대 도시에서 쉽게 접하기 어려운 특별한 시간입니다.
+  주류는 전통주부터 고급 양주까지 폭넓게 준비되어 있으며,
+  숙련된 안내원이 자리 진행을 도와 격조 있는 모임을 완성합니다.
+  예약 시 코스 등급과 공연 포함 여부를 미리 상담하시면 좋습니다.
+</div>
 
-  <div class="fv-section">
-    <div class="fv-title">처음 방문하시나요?</div>
-    <div class="fv-item">
-      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>한복이 아니어도 됩니다. 비즈니스 정장이나 단정한 캐주얼이면 충분합니다. 좌식이므로 편안한 바지를 권합니다. 짧은 치마나 타이트한 옷은 앉을 때 불편할 수 있습니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>입장료는 없으며, 코스 요리 기준 1인당 15만~50만 원대입니다. 주류와 공연이 포함된 패키지도 있습니다. 인원 수에 따라 총액이 달라지니 사전 상담이 필수입니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>전통 연회 특성상 최소 4인 이상 예약을 기본으로 합니다. 소규모 방부터 30인 이상 대연회장까지 인원에 맞게 배정됩니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>반드시 사전 예약이 필요합니다. 코스 구성·인원·공연 유무를 미리 결정해야 하므로, 최소 3일 전에는 전화 상담을 권장합니다. 주말과 명절 시즌은 2주 전 예약이 안전합니다.</p></div>
-    </div>
-  </div>
+<!-- 업소 리스트 (서버사이드 렌더링!) -->
+<div style="max-width:480px;margin:0 auto;padding:0 16px;">
+  {yojeongVenues.map((v, i) => (
+    <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="venue-card">
+      <div class="venue-card-header"><span class="rank-badge">{i + 1}</span></div>
+      <div class="venue-card-name">{v.name}</div>
+      <div class="venue-card-desc">{v.shortDesc}</div>
+      <div class="venue-card-tags">{v.tags.slice(0, 3).map(t => <span class="venue-tag">#{t}</span>)}</div>
+      {v.nickname && <div class="venue-card-contact">담당: {v.nickname}{v.phone ? ` | ${v.phone}` : ''}</div>}
+    </a>
+  ))}
+</div>
 
-  <div class="pop-times">
-    <div class="pop-times-title">인기 요일 · 시간대</div>
-    <div class="pop-chart" id="popChart"></div>
-    <div class="pop-hours" id="popHours"></div>
+<!-- 첫 방문 가이드 -->
+<div class="fv-section">
+  <div class="fv-title">처음 방문하시나요?</div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>한복이 아니어도 됩니다. 비즈니스 정장이나 단정한 캐주얼이면 충분합니다. 좌식이므로 편안한 바지를 권합니다. 짧은 치마나 타이트한 옷은 앉을 때 불편할 수 있습니다.</p></div>
   </div>
-
-  <!-- VS: only 1 venue, show coming soon -->
-  <div class="cat-vs">
-    <div class="cat-vs-title">이번 주 대결</div>
-    <div style="text-align:center;padding:24px;color:var(--text-light);font-size:14px">더 많은 업소가 곧 추가됩니다. 대결 투표를 기대해 주세요!</div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">얼마 들어?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>입장료는 없으며, 코스 요리 기준 1인당 15만~50만 원대입니다. 주류와 공연이 포함된 패키지도 있습니다. 인원 수에 따라 총액이 달라지니 사전 상담이 필수입니다.</p></div>
   </div>
-
-  <div class="cat-mag">
-    <div class="cat-mag-title">관련 매거진</div>
-    <div class="cat-mag-grid" id="catMagGrid"></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>전통 연회 특성상 최소 4인 이상 예약을 기본으로 합니다. 소규모 방부터 30인 이상 대연회장까지 인원에 맞게 배정됩니다.</p></div>
   </div>
-
-  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>반드시 사전 예약이 필요합니다. 코스 구성·인원·공연 유무를 미리 결정해야 하므로, 최소 3일 전에는 전화 상담을 권장합니다. 주말과 명절 시즌은 2주 전 예약이 안전합니다.</p></div>
   </div>
+</div>
 
-  <script is:inline define:vars={{ _b64 }}>
-  (function(){
-    var D=JSON.parse(atob(_b64));var all=D.venues;var cur='all';var srt='default';
-    var fEl=document.getElementById('regionFilter');
-    var h='<button class="filter-pill active" data-r="all">전체</button>';
-    D.regions.forEach(function(r){h+='<button class="filter-pill" data-r="'+r+'">'+r+'</button>';});
-    fEl.innerHTML=h;
-    function render(){
-      var list=all.filter(function(v){return cur==='all'||v.r===cur;});
-      if(srt==='name')list.sort(function(a,b){return a.n.localeCompare(b.n,'ko');});
-      var o='';
-      list.forEach(function(v){
-        o+='<a href="/venue/'+v.s+'/" target="_blank" class="venue-card">';
-        o+='<div class="venue-card-header"><span class="venue-region-text">'+v.r+'</span></div>';
-        o+='<div class="venue-card-name">'+v.n+'</div>';
-        o+='<div class="venue-card-desc">'+v.d+'</div>';
-        if(v.tg.length){o+='<div class="venue-card-tags">';v.tg.forEach(function(t){o+='<span class="venue-tag">#'+t+'</span>';});o+='</div>';}
-        if(v.nk){o+='<div class="venue-card-contact">담당: '+v.nk+(v.ph?' | '+v.ph:'')+'</div>';}
-        o+='</a>';
-      });
-      document.getElementById('venueGrid').innerHTML=o;
-    }
-    fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
-    document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
-    render();
-    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
-    var pt=D.popTimes;var ch='';
-    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
-    document.getElementById('popChart').innerHTML=ch;
-    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
-    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#4a1942,#be185d)','linear-gradient(135deg,#78350f,#d97706)','linear-gradient(135deg,#1e1b4b,#4338ca)'];
-    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%3]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
-    document.getElementById('catMagGrid').innerHTML=mh;
-  })();
-  </script>
+<!-- 인기 시간대 -->
+<div class="pop-times">
+  <div class="pop-times-title">인기 요일 · 시간대</div>
+  <div class="pop-chart">
+    {['월','화','수','목','금','토','일'].map((d, i) => {
+      const pct = [30,70,50,85,100,45,15][i];
+      return (
+        <div class="pop-bar-wrap">
+          <div class={`pop-bar${pct >= 80 ? ' peak' : ''}`} style={`height:${pct}%`}></div>
+          <div class="pop-day">{d}</div>
+        </div>
+      );
+    })}
+  </div>
+  <div class="pop-hours">피크 시간: 18:00 – 22:00</div>
+</div>
+
+<!-- 매거진 -->
+<div class="cat-mag">
+  <div class="cat-mag-title">관련 매거진</div>
+  <div class="cat-mag-grid">
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#4a1942,#be185d)">
+      <div class="cat-mag-cat">문화</div>
+      <div class="cat-mag-name">전통 상차림의 격식과 순서 해설</div>
+      <div class="cat-mag-desc">한정식 코스 요리의 순서와 기본 예절을 정리합니다.</div>
+    </a>
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#78350f,#d97706)">
+      <div class="cat-mag-cat">감상</div>
+      <div class="cat-mag-name">국악 공연 감상 포인트 5가지</div>
+      <div class="cat-mag-desc">판소리·가야금·대금 등 악기별 감상법을 안내합니다.</div>
+    </a>
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#1e1b4b,#4338ca)">
+      <div class="cat-mag-cat">준비</div>
+      <div class="cat-mag-name">연회 자리 세팅 체크리스트</div>
+      <div class="cat-mag-desc">격조 있는 모임을 위한 사전 준비 항목을 모았습니다.</div>
+    </a>
+  </div>
+</div>
+
+<div class="cta-section mt-md" style="max-width:480px;margin:24px auto;padding:0 16px">
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+</div>
+
 </BaseLayout>
