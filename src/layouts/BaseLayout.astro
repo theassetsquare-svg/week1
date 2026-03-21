@@ -67,23 +67,43 @@ const currentYear = new Date().getFullYear();
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="site-logo">BAMKEY</a>
-      <nav class="site-nav" id="siteNav">
-        <button class="nav-close" id="navClose" aria-label="닫기">✕</button>
-        <a href="/clubs/">클럽</a>
-        <a href="/nights/">나이트</a>
-        <a href="/lounges/">라운지</a>
-        <a href="/rooms/">룸</a>
-        <a href="/yojeong/">요정</a>
-        <a href="/hoppa/">호빠</a>
-      </nav>
+      <a href="/" class="site-logo">밤키</a>
       <div class="header-right">
-        <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="탐색">🔍</a>
+        <a href="/ranking/" target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="랭킹">🏆</a>
+        <a href="/community/" target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="커뮤니티">💬</a>
         <button class="header-menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
       </div>
     </div>
+    <!-- 카테고리 탭 (항상 보이는 가로 스크롤) -->
+    <div class="cat-tabs">
+      <a href="/clubs/" class="cat-tab">🎵 클럽</a>
+      <a href="/nights/" class="cat-tab">🌙 나이트</a>
+      <a href="/lounges/" class="cat-tab">🍸 라운지</a>
+      <a href="/rooms/" class="cat-tab">🚪 룸</a>
+      <a href="/yojeong/" class="cat-tab">🏮 요정</a>
+      <a href="/hoppa/" class="cat-tab">🎭 호빠</a>
+    </div>
   </header>
 
+  <!-- 사이드 메뉴 (햄버거) -->
+  <nav class="site-nav" id="siteNav">
+    <button class="nav-close" id="navClose" aria-label="닫기">✕</button>
+    <a href="/">홈</a>
+    <a href="/clubs/">클럽</a>
+    <a href="/nights/">나이트</a>
+    <a href="/lounges/">라운지</a>
+    <a href="/rooms/">룸</a>
+    <a href="/yojeong/">요정</a>
+    <a href="/hoppa/">호빠</a>
+    <div style="border-top:1px solid var(--border);margin:12px 0;"></div>
+    <a href="/ranking/">랭킹</a>
+    <a href="/community/">커뮤니티</a>
+    <a href="/magazine/">매거진</a>
+    <a href="/map/">지역별 찾기</a>
+    <a href="/quiz/">성향 테스트</a>
+    <a href="/safety/">안전 가이드</a>
+    <a href="/events/">이벤트</a>
+  </nav>
   <div class="nav-overlay" id="navOverlay"></div>
 
   <main>
