@@ -144,14 +144,7 @@ const jsonLd = [
   ]}
 ];
 
-// Base64 encode data for client JS (avoid keyword inflation in HTML)
-const _b64d = Buffer.from(JSON.stringify({
-  vs: vsOpponent ? {a:{n:venue.name,s:venue.slug,r:venue.region,tn:venue.typeName,id:venue.id},b:{n:vsOpponent.name,s:vsOpponent.slug,r:vsOpponent.region,tn:vsOpponent.typeName,id:vsOpponent.id}} : null,
-  recs: {
-    similar: similar.map(v=>({n:v.name,s:v.slug,r:v.region,tn:v.typeName,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||''})),
-    nearby: nearby.map(v=>({n:v.name,s:v.slug,r:v.region,tn:v.typeName,d:v.shortDesc})),
-    hidden: hiddenGem?{n:hiddenGem.name,s:hiddenGem.slug,r:hiddenGem.region,tn:hiddenGem.typeName,d:hiddenGem.shortDesc}:null,
-  },
+// JSON-LD is rendered server-side, no client data needed
   bar: {n:venue.name,nk:venue.nickname||'',ph:venue.phone||''},
   bc: {tn:venue.typeName,tu:typeUrl,vn:venue.name},
   jld: jsonLd,
