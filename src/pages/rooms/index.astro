@@ -5,24 +5,6 @@ import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/ven
 const roomVenues = getVenuesByType('room');
 const regions = [...new Set(roomVenues.map(v => v.region))].sort();
 
-const vsPairs = [
-  [venues.find(v => v.slug === 'ilsan-room'), venues.find(v => v.slug === 'haeundae-goguryeo')],
-].filter(p => p[0] && p[1]).map(p => ({
-  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
-  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
-}));
-
-const _b64 = Buffer.from(JSON.stringify({
-  venues: roomVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions,
-  vs: vsPairs,
-  popTimes: {days:[{d:'월',v:30},{d:'화',v:35},{d:'수',v:65},{d:'목',v:85},{d:'금',v:100},{d:'토',v:55},{d:'일',v:20}],peak:'19:00 – 24:00'},
-  mags: [
-    {t:'접대 자리 성공률을 높이는 7가지 팁',c:'비즈니스',d:'상대방이 감동받는 자리 세팅과 진행 노하우.',g:1},
-    {t:'가족 모임에도 어울리는 VIP 공간 활용법',c:'활용',d:'경조사·돌잔치·환갑 등 다양한 모임에 적합한 공간 안내.',g:2},
-  ],
-})).toString('base64');
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -43,118 +25,91 @@ const jsonLd = {
   ogImage={`${SITE_URL}/og/rooms.svg`}
   jsonLd={jsonLd}
 >
-  <div class="listing-header">
-    <h1>프라이빗 공간</h1>
-    <p class="listing-count">{roomVenues.length}곳</p>
-  </div>
-  <div class="cat-intro">
-    외부 시선에서 완전히 분리된 독립 공간에서 비즈니스 접대와 프라이빗 모임을 진행할 수 있습니다.
-    일산 지역은 넓은 개인실과 정찰제 시스템으로 예산 관리가 편하고,
-    해운대 지역은 바다 조망과 럭셔리 인테리어로 특별한 자리를 연출합니다.
-    전담 매니저가 입장부터 퇴장까지 일정을 조율하며, 음향·조명·음식 세팅을 맞춤 제공합니다.
-    회식, 거래처 접대, 가족 경조사 등 목적에 따라 적합한 공간 규모와 서비스를 선택할 수 있으며,
-    차량 배차 서비스까지 포함된 올인원 패키지를 운영하는 곳도 있습니다.
-    각 공간의 수용 인원과 시설을 비교해 보세요.
-  </div>
 
-  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
-    <div class="filter-pills" id="regionFilter"></div>
-    <select class="sort-select" id="sortSelect">
-      <option value="default">기본순</option>
-      <option value="name">가나다순</option>
-    </select>
-  </div>
-  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
+<div class="listing-header">
+  <h1>프라이빗 공간</h1>
+  <p class="listing-count">{roomVenues.length}곳</p>
+</div>
+<div class="cat-intro">
+  외부 시선에서 완전히 분리된 독립 공간에서 비즈니스 접대와 프라이빗 모임을 진행할 수 있습니다.
+  일산 지역은 넓은 개인실과 정찰제 시스템으로 예산 관리가 편하고,
+  해운대 지역은 바다 조망과 럭셔리 인테리어로 특별한 자리를 연출합니다.
+  전담 매니저가 입장부터 퇴장까지 일정을 조율하며, 음향·조명·음식 세팅을 맞춤 제공합니다.
+  회식, 거래처 접대, 가족 경조사 등 목적에 따라 적합한 공간 규모와 서비스를 선택할 수 있으며,
+  차량 배차 서비스까지 포함된 올인원 패키지를 운영하는 곳도 있습니다.
+  각 공간의 수용 인원과 시설을 비교해 보세요.
+</div>
 
-  <div class="fv-section">
-    <div class="fv-title">처음 방문하시나요?</div>
-    <div class="fv-item">
-      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>비즈니스 정장이 가장 무난합니다. 접대 자리라면 넥타이까지 갖추는 것이 예의이고, 친목 모임이라면 셔츠·슬랙스 정도로 충분합니다. 편안한 분위기의 모임이라도 반바지·슬리퍼는 피하세요.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>별도 입장료는 없으며, 테이블 이용료(주대)가 50만~200만 원 이상입니다. 음식·음료가 포함된 정찰제를 운영하는 곳이 많아 추가 비용 걱정이 적습니다. 인원 수에 따라 요금이 달라지므로 사전 문의가 필수입니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>개인실 특성상 최소 2인 이상 이용을 기본으로 합니다. 소규모 방부터 대형 연회실까지 인원에 맞는 공간을 배정받을 수 있습니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>반드시 사전 예약이 필요합니다. 원하는 방 크기·시간대·음식 구성을 미리 조율해야 하므로, 최소 1~2일 전에 전화로 상담하시기 바랍니다.</p></div>
-    </div>
-  </div>
+<!-- 업소 리스트 (서버사이드 렌더링!) -->
+<div style="max-width:480px;margin:0 auto;padding:0 16px;">
+  {roomVenues.map((v, i) => (
+    <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="venue-card">
+      <div class="venue-card-header"><span class="rank-badge">{i + 1}</span></div>
+      <div class="venue-card-name">{v.name}</div>
+      <div class="venue-card-desc">{v.shortDesc}</div>
+      <div class="venue-card-tags">{v.tags.slice(0, 3).map(t => <span class="venue-tag">#{t}</span>)}</div>
+      {v.nickname && <div class="venue-card-contact">담당: {v.nickname}{v.phone ? ` | ${v.phone}` : ''}</div>}
+    </a>
+  ))}
+</div>
 
-  <div class="pop-times">
-    <div class="pop-times-title">인기 요일 · 시간대</div>
-    <div class="pop-chart" id="popChart"></div>
-    <div class="pop-hours" id="popHours"></div>
+<!-- 첫 방문 가이드 -->
+<div class="fv-section">
+  <div class="fv-title">처음 방문하시나요?</div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>비즈니스 정장이 가장 무난합니다. 접대 자리라면 넥타이까지 갖추는 것이 예의이고, 친목 모임이라면 셔츠·슬랙스 정도로 충분합니다. 편안한 분위기의 모임이라도 반바지·슬리퍼는 피하세요.</p></div>
   </div>
-
-  <div class="cat-vs">
-    <div class="cat-vs-title">이번 주 대결</div>
-    <div class="vs-arena" id="catVsArena"></div>
-    <div class="vs-controls"><button class="btn btn-outline btn-sm" id="catVsNext" style="display:none">다음 대결 →</button></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">얼마 들어?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>별도 입장료는 없으며, 테이블 이용료(주대)가 50만~200만 원 이상입니다. 음식·음료가 포함된 정찰제를 운영하는 곳이 많아 추가 비용 걱정이 적습니다. 인원 수에 따라 요금이 달라지므로 사전 문의가 필수입니다.</p></div>
   </div>
-
-  <div class="cat-mag">
-    <div class="cat-mag-title">관련 매거진</div>
-    <div class="cat-mag-grid" id="catMagGrid"></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>개인실 특성상 최소 2인 이상 이용을 기본으로 합니다. 소규모 방부터 대형 연회실까지 인원에 맞는 공간을 배정받을 수 있습니다.</p></div>
   </div>
-
-  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>반드시 사전 예약이 필요합니다. 원하는 방 크기·시간대·음식 구성을 미리 조율해야 하므로, 최소 1~2일 전에 전화로 상담하시기 바랍니다.</p></div>
   </div>
+</div>
 
-  <script is:inline define:vars={{ _b64 }}>
-  (function(){
-    var D=JSON.parse(atob(_b64));var all=D.venues;var cur='all';var srt='default';
-    var fEl=document.getElementById('regionFilter');
-    var h='<button class="filter-pill active" data-r="all">전체</button>';
-    D.regions.forEach(function(r){h+='<button class="filter-pill" data-r="'+r+'">'+r+'</button>';});
-    fEl.innerHTML=h;
-    function render(){
-      var list=all.filter(function(v){return cur==='all'||v.r===cur;});
-      if(srt==='name')list.sort(function(a,b){return a.n.localeCompare(b.n,'ko');});
-      var o='';
-      list.forEach(function(v){
-        o+='<a href="/venue/'+v.s+'/" target="_blank" class="venue-card">';
-        o+='<div class="venue-card-header"><span class="venue-region-text">'+v.r+'</span></div>';
-        o+='<div class="venue-card-name">'+v.n+'</div>';
-        o+='<div class="venue-card-desc">'+v.d+'</div>';
-        if(v.tg.length){o+='<div class="venue-card-tags">';v.tg.forEach(function(t){o+='<span class="venue-tag">#'+t+'</span>';});o+='</div>';}
-        if(v.nk){o+='<div class="venue-card-contact">담당: '+v.nk+(v.ph?' | '+v.ph:'')+'</div>';}
-        o+='</a>';
-      });
-      document.getElementById('venueGrid').innerHTML=o;
-    }
-    fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
-    document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
-    render();
-    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
-    var pt=D.popTimes;var ch='';
-    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
-    document.getElementById('popChart').innerHTML=ch;
-    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
-    var vs=D.vs;if(vs.length){
-      var vi=parseInt(localStorage.getItem('vsRoomIdx')||'0')%vs.length;
-      var vv=JSON.parse(localStorage.getItem('vsRoomVotes')||'{}');
-      function renderVs(){
-        var m=vs[vi%vs.length];var pA=((m.a.id*7+m.b.id*13)%21+40);var pB=100-pA;var voted=vv[vi];
-        var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
-        h+='<div class="vs-badge">VS</div>';
-        h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div>';
-        document.getElementById('catVsArena').innerHTML=h;
-        document.getElementById('catVsNext').style.display=voted?'inline-block':'none';
-        if(!voted){document.querySelectorAll('#catVsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){vv[vi]=c.getAttribute('data-side');localStorage.setItem('vsRoomVotes',JSON.stringify(vv));renderVs();});});}
-      }
-      renderVs();
-      document.getElementById('catVsNext').addEventListener('click',function(){vi++;localStorage.setItem('vsRoomIdx',vi);renderVs();});
-    }
-    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#064e3b,#059669)','linear-gradient(135deg,#78350f,#d97706)'];
-    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%2]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
-    document.getElementById('catMagGrid').innerHTML=mh;
-  })();
-  </script>
+<!-- 인기 시간대 -->
+<div class="pop-times">
+  <div class="pop-times-title">인기 요일 · 시간대</div>
+  <div class="pop-chart">
+    {['월','화','수','목','금','토','일'].map((d, i) => {
+      const pct = [30,35,65,85,100,55,20][i];
+      return (
+        <div class="pop-bar-wrap">
+          <div class={`pop-bar${pct >= 80 ? ' peak' : ''}`} style={`height:${pct}%`}></div>
+          <div class="pop-day">{d}</div>
+        </div>
+      );
+    })}
+  </div>
+  <div class="pop-hours">피크 시간: 19:00 – 24:00</div>
+</div>
+
+<!-- 매거진 -->
+<div class="cat-mag">
+  <div class="cat-mag-title">관련 매거진</div>
+  <div class="cat-mag-grid">
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#064e3b,#059669)">
+      <div class="cat-mag-cat">비즈니스</div>
+      <div class="cat-mag-name">접대 자리 성공률을 높이는 7가지 팁</div>
+      <div class="cat-mag-desc">상대방이 감동받는 자리 세팅과 진행 노하우.</div>
+    </a>
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#78350f,#d97706)">
+      <div class="cat-mag-cat">활용</div>
+      <div class="cat-mag-name">가족 모임에도 어울리는 VIP 공간 활용법</div>
+      <div class="cat-mag-desc">경조사·돌잔치·환갑 등 다양한 모임에 적합한 공간 안내.</div>
+    </a>
+  </div>
+</div>
+
+<div class="cta-section mt-md" style="max-width:480px;margin:24px auto;padding:0 16px">
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+</div>
+
 </BaseLayout>
