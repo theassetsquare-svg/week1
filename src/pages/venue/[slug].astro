@@ -584,12 +584,7 @@ const _b64d = Buffer.from(JSON.stringify({
     });
   });
 
-  // ── REVIEWS ──
-  var rvHtml='';
-  D.reviews.forEach(function(r){
-    rvHtml+='<div class="rv-card"><div class="rv-stars">'+'★'.repeat(r.star)+'☆'.repeat(5-r.star)+'</div><div class="rv-text">"'+r.text+'"</div><div class="rv-author">'+r.author+'</div></div>';
-  });
-  document.getElementById('reviewList').innerHTML=rvHtml;
+  // Reviews: real data only (none yet)
 
   // ── VS VOTING ──
   if(D.vs){
