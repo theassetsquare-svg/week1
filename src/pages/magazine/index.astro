@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+
+const articles = [
+  {
+    title: '처음 가는 사람을 위한 완벽 가이드',
+    cat: '입문',
+    desc: '뭘 입고 가야 하는지, 얼마나 드는지, 혼자 가도 되는지. 첫 방문 전 알아야 할 모든 것을 정리했습니다. 드레스코드는 스마트 캐주얼이면 충분하고, 슬리퍼와 반바지만 피하면 됩니다. 입장료는 지역과 요일에 따라 1만~3만 원 선이고, 음료는 잔당 8천~1만 5천 원 정도입니다.',
+    gradient: 'linear-gradient(135deg,#7C3AED,#A855F7)',
+    slug: 'first-visit',
+  },
+  {
+    title: '도시별 분위기 비교 — 서울 vs 부산 vs 대구',
+    cat: '분석',
+    desc: '같은 카테고리라도 도시마다 분위기가 확연히 다릅니다. 서울 강남권은 대형 스피커와 레이저 조명으로 압도적 스케일을 자랑하고, 부산은 해운대 바다 근처의 개방적인 감성이 특징입니다. 대구는 로컬 색채가 강해서 지역 특유의 친근한 분위기를 느낄 수 있습니다.',
+    gradient: 'linear-gradient(135deg,#0891B2,#06B6D4)',
+    slug: 'city-compare',
+  },
+  {
+    title: '안전하게 즐기는 법 — 꼭 알아야 할 5가지',
+    cat: '안전',
+    desc: '즐거운 밤을 안전하게 마무리하기 위한 핵심 수칙입니다. 친구에게 귀가 경로를 알리고, 모르는 사람이 주는 음료는 마시지 않는 것이 기본입니다. 대리운전 번호를 미리 저장해두면 귀가가 한결 편해집니다.',
+    gradient: 'linear-gradient(135deg,#DC2626,#F87171)',
+    slug: 'safety-tips',
+  },
+];
+---
+
+<BaseLayout
+  title="매거진 — 밤문화 가이드, 분석, 꿀팁 모음"
+  description="첫 방문 가이드부터 도시별 분위기 비교까지. 밤문화에 대한 깊이 있는 콘텐츠를 만나보세요."
+  canonical={`${SITE_URL}/magazine/`}
+  ogImage={`${SITE_URL}/og-default.svg`}
+>
+
+<div class="listing-header">
+  <h1>매거진</h1>
+  <p class="listing-desc">가이드, 분석, 꿀팁. 깊이 있는 콘텐츠를 만나보세요.</p>
+</div>
+
+{articles.map(a => (
+  <div style={`padding:24px 20px;border-radius:var(--radius);color:#fff;margin-bottom:16px;background:${a.gradient};min-height:180px;display:flex;flex-direction:column;justify-content:flex-end;`}>
+    <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;opacity:0.7;margin-bottom:6px;">{a.cat}</span>
+    <h3 style="font-size:18px;font-weight:800;margin-bottom:8px;color:#fff;">{a.title}</h3>
+    <p style="font-size:14px;opacity:0.85;line-height:1.6;color:#fff;">{a.desc.substring(0, 120)}...</p>
+  </div>
+))}
+
+<div class="cta-section" style="margin-top:24px;">
+  <h3>더 많은 매거진 콘텐츠</h3>
+  <p>심층 분석과 전문 가이드를 확인하세요</p>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">자세히 확인 →</a>
+</div>
+
+</BaseLayout>

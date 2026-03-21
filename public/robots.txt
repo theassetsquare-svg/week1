@@ -1,13 +1,25 @@
-User-agent: Yeti
+User-agent: *
 Allow: /
 
 User-agent: Googlebot
 Allow: /
 
-User-agent: *
+User-agent: Yeti
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://week1-6m5.pages.dev/sitemap.xml
-
-# RSS Feed
-# https://week1-6m5.pages.dev/rss.xml

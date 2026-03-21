@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { venues, SITE_URL } from '../../data/venues';
+
+const galleryVenues = venues.filter(v => v.type === 'club' || v.type === 'night' || v.type === 'lounge').slice(0, 12);
+const gradients = [
+  'linear-gradient(135deg,#7C3AED,#A855F7)', 'linear-gradient(135deg,#0891B2,#06B6D4)',
+  'linear-gradient(135deg,#D97706,#F59E0B)', 'linear-gradient(135deg,#059669,#10B981)',
+  'linear-gradient(135deg,#BE185D,#EC4899)', 'linear-gradient(135deg,#E11D48,#FB7185)',
+];
+---
+
+<BaseLayout
+  title="갤러리 — 전국 업소 분위기 한눈에"
+  description="전국 업소의 분위기와 인테리어를 갤러리로 감상하세요."
+  canonical={`${SITE_URL}/gallery/`}
+  ogImage={`${SITE_URL}/og-default.svg`}
+>
+
+<div class="listing-header">
+  <h1>갤러리</h1>
+  <p class="listing-desc">각 업소의 분위기를 미리 확인하세요.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+  {galleryVenues.map((v, i) => (
+    <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" style={`display:flex;align-items:flex-end;padding:16px;aspect-ratio:1/1;border-radius:var(--radius-sm);background:${gradients[i % gradients.length]};color:#fff;text-decoration:none;`}>
+      <div>
+        <div style="font-size:13px;font-weight:700;">{v.name}</div>
+        <div style="font-size:11px;opacity:0.7;">{v.region} · {v.typeName}</div>
+      </div>
+    </a>
+  ))}
+</div>
+
+</BaseLayout>

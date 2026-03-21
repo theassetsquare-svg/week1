@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+
+const currentYear = new Date().getFullYear();
+const events = [
+  { title: '주말 스페셜 이벤트', venue: '전국 주요 가게', date: '매주 금·토', desc: '금요일과 토요일 밤, 특별 이벤트가 진행됩니다. 웰컴 드링크, DJ 공연, 할인 등 다양한 혜택을 준비합니다.', badge: '매주' },
+  { title: '첫 방문 환영 이벤트', venue: '참여 가게', date: '상시', desc: '처음 방문하는 분께 웰컴 드링크 1잔을 제공하는 곳이 있습니다. 방문 전 담당자에게 문의하세요.', badge: '상시' },
+  { title: '단체 예약 특별 패키지', venue: '전국', date: '상시', desc: '10인 이상 단체 방문 시 특별 좌석 배정과 맞춤 세팅을 준비합니다. 사전 예약 필수.', badge: '단체' },
+  { title: '생일·기념일 축하 서비스', venue: '참여 가게', date: '상시', desc: '생일이나 기념일에 방문하면 축하 세팅을 준비해 드리는 곳이 있습니다.', badge: '기념일' },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "이벤트 목록",
+  "itemListElement": events.map((e, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": { "@type": "Event", "name": e.title, "description": e.desc, "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode" }
+  }))
+};
+---
+
+<BaseLayout
+  title="이벤트·프로모션 — 이번 주 어디서 뭐하지?"
+  description="전국 업소의 이벤트, 프로모션, 특별 할인 정보를 한곳에서 확인하세요."
+  canonical={`${SITE_URL}/events/`}
+  ogImage={`${SITE_URL}/og-default.svg`}
+  jsonLd={jsonLd}
+>
+
+<div class="listing-header">
+  <h1>이벤트 · 프로모션</h1>
+  <p class="listing-desc">놓치면 아쉬운 특별한 혜택을 확인하세요.</p>
+</div>
+
+{events.map(e => (
+  <div style="padding:20px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--card-shadow);">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <span style="font-size:11px;padding:2px 10px;background:var(--accent-light);color:var(--accent);border-radius:12px;font-weight:700;">{e.badge}</span>
+      <span style="font-size:13px;color:var(--text-muted);">{e.date}</span>
+    </div>
+    <h3 style="font-size:17px;margin-bottom:6px;">{e.title}</h3>
+    <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:8px;">{e.desc}</p>
+    <span style="font-size:12px;color:var(--text-muted);">{e.venue}</span>
+  </div>
+))}
+
+<div class="cta-section" style="margin-top:24px;">
+  <h3>업소별 이벤트 상세</h3>
+  <p>각 업소 상세페이지에서 진행 중인 이벤트를 확인하세요</p>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">자세히 확인 →</a>
+</div>
+
+</BaseLayout>

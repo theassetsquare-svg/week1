@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { venues, SITE_URL, MAIN_SITE_URL } from '../../data/venues';
+
+const regions = [...new Set(venues.map(v => v.regionSlug))];
+const venuesByRegion: Record<string, typeof venues> = {};
+for (const v of venues) {
+  if (!venuesByRegion[v.region]) venuesByRegion[v.region] = [];
+  venuesByRegion[v.region].push(v);
+}
+const regionList = Object.keys(venuesByRegion).sort();
+---
+
+<BaseLayout
+  title="전국 지도 — 지역별로 한눈에 찾기"
+  description="전국을 지역별로 탐색하세요. 내 주변 가까운 곳을 바로 찾을 수 있습니다."
+  canonical={`${SITE_URL}/map/`}
+  ogImage={`${SITE_URL}/og-default.svg`}
+>
+
+<div class="listing-header">
+  <h1>지역별 찾기</h1>
+  <p class="listing-desc">지역을 선택하면 해당 지역의 모든 가게를 볼 수 있습니다.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;">
+  {regionList.slice(0, 20).map(r => (
+    <button class="filter-pill region-btn" data-region={r}>{r}</button>
+  ))}
+</div>
+
+<div id="regionVenues"></div>
+
+<div class="cta-section" style="margin-top:24px;">
+  <h3>지도에서 업소 찾기</h3>
+  <p>카카오맵에서 내 주변 업소를 바로 검색하세요</p>
+  <a href="https://map.kakao.com/?q=나이트클럽" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">카카오맵에서 찾기 →</a>
+</div>
+
+<script is:inline define:vars={{ data: JSON.stringify(Object.fromEntries(Object.entries(venuesByRegion).map(([k, v]) => [k, v.map(x => ({n:x.name,s:x.slug,tn:x.typeName,d:x.shortDesc}))]))) }}>
+(function() {
+  var d = JSON.parse(data);
+  var container = document.getElementById('regionVenues');
+  document.querySelectorAll('.region-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.region-btn').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      var region = this.getAttribute('data-region');
+      var venues = d[region] || [];
+      var h = '<h3 style="font-size:18px;margin-bottom:12px;">' + region + ' (' + venues.length + '곳)</h3>';
+      venues.forEach(function(v) {
+        h += '<a href="/venue/' + v.s + '/" target="_blank" rel="noopener noreferrer" class="venue-card" style="margin-bottom:8px;"><div class="venue-card-name">' + v.n + '</div><div class="venue-card-desc">' + v.d + '</div></a>';
+      });
+      container.innerHTML = h;
+    });
+  });
+})();
+</script>
+
+</BaseLayout>

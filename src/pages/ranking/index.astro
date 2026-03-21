@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { venues, SITE_URL } from '../../data/venues';
+import { TYPE_LABELS } from '../../data/types';
+
+// 순위: 닉네임 있는 업소 우선 → id순
+const ranked = [...venues].sort((a, b) => {
+  if (a.phone && !b.phone) return -1;
+  if (!a.phone && b.phone) return 1;
+  return a.id - b.id;
+}).slice(0, 20);
+
+const types = Object.entries(TYPE_LABELS);
+---
+
+<BaseLayout
+  title="인기 업소 TOP20 — 이번 주 가장 핫한 곳은?"
+  description="전국 업소 인기 순위 TOP20. 지역별, 카테고리별 필터로 지금 핫한 곳을 확인하세요."
+  canonical={`${SITE_URL}/ranking/`}
+  ogImage={`${SITE_URL}/og-default.svg`}
+>
+
+<div class="listing-header">
+  <h1>인기 순위 TOP20</h1>
+  <p class="listing-desc">담당자 직통 연결 가능한 업소가 상위에 표시됩니다.</p>
+</div>
+
+<div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch;">
+  <button class="filter-pill active" id="filterAll">전체</button>
+  {types.map(([key, label]) => (
+    <button class="filter-pill type-filter" data-type={key}>{label}</button>
+  ))}
+</div>
+
+<div id="rankList">
+  {ranked.map((v, i) => (
+    <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class={`venue-card ${i < 3 ? `rank-${i+1}` : ''}`} data-type={v.type}>
+      <div class="venue-card-header">
+        <span class="rank-badge">{i + 1}</span>
+        <span class={`type-badge badge-${v.type}`}>{v.typeName}</span>
+      </div>
+      <div class="venue-card-name">{v.name}</div>
+      <div class="venue-card-desc">{v.shortDesc}</div>
+      {v.nickname && <div class="venue-card-contact">{v.nickname}{v.phone ? ` · ${v.phone}` : ''}</div>}
+    </a>
+  ))}
+</div>
+
+<p style="font-size:12px;color:var(--text-muted);text-align:center;margin-top:16px;">
+  순위 기준: 담당자 직통 연결 여부, 콘텐츠 완성도, 등록 순서
+</p>
+
+<script is:inline>
+(function() {
+  var cards = document.querySelectorAll('#rankList .venue-card');
+  document.getElementById('filterAll').addEventListener('click', function() {
+    document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+    this.classList.add('active');
+    cards.forEach(function(c) { c.style.display = ''; });
+  });
+  document.querySelectorAll('.type-filter').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+      var type = this.getAttribute('data-type');
+      cards.forEach(function(c) { c.style.display = c.getAttribute('data-type') === type ? '' : 'none'; });
+    });
+  });
+})();
+</script>
+
+</BaseLayout>
