@@ -92,22 +92,55 @@ p { font-size: 16px; line-height: 1.7; color: var(--text-secondary); }
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  padding: 0 16px;
 }
 .header-inner {
   max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 48px;
   gap: 16px;
+  padding: 0 16px;
 }
 .site-logo {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--accent);
   white-space: nowrap;
   flex-shrink: 0;
+  letter-spacing: -0.03em;
+}
+
+/* ─── Category Tabs (항상 보임) ─── */
+.cat-tabs {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 0;
+  border-top: 1px solid var(--border-light);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+.cat-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  border-bottom: 2px solid transparent;
+  min-width: 0;
+}
+.cat-tab:hover, .cat-tab:active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 .site-nav {
   position: fixed; top: 0; right: 0; bottom: 0;
