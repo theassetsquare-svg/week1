@@ -3,7 +3,7 @@
    White + Purple #8B5CF6 + Cyan #06B6D4 + Pretendard
    ═══════════════════════════════════════════════════════════ */
 
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+/* Pretendard font loaded via <link> in BaseLayout.astro for faster rendering */
 
 :root {
   --bg: #FFFFFF;
