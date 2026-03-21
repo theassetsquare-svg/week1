@@ -5,26 +5,6 @@ import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/ven
 const clubVenues = getVenuesByType('club');
 const regions = [...new Set(clubVenues.map(v => v.region))].sort();
 
-const vsPairs = [
-  [venues.find(v => v.slug === 'gangnam-club-race'), venues.find(v => v.slug === 'hongdae-club-pacific')],
-  [venues.find(v => v.slug === 'apgujeong-club-hype'), venues.find(v => v.slug === 'itaewon-club-utopia')],
-].filter(p => p[0] && p[1]).map(p => ({
-  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
-  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
-}));
-
-const _b64 = Buffer.from(JSON.stringify({
-  venues: clubVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions,
-  vs: vsPairs,
-  popTimes: {days:[{d:'월',v:15},{d:'화',v:20},{d:'수',v:25},{d:'목',v:40},{d:'금',v:100},{d:'토',v:95},{d:'일',v:30}],peak:'23:00 – 04:00'},
-  mags: [
-    {t:'EDM 페스티벌과 베뉴 사운드 차이점',c:'분석',d:'야외 축제와 실내 비트 공간의 체감 차이를 정리합니다.',g:1},
-    {t:'턴테이블 앞자리 vs 뒷자리 비교',c:'팁',d:'위치에 따라 달라지는 음향과 분위기를 알려드립니다.',g:2},
-    {t:'서울 5대 DJ 바 셋리스트 미리보기',c:'프리뷰',d:'이번 주말 주목할 DJ 라인업을 모았습니다.',g:3},
-  ],
-})).toString('base64');
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -45,118 +25,96 @@ const jsonLd = {
   ogImage={`${SITE_URL}/og/clubs.svg`}
   jsonLd={jsonLd}
 >
-  <div class="listing-header">
-    <h1>전국 EDM 베뉴</h1>
-    <p class="listing-count">{clubVenues.length}곳</p>
-  </div>
-  <div class="cat-intro">
-    턴테이블 위에서 돌아가는 바이닐과 우퍼에서 울려 퍼지는 베이스라인이 만드는 공간.
-    강남·압구정 라인은 하이엔드 사운드 시스템과 VIP 테이블로 프리미엄 경험을 제공하고,
-    홍대·이태원은 인디 DJ와 실험적 셋리스트로 언더그라운드 감성을 이어갑니다.
-    지방 도시에서도 로컬 DJ 커뮤니티가 활발해지며 독자적인 비트 문화가 형성되고 있습니다.
-    입장 후 첫 비트가 떨어지는 순간부터 새벽 라스트콜까지,
-    바닥을 울리는 저음과 레이저 조명 사이에서 일상의 무게를 내려놓을 수 있습니다.
-    각 베뉴의 사운드 성향과 DJ 라인업을 미리 확인하고, 취향에 맞는 곳을 골라 보세요.
-  </div>
 
-  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
-    <div class="filter-pills" id="regionFilter"></div>
-    <select class="sort-select" id="sortSelect">
-      <option value="default">기본순</option>
-      <option value="name">가나다순</option>
-    </select>
-  </div>
-  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
+<div class="listing-header">
+  <h1>전국 EDM 베뉴</h1>
+  <p class="listing-count">{clubVenues.length}곳</p>
+</div>
+<div class="cat-intro">
+  턴테이블 위에서 돌아가는 바이닐과 우퍼에서 울려 퍼지는 베이스라인이 만드는 공간.
+  강남·압구정 라인은 하이엔드 사운드 시스템과 VIP 테이블로 프리미엄 경험을 제공하고,
+  홍대·이태원은 인디 DJ와 실험적 셋리스트로 언더그라운드 감성을 이어갑니다.
+  지방 도시에서도 로컬 DJ 커뮤니티가 활발해지며 독자적인 비트 문화가 형성되고 있습니다.
+  입장 후 첫 비트가 떨어지는 순간부터 새벽 라스트콜까지,
+  바닥을 울리는 저음과 레이저 조명 사이에서 일상의 무게를 내려놓을 수 있습니다.
+  각 베뉴의 사운드 성향과 DJ 라인업을 미리 확인하고, 취향에 맞는 곳을 골라 보세요.
+</div>
 
-  <div class="fv-section">
-    <div class="fv-title">처음 방문하시나요?</div>
-    <div class="fv-item">
-      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>스트릿 캐주얼부터 스마트 캐주얼까지 폭넓게 허용됩니다. 다만 슬리퍼·트레이닝복은 입장이 거절될 수 있습니다. 압구정·청담 쪽은 세미 포멀이 무난하고, 홍대·이태원은 개성 있는 스타일이 오히려 환영받습니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>입장료는 2만~5만 원 수준이며, 특별 게스트 DJ 이벤트 때는 더 올라갈 수 있습니다. 음료는 잔당 1만 5천~3만 원대입니다. 사전 게스트 등록이나 얼리버드 티켓으로 할인받을 수 있는 곳도 있습니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>솔로 방문이 전혀 어색하지 않은 문화입니다. 음악에 집중하러 혼자 오는 분들이 많습니다. 바 카운터에서 음료 한 잔과 함께 DJ 셋을 감상하는 것도 좋은 방법입니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>일반 입장은 예약 없이 가능합니다. VIP 테이블은 사전 예약이 필수이며, 인기 DJ 이벤트는 온라인 사전 티케팅을 진행하는 경우가 있으니 SNS를 확인하세요.</p></div>
-    </div>
-  </div>
+<!-- 업소 리스트 (서버사이드 렌더링!) -->
+<div style="max-width:480px;margin:0 auto;padding:0 16px;">
+  {clubVenues.map((v, i) => (
+    <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="venue-card">
+      <div class="venue-card-header"><span class="rank-badge">{i + 1}</span></div>
+      <div class="venue-card-name">{v.name}</div>
+      <div class="venue-card-desc">{v.shortDesc}</div>
+      <div class="venue-card-tags">{v.tags.slice(0, 3).map(t => <span class="venue-tag">#{t}</span>)}</div>
+      {v.nickname && <div class="venue-card-contact">담당: {v.nickname}{v.phone ? ` | ${v.phone}` : ''}</div>}
+    </a>
+  ))}
+</div>
 
-  <div class="pop-times">
-    <div class="pop-times-title">인기 요일 · 시간대</div>
-    <div class="pop-chart" id="popChart"></div>
-    <div class="pop-hours" id="popHours"></div>
+<!-- 첫 방문 가이드 -->
+<div class="fv-section">
+  <div class="fv-title">처음 방문하시나요?</div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>스트릿 캐주얼부터 스마트 캐주얼까지 폭넓게 허용됩니다. 다만 슬리퍼·트레이닝복은 입장이 거절될 수 있습니다. 압구정·청담 쪽은 세미 포멀이 무난하고, 홍대·이태원은 개성 있는 스타일이 오히려 환영받습니다.</p></div>
   </div>
-
-  <div class="cat-vs">
-    <div class="cat-vs-title">이번 주 대결</div>
-    <div class="vs-arena" id="catVsArena"></div>
-    <div class="vs-controls"><button class="btn btn-outline btn-sm" id="catVsNext" style="display:none">다음 대결 →</button></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">얼마 들어?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>입장료는 2만~5만 원 수준이며, 특별 게스트 DJ 이벤트 때는 더 올라갈 수 있습니다. 음료는 잔당 1만 5천~3만 원대입니다. 사전 게스트 등록이나 얼리버드 티켓으로 할인받을 수 있는 곳도 있습니다.</p></div>
   </div>
-
-  <div class="cat-mag">
-    <div class="cat-mag-title">관련 매거진</div>
-    <div class="cat-mag-grid" id="catMagGrid"></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>솔로 방문이 전혀 어색하지 않은 문화입니다. 음악에 집중하러 혼자 오는 분들이 많습니다. 바 카운터에서 음료 한 잔과 함께 DJ 셋을 감상하는 것도 좋은 방법입니다.</p></div>
   </div>
-
-  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>일반 입장은 예약 없이 가능합니다. VIP 테이블은 사전 예약이 필수이며, 인기 DJ 이벤트는 온라인 사전 티케팅을 진행하는 경우가 있으니 SNS를 확인하세요.</p></div>
   </div>
+</div>
 
-  <script is:inline define:vars={{ _b64 }}>
-  (function(){
-    var D=JSON.parse(atob(_b64));var all=D.venues;var cur='all';var srt='default';
-    var fEl=document.getElementById('regionFilter');
-    var h='<button class="filter-pill active" data-r="all">전체</button>';
-    D.regions.forEach(function(r){h+='<button class="filter-pill" data-r="'+r+'">'+r+'</button>';});
-    fEl.innerHTML=h;
-    function render(){
-      var list=all.filter(function(v){return cur==='all'||v.r===cur;});
-      if(srt==='name')list.sort(function(a,b){return a.n.localeCompare(b.n,'ko');});
-      var o='';
-      list.forEach(function(v){
-        o+='<a href="/venue/'+v.s+'/" target="_blank" class="venue-card">';
-        o+='<div class="venue-card-header"><span class="venue-region-text">'+v.r+'</span></div>';
-        o+='<div class="venue-card-name">'+v.n+'</div>';
-        o+='<div class="venue-card-desc">'+v.d+'</div>';
-        if(v.tg.length){o+='<div class="venue-card-tags">';v.tg.forEach(function(t){o+='<span class="venue-tag">#'+t+'</span>';});o+='</div>';}
-        if(v.nk){o+='<div class="venue-card-contact">담당: '+v.nk+(v.ph?' | '+v.ph:'')+'</div>';}
-        o+='</a>';
-      });
-      document.getElementById('venueGrid').innerHTML=o;
-    }
-    fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
-    document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
-    render();
-    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
-    var pt=D.popTimes;var ch='';
-    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
-    document.getElementById('popChart').innerHTML=ch;
-    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
-    var vs=D.vs;if(vs.length){
-      var vi=parseInt(localStorage.getItem('vsClubIdx')||'0')%vs.length;
-      var vv=JSON.parse(localStorage.getItem('vsClubVotes')||'{}');
-      function renderVs(){
-        var m=vs[vi%vs.length];var pA=((m.a.id*7+m.b.id*13)%21+40);var pB=100-pA;var voted=vv[vi];
-        var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
-        h+='<div class="vs-badge">VS</div>';
-        h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div>';
-        document.getElementById('catVsArena').innerHTML=h;
-        document.getElementById('catVsNext').style.display=voted?'inline-block':'none';
-        if(!voted){document.querySelectorAll('#catVsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){vv[vi]=c.getAttribute('data-side');localStorage.setItem('vsClubVotes',JSON.stringify(vv));renderVs();});});}
-      }
-      renderVs();
-      document.getElementById('catVsNext').addEventListener('click',function(){vi++;localStorage.setItem('vsClubIdx',vi);renderVs();});
-    }
-    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#0c4a6e,#0891b2)','linear-gradient(135deg,#1e1b4b,#4338ca)','linear-gradient(135deg,#064e3b,#059669)'];
-    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%3]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
-    document.getElementById('catMagGrid').innerHTML=mh;
-  })();
-  </script>
+<!-- 인기 시간대 -->
+<div class="pop-times">
+  <div class="pop-times-title">인기 요일 · 시간대</div>
+  <div class="pop-chart">
+    {['월','화','수','목','금','토','일'].map((d, i) => {
+      const pct = [15,20,25,40,100,95,30][i];
+      return (
+        <div class="pop-bar-wrap">
+          <div class={`pop-bar${pct >= 80 ? ' peak' : ''}`} style={`height:${pct}%`}></div>
+          <div class="pop-day">{d}</div>
+        </div>
+      );
+    })}
+  </div>
+  <div class="pop-hours">피크 시간: 23:00 – 04:00</div>
+</div>
+
+<!-- 매거진 -->
+<div class="cat-mag">
+  <div class="cat-mag-title">관련 매거진</div>
+  <div class="cat-mag-grid">
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#0c4a6e,#0891b2)">
+      <div class="cat-mag-cat">분석</div>
+      <div class="cat-mag-name">EDM 페스티벌과 베뉴 사운드 차이점</div>
+      <div class="cat-mag-desc">야외 축제와 실내 비트 공간의 체감 차이를 정리합니다.</div>
+    </a>
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#1e1b4b,#4338ca)">
+      <div class="cat-mag-cat">팁</div>
+      <div class="cat-mag-name">턴테이블 앞자리 vs 뒷자리 비교</div>
+      <div class="cat-mag-desc">위치에 따라 달라지는 음향과 분위기를 알려드립니다.</div>
+    </a>
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#064e3b,#059669)">
+      <div class="cat-mag-cat">프리뷰</div>
+      <div class="cat-mag-name">서울 5대 DJ 바 셋리스트 미리보기</div>
+      <div class="cat-mag-desc">이번 주말 주목할 DJ 라인업을 모았습니다.</div>
+    </a>
+  </div>
+</div>
+
+<div class="cta-section mt-md" style="max-width:480px;margin:24px auto;padding:0 16px">
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+</div>
+
 </BaseLayout>
