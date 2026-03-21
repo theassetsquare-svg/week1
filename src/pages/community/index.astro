@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { MAIN_SITE_URL, SITE_URL } from '../../data/venues';
+
+const boards = [
+  { name: '자유게시판', icon: '💬', desc: '밤문화 관련 자유로운 이야기를 나눠보세요.' },
+  { name: '후기/리뷰', icon: '⭐', desc: '직접 다녀온 업소의 솔직한 후기를 공유하세요.' },
+  { name: '파티모집', icon: '🎉', desc: '함께 갈 사람을 찾고 있나요? N빵 모집도 여기서.' },
+  { name: '꿀팁공유', icon: '💡', desc: '드레스코드, 예약 노하우, 교통편 등 꿀팁을 나눠요.' },
+  { name: '패션/스타일', icon: '👔', desc: '뭐 입고 갈지 고민이라면? 코디 추천과 피드백.' },
+  { name: 'Q&A', icon: '❓', desc: '궁금한 건 뭐든 물어보세요. 경험자가 답해드려요.' },
+];
+
+const samplePosts = [
+  { board: '후기/리뷰', title: '수원찬스돔나이트 금요일 후기', author: '익**', date: '2시간 전', likes: 24, comments: 7 },
+  { board: '자유게시판', title: '혼자 가도 괜찮은 곳 추천해주세요', author: '밤**', date: '5시간 전', likes: 31, comments: 12 },
+  { board: '꿀팁공유', title: '첫방문인데 드레스코드 어디까지?', author: '새**', date: '1일 전', likes: 45, comments: 18 },
+  { board: '파티모집', title: '이번 토요일 강남 같이 가실 분', author: '모**', date: '3시간 전', likes: 16, comments: 9 },
+  { board: 'Q&A', title: '부산 나이트 추천 부탁드려요', author: '부**', date: '6시간 전', likes: 8, comments: 5 },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "커뮤니티",
+  "url": `${SITE_URL}/community/`
+};
+---
+
+<BaseLayout
+  title="커뮤니티 — 밤문화 후기, 꿀팁, 파티 모집까지"
+  description="솔직한 방문 후기와 꿀팁, 파티 모집까지. 경험을 나누고 정보를 얻어가세요."
+  canonical={`${SITE_URL}/community/`}
+  ogImage={`${SITE_URL}/og-default.svg`}
+  jsonLd={jsonLd}
+>
+
+<div class="listing-header">
+  <h1>커뮤니티</h1>
+  <p class="listing-desc">후기, 꿀팁, 파티 모집까지. 경험을 나누고 정보를 얻으세요.</p>
+</div>
+
+<!-- 게시판 6종 -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px;">
+  {boards.map(b => (
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" style="display:block;padding:16px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);text-align:center;">
+      <span style="font-size:28px;display:block;margin-bottom:6px;">{b.icon}</span>
+      <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;">{b.name}</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.5;">{b.desc}</div>
+    </a>
+  ))}
+</div>
+
+<!-- 인기글 미리보기 -->
+<div class="section-header">
+  <span class="section-badge">HOT</span>
+  <h2>인기글</h2>
+</div>
+
+{samplePosts.map(p => (
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" style="display:block;padding:16px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+      <span style="font-size:11px;padding:2px 8px;background:var(--accent-light);color:var(--accent);border-radius:12px;font-weight:600;">{p.board}</span>
+      <span style="font-size:12px;color:var(--text-muted);">{p.date}</span>
+    </div>
+    <div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px;">{p.title}</div>
+    <div style="display:flex;gap:12px;font-size:13px;color:var(--text-muted);">
+      <span>{p.author}</span>
+      <span>♥ {p.likes}</span>
+      <span>💬 {p.comments}</span>
+    </div>
+  </a>
+))}
+
+<!-- 글쓰기 유도 → 메인 -->
+<div class="cta-section" style="margin-top:24px;">
+  <h3>글쓰기는 메인에서</h3>
+  <p>후기 작성, 파티 모집, 질문 등 모든 글쓰기는 메인 사이트에서 가능합니다.</p>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+    글쓰기 →
+  </a>
+</div>
+
+<!-- 레벨 시스템 안내 -->
+<div style="padding:20px;background:var(--bg-secondary);border-radius:var(--radius);margin:24px 0;border:1px solid var(--border);">
+  <h3 style="font-size:16px;margin-bottom:12px;">레벨 시스템</h3>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+      <span style="font-size:11px;padding:2px 8px;background:#EDE9FE;color:#7C3AED;border-radius:12px;font-weight:700;">뉴비</span>
+      <span style="color:var(--text-secondary);">가입 직후 · 0P</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+      <span style="font-size:11px;padding:2px 8px;background:#CFFAFE;color:#0891B2;border-radius:12px;font-weight:700;">클러버</span>
+      <span style="color:var(--text-secondary);">글 5개 + 리뷰 2개 · 200P</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+      <span style="font-size:11px;padding:2px 8px;background:#FFF7ED;color:#EA580C;border-radius:12px;font-weight:700;">파티피플</span>
+      <span style="color:var(--text-secondary);">글 20개 + 리뷰 10개 · 1,000P</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+      <span style="font-size:11px;padding:2px 8px;background:#FEF3C7;color:#D97706;border-radius:12px;font-weight:700;">VIP</span>
+      <span style="color:var(--text-secondary);">글 50개 + 리뷰 30개 · 5,000P</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+      <span style="font-size:11px;padding:2px 8px;background:linear-gradient(135deg,#EDE9FE,#CFFAFE);color:#7C3AED;border-radius:12px;font-weight:700;">레전드</span>
+      <span style="color:var(--text-secondary);">글 100개 + 리뷰 50개 · 10,000P</span>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">포인트: 글+20P, 리뷰+50P, 댓글+5P, 출석+10P</p>
+</div>
+
+<!-- N빵 계산기 -->
+<div style="padding:20px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px;">
+  <h3 style="font-size:16px;margin-bottom:12px;">N빵 계산기</h3>
+  <div style="display:flex;gap:8px;margin-bottom:12px;">
+    <input type="number" id="totalAmount" placeholder="총 금액" style="flex:1;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:16px;background:var(--bg);color:var(--text);" />
+    <input type="number" id="numPeople" placeholder="인원" value="4" style="width:80px;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:16px;background:var(--bg);color:var(--text);" />
+  </div>
+  <div id="splitResult" style="font-size:18px;font-weight:700;color:var(--accent);text-align:center;min-height:30px;"></div>
+</div>
+
+<!-- 가이드라인 링크 -->
+<div style="text-align:center;padding:16px 0;">
+  <a href="/community/guidelines/" target="_blank" rel="noopener noreferrer" style="font-size:14px;color:var(--text-muted);">이용 가이드라인 →</a>
+</div>
+
+<script is:inline>
+(function() {
+  var total = document.getElementById('totalAmount');
+  var people = document.getElementById('numPeople');
+  var result = document.getElementById('splitResult');
+  function calc() {
+    var t = parseInt(total.value) || 0;
+    var p = parseInt(people.value) || 1;
+    if (t > 0 && p > 0) {
+      result.textContent = '1인당 ' + Math.ceil(t / p).toLocaleString() + '원';
+    } else {
+      result.textContent = '';
+    }
+  }
+  if (total) total.addEventListener('input', calc);
+  if (people) people.addEventListener('input', calc);
+})();
+</script>
+
+</BaseLayout>

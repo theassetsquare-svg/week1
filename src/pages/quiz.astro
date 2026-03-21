@@ -1,163 +1,101 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { venues, SITE_URL } from '../data/venues';
-import { TYPE_LABELS } from '../data/types';
+import { venues, MAIN_SITE_URL, SITE_URL } from '../data/venues';
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Quiz",
-  "name": "밤문화 성향 테스트",
-  "url": `${SITE_URL}/quiz/`
+const typeResults = {
+  club: { name: '파티 애니멀', icon: '🎵', desc: '강렬한 비트와 에너지 넘치는 공간을 좋아하는 당신. EDM과 힙합이 울려퍼지는 댄스 플로어가 기다리고 있어요.', type: 'club' },
+  night: { name: '소셜 나비', icon: '🌙', desc: '사람들과 어울리는 걸 즐기는 당신. 부킹 문화의 중심에서 새로운 인연을 만나보세요.', type: 'night' },
+  lounge: { name: '감성 탐험가', icon: '🍸', desc: '조용하고 분위기 있는 공간에서 대화를 즐기는 당신. 시그니처 칵테일과 재즈가 어울려요.', type: 'lounge' },
+  room: { name: '프라이빗 킹', icon: '🚪', desc: '소수의 사람들과 편하게 즐기는 게 좋은 당신. 프라이빗 공간에서 특별한 시간을 보내세요.', type: 'room' },
+  yojeong: { name: '전통 마니아', icon: '🏮', desc: '격식 있고 품격 있는 자리를 좋아하는 당신. 한정식과 국악이 어우러지는 전통의 공간이 딱이에요.', type: 'yojeong' },
+  hoppa: { name: '엔터테이너', icon: '🎭', desc: '퍼포먼스와 즐거움을 원하는 당신. 프로 선수들의 매직쇼와 서비스가 기다리고 있어요.', type: 'hoppa' },
 };
 
-// Prepare venue recommendations per type
-const typeVenues: Record<string, {n:string,s:string,r:string}[]> = {};
-for (const v of venues) {
-  if (!typeVenues[v.type]) typeVenues[v.type] = [];
-  if (typeVenues[v.type].length < 3) typeVenues[v.type].push({ n: v.name, s: v.slug, r: v.region });
-}
+const jsonLd = { "@context": "https://schema.org", "@type": "WebPage", "name": "밤문화 성향 테스트", "url": `${SITE_URL}/quiz/` };
 ---
 
 <BaseLayout
-  title="나에게 맞는 곳은? 5문항 30초 성향 테스트"
-  description="5문항만 답하면 취향에 딱 맞는 장소를 추천받을 수 있습니다. 30초면 끝."
+  title="나에게 맞는 곳은? 10문항 성향 테스트 — 3분이면 끝"
+  description="10문항만 답하면 취향에 맞는 장소를 추천받을 수 있습니다. 3분이면 끝."
   canonical={`${SITE_URL}/quiz/`}
   jsonLd={jsonLd}
 >
-  <div class="quiz-page">
-    <div class="quiz-header">
-      <h1>밤문화 성향 테스트</h1>
-      <p>5개 질문에 답하고 맞춤 장소를 추천받으세요</p>
-    </div>
 
-    <div id="quizContainer" class="quiz-container">
-      <div class="quiz-progress">
-        <div class="quiz-progress-bar" id="progressBar" style="width:20%"></div>
-      </div>
-      <div id="quizQuestion" class="quiz-question"></div>
-      <div id="quizOptions" class="quiz-options"></div>
-    </div>
+<div class="listing-header">
+  <h1>나에게 맞는 곳은?</h1>
+  <p class="listing-desc">10문항 성향 테스트. 3분이면 당신에게 딱 맞는 곳을 찾아드려요.</p>
+</div>
 
-    <div id="quizResult" class="quiz-result" style="display:none">
-      <div class="result-icon" id="resultIcon"></div>
-      <h2 id="resultTitle"></h2>
-      <p id="resultDesc"></p>
-      <div id="resultVenues" class="result-venues"></div>
-      <button class="btn btn-outline" onclick="location.reload()">다시 하기</button>
-      <a href="/" class="btn btn-primary" style="margin-left:8px">홈으로</a>
-    </div>
+<div id="quizContainer" style="max-width:480px;margin:0 auto;padding:0 16px;">
+  <div id="quizContent"></div>
+  <div id="quizResult" style="display:none;"></div>
+</div>
+
+<div style="text-align:center;padding:32px 16px;">
+  <div style="background:var(--accent);color:#fff;padding:16px 20px;border-radius:var(--radius);font-size:15px;font-weight:600;">
+    구글과 AI에서 <strong style="font-size:18px;">'밤키'</strong>를 검색하세요
   </div>
+</div>
 
-  <style>
-    .quiz-page{max-width:520px;margin:0 auto;padding:24px 16px 48px}
-    .quiz-header{text-align:center;padding:24px 0 32px}
-    .quiz-header h1{font-size:24px;margin-bottom:8px}
-    .quiz-header p{color:var(--text-light,#888);font-size:15px}
-    .quiz-progress{height:4px;background:var(--bg-secondary,#f5f5f5);border-radius:4px;margin-bottom:32px;overflow:hidden}
-    .quiz-progress-bar{height:100%;background:var(--accent);border-radius:4px;transition:width .4s}
-    .quiz-question{font-size:20px;font-weight:700;margin-bottom:20px;min-height:60px}
-    .quiz-options{display:flex;flex-direction:column;gap:10px}
-    .quiz-opt{padding:16px 20px;border:2px solid var(--border,#e5e7eb);border-radius:12px;font-size:15px;font-weight:600;text-align:left;background:var(--card-bg,#fff);cursor:pointer;transition:all .2s;font-family:inherit}
-    .quiz-opt:hover{border-color:var(--accent);background:rgba(139,92,246,.04)}
-    .quiz-opt.selected{border-color:var(--accent);background:rgba(139,92,246,.08)}
-    .quiz-result{text-align:center;padding:40px 0}
-    .result-icon{font-size:48px;margin-bottom:16px}
-    .quiz-result h2{font-size:22px;margin-bottom:8px}
-    .quiz-result p{color:var(--text-light,#888);margin-bottom:24px;font-size:15px}
-    .result-venues{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
-    .result-venue{display:block;padding:14px 16px;background:var(--card-bg,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;text-decoration:none;color:var(--text);font-weight:600;transition:all .2s}
-    .result-venue:hover{border-color:var(--accent);transform:translateX(4px)}
-    .result-venue span{font-size:13px;color:var(--text-light,#888);font-weight:400;margin-left:8px}
-  </style>
+<script is:inline define:vars={{ typeResults: JSON.stringify(typeResults) }}>
+(function() {
+  var results = JSON.parse(typeResults);
+  var questions = [
+    { q: '금요일 밤, 당신은?', a: [{ t: '시끄러운 음악에 몸을 맡기고 싶다', v: 'club' }, { t: '새로운 사람들과 만나고 싶다', v: 'night' }, { t: '조용히 한잔하며 대화하고 싶다', v: 'lounge' }] },
+    { q: '함께 가고 싶은 인원은?', a: [{ t: '대규모 파티! 많을수록 좋아', v: 'club' }, { t: '4~6명 적당한 모임', v: 'night' }, { t: '2~3명 소수 정예', v: 'lounge' }] },
+    { q: '옷을 고른다면?', a: [{ t: '트렌디하고 화려하게', v: 'club' }, { t: '깔끔한 스마트 캐주얼', v: 'night' }, { t: '격식 있는 정장', v: 'yojeong' }] },
+    { q: '음악 취향은?', a: [{ t: 'EDM, 힙합, 강렬한 비트', v: 'club' }, { t: '트로트, K-POP 리믹스', v: 'night' }, { t: '재즈, 보사노바, 소울', v: 'lounge' }] },
+    { q: '프라이버시는?', a: [{ t: '사람 많은 게 좋아', v: 'club' }, { t: '적당히 프라이빗하면 좋겠어', v: 'room' }, { t: '완전 독립된 공간이 필요해', v: 'room' }] },
+    { q: '예산은?', a: [{ t: '가성비가 중요해', v: 'night' }, { t: '적당한 수준', v: 'club' }, { t: '품격에 투자할 준비 됐어', v: 'yojeong' }] },
+    { q: '분위기는?', a: [{ t: '에너지 넘치고 시끄럽게', v: 'club' }, { t: '활기차면서도 대화 가능하게', v: 'night' }, { t: '고급스럽고 조용하게', v: 'lounge' }] },
+    { q: '퍼포먼스를 좋아하나요?', a: [{ t: 'DJ 라이브가 최고', v: 'club' }, { t: '매직쇼나 엔터테인먼트', v: 'hoppa' }, { t: '국악 라이브 공연', v: 'yojeong' }] },
+    { q: '같이 가는 사람은?', a: [{ t: '친구들과 파티', v: 'club' }, { t: '비즈니스 접대', v: 'room' }, { t: '소개팅이나 모임', v: 'night' }] },
+    { q: '시간대는?', a: [{ t: '밤 11시 이후 본격적으로', v: 'club' }, { t: '저녁 8시부터 여유롭게', v: 'night' }, { t: '저녁 식사부터 시작', v: 'yojeong' }] },
+  ];
 
-  <script is:inline define:vars={{ typeVenues }}>
-  (function(){
-    var questions = [
-      { q: '오늘 밤 가장 원하는 분위기는?', opts: [
-        { text: '큰 음악에 몸을 맡기고 싶다', score: { club: 3, night: 2 } },
-        { text: '조용한 대화가 가능한 곳이 좋다', score: { lounge: 3, room: 2 } },
-        { text: '퍼포먼스와 쇼가 있는 곳', score: { hoppa: 3, night: 1 } },
-        { text: '격식과 품위가 있는 전통 공간', score: { yojeong: 3, room: 1 } }
-      ]},
-      { q: '함께 가는 인원은?', opts: [
-        { text: '혼자 또는 2명', score: { lounge: 2, club: 2 } },
-        { text: '3~5명 소그룹', score: { room: 3, night: 1 } },
-        { text: '6~10명 단체', score: { night: 2, room: 2, yojeong: 1 } },
-        { text: '10명 이상 대규모', score: { night: 3, yojeong: 2 } }
-      ]},
-      { q: '선호하는 시간대는?', opts: [
-        { text: '저녁 7~9시', score: { yojeong: 3, lounge: 2 } },
-        { text: '밤 10시~자정', score: { night: 2, club: 2, room: 1 } },
-        { text: '새벽 1시 이후', score: { club: 3, night: 1 } },
-        { text: '시간 상관없다', score: { hoppa: 1, night: 1, club: 1, lounge: 1 } }
-      ]},
-      { q: '예산 범위는?', opts: [
-        { text: '인당 5만원 이하', score: { night: 3, club: 1 } },
-        { text: '인당 5~10만원', score: { club: 2, hoppa: 2, room: 1 } },
-        { text: '인당 10~20만원', score: { room: 3, lounge: 2 } },
-        { text: '가격보다 퀄리티', score: { yojeong: 3, lounge: 2, room: 1 } }
-      ]},
-      { q: '가장 중요한 요소는?', opts: [
-        { text: 'DJ와 사운드 시스템', score: { club: 3, night: 2 } },
-        { text: '프라이버시와 독립 공간', score: { room: 3, yojeong: 2 } },
-        { text: '매력적인 스태프 서비스', score: { hoppa: 3, night: 1 } },
-        { text: '인테리어와 분위기', score: { lounge: 3, club: 1 } }
-      ]}
-    ];
+  var scores = {};
+  var current = 0;
 
-    var scores = { night:0, club:0, lounge:0, room:0, yojeong:0, hoppa:0 };
-    var current = 0;
-    var qEl = document.getElementById('quizQuestion');
-    var oEl = document.getElementById('quizOptions');
-    var pBar = document.getElementById('progressBar');
-    var container = document.getElementById('quizContainer');
-    var resultEl = document.getElementById('quizResult');
+  function renderQ() {
+    var q = questions[current];
+    var h = '<div style="margin-bottom:8px;font-size:13px;color:var(--accent);font-weight:600;">' + (current+1) + ' / ' + questions.length + '</div>';
+    h += '<div style="height:4px;background:var(--bg-secondary);border-radius:2px;margin-bottom:20px;"><div style="height:100%;background:var(--accent);border-radius:2px;width:' + ((current+1)/questions.length*100) + '%;transition:width .3s;"></div></div>';
+    h += '<h2 style="font-size:20px;margin-bottom:20px;">' + q.q + '</h2>';
+    q.a.forEach(function(a, i) {
+      h += '<button onclick="window._quizAnswer(\'' + a.v + '\')" style="display:block;width:100%;padding:16px;margin-bottom:10px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:16px;color:var(--text);cursor:pointer;text-align:left;font-family:inherit;transition:all .2s;" onmouseover="this.style.borderColor=\'var(--accent)\'" onmouseout="this.style.borderColor=\'var(--border)\'">' + a.t + '</button>';
+    });
+    document.getElementById('quizContent').innerHTML = h;
+  }
 
-    var typeInfo = {
-      night: { icon: '🌙', title: '나이트형', desc: '대형 사운드와 군중 속에서 에너지를 충전하는 타입!' },
-      club: { icon: '🎧', title: '클럽형', desc: 'DJ 비트에 맞춰 새벽까지 춤추는 것이 인생!' },
-      lounge: { icon: '🍷', title: '라운지형', desc: '세련된 공간에서 대화와 음악을 즐기는 감성파!' },
-      room: { icon: '🚪', title: '룸형', desc: '프라이빗한 공간에서 편안하게 즐기는 실속파!' },
-      yojeong: { icon: '🏯', title: '요정형', desc: '격식과 전통이 어우러진 품격 있는 시간을 선호!' },
-      hoppa: { icon: '🎤', title: '호빠형', desc: '퍼포먼스와 접객이 있는 활기찬 분위기를 즐기는 타입!' }
-    };
-
-    function render() {
-      var q = questions[current];
-      qEl.textContent = (current+1) + '. ' + q.q;
-      pBar.style.width = ((current+1)/questions.length*100) + '%';
-      oEl.innerHTML = '';
-      q.opts.forEach(function(opt) {
-        var btn = document.createElement('button');
-        btn.className = 'quiz-opt';
-        btn.textContent = opt.text;
-        btn.addEventListener('click', function() {
-          for (var t in opt.score) scores[t] += opt.score[t];
-          current++;
-          if (current < questions.length) { render(); }
-          else { showResult(); }
-        });
-        oEl.appendChild(btn);
-      });
+  window._quizAnswer = function(v) {
+    scores[v] = (scores[v] || 0) + 1;
+    current++;
+    if (current < questions.length) {
+      renderQ();
+    } else {
+      showResult();
     }
+  };
 
-    function showResult() {
-      container.style.display = 'none';
-      resultEl.style.display = 'block';
-      var best = Object.entries(scores).sort(function(a,b){return b[1]-a[1];})[0][0];
-      var info = typeInfo[best];
-      document.getElementById('resultIcon').textContent = info.icon;
-      document.getElementById('resultTitle').textContent = '당신은 ' + info.title + '!';
-      document.getElementById('resultDesc').textContent = info.desc;
-      var vList = typeVenues[best] || [];
-      var html = '';
-      for (var i = 0; i < vList.length; i++) {
-        html += '<a href="/venue/' + vList[i].s + '/" class="result-venue">' + vList[i].n + '<span>' + vList[i].r + '</span></a>';
-      }
-      document.getElementById('resultVenues').innerHTML = html;
-    }
+  function showResult() {
+    var maxType = 'club';
+    var maxScore = 0;
+    for (var t in scores) { if (scores[t] > maxScore) { maxScore = scores[t]; maxType = t; } }
+    var r = results[maxType];
+    document.getElementById('quizContent').style.display = 'none';
+    var rd = document.getElementById('quizResult');
+    rd.style.display = 'block';
+    rd.innerHTML = '<div style="text-align:center;padding:32px 0;">' +
+      '<div style="font-size:48px;margin-bottom:16px;">' + r.icon + '</div>' +
+      '<h2 style="font-size:24px;margin-bottom:8px;">당신은 <span style="color:var(--accent);">' + r.name + '</span></h2>' +
+      '<p style="font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:24px;">' + r.desc + '</p>' +
+      '<a href="/' + r.type + 's/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" style="margin-bottom:12px;">맞는 곳 보러가기 →</a>' +
+      '<button onclick="location.reload()" class="btn btn-outline btn-block">다시 테스트하기</button>' +
+      '</div>';
+  }
 
-    render();
-  })();
-  </script>
+  renderQ();
+})();
+</script>
+
 </BaseLayout>

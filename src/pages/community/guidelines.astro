@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL } from '../../data/venues';
+---
+
+<BaseLayout
+  title="커뮤니티 이용 가이드라인 — 모두가 편한 공간을 위해"
+  description="커뮤니티 이용 규칙과 신고 정책을 안내합니다. 서로 존중하는 문화를 함께 만들어요."
+  canonical={`${SITE_URL}/community/guidelines/`}
+>
+
+<div class="listing-header">
+  <h1>커뮤니티 가이드라인</h1>
+  <p class="listing-desc">모두가 편안하게 이용할 수 있는 공간을 위해 아래 규칙을 지켜주세요.</p>
+</div>
+
+<div style="max-width:480px;margin:0 auto;padding:0 16px;">
+
+  <div class="detail-section">
+    <h2>기본 원칙</h2>
+    <p>상대방을 존중하고, 근거 없는 비방이나 허위 정보를 유포하지 않습니다. 실제 경험에 기반한 솔직한 의견을 공유해 주세요.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>금지 사항</h2>
+    <ul style="padding-left:20px;font-size:16px;line-height:2;color:var(--text-secondary);list-style:disc;">
+      <li>욕설, 비하, 차별적 표현</li>
+      <li>허위 후기 또는 광고성 게시물</li>
+      <li>개인정보(전화번호, 주소 등) 무단 노출</li>
+      <li>불법 행위 조장 또는 권유</li>
+      <li>음란물 또는 부적절한 이미지 게시</li>
+      <li>도배, 스팸, 반복 게시</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>신고 및 제재</h2>
+    <p>위반 게시물을 발견하면 신고 버튼을 눌러주세요. 관리자가 검토 후 24시간 내 조치합니다.</p>
+    <ul style="padding-left:20px;font-size:16px;line-height:2;color:var(--text-secondary);list-style:disc;">
+      <li>1차 위반: 경고 + 게시물 삭제</li>
+      <li>2차 위반: 7일 이용 정지</li>
+      <li>3차 위반: 영구 이용 정지</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>후기 작성 가이드</h2>
+    <p>방문 후기는 직접 다녀온 곳만 작성해 주세요. 구체적인 경험(분위기, 음악, 서비스 등)을 공유하면 다른 분들에게 큰 도움이 됩니다. 광고성 후기는 삭제됩니다.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>문의</h2>
+    <p>관련 문의는 카카오톡 <strong style="color:var(--accent);">besta12</strong>로 연락해 주세요.</p>
+  </div>
+
+</div>
+
+</BaseLayout>
