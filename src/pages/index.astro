@@ -104,8 +104,6 @@ const faqJsonLd = {
     <a href={`/venue/${v.slug}/`} class={`venue-card ${i < 3 ? `rank-${i+1}` : ''}`} target="_blank" rel="noopener noreferrer">
       <div class="venue-card-header">
         <span class="rank-badge">{i + 1}</span>
-        <span class={`type-badge badge-${v.type}`}>{v.typeName}</span>
-        <span class="venue-region-text">{v.region}</span>
       </div>
       <div class="venue-card-name">{v.name}</div>
       <div class="venue-card-desc">{v.shortDesc}</div>
