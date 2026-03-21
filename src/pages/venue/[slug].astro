@@ -19,20 +19,7 @@ const nearby = venues.filter(v => v.id !== venue.id && v.regionSlug === venue.re
 const hiddenGem = sameType.filter(v => v.regionSlug !== venue.regionSlug).pop();
 const vsOpponent = sameType.find(v => v.regionSlug !== venue.regionSlug) || sameType[0];
 
-// No fake ratings - will show "리뷰 없음" until real data exists
-const starRating = 0;
-const reviewCount = 0;
-
-// Price data by type
-const priceMap: Record<string,{item:string,price:string}[]> = {
-  night: [{item:'입장료(남)',price:'20,000~30,000원'},{item:'입장료(여)',price:'무료~10,000원'},{item:'테이블(4인)',price:'200,000~400,000원'},{item:'양주 1병',price:'150,000~300,000원'},{item:'맥주/음료',price:'10,000~15,000원'}],
-  club: [{item:'입장료',price:'20,000~40,000원'},{item:'VIP 테이블',price:'300,000~500,000원'},{item:'주류 패키지',price:'200,000~400,000원'},{item:'칵테일',price:'15,000~25,000원'},{item:'생맥주',price:'8,000~12,000원'}],
-  lounge: [{item:'기본 세트',price:'100,000~200,000원'},{item:'프리미엄 세트',price:'300,000~500,000원'},{item:'와인(보틀)',price:'80,000~200,000원'},{item:'칵테일',price:'20,000~35,000원'},{item:'안주 플레이트',price:'30,000~60,000원'}],
-  room: [{item:'소형(4인)',price:'200,000~300,000원'},{item:'중형(6인)',price:'300,000~500,000원'},{item:'대형(10인+)',price:'500,000~800,000원'},{item:'양주 1병',price:'150,000~300,000원'},{item:'과일/안주',price:'50,000~80,000원'}],
-  yojeong: [{item:'기본 코스',price:'200,000~400,000원'},{item:'프리미엄 코스',price:'400,000~700,000원'},{item:'한정식 세트',price:'80,000~150,000원'},{item:'주류(한 병)',price:'100,000~200,000원'},{item:'추가 시간',price:'50,000~100,000원'}],
-  hoppa: [{item:'기본세트(2시간)',price:'200,000~300,000원'},{item:'프리미엄(3시간)',price:'400,000~600,000원'},{item:'지명료',price:'50,000~100,000원'},{item:'양주 1병',price:'150,000~250,000원'},{item:'추가 1시간',price:'100,000~150,000원'}],
-};
-const prices = priceMap[venue.type] || priceMap.night;
+// No fake ratings or prices
 
 // Extended FAQ (to 8+)
 const genericFaqs = [
