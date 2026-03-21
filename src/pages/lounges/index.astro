@@ -5,24 +5,6 @@ import { getVenuesByType, venues, SITE_URL, MAIN_SITE_URL } from '../../data/ven
 const loungeVenues = getVenuesByType('lounge');
 const regions = [...new Set(loungeVenues.map(v => v.region))].sort();
 
-const vsPairs = [
-  [venues.find(v => v.slug === 'apgujeong-code-lounge'), venues.find(v => v.slug === 'apgujeong-lounge-dm')],
-].filter(p => p[0] && p[1]).map(p => ({
-  a: { n: p[0]!.name, s: p[0]!.slug, r: p[0]!.region, id: p[0]!.id },
-  b: { n: p[1]!.name, s: p[1]!.slug, r: p[1]!.region, id: p[1]!.id },
-}));
-
-const _b64 = Buffer.from(JSON.stringify({
-  venues: loungeVenues.map(v => ({n:v.name,s:v.slug,r:v.region,d:v.shortDesc,nk:v.nickname||'',ph:v.phone||'',tg:v.tags.slice(0,3)})),
-  regions,
-  vs: vsPairs,
-  popTimes: {days:[{d:'월',v:25},{d:'화',v:30},{d:'수',v:40},{d:'목',v:85},{d:'금',v:100},{d:'토',v:70},{d:'일',v:20}],peak:'20:00 – 01:00'},
-  mags: [
-    {t:'위스키 입문자를 위한 싱글몰트 안내서',c:'가이드',d:'처음 위스키를 접하는 분을 위한 풍미별 추천 목록.',g:1},
-    {t:'칵테일 믹솔로지 트렌드 2026',c:'트렌드',d:'올해 주목받는 크래프트 칵테일 기법을 소개합니다.',g:2},
-  ],
-})).toString('base64');
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -43,118 +25,91 @@ const jsonLd = {
   ogImage={`${SITE_URL}/og/lounges.svg`}
   jsonLd={jsonLd}
 >
-  <div class="listing-header">
-    <h1>프리미엄 베뉴</h1>
-    <p class="listing-count">{loungeVenues.length}곳</p>
-  </div>
-  <div class="cat-intro">
-    은은한 재즈 선율과 손으로 빚은 칵테일 한 잔이 어우러지는 공간입니다.
-    압구정·청담 일대에 자리한 감성 바는 세련된 인테리어와 큐레이션된 위스키 셀렉션으로
-    특별한 저녁을 완성해 줍니다. 대화에 집중할 수 있는 조용한 좌석 배치,
-    도심 야경을 내려다보는 루프탑 뷰, 그리고 바텐더의 시그니처 레시피까지—
-    격식 있는 접대 자리부터 소중한 사람과의 기념일까지 다양한 상황에 어울립니다.
-    와인·위스키·칵테일 등 주종 전문성이 높아 음료 자체를 즐기려는 분들에게도 적합합니다.
-    각 공간의 분위기와 주종 구성을 비교해 취향에 맞는 곳을 찾아보세요.
-  </div>
 
-  <div class="filter-bar" style="max-width:720px;margin:0 auto 16px;padding:0 16px">
-    <div class="filter-pills" id="regionFilter"></div>
-    <select class="sort-select" id="sortSelect">
-      <option value="default">기본순</option>
-      <option value="name">가나다순</option>
-    </select>
-  </div>
-  <div class="listing-grid" id="venueGrid" style="max-width:720px;margin:0 auto;padding:0 16px"></div>
+<div class="listing-header">
+  <h1>프리미엄 베뉴</h1>
+  <p class="listing-count">{loungeVenues.length}곳</p>
+</div>
+<div class="cat-intro">
+  은은한 재즈 선율과 손으로 빚은 칵테일 한 잔이 어우러지는 공간입니다.
+  압구정·청담 일대에 자리한 감성 바는 세련된 인테리어와 큐레이션된 위스키 셀렉션으로
+  특별한 저녁을 완성해 줍니다. 대화에 집중할 수 있는 조용한 좌석 배치,
+  도심 야경을 내려다보는 루프탑 뷰, 그리고 바텐더의 시그니처 레시피까지—
+  격식 있는 접대 자리부터 소중한 사람과의 기념일까지 다양한 상황에 어울립니다.
+  와인·위스키·칵테일 등 주종 전문성이 높아 음료 자체를 즐기려는 분들에게도 적합합니다.
+  각 공간의 분위기와 주종 구성을 비교해 취향에 맞는 곳을 찾아보세요.
+</div>
 
-  <div class="fv-section">
-    <div class="fv-title">처음 방문하시나요?</div>
-    <div class="fv-item">
-      <div class="fv-q">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>비즈니스 캐주얼 이상을 권장합니다. 셔츠·재킷·구두가 기본이며, 격식 있는 분위기에 맞는 차림이 좋습니다. 여성은 원피스나 블라우스에 클러치백 정도면 완벽합니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">얼마 들어?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>별도 입장료는 없습니다. 테이블 차지(주대)가 30만~100만 원 이상이며, 음료가 포함됩니다. 바 좌석은 음료 주문만으로도 이용 가능한 곳이 있으니 미리 확인하세요.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>바 카운터 좌석이라면 혼자 방문해도 전혀 어색하지 않습니다. 바텐더와 대화하며 칵테일을 즐기는 1인 손님이 많은 편입니다.</p></div>
-    </div>
-    <div class="fv-item">
-      <div class="fv-q">예약 필요해?<span class="fv-arrow">▼</span></div>
-      <div class="fv-a"><p>테이블 좌석은 반드시 사전 예약이 필요합니다. 바 좌석은 선착순 이용이 가능하나, 주말은 대기가 길어질 수 있으므로 전화 문의를 추천합니다.</p></div>
-    </div>
-  </div>
+<!-- 업소 리스트 (서버사이드 렌더링!) -->
+<div style="max-width:480px;margin:0 auto;padding:0 16px;">
+  {loungeVenues.map((v, i) => (
+    <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="venue-card">
+      <div class="venue-card-header"><span class="rank-badge">{i + 1}</span></div>
+      <div class="venue-card-name">{v.name}</div>
+      <div class="venue-card-desc">{v.shortDesc}</div>
+      <div class="venue-card-tags">{v.tags.slice(0, 3).map(t => <span class="venue-tag">#{t}</span>)}</div>
+      {v.nickname && <div class="venue-card-contact">담당: {v.nickname}{v.phone ? ` | ${v.phone}` : ''}</div>}
+    </a>
+  ))}
+</div>
 
-  <div class="pop-times">
-    <div class="pop-times-title">인기 요일 · 시간대</div>
-    <div class="pop-chart" id="popChart"></div>
-    <div class="pop-hours" id="popHours"></div>
+<!-- 첫 방문 가이드 -->
+<div class="fv-section">
+  <div class="fv-title">처음 방문하시나요?</div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">뭐 입고 가야 해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>비즈니스 캐주얼 이상을 권장합니다. 셔츠·재킷·구두가 기본이며, 격식 있는 분위기에 맞는 차림이 좋습니다. 여성은 원피스나 블라우스에 클러치백 정도면 완벽합니다.</p></div>
   </div>
-
-  <div class="cat-vs">
-    <div class="cat-vs-title">이번 주 대결</div>
-    <div class="vs-arena" id="catVsArena"></div>
-    <div class="vs-controls"><button class="btn btn-outline btn-sm" id="catVsNext" style="display:none">다음 대결 →</button></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">얼마 들어?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>별도 입장료는 없습니다. 테이블 차지(주대)가 30만~100만 원 이상이며, 음료가 포함됩니다. 바 좌석은 음료 주문만으로도 이용 가능한 곳이 있으니 미리 확인하세요.</p></div>
   </div>
-
-  <div class="cat-mag">
-    <div class="cat-mag-title">관련 매거진</div>
-    <div class="cat-mag-grid" id="catMagGrid"></div>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">혼자 가도 돼?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>바 카운터 좌석이라면 혼자 방문해도 전혀 어색하지 않습니다. 바텐더와 대화하며 칵테일을 즐기는 1인 손님이 많은 편입니다.</p></div>
   </div>
-
-  <div class="cta-section mt-md" style="max-width:720px;margin:24px auto;padding:0 16px">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+  <div class="fv-item">
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-a"><p>테이블 좌석은 반드시 사전 예약이 필요합니다. 바 좌석은 선착순 이용이 가능하나, 주말은 대기가 길어질 수 있으므로 전화 문의를 추천합니다.</p></div>
   </div>
+</div>
 
-  <script is:inline define:vars={{ _b64 }}>
-  (function(){
-    var D=JSON.parse(atob(_b64));var all=D.venues;var cur='all';var srt='default';
-    var fEl=document.getElementById('regionFilter');
-    var h='<button class="filter-pill active" data-r="all">전체</button>';
-    D.regions.forEach(function(r){h+='<button class="filter-pill" data-r="'+r+'">'+r+'</button>';});
-    fEl.innerHTML=h;
-    function render(){
-      var list=all.filter(function(v){return cur==='all'||v.r===cur;});
-      if(srt==='name')list.sort(function(a,b){return a.n.localeCompare(b.n,'ko');});
-      var o='';
-      list.forEach(function(v){
-        o+='<a href="/venue/'+v.s+'/" target="_blank" class="venue-card">';
-        o+='<div class="venue-card-header"><span class="venue-region-text">'+v.r+'</span></div>';
-        o+='<div class="venue-card-name">'+v.n+'</div>';
-        o+='<div class="venue-card-desc">'+v.d+'</div>';
-        if(v.tg.length){o+='<div class="venue-card-tags">';v.tg.forEach(function(t){o+='<span class="venue-tag">#'+t+'</span>';});o+='</div>';}
-        if(v.nk){o+='<div class="venue-card-contact">담당: '+v.nk+(v.ph?' | '+v.ph:'')+'</div>';}
-        o+='</a>';
-      });
-      document.getElementById('venueGrid').innerHTML=o;
-    }
-    fEl.addEventListener('click',function(e){if(e.target.classList.contains('filter-pill')){fEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});e.target.classList.add('active');cur=e.target.getAttribute('data-r');render();}});
-    document.getElementById('sortSelect').addEventListener('change',function(){srt=this.value;render();});
-    render();
-    document.querySelectorAll('.fv-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
-    var pt=D.popTimes;var ch='';
-    pt.days.forEach(function(d){ch+='<div class="pop-bar-wrap"><div class="pop-bar'+(d.v>=80?' peak':'')+'" style="height:'+d.v+'%"></div><div class="pop-day">'+d.d+'</div></div>';});
-    document.getElementById('popChart').innerHTML=ch;
-    document.getElementById('popHours').textContent='피크 시간: '+pt.peak;
-    var vs=D.vs;if(vs.length){
-      var vi=parseInt(localStorage.getItem('vsLoungeIdx')||'0')%vs.length;
-      var vv=JSON.parse(localStorage.getItem('vsLoungeVotes')||'{}');
-      function renderVs(){
-        var m=vs[vi%vs.length];var pA=((m.a.id*7+m.b.id*13)%21+40);var pB=100-pA;var voted=vv[vi];
-        var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-name">'+m.a.n+'</div><div class="vs-meta">'+m.a.r+'</div><div class="vs-pct">'+(voted?pA+'%':'??%')+'</div></div>';
-        h+='<div class="vs-badge">VS</div>';
-        h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-name">'+m.b.n+'</div><div class="vs-meta">'+m.b.r+'</div><div class="vs-pct">'+(voted?pB+'%':'??%')+'</div></div>';
-        document.getElementById('catVsArena').innerHTML=h;
-        document.getElementById('catVsNext').style.display=voted?'inline-block':'none';
-        if(!voted){document.querySelectorAll('#catVsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){vv[vi]=c.getAttribute('data-side');localStorage.setItem('vsLoungeVotes',JSON.stringify(vv));renderVs();});});}
-      }
-      renderVs();
-      document.getElementById('catVsNext').addEventListener('click',function(){vi++;localStorage.setItem('vsLoungeIdx',vi);renderVs();});
-    }
-    var mg=D.mags;var mh='';var grads=['linear-gradient(135deg,#78350f,#d97706)','linear-gradient(135deg,#4a1942,#be185d)'];
-    mg.forEach(function(m,i){mh+='<div class="cat-mag-card" style="background:'+grads[i%2]+'"><div class="cat-mag-cat">'+m.c+'</div><div class="cat-mag-name">'+m.t+'</div><div class="cat-mag-desc">'+m.d+'</div></div>';});
-    document.getElementById('catMagGrid').innerHTML=mh;
-  })();
-  </script>
+<!-- 인기 시간대 -->
+<div class="pop-times">
+  <div class="pop-times-title">인기 요일 · 시간대</div>
+  <div class="pop-chart">
+    {['월','화','수','목','금','토','일'].map((d, i) => {
+      const pct = [25,30,40,85,100,70,20][i];
+      return (
+        <div class="pop-bar-wrap">
+          <div class={`pop-bar${pct >= 80 ? ' peak' : ''}`} style={`height:${pct}%`}></div>
+          <div class="pop-day">{d}</div>
+        </div>
+      );
+    })}
+  </div>
+  <div class="pop-hours">피크 시간: 20:00 – 01:00</div>
+</div>
+
+<!-- 매거진 -->
+<div class="cat-mag">
+  <div class="cat-mag-title">관련 매거진</div>
+  <div class="cat-mag-grid">
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#78350f,#d97706)">
+      <div class="cat-mag-cat">가이드</div>
+      <div class="cat-mag-name">위스키 입문자를 위한 싱글몰트 안내서</div>
+      <div class="cat-mag-desc">처음 위스키를 접하는 분을 위한 풍미별 추천 목록.</div>
+    </a>
+    <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#4a1942,#be185d)">
+      <div class="cat-mag-cat">트렌드</div>
+      <div class="cat-mag-name">칵테일 믹솔로지 트렌드 2026</div>
+      <div class="cat-mag-desc">올해 주목받는 크래프트 칵테일 기법을 소개합니다.</div>
+    </a>
+  </div>
+</div>
+
+<div class="cta-section mt-md" style="max-width:480px;margin:24px auto;padding:0 16px">
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">메인에서 전체 확인 →</a>
+</div>
+
 </BaseLayout>
