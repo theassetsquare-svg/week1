@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL } from '../data/venues';
+---
+
+<BaseLayout
+  title="안전 가이드 — 음주 계산기, SOS, 막차 시간"
+  description="음주량 계산, 긴급 연락처, 귀가 안전 정보를 한곳에서 확인하세요."
+  canonical={`${SITE_URL}/safety/`}
+>
+
+<div class="listing-header">
+  <h1>안전 가이드</h1>
+  <p class="listing-desc">즐거운 밤, 안전하게 마무리하세요.</p>
+</div>
+
+<!-- 음주 계산기 -->
+<div style="padding:20px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:16px;">
+  <h2 style="font-size:18px;margin-bottom:16px;">음주량 계산기</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+    <div>
+      <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:4px;">체중 (kg)</label>
+      <input type="number" id="weight" placeholder="65" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:16px;background:var(--bg);color:var(--text);" />
+    </div>
+    <div>
+      <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:4px;">성별</label>
+      <select id="gender" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:16px;background:var(--bg);color:var(--text);">
+        <option value="male">남성</option>
+        <option value="female">여성</option>
+      </select>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+    <div>
+      <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:4px;">소주 (잔)</label>
+      <input type="number" id="soju" placeholder="0" value="0" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:16px;background:var(--bg);color:var(--text);" />
+    </div>
+    <div>
+      <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:4px;">맥주 (잔)</label>
+      <input type="number" id="beer" placeholder="0" value="0" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xs);font-size:16px;background:var(--bg);color:var(--text);" />
+    </div>
+  </div>
+  <div id="alcResult" style="padding:16px;background:var(--bg-secondary);border-radius:var(--radius-sm);text-align:center;font-size:16px;font-weight:600;color:var(--text);min-height:50px;display:flex;align-items:center;justify-content:center;">
+    정보를 입력하면 예상 혈중알코올농도가 표시됩니다
+  </div>
+</div>
+
+<!-- SOS 긴급 연락처 -->
+<div style="padding:20px;background:#FEF2F2;border:1px solid #FECACA;border-radius:var(--radius);margin-bottom:16px;">
+  <h2 style="font-size:18px;margin-bottom:16px;color:#DC2626;">긴급 연락처</h2>
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <a href="tel:112" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:var(--radius-sm);font-size:16px;font-weight:600;color:var(--text);">
+      <span style="font-size:24px;">🚔</span>
+      <div><div>경찰 112</div><div style="font-size:13px;color:var(--text-muted);font-weight:400;">범죄, 폭행, 위험 상황</div></div>
+    </a>
+    <a href="tel:119" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:var(--radius-sm);font-size:16px;font-weight:600;color:var(--text);">
+      <span style="font-size:24px;">🚑</span>
+      <div><div>소방/응급 119</div><div style="font-size:13px;color:var(--text-muted);font-weight:400;">응급 상황, 구급</div></div>
+    </a>
+    <a href="tel:1366" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:var(--radius-sm);font-size:16px;font-weight:600;color:var(--text);">
+      <span style="font-size:24px;">📞</span>
+      <div><div>여성긴급전화 1366</div><div style="font-size:13px;color:var(--text-muted);font-weight:400;">성폭력, 가정폭력 상담</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- 귀가 안전 팁 -->
+<div style="padding:20px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:16px;">
+  <h2 style="font-size:18px;margin-bottom:16px;">귀가 안전 체크리스트</h2>
+  <ul style="padding-left:20px;font-size:16px;line-height:2;color:var(--text-secondary);list-style:disc;">
+    <li>친구에게 귀가 경로와 예상 도착 시간 알리기</li>
+    <li>택시 이용 시 차량 번호 사진 찍어 보내기</li>
+    <li>모르는 사람이 주는 음료 마시지 않기</li>
+    <li>만취 상태로 혼자 이동하지 않기</li>
+    <li>대리운전 번호 미리 저장해두기</li>
+  </ul>
+</div>
+
+<!-- 대리운전 -->
+<div style="padding:20px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:24px;">
+  <h2 style="font-size:18px;margin-bottom:12px;">대리운전</h2>
+  <a href="tel:1588-5000" target="_blank" rel="noopener noreferrer" style="display:block;padding:14px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);text-align:center;font-size:16px;font-weight:600;margin-bottom:8px;">
+    카카오 대리 1588-5000
+  </a>
+  <p style="font-size:13px;color:var(--text-muted);text-align:center;">카카오T 앱에서도 호출 가능합니다</p>
+</div>
+
+<script is:inline>
+(function() {
+  var els = ['weight','gender','soju','beer'];
+  els.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', calc);
+    if (el) el.addEventListener('change', calc);
+  });
+  function calc() {
+    var w = parseFloat(document.getElementById('weight').value) || 0;
+    var g = document.getElementById('gender').value;
+    var soju = parseInt(document.getElementById('soju').value) || 0;
+    var beer = parseInt(document.getElementById('beer').value) || 0;
+    if (w <= 0) return;
+    var alcohol = (soju * 8.4) + (beer * 10); // grams
+    var r = g === 'male' ? 0.68 : 0.55;
+    var bac = (alcohol / (w * r * 1000)) * 100;
+    var hours = Math.ceil(bac / 0.015);
+    var result = document.getElementById('alcResult');
+    var level = '';
+    var color = '#22C55E';
+    if (bac < 0.03) { level = '안전 구간'; color = '#22C55E'; }
+    else if (bac < 0.08) { level = '면허정지 구간'; color = '#F59E0B'; }
+    else { level = '면허취소 구간'; color = '#DC2626'; }
+    result.innerHTML = '<div><div style="font-size:24px;font-weight:800;color:' + color + ';">' + bac.toFixed(3) + '%</div><div style="font-size:14px;color:' + color + ';margin-top:4px;">' + level + '</div><div style="font-size:13px;color:var(--text-muted);margin-top:8px;">분해 예상: 약 ' + hours + '시간</div></div>';
+  }
+})();
+</script>
+
+</BaseLayout>
