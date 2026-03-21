@@ -576,20 +576,21 @@ const _b64d = Buffer.from(JSON.stringify({
 .sb-call:hover{transform:scale(1.1)}
 </style>
 
-<!-- ═══ CLIENT SCRIPTS ═══ -->
-<script is:inline define:vars={{ _b64d }}>
+<!-- ═══ STICKY PHONE BAR (SSR) ═══ -->
+{venue.phone && (
+  <div class="sticky-bar">
+    <div class="sb-info">
+      <div class="sb-name">{venue.name}</div>
+      {venue.nickname && <div class="sb-nick">담당: {venue.nickname}</div>}
+    </div>
+    <a href={`tel:${venue.phone}`} target="_blank" rel="noopener noreferrer" class="sb-call">📞</a>
+  </div>
+)}
+
+<!-- ═══ CLIENT SCRIPTS (최소) ═══ -->
+<script is:inline>
 (function(){
-  var D = JSON.parse(atob(_b64d));
-
-  // ── BREADCRUMB + BADGE ──
-  var bcEl=document.getElementById('bcNav');
-  if(bcEl)bcEl.innerHTML='<a href="/" target="_blank">홈</a><span>›</span><a href="'+D.bc.tu+'" target="_blank">'+D.bc.tn+'</a><span>›</span><span class="bc-cur">'+D.bc.vn+'</span>';
-  var vhB=document.getElementById('vhBadge');if(vhB)vhB.textContent=D.bc.tn;
-
-  // ── JSON-LD ──
-  if(D.jld){var jS=document.createElement('script');jS.type='application/ld+json';jS.textContent=JSON.stringify(D.jld);document.head.appendChild(jS);}
-
-  // ── TABS ──
+  // TABS
   document.querySelectorAll('.tab-btn').forEach(function(btn){
     btn.addEventListener('click',function(){
       document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
@@ -599,37 +600,6 @@ const _b64d = Buffer.from(JSON.stringify({
       if(panel) panel.classList.add('active');
     });
   });
-
-  // Reviews: real data only (none yet)
-
-  // ── VS VOTING ──
-  if(D.vs){
-    var voted=localStorage.getItem('vs_'+D.vs.a.s);
-    var pctA=((D.vs.a.id*7+D.vs.b.id*13)%21+40);
-    var pctB=100-pctA;
-    function renderVs(){
-      voted=localStorage.getItem('vs_'+D.vs.a.s);
-      var h='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="a"><div class="vs-nm">'+D.vs.a.n+'</div><div class="vs-mt">'+D.vs.a.r+' · '+D.vs.a.tn+'</div><div class="vs-pct">'+(voted?pctA+'%':'??%')+'</div></div>';
-      h+='<div class="vs-badge">VS</div>';
-      h+='<div class="vs-card'+(voted?' voted revealed':'')+'" data-side="b"><div class="vs-nm">'+D.vs.b.n+'</div><div class="vs-mt">'+D.vs.b.r+' · '+D.vs.b.tn+'</div><div class="vs-pct">'+(voted?pctB+'%':'??%')+'</div></div>';
-      document.getElementById('vsArena').innerHTML=h;
-      if(!voted){document.querySelectorAll('#vsArena .vs-card').forEach(function(c){c.addEventListener('click',function(){localStorage.setItem('vs_'+D.vs.a.s,c.getAttribute('data-side'));renderVs();});});}
-    }
-    renderVs();
-  }
-
-  // ── RECOMMENDATIONS ──
-  function recCard(v){return '<a href="/venue/'+v.s+'/" target="_blank" class="rec-card"><div class="rec-name">'+v.n+'</div><div class="rec-meta">'+v.r+' · '+v.tn+'</div></a>';}
-  document.getElementById('recsSimilar').innerHTML=D.recs.similar.map(recCard).join('');
-  document.getElementById('recsNearby').innerHTML=D.recs.nearby.length?D.recs.nearby.map(recCard).join(''):'<p style="font-size:13px;color:var(--text-muted)">근처 다른 곳이 없습니다.</p>';
-  document.getElementById('recsHidden').innerHTML=D.recs.hidden?recCard(D.recs.hidden):'';
-
-  // ── STICKY PHONE BAR ──
-  if(D.bar.ph){
-    var sb=document.getElementById('stickyBar');
-    sb.innerHTML='<div class="sticky-bar"><div class="sb-info"><div class="sb-name">'+D.bar.n+'</div>'+(D.bar.nk?'<div class="sb-nick">담당: '+D.bar.nk+'</div>':'')+'</div><a href="tel:'+D.bar.ph+'" target="_blank" class="sb-call">📞</a></div>';
-    document.body.style.paddingBottom='80px';
-  }
 })();
 </script>
 
