@@ -1,6 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#8B5CF6"/>
-  <text x="600" y="260" text-anchor="middle" font-size="80" font-weight="800" fill="#fff" font-family="sans-serif">오늘밤어디</text>
-  <text x="600" y="360" text-anchor="middle" font-size="36" fill="rgba(255,255,255,0.8)" font-family="sans-serif">전국 밤문화 정보를 한눈에</text>
-  <text x="600" y="420" text-anchor="middle" font-size="24" fill="rgba(255,255,255,0.5)" font-family="sans-serif">19곳의 현장 정보와 후기</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A0A0F"/>
+      <stop offset="100%" stop-color="#1A0A2E"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.05">
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="60" x2="1200" y2="60" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="180" x2="1200" y2="180" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="240" x2="1200" y2="240" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="480" x2="1200" y2="480" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="540" x2="1200" y2="540" stroke="#39FF14" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#39FF14" stroke-width="1"/>
+  </g>
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="none" stroke="#39FF14" stroke-width="2" opacity="0.3"/>
+  <text x="600" y="250" text-anchor="middle" font-size="72" font-weight="800" fill="#FFFFFF" font-family="sans-serif">오늘밤어디</text>
+  <text x="600" y="340" text-anchor="middle" font-size="32" fill="#A855F7" font-family="monospace">새벽까지 멈추지 않는 밤</text>
+  <text x="600" y="420" text-anchor="middle" font-size="22" fill="rgba(57,255,20,0.7)" font-family="monospace">전국 나이트·클럽·라운지 19곳 완벽 가이드</text>
+  <line x1="50" y1="50" x2="120" y2="50" stroke="#39FF14" stroke-width="3"/>
+  <line x1="50" y1="50" x2="50" y2="120" stroke="#39FF14" stroke-width="3"/>
+  <line x1="1080" y1="580" x2="1150" y2="580" stroke="#A855F7" stroke-width="3"/>
+  <line x1="1150" y1="510" x2="1150" y2="580" stroke="#A855F7" stroke-width="3"/>
 </svg>
