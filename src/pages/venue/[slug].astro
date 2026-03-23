@@ -149,7 +149,7 @@ const jsonLd = [
 
 <BaseLayout
   title={`${venue.h1Title} | ${SITE_NAME}`}
-  description={`${venue.shortDesc} ${venue.nickname ? venue.nickname + ' 담당 직통 연결.' : ''} ${venue.region} 위치, 분위기·운영시간 상세 안내.`.trim().substring(0, 150)}
+  description={`${venue.shortDesc} ${venue.nickname ? venue.nickname + ' 직통.' : ''} ${venue.highlights.slice(0,2).join(', ')}. 지금 확인하세요.`.trim().substring(0, 150)}
   canonical={`${SITE_URL}/venue/${venue.slug}/`}
   ogImage={ogImageUrl}
   jsonLd={jsonLd}
