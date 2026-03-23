@@ -351,6 +351,15 @@ main {
   color: var(--text-muted);
   font-weight: 500;
 }
+.venue-type-text {
+  font-size: 11px;
+  color: var(--accent2);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--accent2-light);
+  border: 1px solid rgba(168,85,247,0.2);
+}
 .venue-card-name {
   font-size: 18px;
   font-weight: 700;
