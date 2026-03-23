@@ -1,7 +1,25 @@
+User-agent: Googlebot
+Allow: /
+
 User-agent: Yeti
 Allow: /
 
-User-agent: Googlebot
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 User-agent: *
