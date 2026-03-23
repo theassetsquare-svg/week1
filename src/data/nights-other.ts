@@ -460,7 +460,7 @@ export const nightsOther: Venue[] = [
     tags: ['부산', '연산동', '따봉', '바다 테마'],
     seoTitle: '부산연산동물나이트',
     seoDescription: '부산 연산동의 대표 물 무대, 따봉 담당이 이끄는 열정의 공간. 따봉 담당. 분위기·운영 정보 확인.',
-    h1Title: '부산연산동물나이트 — 따봉과 함께하는 연산동의 밤'
+    h1Title: '부산연산동물나이트 — 따봉이 보장하는 부킹률 1위의 밤'
   },
   {
     id: 49, slug: 'busan-asiad', name: '부산아시아드나이트', type: 'night', typeName: '나이트',
