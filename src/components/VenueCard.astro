@@ -7,12 +7,14 @@ interface Props {
 }
 
 const { venue, rank } = Astro.props;
+const nameHasRegion = venue.name.includes(venue.region);
 ---
 
-<a href={`/venue/${venue.slug}/`} class="venue-card" target="_blank">
+<a href={`/venue/${venue.slug}/`} class="venue-card" target="_blank" rel="noopener noreferrer">
   <div class="venue-card-header">
     {rank && <span class="rank-badge">#{rank}</span>}
-    <span class="venue-region-text">{venue.region}</span>
+    {!nameHasRegion && <span class="venue-region-text">{venue.region}</span>}
+    <span class="venue-type-text">{venue.typeName}</span>
   </div>
   <div class="venue-card-name">{venue.name}</div>
   <div class="venue-card-desc">{venue.shortDesc}</div>
