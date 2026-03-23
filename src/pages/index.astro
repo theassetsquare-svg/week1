@@ -245,9 +245,9 @@ const jsonLd = { "@context": "https://schema.org", "@type": "WebSite", "name": S
         return v.n.toLowerCase().indexOf(q) >= 0 || v.r.toLowerCase().indexOf(q) >= 0 || v.tn.toLowerCase().indexOf(q) >= 0;
       }).slice(0, 8);
       results.innerHTML = matches.length === 0
-        ? '<div style="padding:16px;color:var(--text-muted);font-size:14px;">검색 결과가 없습니다</div>'
+        ? '<div style="padding:16px;color:#666;font-size:14px;">검색 결과가 없습니다</div>'
         : matches.map(function(v) {
-            return '<a href="/venue/' + v.s + '/" target="_blank" rel="noopener noreferrer" style="display:block;padding:12px 16px;border-bottom:1px solid #2A2A3E;color:#E8E8F0;font-size:15px;text-decoration:none;"><strong>' + v.n + '</strong> <span style="color:#8888AA;font-size:13px;">' + v.r + ' · ' + v.tn + '</span></a>';
+            return '<a href="/venue/' + v.s + '/" target="_blank" rel="noopener noreferrer" style="display:block;padding:12px 16px;border-bottom:1px solid #eee;color:#111;font-size:15px;text-decoration:none;"><strong>' + v.n + '</strong> <span style="color:#666;font-size:13px;">' + v.r + ' · ' + v.tn + '</span></a>';
           }).join('');
       results.style.display = 'block';
     });
