@@ -229,7 +229,7 @@ export const nightsOther: Venue[] = [
     tags: ['대전', '봉명동', '레트로', '피아노'],
     seoTitle: '대전봉명나이트',
     seoDescription: '유성구 봉명동의 터줏대감, 오래된 단골과 새로운 손님이 어우러지는 곳. 분위기·운영 정보 확인.',
-    h1Title: '대전봉명나이트 — 봉명동에서 가장 오래된 이름'
+    h1Title: '대전봉명나이트 — 20년 넘게 자리를 지킨 이유가 있다'
   },
   {
     id: 39, slug: 'daejeon-hankukgwan', name: '대전한국관나이트', type: 'night', typeName: '나이트',
