@@ -302,15 +302,18 @@ main {
 
 /* ─── Venue Card ─── */
 .venue-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
   margin-bottom: 12px;
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  min-height: 160px;
+  min-height: 180px;
+  max-height: 220px;
   box-shadow: var(--card-shadow);
+  overflow: hidden;
 }
 .venue-card:hover {
   transform: translateY(-3px);
