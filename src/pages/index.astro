@@ -359,6 +359,50 @@ const jsonLd = { "@context": "https://schema.org", "@type": "WebSite", "name": S
   }, { threshold: 0.1 });
   cards.forEach(function(c) { observer.observe(c); });
 
+  // ── [슬롯머신] 오늘의 운세 — 매일 다른 결과, 카톡 공유 ──
+  var zodiacs = ['♈양자리','♉황소자리','♊쌍둥이자리','♋게자리','♌사자자리','♍처녀자리','♎천칭자리','♏전갈자리','♐사수자리','♑염소자리','♒물병자리','♓물고기자리'];
+  var fortunes = [
+    '오늘 밤은 새로운 인연을 만날 운명. 용기를 내서 말을 걸어보세요.',
+    '분위기 좋은 라운지에서 조용한 대화가 행운을 가져옵니다.',
+    '오늘은 댄스 플로어에서 빛나는 날. 몸을 맡기세요.',
+    '친구와 함께 가면 2배로 즐거운 밤이 될 거예요.',
+    '오늘의 럭키 컬러는 보라. 보라색 옷을 입으면 주목받습니다.',
+    '혼자 가도 좋은 날. 바 카운터에서 바텐더와 대화해보세요.',
+    '금요일에 최고의 경험이 기다리고 있습니다. 예약하세요.',
+    '오늘 밤 VIP석에서 특별한 시간을 보낼 수 있는 운세입니다.',
+    '새로운 장르의 음악을 시도해보세요. 의외의 발견이 있습니다.',
+    '오늘은 조용한 곳보다 에너지 넘치는 곳이 어울립니다.',
+    '가까운 사람에게 연락하세요. 함께 갈 사람이 기다리고 있어요.',
+    '오늘의 행운 업소가 당신을 부르고 있습니다. 직감을 믿으세요.'
+  ];
+  var fortuneBox = document.getElementById('fortuneZodiac');
+  var fortuneResult = document.getElementById('fortuneResult');
+  if (fortuneBox) {
+    zodiacs.forEach(function(z, i) {
+      var btn = document.createElement('button');
+      btn.textContent = z;
+      btn.style.cssText = 'padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid #D97706;background:#fff;color:#92400E;cursor:pointer;transition:all .2s;';
+      btn.addEventListener('click', function() {
+        var dayCode = new Date().getDate() + i;
+        var fortune = fortunes[dayCode % fortunes.length];
+        var luckyVenue = venues[dayCode % totalVenues];
+        fortuneResult.style.display = 'block';
+        fortuneResult.innerHTML = '<p style="font-size:16px;font-weight:700;color:#92400E;margin-bottom:8px;">' + z + ' 오늘의 운세</p><p style="font-size:15px;color:#78350F;line-height:1.7;margin-bottom:12px;">' + fortune + '</p><a href="/venue/' + luckyVenue.s + '/" target="_blank" rel="noopener noreferrer" style="display:block;padding:12px;background:#FEF3C7;border-radius:8px;text-decoration:none;color:#92400E;font-weight:600;text-align:center;">✨ 행운의 업소: ' + luckyVenue.n + ' →</a>';
+        fortuneBox.querySelectorAll('button').forEach(function(b) { b.style.background = '#fff'; });
+        btn.style.background = '#FDE68A';
+      });
+      fortuneBox.appendChild(btn);
+    });
+  }
+
+  // ── [틱톡] 이번주 숨은 명소 — 매주 바뀜 ──
+  var hiddenGem = document.getElementById('hiddenGem');
+  if (hiddenGem && totalVenues > 0) {
+    var weekCode = Math.floor(Date.now() / (7 * 24 * 60 * 60 * 1000));
+    var gem = venues[(weekCode * 7) % totalVenues];
+    hiddenGem.innerHTML = '<a href="/venue/' + gem.s + '/" target="_blank" rel="noopener noreferrer" style="display:block;padding:14px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);"><div style="font-size:16px;font-weight:700;margin-bottom:4px;">' + gem.n + '</div><div style="font-size:13px;color:var(--text-muted);">' + gem.r + ' · ' + gem.tn + '</div><div style="font-size:14px;color:var(--text-secondary);margin-top:8px;line-height:1.6;">' + (gem.d || '') + '</div></a>';
+  }
+
   // ── 오토플레이 (넷플릭스 자동재생) ──
   var autoSection = document.getElementById('autoplaySection');
   var autoBar = document.getElementById('autoplayBar');
