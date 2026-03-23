@@ -530,8 +530,8 @@ export const clubVenues: Venue[] = [
   },
   {
     id: 76,
-    slug: 'itaewon-club-utopia',
-    name: '이태원클럽 유토피아',
+    slug: 'itaewon-club-waikiki-utopia',
+    name: '이태원클럽 와이키키유토피아',
     type: 'club',
     typeName: '클럽',
     region: '이태원',
