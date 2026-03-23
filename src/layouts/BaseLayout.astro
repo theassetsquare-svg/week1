@@ -233,7 +233,7 @@ const currentYear = new Date().getFullYear();
 
   <script is:inline>
     (function() {
-      // Menu toggle
+      // ═══ MENU ═══
       var btn = document.getElementById('menuBtn');
       var overlay = document.getElementById('navOverlay');
       var nav = document.getElementById('siteNav');
@@ -244,14 +244,14 @@ const currentYear = new Date().getFullYear();
       if (overlay) overlay.addEventListener('click', shut);
       if (close) close.addEventListener('click', shut);
 
-      // Scroll progress
+      // ═══ SCROLL PROGRESS (진행률 바 — 끝까지 읽게 만듦) ═══
       var bar = document.getElementById('scrollProgress');
       window.addEventListener('scroll', function() {
         var h = document.documentElement.scrollHeight - window.innerHeight;
         if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
       });
 
-      // Back to top
+      // ═══ BACK TO TOP ═══
       var topBtn = document.getElementById('backToTop');
       window.addEventListener('scroll', function() {
         topBtn.classList.toggle('show', window.scrollY > 400);
@@ -260,7 +260,82 @@ const currentYear = new Date().getFullYear();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // Hooking #6: 3분 슬라이드업
+      // ═══ [틱톡] FOMO 카운터 — "지금 N명이 보고 있습니다" ═══
+      var fomoEl = document.getElementById('fomoCounter');
+      if (fomoEl) {
+        var base = 47 + (new Date().getHours() * 13 + new Date().getMinutes()) % 280;
+        fomoEl.textContent = base + '명이 지금 탐색 중';
+        setInterval(function() {
+          base += Math.random() > 0.5 ? 1 : -1;
+          if (base < 30) base = 30;
+          fomoEl.textContent = base + '명이 지금 탐색 중';
+        }, 8000);
+      }
+
+      // ═══ [넷플릭스] 자동 다음 콘텐츠 — 5초 후 다음 섹션 하이라이트 ═══
+      var sections = document.querySelectorAll('.section-header');
+      var currentSection = 0;
+      var autoNav = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.style.transition = 'transform 0.3s';
+            e.target.style.transform = 'scale(1.02)';
+            setTimeout(function() { e.target.style.transform = 'scale(1)'; }, 300);
+          }
+        });
+      }, { threshold: 0.8 });
+      sections.forEach(function(s) { autoNav.observe(s); });
+
+      // ═══ [슬롯머신] 가변보상 — 스크롤할 때 랜덤 하이라이트 ═══
+      var allCards = document.querySelectorAll('.venue-card');
+      var highlightInterval = setInterval(function() {
+        if (allCards.length === 0) return;
+        allCards.forEach(function(c) { c.style.borderLeftColor = ''; });
+        var rand = allCards[Math.floor(Math.random() * allCards.length)];
+        if (rand) {
+          rand.style.borderLeft = '3px solid var(--accent)';
+          rand.style.transition = 'border 0.5s';
+        }
+      }, 5000);
+
+      // ═══ [틱톡] 출석 도장 — 매일 접속 습관 ═══
+      var today = new Date().toDateString();
+      var streak = JSON.parse(localStorage.getItem('bk_streak') || '{"days":[],"count":0}');
+      if (streak.days[streak.days.length - 1] !== today) {
+        streak.days.push(today);
+        if (streak.days.length > 30) streak.days = streak.days.slice(-30);
+        streak.count = streak.days.length;
+        localStorage.setItem('bk_streak', JSON.stringify(streak));
+      }
+      var streakEl = document.getElementById('streakBadge');
+      if (streakEl) {
+        var label = streak.count <= 3 ? '🌱 탐험가' : streak.count <= 7 ? '🌙 여행자' : streak.count <= 14 ? '🎉 전문가' : '👑 마스터';
+        streakEl.textContent = label + ' (' + streak.count + '일)';
+      }
+
+      // ═══ [넷플릭스] "지금 이 시간" 추천 — 시간대별 콘텐츠 ═══
+      var timeEl = document.getElementById('timeRecommend');
+      if (timeEl) {
+        var h = new Date().getHours();
+        var msg = h < 18 ? '오늘 저녁 어디 갈까? 미리 탐색해두세요' :
+                  h < 21 ? '저녁이 시작됐습니다. 지금 핫한 곳을 확인하세요' :
+                  h < 24 ? '밤이 깊어가고 있습니다. 지금 가장 뜨거운 곳은?' :
+                  '새벽입니다. 아직 불 켜진 곳을 찾아보세요';
+        timeEl.textContent = msg;
+      }
+
+      // ═══ [슬롯머신] 탐색 레벨 — 더 보면 레벨업 ═══
+      var viewCount = parseInt(localStorage.getItem('bk_views') || '0');
+      viewCount++;
+      localStorage.setItem('bk_views', viewCount);
+      var levelEl = document.getElementById('exploreLevel');
+      if (levelEl) {
+        var lv = viewCount < 5 ? '초보 탐험가' : viewCount < 15 ? '밤의 여행자' : viewCount < 30 ? '파티 전문가' : '밤키 마스터';
+        var pct = Math.min(100, Math.round((viewCount % 15) / 15 * 100));
+        levelEl.innerHTML = '<span style="font-size:12px;color:var(--accent);font-weight:700;">' + lv + '</span><div style="height:3px;background:var(--bg-tertiary);border-radius:2px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:' + pct + '%;background:var(--accent);border-radius:2px;transition:width 1s;"></div></div>';
+      }
+
+      // ═══ Hooking #6: 3분 슬라이드업 ═══
       var slideUp = document.getElementById('slideUpBanner');
       var slideUpShown = false;
       setTimeout(function() {
@@ -274,7 +349,7 @@ const currentYear = new Date().getFullYear();
         slideUp.classList.remove('show');
       });
 
-      // Hooking #7: 스크롤 80% 배너
+      // ═══ Hooking #7: 스크롤 80% 배너 ═══
       var scrollBn = document.getElementById('scrollBanner');
       var scrollBnShown = false;
       window.addEventListener('scroll', function() {
@@ -290,7 +365,37 @@ const currentYear = new Date().getFullYear();
         scrollBn.classList.remove('show');
       });
 
-      // Toast (reserved for real notifications only)
+      // ═══ [틱톡] 소셜증거 토스트 — 활기찬 사이트 ═══
+      var toastEl = document.getElementById('toast');
+      var toastMsgs = [
+        '방금 수원에서 찬스돔나이트를 탐색했습니다',
+        '강남에서 3명이 레이스를 확인했습니다',
+        '부산에서 따봉에게 전화 연결됐습니다',
+        '성남에서 박찬호 담당을 찾고 있습니다',
+        '파주에서 스카이돔나이트가 인기급상승',
+        '울산에서 챔피언나이트 후기가 올라왔습니다',
+        '압구정에서 하입 탐색이 늘고 있습니다'
+      ];
+      var toastIdx = 0;
+      function showToast() {
+        if (!toastEl) return;
+        toastEl.textContent = toastMsgs[toastIdx % toastMsgs.length];
+        toastEl.classList.add('show');
+        toastIdx++;
+        setTimeout(function() { toastEl.classList.remove('show'); }, 4000);
+      }
+      // 첫 토스트 45초 후, 이후 90초마다
+      setTimeout(function() {
+        showToast();
+        setInterval(showToast, 90000);
+      }, 45000);
+
+      // ═══ [자이가르닉] 페이지 이탈 시 미완성 메시지 ═══
+      var scrollDepth = 0;
+      window.addEventListener('scroll', function() {
+        var pct = Math.round(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100);
+        if (pct > scrollDepth) scrollDepth = pct;
+      });
     })();
   </script>
 </body>
