@@ -622,7 +622,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','첨단','테크','AI 비주얼'],
  seoTitle:'광주첨단엠파나이트',
- seoDescription:'광주첨단엠파나이트, QR로 체크인하고 터치 패널로 주문한다. 키네틱 아트가 비트에 맞춰 움직이는 미래형 무대.',
+ seoDescription:'광주첨단엠파나이트, QR로 체크인하고 터치 패널로 주문한다. 천장의 키네틱 아트가 비트에 맞춰 형태를 바꾸고 AI가 비주얼을 실시간 생성하는 미래형 무대의 정체.',
  h1Title:'광주첨단엠파나이트 — 기술이 빚어낸 미래형 밤'
  },
  {
@@ -645,7 +645,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','MGM','영화','OST'],
  seoTitle:'광주MGM나이트',
- seoDescription:'광주MGM나이트, 입구에 레드카펫이 진짜 깔려 있다. 기념일에 가면 스팟 조명 연출까지 해주는 이 집의 정체.',
+ seoDescription:'광주MGM나이트, 입구에 레드카펫이 진짜 깔려 있고 금색 로프가 양옆에 서 있다. 기념일에 가면 스팟 조명 연출에 축하 메시지까지. 매월 영화 OST 특집 정보.',
  h1Title:'광주MGM나이트 — 영화처럼 화려한 밤이 펼쳐지는 곳'
  },
  {
