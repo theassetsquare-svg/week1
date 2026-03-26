@@ -575,7 +575,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','러시아 감성','보드카','이국적'],
  seoTitle:'수원호빠 모스크바',
- seoDescription:'양파형 돔 입구에 보드카 20종. 러시아가 수원에 내려앉았다.',
+ seoDescription:'수원호빠 모스크바 보드카 20종에 양파형 돔 입구. 수원에서 러시아 감성 느끼고 싶으면 여기 말고 없다.',
  h1Title:'수원호빠 모스크바 — 보드카 한 잔에 러시아가 스민다'
  },
  {
@@ -598,7 +598,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['인계동','레트로','인더스트리얼','시그니처 칵테일'],
  seoTitle:'인계동호빠 마징가',
- seoDescription:'로봇 피규어에 빈티지 포스터. 레트로 에너지가 폭발하는 인계동.',
+ seoDescription:'인계동호빠 마징가 레트로 감성이 폭발하는 이유. 로봇 피규어에 빈티지 포스터, 여기 안 가본 사람은 있어도 한 번만 간 사람은 없다.',
  h1Title:'인계동호빠 마징가 — 이 이름 들으면 이미 에너지가 찬다'
  },
  {
@@ -621,7 +621,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['장안동','힙합','그래피티','스트리트'],
  seoTitle:'장안동호빠 FLEX',
- seoDescription:'그래피티에 스니커즈 쇼케이스. 힙합이 공간이 된 장안동의 밤.',
+ seoDescription:'장안동호빠 FLEX 그래피티에 스니커즈 쇼케이스. 힙합 좋아하면 이 공간 한번 빠지면 헤어나올 수 없다.',
  h1Title:'장안동호빠 FLEX — 힙합을 좋아한다면, 여기밖에 없다'
  },
  {

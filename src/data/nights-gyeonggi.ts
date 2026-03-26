@@ -114,7 +114,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['김포','가족적','한강','소규모'],
  seoTitle:'김포호박나이트',
- seoDescription:'한강 하구 신도시의 호박. 주인이 직접 나오는 따뜻한 무대.',
+ seoDescription:'김포호박나이트 가보면 주인이 직접 이름 불러준다. 요즘 이런 곳이 어디 있나. 김포 신도시 주민들이 자꾸 가는 이유.',
  h1Title:'김포호박나이트 — 호박빛 조명 아래 펼쳐지는 따뜻한 무대'
  },
  {
@@ -137,7 +137,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['김포','로맨틱','R&B','칵테일'],
  seoTitle:'김포썸나이트',
- seoDescription:'연애의 시작 단계를 닮은 공간. 김포에서 썸 타는 밤.',
+ seoDescription:'김포썸나이트 솔직 후기. 캔들 켜진 테이블에서 소개팅하면 성공률이 오르는 이유. 분위기, 칵테일, 꿀팁 정리.',
  h1Title:'김포썸나이트 — 연애의 시작, 로맨틱 무대'
  },
  {
@@ -160,7 +160,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['구리','왕숙천','합리적','소도시'],
  seoTitle:'구리호박나이트',
- seoDescription:'왕숙천 옆 소도시의 느긋한 밤. 구리의 호박.',
+ seoDescription:'구리호박나이트 가기 전에 이것만 알면 된다. 서울보다 30% 싸고, 왕숙천 산책 후 들르면 타이밍이 딱 맞는다.',
  h1Title:'구리호박나이트 — 소도시 느긋한 밤'
  },
  {
@@ -183,7 +183,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['의정부','군사 도시','합리적 가격','전통'],
  seoTitle:'의정부한국관나이트',
- seoDescription:'부대찌개 도시의 투박하고 진솔한 밤. 의정부 한국관.',
+ seoDescription:'의정부한국관나이트에서 군가 떼창이 터지는 날이 있다. 서울 절반 가격에 이 분위기, 안 가본 사람은 모른다.',
  h1Title:'의정부한국관나이트 — 전통 감성과 현대 사운드의 만남'
  },
  {
