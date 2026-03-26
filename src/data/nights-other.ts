@@ -44,7 +44,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['부천','품격','샹들리에','부스석'],
  seoTitle:'부천메리트나이트',
- seoDescription:'입구의 대리석부터 말한다. 부천의 품격 있는 밤.',
+ seoDescription:'부천메리트나이트 가본 사람만 아는 것. 생일에 가면 깜짝 이벤트가 터진다. 호텔급 응대가 이 동네에 왜 있는지.',
  h1Title:'부천메리트나이트 — 메리트라는 이름값 그대로의 밤'
  },
  {
@@ -67,7 +67,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['부천','바다 테마','고래','저음 사운드'],
  seoTitle:'부천고래나이트',
- seoDescription:'고래 뱃속 같은 공간. 심해처럼 깊은 부천의 밤.',
+ seoDescription:'부천고래나이트, 진짜 고래 뱃속에 들어온 느낌이다. 새벽에 조명이 붉어지는 순간이 절정인 이유를 설명한다.',
  h1Title:'부천고래나이트 — 심해처럼 깊은 밤'
  },
  {
