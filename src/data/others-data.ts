@@ -368,7 +368,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['신림','왕궁 인테리어','촛불','가성비'],
  seoTitle:'신림호빠 궁전',
- seoDescription:'신림 골목 안, 서민 동네에 갑자기 나타나는 유럽 왕궁. 이 반전.',
+ seoDescription:'신림호빠 궁전 솔직 후기. 서민 동네 골목에서 유럽 왕궁이 튀어나온다. 이 반전 실화냐는 반응 폭주.',
  h1Title:'신림호빠 궁전 — 골목 하나 건너면 왕궁이다'
  },
  {
