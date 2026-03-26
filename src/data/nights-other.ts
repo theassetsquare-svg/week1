@@ -622,7 +622,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','첨단','테크','AI 비주얼'],
  seoTitle:'광주첨단엠파나이트',
- seoDescription:'QR 체크인, AI 비주얼. 기술이 빚어낸 광주의 미래형 무대.',
+ seoDescription:'광주첨단엠파나이트, QR로 체크인하고 터치 패널로 주문한다. 키네틱 아트가 비트에 맞춰 움직이는 미래형 무대.',
  h1Title:'광주첨단엠파나이트 — 기술이 빚어낸 미래형 밤'
  },
  {

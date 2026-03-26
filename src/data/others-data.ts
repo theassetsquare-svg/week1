@@ -1058,7 +1058,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','클래식','무도회','샹들리에'],
  seoTitle:'울산호빠 왈츠',
- seoDescription:'아치형 문에 샹들리에, 3박자 리듬. 울산의 우아한 밤.',
+ seoDescription:'울산호빠 왈츠 아치형 문에 샹들리에, 3박자 리듬이 흐르는 공간. 울산에서 우아하게 놀고 싶으면 여기.',
  h1Title:'울산호빠 왈츠 — 3박자에 몸을 맡기는 밤'
  },
  {
