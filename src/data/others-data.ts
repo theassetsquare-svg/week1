@@ -230,7 +230,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','파스텔','수요일 이벤트','논알코올'],
  seoTitle:'강남호빠 수요비',
- seoDescription:'수요일의 비밀. 주중인데 좌석이 차는 이유가 있는 곳.',
+ seoDescription:'강남호빠 수요비, 수요일마다 자리가 없는 이유가 뭘까. 주중 파티를 만든 곳의 비밀을 파헤쳐봤다.',
  h1Title:'강남호빠 수요비 — 수요일 밤, 여기는 이미 시작됐다'
  },
  {
