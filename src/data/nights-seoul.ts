@@ -184,7 +184,7 @@ export const nightsSeoul: Venue[] = [
  ],
  tags: ['강서','마곡','모던','공항 접근성'],
  seoTitle:'강서나이트',
- seoDescription:'서울 서쪽 끝, 마곡 직장인들의 야간 거점.',
+ seoDescription:'강서나이트 가기 전에 알아야 할 것. 마곡 직장인들이 퇴근 후 여기로 몰리는 이유, 입장료와 분위기 총정리.',
  h1Title:'강서나이트 — 서울 서쪽 끝에서 펼쳐지는 무대'
  },
  {

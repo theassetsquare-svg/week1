@@ -207,7 +207,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','우주 테마','네온','몰입형 공간'],
  seoTitle:'강남호빠 블랙홀',
- seoDescription:'검은 유리문 너머 보라색 네온과 별자리. 한번 빠지면 못 나온다.',
+ seoDescription:'강남호빠 블랙홀 한번 빠지면 못 나온다는 말의 진짜 의미. 우주 테마 네온에 몰입감이 장난 아니다.',
  h1Title:'강남호빠 블랙홀 — 빠져들면 끝이다, 이 어둠에서'
  },
  {
