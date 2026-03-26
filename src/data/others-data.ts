@@ -1288,7 +1288,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['영등포','바로크','궁전','파티'],
  seoTitle:'영등포호빠 궁전',
- seoDescription:'대리석 계단에 금색 유리문. 바로크 양식이 영등포에 서 있다.',
+ seoDescription:'영등포호빠 궁전 대리석 계단에 금색 유리문이라니. 바로크 양식이 영등포에 서 있는 이유를 알아봤다.',
  h1Title:'영등포호빠 궁전 — 계단 위에 왕관이 있다'
  },
 ];
