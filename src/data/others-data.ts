@@ -22,7 +22,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['일산','완벽 방음','회식 맞춤','신실장'],
  seoTitle:'일산룸',
- seoDescription:'일산 한복판, 신실장이 이름 하나로 버텨온 공간. 방음과 세팅의 정석.',
+ seoDescription:'일산룸 신실장 가기 전에 이것만 알아두세요. 정찰제 가격, 방 종류, 예약 팁까지 현지인이 정리했습니다.',
  h1Title:'일산룸 — 신실장이라는 이름, 그 자체가 보증수표'
  },
  {

@@ -91,7 +91,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['강남','Jack','라이브','힙합','R&B','라이브 공연'],
  seoTitle:'강남클럽 Jack',
- seoDescription:'잭 다니엘처럼 강렬한 강남의 밤',
+ seoDescription:'강남 Jack에서 래퍼 라이브를 직관한 사람들의 솔직 후기. 수요일이랑 금요일에 가야 하는 이유, 게스트 등록 꿀팁까지.',
  h1Title:'강남클럽 Jack — 잭 다니엘처럼 강렬한 밤',
  },
  {
