@@ -113,7 +113,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['안산','비밀','레트로','마스크 파티'],
  seoTitle:'안산돈텔마마나이트',
- seoDescription:'엄마에게 말하지 마. 안산에서 가장 비밀스러운 아지트.',
+ seoDescription:'안산돈텔마마나이트, 처음 가면 입구를 못 찾는다. 그게 의도다. 매월 첫째 토요일 마스크 파티가 뭔지 알면 빠진다.',
  h1Title:'안산돈텔마마나이트 — 엄마에게 말하지 마, 비밀의 밤'
  },
  {
@@ -136,7 +136,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['천안','돔','별하늘','쇼케이스'],
  seoTitle:'천안스타돔나이트',
- seoDescription:'돔 천장에 별이 쏟아진다. 충남 천안의 스타돔.',
+ seoDescription:'천안스타돔나이트 솔직 후기. 돔 천장에 별이 쏟아지는데, 서울에서 KTX 타고 원정 오는 사람이 있는 이유가 있다.',
  h1Title:'천안스타돔나이트 — 별이 쏟아지는 돔 아래의 밤'
  },
  {
