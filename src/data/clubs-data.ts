@@ -525,7 +525,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['청담','아르쥬','럭셔리','샴페인','VIP','격이 다른'],
  seoTitle:'청담클럽 아르쥬',
- seoDescription:'격이 다른 밤, 아르쥬',
+ seoDescription:'청담 아르쥬는 입구부터 대리석이다. 캐주얼 차림이면 문 앞에서 돌아가야 하는데, 그래도 사람들이 가는 이유가 있다.',
  h1Title:'청담클럽 아르쥬 — 럭셔리 파티의 끝판왕',
  },
  {
