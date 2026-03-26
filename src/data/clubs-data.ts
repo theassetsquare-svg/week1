@@ -960,7 +960,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['용인','별밤','감성','별빛','어쿠스틱','은하수'],
  seoTitle:'용인사거리별밤',
- seoDescription:'별빛 아래서 춤추는 밤, 별밤',
+ seoDescription:'용인 별밤 천장에 진짜 별자리가 있다. 광섬유로 은하수 재현한 건데 비트에 맞춰 반짝인다. 별자리 칵테일이 SNS에서 터진 이유.',
  h1Title:'용인사거리별밤 입장료·위치·예약 완벽 가이드'
  },
  {

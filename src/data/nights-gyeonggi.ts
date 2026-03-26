@@ -299,7 +299,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['인덕원','격식','재즈','직장인'],
  seoTitle:'인덕원국빈관나이트',
- seoDescription:'연회장 같은 격식. 대리석과 재즈의 밤. 인덕원 국빈관.',
+ seoDescription:'인덕원국빈관나이트, 가격이 좀 있는데 금요일 재즈 트리오 들으면 아깝지 않다. 대리석 바닥 위 촛불의 격식.',
  h1Title:'인덕원국빈관나이트 — 대리석과 재즈, 품격'
  },
  {
@@ -323,7 +323,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['성남','모던 인테리어','라이브 밴드','레트로'],
  seoTitle:'성남샴푸나이트',
- seoDescription:'성남 중심가의 감각적 무대. 박찬호 담당이 이끄는 밤.',
+ seoDescription:'성남샴푸나이트 가기 전에 이것만 알면 된다. 박찬호 담당한테 연락하면 자리부터 분위기까지 알아서 세팅된다.',
  h1Title:'성남샴푸나이트 — 세련된 조명 아래 펼쳐지는 감각의 무대'
  },
  {
