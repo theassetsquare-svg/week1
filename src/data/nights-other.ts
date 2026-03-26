@@ -205,7 +205,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['대전','대형 홀','미니멀','DJ 쇼케이스'],
  seoTitle:'대전원나이트',
- seoDescription:'하나의 홀에 모든 에너지를. 대전의 넘버원.',
+ seoDescription:'대전원나이트 솔직 후기. 천장 6미터 대형 홀에 에너지를 몰아넣었다. 토요일 DJ 쇼케이스가 뭔지 알면 간다.',
  h1Title:'대전원나이트 — 온전한 무대, 통합된 에너지'
  },
  {
