@@ -989,7 +989,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['광주','미니멀','북유럽','화이트'],
  seoTitle:'광주호빠 더블유',
- seoDescription:'화이트에 그레이, 북유럽 가구. 불필요한 것이 없는 광주의 공간.',
+ seoDescription:'광주호빠 더블유 북유럽 감성에 군더더기가 없다. 깔끔한 공간에서 술 마시고 싶으면 광주에선 여기.',
  h1Title:'광주호빠 더블유 — 없애고 없앤 끝에 남은 것'
  },
  {

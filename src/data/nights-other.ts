@@ -506,7 +506,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['부산','바다','수조','프로젝션'],
  seoTitle:'부산물나이트',
- seoDescription:'수조 위에서 춤추는 해양 테마. 파도처럼 밀려오는 부산의 밤. 따봉 담당.',
+ seoDescription:'부산물나이트, 댄스 플로어 한가운데 수조가 있다. 유리 위에서 춤추면 발밑에 물고기가 논다. 안 믿기면 가봐라.',
  h1Title:'부산물나이트 — 파도처럼 밀려오는 밤'
  },
  {
@@ -529,7 +529,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['울산','산업','미래적','2층 구조'],
  seoTitle:'울산뉴월드나이트',
- seoDescription:'조선소의 강철을 예술로. 울산의 미래적 무대.',
+ seoDescription:'울산뉴월드나이트, 천장에 기어와 체인 설치 미술이 매달려 있다. 조선소 도시가 밤을 만들면 이렇게 되는 거다.',
  h1Title:'울산뉴월드나이트 — 산업 도시 새로운 세계'
  },
  {
