@@ -435,7 +435,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['구미','산업도시','호박','셔틀'],
  seoTitle:'구미호박나이트',
- seoDescription:'공단 퇴근길의 안식처. 구미의 호박빛 무대.',
+ seoDescription:'구미호박나이트, 공단 직장인들이 퇴근 후 여기로 몰리는 이유. 산단 셔틀까지 있는 이 집의 진심을 봐라.',
  h1Title:'구미호박나이트 — 하루의 피로를 녹이는 밤'
  },
  {
@@ -459,7 +459,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['부산','연산동','따봉','바다 테마'],
  seoTitle:'부산연산동물나이트',
- seoDescription:'따봉 담당의 엄지 인사. 부산 연산동의 열정 넘치는 무대.',
+ seoDescription:'부산연산동물나이트 가기 전에 이것만 알면 된다. 따봉 담당 엄지 인사의 정체, 물결 LED 바닥 위에서 춤추는 법.',
  h1Title:'부산연산동물나이트 — 따봉이 보장하는 부킹률 1위의 밤'
  },
  {
@@ -482,7 +482,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['부산','스포츠','노래 대결','계단식 좌석'],
  seoTitle:'부산아시아드나이트',
- seoDescription:'스포츠 열기를 무대로. 부산의 역동적 아시아드.',
+ seoDescription:'부산아시아드나이트 솔직 후기. 계단식 좌석에서 내려다보는 무대, 금요일 노래 대결의 승부욕이 부산답다.',
  h1Title:'부산아시아드나이트 — 경기장의 열기를 무대 위로'
  },
  {
