@@ -897,7 +897,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['대구','SNS','포토존','비주얼 칵테일'],
  seoTitle:'대구호빠 인스타',
- seoDescription:'벽마다 색이 다르고, 칵테일에 솜사탕이 올라간다. 찍고 싶어지는 대구.',
+ seoDescription:'대구호빠 인스타 벽마다 색이 다르고 칵테일에 솜사탕이 올라간다. 사진 안 찍고 못 배기는 곳.',
  h1Title:'대구호빠 인스타 — 여기선 사진이 먼저다'
  },
  {
