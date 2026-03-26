@@ -1127,7 +1127,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','심플','레드 포인트','밀착 서비스'],
  seoTitle:'울산호빠 원',
- seoDescription:'모노톤에 레드 하나. 심플한데 강렬한 울산의 밤.',
+ seoDescription:'울산호빠 원 모노톤에 레드 포인트 하나. 심플한데 왜 이렇게 강렬한지, 가보면 바로 느껴진다.',
  h1Title:'울산호빠 원 — 하나면 된다, 확실한 하나'
  },
  {
@@ -1150,7 +1150,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['제주','라스베이거스','럭셔리','골드'],
  seoTitle:'제주호빠 MGM',
- seoDescription:'금색 사자 입구에 골드 파우더 칵테일. 라스베이거스가 제주에 왔다.',
+ seoDescription:'제주호빠 MGM 금색 사자 입구에 골드 파우더 칵테일. 제주에서 라스베이거스 감성 느끼고 싶으면 여기다.',
  h1Title:'제주호빠 MGM — 한라산 본 눈으로 라스베이거스를 본다'
  },
  {
