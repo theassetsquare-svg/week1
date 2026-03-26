@@ -1173,7 +1173,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['제주','왕실 테마','금박','버틀러'],
  seoTitle:'제주호빠 더킹',
- seoDescription:'레드 카펫에 황금 왕좌. 여기선 당신이 왕이다.',
+ seoDescription:'제주호빠 더킹 레드 카펫에 황금 왕좌가 진짜 있다. 제주 여행 마지막 밤을 왕처럼 보내고 싶다면 여기.',
  h1Title:'제주호빠 더킹 — 여기선 손님이 왕이고, 농담이 아니다'
  },
  {
