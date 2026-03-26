@@ -529,7 +529,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','영국 신사','진토닉','드레스코드'],
  seoTitle:'수원호빠 킹스맨',
- seoDescription:'빨간 전화부스 입구에 수트 입은 스태프. 수원에 내려앉은 영국.',
+ seoDescription:'수원호빠 킹스맨 빨간 전화부스 입구 지나면 수트 입은 스태프가 맞이한다. 영국 신사 감성 실화 후기.',
  h1Title:'수원호빠 킹스맨 — 신사의 밤은 이렇게 시작된다'
  },
  {

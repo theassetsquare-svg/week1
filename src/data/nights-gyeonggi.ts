@@ -21,7 +21,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['일산','모던','어반','재즈'],
  seoTitle:'일산샴푸나이트',
- seoDescription:'호수 도시의 밤. 깔끔한 공간에서 만나는 정돈된 에너지.',
+ seoDescription:'일산샴푸나이트 솔직 후기. 호수공원 근처에서 이런 에너지를 만날 줄 몰랐다. 입장료, 분위기, 피크 시간대 정리.',
  h1Title:'일산샴푸나이트 — 호수공원 옆 깔끔하고 정돈된 밤'
  },
  {
@@ -44,7 +44,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['일산','감성','소울','호수공원'],
  seoTitle:'일산물나이트',
- seoDescription:'물처럼 부드럽게 흐르는 일산의 밤. 호수공원 인근.',
+ seoDescription:'일산물나이트가 샴푸랑 뭐가 다른지 궁금하다면 읽어라. 분수 소리 깔리는 감성, 여기서만 된다. 솔직 비교 후기.',
  h1Title:'일산물나이트 — 물처럼 유연하게 흐르는 밤'
  },
  {
