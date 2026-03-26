@@ -276,7 +276,7 @@ export const nightsSeoul: Venue[] = [
  ],
  tags: ['길동','미팅','빈티지','복고'],
  seoTitle:'길동찬스나이트',
- seoDescription:'서울 동쪽 끝의 유일한 찬스. 잡으면 밤이 달라진다.',
+ seoDescription:'길동찬스나이트 가기 전에 이것만 알면 된다. 서울 동쪽 끝에서 밤을 보내려면 여기밖에 없는 이유, 솔직하게 썼다.',
  h1Title:'길동찬스나이트 — 찬스를 잡으면 밤이 달라진다'
  },
 ];

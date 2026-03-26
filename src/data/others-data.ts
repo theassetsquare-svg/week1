@@ -299,7 +299,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','샴페인','대리석','격조'],
  seoTitle:'강남호빠 명품관',
- seoDescription:'바닥부터 천장까지 이탈리아 대리석. 이름값 하는 강남의 격조.',
+ seoDescription:'강남호빠 명품관이 이름값 하는지 직접 가봤다. 대리석 인테리어에 놀라고 가격에 한 번 더 놀랐다.',
  h1Title:'강남호빠 명품관 — 이 가격에는 이유가 있다'
  },
  {

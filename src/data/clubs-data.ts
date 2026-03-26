@@ -463,7 +463,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['압구정','캔디맨','K-POP','디저트칵테일','달콤한 밤','포토존'],
  seoTitle:'압구정클럽 캔디맨',
- seoDescription:'달콤하게 미쳐가는 밤, 캔디맨',
+ seoDescription:'압구정 캔디맨은 매 정시에 천장에서 사탕이 쏟아진다. 디저트 칵테일 들고 금요일 케이팝 파티에서 뛰는 게 여기 공식이다.',
  h1Title:'압구정클럽 캔디맨 — 달콤한 밤이 필요할 때',
  },
  {
