@@ -443,6 +443,503 @@ const currentYear = new Date().getFullYear();
         var pct = Math.round(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100);
         if (pct > scrollDepth) scrollDepth = pct;
       });
+
+      // ═══════════════════════════════════════════════════════════
+      // RETENTION ENGINE v2 — 틱톡 95분 체류 심리학 전체 시스템
+      // ═══════════════════════════════════════════════════════════
+
+      // ─── 1. 세션 타이머 + 누적 체류 시간 (틱톡: 시간 보상) ───
+      var SESSION_KEY = 'bk_session';
+      var DAILY_KEY = 'bk_daily_' + new Date().toDateString();
+      var sessionStart = Date.now();
+      var dailySeconds = parseInt(localStorage.getItem(DAILY_KEY) || '0');
+      var sessionTimerEl = document.getElementById('sessionTime');
+      var sessionIconEl = document.getElementById('sessionIcon');
+      var milestonesFired = JSON.parse(localStorage.getItem('bk_milestones_' + new Date().toDateString()) || '[]');
+
+      function formatTime(s) {
+        var m = Math.floor(s / 60);
+        var sec = s % 60;
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+      }
+
+      function getSessionSeconds() {
+        return Math.floor((Date.now() - sessionStart) / 1000);
+      }
+
+      function getTotalToday() {
+        return dailySeconds + getSessionSeconds();
+      }
+
+      // 타이머 표시 업데이트
+      setInterval(function() {
+        var total = getTotalToday();
+        if (sessionTimerEl) sessionTimerEl.textContent = formatTime(total);
+        // 아이콘 업그레이드
+        if (sessionIconEl) {
+          if (total >= 5400) sessionIconEl.textContent = '👑';
+          else if (total >= 3600) sessionIconEl.textContent = '🔥';
+          else if (total >= 1800) sessionIconEl.textContent = '⚡';
+          else if (total >= 600) sessionIconEl.textContent = '✨';
+          else sessionIconEl.textContent = '⏱';
+        }
+        // 매 30초마다 저장
+        if (total % 30 === 0) {
+          localStorage.setItem(DAILY_KEY, total.toString());
+        }
+        // 마일스톤 체크
+        checkMilestones(total);
+      }, 1000);
+
+      // 페이지 이탈 시 저장
+      window.addEventListener('beforeunload', function() {
+        localStorage.setItem(DAILY_KEY, getTotalToday().toString());
+      });
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          localStorage.setItem(DAILY_KEY, getTotalToday().toString());
+        }
+      });
+
+      // ─── 2. 마일스톤 보상 시스템 (슬롯머신: 가변 보상 스케줄) ───
+      var MILESTONES = [
+        { sec: 60, icon: '🌟', title: '1분 돌파!', desc: '탐색을 시작했습니다', reward: '초보 탐험가 뱃지 획득', color: '#8B5CF6' },
+        { sec: 180, icon: '🔥', title: '3분 체류!', desc: '당신은 이미 상위 30% 탐험가입니다', reward: '열정 탐험가 뱃지 획득', color: '#F59E0B' },
+        { sec: 300, icon: '⚡', title: '5분 달성!', desc: '숨겨진 추천이 해제되었습니다', reward: '히든 콘텐츠 언락!', color: '#06B6D4' },
+        { sec: 600, icon: '💎', title: '10분 마스터!', desc: '상위 10% 탐험가 진입!', reward: 'VIP 탐험가 뱃지', color: '#8B5CF6' },
+        { sec: 900, icon: '🏆', title: '15분 챔피언!', desc: '이 정도면 밤키 프로입니다', reward: '프로 탐험가 뱃지', color: '#F59E0B' },
+        { sec: 1200, icon: '🎯', title: '20분 전설!', desc: '전체 이용자 중 상위 5%!', reward: '전설의 탐험가', color: '#DC2626' },
+        { sec: 1800, icon: '🌙', title: '30분의 밤!', desc: '당신은 진정한 밤의 탐험가', reward: '밤의 달인 뱃지', color: '#7C3AED' },
+        { sec: 2700, icon: '✨', title: '45분 돌파!', desc: '최상위 탐험가만 도달하는 영역', reward: '다이아몬드 뱃지', color: '#6D28D9' },
+        { sec: 3600, icon: '👑', title: '1시간 달성!', desc: '밤키의 왕/여왕이 되셨습니다!', reward: '크라운 뱃지 + 특별 추천', color: '#F59E0B' },
+        { sec: 5700, icon: '🏅', title: '95분! 틱톡급!', desc: '틱톡 평균 체류시간을 달성했습니다!', reward: '레전드 뱃지 해제!', color: '#DC2626' }
+      ];
+
+      function checkMilestones(totalSec) {
+        for (var i = 0; i < MILESTONES.length; i++) {
+          var m = MILESTONES[i];
+          if (totalSec >= m.sec && milestonesFired.indexOf(m.sec) === -1) {
+            milestonesFired.push(m.sec);
+            localStorage.setItem('bk_milestones_' + new Date().toDateString(), JSON.stringify(milestonesFired));
+            showMilestone(m);
+            break; // 한 번에 하나만
+          }
+        }
+      }
+
+      function showMilestone(m) {
+        var popup = document.getElementById('milestonePopup');
+        var overlay = document.getElementById('milestoneOverlay');
+        if (!popup || !overlay) return;
+        document.getElementById('milestoneIcon').textContent = m.icon;
+        document.getElementById('milestoneTitle').textContent = m.title;
+        document.getElementById('milestoneDesc').textContent = m.desc;
+        document.getElementById('milestoneReward').textContent = m.reward;
+        document.getElementById('milestoneReward').style.background = 'linear-gradient(135deg,' + m.color + ',#6D28D9)';
+        popup.classList.add('show');
+        overlay.classList.add('show');
+        triggerConfetti();
+        triggerDopamine();
+        // 업적 기록
+        var achievements = JSON.parse(localStorage.getItem('bk_achievements') || '[]');
+        if (achievements.indexOf(m.title) === -1) {
+          achievements.push(m.title);
+          localStorage.setItem('bk_achievements', JSON.stringify(achievements));
+        }
+      }
+
+      // 마일스톤 닫기
+      var milestoneDismiss = document.getElementById('milestoneDismiss');
+      var milestoneOverlay = document.getElementById('milestoneOverlay');
+      function closeMilestone() {
+        var popup = document.getElementById('milestonePopup');
+        var overlay = document.getElementById('milestoneOverlay');
+        if (popup) popup.classList.remove('show');
+        if (overlay) overlay.classList.remove('show');
+      }
+      if (milestoneDismiss) milestoneDismiss.addEventListener('click', closeMilestone);
+      if (milestoneOverlay) milestoneOverlay.addEventListener('click', closeMilestone);
+
+      // ─── 3. 컨페티 효과 (도파민 마이크로 보상) ───
+      function triggerConfetti() {
+        var colors = ['#8B5CF6', '#F59E0B', '#06B6D4', '#DC2626', '#10B981', '#EC4899'];
+        for (var i = 0; i < 30; i++) {
+          var piece = document.createElement('div');
+          piece.className = 'confetti-piece';
+          piece.style.left = Math.random() * 100 + '%';
+          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.animationDelay = Math.random() * 0.5 + 's';
+          piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+          piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+          piece.style.width = (6 + Math.random() * 8) + 'px';
+          piece.style.height = (6 + Math.random() * 8) + 'px';
+          document.body.appendChild(piece);
+          setTimeout(function(el) { if (el.parentNode) el.parentNode.removeChild(el); }, 4000, piece);
+        }
+      }
+
+      // ─── 4. 도파민 플래시 (마이크로 보상) ───
+      function triggerDopamine() {
+        var flash = document.getElementById('dopamineFlash');
+        if (!flash) return;
+        flash.classList.add('show');
+        setTimeout(function() { flash.classList.remove('show'); }, 400);
+      }
+
+      // ─── 5. 업적 토스트 (틱톡: 소셜 검증) ───
+      function showAchievement(icon, text, sub) {
+        var toast = document.getElementById('achievementToast');
+        if (!toast) return;
+        document.getElementById('achIcon').textContent = icon;
+        document.getElementById('achText').textContent = text;
+        document.getElementById('achSub').textContent = sub || '';
+        toast.classList.add('show');
+        setTimeout(function() { toast.classList.remove('show'); }, 4000);
+      }
+
+      // ─── 6. 가변 간격 보상 (슬롯머신 핵심: Variable Ratio Schedule) ───
+      var rewardMsgs = [
+        { text: '💡 숨겨진 팁: 금요일 밤 10시가 입장 최적 시간!', delay: 35000 },
+        { text: '🔥 지금 이 시간 가장 인기 있는 지역을 확인해보세요', delay: 70000 },
+        { text: '💎 3곳 이상 비교하면 최적의 선택을 할 수 있습니다', delay: 120000 },
+        { text: '⚡ 방금 새로운 업소 정보가 업데이트되었습니다', delay: 180000 },
+        { text: '🎯 담당자에게 "밤키 보고 왔다"고 하면 대우가 달라집니다', delay: 250000 },
+        { text: '🌟 주중 방문 시 더 여유로운 경험을 할 수 있습니다', delay: 340000 },
+        { text: '🏆 이미 50곳 이상 탐색한 전문가들의 비결이 궁금하다면?', delay: 450000 },
+        { text: '✨ 오늘의 특별 추천이 준비되었습니다!', delay: 580000 }
+      ];
+      var varRewardEl = document.getElementById('varReward');
+      rewardMsgs.forEach(function(r) {
+        var jitter = Math.floor(Math.random() * 20000) - 10000; // ±10초 랜덤 지터
+        setTimeout(function() {
+          if (varRewardEl) {
+            varRewardEl.textContent = r.text;
+            varRewardEl.classList.add('show');
+            triggerDopamine();
+            setTimeout(function() { varRewardEl.classList.remove('show'); }, 5000);
+          }
+        }, r.delay + jitter);
+      });
+
+      // ─── 7. 스크롤 콤보 시스템 (틱톡: 연속 시청 보상) ───
+      var comboEl = document.getElementById('comboCounter');
+      var comboNumEl = document.getElementById('comboNum');
+      var comboCount = 0;
+      var comboTimer = null;
+      var lastScrollY = 0;
+      var scrolling = false;
+
+      window.addEventListener('scroll', function() {
+        if (!scrolling) {
+          scrolling = true;
+          var dir = window.scrollY - lastScrollY;
+          if (dir > 50) { // 아래로 스크롤 중
+            comboCount++;
+            if (comboCount >= 3 && comboNumEl && comboEl) {
+              comboNumEl.textContent = comboCount;
+              comboEl.classList.add('show');
+              // 10콤보마다 보상
+              if (comboCount % 10 === 0) {
+                showAchievement('🔥', comboCount + ' 콤보 달성!', '스크롤 마스터');
+                triggerDopamine();
+              }
+            }
+          }
+          lastScrollY = window.scrollY;
+          clearTimeout(comboTimer);
+          comboTimer = setTimeout(function() {
+            scrolling = false;
+            comboCount = 0;
+            if (comboEl) comboEl.classList.remove('show');
+          }, 2000);
+          setTimeout(function() { scrolling = false; }, 100);
+        }
+      });
+
+      // ─── 8. 카드 클릭/터치 마이크로 보상 ───
+      var allVenueCards = document.querySelectorAll('.venue-card, a[href*="/venue/"]');
+      var cardClickCount = parseInt(localStorage.getItem('bk_clicks') || '0');
+      allVenueCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          cardClickCount++;
+          localStorage.setItem('bk_clicks', cardClickCount.toString());
+          triggerDopamine();
+          // 클릭 마일스톤
+          if (cardClickCount === 5) showAchievement('👆', '5곳 탐색!', '관심 있는 곳이 많군요');
+          if (cardClickCount === 15) showAchievement('🎯', '15곳 탐색!', '진정한 탐험가');
+          if (cardClickCount === 30) showAchievement('💎', '30곳 탐색!', 'VIP 탐험가 등극');
+          if (cardClickCount === 50) showAchievement('👑', '50곳 탐색!', '밤키 마스터');
+        });
+      });
+
+      // ─── 9. 일일 도전 과제 시스템 (틱톡: 매일 접속 유도) ───
+      var challengeKey = 'bk_challenge_' + new Date().toDateString();
+      var challenges = JSON.parse(localStorage.getItem(challengeKey) || '{"scroll":false,"click3":false,"stay5":false,"visit3":false}');
+
+      function updateChallenge(key) {
+        if (challenges[key]) return;
+        challenges[key] = true;
+        localStorage.setItem(challengeKey, JSON.stringify(challenges));
+        var completed = Object.values(challenges).filter(Boolean).length;
+        var total = Object.keys(challenges).length;
+        showAchievement('✅', '도전 과제 완료! (' + completed + '/' + total + ')', completed === total ? '오늘의 모든 도전 완료!' : '계속 도전하세요');
+        if (completed === total) {
+          setTimeout(function() {
+            showMilestone({ icon: '🏅', title: '일일 도전 올클리어!', desc: '오늘 모든 도전을 완료했습니다!', reward: '도전왕 뱃지 획득!', color: '#F59E0B' });
+          }, 2000);
+        }
+      }
+
+      // 스크롤 50% 도전
+      window.addEventListener('scroll', function() {
+        var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        if (pct > 0.5 && !challenges.scroll) updateChallenge('scroll');
+      });
+
+      // 3곳 클릭 도전
+      if (cardClickCount >= 3 && !challenges.click3) updateChallenge('click3');
+      allVenueCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          var todayClicks = parseInt(localStorage.getItem('bk_today_clicks_' + new Date().toDateString()) || '0') + 1;
+          localStorage.setItem('bk_today_clicks_' + new Date().toDateString(), todayClicks.toString());
+          if (todayClicks >= 3) updateChallenge('click3');
+        });
+      });
+
+      // 5분 체류 도전
+      setTimeout(function() {
+        if (!challenges.stay5) updateChallenge('stay5');
+      }, 300000);
+
+      // 3페이지 방문 도전
+      var pageVisits = parseInt(sessionStorage.getItem('bk_page_visits') || '0') + 1;
+      sessionStorage.setItem('bk_page_visits', pageVisits.toString());
+      if (pageVisits >= 3 && !challenges.visit3) updateChallenge('visit3');
+
+      // ─── 10. "다른 사람들은 지금..." 실시간 활동 피드 (넷플릭스: 사회적 증거) ───
+      var activityFeed = [
+        '서울에서 누군가 클럽 TOP5를 비교하고 있습니다',
+        '부산 사용자가 나이트 추천을 받았습니다',
+        '방금 강남에서 예약 문의가 들어왔습니다',
+        '수원 탐험가가 레벨업했습니다!',
+        '인천에서 신규 업소가 등록되었습니다',
+        '대구에서 VS투표에 참여했습니다',
+        '오늘 전체 탐색 수 1,200건 돌파',
+        '홍대에서 주말 이벤트가 업데이트되었습니다',
+        '울산에서 숨은 명소를 발견했습니다',
+        '일산 명월관에 새로운 후기가 올라왔습니다'
+      ];
+      var activityIdx = 0;
+      var toastUsedForActivity = false;
+      setInterval(function() {
+        if (toastUsedForActivity) return;
+        toastUsedForActivity = true;
+        var msg = activityFeed[activityIdx % activityFeed.length];
+        activityIdx++;
+        if (toastEl) {
+          toastEl.textContent = msg;
+          toastEl.classList.add('show');
+          setTimeout(function() {
+            toastEl.classList.remove('show');
+            toastUsedForActivity = false;
+          }, 4000);
+        } else {
+          toastUsedForActivity = false;
+        }
+      }, 45000);
+
+      // ─── 11. 스크롤 깊이별 콘텐츠 언락 (슬롯머신: 가변 보상) ───
+      var unlockThresholds = [25, 50, 75, 90];
+      var unlockedDepths = JSON.parse(sessionStorage.getItem('bk_unlocked') || '[]');
+      window.addEventListener('scroll', function() {
+        var depth = Math.round(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100);
+        unlockThresholds.forEach(function(t) {
+          if (depth >= t && unlockedDepths.indexOf(t) === -1) {
+            unlockedDepths.push(t);
+            sessionStorage.setItem('bk_unlocked', JSON.stringify(unlockedDepths));
+            if (t === 25) showAchievement('📖', '25% 탐색 완료', '더 많은 콘텐츠가 기다리고 있어요');
+            if (t === 50) showAchievement('🎯', '절반 돌파!', '끝까지 보면 특별한 것이 있습니다');
+            if (t === 75) showAchievement('🔥', '75% 달성!', '거의 다 왔습니다!');
+            if (t === 90) {
+              showAchievement('👑', '페이지 정복!', '완독 보상 획득!');
+              triggerConfetti();
+            }
+          }
+        });
+      });
+
+      // ─── 12. 귀환 사용자 환영 (넷플릭스: 개인화) ───
+      var lastVisit = localStorage.getItem('bk_last_visit');
+      var totalVisits = parseInt(localStorage.getItem('bk_total_visits') || '0') + 1;
+      localStorage.setItem('bk_total_visits', totalVisits.toString());
+      localStorage.setItem('bk_last_visit', new Date().toISOString());
+
+      if (lastVisit && totalVisits > 1) {
+        var hoursSince = Math.floor((Date.now() - new Date(lastVisit).getTime()) / 3600000);
+        setTimeout(function() {
+          if (hoursSince < 24) {
+            showAchievement('🔥', '다시 오셨군요!', '연속 방문 ' + streak.count + '일째');
+          } else if (hoursSince < 72) {
+            showAchievement('👋', '돌아오셨군요!', totalVisits + '번째 방문 감사합니다');
+          }
+        }, 3000);
+      } else if (totalVisits === 1) {
+        setTimeout(function() {
+          showAchievement('🎉', '밤키에 오신 것을 환영합니다!', '첫 방문 뱃지 획득');
+        }, 2000);
+      }
+
+      // ─── 13. 이탈 방지 — 손실 회피 (슬롯머신: 손실 프레이밍) ───
+      var exitTriggered = false;
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 10 && !exitTriggered && getSessionSeconds() > 30) {
+          exitTriggered = true;
+          var total = getTotalToday();
+          var nextMilestone = null;
+          for (var i = 0; i < MILESTONES.length; i++) {
+            if (total < MILESTONES[i].sec) { nextMilestone = MILESTONES[i]; break; }
+          }
+          if (nextMilestone && varRewardEl) {
+            var remaining = nextMilestone.sec - total;
+            var mins = Math.ceil(remaining / 60);
+            varRewardEl.textContent = '🚨 ' + mins + '분만 더 있으면 "' + nextMilestone.title + '" 달성! 떠나시겠어요?';
+            varRewardEl.classList.add('show');
+            setTimeout(function() { varRewardEl.classList.remove('show'); }, 6000);
+          }
+        }
+      });
+
+      // ─── 14. 무활동 감지 — 다시 끌어오기 (틱톡: 재참여) ───
+      var idleTimer = null;
+      var idleMsgs = [
+        '아직 보지 못한 숨겨진 곳이 있습니다',
+        '방금 새로운 추천이 업데이트되었습니다',
+        '다른 사용자들이 활발하게 탐색 중입니다',
+        '오늘의 특별 추천을 아직 확인하지 않았습니다'
+      ];
+      function resetIdle() {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(function() {
+          var msg = idleMsgs[Math.floor(Math.random() * idleMsgs.length)];
+          if (varRewardEl) {
+            varRewardEl.textContent = '👀 ' + msg;
+            varRewardEl.classList.add('show');
+            setTimeout(function() { varRewardEl.classList.remove('show'); }, 5000);
+          }
+          // 탭 타이틀 변경
+          var origTitle = document.title;
+          document.title = '💬 놓치고 있는 정보가 있어요!';
+          setTimeout(function() { document.title = origTitle; }, 8000);
+        }, 60000); // 1분 무활동
+      }
+      ['scroll', 'click', 'mousemove', 'touchstart'].forEach(function(evt) {
+        window.addEventListener(evt, resetIdle, { passive: true });
+      });
+      resetIdle();
+
+      // ─── 15. 탭 포커스 복귀 시 새 콘텐츠 안내 (넷플릭스: 자동재생 복귀) ───
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+          var away = Math.floor((Date.now() - sessionStart) / 1000);
+          if (away > 30) {
+            setTimeout(function() {
+              if (varRewardEl) {
+                varRewardEl.textContent = '🔄 돌아오셨군요! 새로운 추천이 준비되었습니다';
+                varRewardEl.classList.add('show');
+                setTimeout(function() { varRewardEl.classList.remove('show'); }, 4000);
+              }
+            }, 1000);
+          }
+        }
+      });
+
+      // ─── 16. 페이지뷰 깊이 추적 + "당신만의 기록" (게이미피케이션) ───
+      var pageDepths = JSON.parse(localStorage.getItem('bk_page_depths') || '{}');
+      var currentPath = window.location.pathname;
+      window.addEventListener('scroll', function() {
+        var d = Math.round(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100);
+        if (!pageDepths[currentPath] || d > pageDepths[currentPath]) {
+          pageDepths[currentPath] = d;
+          localStorage.setItem('bk_page_depths', JSON.stringify(pageDepths));
+        }
+      });
+
+      // 총 탐색 페이지 수 표시
+      var exploredPages = Object.keys(pageDepths).length;
+      if (exploredPages >= 5) {
+        setTimeout(function() {
+          showAchievement('🗺️', exploredPages + '개 페이지 탐험!', '다양한 곳을 탐색 중이시군요');
+        }, 10000);
+      }
+
+      // ─── 17. 랜덤 보너스 타임 (슬롯머신: Near-miss 효과) ───
+      setTimeout(function() {
+        var bonusChance = Math.random();
+        if (bonusChance > 0.6) { // 40% 확률로 보너스
+          if (varRewardEl) {
+            varRewardEl.textContent = '🎰 보너스 타임! 지금 추천 룰렛을 돌리면 특별한 추천을 받을 수 있습니다';
+            varRewardEl.classList.add('show');
+            triggerDopamine();
+            setTimeout(function() { varRewardEl.classList.remove('show'); }, 6000);
+          }
+        }
+      }, 120000);
+
+      // ─── 18. 시간대별 긴급 메시지 (틱톡: FOMO) ───
+      var hour = new Date().getHours();
+      if (hour >= 20 || hour < 4) {
+        setTimeout(function() {
+          if (varRewardEl) {
+            varRewardEl.textContent = '🌙 지금은 피크 타임! 인기 업소들이 빠르게 마감되고 있습니다';
+            varRewardEl.classList.add('show');
+            setTimeout(function() { varRewardEl.classList.remove('show'); }, 5000);
+          }
+        }, 30000);
+      }
+
+      // ─── 19. 스크롤 위치별 미리보기 (넷플릭스: 에피소드 미리보기) ───
+      var previewShown = {};
+      var venueCards = document.querySelectorAll('.venue-card');
+      var previewObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting && !previewShown[e.target.id || Math.random()]) {
+            previewShown[e.target.id || Math.random()] = true;
+            e.target.style.transition = 'all 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0) scale(1)';
+          }
+        });
+      }, { threshold: 0.2 });
+      venueCards.forEach(function(c, i) {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(20px) scale(0.98)';
+        c.style.transitionDelay = (i % 3 * 0.1) + 's';
+        previewObserver.observe(c);
+      });
+
+      // ─── 20. 체류시간 클릭 시 통계 모달 (틱톡: 사용 시간 보고서) ───
+      var sessionTimerWidget = document.getElementById('sessionTimer');
+      if (sessionTimerWidget) {
+        sessionTimerWidget.addEventListener('click', function() {
+          var total = getTotalToday();
+          var achievements = JSON.parse(localStorage.getItem('bk_achievements') || '[]');
+          var clicks = parseInt(localStorage.getItem('bk_clicks') || '0');
+          var pages = Object.keys(pageDepths).length;
+          var nextM = null;
+          for (var i = 0; i < MILESTONES.length; i++) {
+            if (total < MILESTONES[i].sec) { nextM = MILESTONES[i]; break; }
+          }
+          var msg = '📊 오늘의 탐색 리포트\n\n';
+          msg += '⏱ 체류 시간: ' + formatTime(total) + '\n';
+          msg += '👆 탐색한 업소: ' + clicks + '곳\n';
+          msg += '📄 방문한 페이지: ' + pages + '개\n';
+          msg += '🏅 획득한 뱃지: ' + achievements.length + '개\n';
+          msg += '🔥 연속 방문: ' + streak.count + '일\n';
+          if (nextM) msg += '\n다음 목표: ' + nextM.title + ' (' + formatTime(nextM.sec - total) + ' 남음)';
+          alert(msg);
+        });
+      }
+
     })();
   </script>
 </body>
