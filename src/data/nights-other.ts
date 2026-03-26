@@ -576,7 +576,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','상무','미술','국악'],
  seoTitle:'광주상무나이트',
- seoDescription:'진짜 미술 작품이 걸린 갤러리형 무대. 광주 예향의 밤.',
+ seoDescription:'광주상무나이트 솔직 후기. 벽에 진짜 미술 작품이 걸려 있다. 예향의 도시가 밤을 만들면 격이 달라지는 이유.',
  h1Title:'광주상무나이트 — 예향의 품격으로 빚어낸 밤'
  },
  {
@@ -599,7 +599,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','밤나무','밴드','합주'],
  seoTitle:'광주토토밤나이트',
- seoDescription:'편안함 뒤에 숨긴 광주의 열정. 토토밤.',
+ seoDescription:'광주토토밤나이트, 자정 넘으면 편안한 척하던 광주 사람들 흥이 터진다. 손님이 타악기 잡고 합주하는 밤.',
  h1Title:'광주토토밤나이트 — 달콤한 이름 뒤의 뜨거운 무대'
  },
  {
