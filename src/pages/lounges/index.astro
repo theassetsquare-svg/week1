@@ -8,7 +8,7 @@ const regions = [...new Set(loungeVenues.map(v => v.region))].sort();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "프리미엄 바 목록",
+  "name": "감성 라운지 바 목록",
   "numberOfItems": loungeVenues.length,
   "itemListElement": loungeVenues.slice(0,5).map((v, i) => ({
     "@type": "ListItem",
