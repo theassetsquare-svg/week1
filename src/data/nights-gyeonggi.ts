@@ -276,7 +276,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['성남','구도심','샹들리에','양주 칵테일'],
  seoTitle:'성남국빈관나이트',
- seoDescription:'구도심의 격조. 빈티지 샹들리에와 양주 칵테일의 밤.',
+ seoDescription:'성남국빈관나이트 솔직 후기. 모란시장 근처에 이런 격조가 숨어 있었다. 양주 칵테일 하나만으로 올 가치가 있다.',
  h1Title:'성남국빈관나이트 — 국빈관이라는 이름에 걸맞은 격조'
  },
  {

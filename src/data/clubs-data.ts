@@ -929,7 +929,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['의정부','아레나','원형무대','DJ배틀','경기도','파티'],
  seoTitle:'의정부아레나',
- seoDescription:'링 위처럼 뜨거운, 의정부 아레나',
+ seoDescription:'의정부 아레나 360도 원형 무대에서 DJ 배틀을 본 사람들 후기. 관객 함성으로 승자 가리는 건 여기밖에 없다.',
  h1Title:'의정부아레나 입장료·위치·예약 완벽 가이드'
  },
  {
