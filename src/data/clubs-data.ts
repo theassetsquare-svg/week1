@@ -122,7 +122,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['강남','피크','루프탑','EDM','꼭대기','야경'],
  seoTitle:'강남클럽 피크',
- seoDescription:'꼭대기에서 내려다보는 밤, 피크',
+ seoDescription:'강남 피크가 비싼 데는 이유가 있다. 루프탑에서 야경 깔고 파티하는 기분, 안 가본 사람은 모른다. 토요일 피크 파티 후기.',
  h1Title:'강남클럽 피크 — 정점에서 내려다보는 파티 씬',
  },
  {
