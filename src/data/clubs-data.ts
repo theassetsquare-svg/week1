@@ -401,7 +401,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['압구정','컬러','LED','네온','비주얼','색이 살아있는'],
  seoTitle:'압구정클럽 컬러',
- seoDescription:'음악에 맞춰 색이 숨 쉬는 밤',
+ seoDescription:'압구정 컬러는 천장부터 바닥까지 전부 LED다. 목요일 네온 파티에서 형광 물감 칠하고 노는 거, 해본 사람만 안다.',
  h1Title:'압구정클럽 컬러 — LED 레인보우 터널 속 감각의 밤',
  },
  {
