@@ -851,7 +851,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['대구','럭셔리','프라이버시','은밀한'],
  seoTitle:'대구호빠 시크릿',
- seoDescription:'건물 사이 좁은 통로 너머, 아는 사람만 찾는 대구의 비밀 공간.',
+ seoDescription:'대구호빠 시크릿 건물 사이 좁은 통로를 지나야 나온다. 아는 사람만 가는 대구의 숨은 공간 솔직 후기.',
  h1Title:'대구호빠 시크릿 — 이 통로를 지나야만 열리는 밤'
  },
  {

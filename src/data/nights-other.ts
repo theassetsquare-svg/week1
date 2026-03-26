@@ -228,7 +228,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['대전','봉명동','레트로','피아노'],
  seoTitle:'대전봉명나이트',
- seoDescription:'봉명동 최장수. 세월이 곧 매력인 곳.',
+ seoDescription:'대전봉명나이트가 봉명동에서 가장 오래 살아남은 이유. 나무 패널 벽에 음반 재킷, 유성온천 후 들르면 타이밍이 좋다.',
  h1Title:'대전봉명나이트 — 20년 넘게 자리를 지킨 이유가 있다'
  },
  {
@@ -251,7 +251,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['대전','전통','국악 퓨전','온돌'],
  seoTitle:'대전한국관나이트',
- seoDescription:'장지문과 온돌. 대전 토박이의 격식 있는 밤.',
+ seoDescription:'대전한국관나이트 가기 전에 이것만 알면 된다. 온돌 좌식석에서 전통주 페어링, 매달 국악 퓨전 밴드가 서는 무대.',
  h1Title:'대전한국관나이트 — 격식과 여유가 흐르는 밤'
  },
  {
