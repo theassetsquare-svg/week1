@@ -483,7 +483,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','게임','파티','네온'],
  seoTitle:'수원호빠 플레이',
- seoDescription:'다트, 보드게임, 네온 포토존. 놀이터처럼 노는 수원의 공간.',
+ seoDescription:'수원호빠 플레이 가면 왜 시간이 안 가는지 알겠다. 다트에 보드게임에 네온 포토존까지 놀거리 폭발.',
  h1Title:'수원호빠 플레이 — 여기는 놀러 오는 거다'
  },
  {
