@@ -91,7 +91,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['강남','Jack','라이브','힙합','R&B','라이브 공연'],
  seoTitle:'강남클럽 Jack',
- seoDescription:'강남 Jack에서 유명 래퍼 라이브를 직관한 사람들의 솔직 후기. 수요일이랑 금요일에만 가야 하는 이유, 줄 안 서고 들어가는 게스트 등록 꿀팁까지 전부 알려드립니다.',
+ seoDescription:'"어제 Jack에서 누구 봤는데?" 강남 Jack은 수요일·금요일 래퍼 라이브가 터지는 곳이다. 게스트 등록하면 줄 없이 바로 입장, 모르면 손해다.',
  h1Title:'강남클럽 Jack — 잭 다니엘처럼 강렬한 밤',
  },
  {
