@@ -389,7 +389,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['대구','라틴','살사','칵테일'],
  seoTitle:'대구바밤바나이트',
- seoDescription:'이름에 리듬이 있다. 대구의 라틴 무대.',
+ seoDescription:'대구바밤바나이트 금요일 살사 레슨이 뭔지 모르면 손해다. 럼주 칵테일 마시며 쿠바 벽화 앞에서 춤추는 경험.',
  h1Title:'대구바밤바나이트 — 리듬이 흐르는 라틴 무대'
  },
  {
@@ -412,7 +412,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['대구','레트로','디스코','댄스 배틀'],
  seoTitle:'대구토토가나이트',
- seoDescription:'8090 테마 복고 무대. 체커보드 위의 댄스 배틀.',
+ seoDescription:'대구토토가나이트 솔직 후기. 8090 복고 테마인데 화장실까지 컨셉이다. 토요일 자정 댄스 배틀이 뭔지 알면 간다.',
  h1Title:'대구토토가나이트 — 복고와 현대가 교차하는 밤'
  },
  {
