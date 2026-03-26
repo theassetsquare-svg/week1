@@ -346,7 +346,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['분당','버블 파티','민트','IT 직장인'],
  seoTitle:'분당퐁퐁나이트',
- seoDescription:'천장에서 비눗방울이 내려오는 분당의 밤. 퐁퐁.',
+ seoDescription:'분당퐁퐁나이트 솔직 후기. 천장에서 비눗방울이 진짜 내려온다. 처음 보면 멍해지는데, 주말에 가야 하는 이유가 있다.',
  h1Title:'분당퐁퐁나이트 — 톡톡 튀는 버블 무대'
  },
  {
@@ -369,7 +369,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['평택','국제적','미군기지','팝 아트'],
  seoTitle:'평택호박나이트',
- seoDescription:'한국인과 외국인이 섞이는 평택의 밤. 미군기지 인근.',
+ seoDescription:'평택호박나이트, 한국인과 외국인이 자연스럽게 어울리는 몇 안 되는 곳. K-POP과 팝송이 반반인 이유.',
  h1Title:'평택호박나이트 — 국제적 밤 문화 거점'
  },
 ];

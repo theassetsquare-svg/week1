@@ -713,7 +713,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','지중해','와인','이탈리안'],
  seoTitle:'부산호빠 깐따삐야',
- seoDescription:'테라코타에 포도넝쿨, 와인 50종. 부산에 열린 지중해.',
+ seoDescription:'부산호빠 깐따삐야 와인 50종에 지중해 감성. 부산에서 이탈리아 느끼고 싶으면 여기 가봐야 한다.',
  h1Title:'부산호빠 깐따삐야 — 부산 사투리가 이탈리아를 만났다'
  },
  {
