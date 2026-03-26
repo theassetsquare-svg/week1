@@ -115,7 +115,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','로컬 칵테일','스포츠 중계','항구 에너지'],
  seoTitle:'부산호빠 스타',
- seoDescription:'부산 한복판, 별 모양 조명 아래 항구 도시의 에너지가 터지는 곳.',
+ seoDescription:'부산호빠 스타 가본 사람만 아는 것들. 별 조명 아래 항구 감성이 터지는데 가격은 착하다. 솔직 후기.',
  h1Title:'부산호빠 스타 — 부산의 밤하늘에 별 하나'
  },
  {
