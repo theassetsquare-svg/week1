@@ -253,7 +253,7 @@ export const nightsSeoul: Venue[] = [
  ],
  tags: ['노원','오픈 스테이지','EDM','댄스 경연'],
  seoTitle:'노원스타나이트',
- seoDescription:'무대 위 주인공은 당신. 노원에서 스타가 되는 밤.',
+ seoDescription:'노원스타나이트에서 무대 위 주인공이 되는 법. 처음 가는 사람도 스타 기분 내는 이유가 있다. 솔직 후기.',
  h1Title:'노원스타나이트 — 스타가 되는 밤'
  },
  {

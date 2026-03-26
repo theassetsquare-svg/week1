@@ -276,7 +276,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','미술 전시','와인','갤러리 감성'],
  seoTitle:'강남호빠 미술관',
- seoDescription:'벽에 그림이 걸려 있고, 매달 작가가 바뀐다. 예술로 대화가 시작되는 곳.',
+ seoDescription:'강남호빠 미술관 솔직 후기. 매달 전시 작가가 바뀌는데 술자리에서 이런 대화가 나올 줄 몰랐다.',
  h1Title:'강남호빠 미술관 — 그림 앞에서 시작되는 밤'
  },
  {
