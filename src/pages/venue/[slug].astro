@@ -132,7 +132,8 @@ const ogImageUrl = `${SITE_URL}/og/${venue.slug}.svg`;
 
 // JSON-LD (LocalBusiness + FAQPage + BreadcrumbList + AggregateRating)
 const jsonLd = [
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":venue.name,"description":venue.shortDesc,
+  {"@context":"https://schema.org","@type":"NightClub","name":venue.name,"description":venue.seoDescription,
+    "image": ogImageUrl,"keywords": venue.tags.join(', '),
     "address":{"@type":"PostalAddress","addressLocality":venue.region,"addressCountry":"KR"},
     ...(venue.phone?{"telephone":venue.phone}:{}),
     "url":`${SITE_URL}/venue/${venue.slug}/`},
