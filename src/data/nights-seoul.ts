@@ -22,7 +22,7 @@ export const nightsSeoul: Venue[] = [
  ],
  tags: ['청담','하우스 뮤직','고급 인테리어','VIP룸'],
  seoTitle:'청담H2O나이트',
- seoDescription:'청담 골목 안쪽, 물속 같은 푸른 공간. 펩시맨 담당.',
+ seoDescription:'청담H2O나이트 가기 전에 이것만 알면 된다. 수조 앞 술맛이 왜 다른지, 새벽 1시 프로그레시브 세션이 뭔지 솔직하게 정리했다.',
  h1Title:'청담H2O나이트 — 수면 아래처럼 깊고 고요한 밤'
  },
  {
