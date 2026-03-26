@@ -138,7 +138,7 @@ export const nightsSeoul: Venue[] = [
  ],
  tags: ['독산','격조','재즈','직장인'],
  seoTitle:'독산국빈관나이트',
- seoDescription:'공장과 주택 사이, 이름값 하는 격조의 공간. 독산동 국빈관.',
+ seoDescription:'독산국빈관나이트 솔직 후기. 공장 지대 한복판에 이런 격조가 왜 있는지, 가보면 납득된다.',
  h1Title:'독산국빈관나이트 — 금천구 한복판의 격조 있는 밤'
  },
  {

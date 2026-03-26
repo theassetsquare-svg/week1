@@ -161,7 +161,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['건대','미니멀','하이볼','갤러리 감성'],
  seoTitle:'건대호빠 W',
- seoDescription:'건대 화양동, W 하나로 말하는 미니멀 공간. 하이볼 성지.',
+ seoDescription:'건대호빠 W를 하이볼 성지라 부르는 이유. 화양동에서 여기만 줄 서는 데는 다 이유가 있었다.',
  h1Title:'건대호빠 W — 간판 하나, 그게 전부다'
  },
  {
