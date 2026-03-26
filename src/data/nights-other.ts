@@ -691,7 +691,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['제주','돌하르방','보름달','관광'],
  seoTitle:'제주나이트',
- seoDescription:'섬의 밤. 돌하르방과 별자리 아래 유일한 무대.',
+ seoDescription:'제주나이트 가기 전에 알아야 할 것. 보름달 뜨는 밤 옥상에서 바다 위 달을 보며 듣는 음악, 돈으로 환산이 안 된다.',
  h1Title:'제주나이트 — 섬의 밤, 한라산 아래 유일한 무대'
  },
 ];
