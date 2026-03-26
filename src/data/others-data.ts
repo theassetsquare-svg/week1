@@ -1219,7 +1219,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['잠실','퓨처리스틱','실버','석촌호수'],
  seoTitle:'잠실호빠 W',
- seoDescription:'석촌호수 근처, 실버 톤에 아크릴 바. 미래 도시가 잠실에 있다.',
+ seoDescription:'잠실호빠 W 석촌호수 근처에 이런 곳이 있었나. 실버 톤에 아크릴 바, 미래 감성에 빠져든다.',
  h1Title:'잠실호빠 W — 호수 옆에 미래가 서 있다'
  },
  {
