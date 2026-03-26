@@ -138,7 +138,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['장안동','JBL 사운드','인더스트리얼','맥주'],
  seoTitle:'장안동호빠 빵빵',
- seoDescription:'장안동 먹자골목 안쪽, JBL 사운드가 터지는 공간. 이름값 한다.',
+ seoDescription:'장안동호빠 빵빵이 이름값 하는 이유. JBL 사운드에 먹자골목 접근성까지, 가기 전에 꼭 읽어보세요.',
  h1Title:'장안동호빠 빵빵 — 소리 하나는 진짜다'
  },
  {
