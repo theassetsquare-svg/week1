@@ -297,7 +297,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['청주','호박','오픈 마이크','가정적'],
  seoTitle:'청주호박나이트',
- seoDescription:'주인 부부가 직접 나오는 따뜻한 공간. 청주의 호박.',
+ seoDescription:'청주호박나이트, 주인 부부가 직접 홀에 나와서 한 명씩 인사한다. 호박전이 안주로 나오는 이 집이 재방문율 높은 이유.',
  h1Title:'청주호박나이트 — 따뜻한 호박빛 아래 열리는 무대'
  },
  {
@@ -320,7 +320,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['서산','서해','호박','해산물'],
  seoTitle:'서산호박나이트',
- seoDescription:'서해 낙조와 해산물 안주. 서산의 호박빛 무대.',
+ seoDescription:'서산호박나이트 가본 사람만 아는 것. 조개구이가 횟집 수준이고, 매월 어부 출신 가수 라이브가 열린다는 사실.',
  h1Title:'서산호박나이트 — 서해 바람이 스치는 호박빛 무대'
  },
  {
