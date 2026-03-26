@@ -619,7 +619,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['이태원','프리즘','EDM','테크노','무지갯빛','파티'],
  seoTitle:'이태원클럽 프리즘',
- seoDescription:'빛이 갈라지는 순간, 프리즘',
+ seoDescription:'이태원 프리즘 천장에 매달린 크리스탈이 무지갯빛을 뿌리는데, 이건 사진으로 절대 못 담는다. 직접 서봐야 안다.',
  h1Title:'이태원클럽 프리즘 — 빛이 만드는 몰입의 순간'
  },
  {
@@ -650,7 +650,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['이태원','포차','개판','자유로운','포장마차','떼창'],
  seoTitle:'이태원개판포차',
- seoDescription:'격식 따위 없는 이태원의 밤, 개판포차',
+ seoDescription:'이태원 개판포차 솔직 후기. 포장마차에서 DJ가 틀어주는 가요 리믹스에 소주 타워 시키면 그날 밤은 끝장이다.',
  h1Title:'이태원개판포차 입장료·위치·예약 완벽 가이드'
  },
  {
