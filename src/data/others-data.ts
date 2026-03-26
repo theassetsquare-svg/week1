@@ -1104,7 +1104,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','퍼포먼스','매직','엔터테인먼트'],
  seoTitle:'울산호빠 쇼맨',
- seoDescription:'스태프가 매직을 하고 카드 트릭을 한다. 서비스 자체가 쇼인 곳.',
+ seoDescription:'울산호빠 쇼맨 스태프가 매직이랑 카드 트릭을 한다. 서비스 자체가 공연인 울산 유일한 엔터 공간.',
  h1Title:'울산호빠 쇼맨 — 여기선 서비스가 마술이다'
  },
  {
