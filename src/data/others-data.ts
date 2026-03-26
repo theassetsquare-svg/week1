@@ -1242,7 +1242,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['영등포','사운드','EDM','음악 체감'],
  seoTitle:'영등포호빠 비트',
- seoDescription:'벽에 스피커가 박혀 있고 바닥이 울린다. 음악을 온몸으로 느끼는 곳.',
+ seoDescription:'영등포호빠 비트 벽에 스피커가 박혀 있고 바닥이 울린다. 음악을 온몸으로 느끼고 싶으면 여기 말고 없다.',
  h1Title:'영등포호빠 비트 — 여기선 귀가 아니라 몸이 먼저 반응한다'
  },
  {
