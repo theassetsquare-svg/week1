@@ -645,7 +645,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','MGM','영화','OST'],
  seoTitle:'광주MGM나이트',
- seoDescription:'레드카펫을 밟고 들어간다. 광주의 영화 같은 밤.',
+ seoDescription:'광주MGM나이트, 입구에 레드카펫이 진짜 깔려 있다. 기념일에 가면 스팟 조명 연출까지 해주는 이 집의 정체.',
  h1Title:'광주MGM나이트 — 영화처럼 화려한 밤이 펼쳐지는 곳'
  },
  {
@@ -668,7 +668,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','올','새벽','선라이즈'],
  seoTitle:'광주올나이트',
- seoDescription:'해가 뜰 때까지. 광주의 끝없는 에너지.',
+ seoDescription:'광주올나이트 솔직 후기. 진짜 해 뜰 때까지 한다. 금토 선라이즈 세션에서 새벽빛과 마지막 곡을 듣는 그 순간.',
  h1Title:'광주올나이트 — 해가 뜰 때까지 멈추지 않는 밤'
  },
  {
