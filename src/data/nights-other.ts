@@ -159,7 +159,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['천안','전통','퓨전 공연','오방색'],
  seoTitle:'천안코리아나이트',
- seoDescription:'오방색과 가야금 합주. 천안의 한국적 밤.',
+ seoDescription:'천안코리아나이트 금요일에 가야 하는 이유. 가야금 합주 라이브가 뭔지 모르면 손해다. 밥까지 먹을 수 있는 곳.',
  h1Title:'천안코리아나이트 — 한국의 색으로 물든 밤'
  },
  {
@@ -182,7 +182,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['대전','테마 공간','세븐','DJ 릴레이'],
  seoTitle:'대전세븐나이트',
- seoDescription:'7개 공간이 하나로. 대전의 럭키 세븐.',
+ seoDescription:'대전세븐나이트, 한 건물에 7개 테마 공간이 연결되어 있다. 레드, 블루, 골드 존을 걸어 다니며 고르는 밤.',
  h1Title:'대전세븐나이트 — 일곱 빛깔로 물든 밤'
  },
  {

@@ -805,7 +805,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['서면','클래식','단골','터줏대감'],
  seoTitle:'서면호빠 퍼스트',
- seoDescription:'서면에서 가장 먼저 문을 열었다. 오래된 집에는 이유가 있다.',
+ seoDescription:'서면호빠 퍼스트가 서면에서 제일 오래된 집인 이유. 단골이 많다는 건 그만큼 검증됐다는 뜻이다.',
  h1Title:'서면호빠 퍼스트 — 오래 버틴 데는 이유가 있다'
  },
  {
