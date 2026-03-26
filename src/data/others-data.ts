@@ -414,7 +414,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['신림','로맨틱','파스텔','칵테일'],
  seoTitle:'신림호빠 플러팅',
- seoDescription:'핑크와 라벤더 사이, 대화가 가까워지는 공간. 소파가 깊다.',
+ seoDescription:'신림호빠 플러팅 가본 솔직 후기. 핑크 조명에 깊은 소파, 대화가 자연스럽게 가까워지는 구조다.',
  h1Title:'신림호빠 플러팅 — 앉으면 자연스럽게 가까워진다'
  },
  {
