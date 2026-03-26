@@ -898,7 +898,7 @@ export const clubVenues: Venue[] = [
  ],
  tags: ['일산','CJ','대형','페스티벌','EDM','경기도'],
  seoTitle:'일산클럽 CJ',
- seoDescription:'서울 밖에서 만나는 페스티벌급 스케일, CJ',
+ seoDescription:'일산 CJ 메인 홀 800명 수용인 거 실화다. 서울 밖에서 이 스케일 찾기 힘든데, 주차장 200대에 셔틀버스까지 돈다.',
  h1Title:'일산클럽 CJ 입장료·위치·예약 완벽 가이드'
  },
  {

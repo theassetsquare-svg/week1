@@ -207,7 +207,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['수원','돔 구조','역세권','인더스트리얼'],
  seoTitle:'수원찬스돔나이트',
- seoDescription:'둥근 천장에서 소리가 360도로 감싼다. 수원의 찬스돔. 강호동 담당.',
+ seoDescription:'수원찬스돔나이트 금토 후기. 웨이팅 각오하고 가야 하는데, 돔 천장에서 베이스가 바닥을 타고 올라오면 이해된다.',
  h1Title:'수원찬스돔나이트 — 돔 천장에서 울려퍼지는 360도 사운드'
  },
  {
@@ -230,7 +230,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['수원','대형 홀','화성 인근','2층 구조'],
  seoTitle:'수원코리아나이트',
- seoDescription:'화성 인근, 200명 수용 대형 무대. 수원의 코리아.',
+ seoDescription:'수원코리아나이트 가기 전에 알아야 할 것. 화성 행궁 근처 200명 규모 대형 홀, 평일과 주말 분위기가 완전히 다르다.',
  h1Title:'수원코리아나이트 — 세계문화유산 옆 대형 무대'
  },
  {
@@ -253,7 +253,7 @@ export const nightsGyeonggi: Venue[] = [
  ],
  tags: ['오산','소도시','넓은 주차장','합리적 가격'],
  seoTitle:'오산호박나이트',
- seoDescription:'오산 주민들의 유일한 밤 거점. 세교신도시 인근.',
+ seoDescription:'오산호박나이트가 동네 유일의 밤 거점인 이유. 단골 비율이 유난히 높은 이 집, 가보면 사람 때문에 다시 온다.',
  h1Title:'오산호박나이트 — 유일하고 따뜻한 밤 거점'
  },
  {

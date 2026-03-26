@@ -644,7 +644,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['장안동','기하학','큐브 인테리어','포토존'],
  seoTitle:'장안동호빠 큐브',
- seoDescription:'정육면체 부스에 기하학 거울. 퍼즐 속에 들어온 것 같은 장안동.',
+ seoDescription:'장안동호빠 큐브 정육면체 부스에 기하학 거울이라니. 퍼즐 속에 들어온 느낌인데 포토존이 미쳤다.',
  h1Title:'장안동호빠 큐브 — 이 공간 자체가 퍼즐이다'
  },
  {
