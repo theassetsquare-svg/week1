@@ -221,6 +221,45 @@ const currentYear = new Date().getFullYear();
   <button class="back-to-top" id="backToTop" aria-label="맨 위로">↑</button>
   <div class="toast" id="toast"></div>
 
+  <!-- ═══ RETENTION ENGINE — 틱톡 95분 체류 시스템 ═══ -->
+
+  <!-- 세션 타이머 위젯 -->
+  <div class="session-timer" id="sessionTimer" title="오늘 체류 시간">
+    <span id="sessionIcon">⏱</span>
+    <span id="sessionTime">0:00</span>
+  </div>
+
+  <!-- 마일스톤 팝업 -->
+  <div class="milestone-overlay" id="milestoneOverlay"></div>
+  <div class="milestone-popup" id="milestonePopup">
+    <div class="milestone-icon" id="milestoneIcon"></div>
+    <div class="milestone-title" id="milestoneTitle"></div>
+    <div class="milestone-desc" id="milestoneDesc"></div>
+    <div class="milestone-reward" id="milestoneReward"></div>
+    <button class="btn btn-primary btn-sm" id="milestoneDismiss" style="margin-top:4px;">계속 탐색하기</button>
+  </div>
+
+  <!-- 도파민 플래시 -->
+  <div class="dopamine-flash" id="dopamineFlash"></div>
+
+  <!-- 업적 토스트 -->
+  <div class="achievement-toast" id="achievementToast">
+    <span class="ach-icon" id="achIcon"></span>
+    <div>
+      <div class="ach-text" id="achText"></div>
+      <div class="ach-sub" id="achSub"></div>
+    </div>
+  </div>
+
+  <!-- 가변 보상 알림 -->
+  <div class="var-reward" id="varReward"></div>
+
+  <!-- 콤보 카운터 -->
+  <div class="combo-counter" id="comboCounter">
+    <div class="combo-num" id="comboNum">0</div>
+    <div class="combo-label">COMBO</div>
+  </div>
+
   <!-- Hooking #6: 3분 체류 슬라이드업 -->
   <div class="slide-up-banner" id="slideUpBanner">
     <button class="close-banner" id="closeSlideUp" aria-label="닫기">✕</button>
