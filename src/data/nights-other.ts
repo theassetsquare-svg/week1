@@ -645,7 +645,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['광주','MGM','영화','OST'],
  seoTitle:'광주MGM나이트',
- seoDescription:'광주MGM나이트, 입구에 레드카펫이 진짜 깔려 있고 금색 로프가 양옆에 서 있다. 기념일에 가면 스팟 조명 연출에 축하 메시지까지. 매월 영화 OST 특집 정보.',
+ seoDescription:'입구에 레드카펫이 진짜로 깔려 있고, 금색 로프가 양옆을 지킨다. 광주MGM나이트 기념일 방문 시 스팟 조명과 축하 메시지 연출까지. 매월 영화 OST 특집 일정.',
  h1Title:'광주MGM나이트 — 영화처럼 화려한 밤이 펼쳐지는 곳'
  },
  {
