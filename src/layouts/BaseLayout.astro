@@ -877,7 +877,7 @@ const currentYear = new Date().getFullYear();
         var bonusChance = Math.random();
         if (bonusChance > 0.6) { // 40% 확률로 보너스
           if (varRewardEl) {
-            varRewardEl.textContent = '🎰 보너스 타임! 지금 추천 룰렛을 돌리면 특별한 추천을 받을 수 있습니다';
+            varRewardEl.textContent = '🎰 보너스 타임! 지금 룰렛 돌리면 깜짝 추천이 나옵니다';
             varRewardEl.classList.add('show');
             triggerDopamine();
             setTimeout(function() { varRewardEl.classList.remove('show'); }, 6000);
