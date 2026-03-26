@@ -92,7 +92,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','부스 좌석','위스키','골드'],
  seoTitle:'강남호빠 로얄',
- seoDescription:'강남역 근처, 골드 톤 부스 좌석에 탄탄한 서비스. 이름값 하는 곳.',
+ seoDescription:'강남 로얄호빠 솔직 후기. 분위기는 확실한데 가격이 좀 세다. 그래도 다시 가는 이유가 있다.',
  h1Title:'강남호빠 로얄 — 이름값, 확실히 한다'
  },
  {
