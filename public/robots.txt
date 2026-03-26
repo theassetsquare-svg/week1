@@ -25,4 +25,10 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
 Sitemap: https://week1-6m5.pages.dev/sitemap.xml
