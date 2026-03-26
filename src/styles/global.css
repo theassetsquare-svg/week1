@@ -749,3 +749,253 @@ main {
 .cat-icon-link:hover { transform: translateY(-2px); }
 .cat-icon-link:active { transform: scale(0.95); }
 .venue-card:active { transform: scale(0.98); transition: transform 0.1s; }
+
+/* ═══════════════════════════════════════════════════════════
+   RETENTION ENGINE — 틱톡 95분 체류 심리학
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Session Timer Widget (틱톡: 시간 보상) ─── */
+.session-timer {
+  position: fixed; top: auto; bottom: 140px; right: 12px;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 20px; padding: 6px 12px;
+  font-size: 11px; font-weight: 700; color: var(--accent);
+  z-index: 89; box-shadow: var(--card-shadow);
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.3s; cursor: pointer;
+  animation: sessionPulse 3s ease infinite;
+}
+.session-timer:hover { transform: scale(1.05); box-shadow: var(--card-shadow-hover); }
+@keyframes sessionPulse {
+  0%, 100% { box-shadow: var(--card-shadow); }
+  50% { box-shadow: 0 0 12px rgba(139,92,246,0.25); }
+}
+
+/* ─── Milestone Popup (슬롯머신: 가변보상) ─── */
+.milestone-popup {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #fff; border: 2px solid var(--accent);
+  border-radius: 24px; padding: 32px 28px;
+  text-align: center; z-index: 500;
+  opacity: 0; pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 20px 60px rgba(139,92,246,0.3);
+  max-width: calc(var(--max-w) - 40px);
+}
+.milestone-popup.show {
+  opacity: 1; pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.milestone-popup .milestone-icon { font-size: 48px; margin-bottom: 12px; }
+.milestone-popup .milestone-title {
+  font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px;
+}
+.milestone-popup .milestone-desc {
+  font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;
+}
+.milestone-popup .milestone-reward {
+  background: linear-gradient(135deg, var(--accent), #6D28D9);
+  color: #fff; padding: 8px 20px; border-radius: 20px;
+  font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 12px;
+}
+.milestone-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  z-index: 499; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.milestone-overlay.show { opacity: 1; pointer-events: auto; }
+
+/* ─── Confetti / Sparkle Effects ─── */
+@keyframes confettiFall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.confetti-piece {
+  position: fixed; top: -10px; width: 10px; height: 10px;
+  z-index: 501; pointer-events: none;
+  animation: confettiFall 3s ease-out forwards;
+}
+@keyframes sparkle {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(180deg); opacity: 1; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+
+/* ─── Dopamine Flash (마이크로 보상) ─── */
+.dopamine-flash {
+  position: fixed; inset: 0; z-index: 498;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at center, rgba(139,92,246,0.15), transparent 70%);
+  transition: opacity 0.2s;
+}
+.dopamine-flash.show { opacity: 1; }
+
+/* ─── Achievement Badge Unlock ─── */
+.achievement-toast {
+  position: fixed; top: 60px; left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+  border: 2px solid #F59E0B;
+  border-radius: var(--radius); padding: 12px 20px;
+  display: flex; align-items: center; gap: 10px;
+  z-index: 400; transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 8px 30px rgba(245,158,11,0.3);
+  max-width: calc(var(--max-w) - 40px);
+}
+.achievement-toast.show { transform: translateX(-50%) translateY(0); }
+.achievement-toast .ach-icon { font-size: 28px; }
+.achievement-toast .ach-text { font-size: 13px; font-weight: 700; color: #92400E; }
+.achievement-toast .ach-sub { font-size: 11px; color: #78350F; margin-top: 2px; }
+
+/* ─── Variable Reward Notification ─── */
+.var-reward {
+  position: fixed; bottom: 80px; left: 50%;
+  transform: translateX(-50%) translateY(20px) scale(0.9);
+  background: linear-gradient(135deg, var(--accent), #6D28D9);
+  color: #fff; border-radius: var(--radius);
+  padding: 14px 20px; z-index: 350;
+  opacity: 0; pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  text-align: center; font-size: 14px; font-weight: 600;
+  max-width: calc(var(--max-w) - 40px);
+  box-shadow: 0 8px 30px rgba(139,92,246,0.4);
+}
+.var-reward.show {
+  opacity: 1; pointer-events: auto;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* ─── Streak Fire Animation ─── */
+@keyframes fireGlow {
+  0%, 100% { text-shadow: 0 0 4px rgba(245,158,11,0.3); }
+  50% { text-shadow: 0 0 12px rgba(245,158,11,0.6); }
+}
+.streak-fire { animation: fireGlow 2s ease infinite; }
+
+/* ─── Content Unlock Progress ─── */
+.unlock-meter {
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 16px; margin: 12px 0;
+  transition: all 0.3s;
+}
+.unlock-meter:hover { border-color: var(--accent); }
+.unlock-meter-bar {
+  height: 6px; background: var(--bg-tertiary); border-radius: 3px;
+  overflow: hidden; margin-top: 8px;
+}
+.unlock-meter-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), #F59E0B, var(--accent2));
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
+  transition: width 0.8s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Urgency Countdown ─── */
+.urgency-bar {
+  background: linear-gradient(90deg, #DC2626, #F87171);
+  color: #fff; text-align: center; padding: 8px 16px;
+  font-size: 13px; font-weight: 700;
+  position: sticky; top: 42px; z-index: 109;
+  display: none;
+}
+.urgency-bar.show { display: block; }
+
+/* ─── Scroll Depth Reward Zones ─── */
+.reward-zone {
+  padding: 16px; margin: 16px 0;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  text-align: center; opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.34,1.56,0.64,1);
+}
+.reward-zone.revealed {
+  opacity: 1; transform: translateY(0);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ─── Floating Action Buttons ─── */
+.fab-container {
+  position: fixed; bottom: 140px; left: 12px;
+  display: flex; flex-direction: column; gap: 8px;
+  z-index: 89;
+}
+.fab-btn {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; box-shadow: var(--card-shadow);
+  transition: all 0.3s; cursor: pointer;
+  border: 1px solid var(--border); background: var(--card-bg);
+}
+.fab-btn:hover { transform: scale(1.1); box-shadow: var(--card-shadow-hover); }
+.fab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ─── Scroll Hint Bounce ─── */
+@keyframes scrollHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+.scroll-hint {
+  text-align: center; padding: 12px; color: var(--text-muted);
+  font-size: 13px; animation: scrollHint 2s ease infinite;
+}
+
+/* ─── Combo Counter ─── */
+.combo-counter {
+  position: fixed; top: 50%; right: 12px;
+  transform: translateY(-50%);
+  background: var(--card-bg); border: 2px solid var(--accent);
+  border-radius: 20px; padding: 8px 14px;
+  text-align: center; z-index: 88;
+  opacity: 0; transition: all 0.4s;
+  box-shadow: 0 4px 20px rgba(139,92,246,0.2);
+}
+.combo-counter.show { opacity: 1; }
+.combo-counter .combo-num {
+  font-size: 20px; font-weight: 800; color: var(--accent);
+  line-height: 1;
+}
+.combo-counter .combo-label {
+  font-size: 10px; color: var(--text-muted); font-weight: 600;
+}
+
+/* ─── Night Mode Auto Switch ─── */
+@media (prefers-color-scheme: dark) {
+  .session-timer { background: #1a1a2e; color: #a78bfa; border-color: #333; }
+}
+
+/* ─── Pulse Ring on Interaction ─── */
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.pulse-ring {
+  position: absolute; width: 40px; height: 40px;
+  border: 2px solid var(--accent); border-radius: 50%;
+  pointer-events: none; animation: pulseRing 0.6s ease-out forwards;
+}
+
+/* ─── Daily Challenge Banner ─── */
+.daily-challenge {
+  background: linear-gradient(135deg, #EDE9FE, #CFFAFE);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius); padding: 16px;
+  margin: 12px 0; position: relative; overflow: hidden;
+}
+.daily-challenge::before {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(139,92,246,0.1), transparent);
+  animation: challengeGlow 4s ease infinite;
+}
+@keyframes challengeGlow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, 20px); }
+}
