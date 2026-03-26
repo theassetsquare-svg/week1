@@ -45,7 +45,7 @@ export const nightsSeoul: Venue[] = [
  ],
  tags: ['강남','전통','원형 무대','클래식'],
  seoTitle:'강남줄리아나나이트',
- seoDescription:'강남에서 가장 오래된 이름. 40년 내공이 녹아든 무대.',
+ seoDescription:'강남줄리아나나이트가 40년 넘게 살아남은 이유. 한번 가본 사람은 알고, 안 가본 사람은 궁금해한다.',
  h1Title:'강남줄리아나나이트 — 가장 오래된 이름'
  },
  {
