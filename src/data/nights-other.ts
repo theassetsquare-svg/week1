@@ -274,7 +274,7 @@ export const nightsOther: Venue[] = [
  ],
  tags: ['청주','그래피티','대학가','비주얼 아트'],
  seoTitle:'청주돈텔마마나이트',
- seoDescription:'형광 그래피티와 플레이밍 칵테일. 청주의 자유로운 밤.',
+ seoDescription:'청주돈텔마마나이트 솔직 후기. 바텐더가 불 붙여서 만드는 칵테일 쇼가 SNS에서 도는 이유, 직접 확인했다.',
  h1Title:'청주돈텔마마나이트 — 비밀스러운 이름 뒤의 뜨거운 무대'
  },
  {
