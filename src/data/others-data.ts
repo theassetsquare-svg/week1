@@ -437,7 +437,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','에너지','EDM','단체석'],
  seoTitle:'수원호빠 비스트',
- seoDescription:'LED 간판이 거리를 물들이고 EDM 사운드가 온몸을 흔드는 수원호빠 비스트, 단체 모임 장소로 계속 지목되는 이 야수급 에너지의 실체를 밝힌다.',
+ seoDescription:'단체 모임이면 여기 빼놓을 수 없다. 수원호빠 비스트 LED 간판이 거리를 물들이고 EDM 베이스가 흉골을 두드리는 야수급 에너지 현장.',
  h1Title:'수원호빠 비스트 — 여기서 조용하려는 건 욕심이다'
  },
  {
