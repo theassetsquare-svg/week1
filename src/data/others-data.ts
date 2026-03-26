@@ -552,7 +552,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','LED 스크린','테마 전환','몰입형'],
  seoTitle:'수원호빠 신세계',
- seoDescription:'터널을 지나면 천장이 바다가 됐다가 우주가 된다. 수원의 다른 세계.',
+ seoDescription:'수원호빠 신세계 터널 지나면 천장이 바다였다가 우주로 바뀐다. 이런 몰입형 공간은 수원에 여기뿐.',
  h1Title:'수원호빠 신세계 — 문 열면 다른 세계다, 진짜로'
  },
  {
