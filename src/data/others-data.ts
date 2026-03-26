@@ -506,7 +506,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','은밀한','비스포크','싱글몰트'],
  seoTitle:'수원호빠 시크릿',
- seoDescription:'간판이 없다. 예약 메시지를 따라가야만 찾을 수 있는 은밀한 공간.',
+ seoDescription:'수원호빠 시크릿은 간판이 없다. 예약 메시지 따라가야 찾을 수 있는데, 그래서 더 가고 싶어진다.',
  h1Title:'수원호빠 시크릿 — 찾을 수 없어야 비밀이다'
  },
  {
