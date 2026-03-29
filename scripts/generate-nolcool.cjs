@@ -304,7 +304,7 @@ ${v.faq.length?`<script type="application/ld+json">${JSON.stringify({"@context":
 <script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"놀쿨","item":SITE},{"@type":"ListItem","position":2,"name":cat.name,"item":`${SITE}/nolcool/${cat.slug}/`},{"@type":"ListItem","position":3,"name":v.name}]})}</script>
 <style>${CSS}</style></head><body>
 ${hdr()}
-<div class="hero"><div class="ph" style="background:${grads[0]}">${cat.icon}</div></div>
+<div class="hero"><div class="ph" style="background:${grads[0]}" role="img" aria-label="${esc(v.name)} 대표 이미지">${cat.icon}</div></div>
 <article class="ar">
 <div class="bc"><a href="/">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/">${cat.name}</a> &gt; ${esc(v.name)}</div>
 <span class="tg">${cat.icon} ${cat.name}</span>
