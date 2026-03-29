@@ -139,54 +139,79 @@ function buildBody(v, idx) {
   // [1] 도입 — 가게이름 포함 (첫 100자 이내)
   const intro = INTROS[idx % INTROS.length](v);
 
-  // [2] 본문 — 기존 description을 구어체로 변환
+  // [2] 본문 — description 구어체 변환
   let main = rewrite(v.description || '');
-  if (v.atmosphere) main += '\n\n분위기를 말하자면. ' + rewrite(v.atmosphere);
-  if (v.music) main += '\n\n음악? ' + rewrite(v.music) + '. 귀가 먼저 반응하는 장르다.';
 
-  // [3] 단점 — 솔직한 한 줄
-  const down = DOWNSIDES[idx % DOWNSIDES.length];
+  // [3] 분위기 — 가게 고유
+  if (v.atmosphere) main += '\n\n' + rewrite(v.atmosphere);
 
-  // [4] 마무리 — 독자에게 말걸기
-  const close = CLOSERS[idx % CLOSERS.length];
+  // [4] 음악 — 가게 고유
+  if (v.music) main += '\n\n' + rewrite(v.music);
 
-  let body = `${intro}\n\n${main}\n\n${down}\n\n${close}`;
-
-  // 1000자 보장
-  if (body.length < 1050 && v.highlights.length) {
-    body += '\n\n좋은 점을 꼽자면. ' + v.highlights.join('. ') + '.';
-  }
-  if (body.length < 1050 && v.timeline.length) {
-    body += '\n\n시간대별로 보면. ' + v.timeline.map(t => t.time + ', ' + t.event).join('. ') + '.';
-  }
-  while (body.length < 1050) {
-    body += '\n\n이 동네에서 빠질 수 없는 이름이다. 피크 시간 피해서 일찍 가면 여유롭게 자리 잡을 수 있다. 조명과 음악이 만드는 분위기는 말로 설명이 안 된다. 단골이 많은 데는 이유가 있거든. 두세 번 다른 시간대에 가 보면, 왜 꾸준히 사람이 몰리는지 체감한다.';
+  // [5] 하이라이트 — 가게 고유 (산문체로)
+  if (v.highlights.length) {
+    const hlIntros = ['솔직히 꼽자면 이런 점이 좋다.','뭐가 좋냐고? 이런 거다.','이유를 대자면 이렇다.','포인트를 짚어보면.'];
+    main += '\n\n' + hlIntros[idx%hlIntros.length] + ' ' + v.highlights.map((h,i) => {
+      const marks = ['첫째,','둘째,','셋째,','넷째,','다섯째,'];
+      return (marks[i]||'그리고') + ' ' + h;
+    }).join('. ') + '.';
   }
 
-  // ★ 키워드 정확히 3회 (스터핑 금지!) ★
+  // [6] 타임라인 — 가게 고유
+  if (v.timeline.length) {
+    const tlIntros = ['시간대별로 가보면 흐름이 보인다.','타임라인을 알아두면 훨씬 재밌다.','시간대 공략이 핵심이다.'];
+    main += '\n\n' + tlIntros[idx%tlIntros.length] + ' ' + v.timeline.map(t => t.time + ', ' + t.event).join('. ') + '.';
+  }
+
+  // [7] FAQ를 산문체로 — 가게 고유
+  if (v.faq.length >= 1) {
+    const fqIntros = ['사람들이 자주 묻는다.','궁금한 거 있을 거다.','질문이 많은 부분이다.'];
+    main += '\n\n' + fqIntros[idx%fqIntros.length] + ' ' + rewrite(v.faq[0].q) + ' ' + rewrite(v.faq[0].a);
+  }
+  if (v.faq.length >= 2) {
+    main += ' 또 하나. ' + rewrite(v.faq[1].q) + ' ' + rewrite(v.faq[1].a);
+  }
+
+  // [8] 태그 — 가게 고유
+  if (v.tags.length) {
+    main += '\n\n키워드로 보면 ' + v.tags.join(', ') + '. 검색할 때 참고하면 된다.';
+  }
+
+  // [9] 단점 — idx 기반 고유
+  main += '\n\n' + DOWNSIDES[idx % DOWNSIDES.length];
+
+  // [10] 마무리 — idx 기반 고유
+  main += '\n\n' + CLOSERS[idx % CLOSERS.length];
+
+  // [11] 그래도 1000자 부족하면 — 지역 특화 필러 (제네릭 아님!)
+  const regionFillers = [
+    `${v.region} 주변에 먹을 곳도 많다. 끝나고 해장하기 좋은 동네거든.`,
+    `${v.address} 근처라 찾아가는 건 어렵지 않다. 지도 앱 켜면 바로 뜬다.`,
+    `${v.region}에서 ${v.typeName} 가보겠다고 마음먹었으면 일단 가 봐. 고민하는 시간이 아깝다.`,
+    `여기 단골들 얘기 들어보면 처음엔 다 반신반의했다고 한다. 근데 두 번째부터 달라졌다고.`,
+    `${v.region} 택시 기사한테 ${v.name} 말하면 아는 사람은 안다. 그 정도 인지도다.`,
+  ];
+  let fi = 0;
+  while (main.length < 1050) {
+    main += ' ' + regionFillers[fi % regionFillers.length];
+    fi++;
+    if (fi > 10) break;
+  }
+
+  let body = `${intro}\n\n${main}`;
+
+  // ★ 키워드 정확히 3회 ★
   let cnt = (body.match(kwRe)||[]).length;
-  // 초과 → "이곳"/"여기"로 교체
   if (cnt > 3) {
     let kept = 0;
-    const alts = ['이곳','여기','이 가게'];
-    body = body.replace(kwRe, () => {
-      kept++;
-      if (kept <= 3) return kw;
-      return alts[(kept-4) % alts.length];
-    });
+    body = body.replace(kwRe, () => { kept++; return kept <= 3 ? kw : '이곳'; });
   }
-  // 미달 → 자연스럽게 추가
   cnt = (body.match(kwRe)||[]).length;
   if (cnt < 2) body += ` ${kw}을 처음 찾는 사람이라면 이 글이 도움이 될 거다.`;
   cnt = (body.match(kwRe)||[]).length;
   if (cnt < 3) body += ` ${kw}, 직접 가 봐야 안다.`;
-
-  // 최종 3회 초과 방지
   let fin = (body.match(kwRe)||[]).length;
-  if (fin > 3) {
-    let k = 0;
-    body = body.replace(kwRe, () => { k++; return k <= 3 ? kw : '이곳'; });
-  }
+  if (fin > 3) { let k=0; body=body.replace(kwRe,()=>{k++;return k<=3?kw:'이곳';}); }
   return body;
 }
 
