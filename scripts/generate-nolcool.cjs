@@ -268,7 +268,7 @@ function venuePage(v,cat,same,idx){
   if(sd.length>150){console.error('❌ seoDesc>150:',v.slug,sd.length);process.exit(1);}
   const body=buildBody(v);
   const canon=`${SITE}/nolcool/${cat.slug}/${v.slug}/`;
-  const ogImg=`${SITE}/nolcool/og/${cat.slug}.svg`;
+  const ogImg=`${SITE}/nolcool/${cat.slug}/${v.slug}/og.svg`;
   const today=new Date().toISOString().split('T')[0];
   const c=cat.color;
   const grads=imgGradients(c,10);
