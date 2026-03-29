@@ -130,6 +130,18 @@ function imgGradients(c, n) {
   return Array.from({length:n}, (_,i) => `linear-gradient(${angles[i%10]}deg,${c},${c}${offsets[i%10]})`);
 }
 
+// ─── 닉네임 OG이미지 SVG 생성 (1:1) ──────────────────
+function genOgSvg(v, cat) {
+  const nick = v.nickname || '';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+<rect width="600" height="600" fill="${cat.color}"/>
+<text x="300" y="220" text-anchor="middle" font-size="80" fill="white">${cat.icon}</text>
+<text x="300" y="320" text-anchor="middle" font-size="32" font-weight="800" fill="white" font-family="system-ui,sans-serif">${esc(v.name)}</text>
+${nick ? `<text x="300" y="400" text-anchor="middle" font-size="52" font-weight="800" fill="#fbbf24" font-family="system-ui,sans-serif">${esc(nick)}</text>` : ''}
+<text x="300" y="520" text-anchor="middle" font-size="22" fill="rgba(255,255,255,.5)" font-family="system-ui,sans-serif">놀쿨</text>
+</svg>`;
+}
+
 // ─── JSON-LD NightClub ──────────────────────────────
 function nightclubLD(v) {
   const obj = {"@context":"https://schema.org","@type":"NightClub","name":v.name,"address":{"@type":"PostalAddress","addressLocality":v.region,"streetAddress":v.address,"addressCountry":"KR"}};
