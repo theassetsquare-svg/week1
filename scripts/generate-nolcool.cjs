@@ -212,7 +212,7 @@ ${nick ? `<text x="300" y="400" text-anchor="middle" font-size="52" font-weight=
 // ─── JSON-LD NightClub ──────────────────────────────
 function nightclubLD(v) {
   const obj = {"@context":"https://schema.org","@type":"NightClub","name":v.name,"address":{"@type":"PostalAddress","addressLocality":v.region,"streetAddress":v.address,"addressCountry":"KR"}};
-  if (v.description) obj.description = v.description.substring(0,200);
+  if (v.description) obj.description = rewrite(v.description).substring(0,200);
   if (v.phone) obj.telephone = v.phone;
   return JSON.stringify(obj);
 }
