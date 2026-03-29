@@ -164,7 +164,7 @@ const jsonLd = [
     <span class="bc-cur">{venue.name}</span>
   </nav>
   <div class="vh-badge">{venue.typeName}</div>
-  <h1>{venue.h1Title}</h1>
+  <h1>{venue.name}</h1>
   {venue.nickname && <p class="vh-nick">담당: {venue.nickname}</p>}
   {venue.phone && <p style="font-size:14px;color:rgba(255,255,255,0.9);margin-top:4px;">{venue.phone}</p>}
   <img src={`/og/${venue.slug}.svg`} alt={`${venue.name} ${venue.typeName} ${venue.region}`} width="1200" height="630" loading="lazy" class="vh-img" />
