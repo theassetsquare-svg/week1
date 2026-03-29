@@ -12,16 +12,29 @@ const SITE = 'https://week1-6m5.pages.dev';
 const AD_FREE = new Set(['sangbong-hankukgwan','hwajeong-hankukgwan','suwon-korea','bundang-pongpong','busan-asiad','ulsan-newworld','suyu-shampoo','indeokwon-gukbingwan']);
 const NICK_BAN = { 'haeundae-goguryeo': ['신실장'] };
 
-// ─── AI 금지단어 + 구어체 변환 ────────────────────────
+// ─── AI 금지단어 완전 제거 + 구어체 변환 ───────────────
 function rewrite(t) {
   return (t||'')
+    // ★ AI 금지 형용사 ★
     .replace(/다양한/g,'여러').replace(/특별한/g,'남다른').replace(/프리미엄/g,'고급')
-    .replace(/최고의/g,'으뜸가는').replace(/뛰어난/g,'눈에 띄는').replace(/차별화된/g,'독특한')
-    .replace(/혁신적인/g,'새로운').replace(/할 수 있습니다/g,'할 수 있다').replace(/할수있습니다/g,'할 수 있다')
-    .replace(/제공합니다/g,'준다').replace(/드립니다/g,'준다').replace(/되어 있습니다/g,'돼 있다')
-    .replace(/됩니다/g,'된다').replace(/있습니다/g,'있다').replace(/합니다/g,'한다')
-    .replace(/입니다/g,'이다').replace(/습니다/g,'다').replace(/ㅂ니다/g,'다')
-    .replace(/가족모임/g,'').replace(/가족 모임/g,'').replace(/패밀리/g,'').replace(/놀쿨/g,'놀쿨');
+    .replace(/최고의/g,'제일 잘하는').replace(/뛰어난/g,'꽤 괜찮은').replace(/차별화된/g,'좀 다른')
+    .replace(/혁신적인/g,'새로운').replace(/탁월한/g,'확실한').replace(/독보적인/g,'유일한')
+    .replace(/완벽한/g,'거의 흠잡을 데 없는')
+    // ★ AI 금지 동사/어미 ★
+    .replace(/할 수 있습니다/g,'할 수 있다').replace(/할수있습니다/g,'할 수 있다')
+    .replace(/제공합니다/g,'준다').replace(/자랑합니다/g,'내세운다')
+    .replace(/선사합니다/g,'느끼게 한다').replace(/만나보세요/g,'가 봐')
+    .replace(/돋보입니다/g,'눈에 띈다').replace(/경험해보세요/g,'직접 느껴 봐')
+    .replace(/확인해보세요/g,'확인해 봐').replace(/즐겨보세요/g,'즐겨 봐')
+    // ★ AI 금지 부사/표현 ★
+    .replace(/한눈에/g,'바로').replace(/한곳에서/g,'여기서').replace(/원스톱/g,'한 번에')
+    .replace(/종합적인/g,'전체적인').replace(/한 단계 업그레이드/g,'더 나은')
+    // ★ 경어체 → 구어체 ★
+    .replace(/되어 있습니다/g,'돼 있다').replace(/드립니다/g,'준다')
+    .replace(/됩니다/g,'된다').replace(/있습니다/g,'있다')
+    .replace(/합니다/g,'한다').replace(/입니다/g,'이다').replace(/습니다/g,'다')
+    // ★ 금지 명사 ★
+    .replace(/가족모임/g,'').replace(/가족 모임/g,'').replace(/패밀리/g,'');
 }
 
 // ─── 데이터 로드 ─────────────────────────────────────
