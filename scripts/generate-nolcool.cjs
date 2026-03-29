@@ -828,7 +828,7 @@ ${footer()}
 function buildCategoryPage(cat) {
   const title = `${cat.seoTitle} | 놀쿨`;
   const desc = cat.description;
-  const canonical = `${SITE_URL}/${cat.slug}/`;
+  const canonical = `${SITE_URL}/nolcool/${cat.slug}/`;
   const today = new Date().toISOString().split('T')[0];
 
   return `<!DOCTYPE html>
