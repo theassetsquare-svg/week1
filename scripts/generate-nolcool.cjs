@@ -986,10 +986,15 @@ function ensureDir(dir) {
 function generate() {
   console.log('🎯 놀쿨 서브사이트 생성 시작...\n');
 
-  // hub
+  // hub → 루트에 출력 (홈 = /)
   ensureDir(BASE);
-  fs.writeFileSync(path.join(BASE, 'index.html'), buildHubPage());
-  console.log('✅ 허브 페이지: /nolcool/index.html');
+  const hubHtml = buildHubPage();
+  fs.writeFileSync(path.join(BASE, 'index.html'), hubHtml);
+  // 루트 index.html도 생성 (public/ 용)
+  const publicRoot = path.join(__dirname, '..', 'public');
+  ensureDir(publicRoot);
+  fs.writeFileSync(path.join(publicRoot, 'index.html'), hubHtml);
+  console.log('✅ 허브 페이지: /index.html (루트) + /nolcool/index.html');
 
   // categories & venues
   let venueCount = 0;
