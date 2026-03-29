@@ -99,44 +99,94 @@ function seoDesc(v) {
   return d;
 }
 
-// ─── 본문 1000자+ (첫100자 가게이름, 키워드 정확히 3회, 구어체) ──
-function buildBody(v) {
-  const fullName = `${v.region} ${v.typeName} ${v.name}`;
+// ─── 베스트셀러 작가 스타일 본문 (1000자+, 키워드3회, 구어체) ──
+const INTROS = [
+  (v) => `${v.name}. ${v.region} 거리에 네온이 켜지면 사람들이 슬슬 모이기 시작한다.`,
+  (v) => `솔직히 말할게. ${v.region}에서 ${v.typeName} 찾는다면 ${v.name}은 후보에 넣어야 한다.`,
+  (v) => `${v.name} 앞에 서면 안에서 쿵쿵거리는 소리가 벌써 들린다. 심장이 먼저 반응하는 곳이다.`,
+  (v) => `금요일 밤. ${v.name}. 문 열고 들어가는 순간 공기가 달라진다.`,
+  (v) => `${v.region}에서 밤에 갈 곳을 찾고 있다면. ${v.name}, 여기는 리스트에서 빼면 안 된다.`,
+  (v) => `처음 가는 사람은 좀 긴장될 수도 있다. 근데 ${v.name}은 한번 들어가면 또 오게 되는 곳이거든.`,
+  (v) => `${v.name}. 이름만 들어도 아는 사람은 다 안다. ${v.region}에서는 꽤 유명하다.`,
+  (v) => `밤 11시. ${v.region}. ${v.name} 앞에 택시가 멈춘다. 여기서부터 밤이 시작된다.`,
+  (v) => `${v.name}을 한 마디로? 분위기가 사람을 잡아두는 곳이다. 한번 앉으면 시간이 어떻게 가는지 모른다.`,
+  (v) => `누가 ${v.region} ${v.typeName} 추천해달라고 하면 ${v.name}부터 말한다. 이유는 가보면 안다.`,
+  (v) => `${v.name}. 간판은 수수한데, 안에 들어가면 이야기가 달라진다.`,
+  (v) => `여기가 왜 단골이 많은지, 한 번 가보면 바로 체감된다. ${v.name} 이야기다.`,
+];
+const DOWNSIDES = [
+  '솔직한 단점 하나. 주말에는 사람이 좀 몰린다. 평일이 숨은 찬스다.',
+  '아쉬운 점을 굳이 꼽자면, 주차 공간이 넉넉하지 않다. 대중교통이 편하다.',
+  '단점? 금요일 밤은 좀 기다려야 할 수도 있다. 근데 기다릴 만한 가치는 있다.',
+  '한 가지 아쉬운 건, 사람 많을 때 좀 답답할 수 있다. 일찍 가면 괜찮다.',
+  '솔직히 가격대가 만만하진 않다. 근데 분위기값이라 생각하면 납득이 간다.',
+  '단점이 있다면 찾아가는 길이 처음엔 좀 헷갈린다. 지도 켜고 가자.',
+  '솔직한 단점. 자리가 많지는 않다. 일찍 가거나 예약하는 게 좋다.',
+  '아쉬운 점 하나. 환기가 좀 부족하다. 근데 사람들이 워낙 많이 찾으니까.',
+];
+const CLOSERS = [
+  '직접 가 보고 판단해. 글로는 한계가 있으니까.',
+  '궁금하면 직접 확인하는 수밖에. 후회는 안 할 거다.',
+  '당신이라면 어떻게 하겠는가. 일단 가 보는 거다.',
+  '말로 설명하는 것보다 한 번 가보는 게 빠르다. 그게 답이다.',
+  '한 번쯤 가볼 만하다. 이 정도면 충분히 추천할 수 있다.',
+  '결론? 갈 만하다. 나쁘면 말 안 한다.',
+];
+
+function buildBody(v, idx) {
   const kw = v.name;
   const kwRe = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g');
-  // 본문 조합
-  let body = rewrite(v.description || '');
-  if (v.atmosphere) body += ' ' + rewrite(v.atmosphere);
-  if (v.music) body += ' 음악은 ' + rewrite(v.music) + ' 장르가 흐른다.';
-  if (v.highlights.length) body += ' ' + v.highlights.join('. ') + '.';
-  if (v.timeline.length) body += ' ' + v.timeline.map(t=>t.time+' '+t.event).join('. ')+'.';
-  // 1000자 보장 (가게이름 대신 이곳/여기 사용)
-  while (body.length < 1050) {
-    body += ` 이 동네에서 빠질 수 없는 이름이다. 피크 시간을 피해 일찍 가면 여유롭게 자리 잡을 수 있다. 조명과 음악이 만드는 분위기는 말로 설명이 안 된다. 주변 먹거리와 연계하면 하루가 알차다. 단골이 많은 데는 이유가 있다. 두세 번 다른 시간대에 가 보면, 왜 꾸준히 사람이 몰리는지 체감한다.`;
+
+  // [1] 도입 — 가게이름 포함 (첫 100자 이내)
+  const intro = INTROS[idx % INTROS.length](v);
+
+  // [2] 본문 — 기존 description을 구어체로 변환
+  let main = rewrite(v.description || '');
+  if (v.atmosphere) main += '\n\n분위기를 말하자면. ' + rewrite(v.atmosphere);
+  if (v.music) main += '\n\n음악? ' + rewrite(v.music) + '. 귀가 먼저 반응하는 장르다.';
+
+  // [3] 단점 — 솔직한 한 줄
+  const down = DOWNSIDES[idx % DOWNSIDES.length];
+
+  // [4] 마무리 — 독자에게 말걸기
+  const close = CLOSERS[idx % CLOSERS.length];
+
+  let body = `${intro}\n\n${main}\n\n${down}\n\n${close}`;
+
+  // 1000자 보장
+  if (body.length < 1050 && v.highlights.length) {
+    body += '\n\n좋은 점을 꼽자면. ' + v.highlights.join('. ') + '.';
   }
-  // 키워드 정확히 3회로 조정 (스터핑 금지!)
+  if (body.length < 1050 && v.timeline.length) {
+    body += '\n\n시간대별로 보면. ' + v.timeline.map(t => t.time + ', ' + t.event).join('. ') + '.';
+  }
+  while (body.length < 1050) {
+    body += '\n\n이 동네에서 빠질 수 없는 이름이다. 피크 시간 피해서 일찍 가면 여유롭게 자리 잡을 수 있다. 조명과 음악이 만드는 분위기는 말로 설명이 안 된다. 단골이 많은 데는 이유가 있거든. 두세 번 다른 시간대에 가 보면, 왜 꾸준히 사람이 몰리는지 체감한다.';
+  }
+
+  // ★ 키워드 정확히 3회 (스터핑 금지!) ★
   let cnt = (body.match(kwRe)||[]).length;
-  // 3회 초과 → 초과분을 "이곳"으로 교체
+  // 초과 → "이곳"/"여기"로 교체
   if (cnt > 3) {
-    let replaced = 0;
-    body = body.replace(kwRe, (match) => {
-      replaced++;
-      if (replaced <= 2) return match; // 처음 2개는 유지
-      return '이곳'; // 나머지는 교체
+    let kept = 0;
+    const alts = ['이곳','여기','이 가게'];
+    body = body.replace(kwRe, () => {
+      kept++;
+      if (kept <= 3) return kw;
+      return alts[(kept-4) % alts.length];
     });
   }
-  // 3회 미만 → 부족분 추가
+  // 미달 → 자연스럽게 추가
   cnt = (body.match(kwRe)||[]).length;
-  if (cnt < 2) body += ` ${kw}을(를) 처음 찾는 사람이라면 이 글이 도움이 될 것이다.`;
+  if (cnt < 2) body += ` ${kw}을 처음 찾는 사람이라면 이 글이 도움이 될 거다.`;
   cnt = (body.match(kwRe)||[]).length;
   if (cnt < 3) body += ` ${kw}, 직접 가 봐야 안다.`;
-  // 첫 문장에 전체이름 삽입
-  body = `${fullName}. ${body}`;
-  // 최종 키워드 수 확인 (첫문장 포함 max 3)
-  let finalCnt = (body.match(kwRe)||[]).length;
-  if (finalCnt > 3) {
-    let r = 0;
-    body = body.replace(kwRe, (m) => { r++; return r <= 3 ? m : '이곳'; });
+
+  // 최종 3회 초과 방지
+  let fin = (body.match(kwRe)||[]).length;
+  if (fin > 3) {
+    let k = 0;
+    body = body.replace(kwRe, () => { k++; return k <= 3 ? kw : '이곳'; });
   }
   return body;
 }
