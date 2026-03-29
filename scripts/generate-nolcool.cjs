@@ -89,12 +89,11 @@ function titleCheck(title) {
 // ─── seoDescription ≤ 150자 ─────────────────────────
 function seoDesc(v) {
   let d = `${v.region} ${v.name}. ${rewrite(v.shortDesc||v.seoDescription||'')}`;
-  // 짧으면 atmosphere/description에서 보충
   if (d.length < 100) {
     const extra = rewrite(v.atmosphere || v.description || '').substring(0, 200);
     d += ' ' + extra;
   }
-  d = d.replace(/\s+/g,' ').trim();
+  d = rewrite(d).replace(/\s+/g,' ').trim();
   if (d.length > 150) d = d.substring(0,147)+'...';
   return d;
 }
