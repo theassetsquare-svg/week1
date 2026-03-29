@@ -416,7 +416,7 @@ function ctaBlock(n){return `<div class="cta"><p>${esc(n)}, 더 자세한 정보
 
 // ─── 카테고리 페이지 ────────────────────────────────
 function catPage(cat,vs){
-  const sd=`전국 인기 ${cat.name} ${vs.length}곳의 분위기, 음악, 이용 정보를 한눈에. 놀쿨에서 확인.`;
+  const sd=`전국 인기 ${cat.name} ${vs.length}곳의 분위기, 음악, 이용 정보를 바로. 놀쿨에서 확인.`;
   return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>전국 ${cat.name} ${vs.length}곳 가이드 | 놀쿨</title>
 <meta name="description" content="${esc(sd.substring(0,150))}"><meta name="robots" content="index,follow">
@@ -434,7 +434,7 @@ ${ctaBlock(cat.name)}</article>${ftr()}${bbar(cat)}${JS}</body></html>`;
 // ─── 허브 ───────────────────────────────────────
 function hubPage(allV){
   const cc={};for(const v of allV)cc[v.type]=(cc[v.type]||0)+1;
-  const sd='전국 나이트, 클럽, 라운지, 호빠 152곳의 분위기와 음악 정보를 한눈에. 놀쿨에서 확인.';
+  const sd='전국 나이트, 클럽, 라운지, 호빠 152곳의 분위기와 음악 정보를 바로. 놀쿨에서 확인.';
   return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>놀쿨 — 전국 나이트·클럽·라운지 가이드</title>
 <meta name="description" content="${esc(sd)}"><meta name="robots" content="index,follow">
@@ -443,7 +443,7 @@ function hubPage(allV){
 <meta property="og:description" content="${esc(sd)}"><meta property="og:url" content="${SITE}/">
 <meta property="og:image" content="${SITE}/nolcool/og/night.svg"><meta property="og:site_name" content="놀쿨"><meta property="og:locale" content="ko_KR">
 <style>${CSS}</style></head><body>${hdr()}
-<div class="hh"><h1>놀쿨</h1><p>전국 나이트·클럽·라운지·호빠 ${allV.length}곳<br>분위기·음악 정보를 한눈에</p></div>
+<div class="hh"><h1>놀쿨</h1><p>전국 나이트·클럽·라운지·호빠 ${allV.length}곳<br>분위기·음악 정보를 바로</p></div>
 <article class="ar"><section class="sc"><h2>카테고리</h2><div class="cg">${CATS.map(c=>`<a href="/nolcool/${c.slug}/" class="cc" target="_blank" rel="noopener"><div class="ct" style="background:${c.color}">${c.icon}</div><div class="ci"><h3>${c.name}</h3><p>전국 인기 ${c.name} 가이드</p><p class="cn">${cc[c.type]||0}곳</p></div></a>`).join('')}</div></section>
 <section class="sc"><h2>최근 업데이트</h2>${allV.slice(0,8).map(v=>{const ct=CATS.find(c=>c.type===v.type);return`<a href="/nolcool/${ct.slug}/${v.slug}/" class="vc" target="_blank" rel="noopener"><div class="vt" style="background:${ct.color}">${ct.icon}</div><div class="vx"><h3>${esc(v.name)}</h3><p class="vl">${esc(v.region)} · ${esc(v.typeName)}</p><p>${esc(rewrite(v.shortDesc))}</p></div></a>`;}).join('')}</section>
 ${ctaBlock('놀쿨')}</article>${ftr()}${bbar()}${JS}</body></html>`;
