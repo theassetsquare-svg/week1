@@ -334,7 +334,7 @@ function venuePage(v,cat,same,idx){
   if(!titleCheck(ttl))console.warn('⚠️ 제목중복:',ttl);
   const sd=seoDesc(v);
   if(sd.length>150){console.error('❌ seoDesc>150:',v.slug,sd.length);process.exit(1);}
-  const body=buildBody(v);
+  const body=buildBody(v,idx);
   const canon=`${SITE}/nolcool/${cat.slug}/${v.slug}/`;
   const ogImg=`${SITE}/nolcool/${cat.slug}/${v.slug}/og.svg`;
   const today=new Date().toISOString().split('T')[0];
