@@ -318,8 +318,8 @@ ${hdr()}
 <dl class="ig"><dt>주소</dt><dd>${esc(v.address)}</dd><dt>지역</dt><dd>${esc(v.region)}</dd><dt>업종</dt><dd>${esc(v.typeName)}</dd>
 ${v.phone?`<dt>연락처</dt><dd>${esc(v.phone)}</dd>`:''}${v.nickname?`<dt>담당</dt><dd>${esc(v.nickname)}</dd>`:''}</dl></section>
 
-<div class="sg">${[0,1,2,3,4,5].map(i=>`<div class="sgi" style="background:${grads[i]}">${icons[i]} ${i+1}</div>`).join('')}</div>
-<div class="bg">${[6,7,8,9].map(i=>`<div class="bgi" style="background:${grads[i]}">${icons[i]}</div>`).join('')}</div>
+<div class="sg">${[0,1,2,3,4,5].map(i=>`<div class="sgi" style="background:${grads[i]}" role="img" aria-label="${esc(v.name)} 사진 ${i+1}">${icons[i]} ${i+1}</div>`).join('')}</div>
+<div class="bg">${[6,7,8,9].map(i=>`<div class="bgi" style="background:${grads[i]}" role="img" aria-label="${esc(v.name)} 내부 ${i-5}">${icons[i]}</div>`).join('')}</div>
 
 ${v.highlights.length?`<section class="sc"><h2>이런 점이 좋다</h2><ul>${v.highlights.map(h=>`<li>${esc(h)}</li>`).join('')}</ul></section>`:''}
 ${v.timeline.length?`<section class="sc"><h2>타임라인</h2><div class="tl">${v.timeline.map(t=>`<div class="ti"><span class="tt">${esc(t.time)}</span><p class="te">${esc(t.event)}</p></div>`).join('')}</div></section>`:''}
