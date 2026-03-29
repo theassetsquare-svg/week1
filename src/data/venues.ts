@@ -5,7 +5,7 @@ export { TYPE_LABELS, TYPE_URLS } from './types';
 export const MAIN_SITE_URL = 'https://ilsanroom.pages.dev';
 export const SITE_URL = 'https://week1-6m5.pages.dev';
 export const SLOGAN = '새벽까지 멈추지 않는 밤';
-export const SITE_NAME = '밤키';
+export const SITE_NAME = '놀쿨';
 
 import { nightsSeoul } from './nights-seoul';
 import { nightsGyeonggi } from './nights-gyeonggi';
