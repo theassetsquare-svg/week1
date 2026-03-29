@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /nolcool/
+Disallow: /nolcool/_draft/
+
+Sitemap: https://week1-6m5.pages.dev/nolcool-sitemap.xml
