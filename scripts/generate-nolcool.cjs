@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BASE = path.join(__dirname, '..', 'nolcool');
-const SITE_URL = 'https://week1-6m5.pages.dev/nolcool';
+const SITE_URL = 'https://week1-6m5.pages.dev';
 
 // ─── 공통 CSS ──────────────────────────────────────────
 const CSS = `
