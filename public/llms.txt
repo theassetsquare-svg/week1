@@ -1,209 +1,24 @@
-# 밤키 (BAMKEY Sub-site)
+# 놀쿨 (NOLCOOL)
+> 전국 나이트·클럽·라운지·호빠·룸·요정 152곳 가이드
 
-> 전국 나이트·클럽·라운지·룸·요정·호빠 152곳의 상세 정보를 제공하는 가이드 사이트
+놀쿨은 대한민국 전역의 나이트라이프 업소 정보를 제공하는 플랫폼입니다.
+각 업소의 분위기, 음악, 위치, 타임라인, FAQ 정보를 포함합니다.
 
-## 사이트 정보
-- 이름: 밤키
-- 메인 사이트: 밤키 (BAMKEY) - https://ilsanroom.pages.dev
-- URL: https://week1-6m5.pages.dev
-- 카테고리: 나이트, 클럽, 라운지, 룸, 요정, 호빠 (6종)
+## 카테고리
+- 나이트 (58곳): 댄스 홀, DJ 공연, 부킹
+- 클럽 (35곳): EDM, 힙합, 라이브 DJ
+- 라운지 (3곳): 칵테일, 재즈, 프라이빗
+- 호빠 (53곳): 남성 접객, 퍼포먼스
+- 룸 (2곳): 프라이빗 공간, 방음
+- 요정 (1곳): 전통 한식, 국악
 
-## 주요 URL
+## 주요 지역
+서울(강남, 압구정, 홍대, 이태원, 신림, 영등포, 노원), 경기(일산, 수원, 김포, 부천, 성남), 부산(해운대, 서면), 대구, 대전, 광주, 울산, 인천, 제주
+
+## URL 구조
 - 메인: https://week1-6m5.pages.dev/
-- 나이트 목록: https://week1-6m5.pages.dev/nights/
-- 클럽 목록: https://week1-6m5.pages.dev/clubs/
-- 라운지 목록: https://week1-6m5.pages.dev/lounges/
-- 룸 목록: https://week1-6m5.pages.dev/rooms/
-- 요정 목록: https://week1-6m5.pages.dev/yojeong/
-- 호빠 목록: https://week1-6m5.pages.dev/hoppa/
-- 랭킹: https://week1-6m5.pages.dev/ranking/
-- 지도: https://week1-6m5.pages.dev/map/
-- 퀴즈: https://week1-6m5.pages.dev/quiz/
-- 안전: https://week1-6m5.pages.dev/safety/
-- 커뮤니티: https://week1-6m5.pages.dev/community/
+- 업소 상세: https://week1-6m5.pages.dev/venue/{slug}/
+- 카테고리: https://week1-6m5.pages.dev/nights/, /clubs/, /lounges/, /hoppa/, /rooms/, /yojeong/
 
-## 나이트 (58곳)
-- 청담H2O나이트 (서울 청담 나이트): https://week1-6m5.pages.dev/venue/cheongdam-h2o/
-- 강남줄리아나나이트 (서울 강남 나이트): https://week1-6m5.pages.dev/venue/gangnam-juliana/
-- 신림그랑프리나이트 (서울 신림 나이트): https://week1-6m5.pages.dev/venue/sinlim-grandprix/
-- 상봉동한국관나이트 (서울 상봉 나이트): https://week1-6m5.pages.dev/venue/sangbong-hankukgwan/
-- 수유샴푸나이트 (서울 수유 나이트): https://week1-6m5.pages.dev/venue/suyu-shampoo/
-- 독산국빈관나이트 (서울 독산 나이트): https://week1-6m5.pages.dev/venue/doksan-gukbingwan/
-- 답십리돈텔마마나이트 (서울 답십리 나이트): https://week1-6m5.pages.dev/venue/dapsimni-dontellmama/
-- 강서나이트 (서울 강서 나이트): https://week1-6m5.pages.dev/venue/gangseo-night/
-- 영등포터미널나이트 (서울 영등포 나이트): https://week1-6m5.pages.dev/venue/yeongdeungpo-terminal/
-- 노원호박나이트 (서울 노원 나이트): https://week1-6m5.pages.dev/venue/nowon-hobak/
-- 노원스타나이트 (서울 노원 나이트): https://week1-6m5.pages.dev/venue/nowon-star/
-- 길동찬스나이트 (서울 길동 나이트): https://week1-6m5.pages.dev/venue/gildong-chance/
-- 일산샴푸나이트 (일산 나이트): https://week1-6m5.pages.dev/venue/ilsan-shampoo/
-- 일산물나이트 (일산 나이트): https://week1-6m5.pages.dev/venue/ilsan-mul/
-- 파주야당스카이돔나이트 (파주 야당 나이트): https://week1-6m5.pages.dev/venue/paju-yadang-skydome/
-- 화정한국관나이트 (화정 나이트): https://week1-6m5.pages.dev/venue/hwajeong-hankukgwan/
-- 김포호박나이트 (김포 나이트): https://week1-6m5.pages.dev/venue/gimpo-hobak/
-- 김포썸나이트 (김포 나이트): https://week1-6m5.pages.dev/venue/gimpo-sseom/
-- 구리호박나이트 (구리 나이트): https://week1-6m5.pages.dev/venue/guri-hobak/
-- 의정부한국관나이트 (의정부 나이트): https://week1-6m5.pages.dev/venue/uijeongbu-hankukgwan/
-- 수원찬스돔나이트 (수원 나이트): https://week1-6m5.pages.dev/venue/suwon-chancedom/
-- 수원코리아나이트 (수원 나이트): https://week1-6m5.pages.dev/venue/suwon-korea/
-- 오산호박나이트 (오산 나이트): https://week1-6m5.pages.dev/venue/osan-hobak/
-- 성남국빈관나이트 (성남 나이트): https://week1-6m5.pages.dev/venue/seongnam-gukbingwan/
-- 인덕원국빈관나이트 (인덕원 나이트): https://week1-6m5.pages.dev/venue/indeokwon-gukbingwan/
-- 성남샴푸나이트 (성남 나이트): https://week1-6m5.pages.dev/venue/seongnam-shampoo/
-- 분당퐁퐁나이트 (분당 나이트): https://week1-6m5.pages.dev/venue/bundang-pongpong/
-- 평택호박나이트 (평택 나이트): https://week1-6m5.pages.dev/venue/pyeongtaek-hobak/
-- 인천아라비안나이트 (인천 나이트): https://week1-6m5.pages.dev/venue/incheon-arabian/
-- 부천메리트나이트 (부천 나이트): https://week1-6m5.pages.dev/venue/bucheon-merit/
-- 부천고래나이트 (부천 나이트): https://week1-6m5.pages.dev/venue/bucheon-gorae/
-- 안산히트나이트 (안산 나이트): https://week1-6m5.pages.dev/venue/ansan-hit/
-- 안산돈텔마마나이트 (안산 나이트): https://week1-6m5.pages.dev/venue/ansan-dontellmama/
-- 천안스타돔나이트 (천안 나이트): https://week1-6m5.pages.dev/venue/cheonan-stardom/
-- 천안코리아나이트 (천안 나이트): https://week1-6m5.pages.dev/venue/cheonan-korea/
-- 대전세븐나이트 (대전 나이트): https://week1-6m5.pages.dev/venue/daejeon-seven/
-- 대전원나이트 (대전 나이트): https://week1-6m5.pages.dev/venue/daejeon-one/
-- 대전봉명나이트 (대전봉명 나이트): https://week1-6m5.pages.dev/venue/daejeon-bongmyeong/
-- 대전한국관나이트 (대전 나이트): https://week1-6m5.pages.dev/venue/daejeon-hankukgwan/
-- 청주돈텔마마나이트 (청주 나이트): https://week1-6m5.pages.dev/venue/cheongju-dontellmama/
-- 청주호박나이트 (청주 나이트): https://week1-6m5.pages.dev/venue/cheongju-hobak/
-- 서산호박나이트 (서산 나이트): https://week1-6m5.pages.dev/venue/seosan-hobak/
-- 대구한국관나이트 (대구 나이트): https://week1-6m5.pages.dev/venue/daegu-hankukgwan/
-- 대구호박나이트 (대구 나이트): https://week1-6m5.pages.dev/venue/daegu-hobak/
-- 대구바밤바나이트 (대구 나이트): https://week1-6m5.pages.dev/venue/daegu-babamba/
-- 대구토토가나이트 (대구 나이트): https://week1-6m5.pages.dev/venue/daegu-totoga/
-- 구미호박나이트 (구미 나이트): https://week1-6m5.pages.dev/venue/gumi-hobak/
-- 부산연산동물나이트 (부산 연산동 나이트): https://week1-6m5.pages.dev/venue/busan-yeonsan-mul/
-- 부산아시아드나이트 (부산 나이트): https://week1-6m5.pages.dev/venue/busan-asiad/
-- 부산물나이트 (부산 나이트): https://week1-6m5.pages.dev/venue/busan-mul/
-- 울산뉴월드나이트 (울산 나이트): https://week1-6m5.pages.dev/venue/ulsan-newworld/
-- 울산챔피언나이트 (울산 나이트): https://week1-6m5.pages.dev/venue/ulsan-champion/
-- 광주상무나이트 (광주 나이트): https://week1-6m5.pages.dev/venue/gwangju-sangmu/
-- 광주토토밤나이트 (광주 나이트): https://week1-6m5.pages.dev/venue/gwangju-totobam/
-- 광주첨단엠파나이트 (광주 첨단 나이트): https://week1-6m5.pages.dev/venue/gwangju-cheomdan-empa/
-- 광주MGM나이트 (광주 나이트): https://week1-6m5.pages.dev/venue/gwangju-mgm/
-- 광주올나이트 (광주 나이트): https://week1-6m5.pages.dev/venue/gwangju-all/
-- 제주나이트 (제주 나이트): https://week1-6m5.pages.dev/venue/jeju/
-
-## 클럽 (35곳)
-- 강남클럽 레이스 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-race/
-- 강남클럽 사운드 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-sound/
-- 강남클럽 Jack (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-jack/
-- 강남클럽 피크 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-peak/
-- 강남클럽 미로 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-miro/
-- 강남클럽 유토피아 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-utopia/
-- 강남클럽 라퓨타 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-laputa/
-- 강남클럽 페이스 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-face/
-- 강남클럽 밤앤밤 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-bamnbam/
-- 강남클럽 아르떼 (강남 클럽): https://week1-6m5.pages.dev/venue/gangnam-club-arte/
-- 압구정클럽 하입 (압구정 클럽): https://week1-6m5.pages.dev/venue/apgujeong-club-hype/
-- 압구정클럽 인트로 (압구정 클럽): https://week1-6m5.pages.dev/venue/apgujeong-club-intro/
-- 압구정클럽 컬러 (압구정 클럽): https://week1-6m5.pages.dev/venue/apgujeong-club-color/
-- 압구정클럽 디브릿지 (압구정 클럽): https://week1-6m5.pages.dev/venue/apgujeong-club-dbridge/
-- 압구정클럽 캔디맨 (압구정 클럽): https://week1-6m5.pages.dev/venue/apgujeong-club-candyman/
-- 압구정클럽 무인 (압구정 클럽): https://week1-6m5.pages.dev/venue/apgujeong-club-muin/
-- 청담클럽 아르쥬 (청담 클럽): https://week1-6m5.pages.dev/venue/cheongdam-club-arzhu/
-- 이태원클럽 유토피아 (이태원 클럽): https://week1-6m5.pages.dev/venue/itaewon-club-utopia/
-- 이태원클럽 메이드 (이태원 클럽): https://week1-6m5.pages.dev/venue/itaewon-club-maid/
-- 이태원클럽 프리즘 (이태원 클럽): https://week1-6m5.pages.dev/venue/itaewon-club-prism/
-- 이태원개판포차 (이태원 클럽): https://week1-6m5.pages.dev/venue/itaewon-gaepan-pocha/
-- 홍대클럽 버뮤다 (홍대 클럽): https://week1-6m5.pages.dev/venue/hongdae-club-bermuda/
-- 홍대클럽 퍼시픽 (홍대 클럽): https://week1-6m5.pages.dev/venue/hongdae-club-pacific/
-- 홍대클럽 메이드 (홍대 클럽): https://week1-6m5.pages.dev/venue/hongdae-club-maid/
-- 홍대클럽 도깨비 (홍대 클럽): https://week1-6m5.pages.dev/venue/hongdae-club-dokkaebi/
-- 노원청춘포차 (노원 클럽): https://week1-6m5.pages.dev/venue/nowon-cheongchun-pocha/
-- 용산드래곤시티 (용산 클럽): https://week1-6m5.pages.dev/venue/yongsan-dragon-city/
-- 서울반얀트리 (서울 클럽): https://week1-6m5.pages.dev/venue/seoul-banyan-tree/
-- 일산클럽 CJ (일산 클럽): https://week1-6m5.pages.dev/venue/ilsan-club-cj/
-- 의정부아레나 (의정부 클럽): https://week1-6m5.pages.dev/venue/uijeongbu-arena/
-- 용인사거리별밤 (용인 클럽): https://week1-6m5.pages.dev/venue/yongin-sageori-byeolbam/
-- 부천클럽 파라곤 (부천 클럽): https://week1-6m5.pages.dev/venue/bucheon-club-paragon/
-- 인천파라다이스씨티 (인천 클럽): https://week1-6m5.pages.dev/venue/incheon-paradise-city/
-- 청주클럽 슈퍼문 (청주 클럽): https://week1-6m5.pages.dev/venue/cheongju-club-supermoon/
-- 대전설탕클럽 (대전 클럽): https://week1-6m5.pages.dev/venue/daejeon-seoltang-club/
-
-## 라운지 (3곳)
-- 압구정코드라운지 (압구정 라운지): https://week1-6m5.pages.dev/venue/apgujeong-code-lounge/
-- 압구정라운지 디엠 (압구정 라운지): https://week1-6m5.pages.dev/venue/apgujeong-lounge-dm/
-- 압구정이디엇라운지 (압구정 라운지): https://week1-6m5.pages.dev/venue/apgujeong-idiot-lounge/
-
-## 룸 (2곳)
-- 일산룸 (일산 룸): https://week1-6m5.pages.dev/venue/ilsan-room/
-- 해운대고구려 (부산 해운대 룸): https://week1-6m5.pages.dev/venue/haeundae-goguryeo/
-
-## 요정 (1곳)
-- 일산명월관요정 (일산 요정): https://week1-6m5.pages.dev/venue/ilsan-myeongwolgwan/
-
-## 호빠 (53곳)
-- 강남호빠 로얄 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-royal/
-- 부산호빠 스타 (부산 호빠): https://week1-6m5.pages.dev/venue/busan-hoppa-star/
-- 장안동호빠 빵빵 (장안동 호빠): https://week1-6m5.pages.dev/venue/jangandong-hoppa-bbangbbang/
-- 건대호빠 W (건대 호빠): https://week1-6m5.pages.dev/venue/geondae-hoppa-w/
-- 강남호빠 보스턴 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-boston/
-- 강남호빠 블랙홀 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-blackhole/
-- 강남호빠 수요비 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-suyobi/
-- 강남호빠 시카고 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-chicago/
-- 강남호빠 미술관 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-misulgwan/
-- 강남호빠 명품관 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-myeongpumgwan/
-- 강남호빠 벤자민 (강남 호빠): https://week1-6m5.pages.dev/venue/gangnam-hoppa-benjamin/
-- 홍대호빠 궁전 (홍대 호빠): https://week1-6m5.pages.dev/venue/hongdae-hoppa-gungjeon/
-- 신림호빠 궁전 (신림 호빠): https://week1-6m5.pages.dev/venue/sinlim-hoppa-gungjeon/
-- 신림호빠 레이스 (신림 호빠): https://week1-6m5.pages.dev/venue/sinlim-hoppa-race/
-- 신림호빠 플러팅 (신림 호빠): https://week1-6m5.pages.dev/venue/sinlim-hoppa-flirting/
-- 수원호빠 비스트 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-beast/
-- 수원호빠 아우라 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-aura/
-- 수원호빠 플레이 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-play/
-- 수원호빠 시크릿 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-secret/
-- 수원호빠 킹스맨 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-kingsman/
-- 수원호빠 신세계 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-shinsegae/
-- 수원호빠 모스크바 (수원 호빠): https://week1-6m5.pages.dev/venue/suwon-hoppa-moscow/
-- 인계동호빠 마징가 (인계동 호빠): https://week1-6m5.pages.dev/venue/ingyedong-hoppa-mazinga/
-- 장안동호빠 FLEX (장안동 호빠): https://week1-6m5.pages.dev/venue/jangandong-hoppa-flex/
-- 장안동호빠 큐브 (장안동 호빠): https://week1-6m5.pages.dev/venue/jangandong-hoppa-cube/
-- 부산호빠 맨즈 (부산 호빠): https://week1-6m5.pages.dev/venue/busan-hoppa-menz/
-- 부산호빠 아우라 (부산 호빠): https://week1-6m5.pages.dev/venue/busan-hoppa-aura/
-- 부산호빠 깐따삐야 (부산 호빠): https://week1-6m5.pages.dev/venue/busan-hoppa-ggantappiya/
-- 해운대호빠 미슐랭 (해운대 호빠): https://week1-6m5.pages.dev/venue/haeundae-hoppa-michelin/
-- 해운대호빠 신세계 (해운대 호빠): https://week1-6m5.pages.dev/venue/haeundae-hoppa-shinsegae/
-- 해운대호빠 벨벳 (해운대 호빠): https://week1-6m5.pages.dev/venue/haeundae-hoppa-velvet/
-- 서면호빠 퍼스트 (서면 호빠): https://week1-6m5.pages.dev/venue/seomyeon-hoppa-first/
-- 서면호빠 아우라 (서면 호빠): https://week1-6m5.pages.dev/venue/seomyeon-hoppa-aura/
-- 대구호빠 시크릿 (대구 호빠): https://week1-6m5.pages.dev/venue/daegu-hoppa-secret/
-- 대구호빠 퍼펙트 (대구 호빠): https://week1-6m5.pages.dev/venue/daegu-hoppa-perfect/
-- 대구호빠 인스타 (대구 호빠): https://week1-6m5.pages.dev/venue/daegu-hoppa-insta/
-- 대전호빠 이클립스 (대전 호빠): https://week1-6m5.pages.dev/venue/daejeon-hoppa-eclipse/
-- 인천호빠 딱따구리 (인천 호빠): https://week1-6m5.pages.dev/venue/incheon-hoppa-ttakttaguri/
-- 인천호빠 엣지남 (인천 호빠): https://week1-6m5.pages.dev/venue/incheon-hoppa-edgenam/
-- 광주호빠 더블유 (광주 호빠): https://week1-6m5.pages.dev/venue/gwangju-hoppa-double-u/
-- 광주호빠 비상구 (광주 호빠): https://week1-6m5.pages.dev/venue/gwangju-hoppa-bisangu/
-- 광주호빠 퍼스트 (광주 호빠): https://week1-6m5.pages.dev/venue/gwangju-hoppa-first/
-- 울산호빠 왈츠 (울산 호빠): https://week1-6m5.pages.dev/venue/ulsan-hoppa-waltz/
-- 울산호빠 엠타운 (울산 호빠): https://week1-6m5.pages.dev/venue/ulsan-hoppa-m-town/
-- 울산호빠 쇼맨 (울산 호빠): https://week1-6m5.pages.dev/venue/ulsan-hoppa-showman/
-- 울산호빠 원 (울산 호빠): https://week1-6m5.pages.dev/venue/ulsan-hoppa-one/
-- 제주호빠 MGM (제주 호빠): https://week1-6m5.pages.dev/venue/jeju-hoppa-mgm/
-- 제주호빠 더킹 (제주 호빠): https://week1-6m5.pages.dev/venue/jeju-hoppa-the-king/
-- 송파호빠 일기장 (송파 호빠): https://week1-6m5.pages.dev/venue/songpa-hoppa-ilgijang/
-- 잠실호빠 W (잠실 호빠): https://week1-6m5.pages.dev/venue/jamsil-hoppa-w/
-- 영등포호빠 비트 (영등포 호빠): https://week1-6m5.pages.dev/venue/yeongdeungpo-hoppa-beat/
-- 영등포호빠 두바이 (영등포 호빠): https://week1-6m5.pages.dev/venue/yeongdeungpo-hoppa-dubai/
-- 영등포호빠 궁전 (영등포 호빠): https://week1-6m5.pages.dev/venue/yeongdeungpo-hoppa-gungjeon/
-
-## 담당자 직통 연결 업소
-- 부산연산동물나이트 (따봉 010-7942-9076)
-- 성남샴푸나이트 (박찬호 010-3987-6885)
-- 수원찬스돔나이트 (강호동 010-9354-1323)
-- 신림그랑프리나이트 (태양 010-4241-3748)
-- 청담H2O나이트 (펩시맨 010-5655-4866)
-- 파주야당스카이돔나이트 (막내 010-8255-3509)
-- 울산챔피언나이트 (춘자 010-5653-0069)
-
-## 광고문의
+## 연락처
 카카오톡: besta12
-
-## FAQ
-Q: 입장 연령은?
-A: 만 19세 이상 성인만 입장 가능합니다.
-
-Q: 예약 없이 가도 되나요?
-A: 주중은 현장 입장 가능한 곳이 많지만, 주말은 미리 연락을 권장합니다.
-
-Q: 드레스코드가 있나요?
-A: 스마트 캐주얼 이상을 권장합니다. 슬리퍼와 반바지는 제한될 수 있습니다.
