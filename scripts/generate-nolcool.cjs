@@ -408,7 +408,10 @@ function generate(){
       if(sdm&&sdm[1].length>150){seoFail++;console.error(`❌ seoDesc>${150}: ${vs[i].slug} (${sdm[1].length}자)`);}
       const tm=html.match(/<title>([^<]*)<\/title>/);
       if(tm&&!titleCheck(tm[1])){titleFail++;console.warn(`⚠️ 제목중복: ${tm[1]}`);}
-      fs.writeFileSync(path.join(vd,'index.html'),html);vc++;
+      fs.writeFileSync(path.join(vd,'index.html'),html);
+      // 개별 OG이미지 SVG 생성
+      fs.writeFileSync(path.join(vd,'og.svg'),genOgSvg(vs[i],cat));
+      vc++;
     }
   }
   fs.writeFileSync(path.join(PUB,'nolcool-sitemap.xml'),sitemap(allV,bt));
