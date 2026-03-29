@@ -1,34 +1,28 @@
 User-agent: *
 Allow: /
 
-User-agent: Googlebot
+User-agent: GPTBot
 Allow: /
 
-User-agent: Bingbot
+User-agent: Googlebot
 Allow: /
 
 User-agent: Yeti
 Allow: /
 
-User-agent: GPTBot
+User-agent: ChatGPT-User
 Allow: /
 
-User-agent: ChatGPT-User
+User-agent: Bingbot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
+User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://week1-6m5.pages.dev/sitemap.xml
