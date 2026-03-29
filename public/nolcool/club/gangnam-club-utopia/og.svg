@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+<rect width="600" height="600" fill="#dc2626"/>
+<text x="300" y="220" text-anchor="middle" font-size="80" fill="white">🎵</text>
+<text x="300" y="320" text-anchor="middle" font-size="32" font-weight="800" fill="white" font-family="system-ui,sans-serif">강남클럽 유토피아</text>
+
+<text x="300" y="520" text-anchor="middle" font-size="22" fill="rgba(255,255,255,.5)" font-family="system-ui,sans-serif">놀쿨</text>
+</svg>
