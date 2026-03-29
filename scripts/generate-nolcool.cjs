@@ -740,7 +740,7 @@ function faqSchema(faqs) {
 function buildVenuePage(venue, cat) {
   const title = `${venue.fullName} 완벽 가이드 - ${cat.name} 추천 | 놀쿨`;
   const desc = venue.hook.substring(0, 160) + '...';
-  const canonical = `${SITE_URL}/${cat.slug}/${venue.slug}/`;
+  const canonical = `${SITE_URL}/nolcool/${cat.slug}/${venue.slug}/`;
   const today = new Date().toISOString().split('T')[0];
 
   return `<!DOCTYPE html>
