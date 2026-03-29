@@ -1,747 +1,273 @@
 /**
  * 놀쿨 서브사이트 생성 스크립트
- * 6종 카테고리 × 3개 가게 = 18 venue pages + 6 category pages + 1 hub = 25 pages
- * 정적 HTML, DB/로그인/결제 없음
+ * 기존 나이트·클럽·라운지·룸·요정·호빠 6종 카테고리 152개 가게 데이터 활용
+ * 정적 HTML, DB/로그인/결제 없음, 가격 없음
  */
 const fs = require('fs');
 const path = require('path');
 
 const BASE = path.join(__dirname, '..', 'nolcool');
+const PUBLIC = path.join(__dirname, '..', 'public');
 const SITE_URL = 'https://week1-6m5.pages.dev';
 
-// ─── 공통 CSS ──────────────────────────────────────────
+// ─── 데이터 로드 (ts → require 불가하므로 파싱) ─────────────
+function loadVenues() {
+  const dataDir = path.join(__dirname, '..', 'src', 'data');
+  const files = [
+    'nights-seoul.ts', 'nights-gyeonggi.ts', 'nights-other.ts',
+    'clubs-data.ts', 'lounges-data.ts', 'others-data.ts'
+  ];
+  let allCode = '';
+  for (const f of files) {
+    allCode += fs.readFileSync(path.join(dataDir, f), 'utf8') + '\n';
+  }
+  // 정규식으로 각 venue 객체 추출
+  const venues = [];
+  const objRegex = /\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}/gs;
+  // 더 정확하게: 배열 내 객체들을 추출
+  const arrayRegex = /export\s+const\s+\w+\s*(?::\s*Venue\[\])?\s*=\s*\[([\s\S]*?)\];/g;
+  let arrayMatch;
+  while ((arrayMatch = arrayRegex.exec(allCode)) !== null) {
+    const arrayContent = arrayMatch[1];
+    // 각 venue 객체 파싱
+    let depth = 0, start = -1;
+    for (let i = 0; i < arrayContent.length; i++) {
+      if (arrayContent[i] === '{') {
+        if (depth === 0) start = i;
+        depth++;
+      } else if (arrayContent[i] === '}') {
+        depth--;
+        if (depth === 0 && start !== -1) {
+          const objStr = arrayContent.substring(start, i + 1);
+          try {
+            const venue = parseVenueObj(objStr);
+            if (venue && venue.name && venue.slug) venues.push(venue);
+          } catch(e) {}
+          start = -1;
+        }
+      }
+    }
+  }
+  return venues;
+}
+
+function parseVenueObj(str) {
+  const get = (key) => {
+    // 문자열 값
+    const re1 = new RegExp(`${key}\\s*:\\s*'([^']*(?:\\\\'[^']*)*)'`);
+    const re2 = new RegExp(`${key}\\s*:\\s*"([^"]*(?:\\\\"[^"]*)*)"`);
+    const re3 = new RegExp(`${key}\\s*:\\s*\`([^\`]*)\``);
+    const m = str.match(re1) || str.match(re2) || str.match(re3);
+    return m ? m[1].replace(/\\'/g, "'").replace(/\\"/g, '"') : '';
+  };
+  const getNum = (key) => {
+    const re = new RegExp(`${key}\\s*:\\s*(\\d+)`);
+    const m = str.match(re);
+    return m ? parseInt(m[1]) : 0;
+  };
+  const getArr = (key) => {
+    const re = new RegExp(`${key}\\s*:\\s*\\[([^\\]]*?)\\]`, 's');
+    const m = str.match(re);
+    if (!m) return [];
+    return [...m[1].matchAll(/'([^']*)'/g)].map(x => x[1]);
+  };
+  const getFaqArr = (str) => {
+    const faqs = [];
+    const faqRe = /\{\s*q:\s*'([^']*(?:\\'[^']*)*)'\s*,\s*a:\s*'([^']*(?:\\'[^']*)*)'\s*\}/g;
+    let m;
+    while ((m = faqRe.exec(str)) !== null) {
+      faqs.push({ q: m[1].replace(/\\'/g, "'"), a: m[2].replace(/\\'/g, "'") });
+    }
+    return faqs;
+  };
+  const getTimeline = (str) => {
+    const tl = [];
+    const re = /\{\s*time:\s*'([^']*)'\s*,\s*event:\s*'([^']*(?:\\'[^']*)*)'\s*\}/g;
+    let m;
+    while ((m = re.exec(str)) !== null) {
+      tl.push({ time: m[1], event: m[2].replace(/\\'/g, "'") });
+    }
+    return tl;
+  };
+
+  return {
+    id: getNum('id'),
+    slug: get('slug'),
+    name: get('name'),
+    type: get('type'),
+    typeName: get('typeName'),
+    nickname: get('nickname'),
+    phone: get('phone'),
+    region: get('region'),
+    regionSlug: get('regionSlug'),
+    address: get('address'),
+    shortDesc: get('shortDesc'),
+    description: get('description'),
+    atmosphere: get('atmosphere'),
+    music: get('music'),
+    highlights: getArr('highlights'),
+    timeline: getTimeline(str),
+    faq: getFaqArr(str),
+    tags: getArr('tags'),
+    seoTitle: get('seoTitle'),
+    seoDescription: get('seoDescription'),
+    h1Title: get('h1Title'),
+  };
+}
+
+// ─── 카테고리 정의 ──────────────────────────────────
+const CATEGORIES = [
+  { type: 'night', name: '나이트', icon: '🌙', slug: 'night', color: '#7c3aed', gradient: 'linear-gradient(135deg,#7c3aed,#a855f7)' },
+  { type: 'club', name: '클럽', icon: '🎵', slug: 'club', color: '#dc2626', gradient: 'linear-gradient(135deg,#dc2626,#f97316)' },
+  { type: 'lounge', name: '라운지', icon: '🍸', slug: 'lounge', color: '#0ea5e9', gradient: 'linear-gradient(135deg,#0ea5e9,#06b6d4)' },
+  { type: 'hoppa', name: '호빠', icon: '🎭', slug: 'hoppa', color: '#e11d48', gradient: 'linear-gradient(135deg,#e11d48,#f472b6)' },
+  { type: 'room', name: '룸', icon: '🚪', slug: 'room', color: '#ea580c', gradient: 'linear-gradient(135deg,#ea580c,#f59e0b)' },
+  { type: 'yojeong', name: '요정', icon: '🏮', slug: 'yojeong', color: '#059669', gradient: 'linear-gradient(135deg,#059669,#34d399)' },
+];
+
+// ─── CSS ──────────────────────────────────────────
 const CSS = `
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:-apple-system,'Pretendard','Noto Sans KR',sans-serif;color:#1a1a1a;background:#fff;line-height:1.75;word-break:keep-all}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
-
-/* header */
 .nc-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid #eee;padding:0 20px}
 .nc-header-inner{max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nc-logo{font-size:1.25rem;font-weight:800;color:#2563eb;letter-spacing:-.02em}
+.nc-logo{font-size:1.25rem;font-weight:800;color:#7c3aed;letter-spacing:-.02em}
 .nc-logo span{color:#1a1a1a}
-.nc-nav{display:flex;gap:16px;font-size:.875rem;color:#666}
-.nc-nav a:hover{color:#2563eb}
-
-/* hero image */
-.nc-hero-img{width:100%;max-width:720px;margin:0 auto;aspect-ratio:1/1;border-radius:16px;overflow:hidden;position:relative}
-.nc-hero-img img{width:100%;height:100%;object-fit:cover}
+.nc-nav{display:flex;gap:14px;font-size:.82rem;color:#666;overflow-x:auto;white-space:nowrap}
+.nc-nav a:hover{color:#7c3aed}
+.nc-hero-img{width:100%;max-width:720px;margin:0 auto;aspect-ratio:1/1;border-radius:16px;overflow:hidden}
 .nc-hero-img .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;color:rgba(255,255,255,.8)}
-
-/* body images */
 .nc-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:32px auto;max-width:720px;padding:0 20px}
-.nc-gallery-item{aspect-ratio:4/3;border-radius:12px;overflow:hidden;position:relative}
-.nc-gallery-item img{width:100%;height:100%;object-fit:cover}
+.nc-gallery-item{aspect-ratio:4/3;border-radius:12px;overflow:hidden}
 .nc-gallery-item .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:rgba(255,255,255,.7)}
-
-/* article */
 .nc-article{max-width:720px;margin:0 auto;padding:24px 20px 60px}
 .nc-breadcrumb{font-size:.8rem;color:#999;margin-bottom:16px}
-.nc-breadcrumb a{color:#2563eb}
-.nc-category-tag{display:inline-block;background:#eff6ff;color:#2563eb;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.nc-breadcrumb a{color:#7c3aed}
+.nc-category-tag{display:inline-block;background:#f3f0ff;color:#7c3aed;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:12px}
 h1{font-size:1.75rem;font-weight:800;line-height:1.3;margin-bottom:8px;letter-spacing:-.03em}
 .nc-date{font-size:.8rem;color:#999;margin-bottom:24px}
-.nc-hook{font-size:1.05rem;color:#333;line-height:1.85;margin-bottom:32px;background:#f9fafb;padding:20px 24px;border-radius:12px;border-left:4px solid #2563eb}
-
-/* sections */
+.nc-hook{font-size:1.05rem;color:#333;line-height:1.85;margin-bottom:32px;background:#f9fafb;padding:20px 24px;border-radius:12px;border-left:4px solid #7c3aed}
 .nc-section{margin-bottom:40px}
-.nc-section h2{font-size:1.25rem;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #f0f0f0;letter-spacing:-.02em}
-.nc-section h3{font-size:1.05rem;font-weight:600;margin:20px 0 8px;color:#333}
+.nc-section h2{font-size:1.25rem;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #f0f0f0}
 .nc-section p{color:#444;margin-bottom:12px}
 .nc-section ul{padding-left:20px;margin-bottom:12px}
 .nc-section li{color:#444;margin-bottom:6px}
-.nc-info-grid{display:grid;grid-template-columns:100px 1fr;gap:8px 16px;background:#f9fafb;padding:20px;border-radius:12px;font-size:.95rem}
+.nc-info-grid{display:grid;grid-template-columns:80px 1fr;gap:8px 16px;background:#f9fafb;padding:20px;border-radius:12px;font-size:.95rem}
 .nc-info-grid dt{font-weight:600;color:#666}
 .nc-info-grid dd{color:#333}
-
-/* tips */
-.nc-tip-card{background:linear-gradient(135deg,#eff6ff,#f0fdf4);padding:20px 24px;border-radius:12px;margin-bottom:12px}
-.nc-tip-card strong{color:#2563eb;display:block;margin-bottom:4px}
-
-/* FAQ */
+.nc-tip-card{background:linear-gradient(135deg,#f3f0ff,#f0fdf4);padding:20px 24px;border-radius:12px;margin-bottom:12px}
+.nc-tip-card strong{color:#7c3aed;display:block;margin-bottom:4px}
+.nc-timeline{position:relative;padding-left:24px;border-left:3px solid #e9e5ff}
+.nc-timeline .tl-item{margin-bottom:16px;position:relative}
+.nc-timeline .tl-item::before{content:'';position:absolute;left:-30px;top:6px;width:12px;height:12px;border-radius:50%;background:#7c3aed}
+.nc-timeline .tl-time{font-size:.82rem;font-weight:700;color:#7c3aed}
+.nc-timeline .tl-event{font-size:.95rem;color:#444}
 .nc-faq details{border:1px solid #eee;border-radius:10px;margin-bottom:8px;overflow:hidden}
 .nc-faq summary{padding:14px 20px;font-weight:600;cursor:pointer;background:#fafafa;font-size:.95rem}
 .nc-faq summary:hover{background:#f0f0f0}
 .nc-faq details[open] summary{border-bottom:1px solid #eee}
 .nc-faq .faq-answer{padding:14px 20px;color:#555;font-size:.93rem;line-height:1.8}
-
-/* CTA */
-.nc-cta{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#eff6ff,#e0e7ff);border-radius:16px;margin:40px 0}
+.nc-cta{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#f3f0ff,#e9e5ff);border-radius:16px;margin:40px 0}
 .nc-cta p{font-size:1rem;color:#555;margin-bottom:16px}
-.nc-cta .btn{display:inline-block;background:#2563eb;color:#fff;font-size:1rem;font-weight:700;padding:14px 36px;border-radius:30px;transition:background .2s}
-.nc-cta .btn:hover{background:#1d4ed8}
-
-/* footer */
+.nc-cta .btn{display:inline-block;background:#7c3aed;color:#fff;font-size:1rem;font-weight:700;padding:14px 36px;border-radius:30px;transition:background .2s}
+.nc-cta .btn:hover{background:#6d28d9}
 .nc-footer{border-top:1px solid #eee;padding:40px 20px;text-align:center;color:#999;font-size:.82rem;line-height:1.9}
 .nc-footer .kakao{font-weight:600;color:#666}
-.nc-footer .search-msg{margin-top:12px;font-size:.9rem;color:#2563eb;font-weight:600}
-
-/* category grid */
+.nc-footer .search-msg{margin-top:12px;font-size:.9rem;color:#7c3aed;font-weight:600}
 .nc-cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin:32px 0}
 .nc-cat-card{border:1px solid #eee;border-radius:16px;overflow:hidden;transition:box-shadow .2s,transform .2s}
 .nc-cat-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);transform:translateY(-2px)}
-.nc-cat-card .thumb{aspect-ratio:16/9;overflow:hidden;position:relative}
-.nc-cat-card .thumb img{width:100%;height:100%;object-fit:cover}
+.nc-cat-card .thumb{aspect-ratio:16/9;overflow:hidden}
 .nc-cat-card .thumb .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
 .nc-cat-card .info{padding:20px}
 .nc-cat-card .info h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
 .nc-cat-card .info p{font-size:.9rem;color:#666;line-height:1.6}
-
-/* venue list card */
+.nc-cat-card .info .count{font-size:.78rem;color:#7c3aed;font-weight:600;margin-top:8px}
 .nc-venue-card{display:flex;gap:16px;border:1px solid #eee;border-radius:14px;padding:16px;margin-bottom:16px;transition:box-shadow .2s}
 .nc-venue-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.nc-venue-card .thumb{width:120px;min-width:120px;aspect-ratio:1/1;border-radius:10px;overflow:hidden;flex-shrink:0}
-.nc-venue-card .thumb .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.nc-venue-card .thumb{width:100px;min-width:100px;aspect-ratio:1/1;border-radius:10px;overflow:hidden;flex-shrink:0}
+.nc-venue-card .thumb .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
 .nc-venue-card .text h3{font-size:1rem;font-weight:700;margin-bottom:4px}
-.nc-venue-card .text .loc{font-size:.82rem;color:#999;margin-bottom:6px}
-.nc-venue-card .text p{font-size:.9rem;color:#555;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-
-/* hub hero */
-.nc-hub-hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;margin-bottom:40px}
+.nc-venue-card .text .loc{font-size:.8rem;color:#999;margin-bottom:6px}
+.nc-venue-card .text p{font-size:.88rem;color:#555;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nc-hub-hero{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;margin-bottom:40px}
 .nc-hub-hero h1{font-size:2rem;margin-bottom:12px;color:#fff}
 .nc-hub-hero p{font-size:1.05rem;opacity:.85;max-width:500px;margin:0 auto}
-
-/* responsive */
 @media(max-width:640px){
   h1{font-size:1.4rem}
-  .nc-nav{display:none}
+  .nc-nav{gap:10px;font-size:.78rem}
   .nc-hero-img{border-radius:0;margin:0 -20px;max-width:none}
   .nc-gallery{grid-template-columns:1fr 1fr;padding:0}
   .nc-venue-card{flex-direction:column}
   .nc-venue-card .thumb{width:100%;aspect-ratio:16/9}
   .nc-cat-grid{grid-template-columns:1fr}
   .nc-hub-hero h1{font-size:1.5rem}
-}
-`;
+}`;
 
-// ─── 카테고리 & 가게 데이터 ──────────────────────────────────
-const categories = [
-  {
-    slug: 'waterpark',
-    name: '워터파크',
-    icon: '🏊',
-    color: '#0ea5e9',
-    gradient: 'linear-gradient(135deg,#0ea5e9,#06b6d4)',
-    description: '여름 필수 코스! 전국 인기 워터파크 완벽 가이드. 슬라이드부터 파도풀까지, 알짜 정보를 모았습니다.',
-    seoTitle: '워터파크 추천 BEST - 전국 인기 워터파크 가이드',
-    venues: [
-      {
-        slug: 'caribbean-bay',
-        name: '캐리비안 베이',
-        fullName: '에버랜드 캐리비안 베이',
-        location: '경기도 용인시 처인구 포곡읍',
-        region: '용인',
-        heroColor: '#0077b6',
-        bodyColors: ['#00b4d8','#0096c7','#48cae4'],
-        hook: '경기도 용인 에버랜드 리조트 안에 자리한 캐리비안 베이는 국내 최대 규모의 워터파크로, 사계절 내내 물놀이를 즐길 수 있는 실내외 복합 시설을 갖추고 있습니다. 메가 스톰이라 불리는 초대형 토네이도 슬라이드는 국내 유일의 어트랙션으로, 4인용 튜브를 타고 거대한 깔때기 모양의 구조물을 회전하며 내려오는 짜릿한 경험을 선사합니다. 실내 구역인 어드벤처 풀과 바데풀에서는 날씨와 상관없이 온수 풀장과 다양한 수압 마사지를 즐길 수 있어 겨울철에도 인기가 높습니다. 야외 파도풀은 최대 2.4미터 높이의 인공 파도가 만들어지며, 넓은 풀장에서 해변 느낌을 제대로 느낄 수 있습니다. 가족 단위 방문객을 위한 유아용 풀과 키즈존이 따로 마련되어 있어, 어린 자녀와 함께 방문하기에도 안심할 수 있는 환경입니다. 탈의실과 샤워 시설도 대규모로 운영되어 성수기 혼잡 시에도 비교적 쾌적하게 이용할 수 있으며, 여름 시즌에는 야간 개장과 DJ 파티 이벤트가 열려 색다른 분위기의 워터파크를 경험할 수 있습니다.',
-        info: {
-          address: '경기도 용인시 처인구 포곡읍 에버랜드로 199',
-          hours: '시즌별 상이 (보통 10:00~18:00, 성수기 09:00~20:00)',
-          parking: '에버랜드 주차장 이용 가능 (대규모)',
-          access: '에버랜드 셔틀버스, 자가용, 용인경전철 이용'
-        },
-        tips: [
-          { title: '오픈런이 답이다', desc: '성수기에는 오전 9시 개장 전부터 줄이 길어집니다. 최소 30분 전 도착을 추천합니다. 입장 후 메가스톰이나 타워부메랑 등 인기 슬라이드부터 공략하면 대기시간을 크게 줄일 수 있습니다.' },
-          { title: '짐 보관은 스마트 락커', desc: '입구 근처에 전자 락커가 있어 귀중품과 짐을 안전하게 보관할 수 있습니다. 손목밴드로 결제가 가능해 지갑을 들고 다닐 필요가 없어 편리합니다.' },
-          { title: '실내 바데풀은 저녁이 한가해', desc: '오후 4시 이후에는 야외 이용객이 줄면서 실내 바데풀 구역이 한적해집니다. 수압 마사지와 온수풀에서 여유롭게 피로를 풀기 좋은 시간대입니다.' }
-        ],
-        highlights: ['국내 최대 규모의 실내외 복합 워터파크', '메가스톰 토네이도 슬라이드 국내 유일', '사계절 이용 가능한 실내 바데풀·온수풀', '에버랜드와 연계한 종일 놀이 코스 가능', '유아 전용 풀장과 키즈존 완비'],
-        faq: [
-          { q: '캐리비안 베이 겨울에도 운영하나요?', a: '네, 실내 시설인 어드벤처 풀과 바데풀은 겨울에도 운영됩니다. 온수로 채워져 있어 따뜻하게 물놀이를 즐길 수 있으며, 겨울 시즌에는 별도의 할인 프로모션이 진행되기도 합니다.' },
-          { q: '음식 반입이 가능한가요?', a: '외부 음식 반입은 원칙적으로 제한되어 있습니다. 내부에 푸드코트와 매점이 여러 곳 있어 간편식부터 식사 메뉴까지 다양하게 이용하실 수 있습니다.' },
-          { q: '수영복 대여가 되나요?', a: '입구 근처 매장에서 수영복, 래시가드, 물놀이 용품을 구매하실 수 있습니다. 대여 서비스보다 구매 위주로 운영되니 미리 준비해 가시는 것을 추천합니다.' }
-        ],
-        course: '오전에 야외 슬라이드 → 점심 푸드코트 → 오후 파도풀 → 저녁 실내 바데풀 마무리'
-      },
-      {
-        slug: 'ocean-world',
-        name: '오션월드',
-        fullName: '홍천 오션월드',
-        location: '강원도 홍천군 서면 한치골길',
-        region: '홍천',
-        heroColor: '#0369a1',
-        bodyColors: ['#0284c7','#0ea5e9','#38bdf8'],
-        hook: '강원도 홍천 대명리조트 단지 안에 위치한 오션월드는 천연 온천수를 활용한 국내 유일의 온천 테마 워터파크입니다. 지하 1,000미터에서 끌어올린 게르마늄 온천수가 풀장 전체에 공급되기 때문에 일반 수돗물과는 확연히 다른 부드러운 수질을 느낄 수 있습니다. 대표 어트랙션인 익스트림 리버는 350미터에 달하는 국내 최장 길이의 유수풀로, 튜브를 타고 실내외를 오가며 계곡을 떠내려가는 듯한 체험이 가능합니다. 실외 구역의 다이나믹 존에는 고속 슬라이드와 서핑풀이 있어 스릴을 원하는 방문객에게 인기가 높습니다. 실내 온천 스파 구역은 노천탕과 허브탕 등 12종의 테마탕이 운영되어 물놀이 후 몸을 녹이기에 제격입니다. 강원도 특유의 맑은 공기와 산 풍경을 배경으로 즐기는 워터파크 경험은 도심에서는 느끼기 어려운 특별한 매력을 제공합니다. 겨울에는 눈 내리는 노천탕에서의 온천욕이라는 이색적인 경험도 가능하여, 여름뿐 아니라 겨울 여행지로도 꾸준한 수요가 있는 사계절 레저 명소입니다. 도심 워터파크와는 차원이 다른 자연 속 물놀이를 원한다면 오션월드가 정답입니다.',
-        info: {
-          address: '강원도 홍천군 서면 한치골길 262',
-          hours: '시즌별 상이 (보통 10:00~18:00)',
-          parking: '대명리조트 주차장 이용 (대규모)',
-          access: '서울에서 자가용 약 1시간 30분, 리조트 셔틀버스 운행'
-        },
-        tips: [
-          { title: '온천수 효과를 제대로 느끼려면', desc: '실내 스파존의 노천탕과 허브탕은 오후 늦은 시간대가 한적합니다. 게르마늄 온천수는 피부 미용과 근육 이완에 도움이 되니 슬라이드를 즐긴 후 스파존에서 마무리하는 코스를 추천합니다.' },
-          { title: '리조트 숙박과 연계하면 편해', desc: '대명리조트 숙박 패키지를 이용하면 워터파크 입장이 포함된 경우가 많아 별도 입장 절차 없이 편하게 이용할 수 있습니다. 특히 겨울 비비디드 시즌에는 숙박 연계 혜택이 큽니다.' },
-          { title: '익스트림 리버는 일찍 타자', desc: '350미터 유수풀인 익스트림 리버는 오픈 직후가 가장 한적합니다. 점심 이후에는 대기 줄이 길어지니 입장하자마자 먼저 즐기는 것을 권장합니다.' }
-        ],
-        highlights: ['천연 게르마늄 온천수 활용 국내 유일', '350m 국내 최장 유수풀 익스트림 리버', '12종 테마 온천탕 실내 스파존', '강원도 산 속 청정 자연 환경', '대명리조트 연계 숙박 패키지 가능'],
-        faq: [
-          { q: '오션월드 온천수는 진짜 온천인가요?', a: '네, 지하 1,000m에서 끌어올린 천연 게르마늄 온천수를 사용합니다. 피부 보습과 혈액순환 개선에 도움이 된다고 알려져 있으며, 일반 수돗물과 수질이 확연히 다릅니다.' },
-          { q: '겨울에도 이용 가능한가요?', a: '실내 워터파크와 온천 스파존은 겨울에도 운영됩니다. 특히 눈 내리는 날 노천탕을 즐기는 것은 오션월드만의 특별한 경험입니다.' },
-          { q: '서울에서 교통편은 어떻게 되나요?', a: '자가용으로 서울에서 약 1시간 30분 소요됩니다. 대명리조트에서 운영하는 셔틀버스도 있으며, 강변역 등에서 출발합니다.' }
-        ],
-        course: '오전 다이나믹존 슬라이드 → 점심 → 오후 익스트림 리버 → 저녁 온천 스파존 마무리'
-      },
-      {
-        slug: 'one-mount',
-        name: '원마운트 워터파크',
-        fullName: '고양 원마운트 워터파크',
-        location: '경기도 고양시 일산서구 한류월드로',
-        region: '고양 일산',
-        heroColor: '#0891b2',
-        bodyColors: ['#06b6d4','#22d3ee','#67e8f9'],
-        hook: '경기도 고양시 일산에 자리한 원마운트 워터파크는 서울 근교에서 가장 접근성이 좋은 워터파크 중 하나입니다. 지하철 3호선 주엽역에서 도보 10분 거리로, 대중교통만으로도 편하게 방문할 수 있다는 것이 가장 큰 강점입니다. 규모는 캐리비안 베이나 오션월드에 비해 콤팩트하지만, 그만큼 이동 동선이 짧고 대기시간도 상대적으로 적어 효율적으로 즐길 수 있습니다. 실내 워터파크는 사계절 운영되며, 파도풀과 유수풀, 워터 슬라이드 등 핵심 어트랙션은 모두 갖추고 있습니다. 여름 성수기에는 야외 구역까지 개방되어 더 넓은 공간에서 물놀이를 즐길 수 있습니다. 같은 건물 내에 쇼핑몰과 스노우파크(겨울)도 함께 운영되어, 워터파크와 연계한 원스톱 나들이가 가능합니다. 일산 킨텍스와 라페스타 상권이 인접해 있어 놀이 전후 식사와 쇼핑을 함께 해결할 수 있는 것도 장점입니다. 특히 반나절 코스로 가볍게 즐기기에 적합한 규모라, 대형 워터파크까지 멀리 가기 부담스러운 분들에게 추천할 만한 알짜 워터파크입니다.',
-        info: {
-          address: '경기도 고양시 일산서구 한류월드로 300',
-          hours: '10:00~18:00 (시즌별 변동)',
-          parking: '원마운트 지하주차장 이용',
-          access: '지하철 3호선 주엽역 도보 10분'
-        },
-        tips: [
-          { title: '대중교통 접근성 최고', desc: '주엽역에서 도보로 갈 수 있어 자가용 없이도 부담 없이 방문 가능합니다. 주차 스트레스도 없고, 돌아오는 길에 라페스타에서 저녁 식사까지 이어갈 수 있어 당일치기 코스로 완벽합니다.' },
-          { title: '콤팩트한 만큼 빠르게 돌 수 있어', desc: '대형 워터파크에 비해 규모는 작지만, 그만큼 이동거리가 짧고 어트랙션 간 대기시간이 적습니다. 반나절이면 주요 시설을 모두 이용할 수 있어 시간 효율이 좋습니다.' },
-          { title: '겨울에는 스노우파크 연계', desc: '같은 건물 내 스노우파크에서 실내 눈썰매와 스키를 즐길 수 있습니다. 워터파크와 스노우파크를 함께 즐기는 복합 패키지도 운영되니 겨울 방문 시 확인해 보세요.' }
-        ],
-        highlights: ['지하철역 도보 10분, 서울 근교 최고 접근성', '사계절 실내 워터파크 운영', '쇼핑몰·스노우파크 원스톱 연계', '콤팩트한 규모로 대기시간 적음', '일산 킨텍스·라페스타 인접'],
-        faq: [
-          { q: '원마운트 워터파크 규모가 작지 않나요?', a: '캐리비안 베이 같은 대형 시설보다는 콤팩트하지만, 파도풀·유수풀·슬라이드 등 핵심 시설은 모두 갖추고 있습니다. 오히려 동선이 짧아 효율적으로 즐길 수 있다는 평이 많습니다.' },
-          { q: '어린아이와 가기 좋은가요?', a: '유아용 풀과 얕은 물놀이 구역이 마련되어 있어 어린 자녀와 함께 방문하기 좋습니다. 규모가 크지 않아 아이를 돌보기에도 수월합니다.' },
-          { q: '주차는 편한가요?', a: '원마운트 건물 지하에 대규모 주차장이 있어 주차 걱정은 크게 없습니다. 주말 성수기에는 일찍 도착하시는 것을 추천합니다.' }
-        ],
-        course: '오전 실내 슬라이드 → 점심 쇼핑몰 푸드코트 → 오후 파도풀 → 라페스타 저녁 식사'
-      }
-    ]
-  },
-  {
-    slug: 'themepark',
-    name: '놀이공원',
-    icon: '🎢',
-    color: '#dc2626',
-    gradient: 'linear-gradient(135deg,#dc2626,#f97316)',
-    description: '짜릿한 놀이기구부터 가족 나들이까지! 전국 대표 테마파크의 핵심 정보를 한눈에 확인하세요.',
-    seoTitle: '놀이공원 추천 BEST - 전국 인기 테마파크 완벽 가이드',
-    venues: [
-      {
-        slug: 'everland',
-        name: '에버랜드',
-        fullName: '용인 에버랜드',
-        location: '경기도 용인시 처인구 포곡읍',
-        region: '용인',
-        heroColor: '#dc2626',
-        bodyColors: ['#ef4444','#f97316','#eab308'],
-        hook: '경기도 용인에 위치한 에버랜드는 국내 최대 규모의 테마파크로, 매년 1,000만 명 이상의 방문객이 찾는 대한민국 대표 놀이공원입니다. 글로벌 어뮤즈먼트 파크 순위에서도 꾸준히 상위권을 유지하고 있으며, 놀이기구뿐 아니라 동물원, 식물원, 워터파크까지 갖춘 복합 리조트입니다. 대표 놀이기구 T익스프레스는 목재 롤러코스터 중 세계 최고 수준의 낙하각도(77도)를 자랑하며, 탑승 대기줄이 가장 긴 어트랙션이기도 합니다. 주토피아 동물원에서는 판다, 기린, 사자 등 다양한 동물을 가까이에서 볼 수 있고, 사파리 버스를 타고 야생 동물 서식지를 직접 둘러보는 로스트밸리도 인기 코스입니다. 봄에는 튤립 축제, 여름에는 서머스플래시, 가을에는 할로윈 페스티벌, 겨울에는 크리스마스 판타지까지 사계절 내내 특색 있는 축제가 운영되어, 방문할 때마다 새로운 즐거움을 경험할 수 있습니다. 최근에는 판다월드와 식물원 리뉴얼 등 지속적인 투자로 콘텐츠가 더욱 다양해지고 있어, 이전에 방문했던 분들도 새롭게 즐길 거리가 충분합니다.',
-        info: {
-          address: '경기도 용인시 처인구 포곡읍 에버랜드로 199',
-          hours: '10:00~21:00 (시즌별 변동)',
-          parking: '대규모 주차장 완비',
-          access: '용인경전철 에버랜드역, 셔틀버스, 자가용'
-        },
-        tips: [
-          { title: 'T익스프레스는 오픈런 필수', desc: '개장 직후 바로 T익스프레스로 향하면 30분 이내로 탑승 가능합니다. 점심 이후에는 대기시간이 2시간을 넘기는 경우가 많아 오전 공략이 효율적입니다.' },
-          { title: '로스트밸리는 평일이 좋아', desc: '사파리 버스를 타고 동물을 관람하는 로스트밸리는 주말에 대기가 깁니다. 가능하면 평일 방문을 추천하며, 날씨 좋은 오전 시간대에 동물들이 가장 활발하게 활동합니다.' },
-          { title: '시즌 축제 일정 미리 확인', desc: '에버랜드의 가장 큰 매력은 사계절 축제입니다. 방문 전 공식 홈페이지에서 현재 진행 중인 축제와 특별 이벤트 일정을 확인하면 더욱 알찬 하루를 보낼 수 있습니다.' }
-        ],
-        highlights: ['국내 최대 규모 테마파크, 연간 1,000만+ 방문', 'T익스프레스 목재 코스터 낙하각 77도', '주토피아 동물원·로스트밸리 사파리', '사계절 축제 (튤립·할로윈·크리스마스)', '캐리비안 베이 연계 종일 코스 가능'],
-        faq: [
-          { q: '에버랜드 하루에 다 돌 수 있나요?', a: '주요 놀이기구와 동물원까지 알차게 돌려면 개장 시간부터 폐장까지 꽉 채우는 것이 좋습니다. 인기 어트랙션 위주로 우선순위를 정해 동선을 짜면 효율적입니다.' },
-          { q: '어린아이와 가기 좋은가요?', a: '매직랜드와 주토피아는 유아·어린이 동반 가족에게 최적화되어 있습니다. 유아용 놀이기구와 캐릭터 체험존도 다양하게 마련되어 있습니다.' },
-          { q: '야간 이용도 가능한가요?', a: '시즌에 따라 야간 운영이 진행됩니다. 특히 할로윈 시즌과 크리스마스 시즌에는 야간 퍼레이드와 불꽃놀이 등 특별 프로그램이 운영됩니다.' }
-        ],
-        course: '오전 T익스프레스 → 로스트밸리 사파리 → 점심 → 오후 주토피아 동물원 → 저녁 퍼레이드 관람'
-      },
-      {
-        slug: 'lotte-world',
-        name: '롯데월드 어드벤처',
-        fullName: '서울 롯데월드 어드벤처',
-        location: '서울특별시 송파구 잠실동',
-        region: '서울 잠실',
-        heroColor: '#7c3aed',
-        bodyColors: ['#8b5cf6','#a855f7','#c084fc'],
-        hook: '서울 한복판 잠실에 위치한 롯데월드 어드벤처는 세계 최대 규모의 실내 테마파크로 기네스북에 등재된 대한민국의 랜드마크입니다. 지하철 2호선 잠실역과 직결되어 있어 접근성이 압도적으로 좋고, 날씨에 영향을 받지 않는 실내 시설이 핵심 강점입니다. 실내 어드벤처 구역에는 회전목마, 범퍼카, 실내 롤러코스터 등 30여 개의 어트랙션이 있으며, 야외 매직아일랜드에는 자이로드롭과 아틀란티스 등 스릴 놀이기구가 모여 있습니다. 롯데월드 아쿠아리움과 민속박물관도 같은 단지 내에 있어 놀이기구 외에도 다양한 체험이 가능합니다. 실내 퍼레이드와 캐릭터 공연은 매일 정해진 시간에 진행되며, 아이들에게 특히 인기가 높습니다. 잠실 롯데타워 전망대와 롯데백화점까지 연결되어 있어, 테마파크 방문과 함께 쇼핑·식사·전망대 관람까지 원스톱으로 즐길 수 있는 것이 다른 놀이공원에 없는 독보적인 장점입니다. 최근에는 VR 어트랙션과 신규 캐릭터 존이 추가되어 젊은 층의 재방문율도 높아지고 있으며, 서울 도심 한복판에서 종일 즐길 수 있는 원스톱 엔터테인먼트의 대명사입니다.',
-        info: {
-          address: '서울특별시 송파구 올림픽로 240',
-          hours: '10:00~21:00 (요일별 변동)',
-          parking: '롯데월드몰 지하주차장',
-          access: '지하철 2·8호선 잠실역 직결'
-        },
-        tips: [
-          { title: '비 오는 날이 오히려 최적', desc: '실내 테마파크이기 때문에 비 오는 날이나 한여름 폭염, 한겨울 추위에도 쾌적하게 이용할 수 있습니다. 오히려 날씨가 안 좋은 날에는 방문객이 줄어 대기시간이 짧아지는 장점이 있습니다.' },
-          { title: '잠실역 직결이라 교통이 편해', desc: '지하철 2호선 잠실역 4번 출구와 바로 연결되어 주차 걱정이 없습니다. 퇴근 후 저녁 시간에 잠깐 들르는 것도 가능할 만큼 접근성이 좋습니다.' },
-          { title: '매직패스로 대기시간 줄이기', desc: '매직패스를 이용하면 인기 어트랙션의 대기시간을 크게 단축할 수 있습니다. 방문 인원이 많은 주말이나 공휴일에는 매직패스 활용이 거의 필수입니다.' }
-        ],
-        highlights: ['세계 최대 실내 테마파크 (기네스 등재)', '지하철 잠실역 직결, 최고 접근성', '날씨 무관 사계절 이용 가능', '아쿠아리움·민속박물관·전망대 연계', '매일 실내 퍼레이드·캐릭터 공연'],
-        faq: [
-          { q: '롯데월드 실내만으로 충분한가요?', a: '실내 어드벤처만으로도 30여 개 어트랙션이 있어 반나절 이상 즐길 수 있습니다. 스릴을 원한다면 야외 매직아일랜드의 자이로드롭과 아틀란티스까지 이용하면 더 알찹니다.' },
-          { q: '평일과 주말 차이가 큰가요?', a: '주말과 공휴일에는 인기 놀이기구 대기시간이 1~2시간에 달할 수 있습니다. 평일 오전에 방문하면 대부분의 어트랙션을 30분 이내로 탑승 가능합니다.' },
-          { q: '주변에서 식사할 곳이 있나요?', a: '롯데월드 내부 레스토랑과 푸드코트는 물론, 바로 연결된 롯데월드몰에 다양한 외식 브랜드가 입점해 있어 선택의 폭이 넓습니다.' }
-        ],
-        course: '오전 실내 어트랙션 → 점심 롯데월드몰 → 오후 매직아일랜드 → 퍼레이드 관람 → 롯데타워 전망대'
-      },
-      {
-        slug: 'seoul-land',
-        name: '서울랜드',
-        fullName: '과천 서울랜드',
-        location: '경기도 과천시 광명로',
-        region: '과천',
-        heroColor: '#16a34a',
-        bodyColors: ['#22c55e','#4ade80','#86efac'],
-        hook: '경기도 과천 서울대공원 단지 내에 자리한 서울랜드는 1988년 개장 이래 대한민국 가족 나들이의 대명사로 자리 잡은 테마파크입니다. 에버랜드나 롯데월드에 비해 규모는 작지만, 그만큼 여유롭고 자연친화적인 분위기가 가장 큰 매력입니다. 서울대공원 동물원, 국립현대미술관과 같은 단지 내에 있어 테마파크와 문화시설을 함께 즐길 수 있는 복합 나들이 코스로 인기가 높습니다. 놀이기구는 유아부터 성인까지 즐길 수 있는 다양한 난이도로 구성되어 있으며, 은하열차·바이킹·회전그네 같은 클래식한 기구들이 향수를 자극합니다. 봄 벚꽃 축제 기간에는 단지 전체가 벚꽃으로 물들어 사진 찍기 좋은 명소가 되고, 가을 할로윈 축제와 겨울 루미나리에 빛 축제도 매년 많은 인파를 모읍니다. 비교적 합리적인 입장료와 넉넉한 녹지 공간이 어우러져, 부담 없이 가볍게 즐기기에 최적화된 공원형 테마파크입니다. 서울 도심에서 30분이면 도착하는 접근성과 주변 자연환경이 어우러져, 놀이기구와 피크닉을 동시에 즐길 수 있는 드문 공간으로 오랜 세월 사랑받고 있습니다.',
-        info: {
-          address: '경기도 과천시 광명로 181',
-          hours: '10:00~18:00 (시즌별 변동)',
-          parking: '서울대공원 주차장',
-          access: '지하철 4호선 대공원역 하차, 리프트·코끼리열차 이용'
-        },
-        tips: [
-          { title: '벚꽃 시즌이 최고', desc: '4월 초 벚꽃이 만개하면 서울대공원 단지 전체가 벚꽃 터널이 됩니다. 놀이기구를 타면서 동시에 벚꽃을 감상하는 경험은 서울랜드에서만 가능한 특별한 즐거움입니다.' },
-          { title: '동물원 연계 코스 추천', desc: '서울대공원 동물원과 서울랜드를 하루에 모두 돌 수 있습니다. 오전에 동물원, 오후에 서울랜드로 계획하면 아이들에게 최고의 나들이가 됩니다.' },
-          { title: '코끼리열차와 리프트 놓치지 마세요', desc: '대공원역에서 서울랜드까지 이동하는 코끼리열차와 하늘 리프트는 그 자체로 하나의 놀이기구입니다. 특히 리프트를 타며 내려다보는 단지 전경은 꼭 경험해 볼 만합니다.' }
-        ],
-        highlights: ['서울대공원 동물원·미술관 연계 나들이', '자연친화적 공원형 테마파크', '봄 벚꽃·가을 할로윈·겨울 루미나리에 축제', '유아~성인 다양한 난이도 놀이기구', '합리적인 입장료로 부담 없는 방문'],
-        faq: [
-          { q: '서울랜드가 어린아이한테 적합한가요?', a: '네, 유아 전용 놀이기구와 키즈존이 잘 마련되어 있어 3~7세 아이와 함께 방문하기에 매우 적합합니다. 전체적인 분위기도 가족 친화적입니다.' },
-          { q: '에버랜드와 비교하면 어떤가요?', a: '에버랜드보다 규모는 작지만, 그만큼 여유롭고 이용 부담이 적습니다. 스릴보다 가벼운 나들이를 원하는 분, 유아 동반 가족에게 더 적합합니다.' },
-          { q: '대중교통 이용이 편한가요?', a: '4호선 대공원역에서 하차 후 코끼리열차나 리프트를 타면 됩니다. 서울 도심에서 30분 이내로 접근 가능한 최고의 위치입니다.' }
-        ],
-        course: '오전 서울대공원 동물원 → 코끼리열차 → 점심 → 오후 서울랜드 놀이기구 → 리프트 탑승 후 귀가'
-      }
-    ]
-  },
-  {
-    slug: 'jjimjilbang',
-    name: '찜질방',
-    icon: '♨️',
-    color: '#ea580c',
-    gradient: 'linear-gradient(135deg,#ea580c,#f59e0b)',
-    description: '대한민국 고유의 힐링 문화! 전국 대표 찜질방·스파의 시설 정보와 이용 꿀팁을 소개합니다.',
-    seoTitle: '찜질방 추천 BEST - 전국 인기 찜질방·스파 가이드',
-    venues: [
-      {
-        slug: 'dragon-hill-spa',
-        name: '드래곤힐스파',
-        fullName: '용산 드래곤힐스파',
-        location: '서울특별시 용산구 한강로3가',
-        region: '서울 용산',
-        heroColor: '#c2410c',
-        bodyColors: ['#ea580c','#f97316','#fb923c'],
-        hook: '서울 용산역 바로 앞에 위치한 드래곤힐스파는 국내 찜질방의 대명사이자, 외국인 관광객에게도 가장 유명한 한국식 스파입니다. 지상 7층, 지하 1층 규모의 초대형 시설에는 찜질방, 사우나, 수영장, 골프연습장, 영화관, PC방, 노래방, 네일샵까지 갖추고 있어 하루 종일 머물러도 지루하지 않습니다. 대표 시설인 숯가마 찜질방은 참숯으로 가열된 공간에서 땀을 흘리며 해독 효과를 누릴 수 있고, 황토방·불가마·얼음방 등 8종 이상의 테마 찜질방이 운영됩니다. 옥상에 위치한 노천탕은 서울 시내 야경을 감상하며 온천욕을 즐길 수 있는 이색적인 경험을 제공합니다. 24시간 운영이라 시간 제약 없이 방문할 수 있으며, 용산역 KTX 환승이 편리해 지방에서 올라오는 여행객들에게도 첫 번째 혹은 마지막 코스로 사랑받고 있습니다. 한국 찜질방의 정수를 보여주는 대표 시설로, 초보자부터 찜질방 마니아까지 누구나 만족할 수 있는 깊이와 규모를 갖추고 있습니다. 서울에서 찜질방을 딱 한 곳만 가야 한다면, 드래곤힐스파가 가장 먼저 추천되는 이유가 충분합니다.',
-        info: {
-          address: '서울특별시 용산구 한강로3가 40-713',
-          hours: '24시간 연중무휴',
-          parking: '건물 내 주차장 이용',
-          access: '지하철 1호선 용산역 도보 3분'
-        },
-        tips: [
-          { title: '옥상 노천탕은 저녁이 최고', desc: '해가 진 후 옥상 노천탕에서 서울 야경을 바라보며 온천욕을 즐기는 것이 드래곤힐스파의 백미입니다. 시간이 맞는다면 반드시 저녁 시간대에 옥상을 방문해 보세요.' },
-          { title: '새벽 시간대가 한적해', desc: '24시간 운영이라 새벽 2~6시 사이가 가장 한적합니다. 붐비는 것이 싫다면 늦은 밤이나 이른 새벽에 방문하면 거의 프라이빗하게 이용 가능합니다.' },
-          { title: '식당 시래기국밥이 유명', desc: '드래곤힐스파 내 식당의 시래기국밥은 찜질방 음식의 레전드로 불립니다. 사우나 후 따끈한 국밥 한 그릇은 몸과 마음 모두를 회복시켜 줍니다.' }
-        ],
-        highlights: ['국내 최대 규모 복합 찜질방 (지상 7층)', '옥상 노천탕에서 서울 야경 감상', '24시간 연중무휴 운영', '용산역 도보 3분, KTX 환승 편리', '숯가마·황토방·얼음방 등 8종+ 테마'],
-        faq: [
-          { q: '드래곤힐스파 숙박 대용으로 괜찮나요?', a: '24시간 운영이라 숙박 대용으로 이용하는 분들이 많습니다. 수면실이 따로 있어 비교적 편하게 잘 수 있고, 샤워·사우나·식사까지 해결되어 호텔보다 경제적입니다.' },
-          { q: '외국인도 많이 오나요?', a: '한국 찜질방 문화를 체험하고 싶은 외국인 관광객들이 많이 방문합니다. 영어 안내와 외국인 친화적인 시설이 갖춰져 있어 외국 친구와 함께 방문하기에도 좋습니다.' },
-          { q: '준비물이 필요한가요?', a: '수건, 찜질복 등 기본 용품은 입장 시 제공됩니다. 개인 세면도구만 챙기면 되고, 없어도 내부 매점에서 구매할 수 있습니다.' }
-        ],
-        course: '사우나 → 숯가마 찜질 → 식당에서 시래기국밥 → 수면실 휴식 → 옥상 노천탕 야경'
-      },
-      {
-        slug: 'spa-land',
-        name: '스파랜드',
-        fullName: '부산 센텀시티 스파랜드',
-        location: '부산광역시 해운대구 센텀남대로',
-        region: '부산 해운대',
-        heroColor: '#0d9488',
-        bodyColors: ['#14b8a6','#2dd4bf','#5eead4'],
-        hook: '부산 해운대 센텀시티 신세계백화점 1층에 위치한 스파랜드는 국내 프리미엄 찜질방의 정점으로 평가받는 곳입니다. 해운대 지하 500미터에서 끌어올린 2종의 천연 온천수(나트륨 온천, 칼슘 온천)를 사용하며, 수질 자체가 다른 찜질방과 차원이 다릅니다. 총 22개의 테마 스파와 찜질방이 운영되며, 핀란드 사우나, 로마식 온탕, 터키식 한증막 등 세계 각국의 목욕 문화를 한 곳에서 체험할 수 있습니다. 인테리어 역시 고급스러워 일반적인 찜질방의 이미지와는 확연히 다르며, 매장 내 카페와 휴식 공간의 퀄리티도 높습니다. 신세계백화점과 직결되어 있어 쇼핑 후 피로를 풀기에 안성맞춤이고, 부산 여행 중 하루 쉬어가는 힐링 코스로 현지인과 관광객 모두에게 사랑받고 있습니다. 18세 미만 입장 불가 정책으로 조용하고 품위 있는 분위기가 유지되는 것도 큰 장점입니다. 특히 부산 여행 중 하루를 온전히 휴식에 투자하고 싶을 때, 스파랜드만큼 품격 있는 힐링 공간을 찾기 어려우며, 한번 방문하면 재방문을 결심하게 되는 높은 만족도를 자랑합니다.',
-        info: {
-          address: '부산광역시 해운대구 센텀남대로 35 (신세계 센텀시티 1F)',
-          hours: '06:00~24:00',
-          parking: '신세계백화점 주차장',
-          access: '지하철 2호선 센텀시티역 직결'
-        },
-        tips: [
-          { title: '오전 일찍 가면 거의 독점', desc: '오전 6시 오픈 직후에 방문하면 넓은 시설을 거의 혼자 이용할 수 있습니다. 조용하고 여유로운 프리미엄 스파 경험을 원한다면 오전 시간대를 추천합니다.' },
-          { title: '핀란드 사우나 꼭 체험하세요', desc: '22개 테마 중에서도 핀란드 사우나와 로마식 온탕이 특히 인기가 높습니다. 각 나라별 목욕 문화의 차이를 직접 비교하며 체험하는 재미가 있습니다.' },
-          { title: '신세계백화점 식사와 연계', desc: '스파를 즐긴 후 바로 연결된 신세계백화점의 레스토랑이나 지하 푸드홀에서 식사할 수 있어 동선이 매우 효율적입니다.' }
-        ],
-        highlights: ['해운대 지하 500m 천연 온천수 2종 사용', '22개 세계 테마 스파·찜질방', '프리미엄 인테리어, 고급스러운 분위기', '18세 미만 입장불가, 조용한 환경', '신세계백화점 직결, 센텀시티역 접근 편리'],
-        faq: [
-          { q: '일반 찜질방과 뭐가 다른가요?', a: '천연 온천수 사용, 프리미엄 인테리어, 18세 미만 입장 제한 등으로 일반 찜질방과는 분위기가 확연히 다릅니다. 고급 스파에 가까운 경험을 제공합니다.' },
-          { q: '아이와 함께 갈 수 있나요?', a: '18세 미만은 입장이 불가합니다. 성인 전용 시설로 운영되기 때문에 조용하고 차분한 분위기에서 휴식할 수 있습니다.' },
-          { q: '부산 여행 중 언제 방문하면 좋을까요?', a: '여행 중간에 쉬어가는 날이나, 마지막 날 공항 가기 전에 방문하면 좋습니다. 여행 피로를 풀고 개운하게 마무리할 수 있습니다.' }
-        ],
-        course: '오전 천연 온천탕 → 핀란드 사우나 → 테마 찜질방 순회 → 카페 휴식 → 신세계 식사'
-      },
-      {
-        slug: 'aqua-field',
-        name: '아쿠아필드 하남',
-        fullName: '하남 스타필드 아쿠아필드',
-        location: '경기도 하남시 미사대로',
-        region: '하남',
-        heroColor: '#2563eb',
-        bodyColors: ['#3b82f6','#60a5fa','#93c5fd'],
-        hook: '경기도 하남 스타필드 내에 위치한 아쿠아필드는 쇼핑몰 안에서 프리미엄 스파를 즐길 수 있는 신개념 복합 힐링 공간입니다. 지하 500미터에서 끌어올린 천연 온천수를 기반으로 운영되며, 실내 온천풀·야외 노천탕·찜질방이 한 공간에 어우러져 있습니다. 가장 인기 있는 시설은 야외 인피니티풀로, 탁 트인 하늘 아래 따뜻한 온천수에 몸을 담그며 힐링하는 경험을 제공합니다. 실내에는 바데풀과 아로마 스파, 족욕 시설이 갖춰져 있고, 찜질 구역에는 황토방·소금방·얼음방 등 다양한 테마가 운영됩니다. 스타필드 하남의 대형 쇼핑몰·영화관·맛집과 바로 연결되어 있어 쇼핑과 식사, 영화 관람까지 한 곳에서 해결하는 원스톱 힐링 나들이가 가능합니다. 서울 근교에서 도심을 벗어나지 않고도 리조트급 스파를 경험할 수 있어, 주말 당일치기 힐링 코스로 꾸준한 인기를 얻고 있습니다. 바쁜 일상 속에서 멀리 여행을 가지 않아도 리조트급 휴식을 누릴 수 있다는 점이 아쿠아필드 하남의 가장 큰 매력이며, 커플·가족·친구 모임 등 누구와 함께 가도 만족스러운 시간을 보낼 수 있습니다.',
-        info: {
-          address: '경기도 하남시 미사대로 750 스타필드 하남',
-          hours: '10:00~22:00',
-          parking: '스타필드 하남 주차장 (대규모)',
-          access: '지하철 5호선 미사역, 셔틀버스 운행'
-        },
-        tips: [
-          { title: '인피니티풀은 평일 오전이 좋아', desc: '야외 인피니티풀은 주말에 자리 잡기 어려울 만큼 인기가 높습니다. 평일 오전에 방문하면 여유롭게 인피니티풀을 즐기며 사진도 찍을 수 있습니다.' },
-          { title: '스타필드 쇼핑과 연계하면 완벽', desc: '스파를 즐긴 후 스타필드에서 쇼핑·식사·영화를 이어가면 하루 종일 알찬 나들이가 됩니다. 특히 겨울에 실내에서 모든 것을 해결할 수 있어 편리합니다.' },
-          { title: '아로마 스파 구역 놓치지 마세요', desc: '실내 아로마 스파 구역은 다른 스파 시설에서는 보기 어려운 특별한 공간입니다. 다양한 향의 스파를 순서대로 체험하면 릴랙싱 효과가 극대화됩니다.' }
-        ],
-        highlights: ['지하 500m 천연 온천수 기반 프리미엄 스파', '야외 인피니티풀에서 하늘 아래 온천욕', '스타필드 하남과 직결, 원스톱 나들이', '바데풀·아로마 스파·족욕 등 다양한 시설', '서울 근교 당일치기 리조트급 힐링'],
-        faq: [
-          { q: '아쿠아필드는 수영장인가요?', a: '수영장이 아닌 온천 스파 시설입니다. 온천풀에서 편하게 물에 몸을 담그고 휴식하는 형태이며, 수영 레인은 따로 없습니다.' },
-          { q: '수영복이 필요한가요?', a: '온천풀과 인피니티풀 이용 시 수영복 착용이 필수입니다. 미리 준비하시거나 내부 매장에서 구매할 수 있습니다.' },
-          { q: '주말에 많이 붐비나요?', a: '주말과 공휴일에는 상당히 붐비며, 특히 인피니티풀은 자리 확보가 어려울 수 있습니다. 가능하면 평일 방문을 추천합니다.' }
-        ],
-        course: '스타필드 브런치 → 아로마 스파 → 인피니티풀 → 찜질방 휴식 → 스타필드 쇼핑·영화'
-      }
-    ]
-  },
-  {
-    slug: 'escape-room',
-    name: '방탈출카페',
-    icon: '🔐',
-    color: '#7c3aed',
-    gradient: 'linear-gradient(135deg,#7c3aed,#a855f7)',
-    description: '두뇌를 자극하는 몰입형 체험! 전국 인기 방탈출 카페의 테마 정보와 초보자 가이드를 확인하세요.',
-    seoTitle: '방탈출카페 추천 BEST - 전국 인기 방탈출 테마 가이드',
-    venues: [
-      {
-        slug: 'key-escape',
-        name: '키이스케이프 홍대점',
-        fullName: '키이스케이프 홍대 직영점',
-        location: '서울특별시 마포구 와우산로',
-        region: '서울 홍대',
-        heroColor: '#581c87',
-        bodyColors: ['#7c3aed','#8b5cf6','#a78bfa'],
-        hook: '서울 홍대 한복판에 자리한 키이스케이프 홍대 직영점은 국내 방탈출 업계의 선구자이자, 테마 퀄리티로 업계 기준을 세운 프리미엄 방탈출 카페입니다. 2014년 국내 최초로 미션 기반 방탈출 개념을 도입한 이래, 꾸준히 새로운 테마를 개발하며 방탈출 문화의 중심에 서 있습니다. 홍대점에는 다양한 난이도와 장르의 테마가 운영되며, 특히 공포 테마와 추리 테마가 인기가 높습니다. 각 테마의 세트 디자인과 장치 퀄리티가 영화 수준으로, 단순히 자물쇠를 따는 것이 아니라 하이테크 전자 장치와 기계식 트릭이 결합된 몰입도 높은 체험을 제공합니다. 홍대 특성상 20~30대 젊은 층의 방문이 많고, 모임이나 데이트 코스로 자주 선택됩니다. 방탈출이 처음인 초보자도 쉬운 난이도의 테마부터 시작할 수 있어 진입 장벽이 낮으며, 직원의 힌트 시스템이 잘 갖춰져 있어 막히더라도 포기하지 않고 끝까지 즐길 수 있습니다. 방탈출 문화의 원조답게 테마 업데이트가 빠르고, 항상 새로운 테마가 추가되어 재방문 가치가 높은 것도 키이스케이프의 매력입니다.',
-        info: {
-          address: '서울특별시 마포구 와우산로 112',
-          hours: '11:00~23:00 (주말 10:00~)',
-          parking: '인근 공영주차장 이용',
-          access: '지하철 2호선 홍대입구역 도보 8분'
-        },
-        tips: [
-          { title: '예약은 필수, 평일이 여유로워', desc: '인기 테마는 주말에 금방 마감되므로 최소 일주일 전 예약을 추천합니다. 평일 저녁 시간대는 비교적 여유가 있어 원하는 테마를 잡기 수월합니다.' },
-          { title: '처음이라면 난이도 하~중으로', desc: '방탈출 초보자는 난이도가 낮은 테마부터 시작하는 것이 좋습니다. 첫 테마에서 좋은 경험을 하면 방탈출의 매력에 더 빠지게 됩니다. 스태프에게 추천을 요청해 보세요.' },
-          { title: '4인 팀이 최적', desc: '대부분의 테마는 4인 기준으로 설계되어 있습니다. 2~3명이면 난이도가 올라가고, 5명 이상이면 역할 분담이 애매해질 수 있어 4인이 가장 이상적입니다.' }
-        ],
-        highlights: ['국내 방탈출 업계 선구자, 2014년 최초 도입', '영화급 세트 디자인과 하이테크 장치', '다양한 난이도·장르 테마 운영', '홍대 중심 위치, 데이트·모임 코스로 인기', '초보자 친화적 힌트 시스템'],
-        faq: [
-          { q: '방탈출 처음인데 어렵지 않나요?', a: '초보자용 테마가 따로 있어 첫 방문도 걱정 없습니다. 게임 중 막히면 힌트를 받을 수 있고, 직원이 진행을 도와주기도 합니다.' },
-          { q: '몇 명이서 가면 좋나요?', a: '2~6인이 이용 가능하며, 4인이 가장 최적의 인원입니다. 서로 역할을 나누어 단서를 찾으면 더 재미있게 즐길 수 있습니다.' },
-          { q: '공포 테마가 많이 무서운가요?', a: '공포 테마의 강도는 테마마다 다릅니다. 예약 전 공포 레벨을 확인할 수 있으며, 무서운 것이 부담스러우면 추리나 어드벤처 장르를 선택하면 됩니다.' }
-        ],
-        course: '홍대 카페거리 산책 → 키이스케이프 방탈출 체험 → 홍대 맛집 저녁 → 주변 이색 카페'
-      },
-      {
-        slug: 'next-edition',
-        name: '넥스트에디션 강남점',
-        fullName: '넥스트에디션 방탈출 강남 직영점',
-        location: '서울특별시 강남구 역삼동',
-        region: '서울 강남',
-        heroColor: '#1e1b4b',
-        bodyColors: ['#312e81','#4338ca','#6366f1'],
-        hook: '서울 강남역 인근에 위치한 넥스트에디션 강남 직영점은 스토리 중심의 몰입형 방탈출로 마니아층에게 가장 높은 평가를 받는 프리미엄 방탈출 카페입니다. 단순한 퍼즐 풀이가 아니라, 하나의 영화 속에 들어간 것 같은 서사적 체험을 제공하는 것이 넥스트에디션의 핵심 철학입니다. 각 테마는 독립적인 스토리라인을 가지고 있으며, 참여자의 선택에 따라 전개와 결말이 달라지는 인터랙티브 구조가 특징입니다. 세트 규모도 일반 방탈출에 비해 상당히 크며, 여러 개의 방을 넘나들며 이야기를 진행하는 형태입니다. 사운드, 조명, 특수효과까지 연극 무대 수준으로 구현되어 있어, 방탈출을 많이 해본 마니아들도 새로운 차원의 경험이라고 평가합니다. 강남이라는 접근성 좋은 위치에 있어 직장인 회식 대안이나 소규모 모임 장소로도 인기가 높으며, 예약 경쟁이 치열한 인기 테마는 오픈과 동시에 마감되기도 합니다. 방탈출의 한계를 넘어선 인터랙티브 씨어터에 가까운 경험을 원한다면, 넥스트에디션이 가장 먼저 떠오르는 이름입니다.',
-        info: {
-          address: '서울특별시 강남구 역삼로 180',
-          hours: '10:00~23:30',
-          parking: '인근 공영주차장 이용',
-          access: '지하철 2호선 강남역 도보 5분'
-        },
-        tips: [
-          { title: '인기 테마는 오픈 즉시 예약', desc: '넥스트에디션의 인기 테마는 예약 오픈 당일에 마감되는 경우가 많습니다. 새 테마 오픈 일정을 SNS에서 미리 확인하고, 오픈 시간에 맞춰 예약하는 것이 좋습니다.' },
-          { title: '스토리에 집중하면 더 재미있어', desc: '퍼즐을 빨리 푸는 것보다 스토리에 몰입하며 천천히 진행하는 것이 넥스트에디션을 제대로 즐기는 방법입니다. 서두르지 말고 분위기를 느끼며 체험하세요.' },
-          { title: '2~3인 소규모가 더 몰입도 높아', desc: '넥스트에디션의 스토리 테마는 소규모 팀으로 플레이할 때 몰입감이 극대화됩니다. 대인원보다는 2~3명이 함께하면 각자의 역할이 뚜렷해지고 더 깊이 빠져들 수 있습니다.' }
-        ],
-        highlights: ['스토리 중심 몰입형 방탈출 최고봉', '참여자 선택에 따른 멀티 엔딩 구조', '연극 무대급 사운드·조명·특수효과', '강남역 도보 5분, 직장인 모임에 최적', '마니아 평가 최상위권 프리미엄 테마'],
-        faq: [
-          { q: '일반 방탈출과 뭐가 다른가요?', a: '단순 퍼즐 풀이가 아니라 스토리 속 주인공이 되는 체험입니다. 선택에 따라 결말이 달라지고, 세트·음향·조명이 연극 수준으로 구현되어 몰입감이 다릅니다.' },
-          { q: '소요 시간은 얼마나 되나요?', a: '테마에 따라 60~90분 정도 소요됩니다. 스토리형 테마는 일반 방탈출보다 약간 더 길 수 있으며, 체험 후 감상을 나누는 시간까지 포함하면 약 2시간을 잡는 것이 좋습니다.' },
-          { q: '방탈출 마니아가 아니면 어려운가요?', a: '난이도가 다양하게 운영되므로 초보자도 충분히 즐길 수 있습니다. 스토리에 집중하며 진행하면 퍼즐보다 경험 자체에 더 큰 재미를 느낄 수 있습니다.' }
-        ],
-        course: '강남역 카페에서 모임 → 넥스트에디션 테마 체험 → 강남 맛집 디너 → 감상 나누기'
-      },
-      {
-        slug: 'beat-phobia',
-        name: '비트포비아 건대점',
-        fullName: '비트포비아 방탈출 건대 직영점',
-        location: '서울특별시 광진구 아차산로',
-        region: '서울 건대',
-        heroColor: '#991b1b',
-        bodyColors: ['#b91c1c','#dc2626','#ef4444'],
-        hook: '서울 건대입구역 인근에 위치한 비트포비아 건대 직영점은 공포 방탈출의 대명사로, 극한의 스릴과 몰입감을 추구하는 방문객들에게 독보적인 인기를 누리고 있습니다. 비트포비아만의 특징은 실제 배우가 테마 안에서 연기하며 참여자와 상호작용하는 라이브 액팅 시스템입니다. 단순히 어두운 공간에서 놀라게 하는 것이 아니라, 배우의 연기와 스토리가 결합되어 마치 공포 영화의 등장인물이 된 것 같은 체험을 제공합니다. 공포 테마 외에도 어드벤처, SF, 판타지 등 다양한 장르의 테마가 운영되어, 무서운 것을 못 보는 사람도 즐길 수 있는 옵션이 있습니다. 건대 먹자골목과 커먼그라운드가 가까워 방탈출 전후로 식사와 쇼핑을 연계하기 좋은 위치입니다. 단체 이벤트와 팀빌딩 프로그램도 운영하고 있어, 대학생 모임이나 회사 워크숍 활동으로도 자주 선택됩니다. 극한의 스릴부터 가벼운 모험까지 폭넓은 테마 라인업을 갖추고 있어, 취향에 맞는 테마를 골라 즐기기에 최적의 방탈출 카페입니다. 공포 방탈출의 진수를 경험하고 싶다면 비트포비아를 빼놓을 수 없습니다.',
-        info: {
-          address: '서울특별시 광진구 아차산로 244',
-          hours: '11:00~23:00',
-          parking: '인근 공영주차장 이용',
-          access: '지하철 2호선 건대입구역 도보 5분'
-        },
-        tips: [
-          { title: '공포 레벨 미리 확인하세요', desc: '비트포비아의 공포 테마는 강도가 상당합니다. 예약 전 공포 레벨을 확인하고, 무서운 것이 부담스러우면 어드벤처나 판타지 테마를 선택하세요. 라이브 액팅은 별도 표시가 있으니 참고하시면 됩니다.' },
-          { title: '라이브 액팅 테마가 핵심', desc: '비트포비아의 진가는 배우가 참여하는 라이브 액팅 테마에서 발휘됩니다. 한 번쯤은 라이브 액팅 테마를 경험해 보시는 것을 강력 추천합니다.' },
-          { title: '건대 먹자골목과 연계', desc: '방탈출 후 스트레스를 풀며 건대 먹자골목에서 맛집을 탐방하는 코스가 인기입니다. 커먼그라운드도 바로 옆이라 이색적인 하루를 보내기 좋습니다.' }
-        ],
-        highlights: ['공포 방탈출의 대명사, 라이브 액팅 시스템', '실제 배우 연기로 영화급 몰입감', '공포·어드벤처·SF·판타지 다양한 장르', '건대입구역 도보 5분, 먹자골목 인접', '단체 이벤트·팀빌딩 프로그램 운영'],
-        faq: [
-          { q: '라이브 액팅이 뭔가요?', a: '전문 배우가 테마 안에서 실시간으로 연기하며 참여자와 상호작용하는 시스템입니다. 일반 방탈출에는 없는 비트포비아만의 특별한 체험으로, 몰입감이 극대화됩니다.' },
-          { q: '너무 무서우면 중간에 나올 수 있나요?', a: '네, 모든 테마에 비상 탈출 시스템이 있어 언제든 중단하고 나올 수 있습니다. 안전은 철저하게 관리되니 안심하고 도전해 보세요.' },
-          { q: '단체로 가면 할인이 되나요?', a: '단체 예약 시 별도 프로그램과 혜택이 있습니다. 팀빌딩이나 단체 이벤트를 계획 중이라면 공식 사이트에서 단체 문의를 해 보시길 추천합니다.' }
-        ],
-        course: '커먼그라운드 구경 → 비트포비아 방탈출 → 건대 먹자골목 저녁 → 건대 카페 마무리'
-      }
-    ]
-  },
-  {
-    slug: 'bowling',
-    name: '볼링장',
-    icon: '🎳',
-    color: '#059669',
-    gradient: 'linear-gradient(135deg,#059669,#34d399)',
-    description: '부담 없이 즐기는 스포츠 레저! 전국 인기 볼링장의 시설 정보와 방문 가이드를 확인하세요.',
-    seoTitle: '볼링장 추천 BEST - 전국 인기 볼링장 시설 가이드',
-    venues: [
-      {
-        slug: 'round1-coex',
-        name: '라운드원 코엑스점',
-        fullName: '라운드원 엔터테인먼트 코엑스점',
-        location: '서울특별시 강남구 삼성동 코엑스몰',
-        region: '서울 삼성',
-        heroColor: '#047857',
-        bodyColors: ['#059669','#10b981','#34d399'],
-        hook: '서울 삼성동 코엑스몰 내에 위치한 라운드원 코엑스점은 일본에서 건너온 종합 엔터테인먼트 브랜드로, 볼링뿐 아니라 다트, 노래방, 아케이드 게임까지 한 곳에서 즐길 수 있는 복합 놀이 공간입니다. 일반 볼링장과 가장 큰 차이점은 시간제 무제한 시스템으로, 정해진 시간 동안 볼링을 원하는 만큼 칠 수 있다는 것입니다. 이 방식은 게임 수를 신경 쓰지 않고 부담 없이 즐길 수 있어 특히 초보자와 캐주얼 볼러들에게 환영받고 있습니다. 레인 옆에 음료와 간식을 즐길 수 있는 공간이 마련되어 있어 놀이와 휴식을 병행할 수 있고, 네온 조명과 음악이 어우러진 분위기는 단순한 운동보다 엔터테인먼트에 가까운 경험을 제공합니다. 코엑스몰 직결이라 쇼핑, 식사, 영화 관람까지 연계할 수 있는 동선이 매우 편리하며, 지하철 삼성역에서 바로 연결되어 접근성도 우수합니다. 일본에서 검증된 엔터테인먼트 노하우가 적용된 시설이라, 세세한 부분까지 이용자 편의가 잘 고려되어 있어 처음 방문해도 불편함 없이 즐길 수 있습니다.',
-        info: {
-          address: '서울특별시 강남구 영동대로 513 코엑스몰',
-          hours: '10:00~24:00',
-          parking: '코엑스 주차장 이용',
-          access: '지하철 2호선 삼성역 직결'
-        },
-        tips: [
-          { title: '시간제 무제한이라 부담 없어', desc: '게임 수가 아닌 시간 기준으로 이용하기 때문에 초보자도 부담 없이 연습할 수 있습니다. 친구들과 왁자지껄 즐기기에 최적의 시스템입니다.' },
-          { title: '볼링 외 놀거리도 풍성', desc: '볼링이 끝나면 바로 옆에 다트, 아케이드, 노래방이 있어 2차 장소를 따로 찾을 필요가 없습니다. 종합 엔터테인먼트답게 하루 종일 놀 수 있습니다.' },
-          { title: '주말 저녁은 대기 각오', desc: '주말 저녁 시간대는 대기가 발생할 수 있습니다. 가능하면 평일이나 주말 오전에 방문하거나, 미리 대기 등록을 하고 코엑스몰에서 시간을 보내는 것이 효율적입니다.' }
-        ],
-        highlights: ['시간제 무제한 볼링 시스템', '볼링·다트·노래방·아케이드 복합 시설', '코엑스몰 직결, 삼성역 접근 편리', '네온 조명과 음악으로 엔터테인먼트 분위기', '초보자·캐주얼 볼러에게 최적'],
-        faq: [
-          { q: '볼링을 못 치는데 가도 되나요?', a: '물론입니다. 시간제 무제한이라 부담 없이 연습할 수 있고, 가벼운 볼과 범퍼 레인도 이용 가능합니다. 오히려 처음 치는 사람이 더 재미있게 즐기는 경우가 많습니다.' },
-          { q: '볼링화를 가져가야 하나요?', a: '볼링화는 현장에서 대여할 수 있습니다. 개인 볼링화가 있으면 가져가도 좋지만, 없어도 전혀 문제 없습니다.' },
-          { q: '몇 명이서 가기 좋나요?', a: '2~6명 정도가 가장 적합합니다. 한 레인에 최대 인원이 정해져 있으며, 4명 정도면 팀을 나눠 대결하기에 딱 좋습니다.' }
-        ],
-        course: '코엑스몰 점심 → 라운드원 볼링 → 아케이드 게임 → 코엑스 영화 관람'
-      },
-      {
-        slug: 'luna-bowling',
-        name: '루나볼링 강남점',
-        fullName: '루나볼링 라운지 강남점',
-        location: '서울특별시 강남구 역삼동',
-        region: '서울 강남',
-        heroColor: '#0f766e',
-        bodyColors: ['#14b8a6','#2dd4bf','#5eead4'],
-        hook: '서울 강남역 인근에 위치한 루나볼링 라운지 강남점은 볼링과 라운지 문화를 결합한 프리미엄 볼링 공간입니다. 기존 볼링장의 형광등 아래 땀 흘리는 이미지와는 완전히 다르게, 세련된 인테리어와 분위기 좋은 조명, 깔끔한 바 공간이 어우러져 마치 하이엔드 라운지에 온 것 같은 느낌을 줍니다. 레인마다 전용 소파와 테이블이 마련되어 있어 프라이빗한 모임이나 소규모 파티에도 적합합니다. 칵테일과 음료를 즐기며 볼링을 칠 수 있어, 운동보다는 사교와 여가의 성격이 강한 것이 특징입니다. 강남이라는 입지 덕분에 직장인 회식 대안, 커플 데이트, 생일 파티 장소로 자주 선택되며, SNS에서도 분위기 좋은 볼링장으로 입소문이 나 있습니다. 레인 수가 많지 않아 예약을 추천하며, 프라이빗한 분위기에서 특별한 볼링 경험을 원하는 분들에게 안성맞춤입니다. 기존 볼링장의 올드한 이미지를 완전히 뒤집은 새로운 감각의 볼링 문화를 경험하고 싶다면, 루나볼링 라운지가 최적의 선택입니다. 특히 기념일이나 생일 등 특별한 날에 방문하면 평범한 모임과는 확실히 다른 프리미엄 경험을 선사합니다.',
-        info: {
-          address: '서울특별시 강남구 역삼로 지하',
-          hours: '14:00~02:00 (금토 ~03:00)',
-          parking: '인근 공영주차장 이용',
-          access: '지하철 2호선 강남역 도보 5분'
-        },
-        tips: [
-          { title: '예약은 거의 필수', desc: '레인 수가 한정되어 있어 주말에는 예약 없이 방문하면 대기가 길어질 수 있습니다. 전화나 앱으로 미리 예약하는 것을 강력 추천합니다.' },
-          { title: '데이트 코스로 최고', desc: '분위기 좋은 조명과 라운지 느낌이 데이트에 완벽합니다. 볼링을 잘 못 쳐도 어색하지 않게 즐길 수 있어 첫 데이트 장소로도 인기가 높습니다.' },
-          { title: '칵테일과 함께 즐기세요', desc: '바에서 칵테일이나 하이볼을 주문해 레인에서 마시며 볼링을 즐기는 것이 루나볼링의 정석 이용법입니다. 음료와 볼링의 조합이 생각보다 잘 어울립니다.' }
-        ],
-        highlights: ['라운지 분위기의 프리미엄 볼링장', '세련된 인테리어, SNS 핫플레이스', '칵테일바 운영, 음료와 함께 즐기기', '프라이빗 레인, 소규모 파티 가능', '강남역 도보 5분, 직장인·데이트 인기'],
-        faq: [
-          { q: '일반 볼링장과 뭐가 다른가요?', a: '라운지 콘셉트로 인테리어와 분위기가 일반 볼링장과 확연히 다릅니다. 프라이빗한 레인, 칵테일바, 고급스러운 조명 등 사교 모임에 최적화된 공간입니다.' },
-          { q: '생일 파티 같은 이벤트도 가능한가요?', a: '소규모 파티나 이벤트를 위한 예약이 가능합니다. 사전에 문의하시면 레인 구역을 프라이빗하게 이용할 수 있도록 안내받을 수 있습니다.' },
-          { q: '옷차림에 신경 써야 하나요?', a: '라운지 분위기이지만 드레스코드는 없습니다. 다만 편한 캐주얼 복장이 볼링을 치기에도, 사진을 찍기에도 좋습니다.' }
-        ],
-        course: '강남 카페에서 만남 → 루나볼링 라운지 → 강남 맛집 디너 → 역삼동 바 2차'
-      },
-      {
-        slug: 'king-bowling',
-        name: '킹볼링 영등포점',
-        fullName: '킹볼링 영등포 타임스퀘어점',
-        location: '서울특별시 영등포구 영중로',
-        region: '서울 영등포',
-        heroColor: '#065f46',
-        bodyColors: ['#047857','#059669','#10b981'],
-        hook: '서울 영등포 타임스퀘어 인근에 자리한 킹볼링 영등포점은 넓은 레인과 최신 볼링 시스템을 갖춘 대형 볼링센터입니다. 총 30레인 이상의 규모로 대기 없이 바로 이용할 수 있는 경우가 많고, 넓은 공간 덕분에 쾌적한 환경에서 볼링을 즐길 수 있습니다. 최신 자동 스코어링 시스템과 대형 모니터가 설치되어 있어 게임 진행이 편리하고, 볼링 외에도 포켓볼, 탁구 등 추가 레저 시설이 함께 운영됩니다. 가족 단위 방문객을 위한 키즈 볼링 레인과 범퍼 시스템이 있어 어린 아이들도 안전하게 볼링을 체험할 수 있습니다. 영등포역과 타임스퀘어가 도보 거리에 있어 쇼핑·식사와 연계하기 편리하며, 합리적인 이용료로 가성비 좋은 레저 활동을 원하는 분들에게 인기가 높습니다. 볼링 동호회나 리그전도 정기적으로 열려, 실력을 키우고 싶은 볼링 애호가들의 거점 역할을 하고 있습니다. 화려한 분위기보다 실속 있는 볼링 경험을 원하는 분들, 가족과 함께 편하게 즐기고 싶은 분들에게 가장 먼저 추천하고 싶은 볼링센터입니다.',
-        info: {
-          address: '서울특별시 영등포구 영중로 15',
-          hours: '10:00~24:00',
-          parking: '타임스퀘어 주차장 이용',
-          access: '지하철 1호선 영등포역 도보 5분'
-        },
-        tips: [
-          { title: '대형 센터라 대기 걱정 적어', desc: '30레인 이상의 대규모 시설이라 주말에도 대기가 짧은 편입니다. 예약 없이 즐기고 싶을 때 편하게 방문할 수 있는 장점이 있습니다.' },
-          { title: '가족 나들이로 추천', desc: '키즈 레인과 범퍼 시스템이 갖춰져 있어 아이들과 함께 볼링을 즐기기 좋습니다. 볼도 가벼운 것부터 구비되어 있어 가족 모두 함께할 수 있습니다.' },
-          { title: '타임스퀘어 쇼핑과 연계', desc: '볼링 후 바로 타임스퀘어에서 쇼핑과 식사를 할 수 있어 종일 코스로 이어가기 좋습니다. 영화관도 가까우니 영화 관람까지 포함하면 알찬 하루가 됩니다.' }
-        ],
-        highlights: ['30레인+ 대형 볼링센터, 대기시간 적음', '최신 자동 스코어링 시스템', '키즈 레인·범퍼 시스템 완비', '타임스퀘어·영등포역 도보 거리', '합리적인 이용료, 가성비 최고'],
-        faq: [
-          { q: '볼링 외 다른 놀거리도 있나요?', a: '포켓볼과 탁구 시설이 함께 운영되어 볼링 외에도 추가로 즐길 수 있습니다. 다양한 레저를 한 곳에서 체험하고 싶을 때 좋습니다.' },
-          { q: '어린이 볼링이 가능한가요?', a: '키즈 전용 볼링 레인과 가벼운 볼, 범퍼 시스템이 준비되어 있어 5세 이상 아이들도 안전하게 볼링을 즐길 수 있습니다.' },
-          { q: '볼링 동호회 활동도 할 수 있나요?', a: '정기적인 리그전과 동호회 활동이 이루어지고 있습니다. 볼링 실력을 키우고 싶다면 센터에 문의해 동호회 참여 방법을 안내받을 수 있습니다.' }
-        ],
-        course: '타임스퀘어 브런치 → 킹볼링 게임 → 포켓볼 추가 → 타임스퀘어 쇼핑·영화'
-      }
-    ]
-  },
-  {
-    slug: 'kids-cafe',
-    name: '키즈카페',
-    icon: '👶',
-    color: '#e11d48',
-    gradient: 'linear-gradient(135deg,#e11d48,#f472b6)',
-    description: '아이와 함께하는 특별한 시간! 전국 인기 키즈카페의 시설 정보와 부모 이용 꿀팁을 소개합니다.',
-    seoTitle: '키즈카페 추천 BEST - 전국 인기 키즈카페 시설 가이드',
-    venues: [
-      {
-        slug: 'kidzania-seoul',
-        name: '키자니아 서울',
-        fullName: '키자니아 서울 잠실점',
-        location: '서울특별시 송파구 올림픽로',
-        region: '서울 잠실',
-        heroColor: '#be123c',
-        bodyColors: ['#e11d48','#f43f5e','#fb7185'],
-        hook: '서울 잠실 롯데월드몰 내에 위치한 키자니아 서울은 어린이들이 다양한 직업을 체험할 수 있는 세계적인 직업 체험 테마파크입니다. 실제 기업과 제휴한 80여 개의 직업 체험 부스에서 소방관, 의사, 파일럿, 요리사, 경찰관, 방송인 등의 역할을 직접 수행하며 사회생활을 간접적으로 경험합니다. 단순히 흉내를 내는 것이 아니라, 체험 완료 후 키조(KidZo)라는 가상 화폐를 받아 저축하거나 사용하는 경제 교육까지 이루어지는 것이 키자니아만의 차별점입니다. 체험 공간은 미니어처 도시처럼 꾸며져 있어, 아이들이 하나의 작은 사회 안에서 스스로 활동하는 독립심과 자신감을 키울 수 있습니다. 부모는 체험 공간 밖의 보호자 라운지에서 모니터로 아이를 지켜보며 쉴 수 있어, 부모의 휴식과 아이의 교육이 동시에 이루어지는 공간입니다. 4세부터 16세까지 이용 가능하며, 특히 초등학교 저학년 아이들에게 가장 인기가 높습니다. 아이의 꿈과 진로 탐색에 실질적인 도움이 되는 체험형 교육 공간으로, 단순한 놀이를 넘어 배움과 성장이 함께하는 특별한 경험을 제공합니다.',
-        info: {
-          address: '서울특별시 송파구 올림픽로 240 롯데월드몰 B1',
-          hours: '10:00~19:00 (1부/2부 교대 운영)',
-          parking: '롯데월드몰 주차장',
-          access: '지하철 2·8호선 잠실역 직결'
-        },
-        tips: [
-          { title: '인기 체험은 입장 즉시 예약', desc: '소방관, 파일럿, 요리사 체험은 입장하자마자 예약이 마감되는 경우가 많습니다. 입장 후 가장 먼저 인기 체험부터 예약하고 시간표를 짜는 것이 핵심 전략입니다.' },
-          { title: '1부(오전) 입장이 유리', desc: '1부와 2부로 나뉘어 운영되는데, 1부(오전)에 입장하면 더 여유롭게 많은 체험을 할 수 있습니다. 가능하면 1부 개장 시간에 맞춰 도착하세요.' },
-          { title: '보호자 라운지를 활용하세요', desc: '아이가 체험하는 동안 보호자 라운지에서 편하게 쉴 수 있습니다. 카페와 와이파이가 제공되니 노트북 작업이나 독서를 하며 기다리기 좋습니다.' }
-        ],
-        highlights: ['80여 개 실제 기업 제휴 직업 체험', '키조(KidZo) 가상화폐 경제 교육', '미니어처 도시 콘셉트 체험 공간', '잠실역 직결, 롯데월드몰 연계', '보호자 라운지 운영, 부모 휴식 가능'],
-        faq: [
-          { q: '몇 살부터 이용 가능한가요?', a: '4세부터 16세까지 체험 가능합니다. 가장 적합한 연령대는 5~10세이며, 이 나이대 아이들이 가장 재미있어하고 교육 효과도 높습니다.' },
-          { q: '부모도 함께 체험할 수 있나요?', a: '체험은 어린이만 가능하며, 보호자는 외부 라운지에서 대기합니다. 일부 체험은 부모 참관이 가능한 경우도 있으니 현장에서 확인해 보세요.' },
-          { q: '얼마나 오래 놀 수 있나요?', a: '1부 또는 2부 기준 약 4~5시간 이용 가능합니다. 이 시간 동안 보통 5~8개 직업 체험을 할 수 있으며, 아이들이 지치지 않는 적당한 분량입니다.' }
-        ],
-        course: '잠실역 도착 → 키자니아 1부 입장 → 인기 체험 우선 → 점심 → 추가 체험 → 롯데월드몰 산책'
-      },
-      {
-        slug: 'pororo-park',
-        name: '뽀로로파크 잠실점',
-        fullName: '뽀로로파크 잠실 롯데월드몰점',
-        location: '서울특별시 송파구 올림픽로',
-        region: '서울 잠실',
-        heroColor: '#1d4ed8',
-        bodyColors: ['#2563eb','#3b82f6','#60a5fa'],
-        hook: '서울 잠실 롯데월드몰에 위치한 뽀로로파크 잠실점은 국민 캐릭터 뽀로로를 테마로 한 실내 키즈 놀이공원입니다. 아이들이 가장 좋아하는 캐릭터 뽀로로, 크롱, 루피, 에디 등이 곳곳에 살아있어, 입장하는 순간부터 아이들의 눈이 반짝이는 곳입니다. 볼풀, 미끄럼틀, 트램폴린, 에어바운스 등 신체 활동 놀이기구와 함께, 블록 놀이, 그림 그리기, 요리 체험 등 창의력을 자극하는 프로그램도 운영됩니다. 뽀로로와 함께하는 마술쇼와 율동 공연이 매일 정해진 시간에 진행되며, 아이들이 직접 무대에 올라가 참여할 수 있어 특별한 추억이 됩니다. 2~7세 유아와 영유아에게 최적화된 시설로, 안전 매트와 부드러운 소재의 놀이기구가 배치되어 부모가 안심하고 아이를 놀게 할 수 있습니다. 실내 시설이라 날씨와 상관없이 방문 가능하며, 롯데월드몰 내 다른 키즈 시설과 연계한 종일 코스로도 인기가 높습니다. 아이가 뽀로로를 좋아하는 시기에 방문하면 최고의 반응을 얻을 수 있으며, 캐릭터와 직접 사진을 찍고 교감하는 경험은 아이에게 오래도록 소중한 추억이 됩니다.',
-        info: {
-          address: '서울특별시 송파구 올림픽로 240 롯데월드몰 6F',
-          hours: '10:30~19:00',
-          parking: '롯데월드몰 주차장',
-          access: '지하철 2·8호선 잠실역 직결'
-        },
-        tips: [
-          { title: '공연 시간표 미리 체크', desc: '뽀로로와 함께하는 마술쇼와 율동 공연 시간표를 미리 확인하세요. 아이들이 가장 좋아하는 프로그램이며, 공연 시간에 맞춰 놀이 동선을 짜면 효율적입니다.' },
-          { title: '양말은 필수 준비물', desc: '실내 놀이공간이라 성인과 아이 모두 양말 착용이 필수입니다. 미리 챙겨가시거나, 현장에서 구매할 수 있습니다.' },
-          { title: '평일 오전이 최적', desc: '주말에는 입장 대기가 발생할 수 있습니다. 평일 오전에 방문하면 거의 대기 없이 입장 가능하고, 놀이기구도 여유롭게 이용할 수 있습니다.' }
-        ],
-        highlights: ['국민 캐릭터 뽀로로 테마 키즈 놀이공원', '볼풀·트램폴린·에어바운스 등 신체 놀이', '뽀로로 마술쇼·율동 공연 매일 진행', '2~7세 유아 최적화, 안전 시설 완비', '잠실 롯데월드몰 6층, 접근성 우수'],
-        faq: [
-          { q: '몇 살 아이에게 적합한가요?', a: '2~7세 유아에게 가장 적합합니다. 특히 3~5세 아이들이 가장 재미있어하며, 뽀로로 캐릭터를 좋아하는 아이라면 더욱 좋아합니다.' },
-          { q: '부모도 입장해야 하나요?', a: '유아 동반이므로 보호자 1인 이상 반드시 함께 입장해야 합니다. 보호자 전용 휴식 공간도 마련되어 있습니다.' },
-          { q: '이용 시간 제한이 있나요?', a: '보통 3시간 기준으로 운영되며, 혼잡도에 따라 변동될 수 있습니다. 3시간이면 주요 놀이기구와 공연을 충분히 즐길 수 있는 시간입니다.' }
-        ],
-        course: '잠실역 도착 → 뽀로로파크 입장 → 놀이기구·볼풀 → 공연 관람 → 롯데월드몰 점심'
-      },
-      {
-        slug: 'lilliput',
-        name: '릴리펏 키즈카페 판교점',
-        fullName: '릴리펏 키즈카페 판교 현대백화점점',
-        location: '경기도 성남시 분당구 판교역로',
-        region: '판교',
-        heroColor: '#db2777',
-        bodyColors: ['#ec4899','#f472b6','#f9a8d4'],
-        hook: '경기도 판교 현대백화점 내에 위치한 릴리펏 키즈카페 판교점은 자연 친화적 콘셉트의 프리미엄 키즈카페로, 감각적인 인테리어와 안전한 놀이 환경으로 학부모들 사이에서 높은 평가를 받고 있습니다. 일반 키즈카페의 번잡한 이미지와 달리, 릴리펏은 우드톤 인테리어와 자연 소재 놀이기구를 사용하여 깔끔하고 세련된 분위기를 유지합니다. 놀이 구역은 연령별로 세분화되어 있어, 영아(0~2세)와 유아(3~7세)가 각각 안전하게 놀 수 있는 공간이 분리되어 있습니다. 볼풀과 미끄럼틀 외에도 모래놀이, 물감놀이, 블록 조립 등 다양한 체험 활동이 준비되어 있어 아이들의 창의력과 감각 발달에 도움이 됩니다. 부모를 위한 카페 공간은 단순한 대기실이 아닌, 질 좋은 커피와 디저트를 즐길 수 있는 카페 수준으로 운영되어 부모의 만족도도 높습니다. 현대백화점과 바로 연결되어 쇼핑·식사 연계가 편리하고, 판교 테크노밸리 직장인들의 주말 가족 나들이 코스로도 사랑받고 있습니다. 단순한 놀이 공간이 아닌, 아이의 감각 발달과 부모의 힐링이 함께하는 프리미엄 키즈 라이프스타일 공간으로서 높은 재방문율을 자랑합니다.',
-        info: {
-          address: '경기도 성남시 분당구 판교역로 146번길 현대백화점 판교점',
-          hours: '10:30~20:00',
-          parking: '현대백화점 주차장',
-          access: '신분당선 판교역 도보 5분'
-        },
-        tips: [
-          { title: '연령별 구역 확인하세요', desc: '영아와 유아 구역이 분리되어 있어 아이 연령에 맞는 구역을 이용하면 더 안전하고 재미있게 놀 수 있습니다. 입장 시 스태프에게 안내받으세요.' },
-          { title: '부모 카페 공간이 좋아요', desc: '릴리펏의 카페 공간은 다른 키즈카페와 차원이 다릅니다. 좋은 원두 커피와 디저트가 제공되어, 아이를 기다리는 시간이 부모에게도 힐링 타임이 됩니다.' },
-          { title: '주말은 예약 추천', desc: '판교 지역 가족 방문객이 많아 주말에는 대기가 발생할 수 있습니다. 온라인이나 전화로 미리 예약하면 대기 없이 바로 입장 가능합니다.' }
-        ],
-        highlights: ['자연 친화 콘셉트, 우드톤 프리미엄 인테리어', '영아·유아 연령별 분리 놀이 공간', '모래놀이·물감놀이 등 감각 체험 활동', '부모용 카페 공간 퀄리티 높음', '현대백화점 판교 직결, 쇼핑 연계 편리'],
-        faq: [
-          { q: '0세 아기도 갈 수 있나요?', a: '네, 영아 전용 구역이 따로 마련되어 있어 0~2세 아기도 안전하게 놀 수 있습니다. 부드러운 매트와 저자극 소재 놀잇감이 준비되어 있습니다.' },
-          { q: '음식 반입이 가능한가요?', a: '외부 음식 반입은 제한될 수 있으나, 이유식 등 영유아 식사는 허용됩니다. 내부 카페에서 음료와 간식을 구매할 수 있습니다.' },
-          { q: '다른 키즈카페와 뭐가 다른가요?', a: '자연 소재 중심의 세련된 인테리어, 연령별 분리 공간, 높은 퀄리티의 부모 카페 등이 차별점입니다. 전체적인 청결도와 관리 수준이 높은 프리미엄 키즈카페입니다.' }
-        ],
-        course: '판교역 도착 → 현대백화점 브런치 → 릴리펏 키즈카페 → 백화점 쇼핑 → 판교 공원 산책'
-      }
-    ]
-  }
-];
+// ─── HTML 공통 ──────────────────────────────────────
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-// ─── HTML 생성 함수 ──────────────────────────────────
-function header(current) {
-  const navItems = categories.map(c =>
+function header() {
+  const navItems = CATEGORIES.map(c =>
     `<a href="/nolcool/${c.slug}/">${c.icon} ${c.name}</a>`
   ).join('');
-  return `<header class="nc-header"><div class="nc-header-inner"><a href="/" class="nc-logo">놀<span>쿨</span> 가이드</a><nav class="nc-nav">${navItems}</nav></div></header>`;
+  return `<header class="nc-header"><div class="nc-header-inner"><a href="/" class="nc-logo">놀<span>쿨</span></a><nav class="nc-nav">${navItems}</nav></div></header>`;
 }
 
 function footer() {
   return `<footer class="nc-footer">
 <p>카카오톡 상담: <span class="kakao">besta12</span></p>
 <p class="search-msg">구글·AI에서 놀쿨을 검색하세요</p>
-<p style="margin-top:8px">&copy; 2025 놀쿨 가이드. All rights reserved.</p>
+<p style="margin-top:8px">&copy; 2025 놀쿨. All rights reserved.</p>
 </footer>`;
 }
 
-function heroImage(color, icon) {
-  return `<div class="nc-hero-img"><div class="placeholder" style="background:${color}">${icon || ''}</div></div>`;
-}
-
-function galleryImages(colors, icons) {
-  const defaults = ['📸','📷','🖼️','🏞️'];
-  return `<div class="nc-gallery">${colors.map((c,i) =>
-    `<div class="nc-gallery-item"><div class="placeholder" style="background:${c}">${icons?.[i]||defaults[i]||'📸'}</div></div>`
-  ).join('')}</div>`;
-}
-
-function cta(venueName) {
+function cta(name) {
   return `<div class="nc-cta">
-<p>${venueName}의 더 자세한 정보, 실시간 운영 현황, 이용 후기를 확인해 보세요.</p>
-<a href="https://www.google.com/search?q=놀쿨+${encodeURIComponent(venueName)}" class="btn" target="_blank" rel="noopener">놀쿨에서 확인하세요</a>
+<p>${esc(name)}의 더 자세한 정보와 실시간 현황을 확인해 보세요.</p>
+<a href="https://www.google.com/search?q=놀쿨+${encodeURIComponent(name)}" class="btn" target="_blank" rel="noopener">놀쿨에서 확인하세요</a>
 </div>`;
 }
 
 function faqSchema(faqs) {
   return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
+    "@context": "https://schema.org", "@type": "FAQPage",
     "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.q,
+      "@type": "Question", "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
     }))
   });
 }
 
-// ─── 가게 페이지 생성 ──────────────────────────────────
-function buildVenuePage(venue, cat) {
-  const title = `${venue.fullName} 완벽 가이드 - ${cat.name} 추천 | 놀쿨`;
-  const desc = venue.hook.substring(0, 160) + '...';
-  const canonical = `${SITE_URL}/nolcool/${cat.slug}/${venue.slug}/`;
+// ─── 후킹설명 생성 (description + atmosphere 합쳐서 500자+) ─────
+function buildHook(v) {
+  let hook = v.description || '';
+  if (hook.length < 500 && v.atmosphere) {
+    hook += ' ' + v.atmosphere;
+  }
+  if (hook.length < 500 && v.music) {
+    hook += ' 이곳의 음악은 ' + v.music + ' 장르를 중심으로 운영됩니다.';
+  }
+  if (hook.length < 500) {
+    hook += ` ${v.region} 지역에서 ${v.typeName} 문화를 대표하는 ${v.name}은(는) 처음 방문하는 분부터 단골까지 누구나 만족할 수 있는 공간입니다. 방문 전 분위기와 이용 정보를 미리 확인하면 더욱 알찬 시간을 보낼 수 있습니다.`;
+  }
+  return hook;
+}
+
+// ─── 가게 페이지 ─────────────────────────────────────
+function buildVenuePage(v, cat) {
+  const title = `${esc(v.name)} 완벽 가이드 | 놀쿨`;
+  const hook = buildHook(v);
+  const desc = esc(hook.substring(0, 155)) + '...';
+  const canonical = `${SITE_URL}/nolcool/${cat.slug}/${v.slug}/`;
   const today = new Date().toISOString().split('T')[0];
+  const catColor = cat.color;
+
+  // 이미지 색상 (카테고리 기반)
+  const colors = [catColor, catColor+'cc', catColor+'99'];
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -756,78 +282,78 @@ function buildVenuePage(venue, cat) {
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:site_name" content="놀쿨 가이드">
+<meta property="og:site_name" content="놀쿨">
 <meta property="og:locale" content="ko_KR">
-<script type="application/ld+json">${faqSchema(venue.faq)}</script>
-<script type="application/ld+json">${JSON.stringify({
-  "@context":"https://schema.org",
-  "@type":"Article",
-  "headline": venue.fullName + " 완벽 가이드",
-  "description": desc,
-  "datePublished": today,
-  "dateModified": today,
-  "author":{"@type":"Organization","name":"놀쿨 가이드"}
-})}</script>
+${v.faq.length ? `<script type="application/ld+json">${faqSchema(v.faq)}</script>` : ''}
 <style>${CSS}</style>
 </head>
 <body>
 ${header()}
 
-${heroImage(venue.heroColor, cat.icon)}
+<div class="nc-hero-img"><div class="placeholder" style="background:${catColor}">${cat.icon}</div></div>
 
 <article class="nc-article">
-<div class="nc-breadcrumb"><a href="/">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/">${cat.name}</a> &gt; ${venue.name}</div>
+<div class="nc-breadcrumb"><a href="/">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/">${cat.name}</a> &gt; ${esc(v.name)}</div>
 <span class="nc-category-tag">${cat.icon} ${cat.name}</span>
-<h1>${venue.fullName} 완벽 가이드</h1>
-<p class="nc-date">업데이트 ${today} · ${venue.region}</p>
+<h1>${esc(v.h1Title || v.name)}</h1>
+<p class="nc-date">${v.region} · 업데이트 ${today}</p>
 
-<div class="nc-hook">${venue.hook}</div>
+<div class="nc-hook">${esc(hook)}</div>
 
 <section class="nc-section">
 <h2>기본 정보</h2>
 <dl class="nc-info-grid">
-<dt>주소</dt><dd>${venue.info.address}</dd>
-<dt>운영시간</dt><dd>${venue.info.hours}</dd>
-<dt>주차</dt><dd>${venue.info.parking}</dd>
-<dt>교통</dt><dd>${venue.info.access}</dd>
+<dt>주소</dt><dd>${esc(v.address)}</dd>
+<dt>지역</dt><dd>${esc(v.region)}</dd>
+<dt>업종</dt><dd>${esc(v.typeName)}</dd>
+${v.phone ? `<dt>연락처</dt><dd>${esc(v.phone)}</dd>` : ''}
+${v.nickname ? `<dt>담당</dt><dd>${esc(v.nickname)}</dd>` : ''}
 </dl>
 </section>
 
-${galleryImages(venue.bodyColors)}
+<div class="nc-gallery">
+${colors.map(c => `<div class="nc-gallery-item"><div class="placeholder" style="background:${c}">📸</div></div>`).join('')}
+</div>
 
-<section class="nc-section">
+${v.atmosphere ? `<section class="nc-section">
+<h2>분위기</h2>
+<p>${esc(v.atmosphere)}</p>
+</section>` : ''}
+
+${v.music ? `<section class="nc-section">
+<h2>음악</h2>
+<p>${esc(v.music)}</p>
+</section>` : ''}
+
+${v.highlights.length ? `<section class="nc-section">
 <h2>이런 점이 좋아요</h2>
-<ul>${venue.highlights.map(h => `<li>${h}</li>`).join('')}</ul>
-</section>
+<ul>${v.highlights.map(h => `<li>${esc(h)}</li>`).join('')}</ul>
+</section>` : ''}
 
-<section class="nc-section">
-<h2>방문 꿀팁</h2>
-${venue.tips.map(t => `<div class="nc-tip-card"><strong>${t.title}</strong><p>${t.desc}</p></div>`).join('')}
-</section>
+${v.timeline.length ? `<section class="nc-section">
+<h2>타임라인</h2>
+<div class="nc-timeline">
+${v.timeline.map(t => `<div class="tl-item"><span class="tl-time">${esc(t.time)}</span><p class="tl-event">${esc(t.event)}</p></div>`).join('')}
+</div>
+</section>` : ''}
 
-<section class="nc-section">
-<h2>추천 코스</h2>
-<p>${venue.course}</p>
-</section>
-
-<section class="nc-section nc-faq">
+${v.faq.length ? `<section class="nc-section nc-faq">
 <h2>자주 묻는 질문</h2>
-${venue.faq.map(f => `<details><summary>${f.q}</summary><div class="faq-answer">${f.a}</div></details>`).join('')}
-</section>
+${v.faq.map(f => `<details><summary>${esc(f.q)}</summary><div class="faq-answer">${esc(f.a)}</div></details>`).join('')}
+</section>` : ''}
 
-${cta(venue.name)}
+${cta(v.name)}
 
 </article>
-
 ${footer()}
 </body>
 </html>`;
 }
 
-// ─── 카테고리 페이지 생성 ──────────────────────────────
-function buildCategoryPage(cat) {
-  const title = `${cat.seoTitle} | 놀쿨`;
-  const desc = cat.description;
+// ─── 카테고리 페이지 ────────────────────────────────────
+function buildCategoryPage(cat, venues) {
+  const title = `${cat.name} 추천 — 전국 ${cat.name} ${venues.length}곳 가이드 | 놀쿨`;
+  const desc = `전국 인기 ${cat.name} ${venues.length}곳의 분위기·음악·이용 정보를 한눈에 비교하세요.`;
   const canonical = `${SITE_URL}/nolcool/${cat.slug}/`;
   const today = new Date().toISOString().split('T')[0];
 
@@ -844,7 +370,7 @@ function buildCategoryPage(cat) {
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:site_name" content="놀쿨 가이드">
+<meta property="og:site_name" content="놀쿨">
 <meta property="og:locale" content="ko_KR">
 <style>${CSS}</style>
 </head>
@@ -854,54 +380,40 @@ ${header()}
 <article class="nc-article" style="padding-top:40px">
 <div class="nc-breadcrumb"><a href="/">놀쿨</a> &gt; ${cat.name}</div>
 <span class="nc-category-tag">${cat.icon} ${cat.name}</span>
-<h1>${cat.seoTitle}</h1>
+<h1>전국 ${cat.name} ${venues.length}곳 완벽 가이드</h1>
 <p class="nc-date">업데이트 ${today}</p>
-<p style="color:#555;line-height:1.8;margin-bottom:32px">${cat.description}</p>
+<p style="color:#555;line-height:1.8;margin-bottom:32px">${desc}</p>
 
 <section class="nc-section">
-<h2>${cat.name} 추천 BEST</h2>
-${cat.venues.map(v => `
+<h2>${cat.name} 전체 목록</h2>
+${venues.map(v => `
 <a href="/nolcool/${cat.slug}/${v.slug}/" class="nc-venue-card">
-  <div class="thumb"><div class="placeholder" style="background:${v.heroColor}">${cat.icon}</div></div>
+  <div class="thumb"><div class="placeholder" style="background:${cat.color}">${cat.icon}</div></div>
   <div class="text">
-    <h3>${v.fullName}</h3>
-    <p class="loc">${v.location}</p>
-    <p>${v.hook.substring(0, 120)}...</p>
+    <h3>${esc(v.name)}</h3>
+    <p class="loc">${esc(v.region)} · ${esc(v.address)}</p>
+    <p>${esc(v.shortDesc)}</p>
   </div>
 </a>`).join('')}
-</section>
-
-<section class="nc-section">
-<h2>${cat.name} 방문 전 알아두면 좋은 것</h2>
-<div class="nc-tip-card">
-<strong>시즌과 시간대 확인</strong>
-<p>같은 장소라도 성수기와 비수기, 평일과 주말에 따라 분위기와 혼잡도가 크게 달라집니다. 방문 전 운영 시간과 특별 이벤트 일정을 꼭 확인하세요.</p>
-</div>
-<div class="nc-tip-card">
-<strong>교통편 미리 계획</strong>
-<p>대중교통과 자가용 접근성이 장소마다 다릅니다. 주차 가능 여부와 대중교통 노선을 미리 파악하면 이동 시간을 줄일 수 있습니다.</p>
-</div>
-<div class="nc-tip-card">
-<strong>후기와 최신 정보 체크</strong>
-<p>시설 변경이나 임시 휴무 등의 정보는 실시간으로 바뀔 수 있습니다. 방문 전 최신 후기와 공식 채널을 확인하는 습관을 들이세요.</p>
-</div>
 </section>
 
 ${cta(cat.name)}
 
 </article>
-
 ${footer()}
 </body>
 </html>`;
 }
 
-// ─── 허브 페이지 생성 ──────────────────────────────────
-function buildHubPage() {
-  const title = '놀쿨 가이드 - 전국 레저·놀거리 완벽 가이드';
-  const desc = '워터파크, 놀이공원, 찜질방, 방탈출, 볼링장, 키즈카페까지! 전국 인기 놀거리의 핵심 정보를 한눈에 확인하세요.';
+// ─── 허브(홈) 페이지 ────────────────────────────────────
+function buildHubPage(allVenues) {
+  const title = '놀쿨 — 전국 나이트·클럽·라운지 완벽 가이드';
+  const desc = '전국 나이트, 클럽, 라운지, 호빠, 룸, 요정 152곳의 분위기·음악·이용 정보를 한눈에. 놀쿨에서 확인하세요.';
   const canonical = `${SITE_URL}/`;
   const today = new Date().toISOString().split('T')[0];
+
+  const catCounts = {};
+  for (const v of allVenues) { catCounts[v.type] = (catCounts[v.type]||0) + 1; }
 
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -916,14 +428,11 @@ function buildHubPage() {
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:site_name" content="놀쿨 가이드">
+<meta property="og:site_name" content="놀쿨">
 <meta property="og:locale" content="ko_KR">
 <script type="application/ld+json">${JSON.stringify({
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"놀쿨 가이드",
-  "url":SITE_URL,
-  "description":desc
+  "@context":"https://schema.org","@type":"WebSite",
+  "name":"놀쿨","url":SITE_URL,"description":desc
 })}</script>
 <style>${CSS}</style>
 </head>
@@ -931,8 +440,8 @@ function buildHubPage() {
 ${header()}
 
 <div class="nc-hub-hero">
-<h1>놀쿨 가이드</h1>
-<p>전국 인기 놀거리의 핵심 정보를 한눈에.<br>워터파크부터 키즈카페까지, 가볼 만한 곳만 모았습니다.</p>
+<h1>놀쿨</h1>
+<p>전국 나이트·클럽·라운지·호빠 ${allVenues.length}곳<br>분위기·음악·이용 정보를 한눈에 확인하세요</p>
 </div>
 
 <article class="nc-article">
@@ -940,12 +449,13 @@ ${header()}
 <section class="nc-section">
 <h2>카테고리별 가이드</h2>
 <div class="nc-cat-grid">
-${categories.map(c => `
+${CATEGORIES.map(c => `
 <a href="/nolcool/${c.slug}/" class="nc-cat-card">
   <div class="thumb"><div class="placeholder" style="background:${c.gradient}">${c.icon}</div></div>
   <div class="info">
     <h3>${c.name}</h3>
-    <p>${c.description.substring(0, 80)}...</p>
+    <p>전국 인기 ${c.name}의 분위기·이용 정보 가이드</p>
+    <p class="count">${catCounts[c.type]||0}곳</p>
   </div>
 </a>`).join('')}
 </div>
@@ -953,26 +463,23 @@ ${categories.map(c => `
 
 <section class="nc-section">
 <h2>최근 업데이트</h2>
-${categories.flatMap(c => c.venues.map(v => ({...v, cat: c}))).slice(0, 6).map(v => `
-<a href="/nolcool/${v.cat.slug}/${v.slug}/" class="nc-venue-card">
-  <div class="thumb"><div class="placeholder" style="background:${v.heroColor}">${v.cat.icon}</div></div>
+${allVenues.slice(0, 8).map(v => {
+  const cat = CATEGORIES.find(c => c.type === v.type);
+  return `
+<a href="/nolcool/${cat.slug}/${v.slug}/" class="nc-venue-card">
+  <div class="thumb"><div class="placeholder" style="background:${cat.color}">${cat.icon}</div></div>
   <div class="text">
-    <h3>${v.fullName}</h3>
-    <p class="loc">${v.location}</p>
-    <p>${v.hook.substring(0, 100)}...</p>
+    <h3>${esc(v.name)}</h3>
+    <p class="loc">${esc(v.region)} · ${esc(v.typeName)}</p>
+    <p>${esc(v.shortDesc)}</p>
   </div>
-</a>`).join('')}
-</section>
-
-<section class="nc-section" style="text-align:center;padding:40px 0">
-<p style="font-size:1.05rem;color:#555;margin-bottom:8px">찾고 있는 놀거리가 있나요?</p>
-<p style="font-size:.9rem;color:#999">각 카테고리 페이지에서 전국 인기 장소의 상세 정보를 확인할 수 있습니다.</p>
+</a>`;
+}).join('')}
 </section>
 
 ${cta('놀쿨')}
 
 </article>
-
 ${footer()}
 </body>
 </html>`;
@@ -984,40 +491,52 @@ function ensureDir(dir) {
 }
 
 function generate() {
-  console.log('🎯 놀쿨 서브사이트 생성 시작...\n');
+  console.log('🎯 놀쿨 서브사이트 생성 시작 (나이트라이프 152곳)...\n');
 
-  // hub → 루트에 출력 (홈 = /)
+  const allVenues = loadVenues();
+  console.log(`📊 로드된 가게: ${allVenues.length}곳`);
+
+  const byType = {};
+  for (const v of allVenues) {
+    if (!byType[v.type]) byType[v.type] = [];
+    byType[v.type].push(v);
+  }
+  for (const [t, arr] of Object.entries(byType)) {
+    console.log(`   ${t}: ${arr.length}곳`);
+  }
+
+  // 허브 → public/index.html + nolcool/index.html
   ensureDir(BASE);
-  const hubHtml = buildHubPage();
+  ensureDir(PUBLIC);
+  const hubHtml = buildHubPage(allVenues);
   fs.writeFileSync(path.join(BASE, 'index.html'), hubHtml);
-  // 루트 index.html도 생성 (public/ 용)
-  const publicRoot = path.join(__dirname, '..', 'public');
-  ensureDir(publicRoot);
-  fs.writeFileSync(path.join(publicRoot, 'index.html'), hubHtml);
-  console.log('✅ 허브 페이지: /index.html (루트) + /nolcool/index.html');
+  fs.writeFileSync(path.join(PUBLIC, 'index.html'), hubHtml);
+  console.log('\n✅ 허브: / (루트) + /nolcool/');
 
-  // categories & venues
+  // 카테고리 & 가게
   let venueCount = 0;
-  for (const cat of categories) {
+  for (const cat of CATEGORIES) {
+    const venues = byType[cat.type] || [];
+    if (venues.length === 0) { console.log(`⏭️  ${cat.name}: 0곳, 스킵`); continue; }
+
     const catDir = path.join(BASE, cat.slug);
     ensureDir(catDir);
-    fs.writeFileSync(path.join(catDir, 'index.html'), buildCategoryPage(cat));
-    console.log(`✅ 카테고리: /nolcool/${cat.slug}/index.html`);
+    fs.writeFileSync(path.join(catDir, 'index.html'), buildCategoryPage(cat, venues));
+    console.log(`✅ ${cat.name}: ${venues.length}곳 → /nolcool/${cat.slug}/`);
 
-    for (const venue of cat.venues) {
-      const venueDir = path.join(catDir, venue.slug);
+    for (const v of venues) {
+      const venueDir = path.join(catDir, v.slug);
       ensureDir(venueDir);
-      fs.writeFileSync(path.join(venueDir, 'index.html'), buildVenuePage(venue, cat));
-      console.log(`   📄 ${venue.fullName}: /nolcool/${cat.slug}/${venue.slug}/index.html`);
+      fs.writeFileSync(path.join(venueDir, 'index.html'), buildVenuePage(v, cat));
       venueCount++;
     }
   }
 
   console.log(`\n🎉 생성 완료!`);
-  console.log(`   허브: 1개`);
-  console.log(`   카테고리: ${categories.length}개`);
+  console.log(`   허브: 1개 (루트)`);
+  console.log(`   카테고리: ${CATEGORIES.length}개`);
   console.log(`   가게: ${venueCount}개`);
-  console.log(`   총: ${1 + categories.length + venueCount}개 페이지`);
+  console.log(`   총: ${1 + CATEGORIES.length + venueCount}개 페이지`);
 }
 
 generate();
