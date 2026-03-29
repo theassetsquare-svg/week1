@@ -81,25 +81,44 @@ function seoDesc(v) {
   return d;
 }
 
-// ─── 본문 1000자+ (첫100자에 가게이름, 구어체) ───────────
+// ─── 본문 1000자+ (첫100자 가게이름, 키워드 정확히 3회, 구어체) ──
 function buildBody(v) {
   const fullName = `${v.region} ${v.typeName} ${v.name}`;
-  // 첫 문장에 가게 전체이름 포함
-  let body = `${fullName}. `;
-  body += rewrite(v.description || '');
+  const kw = v.name;
+  const kwRe = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g');
+  // 본문 조합
+  let body = rewrite(v.description || '');
   if (v.atmosphere) body += ' ' + rewrite(v.atmosphere);
   if (v.music) body += ' 음악은 ' + rewrite(v.music) + ' 장르가 흐른다.';
-  // 키워드 3회 보장 (스터핑 아닌 자연삽입)
-  const kw = v.name;
-  let cnt = (body.match(new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'g'))||[]).length;
-  if (cnt < 2) body += ` ${kw}을(를) 처음 찾는 사람이라면 이 글이 도움이 될 것이다.`;
-  if (cnt < 3) body += ` ${kw}, 직접 가 봐야 안다.`;
-  // 하이라이트+타임라인 추가
   if (v.highlights.length) body += ' ' + v.highlights.join('. ') + '.';
   if (v.timeline.length) body += ' ' + v.timeline.map(t=>t.time+' '+t.event).join('. ')+'.';
-  // 1000자 보장
+  // 1000자 보장 (가게이름 대신 이곳/여기 사용)
   while (body.length < 1050) {
-    body += ` 이 동네에서 ${v.typeName}을(를) 찾는다면 빠질 수 없는 이름이다. 피크 시간을 피해 일찍 가면 여유롭게 자리 잡을 수 있다. 조명과 음악이 만드는 분위기는 말로 설명이 안 된다. 주변 먹거리와 연계하면 하루가 알차다. 단골이 많은 데는 이유가 있다. 두세 번 다른 시간대에 가 보면, 왜 꾸준히 사람이 몰리는지 체감한다.`;
+    body += ` 이 동네에서 빠질 수 없는 이름이다. 피크 시간을 피해 일찍 가면 여유롭게 자리 잡을 수 있다. 조명과 음악이 만드는 분위기는 말로 설명이 안 된다. 주변 먹거리와 연계하면 하루가 알차다. 단골이 많은 데는 이유가 있다. 두세 번 다른 시간대에 가 보면, 왜 꾸준히 사람이 몰리는지 체감한다.`;
+  }
+  // 키워드 정확히 3회로 조정 (스터핑 금지!)
+  let cnt = (body.match(kwRe)||[]).length;
+  // 3회 초과 → 초과분을 "이곳"으로 교체
+  if (cnt > 3) {
+    let replaced = 0;
+    body = body.replace(kwRe, (match) => {
+      replaced++;
+      if (replaced <= 2) return match; // 처음 2개는 유지
+      return '이곳'; // 나머지는 교체
+    });
+  }
+  // 3회 미만 → 부족분 추가
+  cnt = (body.match(kwRe)||[]).length;
+  if (cnt < 2) body += ` ${kw}을(를) 처음 찾는 사람이라면 이 글이 도움이 될 것이다.`;
+  cnt = (body.match(kwRe)||[]).length;
+  if (cnt < 3) body += ` ${kw}, 직접 가 봐야 안다.`;
+  // 첫 문장에 전체이름 삽입
+  body = `${fullName}. ${body}`;
+  // 최종 키워드 수 확인 (첫문장 포함 max 3)
+  let finalCnt = (body.match(kwRe)||[]).length;
+  if (finalCnt > 3) {
+    let r = 0;
+    body = body.replace(kwRe, (m) => { r++; return r <= 3 ? m : '이곳'; });
   }
   return body;
 }
