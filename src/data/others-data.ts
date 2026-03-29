@@ -45,8 +45,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['해운대','마린시티','정찰제','비즈니스 접대','픽업'],
  seoTitle:'해운대고구려',
- seoDescription:'60개 룸을 보유한 해운대 고구려는 마린시티 접대 장소로 첫손에 꼽힌다. 그 배경과 정찰제 운영 방식을 낱낱이 풀어놓은 부산 현지 완전 가이드.',
- h1Title:'해운대고구려 — 부산에서 이 규모, 이 시스템은 여기뿐이다'
+ seoDescription:'신실장 — 60개 룸을 보유한 해운대 고구려는 마린시티 접대 장소로 첫손에 꼽힌다. 그 배경과 정찰제 운영 방식을 낱낱이 풀어놓은 부산 현지 완전 가이드.',
+ h1Title:'신실장 — 부산에서 이 규모, 이 시스템은 여기뿐이다'
  },
  {
  id: 99, slug:'ilsan-myeongwolgwan', name:'일산명월관요정', type:'yojeong', typeName:'요정',
@@ -69,8 +69,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['일산','한정식','국악','정찰제','전통 공간'],
  seoTitle:'일산명월관요정',
- seoDescription:'한정식 풀코스와 가야금 라이브가 어우러지는 일산 명월관요정에서 접대 자리마다 이곳을 지목하게 만드는 격식과 맛의 조합을 깊이 있게 분석해 본다.',
- h1Title:'일산명월관요정 — 밥상 위에 국악이 흐르는 자리'
+ seoDescription:'해운대고구려 — 한정식 풀코스와 가야금 라이브가 어우러지는 일산 명월관요정에서 접대 자리마다 이곳을 지목하게 만드는 격식과 맛의 조합을 깊이 있게 분석해 본다.',
+ h1Title:'해운대고구려 — 밥상 위에 국악이 흐르는 자리'
  },
  {
  id: 100, slug:'gangnam-hoppa-royal', name:'강남호빠 로얄', type:'hoppa', typeName:'호빠',
@@ -92,8 +92,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','부스 좌석','위스키','골드'],
  seoTitle:'강남호빠 로얄',
- seoDescription:'가격표를 보고도 재방문율이 높은 곳이 과연 있을까? 강남 로얄호빠 골드 부스의 분위기와 서비스 수준, 그리고 가격 구간을 있는 그대로 정리했다.',
- h1Title:'강남호빠 로얄 — 이름값, 확실히 한다'
+ seoDescription:'일산명월관요정 — 가격표를 보고도 재방문율이 높은 곳이 과연 있을까? 강남 로얄호빠 골드 부스의 분위기와 서비스 수준, 그리고 가격 구간을 있는 그대로 정리했다.',
+ h1Title:'일산명월관요정 — 이름값, 확실히 한다'
  },
  {
  id: 101, slug:'busan-hoppa-star', name:'부산호빠 스타', type:'hoppa', typeName:'호빠',
@@ -115,8 +115,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','로컬 칵테일','스포츠 중계','항구 에너지'],
  seoTitle:'부산호빠 스타',
- seoDescription:'별빛 조명 아래 항구 풍경이 펼쳐지는 부산호빠 스타는 착한 가격에 감성까지 잡았다. 부산 밤문화 입문 코스로 급부상 중인 이곳의 전체 면모를 담았다.',
- h1Title:'부산호빠 스타 — 부산의 밤하늘에 별 하나'
+ seoDescription:'신실장 — 별빛 조명 아래 항구 풍경이 펼쳐지는 부산호빠 스타는 착한 가격에 감성까지 잡았다. 부산 밤문화 입문 코스로 급부상 중인 이곳의 전체 면모를 담았다.',
+ h1Title:'신실장 — 부산의 밤하늘에 별 하나'
  },
  {
  id: 102, slug:'jangandong-hoppa-bbangbbang', name:'장안동호빠 빵빵', type:'hoppa', typeName:'호빠',
@@ -138,8 +138,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['장안동','JBL 사운드','인더스트리얼','맥주'],
  seoTitle:'장안동호빠 빵빵',
- seoDescription:'JBL 사운드 시스템과 먹자골목 도보 거리라는 두 가지 장점을 동시에 거머쥔 장안동호빠 빵빵이. 예약 절차와 가격 구간까지 한 페이지에 정리했다.',
- h1Title:'장안동호빠 빵빵 — 소리 하나는 진짜다'
+ seoDescription:'강남호빠 로얄 — JBL 사운드 시스템과 먹자골목 도보 거리라는 두 가지 장점을 동시에 거머쥔 장안동호빠 빵빵이. 예약 절차와 가격 구간까지 한 페이지에 정리했다.',
+ h1Title:'강남호빠 로얄 — 소리 하나는 진짜다'
  },
  {
  id: 103, slug:'geondae-hoppa-w', name:'건대호빠 W', type:'hoppa', typeName:'호빠',
@@ -161,8 +161,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['건대','미니멀','하이볼','갤러리 감성'],
  seoTitle:'건대호빠 W',
- seoDescription:'화양동 골목에서 유독 줄이 길게 늘어서는 건대호빠 W, 하이볼 성지라 불리는 배경부터 미니멀 인테리어와 갤러리풍 무드까지 집중 탐구한 기록이다.',
- h1Title:'건대호빠 W — 간판 하나, 그게 전부다'
+ seoDescription:'부산호빠 스타 — 화양동 골목에서 유독 줄이 길게 늘어서는 건대호빠 W, 하이볼 성지라 불리는 배경부터 미니멀 인테리어와 갤러리풍 무드까지 집중 탐구한 기록이다.',
+ h1Title:'부산호빠 스타 — 간판 하나, 그게 전부다'
  },
  {
  id: 104, slug:'gangnam-hoppa-boston', name:'강남호빠 보스턴', type:'hoppa', typeName:'호빠',
@@ -184,8 +184,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','위스키','클래식 감성','보스턴 무드'],
  seoTitle:'강남호빠 보스턴',
- seoDescription:'버번 온더락 하나면 여긴 브루클린이다. 강남호빠 보스턴, 적벽돌 골목을 재현한 인테리어에 재즈 LP가 돌아간다.',
- h1Title:'강남호빠 보스턴 — 버번 한 잔에 클래식이 묻어나다'
+ seoDescription:'장안동호빠 빵빵 — 버번 온더락 하나면 여긴 브루클린이다. 강남호빠 보스턴, 적벽돌 골목을 재현한 인테리어에 재즈 LP가 돌아간다.',
+ h1Title:'장안동호빠 빵빵 — 버번 한 잔에 클래식이 묻어나다'
  },
  {
  id: 105, slug:'gangnam-hoppa-blackhole', name:'강남호빠 블랙홀', type:'hoppa', typeName:'호빠',
@@ -207,8 +207,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','우주 테마','네온','몰입형 공간'],
  seoTitle:'강남호빠 블랙홀',
- seoDescription:'시계를 두고 오라. 강남호빠 블랙홀에 발을 들이면 보라빛 네온과 별자리 천장이 시간 감각부터 빨아들인다. 우주 테마로 강남 호빠 판도를 바꾼 곳.',
- h1Title:'강남호빠 블랙홀 — 빠져들면 끝이다, 이 어둠에서'
+ seoDescription:'건대호빠 W — 시계를 두고 오라. 강남호빠 블랙홀에 발을 들이면 보라빛 네온과 별자리 천장이 시간 감각부터 빨아들인다. 우주 테마로 강남 호빠 판도를 바꾼 곳.',
+ h1Title:'건대호빠 W — 빠져들면 끝이다, 이 어둠에서'
  },
  {
  id: 106, slug:'gangnam-hoppa-suyobi', name:'강남호빠 수요비', type:'hoppa', typeName:'호빠',
@@ -230,8 +230,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','파스텔','수요일 이벤트','논알코올'],
  seoTitle:'강남호빠 수요비',
- seoDescription:'수요일 밤만 되면 빈자리가 순식간에 사라지는 강남호빠 수요비. 파스텔 톤 인테리어와 논알코올 메뉴가 주중 파티 문화를 새로 쓰고 있는 현장 기록.',
- h1Title:'강남호빠 수요비 — 수요일 밤, 여기는 이미 시작됐다'
+ seoDescription:'강남호빠 보스턴 — 수요일 밤만 되면 빈자리가 순식간에 사라지는 강남호빠 수요비. 파스텔 톤 인테리어와 논알코올 메뉴가 주중 파티 문화를 새로 쓰고 있는 현장 기록.',
+ h1Title:'강남호빠 보스턴 — 수요일 밤, 여기는 이미 시작됐다'
  },
  {
  id: 107, slug:'gangnam-hoppa-chicago', name:'강남호빠 시카고', type:'hoppa', typeName:'호빠',
@@ -253,8 +253,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','스피크이지','아르데코','재즈 라이브'],
  seoTitle:'강남호빠 시카고',
- seoDescription:'입구에서 비밀번호를 대야 비로소 문이 열리는 강남호빠 시카고. 1920년대 스피크이지 분위기에 재즈 라이브까지 울려 퍼지는 강남 한복판의 타임슬립.',
- h1Title:'강남호빠 시카고 — 비밀번호를 누르면, 그 시대가 열린다'
+ seoDescription:'강남호빠 블랙홀 — 입구에서 비밀번호를 대야 비로소 문이 열리는 강남호빠 시카고. 1920년대 스피크이지 분위기에 재즈 라이브까지 울려 퍼지는 강남 한복판의 타임슬립.',
+ h1Title:'강남호빠 블랙홀 — 비밀번호를 누르면, 그 시대가 열린다'
  },
  {
  id: 108, slug:'gangnam-hoppa-misulgwan', name:'강남호빠 미술관', type:'hoppa', typeName:'호빠',
@@ -276,8 +276,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','미술 전시','와인','갤러리 감성'],
  seoTitle:'강남호빠 미술관',
- seoDescription:'매달 전시 작가가 바뀌는 강남호빠 미술관. 와인 잔 너머로 예술 얘기가 시작되는, 서울에서 이런 곳은 여기뿐이다.',
- h1Title:'강남호빠 미술관 — 그림 앞에서 시작되는 밤'
+ seoDescription:'강남호빠 수요비 — 매달 전시 작가가 바뀌는 강남호빠 미술관. 와인 잔 너머로 예술 얘기가 시작되는, 서울에서 이런 곳은 여기뿐이다.',
+ h1Title:'강남호빠 수요비 — 그림 앞에서 시작되는 밤'
  },
  {
  id: 109, slug:'gangnam-hoppa-myeongpumgwan', name:'강남호빠 명품관', type:'hoppa', typeName:'호빠',
@@ -299,8 +299,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','샴페인','대리석','격조'],
  seoTitle:'강남호빠 명품관',
- seoDescription:'이탈리아산 대리석이 벽과 바닥 전체를 채운 강남호빠 명품관. 놀라운 건 인테리어뿐만이 아니라 가격대까지 두 번 감탄하게 만드는 격조 있는 공간이다.',
- h1Title:'강남호빠 명품관 — 이 가격에는 이유가 있다'
+ seoDescription:'강남호빠 시카고 — 이탈리아산 대리석이 벽과 바닥 전체를 채운 강남호빠 명품관. 놀라운 건 인테리어뿐만이 아니라 가격대까지 두 번 감탄하게 만드는 격조 있는 공간이다.',
+ h1Title:'강남호빠 시카고 — 이 가격에는 이유가 있다'
  },
  {
  id: 110, slug:'gangnam-hoppa-benjamin', name:'강남호빠 벤자민', type:'hoppa', typeName:'호빠',
@@ -322,8 +322,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['강남','비즈니스','시가','맨해튼 무드'],
  seoTitle:'강남호빠 벤자민',
- seoDescription:'시가 라운지와 맨해튼 무드가 공존하는 강남호빠 벤자민, 비즈니스 모임 장소로 입소문이 빠르게 퍼진 배경과 실제 분위기를 세밀하게 기록한 리포트.',
- h1Title:'강남호빠 벤자민 — 100달러짜리 시간을 보낼 줄 아는 밤'
+ seoDescription:'강남호빠 미술관 — 시가 라운지와 맨해튼 무드가 공존하는 강남호빠 벤자민, 비즈니스 모임 장소로 입소문이 빠르게 퍼진 배경과 실제 분위기를 세밀하게 기록한 리포트.',
+ h1Title:'강남호빠 미술관 — 100달러짜리 시간을 보낼 줄 아는 밤'
  },
  {
  id: 111, slug:'hongdae-hoppa-gungjeon', name:'홍대호빠 궁전', type:'hoppa', typeName:'호빠',
@@ -345,8 +345,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['홍대','궁전 인테리어','로얄 칵테일','SNS 명소'],
  seoTitle:'홍대호빠 궁전',
- seoDescription:'금색 대문 너머로 크리스탈 샹들리에가 쏟아지는 홍대호빠 궁전은 SNS 피드를 점령 중이다. 홍대 골목 깊숙이 숨은 이 공간의 내부를 들여다본다.',
- h1Title:'홍대호빠 궁전 — 이 골목에 왜 궁전이 있냐고? 열어보면 안다'
+ seoDescription:'강남호빠 명품관 — 금색 대문 너머로 크리스탈 샹들리에가 쏟아지는 홍대호빠 궁전은 SNS 피드를 점령 중이다. 홍대 골목 깊숙이 숨은 이 공간의 내부를 들여다본다.',
+ h1Title:'강남호빠 명품관 — 이 골목에 왜 궁전이 있냐고? 열어보면 안다'
  },
  {
  id: 112, slug:'sinlim-hoppa-gungjeon', name:'신림호빠 궁전', type:'hoppa', typeName:'호빠',
@@ -368,8 +368,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['신림','왕궁 인테리어','촛불','가성비'],
  seoTitle:'신림호빠 궁전',
- seoDescription:'골목 한복판에서 왕궁이 튀어나왔다. 신림호빠 궁전은 유럽풍 인테리어와 신림 가성비를 동시에 잡았으며, 반전에 놀란 방문객 리뷰가 매달 갱신 중이다.',
- h1Title:'신림호빠 궁전 — 골목 하나 건너면 왕궁이다'
+ seoDescription:'강남호빠 벤자민 — 골목 한복판에서 왕궁이 튀어나왔다. 신림호빠 궁전은 유럽풍 인테리어와 신림 가성비를 동시에 잡았으며, 반전에 놀란 방문객 리뷰가 매달 갱신 중이다.',
+ h1Title:'강남호빠 벤자민 — 골목 하나 건너면 왕궁이다'
  },
  {
  id: 113, slug:'sinlim-hoppa-race', name:'신림호빠 레이스', type:'hoppa', typeName:'호빠',
@@ -391,8 +391,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['신림','빠른 서비스','레이싱 감성','하이볼'],
  seoTitle:'신림호빠 레이스',
- seoDescription:'입장 30초, 첫 잔 도착까지 2분. 신림호빠 레이스는 이름값 그대로의 속도전 서비스와 레이싱 감성 인테리어로 신림동 밤의 체감 온도를 올렸다.',
- h1Title:'신림호빠 레이스 — 기다림은 여기에 없다'
+ seoDescription:'홍대호빠 궁전 — 입장 30초, 첫 잔 도착까지 2분. 신림호빠 레이스는 이름값 그대로의 속도전 서비스와 레이싱 감성 인테리어로 신림동 밤의 체감 온도를 올렸다.',
+ h1Title:'홍대호빠 궁전 — 기다림은 여기에 없다'
  },
  {
  id: 114, slug:'sinlim-hoppa-flirting', name:'신림호빠 플러팅', type:'hoppa', typeName:'호빠',
@@ -414,8 +414,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['신림','로맨틱','파스텔','칵테일'],
  seoTitle:'신림호빠 플러팅',
- seoDescription:'핑크와 라벤더 조명에 깊은 소파까지, 대화를 자연스럽게 끌어당기는 신림호빠 플러팅에서 로맨틱한 밤의 온도를 설계한 공간 구조를 면밀히 살펴본다.',
- h1Title:'신림호빠 플러팅 — 앉으면 자연스럽게 가까워진다'
+ seoDescription:'신림호빠 궁전 — 핑크와 라벤더 조명에 깊은 소파까지, 대화를 자연스럽게 끌어당기는 신림호빠 플러팅에서 로맨틱한 밤의 온도를 설계한 공간 구조를 면밀히 살펴본다.',
+ h1Title:'신림호빠 궁전 — 앉으면 자연스럽게 가까워진다'
  },
  {
  id: 115, slug:'suwon-hoppa-beast', name:'수원호빠 비스트', type:'hoppa', typeName:'호빠',
@@ -437,8 +437,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','에너지','EDM','단체석'],
  seoTitle:'수원호빠 비스트',
- seoDescription:'단체 모임 장소를 찾고 있다면 여기를 빼놓을 수 없다. 수원호빠 비스트의 LED 간판이 거리를 물들이고 EDM 베이스가 흉골을 두드리는 야수급 에너지.',
- h1Title:'수원호빠 비스트 — 여기서 조용하려는 건 욕심이다'
+ seoDescription:'신림호빠 레이스 — 단체 모임 장소를 찾고 있다면 여기를 빼놓을 수 없다. 수원호빠 비스트의 LED 간판이 거리를 물들이고 EDM 베이스가 흉골을 두드리는 야수급 에너지.',
+ h1Title:'신림호빠 레이스 — 여기서 조용하려는 건 욕심이다'
  },
  {
  id: 116, slug:'suwon-hoppa-aura', name:'수원호빠 아우라', type:'hoppa', typeName:'호빠',
@@ -460,8 +460,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','차분한 무드','사케','별빛 천장'],
  seoTitle:'수원호빠 아우라',
- seoDescription:'왜 자꾸 이 골목으로만 발이 향하는 걸까. 수원호빠 아우라 별빛 천장 아래 인디고 블루가 온몸을 감싸는 공간, 차분하지만 중독성 강한 수원의 밤.',
- h1Title:'수원호빠 아우라 — 별빛 아래서, 말이 필요 없어지는 밤'
+ seoDescription:'신림호빠 플러팅 — 왜 자꾸 이 골목으로만 발이 향하는 걸까. 수원호빠 아우라 별빛 천장 아래 인디고 블루가 온몸을 감싸는 공간, 차분하지만 중독성 강한 수원의 밤.',
+ h1Title:'신림호빠 플러팅 — 별빛 아래서, 말이 필요 없어지는 밤'
  },
  {
  id: 117, slug:'suwon-hoppa-play', name:'수원호빠 플레이', type:'hoppa', typeName:'호빠',
@@ -483,8 +483,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','게임','파티','네온'],
  seoTitle:'수원호빠 플레이',
- seoDescription:'다트 3판 던지고 보드게임 하다 보면 어느새 새벽 3시다. 수원호빠 플레이는 네온 포토존까지 갖춘 어른의 놀이터, 수원 파티 중심축 상세 안내.',
- h1Title:'수원호빠 플레이 — 여기는 놀러 오는 거다'
+ seoDescription:'수원호빠 비스트 — 다트 3판 던지고 보드게임 하다 보면 어느새 새벽 3시다. 수원호빠 플레이는 네온 포토존까지 갖춘 어른의 놀이터, 수원 파티 중심축 상세 안내.',
+ h1Title:'수원호빠 비스트 — 여기는 놀러 오는 거다'
  },
  {
  id: 118, slug:'suwon-hoppa-secret', name:'수원호빠 시크릿', type:'hoppa', typeName:'호빠',
@@ -506,8 +506,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','은밀한','비스포크','싱글몰트'],
  seoTitle:'수원호빠 시크릿',
- seoDescription:'간판 없이 오직 예약 메시지만으로 찾아가야 하는 수원호빠 시크릿. 비스포크 싱글몰트 컬렉션과 은밀한 동선이 호기심을 자극하는 수원의 비밀 공간.',
- h1Title:'수원호빠 시크릿 — 찾을 수 없어야 비밀이다'
+ seoDescription:'수원호빠 아우라 — 간판 없이 오직 예약 메시지만으로 찾아가야 하는 수원호빠 시크릿. 비스포크 싱글몰트 컬렉션과 은밀한 동선이 호기심을 자극하는 수원의 비밀 공간.',
+ h1Title:'수원호빠 아우라 — 찾을 수 없어야 비밀이다'
  },
  {
  id: 119, slug:'suwon-hoppa-kingsman', name:'수원호빠 킹스맨', type:'hoppa', typeName:'호빠',
@@ -529,8 +529,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','영국 신사','진토닉','드레스코드'],
  seoTitle:'수원호빠 킹스맨',
- seoDescription:'빨간 전화부스를 지나면 수트 차림의 스태프가 맞이하는 수원호빠 킹스맨에서 진토닉과 드레스코드로 완성된 영국 신사 감성이 수원 한복판에 살아 숨 쉰다.',
- h1Title:'수원호빠 킹스맨 — 신사의 밤은 이렇게 시작된다'
+ seoDescription:'수원호빠 플레이 — 빨간 전화부스를 지나면 수트 차림의 스태프가 맞이하는 수원호빠 킹스맨에서 진토닉과 드레스코드로 완성된 영국 신사 감성이 수원 한복판에 살아 숨 쉰다.',
+ h1Title:'수원호빠 플레이 — 신사의 밤은 이렇게 시작된다'
  },
  {
  id: 120, slug:'suwon-hoppa-shinsegae', name:'수원호빠 신세계', type:'hoppa', typeName:'호빠',
@@ -552,8 +552,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','LED 스크린','테마 전환','몰입형'],
  seoTitle:'수원호빠 신세계',
- seoDescription:'걸어 들어가면 심해, 나갈 때는 성층권이다. 수원호빠 신세계 LED 터널은 발걸음마다 배경이 바뀐다. 수원 유일.',
- h1Title:'수원호빠 신세계 — 문 열면 다른 세계다, 진짜로'
+ seoDescription:'수원호빠 시크릿 — 걸어 들어가면 심해, 나갈 때는 성층권이다. 수원호빠 신세계 LED 터널은 발걸음마다 배경이 바뀐다. 수원 유일.',
+ h1Title:'수원호빠 시크릿 — 문 열면 다른 세계다, 진짜로'
  },
  {
  id: 121, slug:'suwon-hoppa-moscow', name:'수원호빠 모스크바', type:'hoppa', typeName:'호빠',
@@ -575,8 +575,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['수원','러시아 감성','보드카','이국적'],
  seoTitle:'수원호빠 모스크바',
- seoDescription:'양파형 돔 입구와 보드카 20종이 러시아를 소환하는 수원호빠 모스크바. 수원 한가운데서 즐기는 이국적 겨울밤의 분위기를 고스란히 전하는 공간 탐방.',
- h1Title:'수원호빠 모스크바 — 보드카 한 잔에 러시아가 스민다'
+ seoDescription:'수원호빠 킹스맨 — 양파형 돔 입구와 보드카 20종이 러시아를 소환하는 수원호빠 모스크바. 수원 한가운데서 즐기는 이국적 겨울밤의 분위기를 고스란히 전하는 공간 탐방.',
+ h1Title:'수원호빠 킹스맨 — 보드카 한 잔에 러시아가 스민다'
  },
  {
  id: 122, slug:'ingyedong-hoppa-mazinga', name:'인계동호빠 마징가', type:'hoppa', typeName:'호빠',
@@ -598,8 +598,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['인계동','레트로','인더스트리얼','시그니처 칵테일'],
  seoTitle:'인계동호빠 마징가',
- seoDescription:'로봇 피규어와 빈티지 포스터가 벽을 가득 채운 인계동호빠 마징가에서는 시그니처 칵테일 한 잔이면 80~90년대 레트로 감성 속으로 순간이동한다.',
- h1Title:'인계동호빠 마징가 — 이 이름 들으면 이미 에너지가 찬다'
+ seoDescription:'수원호빠 신세계 — 로봇 피규어와 빈티지 포스터가 벽을 가득 채운 인계동호빠 마징가에서는 시그니처 칵테일 한 잔이면 80~90년대 레트로 감성 속으로 순간이동한다.',
+ h1Title:'수원호빠 신세계 — 이 이름 들으면 이미 에너지가 찬다'
  },
  {
  id: 123, slug:'jangandong-hoppa-flex', name:'장안동호빠 FLEX', type:'hoppa', typeName:'호빠',
@@ -621,8 +621,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['장안동','힙합','그래피티','스트리트'],
  seoTitle:'장안동호빠 FLEX',
- seoDescription:'그래피티 벽면과 스니커즈 쇼케이스가 맞이하는 장안동호빠 FLEX는 힙합 마니아라면 발을 뗄 수 없는 장안동 스트리트 감성의 정점을 찍는 공간이다.',
- h1Title:'장안동호빠 FLEX — 힙합을 좋아한다면, 여기밖에 없다'
+ seoDescription:'수원호빠 모스크바 — 그래피티 벽면과 스니커즈 쇼케이스가 맞이하는 장안동호빠 FLEX는 힙합 마니아라면 발을 뗄 수 없는 장안동 스트리트 감성의 정점을 찍는 공간이다.',
+ h1Title:'수원호빠 모스크바 — 힙합을 좋아한다면, 여기밖에 없다'
  },
  {
  id: 124, slug:'jangandong-hoppa-cube', name:'장안동호빠 큐브', type:'hoppa', typeName:'호빠',
@@ -644,8 +644,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['장안동','기하학','큐브 인테리어','포토존'],
  seoTitle:'장안동호빠 큐브',
- seoDescription:'정육면체 안에 앉는다. 장안동호빠 큐브의 기하학 거울 부스는 셀카 한 장에 무한 반사가 담기며, 장안동 포토존 랭킹 부동의 1위를 지키고 있다.',
- h1Title:'장안동호빠 큐브 — 이 공간 자체가 퍼즐이다'
+ seoDescription:'인계동호빠 마징가 — 정육면체 안에 앉는다. 장안동호빠 큐브의 기하학 거울 부스는 셀카 한 장에 무한 반사가 담기며, 장안동 포토존 랭킹 부동의 1위를 지키고 있다.',
+ h1Title:'인계동호빠 마징가 — 이 공간 자체가 퍼즐이다'
  },
  {
  id: 125, slug:'busan-hoppa-menz', name:'부산호빠 맨즈', type:'hoppa', typeName:'호빠',
@@ -667,8 +667,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','위스키','남성적 무드','비즈니스'],
  seoTitle:'부산호빠 맨즈',
- seoDescription:'스카치, 아이리시, 재패니즈 세 잔 블라인드 테이스팅. 부산호빠 맨즈에서 위스키 고르는 법 자체가 달라진다.',
- h1Title:'부산호빠 맨즈 — 위스키 한 잔이면 충분한 밤'
+ seoDescription:'장안동호빠 FLEX — 스카치, 아이리시, 재패니즈 세 잔 블라인드 테이스팅. 부산호빠 맨즈에서 위스키 고르는 법 자체가 달라진다.',
+ h1Title:'장안동호빠 FLEX — 위스키 한 잔이면 충분한 밤'
  },
  {
  id: 126, slug:'busan-hoppa-aura', name:'부산호빠 아우라', type:'hoppa', typeName:'호빠',
@@ -690,8 +690,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','바다 테마','칠아웃','오션 칵테일'],
  seoTitle:'부산호빠 아우라',
- seoDescription:'천장에서 파도가 출렁이고 바닥에 모래 질감이 깔린 부산호빠 아우라는 부산 바다를 실내로 옮겨놓은 칠아웃 무드의 정수를 온몸으로 체감하게 만든다.',
- h1Title:'부산호빠 아우라 — 여기 앉으면 바다 안이다'
+ seoDescription:'장안동호빠 큐브 — 천장에서 파도가 출렁이고 바닥에 모래 질감이 깔린 부산호빠 아우라는 부산 바다를 실내로 옮겨놓은 칠아웃 무드의 정수를 온몸으로 체감하게 만든다.',
+ h1Title:'장안동호빠 큐브 — 여기 앉으면 바다 안이다'
  },
  {
  id: 127, slug:'busan-hoppa-ggantappiya', name:'부산호빠 깐따삐야', type:'hoppa', typeName:'호빠',
@@ -713,8 +713,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','지중해','와인','이탈리안'],
  seoTitle:'부산호빠 깐따삐야',
- seoDescription:'와인 50종, 테라코타 벽면, 포도넝쿨 장식까지 지중해를 재현한 부산호빠 깐따삐야는 부산 안에서 이탈리아의 밤을 온전히 만끽하는 유일한 루트다.',
- h1Title:'부산호빠 깐따삐야 — 부산 사투리가 이탈리아를 만났다'
+ seoDescription:'부산호빠 맨즈 — 와인 50종, 테라코타 벽면, 포도넝쿨 장식까지 지중해를 재현한 부산호빠 깐따삐야는 부산 안에서 이탈리아의 밤을 온전히 만끽하는 유일한 루트다.',
+ h1Title:'부산호빠 맨즈 — 부산 사투리가 이탈리아를 만났다'
  },
  {
  id: 128, slug:'haeundae-hoppa-michelin', name:'해운대호빠 미슐랭', type:'hoppa', typeName:'호빠',
@@ -736,8 +736,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['해운대','바다 뷰','파인 다이닝','칵테일 코스'],
  seoTitle:'해운대호빠 미슐랭',
- seoDescription:'에피타이저부터 디저트까지 술이 코스로 나온다. 해운대호빠 미슐랭, 음식점 아니고 호빠 맞다. 창 밖은 바다.',
- h1Title:'해운대호빠 미슐랭 — 이 서비스, 별점을 줘야 한다'
+ seoDescription:'부산호빠 아우라 — 에피타이저부터 디저트까지 술이 코스로 나온다. 해운대호빠 미슐랭, 음식점 아니고 호빠 맞다. 창 밖은 바다.',
+ h1Title:'부산호빠 아우라 — 이 서비스, 별점을 줘야 한다'
  },
  {
  id: 129, slug:'haeundae-hoppa-shinsegae', name:'해운대호빠 신세계', type:'hoppa', typeName:'호빠',
@@ -759,8 +759,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['해운대','파노라마','관광 연계','시그니처 칵테일'],
  seoTitle:'해운대호빠 신세계',
- seoDescription:'고개를 왼쪽으로 돌리면 수평선, 오른쪽은 마천루. 해운대호빠 신세계의 양면 뷰는 부산 어디서도 불가능하다.',
- h1Title:'해운대호빠 신세계 — 바다 앞에서 밤이 달라진다'
+ seoDescription:'부산호빠 깐따삐야 — 고개를 왼쪽으로 돌리면 수평선, 오른쪽은 마천루. 해운대호빠 신세계의 양면 뷰는 부산 어디서도 불가능하다.',
+ h1Title:'부산호빠 깐따삐야 — 바다 앞에서 밤이 달라진다'
  },
  {
  id: 130, slug:'haeundae-hoppa-velvet', name:'해운대호빠 벨벳', type:'hoppa', typeName:'호빠',
@@ -782,8 +782,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['해운대','벨벳','프라이빗','와인'],
  seoTitle:'해운대호빠 벨벳',
- seoDescription:'손끝이 닿는 모든 표면이 진짜 벨벳 소재인 해운대호빠 벨벳에서는 해운대의 프라이빗한 와인 타임을 즐기기에 이보다 촉감 좋은 공간을 찾기 어렵다.',
- h1Title:'해운대호빠 벨벳 — 이 부드러움은 만져봐야 안다'
+ seoDescription:'해운대호빠 미슐랭 — 손끝이 닿는 모든 표면이 진짜 벨벳 소재인 해운대호빠 벨벳에서는 해운대의 프라이빗한 와인 타임을 즐기기에 이보다 촉감 좋은 공간을 찾기 어렵다.',
+ h1Title:'해운대호빠 미슐랭 — 이 부드러움은 만져봐야 안다'
  },
  {
  id: 131, slug:'seomyeon-hoppa-first', name:'서면호빠 퍼스트', type:'hoppa', typeName:'호빠',
@@ -805,8 +805,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['서면','클래식','단골','터줏대감'],
  seoTitle:'서면호빠 퍼스트',
- seoDescription:'서면에서 가장 오래도록 자리를 지켜온 서면호빠 퍼스트에서는 단골 비율이 말해주는 검증된 클래식 감성과 터줏대감의 내공이 묻어나는 공간을 기록했다.',
- h1Title:'서면호빠 퍼스트 — 오래 버틴 데는 이유가 있다'
+ seoDescription:'해운대호빠 신세계 — 서면에서 가장 오래도록 자리를 지켜온 서면호빠 퍼스트에서는 단골 비율이 말해주는 검증된 클래식 감성과 터줏대감의 내공이 묻어나는 공간을 기록했다.',
+ h1Title:'해운대호빠 신세계 — 오래 버틴 데는 이유가 있다'
  },
  {
  id: 132, slug:'seomyeon-hoppa-aura', name:'서면호빠 아우라', type:'hoppa', typeName:'호빠',
@@ -828,8 +828,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['서면','미러볼','신비로운','시그니처 칵테일'],
  seoTitle:'서면호빠 아우라',
- seoDescription:'밖에서는 심플하지만 문을 여는 순간 미러볼 빛이 쏟아지는 서면호빠 아우라, 서면 현지인들이 재방문하게 되는 구체적인 매력 포인트를 빠짐없이 정리.',
- h1Title:'서면호빠 아우라 — 보이지 않는 힘이 끌어당긴다'
+ seoDescription:'해운대호빠 벨벳 — 밖에서는 심플하지만 문을 여는 순간 미러볼 빛이 쏟아지는 서면호빠 아우라, 서면 현지인들이 재방문하게 되는 구체적인 매력 포인트를 빠짐없이 정리.',
+ h1Title:'해운대호빠 벨벳 — 보이지 않는 힘이 끌어당긴다'
  },
  {
  id: 133, slug:'daegu-hoppa-secret', name:'대구호빠 시크릿', type:'hoppa', typeName:'호빠',
@@ -851,8 +851,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['대구','럭셔리','프라이버시','은밀한'],
  seoTitle:'대구호빠 시크릿',
- seoDescription:'네비에도 안 뜬다. 건물 사이 좁은 통로 끝, 대구호빠 시크릿은 아는 사람끼리만 공유해 온 대구 밤의 은닉처. 단골 전환율이 높은 이유를 분석.',
- h1Title:'대구호빠 시크릿 — 이 통로를 지나야만 열리는 밤'
+ seoDescription:'서면호빠 퍼스트 — 네비에도 안 뜬다. 건물 사이 좁은 통로 끝, 대구호빠 시크릿은 아는 사람끼리만 공유해 온 대구 밤의 은닉처. 단골 전환율이 높은 이유를 분석.',
+ h1Title:'서면호빠 퍼스트 — 이 통로를 지나야만 열리는 밤'
  },
  {
  id: 134, slug:'daegu-hoppa-perfect', name:'대구호빠 퍼펙트', type:'hoppa', typeName:'호빠',
@@ -874,8 +874,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['대구','빈틈없는 서비스','미니멀','고급'],
  seoTitle:'대구호빠 퍼펙트',
- seoDescription:'코트에 이름표가 붙어서 돌아온다는 사실에 놀란다. 대구호빠 퍼펙트 도어맨의 빈틈 없는 동선부터 미니멀 고급 인테리어까지, 대구 호빠의 새로운 기준점.',
- h1Title:'대구호빠 퍼펙트 — 빈틈이 없다, 진짜로'
+ seoDescription:'서면호빠 아우라 — 코트에 이름표가 붙어서 돌아온다는 사실에 놀란다. 대구호빠 퍼펙트 도어맨의 빈틈 없는 동선부터 미니멀 고급 인테리어까지, 대구 호빠의 새로운 기준점.',
+ h1Title:'서면호빠 아우라 — 빈틈이 없다, 진짜로'
  },
  {
  id: 135, slug:'daegu-hoppa-insta', name:'대구호빠 인스타', type:'hoppa', typeName:'호빠',
@@ -897,8 +897,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['대구','SNS','포토존','비주얼 칵테일'],
  seoTitle:'대구호빠 인스타',
- seoDescription:'벽마다 색감이 다르고 칵테일 위에 솜사탕이 올라가는 대구호빠 인스타에서는 사진을 안 찍을 수가 없다. 비주얼 감성이 대구 SNS를 점령 중이다.',
- h1Title:'대구호빠 인스타 — 여기선 사진이 먼저다'
+ seoDescription:'대구호빠 시크릿 — 벽마다 색감이 다르고 칵테일 위에 솜사탕이 올라가는 대구호빠 인스타에서는 사진을 안 찍을 수가 없다. 비주얼 감성이 대구 SNS를 점령 중이다.',
+ h1Title:'대구호빠 시크릿 — 여기선 사진이 먼저다'
  },
  {
  id: 136, slug:'daejeon-hoppa-eclipse', name:'대전호빠 이클립스', type:'hoppa', typeName:'호빠',
@@ -920,8 +920,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['대전','일식 테마','조명 전환','시그니처 칵테일'],
  seoTitle:'대전호빠 이클립스',
- seoDescription:'해가 달을 삼키듯, 보라빛이 방 전체를 집어삼킨다. 대전호빠 이클립스는 일식 테마를 조명으로 연출한 대전 유일 콘셉트.',
- h1Title:'대전호빠 이클립스 — 천천히 빠져드는 게 일식이다'
+ seoDescription:'대구호빠 퍼펙트 — 해가 달을 삼키듯, 보라빛이 방 전체를 집어삼킨다. 대전호빠 이클립스는 일식 테마를 조명으로 연출한 대전 유일 콘셉트.',
+ h1Title:'대구호빠 퍼펙트 — 천천히 빠져드는 게 일식이다'
  },
  {
  id: 137, slug:'incheon-hoppa-ttakttaguri', name:'인천호빠 딱따구리', type:'hoppa', typeName:'호빠',
@@ -943,8 +943,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['인천','숲 테마','유쾌한','말차 칵테일'],
  seoTitle:'인천호빠 딱따구리',
- seoDescription:'이름에 먼저 웃음이 터진다. 인천호빠 딱따구리의 숲속 테마 인테리어 한가운데서 말차 칵테일을 홀짝이면, 인천 퇴근길 스트레스가 순식간에 녹아내린다.',
- h1Title:'인천호빠 딱따구리 — 이 이름에 웃으면, 이미 빠진 거다'
+ seoDescription:'대구호빠 인스타 — 이름에 먼저 웃음이 터진다. 인천호빠 딱따구리의 숲속 테마 인테리어 한가운데서 말차 칵테일을 홀짝이면, 인천 퇴근길 스트레스가 순식간에 녹아내린다.',
+ h1Title:'대구호빠 인스타 — 이 이름에 웃으면, 이미 빠진 거다'
  },
  {
  id: 138, slug:'incheon-hoppa-edgenam', name:'인천호빠 엣지남', type:'hoppa', typeName:'호빠',
@@ -966,8 +966,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['인천','모던','블랙','엣지'],
  seoTitle:'인천호빠 엣지남',
- seoDescription:'블랙 거울과 라인 LED로 날카롭게 세운 인테리어, 반면 서비스는 따뜻한 인천호빠 엣지남에서 이 극적 온도차가 발길을 붙잡는 인천의 모던 감성을 만난다.',
- h1Title:'인천호빠 엣지남 — 차가운 공간, 따뜻한 사람'
+ seoDescription:'대전호빠 이클립스 — 블랙 거울과 라인 LED로 날카롭게 세운 인테리어, 반면 서비스는 따뜻한 인천호빠 엣지남에서 이 극적 온도차가 발길을 붙잡는 인천의 모던 감성을 만난다.',
+ h1Title:'대전호빠 이클립스 — 차가운 공간, 따뜻한 사람'
  },
  {
  id: 139, slug:'gwangju-hoppa-double-u', name:'광주호빠 더블유', type:'hoppa', typeName:'호빠',
@@ -989,8 +989,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['광주','미니멀','북유럽','화이트'],
  seoTitle:'광주호빠 더블유',
- seoDescription:'화이트와 그레이 톤, 군더더기 없는 북유럽 감성의 광주호빠 더블유. 깔끔한 공간에서 술잔을 기울이고 싶을 때 광주 사람들이 떠올리는 첫 번째 이름.',
- h1Title:'광주호빠 더블유 — 없애고 없앤 끝에 남은 것'
+ seoDescription:'인천호빠 딱따구리 — 화이트와 그레이 톤, 군더더기 없는 북유럽 감성의 광주호빠 더블유. 깔끔한 공간에서 술잔을 기울이고 싶을 때 광주 사람들이 떠올리는 첫 번째 이름.',
+ h1Title:'인천호빠 딱따구리 — 없애고 없앤 끝에 남은 것'
  },
  {
  id: 140, slug:'gwangju-hoppa-bisangu', name:'광주호빠 비상구', type:'hoppa', typeName:'호빠',
@@ -1012,8 +1012,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['광주','언더그라운드','그래피티','비상구 테마'],
  seoTitle:'광주호빠 비상구',
- seoDescription:'초록 비상등이 간판이고 철문이 입구인 광주호빠 비상구, 그래피티와 언더그라운드 무드로 채워진 이 공간이야말로 일상 탈출의 시작점이라 불릴 만하다.',
- h1Title:'광주호빠 비상구 — 이 문을 열면, 일상은 저쪽에 놓고 오게 된다'
+ seoDescription:'인천호빠 엣지남 — 초록 비상등이 간판이고 철문이 입구인 광주호빠 비상구, 그래피티와 언더그라운드 무드로 채워진 이 공간이야말로 일상 탈출의 시작점이라 불릴 만하다.',
+ h1Title:'인천호빠 엣지남 — 이 문을 열면, 일상은 저쪽에 놓고 오게 된다'
  },
  {
  id: 141, slug:'gwangju-hoppa-first', name:'광주호빠 퍼스트', type:'hoppa', typeName:'호빠',
@@ -1035,8 +1035,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['광주','첫 방문 환영','웰컴 서비스','깔끔한'],
  seoTitle:'광주호빠 퍼스트',
- seoDescription:'첫 방문 전용 웰컴 응대 시스템을 갖춘 광주호빠 퍼스트는 처음 오는 손님도 어색함 없이 편안하게 즐길 수 있도록 세심하게 설계된 광주의 입문 공간.',
- h1Title:'광주호빠 퍼스트 — 처음이라 긴장된다면, 여기가 맞다'
+ seoDescription:'광주호빠 더블유 — 첫 방문 전용 웰컴 응대 시스템을 갖춘 광주호빠 퍼스트는 처음 오는 손님도 어색함 없이 편안하게 즐길 수 있도록 세심하게 설계된 광주의 입문 공간.',
+ h1Title:'광주호빠 더블유 — 처음이라 긴장된다면, 여기가 맞다'
  },
  {
  id: 142, slug:'ulsan-hoppa-waltz', name:'울산호빠 왈츠', type:'hoppa', typeName:'호빠',
@@ -1058,8 +1058,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','클래식','무도회','샹들리에'],
  seoTitle:'울산호빠 왈츠',
- seoDescription:'아치형 문과 샹들리에 아래 클래식 3박자 선율이 감도는 울산호빠 왈츠, 울산에서 우아한 밤을 원할 때 자연스럽게 발걸음이 향하는 품격 있는 공간.',
- h1Title:'울산호빠 왈츠 — 3박자에 몸을 맡기는 밤'
+ seoDescription:'광주호빠 비상구 — 아치형 문과 샹들리에 아래 클래식 3박자 선율이 감도는 울산호빠 왈츠, 울산에서 우아한 밤을 원할 때 자연스럽게 발걸음이 향하는 품격 있는 공간.',
+ h1Title:'광주호빠 비상구 — 3박자에 몸을 맡기는 밤'
  },
  {
  id: 143, slug:'ulsan-hoppa-m-town', name:'울산호빠 엠타운', type:'hoppa', typeName:'호빠',
@@ -1081,8 +1081,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','멀티존','선택형','다채로운'],
  seoTitle:'울산호빠 엠타운',
- seoDescription:'카페존, 바존, 프라이빗존을 한 건물에 품은 울산호빠 엠타운에서는 기분에 따라 분위기를 골라서 즐기는 재미가 펼쳐진다. 울산 어디에서도 재현 불가.',
- h1Title:'울산호빠 엠타운 — 오늘 기분에 맞는 존을 골라라'
+ seoDescription:'광주호빠 퍼스트 — 카페존, 바존, 프라이빗존을 한 건물에 품은 울산호빠 엠타운에서는 기분에 따라 분위기를 골라서 즐기는 재미가 펼쳐진다. 울산 어디에서도 재현 불가.',
+ h1Title:'광주호빠 퍼스트 — 오늘 기분에 맞는 존을 골라라'
  },
  {
  id: 144, slug:'ulsan-hoppa-showman', name:'울산호빠 쇼맨', type:'hoppa', typeName:'호빠',
@@ -1104,8 +1104,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','퍼포먼스','매직','엔터테인먼트'],
  seoTitle:'울산호빠 쇼맨',
- seoDescription:'카드가 허공에서 사라졌다. 울산호빠 쇼맨 스태프의 매직과 트릭이 테이블 위에서 펼쳐지는 울산 유일 엔터테인먼트형 호빠, 서비스 그 자체가 무대.',
- h1Title:'울산호빠 쇼맨 — 여기선 서비스가 마술이다'
+ seoDescription:'울산호빠 왈츠 — 카드가 허공에서 사라졌다. 울산호빠 쇼맨 스태프의 매직과 트릭이 테이블 위에서 펼쳐지는 울산 유일 엔터테인먼트형 호빠, 서비스 그 자체가 무대.',
+ h1Title:'울산호빠 왈츠 — 여기선 서비스가 마술이다'
  },
  {
  id: 145, slug:'ulsan-hoppa-one', name:'울산호빠 원', type:'hoppa', typeName:'호빠',
@@ -1127,8 +1127,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['울산','심플','레드 포인트','밀착 서비스'],
  seoTitle:'울산호빠 원',
- seoDescription:'모노톤 공간에 레드 점 딱 하나뿐이다. 울산호빠 원은 그 미니멀한 공식 하나로 강렬한 인상을 남기며, 밀착 서비스까지 겸비한 울산의 숨은 밤 명소.',
- h1Title:'울산호빠 원 — 하나면 된다, 확실한 하나'
+ seoDescription:'울산호빠 엠타운 — 모노톤 공간에 레드 점 딱 하나뿐이다. 울산호빠 원은 그 미니멀한 공식 하나로 강렬한 인상을 남기며, 밀착 서비스까지 겸비한 울산의 숨은 밤 명소.',
+ h1Title:'울산호빠 엠타운 — 하나면 된다, 확실한 하나'
  },
  {
  id: 146, slug:'jeju-hoppa-mgm', name:'제주호빠 MGM', type:'hoppa', typeName:'호빠',
@@ -1150,8 +1150,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['제주','라스베이거스','럭셔리','골드'],
  seoTitle:'제주호빠 MGM',
- seoDescription:'사자 두 마리가 문 양쪽에 서 있고, 잔 위에 금가루가 뜬다. 제주호빠 MGM은 라스베이거스를 섬으로 옮겨놨다.',
- h1Title:'제주호빠 MGM — 한라산 본 눈으로 라스베이거스를 본다'
+ seoDescription:'울산호빠 쇼맨 — 사자 두 마리가 문 양쪽에 서 있고, 잔 위에 금가루가 뜬다. 제주호빠 MGM은 라스베이거스를 섬으로 옮겨놨다.',
+ h1Title:'울산호빠 쇼맨 — 한라산 본 눈으로 라스베이거스를 본다'
  },
  {
  id: 147, slug:'jeju-hoppa-the-king', name:'제주호빠 더킹', type:'hoppa', typeName:'호빠',
@@ -1173,8 +1173,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['제주','왕실 테마','금박','버틀러'],
  seoTitle:'제주호빠 더킹',
- seoDescription:'빨간 융단 끝에 진짜 의자가 놓였다. 앉으면 왕관을 씌워준다. 제주호빠 더킹, 여행 마지막 밤 기념 촬영 명소.',
- h1Title:'제주호빠 더킹 — 여기선 손님이 왕이고, 농담이 아니다'
+ seoDescription:'울산호빠 원 — 빨간 융단 끝에 진짜 의자가 놓였다. 앉으면 왕관을 씌워준다. 제주호빠 더킹, 여행 마지막 밤 기념 촬영 명소.',
+ h1Title:'울산호빠 원 — 여기선 손님이 왕이고, 농담이 아니다'
  },
  {
  id: 148, slug:'songpa-hoppa-ilgijang', name:'송파호빠 일기장', type:'hoppa', typeName:'호빠',
@@ -1196,8 +1196,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['송파','서재 감성','아늑한','경청'],
  seoTitle:'송파호빠 일기장',
- seoDescription:'빈티지 책장 위에 미니 노트가 놓인 송파호빠 일기장에서 보낸 밤은 기록으로 남기고 싶다는 평이 쌓이고 있다. 송파에서 찾은 아늑한 야간 아지트.',
- h1Title:'송파호빠 일기장 — 오늘 밤, 한 줄쯤 적어두고 싶어진다'
+ seoDescription:'제주호빠 MGM — 빈티지 책장 위에 미니 노트가 놓인 송파호빠 일기장에서 보낸 밤은 기록으로 남기고 싶다는 평이 쌓이고 있다. 송파에서 찾은 아늑한 야간 아지트.',
+ h1Title:'제주호빠 MGM — 오늘 밤, 한 줄쯤 적어두고 싶어진다'
  },
  {
  id: 149, slug:'jamsil-hoppa-w', name:'잠실호빠 W', type:'hoppa', typeName:'호빠',
@@ -1219,8 +1219,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['잠실','퓨처리스틱','실버','석촌호수'],
  seoTitle:'잠실호빠 W',
- seoDescription:'석촌호수 인근에 자리 잡은 잠실호빠 W는 실버 톤과 아크릴 바가 미래를 그려낸다. 퓨처리스틱 감성에 빠져드는 잠실의 새로운 야간 랜드마크를 소개.',
- h1Title:'잠실호빠 W — 호수 옆에 미래가 서 있다'
+ seoDescription:'제주호빠 더킹 — 석촌호수 인근에 자리 잡은 잠실호빠 W는 실버 톤과 아크릴 바가 미래를 그려낸다. 퓨처리스틱 감성에 빠져드는 잠실의 새로운 야간 랜드마크를 소개.',
+ h1Title:'제주호빠 더킹 — 호수 옆에 미래가 서 있다'
  },
  {
  id: 150, slug:'yeongdeungpo-hoppa-beat', name:'영등포호빠 비트', type:'hoppa', typeName:'호빠',
@@ -1242,8 +1242,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['영등포','사운드','EDM','음악 체감'],
  seoTitle:'영등포호빠 비트',
- seoDescription:'발바닥으로 저음이 올라온다. 영등포호빠 비트, 스피커가 벽과 바닥에 묻혀 있어서 몸 전체가 앰프가 된다.',
- h1Title:'영등포호빠 비트 — 여기선 귀가 아니라 몸이 먼저 반응한다'
+ seoDescription:'송파호빠 일기장 — 발바닥으로 저음이 올라온다. 영등포호빠 비트, 스피커가 벽과 바닥에 묻혀 있어서 몸 전체가 앰프가 된다.',
+ h1Title:'송파호빠 일기장 — 여기선 귀가 아니라 몸이 먼저 반응한다'
  },
  {
  id: 151, slug:'yeongdeungpo-hoppa-dubai', name:'영등포호빠 두바이', type:'hoppa', typeName:'호빠',
@@ -1265,8 +1265,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['영등포','중동 감성','시샤','이국적'],
  seoTitle:'영등포호빠 두바이',
- seoDescription:'시샤 연기 사이로 아랍풍 등잔이 흔들린다. 영등포호빠 두바이, 여기가 서울 맞나 싶은 이국 풍경 속 한잔.',
- h1Title:'영등포호빠 두바이 — 시샤 한 대에 중동이 펼쳐진다'
+ seoDescription:'잠실호빠 W — 시샤 연기 사이로 아랍풍 등잔이 흔들린다. 영등포호빠 두바이, 여기가 서울 맞나 싶은 이국 풍경 속 한잔.',
+ h1Title:'잠실호빠 W — 시샤 한 대에 중동이 펼쳐진다'
  },
  {
  id: 152, slug:'yeongdeungpo-hoppa-gungjeon', name:'영등포호빠 궁전', type:'hoppa', typeName:'호빠',
@@ -1288,7 +1288,7 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['영등포','바로크','궁전','파티'],
  seoTitle:'영등포호빠 궁전',
- seoDescription:'대리석 계단과 금색 유리문이 바로크 양식을 재현한 영등포호빠 궁전은 파티를 즐기는 이들 사이에서 진짜 궁전이라는 별명이 붙은 영등포의 랜드마크.',
- h1Title:'영등포호빠 궁전 — 계단 위에 왕관이 있다'
+ seoDescription:'영등포호빠 비트 — 대리석 계단과 금색 유리문이 바로크 양식을 재현한 영등포호빠 궁전은 파티를 즐기는 이들 사이에서 진짜 궁전이라는 별명이 붙은 영등포의 랜드마크.',
+ h1Title:'영등포호빠 비트 — 계단 위에 왕관이 있다'
  },
 ];
