@@ -695,7 +695,7 @@ function header(current) {
   const navItems = categories.map(c =>
     `<a href="/nolcool/${c.slug}/">${c.icon} ${c.name}</a>`
   ).join('');
-  return `<header class="nc-header"><div class="nc-header-inner"><a href="/nolcool/" class="nc-logo">놀<span>쿨</span> 가이드</a><nav class="nc-nav">${navItems}</nav></div></header>`;
+  return `<header class="nc-header"><div class="nc-header-inner"><a href="/" class="nc-logo">놀<span>쿨</span> 가이드</a><nav class="nc-nav">${navItems}</nav></div></header>`;
 }
 
 function footer() {
@@ -776,7 +776,7 @@ ${header()}
 ${heroImage(venue.heroColor, cat.icon)}
 
 <article class="nc-article">
-<div class="nc-breadcrumb"><a href="/nolcool/">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/">${cat.name}</a> &gt; ${venue.name}</div>
+<div class="nc-breadcrumb"><a href="/">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/">${cat.name}</a> &gt; ${venue.name}</div>
 <span class="nc-category-tag">${cat.icon} ${cat.name}</span>
 <h1>${venue.fullName} 완벽 가이드</h1>
 <p class="nc-date">업데이트 ${today} · ${venue.region}</p>
@@ -852,7 +852,7 @@ function buildCategoryPage(cat) {
 ${header()}
 
 <article class="nc-article" style="padding-top:40px">
-<div class="nc-breadcrumb"><a href="/nolcool/">놀쿨</a> &gt; ${cat.name}</div>
+<div class="nc-breadcrumb"><a href="/">놀쿨</a> &gt; ${cat.name}</div>
 <span class="nc-category-tag">${cat.icon} ${cat.name}</span>
 <h1>${cat.seoTitle}</h1>
 <p class="nc-date">업데이트 ${today}</p>
