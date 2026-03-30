@@ -149,7 +149,7 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title={`${venue.name} — ${venue.h1Title.includes('—') ? venue.h1Title.split('—').slice(1).join('—').trim() : venue.h1Title.replace(venue.name,'').trim()} | ${SITE_NAME}`}
+  title={`${venue.name} — ${venue.h1Title.includes('—') ? venue.h1Title.split('—').slice(1).join('—').trim() : venue.h1Title.replace(venue.name,'').trim()}`}
   description={venue.seoDescription.substring(0, 150)}
   canonical={`${SITE_URL}/venue/${venue.slug}/`}
   ogImage={ogImageUrl}
