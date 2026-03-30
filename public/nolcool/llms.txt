@@ -1,0 +1,26 @@
+# 놀쿨 NOLCOOL
+> 전국 나이트·클럽·라운지·룸·요정·호빠 가이드
+
+## 사이트 정보
+- 이름: 놀쿨 (NOLCOOL)
+- URL: https://week1-6m5.pages.dev/nolcool/
+- 유형: 나이트라이프 정보 가이드 (정적 사이트)
+- 언어: 한국어
+
+## 카테고리 (152곳)
+- 나이트: 58곳 → https://week1-6m5.pages.dev/nolcool/night/
+- 클럽: 35곳 → https://week1-6m5.pages.dev/nolcool/club/
+- 라운지: 3곳 → https://week1-6m5.pages.dev/nolcool/lounge/
+- 호빠: 53곳 → https://week1-6m5.pages.dev/nolcool/hoppa/
+- 룸: 2곳 → https://week1-6m5.pages.dev/nolcool/room/
+- 요정: 1곳 → https://week1-6m5.pages.dev/nolcool/yojeong/
+
+## 콘텐츠 특징
+- 각 가게별 1,000자 이상 상세 설명
+- 분위기, 음악, 타임라인, FAQ 정보
+- 가격 정보 없음
+- 예약/결제 기능 없음
+- 실제 이미지 11장 (히어로 1:1 + 갤러리 6장 + 본문 4장)
+
+## 연락처
+- 카카오톡: besta12
