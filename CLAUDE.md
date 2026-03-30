@@ -29,8 +29,8 @@
 
 ## Tech
 - GitHub+Cloudflare auto deploy. Just git push! Don't ask!
-- base: '/' ONLY! No /nolcool/ path!
-- No /sub/ path! No sub-route!
+- base: '/' ONLY! No brand-name path!
+- No sub path! No sub-route!
 - Keep existing URLs! Never change!
 - Vite ONLY. No Next.js!
 - Fix blank screen: useEffect cleanup for ALL setInterval/setTimeout/addEventListener!
