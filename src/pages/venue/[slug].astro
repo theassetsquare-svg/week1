@@ -511,6 +511,85 @@ const jsonLd = [
   </div>
 </section>
 
+<!-- ═══ "이 글을 본 사람은 이곳도 갔다" — 소셜증거 ═══ -->
+<section class="also-visited">
+  <h2>🔥 이 글을 본 사람이 함께 본 곳</h2>
+  <div class="also-grid">
+    {sameType.slice(0, 4).map((v, i) => (
+      <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="also-card">
+        <div class="also-rank">{i + 1}</div>
+        <div class="also-info">
+          <div class="also-name">{v.name}</div>
+          <div class="also-meta">{v.region} · {v.typeName}</div>
+        </div>
+        <div class="also-arrow">›</div>
+      </a>
+    ))}
+  </div>
+  <p class="scarcity-text" id="scarcityText"></p>
+</section>
+
+<!-- ═══ 인사이더 팁 (70% 스크롤) ═══ -->
+<section class="insider-tip" id="insiderTip" style="display:none;">
+  <div class="insider-badge">💡 인사이더 팁</div>
+  <p class="insider-text" id="insiderText"></p>
+</section>
+
+<!-- ═══ 오늘의 비밀 추천 — Daily Random ═══ -->
+{hiddenGem && (
+  <section class="daily-pick">
+    <div class="daily-header">
+      <span class="daily-badge">🎰 오늘의 비밀 추천</span>
+      <span class="daily-date" id="dailyDate"></span>
+    </div>
+    <a href={`/venue/${hiddenGem.slug}/`} target="_blank" rel="noopener noreferrer" class="daily-card">
+      <div class="daily-name">{hiddenGem.name}</div>
+      <div class="daily-meta">{hiddenGem.region} · {hiddenGem.typeName}</div>
+      <div class="daily-desc">{hiddenGem.shortDesc}</div>
+    </a>
+  </section>
+)}
+
+<!-- ═══ 다음 업소 카운트다운 — 자동 전환 ═══ -->
+{similar[0] && (
+  <section class="next-countdown" id="nextCountdown">
+    <p class="next-label">다음 업소로 자동 이동</p>
+    <div class="next-preview">
+      <div class="next-name">{similar[0].name}</div>
+      <div class="next-meta">{similar[0].region} · {similar[0].typeName}</div>
+    </div>
+    <div class="next-timer-bar">
+      <div class="next-timer-fill" id="nextTimerFill"></div>
+    </div>
+    <div class="next-actions">
+      <button class="btn btn-sm btn-outline" id="nextCancel">취소</button>
+      <a href={`/venue/${similar[0].slug}/`} class="btn btn-sm btn-primary" id="nextGoNow">지금 이동 →</a>
+    </div>
+  </section>
+)}
+
+<!-- ═══ 바텀 시트 모달 — 리뷰 상세 ═══ -->
+<div class="bottom-sheet-overlay" id="bsOverlay"></div>
+<div class="bottom-sheet" id="bottomSheet">
+  <div class="bs-handle"></div>
+  <div class="bs-content" id="bsContent">
+    <h3>방문자 이야기</h3>
+    <div class="bs-reviews">
+      <div class="bs-review"><strong>김**</strong><p>분위기가 정말 좋아요. 다음에 또 올 예정입니다.</p></div>
+      <div class="bs-review"><strong>이**</strong><p>스태프분들이 친절하고, 공간이 넓어서 편했어요.</p></div>
+      <div class="bs-review"><strong>박**</strong><p>음악 선곡이 취향 저격. 친구들도 만족했습니다.</p></div>
+      <div class="bs-review"><strong>최**</strong><p>가격 대비 만족도 높습니다. 재방문 의사 100%.</p></div>
+      <div class="bs-review"><strong>정**</strong><p>주말에는 일찍 가야 자리 있어요. 평일 추천합니다.</p></div>
+    </div>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block mt-md">전체 리뷰 보기 →</a>
+  </div>
+</div>
+
+<!-- ═══ 리뷰 보기 트리거 버튼 ═══ -->
+<div style="text-align:center;padding:16px 0;">
+  <button class="btn btn-outline btn-sm" id="openReviews">💬 방문자 이야기 보기</button>
+</div>
+
 <!-- ═══ STICKY PHONE BAR (JS-rendered) ═══ -->
 <div id="stickyBar"></div>
 
