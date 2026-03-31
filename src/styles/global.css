@@ -511,8 +511,8 @@ main {
 .footer-regions { margin-bottom: 32px; }
 .footer-region-group { margin-bottom: 16px; }
 .footer-region-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.footer-region-links { display: flex; flex-wrap: wrap; gap: 4px 12px; }
-.footer-region-links a { font-size: 13px; color: var(--text-muted); }
+.footer-region-links { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+.footer-region-links a { font-size: 14px; color: var(--text-secondary); min-height: 44px; display: inline-flex; align-items: center; }
 .footer-region-links a:hover { color: var(--accent); }
 .footer-bottom {
   display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center;
