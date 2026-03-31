@@ -204,12 +204,12 @@ p { font-size: 16px; line-height: 1.7; color: var(--text-secondary); }
 .mobile-nav {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 50;
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--border);
   display: flex;
-  height: 64px;
+  height: 56px;
   padding-bottom: env(safe-area-inset-bottom, 0);
   max-width: var(--max-w);
   margin: 0 auto;
@@ -221,9 +221,16 @@ p { font-size: 16px; line-height: 1.7; color: var(--text-secondary); }
   font-size: 10px; font-weight: 600;
   color: var(--text-muted);
   transition: var(--transition);
+  min-height: 48px;
+  min-width: 48px;
 }
 .mobile-nav a.active, .mobile-nav a:hover { color: var(--accent); }
-.mobile-nav .nav-icon { font-size: 22px; }
+.mobile-nav .nav-icon { font-size: 24px; min-width: 48px; min-height: 48px; display: flex; align-items: center; justify-content: center; }
+/* PC: 하단 네비 숨김, 상단 메뉴 사용 */
+@media (min-width: 768px) {
+  .mobile-nav { display: none; }
+  body { padding-bottom: 0; }
+}
 
 /* ─── Main Content ─── */
 main {
