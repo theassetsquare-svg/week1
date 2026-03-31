@@ -447,10 +447,10 @@ const jsonLd = [
   </button>
 </div>
 
-<!-- ═══ RECOMMENDATIONS (SSR) ═══ -->
-<section class="recs-section">
+<!-- ═══ RECOMMENDATIONS — 무한스크롤 ═══ -->
+<section class="recs-section" id="recsSection">
   <h2>비슷한 곳</h2>
-  <div class="recs-grid">
+  <div class="recs-grid" id="recsGrid">
     {similar.map(v => (
       <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="rec-card">
         <div class="rec-name">{v.name}</div>
@@ -482,6 +482,21 @@ const jsonLd = [
       </div>
     </>
   )}
+  <!-- 무한스크롤 추가 로딩 영역 -->
+  <div id="infiniteLoader" class="infinite-loader">
+    <h3 class="tp-sub mt-md">더 많은 추천</h3>
+    <div class="recs-grid" id="infiniteGrid">
+      {sameType.slice(3, 9).map(v => (
+        <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="rec-card">
+          <div class="rec-name">{v.name}</div>
+          <div class="rec-meta">{v.region} · {v.typeName}</div>
+        </a>
+      ))}
+    </div>
+  </div>
+  <div id="loadMoreTrigger" class="load-more-trigger">
+    <span class="spinner"></span> 더 많은 곳을 불러오는 중...
+  </div>
   <h3 class="tp-sub mt-md">커뮤니티</h3>
   <div class="comm-list">
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
