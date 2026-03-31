@@ -459,7 +459,7 @@ main {
 .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
 .btn-outline:hover { background: var(--accent-light); }
 .btn-block { width: 100%; }
-.btn-sm { padding: 8px 16px; font-size: 13px; min-height: 36px; }
+.btn-sm { padding: 10px 16px; font-size: 13px; min-height: 44px; }
 
 /* ─── Blur Lock (Hooking #9) ─── */
 .blur-lock {
