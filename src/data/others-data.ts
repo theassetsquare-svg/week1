@@ -45,8 +45,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['해운대','마린시티','정찰제','비즈니스 접대','픽업'],
  seoTitle:'해운대고구려',
- seoDescription:'신실장 — 60개 룸을 보유한 해운대 고구려는 마린시티 접대 장소로 첫손에 꼽힌다. 그 배경과 정찰제 운영 방식을 낱낱이 풀어놓은 부산 현지 완전 가이드.',
- h1Title:'신실장 — 부산에서 이 규모, 이 시스템은 여기뿐이다'
+ seoDescription:'해운대고구려 — 마린시티 60개 룸, 정찰제, 비즈니스 접대 1순위. 층마다 다른 세계가 열리는 부산 대표 룸살롱 현지 완전 가이드.',
+ h1Title:'해운대고구려 — 부산에서 이 규모, 이 시스템은 여기뿐이다'
  },
  {
  id: 99, slug:'ilsan-myeongwolgwan', name:'일산명월관요정', type:'yojeong', typeName:'요정',
