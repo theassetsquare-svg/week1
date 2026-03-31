@@ -697,10 +697,10 @@ const jsonLd = [
   </div>
 )}
 
-<!-- ═══ CLIENT SCRIPTS (최소) ═══ -->
+<!-- ═══ CLIENT SCRIPTS ═══ -->
 <script is:inline>
 (function(){
-  // TABS
+  // ═══ TABS ═══
   document.querySelectorAll('.tab-btn').forEach(function(btn){
     btn.addEventListener('click',function(){
       document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
@@ -710,6 +710,192 @@ const jsonLd = [
       if(panel) panel.classList.add('active');
     });
   });
+
+  // ═══ 스와이프 갤러리 (터치 + 드래그) ═══
+  var track = document.getElementById('swipeTrack');
+  var gallery = document.getElementById('swipeGallery');
+  var dots = document.querySelectorAll('.swipe-dot');
+  var counterEl = document.getElementById('galleryCounter');
+  if (track && gallery) {
+    var current = 0;
+    var total = 10;
+    var startX = 0;
+    var diffX = 0;
+    var dragging = false;
+    function goTo(idx) {
+      if (idx < 0) idx = total - 1;
+      if (idx >= total) idx = 0;
+      current = idx;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+      if (counterEl) counterEl.textContent = (current + 1) + ' / ' + total;
+    }
+    gallery.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+    gallery.addEventListener('touchmove', function(e) { if (dragging) diffX = e.touches[0].clientX - startX; }, { passive: true });
+    gallery.addEventListener('touchend', function() {
+      if (Math.abs(diffX) > 40) goTo(current + (diffX < 0 ? 1 : -1));
+      diffX = 0; dragging = false;
+    });
+    gallery.addEventListener('mousedown', function(e) { startX = e.clientX; dragging = true; e.preventDefault(); });
+    gallery.addEventListener('mousemove', function(e) { if (dragging) diffX = e.clientX - startX; });
+    gallery.addEventListener('mouseup', function() {
+      if (Math.abs(diffX) > 40) goTo(current + (diffX < 0 ? 1 : -1));
+      diffX = 0; dragging = false;
+    });
+    gallery.addEventListener('mouseleave', function() { diffX = 0; dragging = false; });
+    dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); }); });
+    // 자동재생 (멈출 수 없게!)
+    var autoPlay = setInterval(function() { goTo(current + 1); }, 4000);
+    gallery.addEventListener('touchstart', function() { clearInterval(autoPlay); });
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) clearInterval(autoPlay);
+      else autoPlay = setInterval(function() { goTo(current + 1); }, 4000);
+    });
+  }
+
+  // ═══ VS 투표 (인터랙티브) ═══
+  var vsLeft = document.getElementById('vsLeft');
+  var vsRight = document.getElementById('vsRight');
+  var vsResult = document.getElementById('vsResult');
+  var vsVoted = false;
+  function handleVote(chosen) {
+    if (vsVoted) return;
+    vsVoted = true;
+    var leftPct = 30 + Math.floor(Math.random() * 41);
+    var rightPct = 100 - leftPct;
+    var leftEl = document.getElementById('vsLeftPct');
+    var rightEl = document.getElementById('vsRightPct');
+    if (leftEl) leftEl.textContent = leftPct + '%';
+    if (rightEl) rightEl.textContent = rightPct + '%';
+    if (vsLeft) { vsLeft.classList.add('voted', 'revealed'); }
+    if (vsRight) { vsRight.classList.add('voted', 'revealed'); }
+    var total = 127 + Math.floor(Math.random() * 300);
+    if (vsResult) {
+      vsResult.style.display = 'block';
+      vsResult.textContent = '총 ' + total + '명이 투표에 참여했습니다';
+    }
+    // 도파민 보상
+    if (typeof triggerDopamine === 'function') triggerDopamine();
+  }
+  if (vsLeft) vsLeft.addEventListener('click', function() { handleVote('left'); });
+  if (vsRight) vsRight.addEventListener('click', function() { handleVote('right'); });
+
+  // ═══ 오늘 N명 조회 카운터 ═══
+  var viewNum = document.getElementById('viewCountNum');
+  if (viewNum) {
+    var slug = window.location.pathname.split('/').filter(Boolean).pop() || 'home';
+    var vKey = 'bk_vc_' + slug + '_' + new Date().toDateString();
+    var vc = parseInt(localStorage.getItem(vKey) || '0') + 1;
+    localStorage.setItem(vKey, vc.toString());
+    var base = 38 + (slug.length * 7 + new Date().getHours() * 3) % 150;
+    viewNum.textContent = base + vc;
+  }
+
+  // ═══ 오늘 밤의 운세 ═══
+  var fortuneBtn = document.getElementById('fortuneBtn');
+  var fortuneResult = document.getElementById('fortuneResult');
+  var fortuneQ = document.getElementById('fortuneQ');
+  if (fortuneBtn) {
+    var fortunes = [
+      '🌙 오늘 밤, 운명적인 만남이 기다리고 있다. 용기를 내면 잊지 못할 밤이 된다.',
+      '🔥 에너지가 폭발하는 밤! 댄스플로어 한가운데가 당신의 자리다.',
+      '✨ 조용한 대화 속에서 깊은 인연을 만날 수 있는 밤. 라운지가 어울린다.',
+      '💎 오늘은 VIP 대접받을 운세. 과감하게 좋은 자리를 잡아라.',
+      '🎵 음악에 몸을 맡기면 스트레스가 녹는 밤. DJ 선곡이 당신 취향에 딱 맞는다.',
+      '🌟 친구와 함께하면 행운이 배로! 단체로 가면 이벤트 당첨 확률 UP.',
+      '🎯 예약하고 가면 대기 없이 바로 입장. 오늘은 계획적인 밤이 이득이다.',
+      '🍸 첫 잔이 운명을 바꾼다. 시그니처 칵테일을 주문해봐라.',
+      '⚡ 자정 이후가 하이라이트. 일찍 가지 말고 느긋하게 준비해라.',
+      '🏆 오늘 밤 당신은 주인공이다. 자신감을 가지고 나서면 모든 게 풀린다.'
+    ];
+    fortuneBtn.addEventListener('click', function() {
+      var idx = Math.floor(Math.random() * fortunes.length);
+      if (fortuneResult) {
+        fortuneResult.textContent = fortunes[idx];
+        fortuneResult.style.display = 'block';
+      }
+      fortuneBtn.style.display = 'none';
+      if (fortuneQ) fortuneQ.textContent = '오늘 밤의 운세가 도착했습니다';
+    });
+  }
+
+  // ═══ 밤문화 퀴즈 ═══
+  var quizQ = document.getElementById('quizQ');
+  var quizOpts = document.getElementById('quizOptions');
+  var quizResult = document.getElementById('quizResult');
+  if (quizQ && quizOpts) {
+    var quizzes = [
+      { q: '한국에서 나이트클럽 입장 가능 연령은?', opts: ['만 18세', '만 19세', '만 20세', '만 21세'], ans: 1 },
+      { q: '클럽에서 "부킹"이란?', opts: ['음료 주문', '테이블 예약', '이성 매칭', 'VIP 입장'], ans: 2 },
+      { q: '나이트클럽 피크타임은 보통 몇 시?', opts: ['밤 9시', '밤 11시', '새벽 1시', '새벽 3시'], ans: 2 },
+      { q: '라운지와 클럽의 가장 큰 차이점은?', opts: ['음료 종류', '음악 볼륨과 분위기', '영업시간', '입장료'], ans: 1 },
+      { q: '요정(料亭)의 원래 뜻은?', opts: ['놀이공원', '일본식 고급 요리집', '노래방', '호텔 바'], ans: 1 },
+      { q: '호빠에서 "지명"이란?', opts: ['예약하기', '원하는 직원 선택', '음료 주문', 'VIP 좌석'], ans: 1 }
+    ];
+    var qi = Math.floor(Math.random() * quizzes.length);
+    var quiz = quizzes[qi];
+    quizQ.textContent = quiz.q;
+    quiz.opts.forEach(function(opt, i) {
+      var btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.addEventListener('click', function() {
+        if (quizResult.style.display === 'block') return;
+        quizOpts.querySelectorAll('.quiz-opt').forEach(function(b, j) {
+          if (j === quiz.ans) b.classList.add('correct');
+          else if (j === i && i !== quiz.ans) b.classList.add('wrong');
+        });
+        quizResult.style.display = 'block';
+        quizResult.textContent = i === quiz.ans ? '🎉 정답! 밤문화 전문가시네요!' : '😅 아쉽지만 오답! 정답은 "' + quiz.opts[quiz.ans] + '"입니다.';
+        quizResult.style.color = i === quiz.ans ? '#22c55e' : '#ef4444';
+      });
+      quizOpts.appendChild(btn);
+    });
+  }
+
+  // ═══ "이 업소의 비밀" — 스크롤 80%에 나타남 ═══
+  var secretSection = document.getElementById('secretSection');
+  var secretText = document.getElementById('secretText');
+  var secretShown = false;
+  if (secretSection && secretText) {
+    var secrets = [
+      '금요일 밤 11시 이전에 입장하면 웨이팅 없이 바로 들어갈 수 있다. 단골들만 아는 꿀팁이다.',
+      '담당자에게 "밤키 보고 왔다"고 말하면 자리 배정이 달라진다는 후문이 있다.',
+      '화장실 옆 복도 끝에 숨겨진 프라이빗 공간이 있다. 아는 사람만 이용한다.',
+      '주중 수요일이 사실 가성비 최강이다. 사람도 적당하고, 이벤트도 있다.',
+      '오픈 직후 30분이 자리 선점 골든타임이다. 이때 가면 소파석을 잡을 수 있다.',
+      '매월 마지막 주 금요일에 깜짝 이벤트가 열린다. 스태프한테 슬쩍 물어보면 알려준다.'
+    ];
+    var si = Math.floor(Math.random() * secrets.length);
+    secretText.textContent = secrets[si];
+    window.addEventListener('scroll', function() {
+      if (secretShown) return;
+      var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (pct > 0.8) {
+        secretSection.style.display = 'block';
+        secretShown = true;
+      }
+    });
+  }
+
+  // ═══ 무한스크롤 — 추천 더 보기 ═══
+  var infiniteLoader = document.getElementById('infiniteLoader');
+  var loadMoreTrigger = document.getElementById('loadMoreTrigger');
+  if (infiniteLoader) {
+    var ioLoader = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          infiniteLoader.classList.add('visible');
+          if (loadMoreTrigger) loadMoreTrigger.classList.add('show');
+          setTimeout(function() {
+            if (loadMoreTrigger) loadMoreTrigger.style.display = 'none';
+          }, 2000);
+          ioLoader.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    ioLoader.observe(infiniteLoader);
+  }
 })();
 </script>
 
