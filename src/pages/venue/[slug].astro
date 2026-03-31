@@ -242,16 +242,25 @@ const jsonLd = [
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">후기 작성하기 →</a>
 </div>
 
-<!-- ═══ TAB 5: GALLERY ═══ -->
+<!-- ═══ TAB 5: GALLERY — 스와이프 갤러리 10장 ═══ -->
 <div class="tab-panel" id="tab-gallery">
   <h2 class="tp-title">사진</h2>
-  <div class="gallery-grid">
-    {[1,2,3,4,5,6].map(i => (
-      <div class={`gallery-item gi-${((venue.id+i)%6)+1}`}>
-        <span class="gi-label">{venue.region} #{i}</span>
-      </div>
+  <p class="tp-note" id="galleryCounter">1 / 10</p>
+  <div class="swipe-gallery" id="swipeGallery">
+    <div class="swipe-track" id="swipeTrack">
+      {[1,2,3,4,5,6,7,8,9,10].map(i => (
+        <div class={`swipe-slide sg-${((venue.id+i)%10)+1}`}>
+          <span class="sg-label">{venue.name} — {venue.region} #{i}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="swipe-dots" id="swipeDots">
+    {[1,2,3,4,5,6,7,8,9,10].map((_, i) => (
+      <span class={`swipe-dot${i === 0 ? ' active' : ''}`} data-idx={i}></span>
     ))}
   </div>
+  <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:8px;">← 좌우로 스와이프하세요 →</p>
 </div>
 
 <!-- ═══ TAB 6: EVENTS ═══ -->
