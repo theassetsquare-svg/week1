@@ -251,6 +251,7 @@ const jsonLd = { "@context": "https://schema.org", "@type": "WebSite", "name": S
 
 <script is:inline define:vars={{ allMini: JSON.stringify(allMini) }}>
 (function() {
+try {
   var venues = JSON.parse(allMini);
   var totalVenues = venues.length;
 
