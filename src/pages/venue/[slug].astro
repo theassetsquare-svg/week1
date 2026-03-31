@@ -350,6 +350,39 @@ const jsonLd = [
   </div>
 </div>
 
+<!-- ═══ 오늘 N명 조회 카운터 ═══ -->
+<div class="view-counter" id="viewCounter">
+  <span id="viewCountIcon">👁</span> 오늘 <strong id="viewCountNum">0</strong>명이 이 업소를 봤습니다
+</div>
+
+<!-- ═══ 오늘의 운세 / 미니 퀴즈 ═══ -->
+<section class="fortune-section" id="fortuneSection">
+  <h2>🔮 오늘 밤의 운세</h2>
+  <div class="fortune-card" id="fortuneCard">
+    <p class="fortune-q" id="fortuneQ">당신의 오늘 밤 운세를 확인하세요</p>
+    <button class="btn btn-primary btn-sm" id="fortuneBtn">운세 뽑기</button>
+    <div class="fortune-result" id="fortuneResult" style="display:none;"></div>
+  </div>
+</section>
+
+<!-- ═══ 미니 퀴즈 ═══ -->
+<section class="quiz-section" id="quizSection">
+  <h2>🧠 밤문화 퀴즈</h2>
+  <div class="quiz-card" id="quizCard">
+    <p class="quiz-q" id="quizQ"></p>
+    <div class="quiz-options" id="quizOptions"></div>
+    <p class="quiz-result" id="quizResult" style="display:none;"></p>
+  </div>
+</section>
+
+<!-- ═══ 이 업소의 비밀 (스크롤 80%) ═══ -->
+<section class="secret-section" id="secretSection" style="display:none;">
+  <div class="secret-header">🤫 이 업소의 비밀</div>
+  <div class="secret-body">
+    <p class="secret-text" id="secretText"></p>
+  </div>
+</section>
+
 <!-- ═══ HOOKING: 중간 끊기 (#2) ═══ -->
 <div class="cta-section" style="margin:24px 0;">
   <h3>전체 리뷰 93개 + 실시간 순위</h3>
