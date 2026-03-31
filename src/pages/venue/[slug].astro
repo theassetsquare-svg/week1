@@ -698,6 +698,61 @@ const jsonLd = [
 .secret-text{font-size:14px;line-height:1.8;color:rgba(255,255,255,.9)}
 @keyframes secretFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
+/* Also Visited */
+.also-visited{padding:24px 0;border-top:1px solid var(--border-light)}
+.also-visited h2{font-size:18px;margin-bottom:16px}
+.also-grid{display:flex;flex-direction:column;gap:8px}
+.also-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s}
+.also-card:hover{border-color:var(--accent);transform:translateX(4px)}
+.also-rank{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.also-info{flex:1}
+.also-name{font-weight:700;font-size:15px}
+.also-meta{font-size:12px;color:var(--text-muted);margin-top:2px}
+.also-arrow{font-size:20px;color:var(--text-muted)}
+.scarcity-text{text-align:center;font-size:13px;color:var(--accent);font-weight:600;margin-top:12px}
+
+/* Insider Tip */
+.insider-tip{margin:24px 0;padding:20px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:16px;border:1px solid #f59e0b;animation:secretFadeIn .5s ease}
+.insider-badge{display:inline-block;padding:4px 12px;border-radius:20px;background:#f59e0b;color:#fff;font-size:12px;font-weight:700;margin-bottom:10px}
+.insider-text{font-size:14px;line-height:1.7;color:#78350f}
+
+/* Daily Pick */
+.daily-pick{padding:24px 0;border-top:1px solid var(--border-light)}
+.daily-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.daily-badge{font-size:15px;font-weight:700}
+.daily-date{font-size:12px;color:var(--text-muted)}
+.daily-card{display:block;padding:20px;background:linear-gradient(135deg,#312e81,#6366f1);border-radius:16px;color:#fff;text-decoration:none;transition:transform .2s}
+.daily-card:hover{transform:translateY(-3px)}
+.daily-name{font-size:18px;font-weight:800;margin-bottom:4px}
+.daily-meta{font-size:12px;opacity:.7;margin-bottom:8px}
+.daily-desc{font-size:14px;line-height:1.6;opacity:.9}
+
+/* Next Countdown */
+.next-countdown{padding:24px 0;border-top:1px solid var(--border-light);text-align:center}
+.next-label{font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.next-preview{padding:16px;background:var(--bg-secondary);border-radius:12px;margin-bottom:12px}
+.next-name{font-size:16px;font-weight:700}
+.next-meta{font-size:12px;color:var(--text-muted);margin-top:4px}
+.next-timer-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:12px}
+.next-timer-fill{height:100%;background:var(--accent);border-radius:2px;width:0;transition:width .1s linear}
+.next-actions{display:flex;gap:8px;justify-content:center}
+
+/* Bottom Sheet */
+.bottom-sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+.bottom-sheet-overlay.show{opacity:1;pointer-events:auto}
+.bottom-sheet{position:fixed;bottom:0;left:0;right:0;max-width:var(--max-w);margin:0 auto;background:#fff;border-radius:20px 20px 0 0;z-index:201;transform:translateY(100%);transition:transform .3s ease;max-height:70vh;overflow-y:auto;padding:16px 20px 32px}
+.bottom-sheet.show{transform:translateY(0)}
+.bs-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+.bs-content h3{font-size:18px;margin-bottom:16px}
+.bs-reviews{display:flex;flex-direction:column;gap:12px}
+.bs-review{padding:14px;background:var(--bg-secondary);border-radius:12px}
+.bs-review strong{font-size:14px;color:var(--accent);display:block;margin-bottom:4px}
+.bs-review p{font-size:14px;line-height:1.6;color:var(--text-secondary);margin:0}
+
+/* Pull to Refresh */
+.pull-indicator{text-align:center;padding:0;height:0;overflow:hidden;transition:height .2s;font-size:13px;color:var(--accent);font-weight:600}
+.pull-indicator.show{height:40px;padding:10px 0}
+
 /* Infinite Scroll */
 .infinite-loader{opacity:0;transform:translateY(30px);transition:all .5s ease}
 .infinite-loader.visible{opacity:1;transform:translateY(0)}
