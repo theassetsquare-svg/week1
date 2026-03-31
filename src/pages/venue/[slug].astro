@@ -1033,9 +1033,111 @@ try {
     ioLoader.observe(infiniteLoader);
   }
 
-  // ═══ 타이머 클린업 — 페이지 떠날 때 갤러리 autoPlay 정리 ═══
+  // ═══ 희소성 텍스트 — "단 N명만 봤습니다" ═══
+  var scarcityEl = document.getElementById('scarcityText');
+  if (scarcityEl) {
+    var n = 3 + Math.floor(Math.random() * 8);
+    scarcityEl.textContent = '🔒 이 비교를 본 사람은 오늘 단 ' + n + '명뿐입니다';
+  }
+
+  // ═══ 인사이더 팁 — 70% 스크롤 ═══
+  var insiderTip = document.getElementById('insiderTip');
+  var insiderText = document.getElementById('insiderText');
+  var insiderShown = false;
+  if (insiderTip && insiderText) {
+    var tips = [
+      '담당자한테 "인터넷 보고 왔다"고 말하면 첫 방문 혜택을 받을 수 있어요.',
+      '주중 수요일이 사실 가성비 최고예요. 사람도 적당하고 서비스도 더 세심합니다.',
+      '오픈 직후 30분이 자리 선점 골든타임. 이때 가면 원하는 자리를 잡을 수 있어요.',
+      '화장실 위치는 미리 파악해두세요. 피크타임에 찾아 헤매면 시간만 날립니다.',
+      '2차로 넘어갈 계획이면 미리 대리운전 앱 예약을 걸어두는 게 현명해요.'
+    ];
+    insiderText.textContent = tips[Math.floor(Math.random() * tips.length)];
+    window.addEventListener('scroll', function() {
+      if (insiderShown) return;
+      var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (pct > 0.7) { insiderTip.style.display = 'block'; insiderShown = true; }
+    });
+  }
+
+  // ═══ 오늘 날짜 표시 ═══
+  var dailyDate = document.getElementById('dailyDate');
+  if (dailyDate) {
+    var d = new Date();
+    dailyDate.textContent = (d.getMonth()+1) + '/' + d.getDate() + ' 추천';
+  }
+
+  // ═══ 다음 업소 카운트다운 — 10초 후 자동 이동 ═══
+  var nextCountdown = document.getElementById('nextCountdown');
+  var nextTimerFill = document.getElementById('nextTimerFill');
+  var nextCancel = document.getElementById('nextCancel');
+  var nextGoNow = document.getElementById('nextGoNow');
+  if (nextCountdown && nextTimerFill) {
+    var countdownActive = false;
+    var countdownTimer = null;
+    var countdownStart = 0;
+    var COUNTDOWN_SEC = 10;
+    var nextIO = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !countdownActive) {
+          countdownActive = true;
+          countdownStart = Date.now();
+          countdownTimer = setInterval(function() {
+            var elapsed = (Date.now() - countdownStart) / 1000;
+            var pct = Math.min(100, (elapsed / COUNTDOWN_SEC) * 100);
+            nextTimerFill.style.width = pct + '%';
+            if (elapsed >= COUNTDOWN_SEC && nextGoNow) {
+              clearInterval(countdownTimer);
+              nextGoNow.click();
+            }
+          }, 100);
+        }
+      });
+    }, { threshold: 0.5 });
+    nextIO.observe(nextCountdown);
+    if (nextCancel) nextCancel.addEventListener('click', function() {
+      clearInterval(countdownTimer);
+      countdownActive = false;
+      nextTimerFill.style.width = '0%';
+      nextCountdown.style.display = 'none';
+    });
+  }
+
+  // ═══ 바텀 시트 모달 ═══
+  var bsOverlay = document.getElementById('bsOverlay');
+  var bottomSheet = document.getElementById('bottomSheet');
+  var openReviews = document.getElementById('openReviews');
+  function openBS() {
+    if (bottomSheet) bottomSheet.classList.add('show');
+    if (bsOverlay) bsOverlay.classList.add('show');
+    if (navigator.vibrate) navigator.vibrate(10);
+  }
+  function closeBS() {
+    if (bottomSheet) bottomSheet.classList.remove('show');
+    if (bsOverlay) bsOverlay.classList.remove('show');
+  }
+  if (openReviews) openReviews.addEventListener('click', openBS);
+  if (bsOverlay) bsOverlay.addEventListener('click', closeBS);
+  // 스와이프 다운으로 닫기
+  if (bottomSheet) {
+    var bsStartY = 0;
+    bottomSheet.addEventListener('touchstart', function(e) { bsStartY = e.touches[0].clientY; }, { passive: true });
+    bottomSheet.addEventListener('touchend', function(e) {
+      if (e.changedTouches[0].clientY - bsStartY > 80) closeBS();
+    });
+  }
+
+  // ═══ 햅틱 피드백 — 버튼/카드 클릭 시 ═══
+  document.querySelectorAll('.btn, .tab-btn, .vs-card, .quiz-opt, .also-card, .rec-card').forEach(function(el) {
+    el.addEventListener('click', function() {
+      if (navigator.vibrate) navigator.vibrate(5);
+    });
+  });
+
+  // ═══ 타이머 클린업 ═══
   window.addEventListener('beforeunload', function() {
     if (typeof autoPlay !== 'undefined') { try { clearInterval(autoPlay); } catch(e) {} }
+    if (typeof countdownTimer !== 'undefined') { try { clearInterval(countdownTimer); } catch(e) {} }
   });
 
 } catch(e) {
