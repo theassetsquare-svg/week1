@@ -282,13 +282,55 @@ const currentYear = new Date().getFullYear();
 
   <script is:inline>
     (function() {
+      // ═══ 글로벌 에러 핸들러 — 빈 화면 방지! ═══
+      window.onerror = function(msg, src, line) {
+        try {
+          console.warn('[NOLCOOL] Error caught:', msg, src, line);
+          var main = document.querySelector('main');
+          if (main && main.innerHTML.trim() === '') {
+            main.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2>일시적 오류가 발생했습니다</h2><p style="margin:16px 0;">페이지를 새로고침해 주세요.</p><button onclick="location.reload()" style="padding:12px 24px;background:#8B5CF6;color:#fff;border:none;border-radius:12px;font-size:16px;cursor:pointer;min-height:44px;">다시 시도</button></div>';
+          }
+        } catch(e) {}
+        return true;
+      };
+      window.addEventListener('unhandledrejection', function(e) {
+        console.warn('[NOLCOOL] Unhandled rejection:', e.reason);
+        e.preventDefault();
+      });
+
+      // ═══ 타이머 레지스트리 — 모든 setInterval/setTimeout 추적 + 정리 ═══
+      var _timers = { intervals: [], timeouts: [] };
+      function safeInterval(fn, ms) {
+        try { var id = setInterval(fn, ms); _timers.intervals.push(id); return id; } catch(e) { return 0; }
+      }
+      function safeTimeout(fn, ms) {
+        try { var id = setTimeout(fn, ms); _timers.timeouts.push(id); return id; } catch(e) { return 0; }
+      }
+      function cleanupAllTimers() {
+        _timers.intervals.forEach(function(id) { try { clearInterval(id); } catch(e) {} });
+        _timers.timeouts.forEach(function(id) { try { clearTimeout(id); } catch(e) {} });
+        _timers.intervals = [];
+        _timers.timeouts = [];
+      }
+      // 페이지 떠날 때 모든 타이머 정리
+      window.addEventListener('beforeunload', cleanupAllTimers);
+      // 탭 숨김 시 인터벌 일시정지
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          _timers.intervals.forEach(function(id) { try { clearInterval(id); } catch(e) {} });
+          _timers.intervals = [];
+        }
+      });
+
+    try { // ═══ 메인 스크립트 try-catch 시작 ═══
+
       // ═══ MENU ═══
       var btn = document.getElementById('menuBtn');
       var overlay = document.getElementById('navOverlay');
       var nav = document.getElementById('siteNav');
       var close = document.getElementById('navClose');
-      function open() { nav.classList.add('open'); overlay.classList.add('open'); }
-      function shut() { nav.classList.remove('open'); overlay.classList.remove('open'); }
+      function open() { if(nav) nav.classList.add('open'); if(overlay) overlay.classList.add('open'); }
+      function shut() { if(nav) nav.classList.remove('open'); if(overlay) overlay.classList.remove('open'); }
       if (btn) btn.addEventListener('click', open);
       if (overlay) overlay.addEventListener('click', shut);
       if (close) close.addEventListener('click', shut);
