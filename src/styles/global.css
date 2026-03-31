@@ -596,7 +596,7 @@ main {
 
 /* ─── Scroll 80% Banner (Hooking #7) ─── */
 .scroll-banner {
-  position: fixed; bottom: 64px; left: 0; right: 0;
+  position: fixed; bottom: 56px; left: 0; right: 0;
   max-width: var(--max-w); margin: 0 auto;
   padding: 14px 20px;
   background: #fff; border: 1px solid var(--accent2);
