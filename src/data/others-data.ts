@@ -115,8 +115,8 @@ export const otherVenues: Venue[] = [
  ],
  tags: ['부산','로컬 칵테일','스포츠 중계','항구 에너지'],
  seoTitle:'부산호빠 스타',
- seoDescription:'신실장 — 별빛 조명 아래 항구 풍경이 펼쳐지는 부산호빠 스타는 착한 가격에 감성까지 잡았다. 부산 밤문화 입문 코스로 급부상 중인 이곳의 전체 면모를 담았다.',
- h1Title:'신실장 — 부산의 밤하늘에 별 하나'
+ seoDescription:'부산호빠 스타 — 별빛 조명 아래 항구 풍경이 펼쳐지고 착한 가격에 감성까지 잡았다. 부산 밤문화 입문 코스로 급부상 중인 이곳의 면모.',
+ h1Title:'부산호빠 스타 — 부산의 밤하늘에 별 하나'
  },
  {
  id: 102, slug:'jangandong-hoppa-bbangbbang', name:'장안동호빠 빵빵', type:'hoppa', typeName:'호빠',
