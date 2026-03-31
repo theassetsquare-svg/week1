@@ -1003,6 +1003,14 @@ const currentYear = new Date().getFullYear();
         });
       }
 
+    } catch(e) {
+      // ═══ 메인 스크립트 에러 시 빈 화면 방지 ═══
+      console.warn('[NOLCOOL] Script error caught:', e);
+      var main = document.querySelector('main');
+      if (main && main.innerHTML.trim() === '') {
+        main.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2>일시적 오류가 발생했습니다</h2><p style="margin:16px 0;">페이지를 새로고침해 주세요.</p><button onclick="location.reload()" style="padding:12px 24px;background:#8B5CF6;color:#fff;border:none;border-radius:12px;font-size:16px;cursor:pointer;min-height:44px;">다시 시도</button></div>';
+      }
+    }
     })();
   </script>
 </body>
