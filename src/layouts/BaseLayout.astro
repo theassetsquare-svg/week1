@@ -298,27 +298,46 @@ const currentYear = new Date().getFullYear();
         e.preventDefault();
       });
 
-      // ═══ 타이머 레지스트리 — 모든 setInterval/setTimeout 추적 + 정리 ═══
-      var _timers = { intervals: [], timeouts: [] };
-      function safeInterval(fn, ms) {
-        try { var id = setInterval(fn, ms); _timers.intervals.push(id); return id; } catch(e) { return 0; }
-      }
-      function safeTimeout(fn, ms) {
-        try { var id = setTimeout(fn, ms); _timers.timeouts.push(id); return id; } catch(e) { return 0; }
-      }
+      // ═══ 타이머 레지스트리 — 모든 setInterval/setTimeout 자동 추적 + 정리 ═══
+      var _intervals = [];
+      var _timeouts = [];
+      var _origSetInterval = window.setInterval.bind(window);
+      var _origSetTimeout = window.setTimeout.bind(window);
+      var _origClearInterval = window.clearInterval.bind(window);
+      var _origClearTimeout = window.clearTimeout.bind(window);
+
+      // setInterval/setTimeout 오버라이드 — 자동 등록 + try-catch
+      setInterval = function(fn, ms) {
+        var wrapped = function() { try { fn(); } catch(e) { console.warn('[NOLCOOL] Timer error:', e); } };
+        var id = _origSetInterval(wrapped, ms);
+        _intervals.push(id);
+        return id;
+      };
+      setTimeout = function(fn, ms) {
+        var wrapped = function() { try { fn(); } catch(e) { console.warn('[NOLCOOL] Timer error:', e); } };
+        var id = _origSetTimeout(wrapped, ms);
+        _timeouts.push(id);
+        return id;
+      };
+
       function cleanupAllTimers() {
-        _timers.intervals.forEach(function(id) { try { clearInterval(id); } catch(e) {} });
-        _timers.timeouts.forEach(function(id) { try { clearTimeout(id); } catch(e) {} });
-        _timers.intervals = [];
-        _timers.timeouts = [];
+        _intervals.forEach(function(id) { try { _origClearInterval(id); } catch(e) {} });
+        _timeouts.forEach(function(id) { try { _origClearTimeout(id); } catch(e) {} });
+        _intervals = [];
+        _timeouts = [];
       }
       // 페이지 떠날 때 모든 타이머 정리
-      window.addEventListener('beforeunload', cleanupAllTimers);
-      // 탭 숨김 시 인터벌 일시정지
+      window.addEventListener('beforeunload', function() {
+        cleanupAllTimers();
+        // setInterval/setTimeout 원복
+        setInterval = _origSetInterval;
+        setTimeout = _origSetTimeout;
+      });
+      // 탭 숨김 시 인터벌 전부 정리 (메모리 누수 방지)
       document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-          _timers.intervals.forEach(function(id) { try { clearInterval(id); } catch(e) {} });
-          _timers.intervals = [];
+          _intervals.forEach(function(id) { try { _origClearInterval(id); } catch(e) {} });
+          _intervals = [];
         }
       });
 
