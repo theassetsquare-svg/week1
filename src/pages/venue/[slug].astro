@@ -898,6 +898,15 @@ try {
     }, { threshold: 0.1 });
     ioLoader.observe(infiniteLoader);
   }
+
+  // ═══ 타이머 클린업 — 페이지 떠날 때 갤러리 autoPlay 정리 ═══
+  window.addEventListener('beforeunload', function() {
+    if (typeof autoPlay !== 'undefined') { try { clearInterval(autoPlay); } catch(e) {} }
+  });
+
+} catch(e) {
+  console.warn('[NOLCOOL] Venue script error:', e);
+}
 })();
 </script>
 
