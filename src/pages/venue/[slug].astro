@@ -309,11 +309,26 @@ const jsonLd = [
   </div>
 </div>
 
-<!-- ═══ TAB 9: VS VOTING ═══ -->
+<!-- ═══ TAB 9: VS VOTING — 인터랙티브 ═══ -->
 <div class="tab-panel" id="tab-vs">
   <h2 class="tp-title">VS 투표</h2>
-  <p class="tp-note">어느 쪽이 더 핫할까? 투표하고 결과를 확인하세요!</p>
-  <div id="vsArena" class="vs-arena"></div>
+  <p class="tp-note">어느 쪽이 더 핫할까? 클릭해서 투표하세요!</p>
+  <div class="vs-arena" id="vsArena">
+    <div class="vs-card" id="vsLeft" data-slug={venue.slug}>
+      <div class="vs-nm">{venue.name}</div>
+      <div class="vs-mt">{venue.region} · {venue.typeName}</div>
+      <div class="vs-pct" id="vsLeftPct">??%</div>
+    </div>
+    <div class="vs-badge">VS</div>
+    {vsOpponent && (
+      <div class="vs-card" id="vsRight" data-slug={vsOpponent.slug}>
+        <div class="vs-nm">{vsOpponent.name}</div>
+        <div class="vs-mt">{vsOpponent.region} · {vsOpponent.typeName}</div>
+        <div class="vs-pct" id="vsRightPct">??%</div>
+      </div>
+    )}
+  </div>
+  <p class="tp-note" id="vsResult" style="text-align:center;margin-top:12px;display:none;"></p>
 </div>
 
 <!-- ═══ TAB 10: POPULAR TIMES ═══ -->
