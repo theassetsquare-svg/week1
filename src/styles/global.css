@@ -657,7 +657,7 @@ main {
 
 /* ─── KakaoTalk Float ─── */
 .kakao-float {
-  position: fixed; bottom: 80px; left: 16px;
+  position: fixed; bottom: 72px; left: 16px;
   width: 52px; height: 52px; border-radius: 50%;
   background: #FEE500;
   display: flex; align-items: center; justify-content: center;
@@ -665,6 +665,12 @@ main {
   z-index: 95; transition: transform 0.2s;
 }
 .kakao-float:hover { transform: scale(1.1); }
+/* PC: 플로팅 버튼 위치 */
+@media (min-width: 768px) {
+  .back-to-top { bottom: 24px; right: 24px; }
+  .kakao-float { bottom: 24px; left: 24px; }
+  .toast { bottom: 24px; }
+}
 
 /* ─── Listing Page ─── */
 .listing-header { text-align: center; padding: 32px 0 24px; }
