@@ -394,9 +394,9 @@ document.querySelectorAll('.qz button').forEach(function(b){b.onclick=function()
 </script>`;
 
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function hdr(){const n=CATS.map(c=>`<a href="/nolcool/${c.slug}/">${c.icon} ${c.name}</a>`).join('');return `<div class="sb" id="sb"></div><header class="hd"><div class="hi"><a href="/" class="lo">놀<span>쿨</span></a><nav class="nv">${n}</nav></div></header>`;}
+function hdr(){const n=CATS.map(c=>`<a href="/nolcool/${c.slug}/" target="_blank" rel="noopener noreferrer">${c.icon} ${c.name}</a>`).join('');return `<div class="sb" id="sb"></div><header class="hd"><div class="hi"><a href="/" target="_blank" rel="noopener noreferrer" class="lo">놀<span>쿨</span></a><nav class="nv">${n}</nav></div></header>`;}
 function ftr(){return `<footer class="ft"><p>카카오톡: <span class="kk">besta12</span></p><p class="sm">구글·AI에서 놀쿨을 검색하세요</p><p style="margin-top:5px">&copy; 2025 놀쿨</p></footer>`;}
-function bbar(cat){return `<nav class="bb">${CATS.slice(0,5).map(c=>`<a href="/nolcool/${c.slug}/"${c.type===cat?.type?' class="on"':''}><span class="bi">${c.icon}</span>${c.name}</a>`).join('')}</nav>`;}
+function bbar(cat){return `<nav class="bb">${CATS.slice(0,5).map(c=>`<a href="/nolcool/${c.slug}/" target="_blank" rel="noopener noreferrer"${c.type===cat?.type?' class="on"':''}><span class="bi">${c.icon}</span>${c.name}</a>`).join('')}</nav>`;}
 
 // ─── 가게 상세 페이지 ───────────────────────────────
 function venuePage(v,cat,same,idx){
