@@ -70,7 +70,7 @@ const jsonLd = {
     <div class="fv-a"><p>전통 연회 특성상 최소 4인 이상 예약을 기본으로 합니다. 소규모 방부터 30인 이상 대연회장까지 인원에 맞게 배정됩니다.</p></div>
   </div>
   <div class="fv-item">
-    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약은 언제까지 해야 해?<span class="fv-arrow">▼</span></div>
     <div class="fv-a"><p>반드시 사전 예약이 필요합니다. 코스 구성·인원·공연 유무를 미리 결정해야 하므로, 최소 3일 전에는 전화 상담을 권장합니다. 주말과 명절 시즌은 2주 전 예약이 안전합니다.</p></div>
   </div>
 </div>
@@ -81,7 +81,7 @@ const jsonLd = {
 
 <!-- 인기 시간대 -->
 <div class="pop-times">
-  <h2 class="pop-times-title">요정 인기 요일 · 시간대</h2>
+  <h2 class="pop-times-title">요정 방문 많은 요일과 시간</h2>
   <div class="pop-chart">
     {['월','화','수','목','금','토','일'].map((d, i) => {
       const pct = [30,70,50,85,100,45,15][i];
@@ -98,7 +98,7 @@ const jsonLd = {
 
 <!-- 매거진 -->
 <div class="cat-mag">
-  <h2 class="cat-mag-title">요정 관련 매거진</h2>
+  <h2 class="cat-mag-title">요정 관련 이야기</h2>
   <div class="cat-mag-grid">
     <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#4a1942,#be185d)">
       <div class="cat-mag-cat">한정식</div>
