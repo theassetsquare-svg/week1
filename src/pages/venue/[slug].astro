@@ -141,7 +141,7 @@ const gradMap: Record<string,string> = {
 const heroGrad = gradMap[venue.type] || gradMap.night;
 
 // OG image
-const ogImageUrl = `${SITE_URL}/og/${venue.slug}.svg`;
+const ogImageUrl = `${SITE_URL}/og/${venue.slug}.png`;
 
 // JSON-LD (LocalBusiness + FAQPage + BreadcrumbList + AggregateRating)
 const jsonLd = [
@@ -182,7 +182,7 @@ const jsonLd = [
   <h1>{venue.name}</h1>
   {venue.nickname && <p class="vh-nick">담당: {venue.nickname}</p>}
   {venue.phone && <p style="font-size:14px;color:rgba(255,255,255,0.9);margin-top:4px;">{venue.phone}</p>}
-  <img src={`/og/${venue.slug}.svg`} alt={`${venue.name} ${venue.typeName} ${venue.region}`} width="1200" height="630" loading="lazy" class="vh-img" />
+  <img src={`/og/${venue.slug}.png`} alt={`${venue.name} ${venue.typeName} ${venue.region}`} width="1200" height="630" loading="lazy" class="vh-img" />
 </section>
 
 <!-- ═══ TAB NAVIGATION ═══ -->
@@ -204,7 +204,7 @@ const jsonLd = [
   <h2 class="tp-title">{venue.name} 기본 정보</h2>
   <p class="tp-desc">{venue.description.substring(0, 50).includes(venue.name) ? venue.description : venue.name + '. ' + venue.description}</p>
 
-  <img src={`/og/${venue.slug}.svg`} alt={`${venue.name} 내부 분위기`} width="1200" height="630" loading="lazy" class="tp-img" />
+  <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 내부 분위기`} width="1200" height="630" loading="lazy" class="tp-img" />
 
   <h3 class="tp-sub">분위기</h3>
   <p class="tp-desc">{venue.atmosphere}</p>
