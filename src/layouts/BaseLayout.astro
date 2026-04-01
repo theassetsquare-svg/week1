@@ -9,9 +9,11 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   jsonLd?: object;
+  phone?: string;
+  nickname?: string;
 }
 
-const { title, description, h1, canonical, ogImage, jsonLd } = Astro.props;
+const { title, description, h1, canonical, ogImage, jsonLd, phone, nickname } = Astro.props;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
 const defaultOgImage = `${SITE_URL}/og-default.svg`;
 const finalOgImage = ogImage || defaultOgImage;
