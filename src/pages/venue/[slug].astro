@@ -186,7 +186,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 1: BASIC INFO ═══ -->
 <div class="tab-panel active" id="tab-info">
-  <h2 class="tp-title">기본 정보</h2>
+  <h2 class="tp-title">{venue.name} 기본 정보</h2>
   <p class="tp-desc">{venue.description.substring(0, 50).includes(venue.name) ? venue.description : venue.name + '. ' + venue.description}</p>
 
   <img src={`/og/${venue.slug}.svg`} alt={`${venue.name} 내부 분위기`} width="1200" height="630" loading="lazy" class="tp-img" />
@@ -229,7 +229,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 3: SERVICES ═══ -->
 <div class="tab-panel" id="tab-svc">
-  <h2 class="tp-title">제공 서비스</h2>
+  <h2 class="tp-title">{venue.name} 서비스</h2>
   <div class="svc-grid">
     {services.map(s => <div class="svc-item"><span class="svc-check">✓</span>{s}</div>)}
   </div>
