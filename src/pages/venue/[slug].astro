@@ -42,10 +42,9 @@ for (let i = 0; i < 5; i++) {
   selectedGenericFaqs.push(faqPool[(startIdx + i * 2) % faqPool.length]);
 }
 const allFaq = [...(venue.faq || [])];
-const rotatedFaqs = [...genericFaqs.slice(venue.id % genericFaqs.length), ...genericFaqs.slice(0, venue.id % genericFaqs.length)];
-for (const gf of rotatedFaqs) {
+for (const gf of selectedGenericFaqs) {
   if (allFaq.length >= 8) break;
-  if (!allFaq.some(f => f.q.includes(gf.q.substring(0, 8)))) allFaq.push(gf);
+  if (!allFaq.some(f => f.q.includes(gf.q.substring(0, 6)))) allFaq.push(gf);
 }
 
 // Services
