@@ -445,7 +445,7 @@ ${v.faq.length?`<script type="application/ld+json">${JSON.stringify({"@context":
 ${hdr()}
 <div class="hero"><div class="ph" style="background:${grads[0]}" role="img" aria-label="${esc(v.name)} 대표 이미지">${cat.icon}</div></div>
 <article class="ar">
-<div class="bc"><a href="/">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/">${cat.name}</a> &gt; ${esc(v.name)}</div>
+<div class="bc"><a href="/" target="_blank" rel="noopener noreferrer">놀쿨</a> &gt; <a href="/nolcool/${cat.slug}/" target="_blank" rel="noopener noreferrer">${cat.name}</a> &gt; ${esc(v.name)}</div>
 <span class="tg">${cat.icon} ${cat.name}</span>
 <h1>${esc(v.name)}</h1>
 <p class="sub">${esc(ht)}</p>
@@ -497,7 +497,7 @@ function catPage(cat,vs){
 <meta property="og:description" content="${esc(sd.substring(0,150))}"><meta property="og:url" content="${SITE}/nolcool/${cat.slug}/">
 <meta property="og:image" content="${SITE}/nolcool/og/${cat.slug}.svg"><meta property="og:site_name" content="놀쿨"><meta property="og:locale" content="ko_KR">
 <style>${CSS}</style></head><body>${hdr()}
-<article class="ar" style="padding-top:32px"><div class="bc"><a href="/">놀쿨</a> &gt; ${cat.name}</div>
+<article class="ar" style="padding-top:32px"><div class="bc"><a href="/" target="_blank" rel="noopener noreferrer">놀쿨</a> &gt; ${cat.name}</div>
 <span class="tg">${cat.icon} ${cat.name}</span><h1>전국 ${cat.name} ${vs.length}곳 가이드</h1><p class="dt">업데이트 ${new Date().toISOString().split('T')[0]}</p>
 <section class="sc"><h2>전체 목록</h2>${vs.map(v=>`<a href="/nolcool/${cat.slug}/${v.slug}/" class="vc" target="_blank" rel="noopener"><div class="vt" style="background:${cat.color}">${cat.icon}</div><div class="vx"><h3>${esc(v.name)}</h3><p class="vl">${esc(v.region)}</p><p>${esc(rewrite(v.shortDesc))}</p></div></a>`).join('')}</section>
 ${ctaBlock(cat.name)}</article>${ftr()}${bbar(cat)}${JS}</body></html>`;
