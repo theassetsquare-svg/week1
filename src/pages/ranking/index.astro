@@ -40,7 +40,7 @@ const types = Object.entries(TYPE_LABELS);
         <span class={`type-badge badge-${v.type}`}>{v.typeName}</span>
       </div>
       <div class="venue-card-name">{v.name}</div>
-      <div class="venue-card-desc">{v.region} · {v.typeName}</div>
+      <div class="venue-card-desc">{v.shortDesc.substring(0, 25)}…</div>
       {v.nickname && <div class="venue-card-contact">{v.nickname}{v.phone ? ` · ${v.phone}` : ''}</div>}
     </a>
   ))}
