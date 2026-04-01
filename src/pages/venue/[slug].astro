@@ -906,6 +906,47 @@ const jsonLd = [
 .sb-nick{font-size:12px;color:rgba(255,255,255,.8)}
 .sb-call{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#22c55e;color:#fff;font-size:22px;text-decoration:none;flex-shrink:0;transition:transform .2s}
 .sb-call:hover{transform:scale(1.1)}
+
+/* Before/After */
+.ba-section{margin:24px 0 0;padding:20px 0;border-top:1px solid var(--border-light)}
+.ba-title{font-size:16px;font-weight:700;margin-bottom:12px;text-align:center;color:var(--text)}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ba-card{padding:16px;border-radius:12px;background:var(--bg-secondary);border:1px solid var(--border)}
+.ba-badge{font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.ba-first{background:#fee2e2;color:#dc2626}
+.ba-regular{background:#dcfce7;color:#16a34a}
+.ba-card ul{list-style:none;padding:0;margin:0}
+.ba-card li{font-size:13px;line-height:1.8;color:var(--text-secondary);padding-left:16px;position:relative}
+.ba-card li::before{content:'·';position:absolute;left:4px;font-weight:900}
+
+/* Review Highlights */
+.rv-highlights{display:flex;flex-direction:column;gap:12px}
+.rv-highlight{padding:16px;background:var(--bg-secondary);border-radius:12px;border-left:3px solid var(--accent)}
+.rv-stars-inline{color:#f59e0b;font-size:14px;margin-bottom:6px}
+.rv-quote{font-size:14px;line-height:1.7;color:var(--text);font-style:italic;margin:0}
+.rv-author-inline{display:block;font-size:12px;color:var(--text-muted);margin-top:8px;text-align:right}
+
+/* VS Compare Table */
+.vs-compare{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.vs-compare th,.vs-compare td{padding:10px 8px;border:1px solid var(--border);text-align:center}
+.vs-compare thead th{background:var(--bg-secondary);font-weight:700;font-size:12px}
+.vs-th-left{color:var(--accent)}
+.vs-th-right{color:var(--accent2,#06B6D4)}
+.vs-label{font-weight:600;color:var(--text-muted);font-size:12px;white-space:nowrap;background:var(--bg-secondary)}
+
+/* Map Travel */
+.map-travel{display:flex;flex-direction:column;gap:8px;margin:16px 0;padding:16px;background:var(--bg-secondary);border-radius:12px}
+.map-travel-item{font-size:14px;line-height:1.6;color:var(--text-secondary)}
+.map-pin{font-size:32px;margin-bottom:4px}
+.map-name{display:block;font-size:16px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.map-addr-short{display:block;font-size:13px;color:rgba(255,255,255,.8);margin-top:2px}
+
+/* Time Attack */
+.time-attack{text-align:center;padding:14px 16px;margin:12px 0;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:12px;font-size:15px;font-weight:600;color:#92400e;border:1px solid #f59e0b;position:relative;overflow:hidden}
+.ta-icon{font-size:18px;margin-right:4px}
+.time-attack strong{font-size:20px;font-weight:900;color:#dc2626}
+.ta-pulse{position:absolute;top:50%;right:16px;width:8px;height:8px;background:#dc2626;border-radius:50%;transform:translateY(-50%);animation:taPulse 1.5s infinite}
+@keyframes taPulse{0%,100%{opacity:1;transform:translateY(-50%) scale(1)}50%{opacity:.4;transform:translateY(-50%) scale(1.5)}}
 </style>
 
 <!-- ═══ STICKY PHONE BAR (SSR) ═══ -->
