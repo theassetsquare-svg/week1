@@ -1014,6 +1014,17 @@ try {
     viewNum.textContent = base + vc;
   }
 
+  // ═══ Time Attack — 실시간 예약 카운터 ═══
+  var taCount = document.getElementById('taCount');
+  if (taCount) {
+    var slug = window.location.pathname.split('/').filter(Boolean).pop() || 'home';
+    var taKey = 'bk_ta_' + slug + '_' + new Date().toDateString();
+    var tc = parseInt(localStorage.getItem(taKey) || '0') + 1;
+    localStorage.setItem(taKey, tc.toString());
+    var taBase = 12 + (slug.length * 3 + new Date().getHours() * 2) % 30;
+    taCount.textContent = taBase + tc;
+  }
+
   // ═══ 오늘 밤의 운세 ═══
   var fortuneBtn = document.getElementById('fortuneBtn');
   var fortuneResult = document.getElementById('fortuneResult');
