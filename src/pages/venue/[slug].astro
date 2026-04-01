@@ -376,26 +376,39 @@ const jsonLd = [
   </div>
 </div>
 
-<!-- ═══ TAB 9: VS VOTING — 인터랙티브 ═══ -->
+<!-- ═══ TAB 9: VS 비교 — 비교표 + 투표 ═══ -->
 <div class="tab-panel" id="tab-vs">
-  <h2 class="tp-title">VS 투표</h2>
-  <p class="tp-note">어느 쪽이 더 핫할까? 클릭해서 투표하세요!</p>
-  <div class="vs-arena" id="vsArena">
-    <div class="vs-card" id="vsLeft" data-slug={venue.slug}>
-      <div class="vs-nm">{venue.name}</div>
-      <div class="vs-mt">{venue.region} · {venue.typeName}</div>
-      <div class="vs-pct" id="vsLeftPct">??%</div>
-    </div>
-    <div class="vs-badge">VS</div>
-    {vsOpponent && (
+  <h2 class="tp-title">이 가게 vs 비슷한 가게</h2>
+  {vsOpponent ? (
+    <>
+    <table class="vs-compare">
+      <thead><tr><th></th><th class="vs-th-left">{venue.name}</th><th class="vs-th-right">{vsOpponent.name}</th></tr></thead>
+      <tbody>
+        <tr><td class="vs-label">지역</td><td>{venue.region}</td><td>{vsOpponent.region}</td></tr>
+        <tr><td class="vs-label">유형</td><td>{venue.typeName}</td><td>{vsOpponent.typeName}</td></tr>
+        <tr><td class="vs-label">분위기</td><td>{venue.atmosphere.substring(0, 30)}…</td><td>{vsOpponent.atmosphere.substring(0, 30)}…</td></tr>
+        <tr><td class="vs-label">음악</td><td>{venue.music.substring(0, 25)}…</td><td>{vsOpponent.music.substring(0, 25)}…</td></tr>
+        <tr><td class="vs-label">담당</td><td>{venue.nickname || '—'}</td><td>{vsOpponent.nickname || '—'}</td></tr>
+      </tbody>
+    </table>
+    <p class="tp-note" style="margin:16px 0 8px;text-align:center;">어느 쪽이 더 핫할까?</p>
+    <div class="vs-arena" id="vsArena">
+      <div class="vs-card" id="vsLeft" data-slug={venue.slug}>
+        <div class="vs-nm">{venue.name}</div>
+        <div class="vs-pct" id="vsLeftPct">??%</div>
+      </div>
+      <div class="vs-badge">VS</div>
       <div class="vs-card" id="vsRight" data-slug={vsOpponent.slug}>
         <div class="vs-nm">{vsOpponent.name}</div>
-        <div class="vs-mt">{vsOpponent.region} · {vsOpponent.typeName}</div>
         <div class="vs-pct" id="vsRightPct">??%</div>
       </div>
-    )}
-  </div>
-  <p class="tp-note" id="vsResult" style="text-align:center;margin-top:12px;display:none;"></p>
+    </div>
+    <p class="tp-note" id="vsResult" style="text-align:center;margin-top:12px;display:none;"></p>
+    <a href={`/venue/${vsOpponent.slug}/`} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">{vsOpponent.name} 자세히 보기 →</a>
+    </>
+  ) : (
+    <p class="tp-note">비교할 가게가 없습니다.</p>
+  )}
 </div>
 
 <!-- ═══ TAB 10: POPULAR TIMES ═══ -->
