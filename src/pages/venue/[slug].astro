@@ -276,11 +276,19 @@ const jsonLd = [
   </div>
 </div>
 
-<!-- ═══ TAB 4: REVIEWS ═══ -->
+<!-- ═══ TAB 4: REVIEWS — 직접 가본 손님의 한마디 ═══ -->
 <div class="tab-panel" id="tab-review">
-  <h2 class="tp-title">후기</h2>
-  <p class="tp-note">아직 등록된 후기가 없습니다. 첫 후기를 남겨보세요.</p>
-  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">후기 작성하기 →</a>
+  <h2 class="tp-title">직접 가본 손님의 한마디</h2>
+  <div class="rv-highlights">
+    {selectedReviews.slice(0, 3).map(r => (
+      <div class="rv-highlight">
+        <div class="rv-stars-inline">{'★'.repeat(r.star)}{'☆'.repeat(5-r.star)}</div>
+        <p class="rv-quote">"{r.text}"</p>
+        <span class="rv-author-inline">— {r.author}</span>
+      </div>
+    ))}
+  </div>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">후기 더 보기 →</a>
 </div>
 
 <!-- ═══ TAB 5: GALLERY — 스와이프 갤러리 10장 ═══ -->
