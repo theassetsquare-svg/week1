@@ -210,6 +210,45 @@ const jsonLd = [
       <div class="tl-item"><span class="tl-time">{t.time}</span><span class="tl-event">{t.event}</span></div>
     ))}
   </div>
+
+  <!-- Before/After -->
+  <div class="ba-section">
+    <h3 class="ba-title">첫 방문 vs 단골의 차이</h3>
+    <div class="ba-grid">
+      <div class="ba-card">
+        <div class="ba-badge ba-first">첫 방문</div>
+        <ul>
+          {venue.type === 'night' || venue.type === 'club' ? (
+            <><li>입구에서 주뼛주뼛</li><li>음료 뭐 시킬지 고민</li><li>분위기 파악하느라 바쁨</li></>
+          ) : venue.type === 'lounge' ? (
+            <><li>메뉴판 앞에서 멈칫</li><li>시그니처 추천 받음</li><li>인테리어에 감탄</li></>
+          ) : venue.type === 'room' ? (
+            <><li>방 크기 감 못 잡음</li><li>메뉴 선택 매니저에 의존</li><li>분위기 세팅 어색</li></>
+          ) : venue.type === 'yojeong' ? (
+            <><li>좌식에 다리 저림</li><li>코스 순서 헷갈림</li><li>국악 감상법 모름</li></>
+          ) : (
+            <><li>긴장돼서 손에 땀</li><li>퍼포먼스 반응 어색</li><li>분위기 모름</li></>
+          )}
+        </ul>
+      </div>
+      <div class="ba-card">
+        <div class="ba-badge ba-regular">단골</div>
+        <ul>
+          {venue.type === 'night' || venue.type === 'club' ? (
+            <><li>담당자가 자리 세팅</li><li>단골 전용 음료 추천</li><li>피크타임 전에 입장 완료</li></>
+          ) : venue.type === 'lounge' ? (
+            <><li>바텐더가 이름 기억</li><li>취향 맞춘 칵테일 제조</li><li>지정석이 생김</li></>
+          ) : venue.type === 'room' ? (
+            <><li>전화 한 통이면 세팅 끝</li><li>입맛 아는 메뉴 구성</li><li>픽업 차량까지 배치</li></>
+          ) : venue.type === 'yojeong' ? (
+            <><li>안내원이 얼굴 아는 사이</li><li>계절 코스 사전 확인</li><li>공연 타이밍 맞춰 진행</li></>
+          ) : (
+            <><li>지명 선수가 먼저 인사</li><li>취향 파악된 퍼포먼스</li><li>VIP 대우 시작</li></>
+          )}
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══ TAB 2: 문의 ═══ -->
