@@ -587,13 +587,13 @@ const jsonLd = [
   <h3 class="tp-sub mt-md">커뮤니티</h3>
   <div class="comm-list">
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>첫 방문 후기</strong><span>분위기가 정말 좋았어요. 다음에 또 가려구요.</span>
+      <strong>{venue.name} 첫 방문 후기</strong><span>{venue.region} 분위기가 정말 좋았어요.</span>
     </a>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>단체 모임 후기</strong><span>회식 장소로 완벽했습니다. 서비스가 꼼꼼해요.</span>
+      <strong>{venue.name} 단체 모임 후기</strong><span>{venue.typeName} 회식 장소로 완벽했습니다.</span>
     </a>
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>주말 방문 팁</strong><span>예약 필수! 금토는 무조건 미리 연락하세요.</span>
+      <strong>{venue.region} 주말 방문 팁</strong><span>{venue.name} 금토는 미리 연락하세요.</span>
     </a>
   </div>
 </section>
