@@ -285,7 +285,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 7: FAQ ═══ -->
 <div class="tab-panel" id="tab-faq">
-  <h2 class="tp-title">자주 묻는 질문</h2>
+  <h2 class="tp-title">{venue.name} 자주 묻는 질문</h2>
   {allFaq.map(f => (
     <div class="faq-item">
       <div class="faq-q">{f.q}</div>
@@ -296,7 +296,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 8: MAP ═══ -->
 <div class="tab-panel" id="tab-map">
-  <h2 class="tp-title">위치</h2>
+  <h2 class="tp-title">{venue.name} 위치</h2>
   <div class="map-info">
     <p class="map-addr"><strong>주소:</strong> {venue.address}</p>
     <p class="map-region"><strong>지역:</strong> {venue.region}</p>
