@@ -43,7 +43,7 @@ body {
   word-break: keep-all;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  padding-bottom: 72px;
+  padding-bottom: 96px;
   max-width: var(--max-w);
   margin: 0 auto;
 }
