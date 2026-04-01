@@ -231,16 +231,30 @@ const jsonLd = [
       <div class="ba-card">
         <div class="ba-badge ba-first">첫 방문</div>
         <ul>
-          {venue.type === 'night' || venue.type === 'club' ? (
-            <><li>입구에서 주뼛주뼛</li><li>음료 뭐 시킬지 고민</li><li>분위기 파악하느라 바쁨</li></>
-          ) : venue.type === 'lounge' ? (
-            <><li>메뉴판 앞에서 멈칫</li><li>시그니처 추천 받음</li><li>인테리어에 감탄</li></>
-          ) : venue.type === 'room' ? (
-            <><li>방 크기 감 못 잡음</li><li>메뉴 선택 매니저에 의존</li><li>분위기 세팅 어색</li></>
-          ) : venue.type === 'yojeong' ? (
-            <><li>좌식에 다리 저림</li><li>코스 순서 헷갈림</li><li>국악 감상법 모름</li></>
+          {venue.id % 2 === 0 ? (
+            venue.type === 'night' || venue.type === 'club' ? (
+              <><li>입구에서 주뼛주뼛</li><li>음료 뭐 시킬지 고민</li><li>분위기 파악하느라 바쁨</li></>
+            ) : venue.type === 'lounge' ? (
+              <><li>메뉴판 앞에서 멈칫</li><li>시그니처 추천 받음</li><li>인테리어에 감탄</li></>
+            ) : venue.type === 'room' ? (
+              <><li>방 크기 감 못 잡음</li><li>메뉴 선택 매니저에 의존</li><li>분위기 세팅 어색</li></>
+            ) : venue.type === 'yojeong' ? (
+              <><li>좌식에 다리 저림</li><li>코스 순서 헷갈림</li><li>국악 감상법 모름</li></>
+            ) : (
+              <><li>긴장돼서 손에 땀</li><li>퍼포먼스 반응 어색</li><li>분위기 모름</li></>
+            )
           ) : (
-            <><li>긴장돼서 손에 땀</li><li>퍼포먼스 반응 어색</li><li>분위기 모름</li></>
+            venue.type === 'night' || venue.type === 'club' ? (
+              <><li>어디 앉을지 몰라 서성임</li><li>첫 잔 고르기 어려움</li><li>스태프 호출 타이밍 모름</li></>
+            ) : venue.type === 'lounge' ? (
+              <><li>바 카운터 앉기 어색</li><li>와인 리스트에 멘붕</li><li>분위기에 눌림</li></>
+            ) : venue.type === 'room' ? (
+              <><li>문 열자마자 뭘 해야 할지 모름</li><li>음식 주문 순서 모름</li><li>조명 조절 못 찾음</li></>
+            ) : venue.type === 'yojeong' ? (
+              <><li>신발 벗는 게 어색</li><li>어디 앉아야 할지 모름</li><li>젓가락 매너 긴장</li></>
+            ) : (
+              <><li>입구에서 3분 서성임</li><li>지명 방법 모름</li><li>가격표 찾느라 바쁨</li></>
+            )
           )}
         </ul>
       </div>
