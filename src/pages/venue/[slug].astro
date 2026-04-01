@@ -444,7 +444,7 @@ const jsonLd = [
 
 <!-- ═══ 오늘의 운세 / 미니 퀴즈 ═══ -->
 <section class="fortune-section" id="fortuneSection">
-  <h2>🔮 오늘 밤의 운세</h2>
+  <h2>🔮 {venue.name} 오늘 밤 운세</h2>
   <div class="fortune-card" id="fortuneCard">
     <p class="fortune-q" id="fortuneQ">당신의 오늘 밤 운세를 확인하세요</p>
     <button class="btn btn-primary btn-sm" id="fortuneBtn">운세 뽑기</button>
@@ -454,7 +454,7 @@ const jsonLd = [
 
 <!-- ═══ 미니 퀴즈 ═══ -->
 <section class="quiz-section" id="quizSection">
-  <h2>🧠 밤문화 퀴즈</h2>
+  <h2>🧠 {venue.region} {venue.typeName} 퀴즈</h2>
   <div class="quiz-card" id="quizCard">
     <p class="quiz-q" id="quizQ"></p>
     <div class="quiz-options" id="quizOptions"></div>
