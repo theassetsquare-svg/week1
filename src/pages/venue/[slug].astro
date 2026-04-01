@@ -261,16 +261,30 @@ const jsonLd = [
       <div class="ba-card">
         <div class="ba-badge ba-regular">단골</div>
         <ul>
-          {venue.type === 'night' || venue.type === 'club' ? (
-            <><li>담당자가 자리 세팅</li><li>단골 전용 음료 추천</li><li>피크타임 전에 입장 완료</li></>
-          ) : venue.type === 'lounge' ? (
-            <><li>바텐더가 이름 기억</li><li>취향 맞춘 칵테일 제조</li><li>지정석이 생김</li></>
-          ) : venue.type === 'room' ? (
-            <><li>전화 한 통이면 세팅 끝</li><li>입맛 아는 메뉴 구성</li><li>픽업 차량까지 배치</li></>
-          ) : venue.type === 'yojeong' ? (
-            <><li>안내원이 얼굴 아는 사이</li><li>계절 코스 사전 확인</li><li>공연 타이밍 맞춰 진행</li></>
+          {venue.id % 2 === 0 ? (
+            venue.type === 'night' || venue.type === 'club' ? (
+              <><li>담당자가 자리 세팅</li><li>단골 전용 음료 추천</li><li>피크타임 전에 입장 완료</li></>
+            ) : venue.type === 'lounge' ? (
+              <><li>바텐더가 이름 기억</li><li>취향 맞춘 칵테일 제조</li><li>지정석이 생김</li></>
+            ) : venue.type === 'room' ? (
+              <><li>전화 한 통이면 세팅 끝</li><li>입맛 아는 메뉴 구성</li><li>픽업 차량까지 배치</li></>
+            ) : venue.type === 'yojeong' ? (
+              <><li>안내원이 얼굴 아는 사이</li><li>계절 코스 사전 확인</li><li>공연 타이밍 맞춰 진행</li></>
+            ) : (
+              <><li>지명 선수가 먼저 인사</li><li>취향 파악된 퍼포먼스</li><li>VIP 대우 시작</li></>
+            )
           ) : (
-            <><li>지명 선수가 먼저 인사</li><li>취향 파악된 퍼포먼스</li><li>VIP 대우 시작</li></>
+            venue.type === 'night' || venue.type === 'club' ? (
+              <><li>스태프가 얼굴 알아봄</li><li>이전 주문 자동 세팅</li><li>웨이팅 없이 바로 입장</li></>
+            ) : venue.type === 'lounge' ? (
+              <><li>입장하면 바로 자리 안내</li><li>신메뉴 먼저 시음</li><li>계산서에 서프라이즈 할인</li></>
+            ) : venue.type === 'room' ? (
+              <><li>담당 매니저가 미리 대기</li><li>전에 좋아했던 구성 그대로</li><li>후식까지 알아서 진행</li></>
+            ) : venue.type === 'yojeong' ? (
+              <><li>좌석 위치까지 기억</li><li>선호 주류 미리 준비</li><li>공연 요청 바로 반영</li></>
+            ) : (
+              <><li>문 열면 담당이 먼저 반김</li><li>선호 스타일 파악 완료</li><li>퍼포먼스 맞춤 진행</li></>
+            )
           )}
         </ul>
       </div>
