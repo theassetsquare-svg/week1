@@ -69,7 +69,7 @@ const jsonLd = {
     <div class="fv-a"><p>솔로 방문이 전혀 어색하지 않은 문화입니다. 음악에 집중하러 혼자 오는 분들이 많습니다. 바 카운터에서 음료 한 잔과 함께 DJ 셋을 감상하는 것도 좋은 방법입니다.</p></div>
   </div>
   <div class="fv-item">
-    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">예약 필요해?<span class="fv-arrow">▼</span></div>
+    <div class="fv-q" onclick="this.parentElement.classList.toggle('open')">사전 예약 해야 돼?<span class="fv-arrow">▼</span></div>
     <div class="fv-a"><p>일반 입장은 예약 없이 가능합니다. VIP 테이블은 사전 예약이 필수이며, 인기 DJ 이벤트는 온라인 사전 티케팅을 진행하는 경우가 있으니 SNS를 확인하세요.</p></div>
   </div>
 </div>
@@ -80,7 +80,7 @@ const jsonLd = {
 
 <!-- 인기 시간대 -->
 <div class="pop-times">
-  <h2 class="pop-times-title">클럽 인기 요일 · 시간대</h2>
+  <h2 class="pop-times-title">클럽 피크 요일과 시간</h2>
   <div class="pop-chart">
     {['월','화','수','목','금','토','일'].map((d, i) => {
       const pct = [15,20,25,40,100,95,30][i];
@@ -97,7 +97,7 @@ const jsonLd = {
 
 <!-- 매거진 -->
 <div class="cat-mag">
-  <h2 class="cat-mag-title">클럽 관련 매거진</h2>
+  <h2 class="cat-mag-title">클럽 읽을거리</h2>
   <div class="cat-mag-grid">
     <a href="/magazine/" target="_blank" rel="noopener noreferrer" class="cat-mag-card" style="background:linear-gradient(135deg,#0c4a6e,#0891b2)">
       <div class="cat-mag-cat">사운드</div>
