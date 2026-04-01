@@ -199,28 +199,12 @@ const currentYear = new Date().getFullYear();
     </div>
   </footer>
 
-  <nav class="mobile-nav">
-    <a href="/" class="active">
-      <span class="nav-icon">🏠</span>
-      홈
-    </a>
-    <a href="/nights/">
-      <span class="nav-icon">🌙</span>
-      나이트
-    </a>
-    <a href="/clubs/">
-      <span class="nav-icon">🎵</span>
-      클럽
-    </a>
-    <a href="/nolcool/">
-      <span class="nav-icon">🎯</span>
-      놀쿨
-    </a>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-      <span class="nav-icon">⭐</span>
-      밤키
-    </a>
-  </nav>
+  {phone ? (
+    <a href={`tel:${phone}`} class="phone-bar">📞 {nickname || '담당자'} {phone}</a>
+  ) : (
+    <a href="https://open.kakao.com/o/besta12" target="_blank" rel="noopener noreferrer" class="phone-bar">💬 카톡 besta12</a>
+  )}
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="main-link-bar">놀쿨에서 더 보기 →</a>
 
   <button class="back-to-top" id="backToTop" aria-label="맨 위로">↑</button>
   <div class="toast" id="toast"></div>
