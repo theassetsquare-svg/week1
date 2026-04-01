@@ -523,7 +523,7 @@ main {
 .site-footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
-  padding: 40px 16px 100px; margin-top: 48px;
+  padding: 40px 16px 120px; margin-top: 48px;
 }
 .footer-inner { max-width: var(--max-w); margin: 0 auto; }
 .footer-regions { margin-bottom: 32px; }
