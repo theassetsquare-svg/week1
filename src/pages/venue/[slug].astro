@@ -107,7 +107,12 @@ const rvPool: Record<string,{text:string,star:number,author:string}[]> = {
   ],
 };
 const typeReviews = rvPool[venue.type] || rvPool.night;
-const selectedReviews = typeReviews.filter((_,i) => ((venue.id + i) % typeReviews.length) < 5).slice(0,5);
+// Unique review selection per venue — different 3 reviews from pool
+const rvStart = venue.id % typeReviews.length;
+const selectedReviews = [];
+for (let i = 0; i < Math.min(3, typeReviews.length); i++) {
+  selectedReviews.push(typeReviews[(rvStart + i) % typeReviews.length]);
+}
 
 // First visit guide
 const fvGuideMap: Record<string,{title:string,steps:string[]}> = {
