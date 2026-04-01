@@ -84,7 +84,7 @@ const jsonLd = { "@context": "https://schema.org", "@type": "WebSite", "name": S
     <div class="venue-card-header"><span class="rank-badge">{i + 1}</span></div>
     <div class="venue-card-name">{v.name}</div>
     <div class="venue-card-desc">{v.shortDesc}</div>
-    <div class="venue-card-contact">{v.nickname} · <a href={`tel:${v.phone}`} onclick="event.stopPropagation();">{v.phone}</a></div>
+    <div class="venue-card-contact">{v.nickname} · <a href={`tel:${v.phone}`} target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">{v.phone}</a></div>
   </a>
 ))}
 
