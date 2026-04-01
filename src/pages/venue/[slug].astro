@@ -328,17 +328,17 @@ const jsonLd = [
   <h2 class="tp-title">이벤트 · 프로모션</h2>
   <div class="event-list">
     {venue.id % 3 === 0 ? (
-      <><div class="event-card"><span class="ev-badge">진행중</span><h3>{venue.name} 신규 방문 혜택</h3><p>{venue.name} 첫 방문 시 웰컴 드링크 1잔 무료</p></div>
-      <div class="event-card"><span class="ev-badge">상시</span><h3>{venue.region} 단체 예약 할인</h3><p>{venue.name} 10인 이상 단체 예약 시 패키지 적용</p></div>
-      <div class="event-card"><span class="ev-badge">주말</span><h3>금·토 스페셜</h3><p>{venue.name} 금·토 방문 시 이벤트 진행</p></div></>
+      <><div class="event-card"><span class="ev-badge">진행중</span><h3>신규 방문 혜택</h3><p>첫 방문 시 웰컴 드링크 1잔 무료</p></div>
+      <div class="event-card"><span class="ev-badge">상시</span><h3>{venue.region} 단체 예약 할인</h3><p>10인 이상 단체 예약 시 패키지 적용</p></div>
+      <div class="event-card"><span class="ev-badge">주말</span><h3>금·토 스페셜</h3><p>금·토 방문 시 {venue.typeName} 이벤트 진행</p></div></>
     ) : venue.id % 3 === 1 ? (
-      <><div class="event-card"><span class="ev-badge">상시</span><h3>{venue.name} SNS 할인</h3><p>{venue.name} 게시물 인증 시 음료 할인</p></div>
-      <div class="event-card"><span class="ev-badge">평일</span><h3>{venue.region} 얼리버드</h3><p>{venue.name} 오픈 1시간 내 입장 시 30% 할인</p></div>
-      <div class="event-card"><span class="ev-badge">이벤트</span><h3>생일 파티 패키지</h3><p>{venue.name}에서 생일 주간 방문 시 축하 세팅 무료</p></div></>
+      <><div class="event-card"><span class="ev-badge">상시</span><h3>SNS 인증 할인</h3><p>게시물 인증 시 음료 할인</p></div>
+      <div class="event-card"><span class="ev-badge">평일</span><h3>{venue.region} 얼리버드</h3><p>오픈 1시간 내 입장 시 30% 할인</p></div>
+      <div class="event-card"><span class="ev-badge">이벤트</span><h3>생일 파티 패키지</h3><p>생일 주간 방문 시 축하 세팅 무료</p></div></>
     ) : (
-      <><div class="event-card"><span class="ev-badge">진행중</span><h3>{venue.name} 재방문 적립</h3><p>{venue.name} 방문 5회 시 음료 세트 무료 업그레이드</p></div>
-      <div class="event-card"><span class="ev-badge">상시</span><h3>{venue.region} 커플 혜택</h3><p>{venue.name} 커플 방문 시 기념 사진 촬영 서비스</p></div>
-      <div class="event-card"><span class="ev-badge">월간</span><h3>시즌 한정</h3><p>{venue.name} 매월 테마가 바뀌는 한정 프로모션</p></div></>
+      <><div class="event-card"><span class="ev-badge">진행중</span><h3>재방문 적립</h3><p>방문 5회 시 음료 세트 무료 업그레이드</p></div>
+      <div class="event-card"><span class="ev-badge">상시</span><h3>{venue.region} 커플 혜택</h3><p>커플 방문 시 기념 사진 촬영 서비스</p></div>
+      <div class="event-card"><span class="ev-badge">월간</span><h3>시즌 한정</h3><p>매월 테마가 바뀌는 한정 프로모션</p></div></>
     )}
   </div>
 </div>
