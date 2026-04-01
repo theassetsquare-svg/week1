@@ -13,7 +13,7 @@
 - Schema: JSON-LD NightClub. og:image: real photo + nickname
 - sitemap.xml + robots.txt + llms.txt
 - Core Web Vitals: LCP<2.5s, INP<200ms, CLS<0.1
-- E-E-A-T: real experience tone. Canonical URL
+- E-E-A-T: real experience tone. Canonical URL. og:image 1200x1200 (1:1) every page!
 ## NEVER
 - Auto page transition. Next.js. Change URLs
 - Brand path. Stuffing. Baby/family images. Adult words
