@@ -519,8 +519,8 @@ const jsonLd = [
 
 <!-- ═══ [D] FIRST VISIT GUIDE ═══ -->
 <section class="fv-section">
-  <h2>🔰 {fvGuide.title}</h2>
-  <p>이 카테고리가 처음이라면 아래 순서를 참고하세요.</p>
+  <h2>🔰 {venue.name} {fvGuide.title}</h2>
+  <p>{venue.region} {venue.typeName}이 처음이라면 아래 순서를 참고하세요.</p>
   <ol class="fv-steps">
     {fvGuide.steps.map(s => <li>{s}</li>)}
   </ol>
