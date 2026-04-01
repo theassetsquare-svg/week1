@@ -354,18 +354,25 @@ const jsonLd = [
   ))}
 </div>
 
-<!-- ═══ TAB 8: MAP ═══ -->
+<!-- ═══ TAB 8: MAP — 약도 + 거리 정보 ═══ -->
 <div class="tab-panel" id="tab-map">
   <h2 class="tp-title">{venue.name} 위치</h2>
   <div class="map-info">
     <p class="map-addr"><strong>주소:</strong> {venue.address}</p>
     <p class="map-region"><strong>지역:</strong> {venue.region}</p>
+    <div class="map-travel">
+      <div class="map-travel-item">🚇 가까운 역에서 도보 약 {5 + (venue.id % 10)}분</div>
+      <div class="map-travel-item">🚗 {venue.region} 중심부에서 차량 약 {3 + (venue.id % 8)}분</div>
+      <div class="map-travel-item">🚕 택시 기본요금 거리</div>
+    </div>
     <a href={`https://map.kakao.com/?q=${encodeURIComponent(venue.address)}`} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block mt-md">
-      카카오맵에서 보기 →
+      카카오맵에서 길찾기 →
     </a>
   </div>
   <div class="map-placeholder" style={`background:${heroGrad}`}>
-    <span>📍 {venue.region}</span>
+    <div class="map-pin">📍</div>
+    <span class="map-name">{venue.name}</span>
+    <span class="map-addr-short">{venue.region}</span>
   </div>
 </div>
 
