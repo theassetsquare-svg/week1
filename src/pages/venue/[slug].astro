@@ -291,21 +291,32 @@ const jsonLd = [
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">후기 더 보기 →</a>
 </div>
 
-<!-- ═══ TAB 5: GALLERY — 스와이프 갤러리 10장 ═══ -->
+<!-- ═══ TAB 5: GALLERY — 6장 포토 스토리 ═══ -->
 <div class="tab-panel" id="tab-gallery">
-  <h2 class="tp-title">사진</h2>
-  <p class="tp-note" id="galleryCounter">1 / 10</p>
+  <h2 class="tp-title">포토 스토리</h2>
+  <p class="tp-note" id="galleryCounter">1 / 6</p>
   <div class="swipe-gallery" id="swipeGallery">
     <div class="swipe-track" id="swipeTrack">
-      {[1,2,3,4,5,6,7,8,9,10].map(i => (
-        <div class={`swipe-slide sg-${((venue.id+i)%10)+1}`}>
-          <span class="sg-label">{venue.name} — {venue.region} #{i}</span>
-        </div>
-      ))}
+      {(() => {
+        const stories = venue.type === 'night' || venue.type === 'club'
+          ? ['입구부터 심장이 뛴다','조명이 바뀌는 순간','DJ가 분위기를 끌어올릴 때','이 테이블이 오늘의 무대','새벽 2시, 피크 타임','라스트콜 직전의 에너지']
+          : venue.type === 'lounge'
+          ? ['문을 열면 재즈가 맞이한다','바텐더의 손끝에서 시작','시그니처 칵테일 한 잔','창밖 야경이 안주','카운터석의 고독한 시간','마지막 한 모금의 여운']
+          : venue.type === 'room'
+          ? ['문 닫으면 우리만의 공간','테이블 세팅 완료','건배 한 번이면 분위기 UP','담당 매니저의 센스','프라이빗한 그 순간','다음에 또 오자는 말']
+          : venue.type === 'yojeong'
+          ? ['기와지붕 아래 첫 걸음','상차림이 펼쳐지는 순간','가야금 선율이 흐를 때','계절 식재료의 정성','한 잔 술에 격조가 깃든다','연회의 마무리']
+          : ['첫인상은 긴장','퍼포먼스가 시작되면','매직쇼에 눈을 못 뗀다','대화가 깊어지는 시간','분위기 최고조','또 오겠다는 확신'];
+        return stories.map((story, i) => (
+          <div class={`swipe-slide sg-${((venue.id+i)%10)+1}`}>
+            <span class="sg-label">{story}</span>
+          </div>
+        ));
+      })()}
     </div>
   </div>
   <div class="swipe-dots" id="swipeDots">
-    {[1,2,3,4,5,6,7,8,9,10].map((_, i) => (
+    {[1,2,3,4,5,6].map((_, i) => (
       <span class={`swipe-dot${i === 0 ? ' active' : ''}`} data-idx={i}></span>
     ))}
   </div>
