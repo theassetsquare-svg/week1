@@ -562,6 +562,34 @@ const jsonLd = [
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block">리뷰 작성하기 →</a>
 </div>
 
+<!-- ═══ INSIDER TIPS ═══ -->
+<section class="insider-section">
+  <h2>💡 {venue.name} 인사이더 팁</h2>
+  <div class="insider-grid">
+    <div class="insider-card">
+      <span class="insider-icon">⏰</span>
+      <h4>최적 방문 시간</h4>
+      <p>{venue.timeline.length > 2 ? `${venue.timeline[Math.floor(venue.timeline.length/2)].time} 전후가 분위기 최고조. 일찍 오면 자리 선점 가능.` : '피크 타임 전에 도착하면 좋은 자리를 잡을 수 있다.'}</p>
+    </div>
+    <div class="insider-card">
+      <span class="insider-icon">👔</span>
+      <h4>복장 가이드</h4>
+      <p>{venue.type === 'club' || venue.type === 'lounge' ? '스마트 캐주얼 이상. 슬리퍼·반바지는 입장 거절될 수 있다.' : venue.type === 'yojeong' ? '정장이나 단정한 차림 권장. 좌식이라 편한 바지가 좋다.' : '편한 차림이면 충분하다. 슬리퍼만 피하면 된다.'}</p>
+    </div>
+    <div class="insider-card">
+      <span class="insider-icon">💰</span>
+      <h4>예산 가이드</h4>
+      <p>{venue.type === 'lounge' ? '칵테일 기준 1인 5-8만원선. 와인 보틀은 별도.' : venue.type === 'room' || venue.type === 'yojeong' ? '정찰제 운영. 사전 전화로 정확한 가격 확인 가능.' : '입장료 + 음료 패키지 기준. 전화 문의가 가장 정확하다.'}</p>
+    </div>
+    <div class="insider-card">
+      <span class="insider-icon">🚗</span>
+      <h4>귀가 팁</h4>
+      <p>{venue.region} 주변 택시 잡기 {venue.id % 2 === 0 ? '수월한 편. 대리운전은 미리 앱 예약 추천.' : '새벽에는 대기 있을 수 있다. 대리운전 미리 걸어놓는 게 현명하다.'}</p>
+    </div>
+  </div>
+  <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 인사이더 가이드`} width="1200" height="630" loading="lazy" class="tp-img" />
+</section>
+
 <!-- ═══ [D] FIRST VISIT GUIDE ═══ -->
 <section class="fv-section">
   <h2>🔰 {fvGuide.title}</h2>
