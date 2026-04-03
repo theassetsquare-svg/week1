@@ -209,6 +209,8 @@ const jsonLd = [
   <h3 class="tp-sub">분위기</h3>
   <p class="tp-desc">{venue.atmosphere}</p>
 
+  <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 분위기 현장`} width="1200" height="630" loading="lazy" class="tp-img" />
+
   <h3 class="tp-sub">포인트</h3>
   <div class="hl-grid">
     {venue.highlights.map(h => <div class="hl-item">{h}</div>)}
