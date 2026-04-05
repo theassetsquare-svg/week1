@@ -594,7 +594,7 @@ main {
 
 /* ─── Slide-up Banner (Hooking #6) ─── */
 .slide-up-banner {
-  position: fixed; bottom: 56px; left: 0; right: 0;
+  position: fixed; bottom: 92px; left: 0; right: 0;
   max-width: var(--max-w); margin: 0 auto;
   padding: 16px 20px;
   background: #fff; border: 1px solid var(--accent);
