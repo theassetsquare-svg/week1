@@ -673,20 +673,9 @@ main {
 .hoppa-safety-list li { padding: 8px 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary); border-bottom: 1px solid #F5D5D5; display: flex; align-items: flex-start; gap: 8px; }
 .hoppa-safety-list li:last-child { border-bottom: none; }
 
-/* ─── KakaoTalk Float ─── */
-.kakao-float {
-  position: fixed; bottom: 72px; left: 16px;
-  width: 52px; height: 52px; border-radius: 50%;
-  background: #FEE500;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  z-index: 95; transition: transform 0.2s;
-}
-.kakao-float:hover { transform: scale(1.1); }
 /* PC: 플로팅 버튼 위치 */
 @media (min-width: 768px) {
   .back-to-top { bottom: 24px; right: 24px; }
-  .kakao-float { bottom: 24px; left: 24px; }
   .toast { bottom: 24px; }
 }
 
