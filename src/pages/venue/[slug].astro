@@ -535,7 +535,7 @@ const jsonLd = [
 <!-- ═══ [D] FIRST VISIT GUIDE ═══ -->
 <section class="fv-section">
   <h2>🔰 {fvGuide.title}</h2>
-  <p>{venue.region} {venue.typeName}이 처음이라면 아래 순서를 참고하세요.</p>
+  <p>{venue.name}이 처음이라면 아래 순서를 참고하세요. {venue.region} {venue.typeName} 중에서도 {venue.name}만의 방문 순서가 있습니다.</p>
   <ol class="fv-steps">
     {fvGuide.steps.map(s => <li>{s}</li>)}
   </ol>
@@ -615,7 +615,7 @@ const jsonLd = [
 
 <!-- ═══ "이 글을 본 사람은 이곳도 갔다" — 소셜증거 ═══ -->
 <section class="also-visited">
-  <h2>🔥 이 글을 본 사람이 함께 본 곳</h2>
+  <h2>🔥 {venue.name} 글을 본 사람이 함께 본 곳</h2>
   <div class="also-grid">
     {sameType.slice(0, 4).map((v, i) => (
       <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="also-card">
