@@ -240,10 +240,10 @@ const jsonLd = [
 
 <!-- ═══ TAB 2: 문의 ═══ -->
 <div class="tab-panel" id="tab-price">
-  <h2 class="tp-title">문의하기</h2>
+  <h2 class="tp-title">{venue.name} 문의하기</h2>
   {venue.phone ? (
     <div style="text-align:center;padding:20px;">
-      <p style="font-size:16px;color:var(--text);margin-bottom:16px;">담당자에게 직접 문의하세요</p>
+      <p style="font-size:16px;color:var(--text);margin-bottom:16px;">{venue.name} 담당자에게 직접 문의하세요</p>
       <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">{venue.nickname} 담당</p>
       <a href={`tel:${venue.phone}`} target="_blank" class="btn btn-primary btn-block mt-md">{venue.phone} 전화하기</a>
     </div>
@@ -280,7 +280,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 5: GALLERY — 6장 포토 스토리 ═══ -->
 <div class="tab-panel" id="tab-gallery">
-  <h2 class="tp-title">포토 스토리</h2>
+  <h2 class="tp-title">{venue.name} 포토 스토리</h2>
   <p class="tp-note" id="galleryCounter">1 / 6</p>
   <div class="swipe-gallery" id="swipeGallery">
     <div class="swipe-track" id="swipeTrack">
@@ -312,7 +312,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 6: EVENTS ═══ -->
 <div class="tab-panel" id="tab-event">
-  <h2 class="tp-title">이벤트 · 프로모션</h2>
+  <h2 class="tp-title">{venue.name} 이벤트 · 프로모션</h2>
   <div class="event-list">
     {venue.id % 3 === 0 ? (
       <><div class="event-card"><span class="ev-badge">진행중</span><h3>신규 방문 혜택</h3><p>첫 방문 시 웰컴 드링크 1잔 무료</p></div>
@@ -365,7 +365,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 9: VS 비교 — 비교표 + 투표 ═══ -->
 <div class="tab-panel" id="tab-vs">
-  <h2 class="tp-title">이 가게 vs 비슷한 가게</h2>
+  <h2 class="tp-title">{venue.name} vs 비슷한 가게</h2>
   {vsOpponent ? (
     <>
     <table class="vs-compare">
@@ -400,7 +400,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 10: POPULAR TIMES ═══ -->
 <div class="tab-panel" id="tab-popular">
-  <h2 class="tp-title">요일별 인기도</h2>
+  <h2 class="tp-title">{venue.name} 요일별 인기도</h2>
   <div class="pop-chart">
     {popularDays.map(d => (
       <div class="pop-bar-wrap">
