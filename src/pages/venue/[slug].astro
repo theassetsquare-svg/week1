@@ -1426,6 +1426,117 @@ try {
     });
   });
 
+  // ═══ [KILLER 5] READ TIME — 읽기 시간 계산 ═══
+  var readTimeEl = document.getElementById('readTime');
+  if (readTimeEl) {
+    var mainEl = document.querySelector('main');
+    var textLen = mainEl ? mainEl.textContent.length : 0;
+    var minutes = Math.max(2, Math.ceil(textLen / 600));
+    readTimeEl.textContent = minutes;
+  }
+
+  // ═══ [KILLER 1] SCROLL PROGRESS % BADGE ═══
+  var scrollPctBadge = document.getElementById('scrollPctBadge');
+  var scrollPctText = document.getElementById('scrollPct');
+  if (scrollPctBadge && scrollPctText) {
+    window.addEventListener('scroll', function() {
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollH <= 0) return;
+      var pct = Math.round((window.scrollY / scrollH) * 100);
+      pct = Math.min(100, Math.max(0, pct));
+      scrollPctText.textContent = pct + '%';
+      if (pct > 5) scrollPctBadge.classList.add('show');
+      else scrollPctBadge.classList.remove('show');
+      if (pct >= 100) {
+        scrollPctBadge.style.background = '#22c55e';
+        scrollPctText.textContent = '100% ✓';
+      } else {
+        scrollPctBadge.style.background = '';
+      }
+    });
+  }
+
+  // ═══ [KILLER 2] STICKY HIGHLIGHT — 50% 스크롤 ═══
+  var stickyHL = document.getElementById('stickyHighlight');
+  var shCloseBtn = document.getElementById('shClose');
+  var shShown = false;
+  var shDismissed = false;
+  if (stickyHL) {
+    var shKey = 'bk_sh_' + (window.location.pathname.split('/').filter(Boolean).pop() || 'home');
+    if (sessionStorage.getItem(shKey)) shDismissed = true;
+    window.addEventListener('scroll', function() {
+      if (shShown || shDismissed) return;
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollH <= 0) return;
+      var pct = window.scrollY / scrollH;
+      if (pct > 0.5) {
+        stickyHL.style.display = 'block';
+        setTimeout(function() { stickyHL.classList.add('show'); }, 20);
+        shShown = true;
+      }
+    });
+    if (shCloseBtn) shCloseBtn.addEventListener('click', function() {
+      stickyHL.classList.remove('show');
+      setTimeout(function() { stickyHL.style.display = 'none'; }, 400);
+      shDismissed = true;
+      sessionStorage.setItem(shKey, '1');
+    });
+    // 8초 뒤 자동 닫기
+    setTimeout(function() {
+      if (shShown && !shDismissed) {
+        stickyHL.classList.remove('show');
+        setTimeout(function() { stickyHL.style.display = 'none'; }, 400);
+        shDismissed = true;
+      }
+    }, 12000);
+  }
+
+  // ═══ [KILLER 4] EXIT POPUP — 이탈 감지 ═══
+  var exitPopup = document.getElementById('exitPopup');
+  var exitOverlay = document.getElementById('exitOverlay');
+  var exitCloseBtn = document.getElementById('exitClose');
+  var exitFired = false;
+  if (exitPopup && exitOverlay) {
+    var epKey = 'bk_exit_' + new Date().toDateString();
+    if (sessionStorage.getItem(epKey)) exitFired = true;
+    var lastY = window.scrollY;
+    var upDistance = 0;
+    window.addEventListener('scroll', function() {
+      if (exitFired) return;
+      var curY = window.scrollY;
+      var scrollH = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollH <= 0) return;
+      var pct = curY / scrollH;
+      if (curY < lastY && pct > 0.25 && pct < 0.9) {
+        upDistance += (lastY - curY);
+        if (upDistance > 200) {
+          exitPopup.style.display = 'block';
+          exitOverlay.style.display = 'block';
+          setTimeout(function() {
+            exitPopup.classList.add('show');
+            exitOverlay.classList.add('show');
+          }, 20);
+          exitFired = true;
+          sessionStorage.setItem(epKey, '1');
+          if (navigator.vibrate) navigator.vibrate(15);
+        }
+      } else {
+        upDistance = 0;
+      }
+      lastY = curY;
+    });
+    function closeExit() {
+      exitPopup.classList.remove('show');
+      exitOverlay.classList.remove('show');
+      setTimeout(function() {
+        exitPopup.style.display = 'none';
+        exitOverlay.style.display = 'none';
+      }, 350);
+    }
+    if (exitCloseBtn) exitCloseBtn.addEventListener('click', closeExit);
+    exitOverlay.addEventListener('click', closeExit);
+  }
+
   // ═══ 타이머 클린업 ═══
   window.addEventListener('beforeunload', function() {
     if (typeof autoPlay !== 'undefined') { try { clearInterval(autoPlay); } catch(e) {} }
