@@ -575,7 +575,7 @@ main {
 
 /* ─── Back to Top ─── */
 .back-to-top {
-  position: fixed; bottom: 72px; right: 16px;
+  position: fixed; bottom: 100px; right: 16px;
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--card-bg); border: 1px solid var(--border);
   box-shadow: var(--card-shadow);
