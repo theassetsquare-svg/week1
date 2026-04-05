@@ -204,7 +204,7 @@ const currentYear = new Date().getFullYear();
   {phone ? (
     <a href={`tel:${phone}`} target="_blank" rel="noopener noreferrer" class="phone-bar">📞 {nickname || '담당자'} {phone}</a>
   ) : (
-    <a href="https://open.kakao.com/o/besta12" target="_blank" rel="noopener noreferrer" class="phone-bar">💬 카톡 besta12</a>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="phone-bar">📞 전화 문의하기</a>
   )}
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="main-link-bar">놀쿨에서 더 보기 →</a>
 
