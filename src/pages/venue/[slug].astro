@@ -163,7 +163,7 @@ const jsonLd = [
 
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 사운드 시스템`} width="1200" height="630" loading="lazy" class="tp-img" />
 
-  <h3 class="tp-sub">타임라인</h3>
+  <h3 class="tp-sub">{venue.name} 타임라인</h3>
   <div class="timeline">
     {venue.timeline.map(t => (
       <div class="tl-item"><span class="tl-time">{t.time}</span><span class="tl-event">{t.event}</span></div>
@@ -172,7 +172,7 @@ const jsonLd = [
 
   <!-- Before/After -->
   <div class="ba-section">
-    <h3 class="ba-title">첫 방문 vs 단골의 차이</h3>
+    <h3 class="ba-title">{venue.name} 첫 방문 vs 단골의 차이</h3>
     <div class="ba-grid">
       <div class="ba-card">
         <div class="ba-badge ba-first">첫 방문</div>
