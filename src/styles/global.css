@@ -554,7 +554,7 @@ main {
 
 /* ─── Toast ─── */
 .toast {
-  position: fixed; bottom: 72px; left: 50%;
+  position: fixed; bottom: 100px; left: 50%;
   transform: translateX(-50%) translateY(20px);
   background: var(--text); color: #fff;
   padding: 12px 24px; border-radius: var(--radius-sm);
