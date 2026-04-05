@@ -148,18 +148,18 @@ const jsonLd = [
 
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 내부 분위기`} width="1200" height="630" loading="lazy" class="tp-img" />
 
-  <h3 class="tp-sub">분위기</h3>
-  <p class="tp-desc">{venue.atmosphere}</p>
+  <h3 class="tp-sub">{venue.name} 분위기</h3>
+  <p class="tp-desc">{venue.atmosphere.includes(venue.name) ? venue.atmosphere : venue.name + '의 분위기는 독보적이다. ' + venue.atmosphere}</p>
 
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 분위기 현장`} width="1200" height="630" loading="lazy" class="tp-img" />
 
-  <h3 class="tp-sub">포인트</h3>
+  <h3 class="tp-sub">{venue.name} 포인트</h3>
   <div class="hl-grid">
     {venue.highlights.map(h => <div class="hl-item">{h}</div>)}
   </div>
 
-  <h3 class="tp-sub">사운드</h3>
-  <p class="tp-desc">{venue.music}</p>
+  <h3 class="tp-sub">{venue.name} 사운드</h3>
+  <p class="tp-desc">{venue.music.includes(venue.name) ? venue.music : venue.name + '에서 들을 수 있는 사운드. ' + venue.music}</p>
 
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 사운드 시스템`} width="1200" height="630" loading="lazy" class="tp-img" />
 
