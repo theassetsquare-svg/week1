@@ -400,7 +400,7 @@ const jsonLd = [
 
 <!-- ═══ TAB 10: POPULAR TIMES ═══ -->
 <div class="tab-panel" id="tab-popular">
-  <h2 class="tp-title">{venue.name} 요일별 인기도</h2>
+  <h2 class="tp-title">요일별 인기도</h2>
   <div class="pop-chart">
     {popularDays.map(d => (
       <div class="pop-bar-wrap">
@@ -615,7 +615,7 @@ const jsonLd = [
 
 <!-- ═══ "이 글을 본 사람은 이곳도 갔다" — 소셜증거 ═══ -->
 <section class="also-visited">
-  <h2>🔥 {venue.name} 글을 본 사람이 함께 본 곳</h2>
+  <h2>🔥 이 글을 본 사람이 함께 본 곳</h2>
   <div class="also-grid">
     {sameType.slice(0, 4).map((v, i) => (
       <a href={`/venue/${v.slug}/`} target="_blank" rel="noopener noreferrer" class="also-card">
