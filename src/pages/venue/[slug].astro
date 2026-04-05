@@ -631,6 +631,55 @@ const jsonLd = [
   <p class="scarcity-text" id="scarcityText"></p>
 </section>
 
+<!-- ═══ [KILLER 3] COMPARISON TABLE — 이 곳 vs 비슷한 곳 ═══ -->
+{vsOpponent && (
+  <section class="compare-bottom">
+    <h2>📊 이 곳 vs 비슷한 곳</h2>
+    <p class="cb-subtitle">한눈에 비교하고 선택하세요</p>
+    <div class="cb-table">
+      <div class="cb-header">
+        <div class="cb-label"></div>
+        <div class="cb-col cb-col-left">{venue.name}</div>
+        <div class="cb-col cb-col-right">{vsOpponent.name}</div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">지역</div>
+        <div class="cb-col">{venue.region}</div>
+        <div class="cb-col">{vsOpponent.region}</div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">유형</div>
+        <div class="cb-col">{venue.typeName}</div>
+        <div class="cb-col">{vsOpponent.typeName}</div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">분위기</div>
+        <div class="cb-col">{venue.atmosphere.substring(0, 40)}…</div>
+        <div class="cb-col">{vsOpponent.atmosphere.substring(0, 40)}…</div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">음악</div>
+        <div class="cb-col">{venue.music.substring(0, 30)}…</div>
+        <div class="cb-col">{vsOpponent.music.substring(0, 30)}…</div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">담당</div>
+        <div class="cb-col">{venue.nickname || '—'}</div>
+        <div class="cb-col">{vsOpponent.nickname || '—'}</div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-label">포인트</div>
+        <div class="cb-col">{venue.highlights[0] || '—'}</div>
+        <div class="cb-col">{vsOpponent.highlights[0] || '—'}</div>
+      </div>
+    </div>
+    <div class="cb-actions">
+      <a href={`/venue/${venue.slug}/`} class="btn btn-primary btn-sm">{venue.name} 보기</a>
+      <a href={`/venue/${vsOpponent.slug}/`} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">{vsOpponent.name} 보기</a>
+    </div>
+  </section>
+)}
+
 <!-- ═══ 인사이더 팁 (70% 스크롤) ═══ -->
 <section class="insider-tip" id="insiderTip" style="display:none;">
   <div class="insider-badge">💡 인사이더 팁</div>
