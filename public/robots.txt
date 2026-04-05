@@ -1,8 +1,6 @@
 User-agent: *
 Allow: /
-
-User-agent: GPTBot
-Allow: /
+Sitemap: https://week1-6m5.pages.dev/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
@@ -10,19 +8,32 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
+User-agent: NaverBot
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: ClaudeBot
+User-agent: Google-Extended
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://week1-6m5.pages.dev/sitemap.xml
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Kakaotalk-scrap
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
