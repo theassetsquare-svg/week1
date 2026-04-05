@@ -1033,6 +1033,35 @@ const jsonLd = [
   </div>
 )}
 
+<!-- ═══ [KILLER 2] STICKY HIGHLIGHT — 50% 스크롤 시 등장 ═══ -->
+<div class="sticky-highlight" id="stickyHighlight">
+  <button class="sh-close" id="shClose" aria-label="닫기">✕</button>
+  <div class="sh-badge">💎 이 업소의 숨겨진 장점</div>
+  <ul class="sh-list">
+    {venue.highlights.slice(0, 3).map(h => <li>{h}</li>)}
+  </ul>
+  {venue.phone ? (
+    <a href={`tel:${venue.phone}`} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm sh-cta">지금 문의하기 →</a>
+  ) : (
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm sh-cta">자세히 보기 →</a>
+  )}
+</div>
+
+<!-- ═══ [KILLER 4] EXIT POPUP — 이탈 방지 ═══ -->
+<div class="exit-overlay" id="exitOverlay"></div>
+<div class="exit-popup" id="exitPopup">
+  <button class="exit-close" id="exitClose" aria-label="닫기">✕</button>
+  <div class="exit-emoji">🔥</div>
+  <h3>잠깐! 이것만 보고 가세요</h3>
+  <div class="exit-review">
+    <div class="exit-stars">★★★★★</div>
+    <p class="exit-quote">"{selectedReviews[0].text}"</p>
+    <span class="exit-author">— {selectedReviews[0].author}</span>
+  </div>
+  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block exit-btn">더 많은 후기 보기 →</a>
+  <p class="exit-sub">놓치면 후회할 정보가 가득!</p>
+</div>
+
 <!-- ═══ CLIENT SCRIPTS ═══ -->
 <script is:inline>
 (function(){
