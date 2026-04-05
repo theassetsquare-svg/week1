@@ -117,6 +117,16 @@ const jsonLd = [
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} ${venue.typeName} ${venue.region}`} width="1200" height="630" loading="lazy" class="vh-img" />
 </section>
 
+<!-- ═══ [KILLER 5] READ TIME ═══ -->
+<div class="read-time-badge">
+  <span class="rt-icon">⏱</span> 읽는 시간: <strong id="readTime">3</strong>분
+</div>
+
+<!-- ═══ [KILLER 1] SCROLL PROGRESS % ═══ -->
+<div class="scroll-pct-badge" id="scrollPctBadge">
+  <span id="scrollPct">0%</span>
+</div>
+
 <!-- ═══ TAB NAVIGATION ═══ -->
 <div class="tabs-nav" id="tabsNav">
   <button class="tab-btn active" data-tab="info">기본정보</button>
