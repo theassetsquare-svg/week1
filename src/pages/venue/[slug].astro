@@ -158,12 +158,12 @@ const jsonLd = [
     {venue.highlights.map(h => <div class="hl-item">{h}</div>)}
   </div>
 
-  <h3 class="tp-sub">{venue.name} 사운드</h3>
-  <p class="tp-desc">{venue.music.includes(venue.name) ? venue.music : venue.name + '에서 들을 수 있는 사운드. ' + venue.music}</p>
+  <h3 class="tp-sub">사운드</h3>
+  <p class="tp-desc">{venue.music}</p>
 
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 사운드 시스템`} width="1200" height="630" loading="lazy" class="tp-img" />
 
-  <h3 class="tp-sub">{venue.name} 타임라인</h3>
+  <h3 class="tp-sub">타임라인</h3>
   <div class="timeline">
     {venue.timeline.map(t => (
       <div class="tl-item"><span class="tl-time">{t.time}</span><span class="tl-event">{t.event}</span></div>
