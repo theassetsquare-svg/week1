@@ -1027,4 +1027,24 @@ main {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(-20px, 20px); }
 }
+/* ═══ Mobile Font Size Overrides ═══ */
+@media (max-width: 767px) {
+  .age-notice { font-size: 14px; }
+  .cat-tab { font-size: 14px; }
+  .venue-region-text { font-size: 14px; }
+  .venue-type-text { font-size: 12px; }
+  .venue-tag { font-size: 13px; }
+  .venue-card-desc { font-size: 16px; }
+  .breadcrumb { font-size: 14px; }
+  .hero-sub { font-size: 16px; }
+  .section-badge { font-size: 13px; }
+  .type-badge { font-size: 12px; }
+  .footer-bottom { font-size: 13px; }
+  .hero-stat-label { font-size: 13px; }
+  .listing-desc { font-size: 16px; }
+  .listing-count { font-size: 15px; }
+  .cat-mag-cat { font-size: 12px; }
+  .cat-mag-desc { font-size: 14px; }
+  .fv-a p { font-size: 15px; }
+}
 /* deploy 1775053779 */
