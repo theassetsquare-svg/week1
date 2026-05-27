@@ -1,0 +1,255 @@
+{
+  "timestamp": "2026-05-27T20:26:35.384Z",
+  "totalVenues": 152,
+  "totalIssues": 35,
+  "critical": 0,
+  "high": 13,
+  "medium": 0,
+  "low": 22,
+  "issues": [
+    {
+      "type": "BODY_STUFFING",
+      "venue": "노원스타나이트",
+      "field": "description",
+      "dups": [
+        "있다(9x, 3.4%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "성남국빈관나이트",
+      "field": "description",
+      "dups": [
+        "있다(11x, 3.4%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "인덕원국빈관나이트",
+      "field": "description",
+      "dups": [
+        "있다(10x, 3.3%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "분당퐁퐁나이트",
+      "field": "description",
+      "dups": [
+        "있다(11x, 3.3%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "평택호박나이트",
+      "field": "description",
+      "dups": [
+        "있다(12x, 3.8%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "부산물나이트",
+      "field": "description",
+      "dups": [
+        "있다(10x, 3.2%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "광주MGM나이트",
+      "field": "description",
+      "dups": [
+        "있다(8x, 3.0%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "압구정클럽 디브릿지",
+      "field": "description",
+      "dups": [
+        "있다(10x, 3.4%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "장안동호빠 빵빵",
+      "field": "description",
+      "dups": [
+        "있다(10x, 3.8%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "수원호빠 시크릿",
+      "field": "description",
+      "dups": [
+        "있다(8x, 3.0%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "인계동호빠 마징가",
+      "field": "description",
+      "dups": [
+        "있다(9x, 3.2%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "해운대호빠 미슐랭",
+      "field": "description",
+      "dups": [
+        "있다(8x, 3.0%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "TITLE_STUFFING",
+      "venue": "광주호빠 비상구",
+      "field": "seoTitle",
+      "value": "광주호빠 비상구 — 초록색 비상구 표시등이 간판이다",
+      "dups": [
+        "비상구(2x)"
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "type": "BODY_STUFFING",
+      "venue": "송파호빠 일기장",
+      "field": "description",
+      "dups": [
+        "있다(9x, 3.4%)"
+      ],
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/club/club/busan-seomyeon/크림/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/club/club/gwangju/리버틴/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/club/club/suwon/엔터/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/night/night/gangneung/카리스마/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/night/night/jeju/제주/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/night/night/uijeongbu/한국관/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/nightclub/out/404/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/nightclub/out/_not-found/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "MISSING_JSONLD",
+      "path": "/lounge/lounge/apgujeong/디엠/index.html",
+      "severity": "LOW"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "입소문만으로 줄 서는 이유 | 놀쿨",
+      "count": 14,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "한 번 가면 단골 되는 곳 | 놀쿨",
+      "count": 16,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "밤이 아까워지는 공간 | 놀쿨",
+      "count": 15,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "분위기 끝내주는 곳 | 놀쿨",
+      "count": 11,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "멈출 수 없는 밤의 시작 | 놀쿨",
+      "count": 10,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "분위기 하나로 승부하는 곳 | 놀쿨",
+      "count": 13,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "기대 이상의 경험 | 놀쿨",
+      "count": 12,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "새벽이 짧게 느껴지는 밤 | 놀쿨",
+      "count": 13,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "들어서는 순간 기분이 바뀌는 곳 | 놀쿨",
+      "count": 12,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "퇴근 후 스트레스가 사라지는 곳 | 놀쿨",
+      "count": 12,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "갈 때마다 새로운 밤 | 놀쿨",
+      "count": 12,
+      "severity": "HIGH"
+    },
+    {
+      "type": "NOLCOOL_DUPLICATE_HOOK",
+      "hook": "아는 사람만 찾는 숨은 명소 | 놀쿨",
+      "count": 12,
+      "severity": "HIGH"
+    }
+  ]
+}
