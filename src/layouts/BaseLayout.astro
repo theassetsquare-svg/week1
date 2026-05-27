@@ -340,16 +340,30 @@ const currentYear = new Date().getFullYear();
       if (overlay) overlay.addEventListener('click', shut);
       if (close) close.addEventListener('click', shut);
 
+      // ═══ SCROLL THROTTLE (requestAnimationFrame) ═══
+      var _scrollTicking = false;
+      var _scrollHandlers = [];
+      function addThrottledScroll(fn) { _scrollHandlers.push(fn); }
+      window.addEventListener('scroll', function() {
+        if (!_scrollTicking) {
+          _scrollTicking = true;
+          requestAnimationFrame(function() {
+            _scrollHandlers.forEach(function(fn) { try { fn(); } catch(e) {} });
+            _scrollTicking = false;
+          });
+        }
+      }, { passive: true });
+
       // ═══ SCROLL PROGRESS (진행률 바 — 끝까지 읽게 만듦) ═══
       var bar = document.getElementById('scrollProgress');
-      window.addEventListener('scroll', function() {
+      addThrottledScroll(function() {
         var h = document.documentElement.scrollHeight - window.innerHeight;
         if (h > 0) bar.style.width = (window.scrollY / h * 100) + '%';
       });
 
       // ═══ BACK TO TOP ═══
       var topBtn = document.getElementById('backToTop');
-      window.addEventListener('scroll', function() {
+      addThrottledScroll(function() {
         topBtn.classList.toggle('show', window.scrollY > 400);
       });
       topBtn.addEventListener('click', function() {
