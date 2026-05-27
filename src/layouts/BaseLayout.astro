@@ -200,9 +200,14 @@ const currentYear = new Date().getFullYear();
   </footer>
 
   {phone ? (
-    <a href={`tel:${phone}`} target="_blank" rel="noopener noreferrer" class="phone-bar">📞 {nickname || '담당자'} {phone}</a>
+    <>
+      <a href={`tel:${phone}`} class="phone-bar has-phone">
+        <span class="phone-bar-icon">📞</span> {nickname || '담당자'} {phone}
+      </a>
+      <a href={`tel:${phone}`} class="phone-float-pc" aria-label="전화하기" title={`${nickname || '담당자'} ${phone}`}>📞</a>
+    </>
   ) : (
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="phone-bar">📞 전화 문의하기</a>
+    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="phone-bar no-phone">📞 전화 문의하기</a>
   )}
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="main-link-bar">놀쿨에서 더 보기 →</a>
 
