@@ -23,7 +23,10 @@
     "qa:similarity": "node scripts/qa_similarity.mjs",
     "qa:seo": "node scripts/qa_seo_meta.mjs",
     "qa:search": "node scripts/qa_search.mjs",
-    "qa:all": "node scripts/qa_url_duplicates.mjs && node scripts/qa_repeat_limit.mjs && node scripts/qa_brand_count.mjs && node scripts/qa_similarity.mjs && node scripts/qa_seo_meta.mjs && node scripts/qa_search.mjs"
+    "qa:all": "node scripts/qa_url_duplicates.mjs && node scripts/qa_repeat_limit.mjs && node scripts/qa_brand_count.mjs && node scripts/qa_similarity.mjs && node scripts/qa_seo_meta.mjs && node scripts/qa_search.mjs",
+    "seo:monitor": "node scripts/seo-monitor-24h.mjs",
+    "seo:check": "node scripts/seo-monitor-24h.mjs --once",
+    "seo:24h": "node scripts/seo-monitor-24h.mjs"
   },
   "engines": {
     "node": ">=20"
