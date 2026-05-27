@@ -1,55 +1,65 @@
-# 나이트라이프 코리아 (Nightlife Korea)
+# 놀쿨 NOLCOOL — 전국 밤문화 가이드
 
-> 한국 전국 나이트, 클럽, 라운지 130곳의 상세 정보를 제공하는 가이드 사이트
+> 한국 전국 나이트, 클럽, 라운지, 룸, 요정, 호빠 152곳의 상세 정보를 제공하는 가이드 사이트
 
 ## About
-Korean nightlife venue directory covering 130 nights, clubs, and lounges
-across major cities including Gangnam, Busan, Daegu, Incheon, Daejeon,
-Gwangju, and Jeju. Content is AI-generated and quality-checked.
+Korean nightlife venue directory covering 152 venues (nights, clubs, lounges,
+rooms, yojeong, hoppa) across major cities including Gangnam, Hongdae, Itaewon,
+Busan, Daegu, Incheon, Daejeon, Gwangju, Jeju, and more.
 
 ## Content Per Venue Page
-- Atmosphere description
+- Atmosphere description (1000+ chars unique per venue)
 - Music genre and style
-- Safety and etiquette guide
-- 5-scene storytelling narrative
 - Visit timeline with recommended schedule
-- First-visit checklist (7 items)
-- Custom course planner
 - FAQ (8 questions and answers)
 - Location and transportation info
-- Nightlife type comparison table
-- Personality quiz
-- Related venues
+- VS comparison with similar venues
+- Popular times chart
+- First-visit guide
+- Insider tips
+- Related venues and recommendations
 
 ## Site Structure
-- / — Homepage with search and filtering
-- /night/{region}/{venue}/ — Night venue detail pages
-- /club/{region}/{venue}/ — Club venue detail pages
-- /lounge/{region}/{venue}/ — Lounge venue detail pages
-- /nights/ — Night venue listing
-- /clubs/ — Club venue listing
-- /lounges/ — Lounge venue listing
-- /region/{region}/ — Regional hub pages
-- /guides/ — Nightlife guides
-- /about/ — About this site
-- /editorial-policy/ — Editorial and content policy
+- / — Homepage with search and venue cards
+- /venue/{slug}/ — Venue detail pages (152 venues)
+- /clubs/ — Club venue listing (35 clubs)
+- /nights/ — Night venue listing (58 nights)
+- /lounges/ — Lounge venue listing (3 lounges)
+- /rooms/ — Room venue listing
+- /yojeong/ — Yojeong venue listing
+- /hoppa/ — Hoppa venue listing
+- /ranking/ — Venue ranking
+- /community/ — Community and reviews
+- /magazine/ — Magazine articles
+- /map/ — Regional map search
+- /events/ — Events and promotions
+- /gallery/ — Photo gallery
+- /quiz/ — Personality test
+- /safety/ — Safety guide
+- /nolcool/ — 놀쿨 sub-site pages
+
+## Venue Types
+- night (나이트): 58 venues
+- club (클럽): 35 venues
+- lounge (라운지): 3 venues
+- room (룸): 2 venues
+- yojeong (요정): 1 venue
+- hoppa (호빠): 53 venues
 
 ## Machine-Readable Resources
-- Sitemap: https://week1-6m5.pages.dev/sitemap.xml (187 URLs)
-- RSS Feed: https://week1-6m5.pages.dev/rss.xml (130 venues)
+- Sitemap: https://week1-6m5.pages.dev/sitemap.xml
+- RSS Feed: https://week1-6m5.pages.dev/feed.xml
 - robots.txt: https://week1-6m5.pages.dev/robots.txt
 
 ## Structured Data (JSON-LD)
 Each venue page includes:
-- schema.org/WebPage (with dateModified, speakable)
-- schema.org/NightClub (name, description, address, geo)
+- schema.org/NightClub (name, description, address)
 - schema.org/FAQPage (8 Q&A pairs)
 - schema.org/BreadcrumbList
 
 Homepage includes:
 - schema.org/WebSite (with SearchAction)
-- schema.org/Organization
-- schema.org/ItemList (130 venues)
+- schema.org/ItemList (152 venues)
 
 ## Contact
 KakaoTalk: besta12
