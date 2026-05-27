@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/club/[slug]/page": "app/club/[slug]/page.js",
+  "/guide/[city]/first-time/page": "app/guide/[city]/first-time/page.js",
+  "/kr/[region]/[city]/nightclubs/page": "app/kr/[region]/[city]/nightclubs/page.js",
+  "/kr/[region]/[city]/page": "app/kr/[region]/[city]/page.js",
+  "/page": "app/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/theme/[theme]/page": "app/theme/[theme]/page.js"
+}

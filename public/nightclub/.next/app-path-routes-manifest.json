@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/club/[slug]/page": "/club/[slug]",
+  "/guide/[city]/first-time/page": "/guide/[city]/first-time",
+  "/kr/[region]/[city]/nightclubs/page": "/kr/[region]/[city]/nightclubs",
+  "/kr/[region]/[city]/page": "/kr/[region]/[city]",
+  "/page": "/",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/theme/[theme]/page": "/theme/[theme]"
+}

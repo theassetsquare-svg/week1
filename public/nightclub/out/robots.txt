@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://week1-6m5.pages.dev/sitemap.xml
