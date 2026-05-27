@@ -229,6 +229,36 @@ p { font-size: 16px; line-height: 1.7; color: var(--text-secondary); }
   padding-bottom: 0;
 }
 .phone-bar:hover, .phone-bar:active { color: #fff; opacity: 0.9; }
+.phone-bar.has-phone {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  font-size: 18px;
+  font-weight: 800;
+  height: 52px;
+  line-height: 52px;
+  bottom: 48px;
+  border-radius: 0;
+  animation: phoneBarPulse 2s ease-in-out infinite;
+  box-shadow: 0 -2px 16px rgba(34,197,94,0.3);
+}
+@keyframes phoneBarPulse {
+  0%, 100% { box-shadow: 0 -2px 16px rgba(34,197,94,0.3); }
+  50% { box-shadow: 0 -2px 24px rgba(34,197,94,0.5); }
+}
+.phone-bar.has-phone .phone-bar-icon {
+  display: inline-block;
+  animation: phoneRing 1.5s ease-in-out infinite;
+  margin-right: 6px;
+  font-size: 20px;
+}
+@keyframes phoneRing {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(-15deg); }
+  20% { transform: rotate(15deg); }
+  30% { transform: rotate(-10deg); }
+  40% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+}
+.phone-bar.no-phone { display: none; }
 
 .main-link-bar {
   position: fixed;
@@ -251,10 +281,55 @@ p { font-size: 16px; line-height: 1.7; color: var(--text-secondary); }
 }
 .main-link-bar:hover, .main-link-bar:active { color: #fff; opacity: 0.9; }
 
-/* PC: 하단 바 숨김 */
+/* ─── PC: 광고주 전화 플로팅 버튼 ─── */
+.phone-float-pc {
+  display: none;
+}
 @media (min-width: 768px) {
-  .phone-bar, .main-link-bar { display: none; }
+  .phone-bar:not(.has-phone), .main-link-bar { display: none; }
+  .phone-bar.has-phone {
+    bottom: 24px;
+    right: 24px;
+    left: auto;
+    width: auto;
+    max-width: 360px;
+    border-radius: 16px;
+    padding: 0 24px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 17px;
+    box-shadow: 0 4px 24px rgba(34,197,94,0.35);
+  }
   body { padding-bottom: 0; }
+  .phone-float-pc {
+    display: flex;
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    font-size: 28px;
+    align-items: center;
+    justify-content: center;
+    z-index: 48;
+    box-shadow: 0 4px 20px rgba(34,197,94,0.4);
+    text-decoration: none;
+    transition: transform 0.2s;
+    animation: phoneFloatBounce 3s ease-in-out infinite;
+  }
+  .phone-float-pc:hover { transform: scale(1.1); color: #fff; }
+  @keyframes phoneFloatBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+}
+
+/* PC: 전화번호 없는 페이지 — 하단 바 숨김 */
+@media (min-width: 768px) {
+  .phone-bar.no-phone { display: none; }
 }
 
 /* ─── Main Content ─── */
