@@ -22,79 +22,82 @@ const viewports = [
 ];
 
 (async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({
+    headless: true,
+    executablePath: process.env.CHROMIUM_PATH || '/nix/store/y8mp45940i2xb6238kiykz0k87q0k8gx-chromium-126.0.6478.126/bin/chromium',
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
+  });
 
   for (const vp of viewports) {
     const context = await browser.newContext({
       viewport: { width: vp.width, height: vp.height },
       isMobile: vp.isMobile,
       userAgent: vp.isMobile
-        ? 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
+        ? 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
         : undefined,
     });
 
     const page = await context.newPage();
-
     const jsErrors = [];
     page.on('pageerror', err => jsErrors.push(err.message));
-    page.on('console', msg => {
-      if (msg.type() === 'error') jsErrors.push(msg.text());
-    });
+    page.on('console', msg => { if (msg.type() === 'error') jsErrors.push(msg.text()); });
 
     for (const p of pages) {
       const url = BASE + p.path;
       console.log(`\n📸 ${vp.name.toUpperCase()} — ${p.name} (${url})`);
-
       try {
         jsErrors.length = 0;
-        await page.goto(url, { waitUntil: 'networkidle', timeout: 15000 });
-        await page.waitForTimeout(1000);
+        await page.goto(url, { waitUntil: 'networkidle', timeout: 20000 });
+        await page.waitForTimeout(1500);
 
         const title = await page.title();
         console.log(`   Title: ${title}`);
+        console.log(`   Status: ${title.includes('404') ? '❌ 404' : '✅ OK'}`);
 
-        const status = title.includes('404') ? '❌ 404' : '✅ OK';
-        console.log(`   Status: ${status}`);
-
-        await page.screenshot({
-          path: `${DIR}/${p.name}-${vp.name}.png`,
-          fullPage: false,
-        });
-        console.log(`   Screenshot: ${DIR}/${p.name}-${vp.name}.png`);
-
-        await page.screenshot({
-          path: `${DIR}/${p.name}-${vp.name}-full.png`,
-          fullPage: true,
-        });
-        console.log(`   Full page: ${DIR}/${p.name}-${vp.name}-full.png`);
+        await page.screenshot({ path: `${DIR}/${p.name}-${vp.name}.png`, fullPage: false });
+        console.log(`   Screenshot saved`);
 
         if (jsErrors.length > 0) {
           console.log(`   ⚠️  JS Errors (${jsErrors.length}):`);
-          jsErrors.slice(0, 3).forEach(e => console.log(`      - ${e.substring(0, 120)}`));
+          jsErrors.slice(0, 5).forEach(e => console.log(`      - ${e.substring(0, 150)}`));
         } else {
           console.log(`   ✅ No JS errors`);
         }
 
-        const fontCheck = await page.evaluate(() => {
+        const checks = await page.evaluate(() => {
+          const results = {};
           const logo = document.querySelector('.site-logo');
           if (logo) {
-            const style = window.getComputedStyle(logo);
-            return { fontWeight: style.fontWeight, fontSize: style.fontSize, text: logo.textContent };
+            const s = window.getComputedStyle(logo);
+            results.logo = { text: logo.textContent, weight: s.fontWeight, size: s.fontSize };
           }
-          return null;
+          results.viewport = { width: window.innerWidth, height: window.innerHeight };
+          const overflow = document.body.scrollWidth > window.innerWidth;
+          results.horizontalOverflow = overflow;
+          const smallFonts = [];
+          document.querySelectorAll('p, span, a, div, li, td').forEach(el => {
+            const fs = parseFloat(window.getComputedStyle(el).fontSize);
+            if (fs < 12 && el.textContent.trim().length > 0 && el.offsetHeight > 0) {
+              smallFonts.push({ tag: el.tagName, text: el.textContent.substring(0,30), size: fs });
+            }
+          });
+          results.smallFonts = smallFonts.slice(0, 5);
+          return results;
         });
-        if (fontCheck) {
-          console.log(`   Logo: "${fontCheck.text}" weight=${fontCheck.fontWeight} size=${fontCheck.fontSize}`);
-        }
 
+        if (checks.logo) console.log(`   Logo: "${checks.logo.text}" weight=${checks.logo.weight}`);
+        if (checks.horizontalOverflow) console.log(`   ❌ Horizontal overflow detected!`);
+        else console.log(`   ✅ No horizontal overflow`);
+        if (checks.smallFonts.length > 0) {
+          console.log(`   ⚠️  Small fonts (<12px): ${checks.smallFonts.length}`);
+          checks.smallFonts.forEach(f => console.log(`      - <${f.tag}> "${f.text}" ${f.size}px`));
+        }
       } catch (err) {
-        console.log(`   ❌ Error: ${err.message.substring(0, 100)}`);
+        console.log(`   ❌ Error: ${err.message.substring(0, 120)}`);
       }
     }
-
     await context.close();
   }
-
   await browser.close();
   console.log('\n✅ All screenshots complete!');
 })();
