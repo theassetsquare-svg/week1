@@ -245,7 +245,7 @@ const jsonLd = [
     <div style="text-align:center;padding:20px;">
       <p style="font-size:16px;color:var(--text);margin-bottom:16px;">{venue.name} 담당자에게 직접 문의하세요</p>
       <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">{venue.nickname} 담당</p>
-      <a href={`tel:${venue.phone}`} target="_blank" class="btn btn-primary btn-block mt-md">{venue.phone} 전화하기</a>
+      <a href={`tel:${venue.phone}`} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block mt-md">{venue.phone} 전화하기</a>
     </div>
   ) : (
     <div style="text-align:center;padding:20px;">
