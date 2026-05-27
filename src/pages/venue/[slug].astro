@@ -113,7 +113,15 @@ const jsonLd = [
   <div class="vh-badge">{venue.typeName}</div>
   <h1>{venue.name}</h1>
   {venue.nickname && <p class="vh-nick">담당: {venue.nickname}</p>}
-  {venue.phone && <p style="font-size:14px;color:rgba(255,255,255,0.9);margin-top:4px;">{venue.phone}</p>}
+  {venue.phone ? (
+    <a href={`tel:${venue.phone}`} class="vh-phone-btn">
+      <span class="vh-phone-icon">📞</span>
+      <span class="vh-phone-info">
+        <span class="vh-phone-label">{venue.nickname || '담당자'} 바로 연결</span>
+        <span class="vh-phone-num">{venue.phone}</span>
+      </span>
+    </a>
+  ) : null}
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} ${venue.typeName} ${venue.region}`} width="1200" height="630" loading="lazy" class="vh-img" />
 </section>
 
