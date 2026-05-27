@@ -462,7 +462,7 @@ const currentYear = new Date().getFullYear();
       // ═══ Hooking #7: 스크롤 80% 배너 ═══
       var scrollBn = document.getElementById('scrollBanner');
       var scrollBnShown = false;
-      window.addEventListener('scroll', function() {
+      addThrottledScroll(function() {
         if (scrollBnShown) return;
         var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
         if (scrollPct > 0.8) {
