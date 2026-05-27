@@ -758,6 +758,14 @@ const jsonLd = [
 .vh h1{font-size:24px;font-weight:800;margin:12px 0 8px;text-shadow:0 2px 12px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.3)}
 .vh-badge{display:inline-block;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.2);font-size:12px;font-weight:700;backdrop-filter:blur(4px);color:#fff}
 .vh-nick{color:#FDE68A;font-weight:700;font-size:15px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.vh-phone-btn{display:flex;align-items:center;justify-content:center;gap:12px;margin:16px auto 0;padding:14px 28px;background:#22c55e;border-radius:16px;text-decoration:none;color:#fff;max-width:340px;box-shadow:0 4px 20px rgba(34,197,94,.4);animation:vhPhonePulse 2s ease-in-out infinite;transition:transform .2s}
+.vh-phone-btn:hover{transform:scale(1.03);color:#fff}
+.vh-phone-icon{font-size:28px;animation:vhPhoneRing 1.5s ease-in-out infinite}
+.vh-phone-info{display:flex;flex-direction:column;text-align:left}
+.vh-phone-label{font-size:13px;font-weight:600;opacity:.9}
+.vh-phone-num{font-size:22px;font-weight:900;letter-spacing:.03em}
+@keyframes vhPhonePulse{0%,100%{box-shadow:0 4px 20px rgba(34,197,94,.4)}50%{box-shadow:0 4px 32px rgba(34,197,94,.6)}}
+@keyframes vhPhoneRing{0%,50%,100%{transform:rotate(0)}10%{transform:rotate(-12deg)}20%{transform:rotate(12deg)}30%{transform:rotate(-8deg)}40%{transform:rotate(8deg)}}
 .vh-stars{font-size:16px;color:#FDE68A;margin-top:8px}
 .vh-rating{font-size:20px;font-weight:800;margin-left:6px}
 .vh-rc{font-size:13px;color:rgba(255,255,255,.7);margin-left:4px}
