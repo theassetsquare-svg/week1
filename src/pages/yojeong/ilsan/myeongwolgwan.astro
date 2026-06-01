@@ -15,7 +15,7 @@ const faqs = [
   { q: '주차가 가능한가요?', a: '건물 앞 전용 주차장이 마련되어 있으며 약 30대 수용이 가능합니다. 대형 차량도 주차 가능하며, 발렛 파킹 서비스도 운영 중입니다.' },
   { q: '단체 연회는 최대 몇 명까지 가능한가요?', a: '4인 소모임방부터 80인 대연회장까지 있습니다. 30개 넘는 개별 공간이라 인원과 모임 성격에 맞게 유연하게 배치해 드립니다.' },
   { q: '국악 공연은 항상 있나요?', a: '저녁 영업 시간(17:00~22:00)에는 가야금과 대금 연주자가 각 공간을 순회하며 연주합니다. 점심에는 배경 음악만 제공됩니다. 판소리 공연은 사전 요청 시 별도로 준비 가능합니다.' },
-  { q: '예약은 어떻게 하나요?', a: '전화로 예약 가능합니다. 신실장(010-3695-4929)에게 직접 연락하시면 모임 성격에 맞는 공간과 메뉴를 사전에 조율해 드립니다. 주말과 공휴일은 최소 3일 전 예약을 권장합니다.' },
+  { q: '예약은 어떻게 하나요?', a: '전화로 예약 가능합니다. 신실장()에게 직접 연락하시면 모임 성격에 맞는 공간과 메뉴를 사전에 조율해 드립니다. 주말과 공휴일은 최소 3일 전 예약을 권장합니다.' },
   { q: '회갑, 칠순 등 잔치 행사도 가능한가요?', a: '네, 전통 잔치 행사를 전문적으로 준비합니다. 상차림, 꽃장식, 현수막, 포토존 세팅까지 원스톱으로 진행되며, 전문 이벤트 코디네이터가 당일 진행을 도와드립니다.' },
   { q: '계절 메뉴는 어떻게 구성되나요?', a: '분기마다 제철 식재료를 반영하여 코스 메뉴가 업데이트됩니다. 봄에는 두릅과 냉이, 여름에는 전복과 민어, 가을에는 송이와 대하, 겨울에는 굴과 한우가 코스에 포함됩니다.' },
   { q: '일산역에서 거리가 얼마나 되나요?', a: '일산역에서 차로 약 10분, 장항역에서 걸으면 15분 이내입니다. 택시 타면 기본요금 수준에 도착합니다.' },
@@ -27,7 +27,7 @@ const faqs = [
 const jsonLd = [
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"명월관","description":"일산 장항로 전통 한정식과 국악 공연 공간",
     "address":{"@type":"PostalAddress","streetAddress":"장항로 895-1","addressLocality":"고양시 일산동구","addressCountry":"KR"},
-    "telephone":"010-3695-4929",
+    "telephone":"",
     "url":`${SITE_URL}/yojeong/ilsan/myeongwolgwan/`,
     "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"127","bestRating":"5","worstRating":"1"}},
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))},
@@ -98,13 +98,13 @@ const _b64s = Buffer.from(JSON.stringify({
   <h2>기본 정보</h2>
   <table class="info-table">
     <tr><td class="info-label">주소</td><td>고양시 일산동구 장항로 895-1</td></tr>
-    <tr><td class="info-label">담당</td><td>신실장 (010-3695-4929)</td></tr>
+    <tr><td class="info-label">담당</td><td>신실장 ()</td></tr>
     <tr><td class="info-label">영업시간</td><td>점심 11:30~14:00 / 저녁 17:00~22:00</td></tr>
     <tr><td class="info-label">공간</td><td>30개+ 프라이빗 공간 (4인~80인)</td></tr>
     <tr><td class="info-label">가격제도</td><td>전 메뉴 정찰제</td></tr>
     <tr><td class="info-label">주차</td><td>전용 주차장 30대 + 발렛 가능</td></tr>
   </table>
-  <a href="tel:010-3695-4929" target="_blank" class="btn btn-primary btn-block mt-md">신실장에게 전화하기</a>
+  <a href="https://theassetsquare.com/" target="_blank" class="btn btn-primary btn-block mt-md">신실장에게 전화하기</a>
 </section>
 
 <section class="mw-price">
@@ -237,7 +237,7 @@ const _b64s = Buffer.from(JSON.stringify({
 <div class="mw-cta">
   <h3>명월관 예약 상담</h3>
   <p>신실장에게 직접 문의하세요</p>
-  <a href="tel:010-3695-4929" target="_blank" class="btn btn-primary">전화 상담 →</a>
+  <a href="https://theassetsquare.com/" target="_blank" class="btn btn-primary">전화 상담 →</a>
   <a href="https://ilsanroom.pages.dev" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-left:8px">놀쿨에서 보기 →</a>
 </div>
 
