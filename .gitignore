@@ -3,3 +3,6 @@ node_modules
 dist
 firebase-debug.log
 auto-push.log
+.secrets/
+scripts/.secrets/
+*.gsc.json
