@@ -1,0 +1,148 @@
+{
+  "generatedAt": "2026-06-02T00:48:35.434Z",
+  "totalPages": 342,
+  "score": 98,
+  "duplicateTitles": 0,
+  "duplicateDescriptions": 0,
+  "errorCount": 0,
+  "warningCount": 34,
+  "errors": [],
+  "warnings": [
+    {
+      "url": "/about/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/clubs/",
+      "msg": "desc 69c < 70"
+    },
+    {
+      "url": "/editorial-policy/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/budget-guide/",
+      "msg": "desc 15c < 70"
+    },
+    {
+      "url": "/guides/budget-guide/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/dress-code/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/first-visit/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/group-party/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/guides/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/music-genres/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/regional-nightlife/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/safety-tips/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/guides/solo-nightlife/",
+      "msg": "no og:image"
+    },
+    {
+      "url": "/nolcool/club/apgujeong-club-muin/",
+      "msg": "desc 62c < 70"
+    },
+    {
+      "url": "/nolcool/club/bucheon-club-paragon/",
+      "msg": "desc 69c < 70"
+    },
+    {
+      "url": "/nolcool/club/cheongdam-club-arzhu/",
+      "msg": "desc 65c < 70"
+    },
+    {
+      "url": "/nolcool/club/gangnam-club-utopia/",
+      "msg": "desc 69c < 70"
+    },
+    {
+      "url": "/nolcool/club/hongdae-club-maid/",
+      "msg": "desc 69c < 70"
+    },
+    {
+      "url": "/nolcool/club/",
+      "msg": "desc 42c < 70"
+    },
+    {
+      "url": "/nolcool/club/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/nolcool/club/yongsan-dragon-city/",
+      "msg": "desc 69c < 70"
+    },
+    {
+      "url": "/nolcool/hoppa/",
+      "msg": "desc 42c < 70"
+    },
+    {
+      "url": "/nolcool/hoppa/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/nolcool/",
+      "msg": "desc 50c < 70"
+    },
+    {
+      "url": "/nolcool/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/nolcool/lounge/",
+      "msg": "desc 42c < 70"
+    },
+    {
+      "url": "/nolcool/lounge/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/nolcool/night/",
+      "msg": "desc 43c < 70"
+    },
+    {
+      "url": "/nolcool/night/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/nolcool/room/",
+      "msg": "desc 40c < 70"
+    },
+    {
+      "url": "/nolcool/room/",
+      "msg": "no JSON-LD"
+    },
+    {
+      "url": "/nolcool/yojeong/",
+      "msg": "desc 41c < 70"
+    },
+    {
+      "url": "/nolcool/yojeong/",
+      "msg": "no JSON-LD"
+    }
+  ]
+}

@@ -17,6 +17,21 @@ const { title, description, h1, canonical, ogImage, jsonLd, phone, nickname } = 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).href;
 const defaultOgImage = `${SITE_URL}/og-default.png`;
 const finalOgImage = (ogImage || defaultOgImage).replace(/\.svg$/, '.png');
+
+// Site-level structured data on EVERY page — helps Google build the "놀쿨"
+// brand entity + Sitelinks Searchbox, boosting brand-name visibility.
+const siteJsonLd = [
+  { "@context": "https://schema.org", "@type": "Organization",
+    "name": SITE_NAME, "url": SITE_URL, "logo": `${SITE_URL}/og-default.png`,
+    "description": SLOGAN },
+  { "@context": "https://schema.org", "@type": "WebSite",
+    "name": SITE_NAME, "url": SITE_URL, "inLanguage": "ko-KR",
+    "potentialAction": { "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": `${SITE_URL}/ranking/?q={search_term_string}` },
+      "query-input": "required name=search_term_string" } },
+];
+const pageJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allJsonLd = [...siteJsonLd, ...pageJsonLd];
 const currentYear = new Date().getFullYear();
 ---
 
@@ -56,9 +71,7 @@ const currentYear = new Date().getFullYear();
     body { opacity: 1; }
   </style>
 
-  {jsonLd && (
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  )}
+  <script type="application/ld+json" set:html={JSON.stringify(allJsonLd)} />
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -66,7 +79,7 @@ const currentYear = new Date().getFullYear();
   <!-- Hooking #1: 상단 고정 배너 -->
   <div class="top-banner">
     <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer">
-      찐 후기+실시간 예약은 ★밤키★에서 →
+      찐 후기+실시간 예약은 ★놀쿨★에서 →
     </a>
   </div>
 
@@ -77,7 +90,7 @@ const currentYear = new Date().getFullYear();
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" target="_blank" rel="noopener noreferrer" class="site-logo">밤키</a>
+      <a href="/" target="_blank" rel="noopener noreferrer" class="site-logo">놀쿨</a>
       <div class="header-right">
         <a href="/ranking/" target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="랭킹">🏆</a>
         <a href="/community/" target="_blank" rel="noopener noreferrer" class="header-search-btn" aria-label="커뮤니티">💬</a>
@@ -129,9 +142,9 @@ const currentYear = new Date().getFullYear();
     <slot />
   </main>
 
-  <!-- "밤키 검색하세요" CTA -->
+  <!-- "놀쿨 검색하세요" CTA -->
   <div style="margin:24px 16px;padding:16px 20px;background:var(--accent);border-radius:var(--radius);text-align:center;">
-    <p style="font-size:15px;color:#fff;margin:0;">구글 · ChatGPT · Gemini에서 <strong style="font-size:18px;">'밤키'</strong>를 검색하세요</p>
+    <p style="font-size:15px;color:#fff;margin:0;">구글 · ChatGPT · Gemini에서 <strong style="font-size:18px;">'놀쿨'</strong>를 검색하세요</p>
   </div>
 
   <!-- Hooking #8: 푸터 직전 대형 CTA -->
@@ -445,7 +458,7 @@ const currentYear = new Date().getFullYear();
       localStorage.setItem('bk_views', viewCount);
       var levelEl = document.getElementById('exploreLevel');
       if (levelEl) {
-        var lv = viewCount < 5 ? '초보 탐험가' : viewCount < 15 ? '밤의 여행자' : viewCount < 30 ? '파티 전문가' : '밤키 마스터';
+        var lv = viewCount < 5 ? '초보 탐험가' : viewCount < 15 ? '밤의 여행자' : viewCount < 30 ? '파티 전문가' : '놀쿨 마스터';
         var pct = Math.min(100, Math.round((viewCount % 15) / 15 * 100));
         levelEl.innerHTML = '<span style="font-size:12px;color:var(--accent);font-weight:700;">' + lv + '</span><div style="height:3px;background:var(--bg-tertiary);border-radius:2px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:' + pct + '%;background:var(--accent);border-radius:2px;transition:width 1s;"></div></div>';
       }
@@ -575,11 +588,11 @@ const currentYear = new Date().getFullYear();
         { sec: 180, icon: '🔥', title: '3분 체류!', desc: '당신은 이미 상위 30% 탐험가입니다', reward: '열정 탐험가 뱃지 획득', color: '#F59E0B' },
         { sec: 300, icon: '⚡', title: '5분 달성!', desc: '숨겨진 추천이 해제되었습니다', reward: '히든 콘텐츠 언락!', color: '#06B6D4' },
         { sec: 600, icon: '💎', title: '10분 마스터!', desc: '상위 10% 탐험가 진입!', reward: 'VIP 탐험가 뱃지', color: '#8B5CF6' },
-        { sec: 900, icon: '🏆', title: '15분 챔피언!', desc: '이 정도면 밤키 프로입니다', reward: '프로 탐험가 뱃지', color: '#F59E0B' },
+        { sec: 900, icon: '🏆', title: '15분 챔피언!', desc: '이 정도면 놀쿨 프로입니다', reward: '프로 탐험가 뱃지', color: '#F59E0B' },
         { sec: 1200, icon: '🎯', title: '20분 전설!', desc: '전체 이용자 중 상위 5%!', reward: '전설의 탐험가', color: '#DC2626' },
         { sec: 1800, icon: '🌙', title: '30분의 밤!', desc: '당신은 진정한 밤의 탐험가', reward: '밤의 달인 뱃지', color: '#7C3AED' },
         { sec: 2700, icon: '✨', title: '45분 돌파!', desc: '최상위 탐험가만 도달하는 영역', reward: '다이아몬드 뱃지', color: '#6D28D9' },
-        { sec: 3600, icon: '👑', title: '1시간 달성!', desc: '밤키의 왕/여왕이 되셨습니다!', reward: '크라운 뱃지 + 특별 추천', color: '#F59E0B' },
+        { sec: 3600, icon: '👑', title: '1시간 달성!', desc: '놀쿨의 왕/여왕이 되셨습니다!', reward: '크라운 뱃지 + 특별 추천', color: '#F59E0B' },
         { sec: 5700, icon: '🏅', title: '95분! 틱톡급!', desc: '틱톡 평균 체류시간을 달성했습니다!', reward: '레전드 뱃지 해제!', color: '#DC2626' }
       ];
 
@@ -671,7 +684,7 @@ const currentYear = new Date().getFullYear();
         { text: '🔥 지금 이 시간 가장 인기 있는 지역을 확인해보세요', delay: 70000 },
         { text: '💎 3곳 이상 비교하면 후회 없는 선택이 나옵니다', delay: 120000 },
         { text: '⚡ 방금 새로운 업소 정보가 업데이트되었습니다', delay: 180000 },
-        { text: '🎯 담당자에게 "밤키 보고 왔다"고 하면 대우가 달라집니다', delay: 250000 },
+        { text: '🎯 담당자에게 "놀쿨 보고 왔다"고 하면 대우가 달라집니다', delay: 250000 },
         { text: '🌟 주중에 가면 줄도 없고, 분위기가 또 다릅니다', delay: 340000 },
         { text: '🏆 이미 50곳 이상 탐색한 전문가들의 비결이 궁금하다면?', delay: 450000 },
         { text: '✨ 오늘의 특별 추천이 준비되었습니다!', delay: 580000 }
@@ -736,7 +749,7 @@ const currentYear = new Date().getFullYear();
           if (cardClickCount === 5) showAchievement('👆', '5곳 탐색!', '관심 있는 곳이 많군요');
           if (cardClickCount === 15) showAchievement('🎯', '15곳 탐색!', '진정한 탐험가');
           if (cardClickCount === 30) showAchievement('💎', '30곳 탐색!', 'VIP 탐험가 등극');
-          if (cardClickCount === 50) showAchievement('👑', '50곳 탐색!', '밤키 마스터');
+          if (cardClickCount === 50) showAchievement('👑', '50곳 탐색!', '놀쿨 마스터');
         });
       });
 
@@ -853,7 +866,7 @@ const currentYear = new Date().getFullYear();
         }, 3000);
       } else if (totalVisits === 1) {
         setTimeout(function() {
-          showAchievement('🎉', '밤키에 오신 것을 환영합니다!', '첫 방문 뱃지 획득');
+          showAchievement('🎉', '놀쿨에 오신 것을 환영합니다!', '첫 방문 뱃지 획득');
         }, 2000);
       }
 
