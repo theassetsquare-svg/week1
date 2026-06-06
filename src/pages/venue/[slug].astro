@@ -21,6 +21,15 @@ const vsOpponent = sameType.find(v => v.regionSlug !== venue.regionSlug) || same
 
 // No fake ratings or prices
 
+// ═══ READABILITY: split one long string into 2-sentence paragraphs (no one-blob) ═══
+function toParagraphs(text: string, perPara = 2): string[] {
+  const sentences = (text || '').split(/(?<=[.!?。])\s+/).map(s => s.trim()).filter(Boolean);
+  const out: string[] = [];
+  for (let i = 0; i < sentences.length; i += perPara) out.push(sentences.slice(i, i + perPara).join(' '));
+  return out.length ? out : [text];
+}
+const descText = venue.description.substring(0, 50).includes(venue.name) ? venue.description : venue.name + '. ' + venue.description;
+
 // ═══ VENUE-SPECIFIC FAQ — no shared pools ═══
 const allFaq = [...(venue.faq || []),
   {q:`${venue.name} 예약 방법이 궁금합니다`,a:`${venue.phone ? '전화('+venue.phone+')로' : '전화로'} 예약 가능합니다. ${venue.region} 주말은 미리 잡아야 대기 없이 입장됩니다.`},
