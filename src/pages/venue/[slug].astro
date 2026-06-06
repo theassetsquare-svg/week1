@@ -1444,9 +1444,11 @@ try {
   // ═══ [KILLER 5] READ TIME — 읽기 시간 계산 ═══
   var readTimeEl = document.getElementById('readTime');
   if (readTimeEl) {
-    var mainEl = document.querySelector('main');
-    var textLen = mainEl ? mainEl.textContent.length : 0;
-    var minutes = Math.max(2, Math.ceil(textLen / 600));
+    // Count only real readable prose (not hidden tab panels) — Korean ~500 chars/min, capped at a realistic max
+    var proseEls = document.querySelectorAll('.tp-desc, .faq-a, .tp-title, .tp-sub');
+    var textLen = 0;
+    proseEls.forEach(function(el) { textLen += (el.textContent || '').length; });
+    var minutes = Math.min(8, Math.max(2, Math.round(textLen / 500)));
     readTimeEl.textContent = minutes;
   }
 
