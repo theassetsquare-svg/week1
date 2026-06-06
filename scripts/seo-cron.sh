@@ -23,9 +23,16 @@ ts() { date -u +"%Y-%m-%dT%H:%M:%SZ"; }
   STATUS=$?
   echo "monitor exit=$STATUS"
 
+  # 1b) Stage 1-4 LIVE regression monitor (one-blob/risk/CSS404/dual-URL/nolcool-direct/dead-end + build gates).
+  node scripts/autopilot-stages.mjs
+  STAGE=$?
+  echo "stage-monitor exit=$STAGE"
+  [ "$STAGE" -eq 1 ] && STATUS=1
+
   if [ "$STATUS" -eq 1 ]; then
     echo "issues detected → running auto-fix"
     node scripts/auto-fix.mjs 2>&1 | tail -10
+    node scripts/indexnow.mjs 2>&1 | tail -2 || echo "indexnow skipped"
     if ! git diff --quiet || ! git diff --cached --quiet; then
       git add -A
       git commit -m "auto: SEO maintenance $(ts)
