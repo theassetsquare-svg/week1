@@ -30,6 +30,17 @@ function toParagraphs(text: string, perPara = 2): string[] {
 }
 const descText = venue.description.substring(0, 50).includes(venue.name) ? venue.description : venue.name + '. ' + venue.description;
 
+// ═══ META DESCRIPTION: real, unique, 120-160c. Extend short seoDescription with venue-specific real data only (no fabrication). ═══
+const metaDesc = (() => {
+  let m = (venue.seoDescription || '').trim();
+  const realBits = [`${venue.region} ${venue.typeName}`, ...(venue.highlights || []), ...(venue.tags || [])];
+  for (let i = 0; m.length < 120 && i < realBits.length; i++) {
+    const bit = (realBits[i] || '').trim();
+    if (bit && !m.includes(bit)) m = `${m} · ${bit}`;
+  }
+  return m.length > 158 ? m.substring(0, 157).trim() + '…' : m;
+})();
+
 // ═══ VENUE-SPECIFIC FAQ — no shared pools ═══
 const allFaq = [...(venue.faq || []),
   {q:`${venue.name} 예약 방법이 궁금합니다`,a:`${venue.phone ? '전화('+venue.phone+')로' : '전화로'} 예약 가능합니다. ${venue.region} 주말은 미리 잡아야 대기 없이 입장됩니다.`},
