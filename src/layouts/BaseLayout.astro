@@ -23,7 +23,7 @@ const finalOgImage = (ogImage || defaultOgImage).replace(/\.svg$/, '.png');
 const siteJsonLd = [
   { "@context": "https://schema.org", "@type": "Organization",
     "name": SITE_NAME, "url": SITE_URL, "logo": `${SITE_URL}/og-default.png`,
-    "description": SLOGAN },
+    "description": SLOGAN, "sameAs": ["https://nolcool.com"] },
   { "@context": "https://schema.org", "@type": "WebSite",
     "name": SITE_NAME, "url": SITE_URL, "inLanguage": "ko-KR",
     "potentialAction": { "@type": "SearchAction",
