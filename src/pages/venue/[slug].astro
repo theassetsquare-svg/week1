@@ -176,7 +176,7 @@ const jsonLd = [
   </div>
 
   <h3 class="tp-sub">사운드</h3>
-  <p class="tp-desc">{venue.music}</p>
+  {toParagraphs(venue.music).map(p => <p class="tp-desc">{p}</p>)}
 
   <img src={`/og/${venue.slug}.png`} alt={`${venue.name} 사운드 시스템`} width="1200" height="630" loading="lazy" class="tp-img" />
 
