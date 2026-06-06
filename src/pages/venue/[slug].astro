@@ -572,7 +572,7 @@ const jsonLd = [
 
 <!-- Hooking #12: 공유 → 메인 링크 -->
 <div style="text-align:center;padding:16px 0;">
-  <button class="share-btn" onclick={`navigator.share?navigator.share({title:'놀쿨 — ${venue.name}',url:'https://ilsanroom.pages.dev'}):window.open('https://ilsanroom.pages.dev','_blank')`}>
+  <button class="share-btn" onclick={`navigator.share?navigator.share({title:'놀쿨 — ${venue.name}',url:'${MAIN_SITE_URL}'}):window.open('${MAIN_SITE_URL}','_blank')`}>
     📤 친구에게 공유
   </button>
 </div>
