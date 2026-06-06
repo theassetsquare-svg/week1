@@ -46,3 +46,24 @@ npm run seo:monitor:all   # 지금 상태 한눈에
 npm run gsc:report        # 키워드·순위·기회
 npm run seo:cron          # 무인 1회 사이클(수정·배포 포함)
 ```
+
+## Stage 5 — Autopilot enrollment (2026-06-06)
+- `scripts/autopilot-stages.mjs` — LIVE monitor for Stage 1-4 guarantees
+  (risk words, one-blob >600c, CSS 404, dual-URL/nolcool 301, nolcool.com
+  direct (no ilsanroom hop), build gates). Emits `[WEEK1-<TYPE>-<id>]`
+  findings → `scripts/.secrets/stage-alert.md`. `--dry-run` supported.
+  Wired into `seo-cron.sh` (runs daily via cloud routine `nolcool-seo-daily`).
+- Build gates auto-applied to every (re)build, incl. new pages:
+  `lint-copy.mjs` (risk/one-blob/read-time/fake-NAP) → `qa_gate_stage2.mjs`
+  (CSS-exists/one-blob/dual-URL/title-meta) → `qa_funnel.mjs`
+  (dead-link/orphan/dead-end/ilsanroom-hop/dark-pattern).
+- `scripts/indexnow.mjs` — IndexNow ping (Bing/Yandex; NOT Google). Key file
+  `public/<key>.txt`. Google recrawl = GSC sitemap resubmit (auto-fix.mjs).
+
+### Owner 1-time setup (24h autopilot; shared with week2)
+1. `wrangler login` (Cloudflare)
+2. KV namespace for the shared Worker engine (if using week2's Worker)
+3. Secrets: Resend API key (email), GSC service-account JSON (write scope
+   `webmasters`), PSI API key (CWV/INP real metrics — currently 확인 불가)
+4. `wrangler deploy`
+Optional: GA4 (real dwell-time/체류 측정 — structural signals already 100).
