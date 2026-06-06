@@ -1252,7 +1252,7 @@ try {
     });
   }
 
-  // ═══ 밤문화 퀴즈 ═══
+  // ═══ 나이트라이프 퀴즈 ═══
   var quizQ = document.getElementById('quizQ');
   var quizOpts = document.getElementById('quizOptions');
   var quizResult = document.getElementById('quizResult');
@@ -1262,7 +1262,7 @@ try {
       { q: '클럽에서 "부킹"이란?', opts: ['음료 주문', '테이블 예약', '이성 매칭', 'VIP 입장'], ans: 2 },
       { q: '나이트클럽 피크타임은 보통 몇 시?', opts: ['밤 9시', '밤 11시', '새벽 1시', '새벽 3시'], ans: 2 },
       { q: '라운지와 클럽의 가장 큰 차이점은?', opts: ['음료 종류', '음악 볼륨과 분위기', '영업시간', '입장료'], ans: 1 },
-      { q: '요정(料亭)의 원래 뜻은?', opts: ['놀이공원', '일본식 고급 요리집', '노래방', '호텔 바'], ans: 1 },
+      { q: '요정(料亭)의 원래 뜻은?', opts: ['놀이공원', '일본식 고급 요리집', '가라오케', '호텔 바'], ans: 1 },
       { q: '호빠에서 "지명"이란?', opts: ['예약하기', '원하는 직원 선택', '음료 주문', 'VIP 좌석'], ans: 1 }
     ];
     var qi = Math.floor(Math.random() * quizzes.length);
@@ -1279,7 +1279,7 @@ try {
           else if (j === i && i !== quiz.ans) b.classList.add('wrong');
         });
         quizResult.style.display = 'block';
-        quizResult.textContent = i === quiz.ans ? '🎉 정답! 밤문화 전문가시네요!' : '😅 아쉽지만 오답! 정답은 "' + quiz.opts[quiz.ans] + '"입니다.';
+        quizResult.textContent = i === quiz.ans ? '🎉 정답! 나이트라이프 전문가시네요!' : '😅 아쉽지만 오답! 정답은 "' + quiz.opts[quiz.ans] + '"입니다.';
         quizResult.style.color = i === quiz.ans ? '#22c55e' : '#ef4444';
       });
       quizOpts.appendChild(btn);
@@ -1347,7 +1347,7 @@ try {
       '주중 수요일이 사실 가성비 최고예요. 사람도 적당하고 서비스도 더 세심합니다.',
       '오픈 직후 30분이 자리 선점 골든타임. 이때 가면 원하는 자리를 잡을 수 있어요.',
       '화장실 위치는 미리 파악해두세요. 피크타임에 찾아 헤매면 시간만 날립니다.',
-      '2차로 넘어갈 계획이면 미리 대리운전 앱 예약을 걸어두는 게 현명해요.'
+      '다음 자리로 넘어갈 계획이면 미리 대리운전 앱 예약을 걸어두는 게 현명해요.'
     ];
     insiderText.textContent = tips[Math.floor(Math.random() * tips.length)];
     window.addEventListener('scroll', function() {

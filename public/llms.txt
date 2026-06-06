@@ -17,10 +17,10 @@
 - [비교](https://week1-6m5.pages.dev/compare/) — 업소 비교 도구
 - [성향 테스트](https://week1-6m5.pages.dev/quiz/) — 나에게 맞는 업소 찾기
 - [커뮤니티](https://week1-6m5.pages.dev/community/) — 방문 후기 커뮤니티
-- [매거진](https://week1-6m5.pages.dev/magazine/) — 밤문화 매거진
+- [매거진](https://week1-6m5.pages.dev/magazine/) — 나이트라이프 매거진
 - [지역별 찾기](https://week1-6m5.pages.dev/map/) — 지역별 업소 검색
 - [이벤트](https://week1-6m5.pages.dev/events/) — 진행 중인 이벤트
-- [안전 가이드](https://week1-6m5.pages.dev/safety/) — 밤문화 안전 수칙
+- [안전 가이드](https://week1-6m5.pages.dev/safety/) — 나이트라이프 안전 수칙
 - [입점 안내](https://week1-6m5.pages.dev/for-business/) — 업소 등록 안내
 
 ## Venue Pages (152곳)

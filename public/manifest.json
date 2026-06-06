@@ -1,7 +1,7 @@
 {
   "name": "놀쿨",
   "short_name": "놀쿨",
-  "description": "전국 밤문화 정보를 한눈에",
+  "description": "전국 나이트라이프 정보를 한눈에",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
