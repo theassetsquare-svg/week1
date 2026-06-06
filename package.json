@@ -14,7 +14,7 @@
     "search-index": "node scripts/generate-search-index.mjs",
     "gen:card-copy": "node scripts/generate-card-copy.mjs",
     "lint:copy": "node scripts/lint-copy.mjs",
-    "build": "node scripts/lint-copy.mjs && node scripts/generate-search-index.mjs && astro build && node scripts/convert-og-to-png.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && node scripts/generate-redirects.mjs && node scripts/qa_url_duplicates.mjs && node scripts/qa_gate_stage2.mjs",
+    "build": "node scripts/lint-copy.mjs && node scripts/generate-search-index.mjs && astro build && node scripts/convert-og-to-png.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && node scripts/generate-redirects.mjs && node scripts/qa_url_duplicates.mjs && node scripts/qa_gate_stage2.mjs && node scripts/qa_funnel.mjs",
     "build:full": "astro build",
     "preview": "astro preview",
     "qa:url": "node scripts/qa_url_duplicates.mjs",
