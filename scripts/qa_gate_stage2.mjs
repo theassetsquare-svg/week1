@@ -67,4 +67,4 @@ if (uniqFails.length) {
   console.error('  ' + uniqFails.slice(0, 20).join('\n  '));
   process.exit(1);
 }
-console.log(`✅ qa_gate_stage2 PASS — ${htmls.length} pages, ${cssChecked} CSS refs all exist, 0 one-blob paragraphs`);
+console.log(`✅ qa_gate_stage2 PASS — ${htmls.length} pages, ${cssChecked} CSS refs OK, 0 one-blob, 0 /nolcool dups, 0 dup title/meta, /venue meta 120-160`);
