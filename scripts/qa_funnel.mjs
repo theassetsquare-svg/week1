@@ -90,9 +90,8 @@ for (const f of files) {
 console.log(`funnel: ${files.length} pages | dead-links ${[...new Set(deadLinks)].length} | orphans ${orphans.length} | dead-ends ${dead.length} | ilsanroom-hops ${ilsanHop} | nolcool.com-linked ${mainLinked} | dark ${dark}`);
 if (warns.length && process.env.FUNNEL_WARN) console.log('  ' + warns.slice(0, 40).join('\n  '));
 
-// HARD fails: dead links, ilsanroom hops, dark patterns. Orphans/dead-ends are reported (warn) unless STRICT.
-const hard = [...new Set(fails)];
-if (process.env.FUNNEL_STRICT) hard.push(...warns);
+// HARD fails: dead links, ilsanroom hops, dark patterns, orphans, dead-ends (full funnel integrity).
+const hard = [...new Set([...fails, ...warns])];
 if (hard.length) {
   console.error(`❌ qa_funnel FAILED:\n  ` + hard.slice(0, 40).join('\n  '));
   process.exit(1);
