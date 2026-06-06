@@ -32,7 +32,7 @@ for (const f of htmls) {
 let blobs = 0;
 for (const f of htmls.filter(h => h.includes('/venue/'))) {
   const html = readFileSync(f, 'utf8');
-  for (const m of html.matchAll(/<p class="tp-desc">([\s\S]*?)<\/p>/g)) {
+  for (const m of html.matchAll(/<p [^>]*class="tp-desc"[^>]*>([\s\S]*?)<\/p>/g)) {
     const text = m[1].replace(/<[^>]+>/g, '');
     if (text.length > 600) { blobs++; fails.push(`ONE-BLOB: ${text.length}-char <p class="tp-desc"> in ${f.replace(DIST, '')}`); }
   }
