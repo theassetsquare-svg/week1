@@ -39,6 +39,14 @@ try {
   if (!/Math\.min\(\s*\d+/.test(t)) fails.push('READ-TIME: missing realistic cap (Math.min)');
 } catch (e) { fails.push('cannot read ' + VT); }
 
+// ── 3) ANTI-FABRICATION: NightClub telephone must stay conditional on real venue.phone (no hardcoded fake NAP) ──
+try {
+  const t = readFileSync(VT, 'utf8');
+  if (/"telephone"\s*:\s*"0/.test(t)) fails.push('FAKE-NAP: hardcoded telephone literal in venue schema (must be venue.phone-gated)');
+  if (!/venue\.phone\s*\?/.test(t)) fails.push('NAP: telephone must be conditional on venue.phone');
+  if (/"streetAddress"/.test(t)) fails.push('FAKE-NAP: streetAddress present but no real street data in schema source');
+} catch {}
+
 if (fails.length) {
   console.error('❌ lint-copy GATE FAILED:\n  ' + fails.join('\n  '));
   process.exit(1);
