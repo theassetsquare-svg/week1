@@ -45,8 +45,9 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>" 2>&1 | tai
     # re-run monitor to confirm
     node scripts/auto-seo.mjs; echo "post-fix monitor exit=$?"
   else
-    echo "healthy — also resubmitting sitemap to keep indexing fresh"
+    echo "healthy — also resubmitting sitemap + IndexNow to keep indexing fresh"
     node -e "import('./scripts/lib/gsc-client.mjs').then(async g=>{const k=g.loadKey();const t=await g.getAccessToken(k,'https://www.googleapis.com/auth/webmasters');await g.submitSitemap(t,'${GSC_SITE:-https://week1-6m5.pages.dev/}','${GSC_SITE:-https://week1-6m5.pages.dev/}sitemap.xml');console.log('sitemap resubmitted');}).catch(e=>console.error('sitemap:',e.message));"
+    node scripts/indexnow.mjs 2>&1 | tail -2 || echo "indexnow skipped"
   fi
   echo "==================== $(ts) seo-cron end ===================="
   echo ""
