@@ -38,6 +38,29 @@ for (const f of htmls.filter(h => h.includes('/venue/'))) {
   }
 }
 
+// ── 3) DUAL-URL DEDUP: no /nolcool/ duplicate pages may exist in dist ──
+const nolcoolPages = htmls.filter(h => h.replace(/\\/g, '/').includes('/nolcool/'));
+if (nolcoolPages.length) fails.push(`DUAL-URL: ${nolcoolPages.length} /nolcool/ duplicate page(s) still in dist (must be removed + 301'd)`);
+
+// ── 4) TITLE/META across all pages: no detail-title "놀쿨", no dup title/meta, /venue/ meta 120-160 ──
+const byTitle = {}, byMeta = {};
+for (const f of htmls) {
+  const html = readFileSync(f, 'utf8');
+  const url = f.replace(DIST, '').replace(/index\.html$/, '').replace(/\\/g, '/');
+  const title = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] || '';
+  const meta = (html.match(/<meta name="description" content="([^"]*)"/i) || [])[1] || '';
+  (byTitle[title] = byTitle[title] || []).push(url);
+  if (meta) (byMeta[meta] = byMeta[meta] || []).push(url);
+  // venue (detail) pages: no 놀쿨 in title, meta 120-160
+  if (url.startsWith('/venue/')) {
+    if (title.includes('놀쿨')) fails.push(`DETAIL-TITLE 놀쿨: ${url} "${title}"`);
+    const ml = meta.length;
+    if (ml < 120 || ml > 160) fails.push(`META-LEN ${ml} (need 120-160): ${url}`);
+  }
+}
+for (const [t, urls] of Object.entries(byTitle)) if (urls.length > 1) fails.push(`DUP TITLE x${urls.length}: "${t}" (${urls.slice(0,2).join(', ')})`);
+for (const [m, urls] of Object.entries(byMeta)) if (urls.length > 1) fails.push(`DUP META x${urls.length}: ${urls.slice(0,2).join(', ')}`);
+
 const uniqFails = [...new Set(fails)];
 if (uniqFails.length) {
   console.error(`❌ qa_gate_stage2 FAILED (${htmls.length} pages, ${cssChecked} css refs, ${cssMissing} missing, ${blobs} blobs):`);
