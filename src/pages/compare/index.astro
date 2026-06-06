@@ -38,7 +38,8 @@ const _b64 = Buffer.from(JSON.stringify({ venues: compareData })).toString('base
   </div>
 
   <style>
-    .compare-sel{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:var(--bg);color:var(--text);font-family:inherit}
+    .compare-select{display:flex;flex-wrap:wrap;gap:8px}
+    .compare-sel{flex:1 1 160px;min-width:0;max-width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:var(--bg);color:var(--text);font-family:inherit}
   </style>
 
   <script is:inline define:vars={{ _b64 }}>
