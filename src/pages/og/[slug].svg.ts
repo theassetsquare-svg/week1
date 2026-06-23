@@ -23,6 +23,14 @@ export const GET: APIRoute = ({ params }) => {
   const region = venue.region;
   const typeName = venue.typeName;
 
+  const contact = venue.nickname && venue.phone
+    ? `<text x="600" y="450" font-family="sans-serif" font-size="30" font-weight="700" fill="#fff" text-anchor="middle">담당 ${escapeXml(venue.nickname)} · ${escapeXml(venue.phone)}</text>`
+    : venue.nickname
+      ? `<text x="600" y="450" font-family="sans-serif" font-size="30" font-weight="700" fill="#fff" text-anchor="middle">담당 ${escapeXml(venue.nickname)}</text>`
+      : venue.phone
+        ? `<text x="600" y="450" font-family="sans-serif" font-size="30" font-weight="700" fill="#fff" text-anchor="middle">${escapeXml(venue.phone)}</text>`
+        : '';
+
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -36,6 +44,7 @@ export const GET: APIRoute = ({ params }) => {
   <text x="140" y="105" font-family="sans-serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">${typeName}</text>
   <text x="600" y="290" font-family="sans-serif" font-size="52" font-weight="800" fill="#fff" text-anchor="middle">${escapeXml(name)}</text>
   <text x="600" y="355" font-family="sans-serif" font-size="26" fill="rgba(255,255,255,0.8)" text-anchor="middle">${escapeXml(region)}</text>
+  ${contact}
   <text x="600" y="520" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.6)" text-anchor="middle">놀쿨</text>
 </svg>`;
 
