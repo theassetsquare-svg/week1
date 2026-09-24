@@ -160,7 +160,6 @@ const jsonLd = [
   <button class="tab-btn active" data-tab="info">기본정보</button>
   <button class="tab-btn" data-tab="price">문의</button>
   <button class="tab-btn" data-tab="svc">서비스</button>
-  <button class="tab-btn" data-tab="review">후기</button>
   <button class="tab-btn" data-tab="gallery">사진</button>
   <button class="tab-btn" data-tab="event">이벤트</button>
   <button class="tab-btn" data-tab="faq">FAQ</button>
@@ -291,20 +290,6 @@ const jsonLd = [
   </div>
 </div>
 
-<!-- ═══ TAB 4: REVIEWS — 직접 가본 손님의 한마디 ═══ -->
-<div class="tab-panel" id="tab-review">
-  <h2 class="tp-title">{venue.name} 실제 후기</h2>
-  <div class="rv-highlights">
-    {selectedReviews.slice(0, 3).map(r => (
-      <div class="rv-highlight">
-        <div class="rv-stars-inline">{'★'.repeat(r.star)}{'☆'.repeat(5-r.star)}</div>
-        <p class="rv-quote">"{r.text}"</p>
-        <span class="rv-author-inline">— {r.author}</span>
-      </div>
-    ))}
-  </div>
-  <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-block mt-md">후기 더 보기 →</a>
-</div>
 
 <!-- ═══ TAB 5: GALLERY — 6장 포토 스토리 ═══ -->
 <div class="tab-panel" id="tab-gallery">
@@ -626,18 +611,6 @@ const jsonLd = [
   </div>
   <div id="loadMoreTrigger" class="load-more-trigger">
     <span class="spinner"></span> 더 많은 곳을 불러오는 중...
-  </div>
-  <h3 class="tp-sub mt-md">커뮤니티</h3>
-  <div class="comm-list">
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>{venue.region} 첫 방문 후기</strong><span>분위기가 정말 좋았어요. 다음에 또 가려구요.</span>
-    </a>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>{venue.region} {venue.typeName} 단체 모임</strong><span>회식 장소로 완벽했습니다. 서비스가 꼼꼼해요.</span>
-    </a>
-    <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="comm-item">
-      <strong>{venue.region} 주말 방문 팁</strong><span>금토는 미리 연락하세요. 대기 있어요.</span>
-    </a>
   </div>
 </section>
 
@@ -1130,11 +1103,6 @@ const jsonLd = [
   <button class="exit-close" id="exitClose" aria-label="닫기">✕</button>
   <div class="exit-emoji">🔥</div>
   <h3>잠깐! 이것만 보고 가세요</h3>
-  <div class="exit-review">
-    <div class="exit-stars">★★★★★</div>
-    <p class="exit-quote">"{selectedReviews[0].text}"</p>
-    <span class="exit-author">— {selectedReviews[0].author}</span>
-  </div>
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block exit-btn">더 많은 후기 보기 →</a>
   <p class="exit-sub">놓치면 후회할 정보가 가득!</p>
 </div>

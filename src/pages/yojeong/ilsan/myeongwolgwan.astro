@@ -28,8 +28,7 @@ const jsonLd = [
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"명월관","description":"일산 장항로 전통 한정식과 국악 공연 공간",
     "address":{"@type":"PostalAddress","streetAddress":"장항로 895-1","addressLocality":"고양시 일산동구","addressCountry":"KR"},
     "telephone":"010-4117-5556",
-    "url":`${SITE_URL}/yojeong/ilsan/myeongwolgwan/`,
-    "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"127","bestRating":"5","worstRating":"1"}},
+    "url":`${SITE_URL}/yojeong/ilsan/myeongwolgwan/`},
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqs.map(f=>({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a}}))},
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"홈","item":SITE_URL},
@@ -58,11 +57,6 @@ const _b64s = Buffer.from(JSON.stringify({
   <div class="mw-badge">전통 한정식</div>
   <h1>장항로 명월관 — 달빛 아래 차려지는 격조 높은 연회</h1>
   <p class="mw-sub">담당: 일산룸 총책임자 · 고양시 일산동구 장항로 895-1</p>
-  <div class="mw-stars">
-    ★★★★★
-    <span class="mw-rating">{starRating}</span>
-    <span class="mw-rc">({reviewCount}개 후기)</span>
-  </div>
   <img src="/og/ilsan-myeongwolgwan.png" alt="일산 전통 연회 공간" width="1200" height="630" loading="lazy" class="mw-img" />
 </section>
 
@@ -170,32 +164,6 @@ const _b64s = Buffer.from(JSON.stringify({
     <li><strong>드레스코드</strong> — 격식 있는 자리는 비즈니스 캐주얼 권장</li>
     <li><strong>특별 요청사항</strong> — 생일 케이크, 현수막, 판소리 공연 등 사전 요청</li>
   </ol>
-</section>
-
-<section class="mw-reviews">
-  <h2>실제 방문 후기</h2>
-  <div class="review-cards">
-    <div class="rv-card-sp">
-      <div class="rv-stars-sp">★★★★★</div>
-      <p>"접대 자리로 이용했는데 공간이 넓고 프라이빗해서 대화에 집중할 수 있었습니다. 한정식 코스도 정갈하고, 가야금 연주가 분위기를 살려줬습니다."</p>
-      <span class="rv-author-sp">— 김** (기업 임원)</span>
-    </div>
-    <div class="rv-card-sp">
-      <div class="rv-stars-sp">★★★★★</div>
-      <p>"어머니 칠순 잔치를 명월관에서 했습니다. 이벤트 세팅부터 음식까지 하나도 빠짐없이 완벽했어요. 일산룸 총책임자님이 직접 신경 써주셔서 감동이었습니다."</p>
-      <span class="rv-author-sp">— 이** (가족 행사)</span>
-    </div>
-    <div class="rv-card-sp">
-      <div class="rv-stars-sp">★★★★☆</div>
-      <p>"점심 비즈니스 코스로 이용했는데 가성비가 좋았습니다. 음식 양도 적당하고 맛도 좋아요. 다만 주말 점심은 예약이 꽉 차서 평일을 추천합니다."</p>
-      <span class="rv-author-sp">— 박** (비즈니스 런치)</span>
-    </div>
-    <div class="rv-card-sp">
-      <div class="rv-stars-sp">★★★★★</div>
-      <p>"외국인 바이어를 모시고 갔는데 한국 전통 문화를 경험할 수 있어서 매우 만족하셨습니다. 영문 메뉴와 다도 체험이 특히 좋았어요."</p>
-      <span class="rv-author-sp">— 최** (해외 접대)</span>
-    </div>
-  </div>
 </section>
 
 <section class="mw-area">
