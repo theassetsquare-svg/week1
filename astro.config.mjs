@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://week1-6m5.pages.dev',
+  site: 'https://dd.nolcool.com',
   base: '/',
   output: 'static',
   outDir: './dist',

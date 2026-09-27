@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import { mkdirSync } from 'fs';
 
-const BASE = 'https://week1-6m5.pages.dev';
+const BASE = 'https://dd.nolcool.com';
 const DIR = 'screenshots';
 mkdirSync(DIR, { recursive: true });
 

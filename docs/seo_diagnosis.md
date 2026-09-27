@@ -23,11 +23,11 @@
 |-------|--------|
 | **Priority** | **P0 - CRITICAL** |
 | **Impact** | Catastrophic. All canonical URLs, sitemap entries, OG tags, and robots.txt point to a domain that is not the live deployment target. Search engines index the wrong domain or discard signals entirely. |
-| **Current State** | Every hardcoded URL references `https://week1-6m5.pages.dev`. |
+| **Current State** | Every hardcoded URL references `https://dd.nolcool.com`. |
 | **Desired State** | All URLs must reference `https://night-4qy.pages.dev` (or the final custom domain once assigned). |
 | **Affected Files** | `astro.config.mjs` (site field), `BaseLayout.astro` (siteUrl constant), `sitemap.xml` (all 187 entries), `robots.txt` (Sitemap directive), every template that constructs canonical or OG URLs. |
 | **Affected Pages** | All 187+ pages. |
-| **Recommended Fix** | 1. Update `astro.config.mjs` `site` to the correct domain. 2. Ensure `BaseLayout.astro` derives `siteUrl` from the Astro config site value rather than a hardcoded string. 3. Regenerate or rewrite `sitemap.xml` with the correct domain. 4. Update `robots.txt` Sitemap directive. 5. Search the entire codebase for `week1-6m5.pages.dev` and replace every occurrence. 6. Consider defining the domain in a single config constant so future domain changes require editing only one file. |
+| **Recommended Fix** | 1. Update `astro.config.mjs` `site` to the correct domain. 2. Ensure `BaseLayout.astro` derives `siteUrl` from the Astro config site value rather than a hardcoded string. 3. Regenerate or rewrite `sitemap.xml` with the correct domain. 4. Update `robots.txt` Sitemap directive. 5. Search the entire codebase for `dd.nolcool.com` and replace every occurrence. 6. Consider defining the domain in a single config constant so future domain changes require editing only one file. |
 
 ---
 

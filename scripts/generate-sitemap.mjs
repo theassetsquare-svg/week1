@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const SITE_URL = 'https://week1-6m5.pages.dev';
+const SITE_URL = 'https://dd.nolcool.com';
 const distDir = path.join(process.cwd(), 'dist');
 
 function findHtmlFiles(dir, base = '') {

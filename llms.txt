@@ -47,9 +47,9 @@ Busan, Daegu, Incheon, Daejeon, Gwangju, Jeju, and more.
 - hoppa (호빠): 53 venues
 
 ## Machine-Readable Resources
-- Sitemap: https://week1-6m5.pages.dev/sitemap.xml
-- RSS Feed: https://week1-6m5.pages.dev/feed.xml
-- robots.txt: https://week1-6m5.pages.dev/robots.txt
+- Sitemap: https://dd.nolcool.com/sitemap.xml
+- RSS Feed: https://dd.nolcool.com/feed.xml
+- robots.txt: https://dd.nolcool.com/robots.txt
 
 ## Structured Data (JSON-LD)
 Each venue page includes:

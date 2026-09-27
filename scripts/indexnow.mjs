@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const HOST = 'week1-6m5.pages.dev';
+const HOST = 'dd.nolcool.com';
 const SITE = `https://${HOST}`;
 const DRY = process.argv.includes('--dry-run');
 

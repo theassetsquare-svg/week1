@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { loadKey, getAccessToken, listSites, searchAnalytics, dateRange } from './lib/gsc-client.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE = process.env.GSC_SITE || 'https://week1-6m5.pages.dev/';
+const SITE = process.env.GSC_SITE || 'https://dd.nolcool.com/';
 const DAYS = Number(process.env.GSC_DAYS || 28);
 
 async function main() {

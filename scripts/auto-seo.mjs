@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────────────────
-// auto-seo.mjs — unified SEO + health monitor for 놀쿨 (week1-6m5.pages.dev)
+// auto-seo.mjs — unified SEO + health monitor for 놀쿨 (dd.nolcool.com)
 // Runs the on-disk SEO audit, queries Google Search Console (keywords,
 // rankings, cannibalization, sitemap status), and probes the LIVE site for
 // availability. Aggregates everything into one status object, writes
@@ -19,7 +19,7 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SITE = process.env.GSC_SITE || 'https://week1-6m5.pages.dev/';
+const SITE = process.env.GSC_SITE || 'https://dd.nolcool.com/';
 const SECRETS = path.join(__dirname, '.secrets');
 
 const issues = [];           // {severity:'error'|'warn', area, msg}

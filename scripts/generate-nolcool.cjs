@@ -6,7 +6,7 @@
 const fs = require('fs'), path = require('path');
 const BASE = path.join(__dirname,'..','nolcool');
 const PUB = path.join(__dirname,'..','public');
-const SITE = 'https://week1-6m5.pages.dev';
+const SITE = 'https://dd.nolcool.com';
 
 // ─── 광고주 없는 업소 (닉네임/전화 표시 금지) ─────────────
 const AD_FREE = new Set(['sangbong-hankukgwan','hwajeong-hankukgwan','suwon-korea','bundang-pongpong','busan-asiad','ulsan-newworld','suyu-shampoo','indeokwon-gukbingwan']);

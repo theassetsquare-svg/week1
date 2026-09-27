@@ -100,7 +100,7 @@ if (process.argv[1] && process.argv[1].endsWith('slugDedup.mjs')) {
   assert('short path passthrough', normalizeVenuePath('/clubs/'), '/clubs/');
 
   // buildCanonicalUrl
-  assert('canonical build', buildCanonicalUrl('https://week1-6m5.pages.dev', '/club/gangnam/레이스-클럽/'), 'https://week1-6m5.pages.dev/club/gangnam/레이스/');
+  assert('canonical build', buildCanonicalUrl('https://dd.nolcool.com', '/club/gangnam/레이스-클럽/'), 'https://dd.nolcool.com/club/gangnam/레이스/');
 
   console.log(`\n  ${passed} passed, ${failed} failed\n`);
   process.exit(failed > 0 ? 1 : 0);

@@ -10,7 +10,7 @@ import { loadKey, getAccessToken, submitSitemap, listSitemaps } from './lib/gsc-
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SITE = process.env.GSC_SITE || 'https://week1-6m5.pages.dev/';
+const SITE = process.env.GSC_SITE || 'https://dd.nolcool.com/';
 const SITEMAP = `${SITE}sitemap.xml`;
 const did = [];
 

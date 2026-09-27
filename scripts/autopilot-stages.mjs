@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const SITE = (process.env.GSC_SITE || 'https://week1-6m5.pages.dev/').replace(/\/$/, '');
+const SITE = (process.env.GSC_SITE || 'https://dd.nolcool.com/').replace(/\/$/, '');
 const MAIN = 'https://nolcool.com';
 const DRY = process.argv.includes('--dry-run');
 const findings = []; // {type, sev, msg}

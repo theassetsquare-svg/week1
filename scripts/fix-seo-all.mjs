@@ -12,7 +12,7 @@ import fs from 'fs';
 import path from 'path';
 
 const ROOT = 'public/nolcool';
-const SITE_URL = 'https://week1-6m5.pages.dev';
+const SITE_URL = 'https://dd.nolcool.com';
 
 // ── 금지단어 목록 ──
 const BANNED = ['다양한','특별한','프리미엄','최고의','뛰어난','차별화된','혁신적인','할수있습니다','제공합니다'];
