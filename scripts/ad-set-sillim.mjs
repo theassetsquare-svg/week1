@@ -24,7 +24,9 @@ const NOTICE = `이 페이지는 광고이며, 업소 제공 정보를 받아 �
 // 틀의 아래 안내 창 둘(.slide-up-banner · .scroll-banner)은 숨은 상태가 translateY(100%) 인데 자리가 bottom:92px 라, 숨어 있을 때도 위쪽 92px 가
 //   화면 아래에 떠서(z-index 98·97) 폰 화면의 고정 전화바(z-index 49)를 덮는다(2026-10-07 로컬 화면 · 라이브 같은 틀 쪽 실측).
 //   이 쪽만 숨은 상태를 화면 밖까지 내린다(.show 가 붙어 올라올 때는 틀 그대로 — 글자·요소는 손대지 않음).
-const BAR_PC_STYLE = '<style>@media (min-width:768px){a.phone-bar.has-phone{max-width:none}}.slide-up-banner:not(.show),.scroll-banner:not(.show){transform:translateY(calc(100% + 92px))}</style>';
+// 2026-10-25 덧붙임(광고주59-1 · 실측): 틀은 안내 창을 높이 44px 바 위(아래에서 92px)에 맞춰 두었는데 번호가 든 바는 52px 라, 폰에서 안내 창이
+//   올라오면 바 윗부분 8px 를 덮었다(390·360·767px 화면). 폰에서는 안내 창을 바 윗선(아래에서 100px)에 올린다. PC 는 오른쪽 아래 둥근 단추라 틀 그대로 92px.
+const BAR_PC_STYLE = '<style>.slide-up-banner,.scroll-banner{bottom:100px}.slide-up-banner:not(.show),.scroll-banner:not(.show){transform:translateY(calc(100% + 100px))}@media (min-width:768px){a.phone-bar.has-phone{max-width:none}.slide-up-banner,.scroll-banner{bottom:92px}}</style>';
 // 확인 안 된 시각(영업시간으로 읽히는 글) — 검토 지적(2026-10-07). 틀([slug].astro:302 이름표 · 값 description)은 다른 쪽과 같이 쓰므로 이 쪽 결과에서만 뺀다.
 //   넘김 사진 이름표는 글자(span)만 뺀다 — 슬라이드 6장과 넘김 스크립트(total = 6)는 그대로라 빈 칸이 생기지 않는다.
 //   설명 첫 문장은 「…가속이 붙고, 새벽 2시에는 전부 전속력이다.」 한 문장이라 그 절만 떼면 문장이 끊긴다 → 문장째 뺀다(새 글로 채우지 않음).
