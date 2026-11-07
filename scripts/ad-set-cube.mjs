@@ -21,7 +21,7 @@ if (!/^010-\d{4}-\d{4}$/.test(PHONE)) stop(`번호가 010-XXXX-XXXX 꼴이 아�
 const DIGITS = PHONE.replace(/\D/g, '');
 const TEL = `tel:${DIGITS}`;
 const LD_TEL = `+82-${PHONE.slice(1)}`;
-const ALT = `${NAME} ${NICK} ${PHONE} 광고문의 카톡 besta12`;
+const ALT = `${NAME} ${NICK} 안내 카드`;   // 구글69-1(11-07): alt = 그려진 것을 짧게 · 번호 0(구글 이미지 공식 · 지시서 2-3)
 const BAR_TEXT = `${NAME} 예약 · ${NICK} ${PHONE}`;
 const NOTICE = `이 페이지는 광고이며, 업소 제공 정보를 받아 실었습니다(담당 ${NICK}). 확인일 2026-10-25. 실린 내용은 사정에 따라 바뀔 수 있습니다.`;
 // 선례와 같은 까닭(ad-set-sillim.mjs 머리 주석): PC 에서 바 상한을 풀고, 숨은 아래 안내 창 둘이 폰 화면의 고정 전화바를 덮지 않게 화면 밖으로 내린다.
