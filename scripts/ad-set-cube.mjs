@@ -214,6 +214,7 @@ function verify(h, p, cardPath, cardUrl) {
   has(`<meta property="og:image" content="${cardUrl}">`, 'og:image');
   has(`<meta property="og:image:alt" content="${attr(ALT)}">`, 'og:image:alt');
   has(`<meta name="twitter:image" content="${cardUrl}">`, 'twitter:image');
+  has('<meta name="robots" content="index, follow, max-image-preview:large">', 'robots 메타(max-image-preview:large)');
   has(`href="${TEL}" class="phone-bar has-phone"`, '전화바 tel');
   has(`>${BAR_TEXT}</a>`, '전화바 글자');
   has(`${BAR_PC_STYLE}</head>`, 'PC 전화바 폭');
@@ -287,6 +288,7 @@ for (const p of PAGES) {
   once('twitter:title', /<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${attr(p.title)}">`);
   once('twitter:description', /<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${attr(p.desc)}">`);
   once('twitter:image', /<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${cardUrl}">`);
+  once('robots 메타', /<meta name="robots" content="index, follow">/, '<meta name="robots" content="index, follow, max-image-preview:large">'); // 구글 robots meta max-image-preview:large — 안내 카드 미리보기 크게(구글69-1 2-3 · 틀은 안 건드리고 이 쪽만)
   once('머리 끝(PC 전화바 폭)', /<\/head>/, `${BAR_PC_STYLE}</head>`);
   // ② JSON-LD — Organization · WebSite 는 그대로, NightClub = 큐브(번호 · 새 카드 · 확인된 동네) · FAQPage = 보이는 문답 · 빵부스러기 = 새 이름
   {

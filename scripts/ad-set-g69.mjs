@@ -37,7 +37,7 @@ const PAGES = [
     sections: [
       { h: '이 페이지에 실은 것', ps: [
         '건대호빠는 건대 쪽 호스트바다. 지금까지 가게에서 받은 것은 이름과 담당자, 예약 번호까지다. 담당은 유현재 실장이고, 장안동호빠 큐브 예약을 받는 사람과 같은 사람이라 번호도 같다.',
-        '건물 이름과 층, 영업시간, 요금은 아직 받지 못했다. 예전 이 자리에 있던 실내 묘사와 후기, 혜택 문구는 근거를 찾지 못해 모두 뺐다. 모르는 칸은 통화로 물어서 채우면 된다.',
+        '건물 이름과 층, 영업시간, 요금은 아직 받지 못했다. 예전 이 자리에 있던 실내 묘사와 후기, 혜택 문구는 어디서 나온 말인지 확인이 안 돼 지웠다. 모르는 칸은 통화로 물어서 채우면 된다.',
       ] },
       { h: '통화에서 맞출 것', call: true, ps: [
         '번호가 장안동 큐브와 같으니 처음에 "건대 쪽 가게로 가려고 한다"고 먼저 말해 두는 게 좋다. 그래야 어느 가게 이야기인지 서로 헷갈리지 않는다.',
@@ -81,7 +81,7 @@ const PAGES = [
     sections: [
       { h: '확인된 것', ps: [
         '부산호빠 스타는 이 사이트의 부산 호빠 목록에 이름이 올라 있는 가게다. 확인된 것은 거기까지다.',
-        '주소와 영업시간, 요금, 연락처는 가게에서 받은 적이 없다. 예전 이 자리에 있던 조명과 칵테일 이야기, 후기와 혜택, 영업시간표는 근거를 찾지 못해 모두 뺐다.',
+        '주소와 영업시간, 요금, 연락처는 가게에서 받은 적이 없다. 예전 이 자리에 있던 조명과 칵테일 이야기, 후기와 혜택, 영업시간표는 누가 확인한 것이 아니어서 걷어냈다.',
       ] },
       { h: '정보가 적은 가게를 찾아갈 때', ps: [
         '먼저 지도 앱에 가게 이름을 넣어 본다. 같은 이름이 여러 곳 뜨면 주소와 마지막으로 고친 날짜를 견줘 보고, 아무것도 안 뜨면 이름이 바뀌었거나 문을 닫았을 수도 있다.',
@@ -116,7 +116,7 @@ const PAGES = [
     sections: [
       { h: '이 가게에 대해 아는 것', ps: [
         '부산호빠 아우라는 이 사이트의 부산 호빠 목록에 이름이 올라 있다. 주소와 영업시간, 요금, 연락처는 아직 받지 못했다.',
-        '예전 이 자리에 있던 실내 묘사와 후기, 영업시간표는 근거를 찾지 못해 모두 뺐다. 그래서 이 페이지는 가게 소개보다 나오는 길 이야기가 길다.',
+        '실내 묘사와 후기, 영업시간표가 전에 이 자리에 있었지만 출처가 없어 내렸다. 그래서 이 페이지는 가게 소개보다 나오는 길 이야기가 길다.',
       ] },
       { h: '돌아가는 길을 먼저 정하는 까닭', ps: [
         '늦게까지 있을 생각이라면 들어가기 전에 어떻게 돌아갈지 정해 두는 편이 편하다. 자리에서 일어날 때쯤에는 판단이 느려지고, 그때 가서 길을 찾으면 시간이 오래 걸린다.',
@@ -152,7 +152,7 @@ const PAGES = [
     sections: [
       { h: '확인된 것은 이름까지', ps: [
         '부산호빠 맨즈는 이 사이트의 부산 호빠 목록에 이름이 올라 있다. 주소와 영업시간, 요금, 연락처는 받은 적이 없다.',
-        '예전 이 자리의 실내 묘사, 후기, 혜택, 영업시간표는 근거를 찾지 못해 모두 뺐다.',
+        '전에 적혀 있던 실내 묘사와 후기, 혜택, 영업시간표는 뒷받침할 자료가 없어 비웠다.',
       ] },
       { h: '여럿이 갈 때 맞출 것', ps: [
         '인원이 늘면 정할 것도 는다. 누가 가게에 연락해서 자리를 물을지 한 사람을 정하고, 들은 내용은 단톡방에 그대로 올려 둔다.',
@@ -188,7 +188,7 @@ const PAGES = [
     sections: [
       { h: '이 페이지가 아는 것', ps: [
         '부산호빠 깐따삐야는 이 사이트의 부산 호빠 목록에 이름이 올라 있다. 주소와 영업시간, 요금, 연락처는 아직 받지 못했다.',
-        '예전 이 자리에 있던 실내 묘사와 후기, 영업시간표는 근거를 찾지 못해 모두 뺐다. 모르는 것은 비워 두고 가방에 챙길 것만 적는다.',
+        '이 자리에 있던 실내 묘사와 후기, 영업시간표는 가게가 알려 준 것이 아니라서 지웠다. 모르는 것은 비워 두고 가방에 챙길 것만 적는다.',
       ] },
       { h: '가방에 넣을 것', ps: [
         '사진이 붙은 신분증이 먼저다. 주민등록증이나 운전면허증이면 된다. 19세 미만은 들어갈 수 없어 입구에서 나이를 확인할 때가 있다.',
@@ -261,6 +261,7 @@ function verify(h, p, cardPath, cardUrl) {
   has(`<meta name="description" content="${attr(p.desc)}">`, '설명');
   has(`<meta property="og:image" content="${cardUrl}">`, 'og:image');
   has(`<meta name="twitter:image" content="${cardUrl}">`, 'twitter:image');
+  has('<meta name="robots" content="index, follow, max-image-preview:large">', 'robots 메타(max-image-preview:large)');
   has(`<img src="${cardPath}" alt="${attr(altOf(p))}" width="1200" height="1200"`, '본문 카드 img');
   if ((h.match(/<h1\b/g) || []).length !== 1) bad.push('h1 하나 아님');
   if ((h.match(/<img\b/g) || []).length !== 1) bad.push('그림이 카드 한 장이 아님');
@@ -295,6 +296,7 @@ function removeEl(h, re, missing, label, need) {
 
 const outs = [];
 let already = 0;
+const pairs = []; // 사이트맵 <image:image> 에 넣을 (쪽 주소 · 그 쪽 안내 카드 주소) — 다섯 쪽 + 큐브
 for (const p of PAGES) {
   const file = join(ROOT, 'venue', p.slug, 'index.html');
   if (!existsSync(file)) stop(`쪽 파일 없음: ${file}`);
@@ -302,6 +304,7 @@ for (const p of PAGES) {
   const card = cardOf(p.card);
   const cardPath = `/og/${card}`;
   const cardUrl = `${HOST}${cardPath}`;
+  pairs.push({ url, cardUrl });
   const before = readFileSync(file, 'utf8');
   const id0 = ident(before);
   if (id0.canonical !== url || id0.ogurl !== url) stop(`${p.slug} canonical·og:url 다름: ${id0.canonical} · ${id0.ogurl}`);
@@ -326,6 +329,7 @@ for (const p of PAGES) {
   once('twitter:title', /<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${attr(p.title)}">`);
   once('twitter:description', /<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${attr(p.desc)}">`);
   once('twitter:image', /<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${cardUrl}">`);
+  once('robots 메타', /<meta name="robots" content="index, follow">/, '<meta name="robots" content="index, follow, max-image-preview:large">'); // 구글 robots meta max-image-preview:large — 안내 카드 미리보기 크게(구글69-1 2-3 · 틀은 안 건드리고 이 쪽만)
   if (p.ad) once('머리 끝', /<\/head>/, `${BAR_PC_STYLE}</head>`);
   {
     const lds = [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
@@ -377,7 +381,38 @@ const cubeBefore = cube;
   if (BANNER_WORDS.some((w) => cube.includes(w))) stop('큐브 쪽에 광고 안내 문구 남음');
   if (JSON.stringify(ident(cube)) !== JSON.stringify(ident(cubeBefore))) stop('큐브 canonical 바뀜');
 }
+/* 사이트맵 <image:image> — 여섯 쪽(다섯 + 큐브)의 <url> 에 그 쪽에 실제로 보이는 안내 카드 하나(구글69-1 2-3).
+   구글 이미지 사이트맵 공식(developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps · 확인 2026-11-08): <image:image><image:loc> 만 · caption·title·geo_location·license 는 폐기.
+   generate-sitemap.mjs(빌드 앞 단계) 가 만든 dist/sitemap.xml 에 이름 공간과 여섯 덩이만 더한다 · 다시 돌리면 확인만(멱등) · 자리를 못 찾으면 아무것도 쓰지 않고 종료 1 */
+function sitemapWithImages(list) {
+  const file = join(ROOT, 'sitemap.xml');
+  if (!existsSync(file)) stop(`사이트맵 없음: ${file}`);
+  let x = readFileSync(file, 'utf8');
+  if (!x.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"')) {
+    const n = (x.match(/<urlset\b[^>]*>/g) || []).length;
+    if (n !== 1) stop(`사이트맵 urlset(찾은 수 ${n})`);
+    x = x.replace(/<urlset\b([^>]*)>/, (_m, a) => `<urlset${a} xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">`);
+  }
+  let added = 0;
+  for (const { url, cardUrl } of list) {
+    const all = [...x.matchAll(new RegExp(`<url>\\s*<loc>${esc(url)}</loc>[\\s\\S]*?</url>`, 'g'))];
+    if (all.length !== 1) stop(`사이트맵 <url> ${url}(찾은 수 ${all.length})`);
+    const block = all[0][0];
+    if (block.includes('<image:image>')) { if (!block.includes(`<image:loc>${cardUrl}</image:loc>`)) stop(`사이트맵 ${url} 의 image:loc 이 이 쪽 카드와 다름`); continue; }
+    const nu = block.replace(/<\/url>$/, () => `<image:image><image:loc>${cardUrl}</image:loc></image:image></url>`);
+    x = x.slice(0, all[0].index) + nu + x.slice(all[0].index + block.length); added++;
+  }
+  return { text: x, added };
+}
+{
+  const cubeOg = (cube.match(/<meta property="og:image" content="([^"]*)">/) || [])[1];
+  if (!cubeOg) stop('큐브 og:image 없음');
+  pairs.push({ url: `${HOST}/venue/jangandong-hoppa-cube/`, cardUrl: cubeOg });
+}
+const smap = sitemapWithImages(pairs); // 쓰기 전에 전부 확인(자리를 못 찾으면 여기서 종료 1 · 쪽도 쓰지 않음)
 for (const o of outs) writeFileSync(o.file, o.h);
 for (const o of outs) console.log(`${TAG} 넣음 — ${o.p.slug} · 카드 ${o.card} · ${o.before.length}B → ${o.h.length}B`);
 if (cube !== cubeBefore) { writeFileSync(cubeFile, cube); console.log(`${TAG} 큐브 쪽 광고 안내 창 뺌 · ${cubeBefore.length}B → ${cube.length}B`); } else console.log(`${TAG} 큐브 쪽 광고 안내 창 이미 없음`);
+if (smap.added) writeFileSync(join(ROOT, 'sitemap.xml'), smap.text);
+console.log(`${TAG} 사이트맵 image:image — 더함 ${smap.added} · 이미 있음 ${pairs.length - smap.added}`);
 if (already) console.log(`${TAG} 이미 넣음 ${already}쪽`);
