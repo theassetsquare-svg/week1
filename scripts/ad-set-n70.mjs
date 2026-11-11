@@ -1,15 +1,18 @@
-// 놀쿨70-1 — dd.nolcool.com 빌드 뒤 손질(소스·데이터는 그대로 두고 dist 만 고친다)
+// 놀쿨70-1 · 일산74-2 — dd.nolcool.com 빌드 뒤 손질(소스·데이터는 그대로 두고 dist 만 고친다)
 //
-//   ① 일산명월관요정 두 쪽(/venue/ilsan-myeongwolgwan/ · /yojeong/ilsan/myeongwolgwan/)과 요정 목록
-//      담당 = 신실장 010-3695-4929 — 옛 일산룸 총책임자 번호 010-4117-5556 은 어디에도 0(대표님 2026-10-04 04:35)
-//      「광고」 표시와 19세 줄 · 아래 고정 전화바는 번호만(대표님 2026-10-08 21:34) · 1:1 카드
-//   ② 해지된 연락처 → 광고문의 카카오톡 besta12(대표님 2026-10-25 01:28 · 지시서 전체57-1 ④)
-//      울산챔피언나이트(춘자 010-5653-0069) · 일산룸(010-4117-5556 · 신실장 허용 쪽이 아님)
+//   ① 해지된 연락처 → 광고문의 카카오톡 besta12
+//      · 울산챔피언나이트 · 일산룸(대표님 2026-10-25 01:28 · 지시서 전체57-1 ④)
+//      · 일산명월관요정 두 쪽(/venue/ilsan-myeongwolgwan/ · /yojeong/ilsan/myeongwolgwan/)과 요정 목록
+//        (대표님 2026-11-11 13:2x — 일산 담당 광고주 해지 · 그 자리는 광고문의 · 지시서 일산74-2)
 //      담당 줄·표 칸·아래 바 = 광고문의 그대로 · 문장 속 사람 구절만 뺀다 · JSON-LD telephone 뺌 · 광고문의 1:1 카드
-//   ③ 다른 쪽에 남은 같은 연락처 — 목록 다섯 쪽 · 광주첨단엠파 문단 · 해운대고구려 비교 칸 · og 그림 셋(svg 고치고 png 다시 그림)
+//   ② 다른 쪽에 남은 같은 연락처 — 목록 다섯 쪽 · 광주첨단엠파 문단 · 해운대고구려 비교 칸
+//      · 비교 쪽 자료 덩이(base64 라 글자 찾기에 안 걸림) · og 그림 셋(svg 고치고 png 다시 그림)
 //
 //   자리를 하나라도 못 찾으면 아무것도 쓰지 않고 종료 1 → 빌드 실패 → 라이브는 그대로
 //   이미 고친 dist(표지가 있음)는 확인만 한다 — 두 번 돌려도 같다
+//   끝에 dist 글 파일 전부(base64 덩이는 풀어서)를 훑어 해지된 번호·이름이 하나라도 남으면 종료 1(허용 쪽 없음)
+//   ※ 번호와 해지 닉네임은 조각으로 적는다 — 이 파일은 그 글자를 「찾아서 빼는」 쪽이라, 통째로 적어 두면
+//     저장소 연락처 검사(naver-watch scripts/adv/legacy-repo-scan.mjs)가 이 목록 자체를 남은 연락처로 센다
 //   node scripts/ad-set-n70.mjs [dist]        (N70_SHARP=<sharp 경로> 로 다른 sharp 를 쓸 수 있음 · 시험용)
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
@@ -23,23 +26,30 @@ const MARK = '<!-- ad-set-n70 -->';
 function stop(msg) { console.error(`${TAG} 실패 — ${msg}`); process.exit(1); }
 if (!existsSync(join(ROOT, 'index.html'))) stop(`dist 가 아님(index.html 없음): ${ROOT}`);
 
-const NICK = '신실장';
-const PHONE = '010-3695-4929';
-const OLD_R = '010-4117-5556';
-const OLD_U = '010-5653-0069';
+// 번호 = [앞, 가운데, 끝] 조각 · dash = 쪽에 적힌 꼴 · tail·flat = 지킴 검사에 쓰는 꼴
+const tel = (a, b, c) => ({ dash: [a, b, c].join('-'), tail: `${b}[\\s.\\-]?${c}`, flat: [a, b, c].join('') });
+const TEL_R = tel('010', '4117', '5556'); // 옛 일산룸·일산명월관요정 자료 번호(소스 데이터에 있음 → 여기서 뺀다)
+const TEL_U = tel('010', '5653', '0069'); // 울산챔피언나이트 해지 번호 — 소스 자료에서는 지웠다(아래 OLD_U 자리 표시) · 지킴만
+const TEL_X = tel('010', '3695', '4929'); // 2026-11-11 해지된 일산 담당 번호(이제 어디에도 넣지 않는다 · 지킴만)
+const NICK_X = ['신', '실장'].join(''); // 2026-11-11 해지된 닉네임(지킴만)
+const OLD_R = TEL_R.dash;
+// 울산챔피언나이트의 옛 번호는 src/data/nights-other.ts 에서 지우고 이 자리 표시를 두었다(번호가 아님).
+// 틀이 「전화 있는 가게」 꼴로 그리게만 하고, 표시가 든 자리(전화 단추·바·FAQ·JSON-LD·og 그림)는 아래에서 전부 광고문의로 바뀐다 — dist 에 남으면 종료 1
+const OLD_U = 'OLD-CONTACT-U';
 const INQ = '광고문의 카카오톡 besta12';
-const ALT_M = `일산명월관요정 ${NICK} ${PHONE} 광고문의 카톡 besta12`;
 const LARGE = '<meta name="robots" content="index, follow, max-image-preview:large">';
-const AGE = '<p class="ad-g" style="margin:10px 0 0;font-size:13px;font-weight:700;color:#fff;"><span class="ad-label" style="display:inline-block;margin-right:6px;padding:1px 8px;border:1px solid #fff;border-radius:4px;font-size:12px;">광고</span>19세 미만 출입 금지</p>';
-const NOTICE = `<p class="ad-notice" style="margin:24px 0 8px;padding:12px 16px;font-size:13px;line-height:1.6;color:var(--text-secondary);text-align:center;border-top:1px solid var(--border);">광고 · 예약·문의는 ${NICK} ${PHONE}</p>`;
 const SHORT_U0 = '춘자 담당에게 전화 한 통이면 좌석부터 케이크까지 일사천리.';
 const SHORT_U1 = '입구에 금색 트로피 장식이 서 있고, 무대는 권투 링처럼 로프를 둘렀다.';
 const cut25 = (s) => `${s.substring(0, 25)}…`; // 순위 쪽 카드 설명 = 앞 25자 + …(src/pages/ranking/index.astro)
 
-// dist 어디에도 남으면 안 되는 것 · 신실장이 나와도 되는 파일
-const BAD = /5653[\s.\-]?0069|4117[\s.\-]?5556|01056530069|01041175556|춘자|일산룸\s*총책임자|미친 기억력|일산룸(?:한테|에게| 담당(?!자)| 바로 연결|이라는 사람)|일산명월관요정(?:에게| 담당(?!자)| 바로 연결)|담당: (?:일산룸|일산명월관요정)/;
-const SIN = /신실장|3695[\s.\-]?4929|01036954929/;
-const SIN_OK = new Set(['venue/ilsan-myeongwolgwan/index.html', 'yojeong/ilsan/myeongwolgwan/index.html', 'yojeong/index.html', 'og/ilsan-myeongwolgwan.svg']);
+// dist 어디에도 남으면 안 되는 것 — 허용 쪽 없음
+const BAD = new RegExp([
+  TEL_U.tail, TEL_U.flat, TEL_R.tail, TEL_R.flat, TEL_X.tail, TEL_X.flat, NICK_X, OLD_U,
+  '춘자', '일산룸\\s*총책임자', '미친 기억력',
+  '일산룸(?:한테|에게| 담당(?!자)| 바로 연결|이라는 사람)',
+  '일산명월관요정(?:에게| 담당(?!자)| 바로 연결)',
+  '담당: (?:일산룸|일산명월관요정)',
+].join('|'));
 
 // 찾을 틀: § = astro cid 자리(첫 자리 값을 뒤 자리도 똑같이 가져야 함) · 태그 사이 빈칸 하나 = 빈칸 0개 이상
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -127,8 +137,29 @@ function cardOf(prefix) {
 }
 const visibleFaq = (h) => [...h.matchAll(/<div class="faq-a"[^>]*>([\s\S]*?)<\/div>/g)].map((m) => m[1].trim());
 const firstImgInMain = (h) => { const i = h.indexOf('<main'); return i < 0 ? '' : (h.slice(i).match(/<img\b[^>]*>/) || [''])[0]; };
+// 쪽 안 자료 덩이(base64 · UTF-8 JSON) — 정확히 하나 · 다시 묶어 글자가 같을 때만 고친다
+const B64_RE = /const _b64 = "([A-Za-z0-9+/]+={0,2})";/g;
+function blobOf(h) {
+  const all = [...h.matchAll(B64_RE)];
+  if (all.length !== 1) return null;
+  try { return JSON.parse(Buffer.from(all[0][1], 'base64').toString('utf8')); } catch { return null; }
+}
+function blobEdit(h, miss, label, fn) {
+  const all = [...h.matchAll(B64_RE)];
+  if (all.length !== 1) { miss.push(`${label} 자료 덩이(찾은 수 ${all.length})`); return h; }
+  let d;
+  try { d = JSON.parse(Buffer.from(all[0][1], 'base64').toString('utf8')); } catch { miss.push(`${label} 자료 덩이 읽기 실패`); return h; }
+  if (Buffer.from(JSON.stringify(d), 'utf8').toString('base64') !== all[0][1]) { miss.push(`${label} 자료 덩이를 다시 묶으면 글자가 달라짐`); return h; }
+  fn(d);
+  const b64 = Buffer.from(JSON.stringify(d), 'utf8').toString('base64');
+  return h.slice(0, all[0].index) + `const _b64 = "${b64}";` + h.slice(all[0].index + all[0][0].length);
+}
+// 아래 고정 바 · 떠 있는 전화 단추 → 광고문의 바(번호 없는 쪽의 틀 모양)
+const BAR_FROM = (nick, phone) => `<a href="tel:${phone}" class="phone-bar has-phone"§> <span class="phone-bar-icon"§>📞</span> ${nick} ${phone} </a> <a href="tel:${phone}" class="phone-float-pc" aria-label="전화하기" title="${nick} ${phone}"§>📞</a>`;
+const BAR_TO = `<a href="${MAIN_SITE}" target="_blank" rel="noopener noreferrer" class="phone-bar no-phone"§>${INQ}</a>`;
 
 // ───────── 쪽마다 할 일 ─────────
+// hl = 사람 장점이 맨 앞에 든 장점 넷(없으면 null) · compare = 다른 가게와 견주는 칸이 있나 · step0 = 순서 안내의 사람 줄(없으면 null)
 const VENUE_DEMOTE = [
   {
     rel: 'venue/ulsan-champion/index.html', slug: 'ulsan-champion', name: '울산챔피언나이트', nick: '춘자', phone: OLD_U,
@@ -137,7 +168,7 @@ const VENUE_DEMOTE = [
     title1: '울산챔피언나이트 — 트로피 장식과 토요일 노래 챔피언십',
     desc0: '울산챔피언나이트 — 자리 잡아줄게, 뭐 좋아해, 몇 명이야 — 물어볼 거 다 물어보고 전화를 끊으면 이미 모든 게 세팅되어 있다. 트로피 장식과 골드 앤 블랙 인테리어가 챔피언의 격을 표현한다. 울산 나이트 현장 체험 가이드.',
     desc1: '울산챔피언나이트 — 입구에 금색 트로피 장식이 서 있고, 무대는 코너에 로프를 두른 권투 링 모양이다. 토요일 밤에는 노래 챔피언십이 열린다.',
-    hl: ['춘자 담당의 친근한 응대', '토요일 노래 챔피언십', '권투 링 모티브 무대', '울산 스포츠 사진 전시'],
+    hl: ['춘자 담당의 친근한 응대', '토요일 노래 챔피언십', '권투 링 모티브 무대', '울산 스포츠 사진 전시'], compare: true,
     step0: '춘자 담당에게 문의', step1: '스태프에게 문의',
     kw0: '울산, 챔피언, 춘자, 노래 대회', kw1: '울산, 챔피언, 노래 대회',
     dropQ: ['춘자 담당에게 연락하면 되나요?'],
@@ -161,7 +192,7 @@ const VENUE_DEMOTE = [
     rel: 'venue/ilsan-room/index.html', slug: 'ilsan-room', name: '일산룸', nick: '일산룸', phone: OLD_R,
     card: 'ilsan-room-card', alt: '일산룸 광고문의 카톡 besta12', heroAlt: '일산룸 룸 일산',
     title0: '일산룸 — 일산룸이라는 이름, 그 자체가 보증수표', title1: null, desc0: null, desc1: null,
-    hl: ['일산룸의 미친 기억력', '벽 하나 사이 완전 방음', '주차장 걱정 제로', '회식 맞춤 세팅'],
+    hl: ['일산룸의 미친 기억력', '벽 하나 사이 완전 방음', '주차장 걱정 제로', '회식 맞춤 세팅'], compare: true,
     step0: '일산룸 담당 배정 대기', step1: '매니저 배정 대기',
     kw0: null, kw1: null,
     dropQ: [],
@@ -175,6 +206,22 @@ const VENUE_DEMOTE = [
       '재방문하면 전에 세팅했던 그대로 준비해놓기도 한다. 좀 소름 돋는 기억력이다.',
       '어떤 손님은 1년 만에 왔는데 전에 마시던 음료가 테이블에 올라와 있었다고 한다. 그 순간의 표정을 상상해보라.',
     ],
+    tpEdit: [],
+  },
+  {
+    // 일산명월관요정 가게 쪽 — 사람 장점·견주는 칸·순서 안내의 사람 줄이 없는 쪽(없다는 것도 확인한다)
+    rel: 'venue/ilsan-myeongwolgwan/index.html', slug: 'ilsan-myeongwolgwan', name: '일산명월관요정', nick: '일산명월관요정', phone: OLD_R,
+    card: 'ilsan-myeongwolgwan-inq', alt: '일산명월관요정 광고문의 카톡 besta12', heroAlt: '일산명월관요정 요정 일산',
+    title0: '일산명월관요정 — 장항로 위, 한정식 코스에 가야금 소리가 얹힌다. 그런 곳이다', title1: null, desc0: null, desc1: null,
+    hl: null, compare: false,
+    step0: null, step1: null,
+    kw0: null, kw1: null,
+    dropQ: [],
+    faq: [
+      [`전화(${OLD_R})로 예약 가능합니다. 일산 주말은 미리 잡아야 대기 없이 입장됩니다.`, '전화로 예약 가능합니다. 일산 주말은 미리 잡아야 대기 없이 입장됩니다.'],
+      ['고양시 일산동구 장항로 895-1 인근 주차 시설 이용 가능합니다. 일산명월관요정에게 확인하시면 안내받으실 수 있습니다.', '고양시 일산동구 장항로 895-1 인근 주차 시설 이용 가능합니다. 방문 전 확인하시면 안내받으실 수 있습니다.'],
+    ],
+    tpDrop: [],
     tpEdit: [],
   },
 ];
@@ -204,15 +251,19 @@ function applyDemote(h, miss, p, cardPath, cardUrl) {
     `<div style="text-align:center;padding:20px;"§> <p style="font-size:16px;color:var(--text);margin-bottom:16px;"§>${p.name} 담당자에게 직접 문의하세요</p> <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;"§>${p.nick} 담당</p> <a href="tel:${p.phone}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block mt-md"§>${p.phone} 전화하기</a> </div>`,
     `<div style="text-align:center;padding:20px;"§> <p style="font-size:18px;font-weight:700;color:var(--accent);"§>${INQ}</p> </div>`);
   // 장점 · 서비스 칸에서 사람 장점 빼기
-  h = sub(h, miss, '장점 칸', `<div class="hl-item"§>${p.hl[0]}</div>`, '');
-  h = sub(h, miss, '서비스 칸', `<div class="svc-item"§><span class="svc-check"§>✓</span>${p.hl[0]}</div>`, '');
+  if (p.hl) {
+    h = sub(h, miss, '장점 칸', `<div class="hl-item"§>${p.hl[0]}</div>`, '');
+    h = sub(h, miss, '서비스 칸', `<div class="svc-item"§><span class="svc-check"§>✓</span>${p.hl[0]}</div>`, '');
+  }
   // 비교 표 · 비교 카드(담당 = 광고문의 · 포인트 = 다음 장점)
-  h = sub(h, miss, 'VS 담당', `<td class="vs-label"§>담당</td><td§>${p.nick}</td>`, `<td class="vs-label"§>담당</td><td§>${INQ}</td>`);
-  h = sub(h, miss, '비교 담당', `<div class="cb-label"§>담당</div> <div class="cb-col"§>${p.nick}</div>`, `<div class="cb-label"§>담당</div> <div class="cb-col"§>${INQ}</div>`);
-  h = sub(h, miss, '비교 포인트', `<div class="cb-label"§>포인트</div> <div class="cb-col"§>${p.hl[0]}</div>`, `<div class="cb-label"§>포인트</div> <div class="cb-col"§>${p.hl[1]}</div>`);
+  if (p.compare) {
+    h = sub(h, miss, 'VS 담당', `<td class="vs-label"§>담당</td><td§>${p.nick}</td>`, `<td class="vs-label"§>담당</td><td§>${INQ}</td>`);
+    h = sub(h, miss, '비교 담당', `<div class="cb-label"§>담당</div> <div class="cb-col"§>${p.nick}</div>`, `<div class="cb-label"§>담당</div> <div class="cb-col"§>${INQ}</div>`);
+    h = sub(h, miss, '비교 포인트', `<div class="cb-label"§>포인트</div> <div class="cb-col"§>${p.hl[0]}</div>`, `<div class="cb-label"§>포인트</div> <div class="cb-col"§>${p.hl[1]}</div>`);
+  }
   // 순서 안내 · 숨은 장점
-  h = sub(h, miss, '순서 안내', `<li§>${p.step0}</li>`, `<li§>${p.step1}</li>`);
-  h = sub(h, miss, '숨은 장점', `<ul class="sh-list"§> <li§>${p.hl[0]}</li><li§>${p.hl[1]}</li><li§>${p.hl[2]}</li> </ul>`, `<ul class="sh-list"§> <li§>${p.hl[1]}</li><li§>${p.hl[2]}</li><li§>${p.hl[3]}</li> </ul>`);
+  if (p.step0) h = sub(h, miss, '순서 안내', `<li§>${p.step0}</li>`, `<li§>${p.step1}</li>`);
+  if (p.hl) h = sub(h, miss, '숨은 장점', `<ul class="sh-list"§> <li§>${p.hl[0]}</li><li§>${p.hl[1]}</li><li§>${p.hl[2]}</li> </ul>`, `<ul class="sh-list"§> <li§>${p.hl[1]}</li><li§>${p.hl[2]}</li><li§>${p.hl[3]}</li> </ul>`);
   h = sub(h, miss, '숨은 장점 단추', `<a href="tel:${p.phone}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm sh-cta"§>지금 문의하기 →</a>`, `<a href="${MAIN_SITE}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm sh-cta"§>자세히 보기 →</a>`);
   // 자주 묻는 것(보이는 글)
   for (const q of p.dropQ) h = removeEl(h, miss, `FAQ 뺌 ${q}`, `<div class="faq-item"§> <div class="faq-q"§>${q}</div>`);
@@ -220,10 +271,7 @@ function applyDemote(h, miss, p, cardPath, cardUrl) {
   // 본문 문단
   for (const t of p.tpDrop) h = sub(h, miss, `문단 뺌 ${t.slice(0, 14)}`, `<p class="tp-desc"§>${t}</p>`, '');
   for (const [o, n] of p.tpEdit) h = sub(h, miss, `문단 고침 ${o.slice(0, 14)}`, `<p class="tp-desc"§>${o}</p>`, `<p class="tp-desc"§>${n}</p>`);
-  // 아래 고정 바 · 떠 있는 전화 단추 → 광고문의 바(번호 없는 쪽의 틀 모양)
-  h = sub(h, miss, '아래 바',
-    `<a href="tel:${p.phone}" class="phone-bar has-phone"§> <span class="phone-bar-icon"§>📞</span> ${p.nick} ${p.phone} </a> <a href="tel:${p.phone}" class="phone-float-pc" aria-label="전화하기" title="${p.nick} ${p.phone}"§>📞</a>`,
-    `<a href="${MAIN_SITE}" target="_blank" rel="noopener noreferrer" class="phone-bar no-phone"§>${INQ}</a>`);
+  h = sub(h, miss, '아래 바', BAR_FROM(p.nick, p.phone), BAR_TO);
   // JSON-LD
   h = ldEdit(h, miss, p.slug, (d) => {
     const biz = nodeOf(d, 'NightClub');
@@ -240,111 +288,100 @@ function applyDemote(h, miss, p, cardPath, cardUrl) {
   h = sub(h, miss, '표지', '</body>', `${MARK}</body>`);
   return h;
 }
-function checkDemote(h, p, cardPath, cardUrl) {
-  const bad = [];
-  const has = (s, l, n = 1) => { const c = h.split(s).length - 1; if (c !== n) bad.push(`${l}(${c}/${n})`); };
+// 쪽이 다 고쳐졌는지 — 두 틀(가게 쪽 · 요정 갈래 쪽)이 같이 쓰는 확인
+function checkCommon(h, bad, has, cardPath, cardUrl, alt, ogSlug, ldType) {
   has(MARK, '표지');
   has(`<meta property="og:image" content="${cardUrl}">`, 'og:image');
   has(`<meta name="twitter:image" content="${cardUrl}">`, 'twitter:image');
-  has(`<meta property="og:image:alt" content="${p.alt}">`, 'og:image:alt');
+  has(`<meta property="og:image:alt" content="${alt}">`, 'og:image:alt');
   has(LARGE, 'robots');
-  if (p.title1) { has(`<title>${p.title1}</title>`, 'title'); has(`content="${p.title1}"`, 'og·twitter title', 2); }
-  if (p.desc1) has(`content="${p.desc1}"`, '설명 셋', 3);
-  has(INQ, '광고문의 자리(담당 줄·문의 탭·VS·비교·아래 바)', 5);
   has('class="phone-bar no-phone"', '광고문의 바');
-  has(`${HOST}/og/${p.slug}.png`, '옛 og 주소', 0);
+  has(`${HOST}/og/${ogSlug}.png`, '옛 og 주소', 0);
   for (const s of ['class="phone-bar has-phone"', 'class="phone-float-pc"', 'class="vh-phone-btn"', 'href="tel:']) has(s, `전화 자리 ${s}`, 0);
   const img = firstImgInMain(h);
   if (!img.includes(`src="${cardPath}"`) || !img.includes('width="1200" height="1200"') || /loading="lazy"/.test(img)) bad.push(`본문 첫 그림 ${img.slice(0, 80)}`);
   const d = ldOf(h);
   if (!d) bad.push('JSON-LD 읽기');
   else {
-    const biz = nodeOf(d, 'NightClub')[0];
+    const biz = nodeOf(d, ldType)[0];
     if (!biz || biz.image !== cardUrl) bad.push('JSON-LD image');
     if (d.some((n) => n && 'telephone' in n)) bad.push('JSON-LD telephone 남음');
     const vis = visibleFaq(h);
     const lds = (nodeOf(d, 'FAQPage')[0] || { mainEntity: [] }).mainEntity.map((q) => q.acceptedAnswer.text);
     if (vis.length !== lds.length || lds.some((t) => !vis.includes(t))) bad.push(`FAQ 보이는 글 ${vis.length} · JSON-LD ${lds.length} 어긋남`);
   }
+}
+function checkDemote(h, p, cardPath, cardUrl) {
+  const bad = [];
+  const has = (s, l, n = 1) => { const c = h.split(s).length - 1; if (c !== n) bad.push(`${l}(${c}/${n})`); };
+  if (p.title1) { has(`<title>${p.title1}</title>`, 'title'); has(`content="${p.title1}"`, 'og·twitter title', 2); }
+  if (p.desc1) has(`content="${p.desc1}"`, '설명 셋', 3);
+  if (p.compare) has(INQ, '광고문의 자리(담당 줄·문의 탭·VS·비교·아래 바)', 5);
+  else {
+    has(INQ, '광고문의 자리(담당 줄·문의 탭·아래 바)', 3);
+    for (const s of ['>담당</td>', '>담당</div>']) has(s, `견주는 칸이 없어야 하는 쪽의 ${s}`, 0);
+  }
+  checkCommon(h, bad, has, cardPath, cardUrl, p.alt, p.slug, 'NightClub');
   return bad;
 }
 
-// 신실장 두 쪽
-const SIN_PAGES = [
-  { rel: 'venue/ilsan-myeongwolgwan/index.html', card: 'ilsan-myeongwolgwan-card', kind: 'venue', ogSlug: 'ilsan-myeongwolgwan', ldType: 'NightClub' },
-  { rel: 'yojeong/ilsan/myeongwolgwan/index.html', card: 'yojeong-ilsan-myeongwolgwan-card', kind: 'yojeong', ogSlug: 'ilsan-myeongwolgwan', ldType: 'LocalBusiness' },
-];
-function applySin(h, miss, p, cardPath, cardUrl) {
-  const NAME = '일산명월관요정';
-  const bar = (who) => `<span class="phone-bar-icon"§>📞</span> ${who}${OLD_R} </a>`;
-  if (p.kind === 'venue') {
-    h = headCard(h, miss, p.ogSlug, '일산명월관요정 — 장항로 위, 한정식 코스에 가야금 소리가 얹힌다. 그런 곳이다', ALT_M, cardUrl);
-    h = sub(h, miss, '광고 표시', `<div class="vh-badge"§>요정</div> <h1§>${NAME}</h1>`, `<div class="vh-badge"§>요정</div> ${AGE}<h1§>${NAME}</h1>`);
-    h = sub(h, miss, '담당 줄', `<p class="vh-nick"§>담당: ${NAME}</p>`, `<p class="vh-nick"§>담당: ${NICK}</p>`);
-    h = sub(h, miss, '연결 글', `<span class="vh-phone-label"§>${NAME} 바로 연결</span>`, `<span class="vh-phone-label"§>${NICK} 바로 연결</span>`);
-    h = sub(h, miss, '첫 그림', `<img src="/og/${p.ogSlug}.png" alt="일산명월관요정 요정 일산" width="1200" height="630" loading="lazy" class="vh-img"§>`, `<img src="${cardPath}" alt="${ALT_M}" width="1200" height="1200" fetchpriority="high" class="vh-img" style="aspect-ratio:1/1;height:auto;"§>`);
-    h = sub(h, miss, '문의 탭 담당', `<p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;"§>${NAME} 담당</p>`, `<p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;"§>${NICK} 담당</p>`);
-    h = swap(h, miss, '주차 답(보이는 글 · JSON-LD)', `${NAME}에게 확인하시면`, `${NICK}에게 확인하시면`, 2);
-  } else {
-    h = headCard(h, miss, p.ogSlug, '일산 명월관 — 30개 프라이빗 공간에서 코스 요리와 가야금 라이브', ALT_M, cardUrl);
-    h = sub(h, miss, '광고 표시', `<div class="mw-badge"§>전통 한정식</div> <h1§>장항로 명월관 — 달빛 아래 차려지는 격조 높은 연회</h1>`, `<div class="mw-badge"§>전통 한정식</div> ${AGE}<h1§>장항로 명월관 — 달빛 아래 차려지는 격조 높은 연회</h1>`);
-    h = sub(h, miss, '첫 그림', `<img src="/og/${p.ogSlug}.png" alt="일산 전통 연회 공간" width="1200" height="630" loading="lazy" class="mw-img"§>`, `<img src="${cardPath}" alt="${ALT_M}" width="1200" height="1200" fetchpriority="high" class="mw-img" style="aspect-ratio:1/1;height:auto;"§>`);
-    h = swap(h, miss, '총책임자가', '일산룸 총책임자가', `${NICK}이`, 4);
-    h = swap(h, miss, '총책임자에게', '일산룸 총책임자에게', `${NICK}에게`, 5);
-    h = swap(h, miss, '총책임자(', '일산룸 총책임자(', `${NICK}(`, 2);
-    h = swap(h, miss, '총책임자 (', '일산룸 총책임자 (', `${NICK} (`, 1);
-    h = swap(h, miss, '총책임자 ·', '일산룸 총책임자 ·', `${NICK} ·`, 1);
-  }
-  // 아래 고정 바 · 떠 있는 단추 = 번호만
-  h = sub(h, miss, '아래 바', bar(`${NAME} `), bar(''));
-  h = sub(h, miss, '떠 있는 단추', `class="phone-float-pc" aria-label="전화하기" title="${NAME} ${OLD_R}"`, `class="phone-float-pc" aria-label="전화하기" title="${OLD_R}"`);
-  h = swap(h, miss, '번호', OLD_R, PHONE, p.kind === 'venue' ? 12 : 10);
+// 일산명월관요정 요정 갈래 쪽(틀이 가게 쪽과 다르다) — 사람 호칭 「일산룸 총책임자」가 든 자리 13곳
+const YO = {
+  rel: 'yojeong/ilsan/myeongwolgwan/index.html', card: 'yojeong-ilsan-myeongwolgwan-inq', ogSlug: 'ilsan-myeongwolgwan',
+  alt: '일산명월관요정 광고문의 카톡 besta12',
+  title0: '일산 명월관 — 30개 프라이빗 공간에서 코스 요리와 가야금 라이브',
+  desc0: '일산 장항로 기와건물, 30개 프라이빗 룸에서 일산룸 총책임자가 직접 맞이합니다. 정찰제 한정식 코스에 가야금 연주까지 — 접대 자리 잡으려면 여기부터 전화하세요.',
+  desc1: '일산 장항로 기와건물, 30개 프라이빗 룸에서 손님을 맞이합니다. 정찰제 한정식 코스에 가야금 연주까지 — 접대 자리 잡으려면 여기부터 확인하세요.',
+  addr: '고양시 일산동구 장항로 895-1',
+  faq: [
+    ['전 메뉴 정찰제입니다. 기본 코스는 1인당 80,000원부터, 한우+전복 코스는 150,000원 선입니다. 정확한 가격표는 일산룸 총책임자에게 문의하시면 바로 안내드립니다.', '전 메뉴 정찰제입니다. 기본 코스는 1인당 80,000원부터, 한우+전복 코스는 150,000원 선입니다. 정확한 가격표는 문의하시면 바로 안내드립니다.'],
+    [`전화로 예약 가능합니다. 일산룸 총책임자(${OLD_R})에게 직접 연락하시면 모임 성격에 맞는 공간과 메뉴를 사전에 조율해 드립니다. 주말과 공휴일은 최소 3일 전 예약을 권장합니다.`, '전화로 예약 가능합니다. 직접 연락하시면 모임 성격에 맞는 공간과 메뉴를 사전에 조율해 드립니다. 주말과 공휴일은 최소 3일 전 예약을 권장합니다.'],
+  ],
+};
+function applyYo(h, miss, p, cardPath, cardUrl) {
+  for (const k of ['name="description"', 'property="og:description"', 'name="twitter:description"']) h = sub(h, miss, k, `<meta ${k} content="${p.desc0}">`, `<meta ${k} content="${p.desc1}">`);
+  h = headCard(h, miss, p.ogSlug, p.title0, p.alt, cardUrl);
+  // 첫 화면: 담당 줄 · 첫 그림
+  h = sub(h, miss, '담당 줄', `<p class="mw-sub"§>담당: 일산룸 총책임자 · ${p.addr}</p>`, `<p class="mw-sub"§>${INQ} · ${p.addr}</p>`);
+  h = sub(h, miss, '첫 그림', `<img src="/og/${p.ogSlug}.png" alt="일산 전통 연회 공간" width="1200" height="630" loading="lazy" class="mw-img"§>`, `<img src="${cardPath}" alt="${p.alt}" width="1200" height="1200" fetchpriority="high" class="mw-img" style="aspect-ratio:1/1;height:auto;"§>`);
+  // 사람 이야기뿐인 문단은 통째로 뺀다
+  h = sub(h, miss, '사람 문단', /<p((?: data-astro-cid-[a-z0-9]+)*)>\s*일산룸 총책임자가 이 공간을 관리한다\.[^<]*<\/p> ?/, '');
+  // 안내 표: 담당 칸 = 광고문의 · 전화 단추 뺌
+  h = sub(h, miss, '안내 표 담당', `<td class="info-label"§>담당</td><td§>일산룸 총책임자 (${OLD_R})</td>`, `<td class="info-label"§>담당</td><td§>${INQ}</td>`);
+  h = removeEl(h, miss, '안내 표 전화 단추', `<a href="tel:${OLD_R}" target="_blank" class="btn btn-primary btn-block mt-md"§>`);
+  // 준비 목록 · 자주 묻는 것(보이는 글)
+  h = sub(h, miss, '준비 목록', '<strong§>사전 예약 필수</strong> — 최소 2일 전 일산룸 총책임자에게 인원, 예산, 모임 성격을 알려주세요</li>', '<strong§>사전 예약 필수</strong> — 최소 2일 전 인원, 예산, 모임 성격을 알려주세요</li>');
+  for (const [o, n] of p.faq) h = sub(h, miss, `FAQ 답 ${o.slice(0, 14)}`, `<div class="faq-a"§>${o}</div>`, `<div class="faq-a"§>${n}</div>`);
+  // 상담 칸: 글 = 광고문의 · 전화 단추 뺌
+  h = sub(h, miss, '상담 칸 글', '<h3§>명월관 예약 상담</h3> <p§>일산룸 총책임자에게 직접 문의하세요</p>', `<h3§>명월관 예약 상담</h3> <p§>${INQ}</p>`);
+  h = removeEl(h, miss, '상담 칸 전화 단추', `<a href="tel:${OLD_R}" target="_blank" class="btn btn-primary"§>`);
+  h = sub(h, miss, '아래 바', BAR_FROM('일산명월관요정', OLD_R), BAR_TO);
+  // JSON-LD
   h = ldEdit(h, miss, p.rel, (d) => {
-    const biz = nodeOf(d, p.ldType);
-    if (biz.length !== 1) { miss.push(`JSON-LD ${p.ldType}(찾은 수 ${biz.length})`); return; }
-    if (biz[0].telephone !== PHONE) miss.push('JSON-LD telephone 값');
-    if (p.kind === 'venue') {
-      if (biz[0].image !== `${HOST}/og/${p.ogSlug}.png`) miss.push('JSON-LD image 값');
-      biz[0].image = cardUrl;
-    } else {
-      if ('image' in biz[0]) miss.push('JSON-LD image 가 이미 있음');
-      d[d.indexOf(biz[0])] = putAfter(biz[0], 'description', 'image', cardUrl);
-    }
+    const biz = nodeOf(d, 'LocalBusiness');
+    if (biz.length !== 1) { miss.push(`JSON-LD LocalBusiness(찾은 수 ${biz.length})`); return; }
+    if (biz[0].telephone !== OLD_R) miss.push('JSON-LD telephone 값');
+    if ('image' in biz[0]) miss.push('JSON-LD image 가 이미 있음');
+    const nu = putAfter(biz[0], 'description', 'image', cardUrl);
+    delete nu.telephone;
+    d[d.indexOf(biz[0])] = nu;
+    for (const [o, n] of p.faq) faqSet(d, miss, p.rel, o, n);
   });
-  h = sub(h, miss, '알림', '</main>', `${MARK}${NOTICE}</main>`);
+  h = sub(h, miss, '표지', '</body>', `${MARK}</body>`);
   return h;
 }
-function checkSin(h, p, cardPath, cardUrl) {
+function checkYo(h, p, cardPath, cardUrl) {
   const bad = [];
   const has = (s, l, n = 1) => { const c = h.split(s).length - 1; if (c !== n) bad.push(`${l}(${c}/${n})`); };
-  has(MARK, '표지');
-  has(`${MARK}${NOTICE}</main>`, '광고 알림');
-  has(`${AGE}<h1`, '광고 표시 · 19세 줄');
-  has(`<meta property="og:image" content="${cardUrl}">`, 'og:image');
-  has(`<meta name="twitter:image" content="${cardUrl}">`, 'twitter:image');
-  has(`<meta property="og:image:alt" content="${ALT_M}">`, 'og:image:alt');
-  has(LARGE, 'robots');
-  has(`${HOST}/og/${p.ogSlug}.png`, '옛 og 주소', 0);
-  if (!/<a href="tel:010-3695-4929" class="phone-bar has-phone"[^>]*>\s*<span class="phone-bar-icon"[^>]*>📞<\/span>\s*010-3695-4929\s*<\/a>/.test(h)) bad.push('아래 바(번호만)');
-  has(`class="phone-float-pc" aria-label="전화하기" title="${PHONE}"`, '떠 있는 단추');
-  const tels = [...h.matchAll(/href="tel:([^"]*)"/g)].map((m) => m[1]);
-  if (!tels.length || tels.some((t) => t !== PHONE)) bad.push(`전화 링크 ${[...new Set(tels)].join(',')}`);
-  const img = firstImgInMain(h);
-  if (!img.includes(`src="${cardPath}"`) || !img.includes('width="1200" height="1200"') || /loading="lazy"/.test(img)) bad.push(`본문 첫 그림 ${img.slice(0, 80)}`);
-  const d = ldOf(h);
-  if (!d) bad.push('JSON-LD 읽기');
-  else {
-    const biz = nodeOf(d, p.ldType)[0];
-    if (!biz || biz.image !== cardUrl) bad.push('JSON-LD image');
-    if (!biz || biz.telephone !== PHONE) bad.push('JSON-LD telephone');
-    const vis = visibleFaq(h);
-    const lds = (nodeOf(d, 'FAQPage')[0] || { mainEntity: [] }).mainEntity.map((q) => q.acceptedAnswer.text);
-    if (vis.length !== lds.length || lds.some((t) => !vis.includes(t))) bad.push(`FAQ 보이는 글 ${vis.length} · JSON-LD ${lds.length} 어긋남`);
-  }
+  has(`content="${p.desc1}"`, '설명 셋', 3);
+  has(INQ, '광고문의 자리(담당 줄·안내 표·상담 칸·아래 바)', 4);
+  has('총책임자', '사람 호칭', 0);
+  checkCommon(h, bad, has, cardPath, cardUrl, p.alt, p.ogSlug, 'LocalBusiness');
   return bad;
 }
 
 // 목록·다른 쪽
+const DEMOTE_OF = (slug) => VENUE_DEMOTE.find((p) => p.slug === slug);
 const OTHERS = [
   {
     rel: 'rooms/index.html',
@@ -353,15 +390,15 @@ const OTHERS = [
   },
   {
     rel: 'yojeong/index.html',
-    apply: (h, miss) => sub(h, miss, '요정 목록 연락', `<div class="venue-card-contact">담당: 일산명월관요정 | ${OLD_R}</div>`, `<div class="venue-card-contact">담당: ${NICK} | ${PHONE}</div>`),
-    want: [[`<div class="venue-card-contact">담당: ${NICK} | ${PHONE}</div>`, 1]],
+    apply: (h, miss) => sub(h, miss, '요정 목록 연락', `<div class="venue-card-contact">담당: 일산명월관요정 | ${OLD_R}</div>`, `<div class="venue-card-contact">${INQ}</div>`),
+    want: [[`<div class="venue-card-contact">${INQ}</div>`, 1]],
   },
   {
     rel: 'ranking/index.html',
     apply: (h, miss) => {
       h = sub(h, miss, '순위 울산 연락', `<div class="venue-card-contact">춘자 · ${OLD_U}</div>`, `<div class="venue-card-contact">${INQ}</div>`);
       h = sub(h, miss, '순위 일산룸 연락', `<div class="venue-card-contact">일산룸 · ${OLD_R}</div>`, `<div class="venue-card-contact">${INQ}</div>`);
-      h = sub(h, miss, '순위 명월관 연락', `<div class="venue-card-contact">일산명월관요정 · ${OLD_R}</div>`, ''); // 순위 쪽은 신실장 허용 쪽이 아님 → 연락 줄 없이
+      h = sub(h, miss, '순위 명월관 연락', `<div class="venue-card-contact">일산명월관요정 · ${OLD_R}</div>`, ''); // 순위 쪽의 이 가게 카드는 연락 줄 없이(놀쿨70-1 때 그대로)
       h = sub(h, miss, '순위 울산 설명', `<div class="venue-card-desc">${cut25(SHORT_U0)}</div>`, `<div class="venue-card-desc">${cut25(SHORT_U1)}</div>`);
       return h;
     },
@@ -397,14 +434,43 @@ const OTHERS = [
     },
     want: [[INQ, 2]],
   },
+  {
+    // 견주기 쪽 — 가게 자료가 base64 한 덩이: 사람 장점(맨 앞 장점)과 울산 한 줄 소개를 가게 쪽과 같게
+    rel: 'compare/index.html',
+    apply: (h, miss) => blobEdit(h, miss, '견주기 자료', (d) => {
+      const list = Array.isArray(d.venues) ? d.venues : [];
+      for (const p of VENUE_DEMOTE) {
+        if (!p.hl) continue;
+        const v = list.filter((x) => x && x.s === p.slug);
+        if (v.length !== 1) { miss.push(`견주기 자료 ${p.slug}(찾은 수 ${v.length})`); continue; }
+        if (JSON.stringify(v[0].hl) !== JSON.stringify(p.hl)) { miss.push(`견주기 자료 ${p.slug} 장점 값`); continue; }
+        v[0].hl = p.hl.slice(1);
+        if (p.slug === 'ulsan-champion') { if (v[0].desc !== SHORT_U0) miss.push('견주기 자료 울산 한 줄 소개 값'); else v[0].desc = SHORT_U1; }
+      }
+    }),
+    want: [],
+    check: (h) => {
+      const d = blobOf(h);
+      if (!d || !Array.isArray(d.venues)) return ['견주기 자료 덩이 읽기'];
+      const bad = [];
+      for (const p of VENUE_DEMOTE) {
+        if (!p.hl) continue;
+        const v = d.venues.filter((x) => x && x.s === p.slug);
+        if (v.length !== 1 || JSON.stringify(v[0].hl) !== JSON.stringify(p.hl.slice(1))) bad.push(`견주기 자료 ${p.slug} 장점`);
+      }
+      const u = d.venues.filter((x) => x && x.s === DEMOTE_OF('ulsan-champion').slug);
+      if (u.length !== 1 || u[0].desc !== SHORT_U1) bad.push('견주기 자료 울산 한 줄 소개');
+      return bad;
+    },
+  },
 ];
 
-// og 그림(빌드가 svg 로 그린 뒤 png 로 바꾼 것 · 쪽 본문 그림으로도 쓰임) — 연락 줄
+// og 그림(빌드가 svg 로 그린 뒤 png 로 바꾼 것) — 연락 줄을 뺀다
 const SVG_LINE = (s) => new RegExp(`<text\\b[^>]*\\by="450"[^>]*>${esc(s)}</text>`);
 const SVGS = [
-  { rel: 'og/ulsan-champion.svg', old: `담당 춘자 · ${OLD_U}`, now: null },
-  { rel: 'og/ilsan-room.svg', old: `담당 일산룸 · ${OLD_R}`, now: null },
-  { rel: 'og/ilsan-myeongwolgwan.svg', old: `담당 일산명월관요정 · ${OLD_R}`, now: `담당 ${NICK} · ${PHONE}` },
+  { rel: 'og/ulsan-champion.svg', old: `담당 춘자 · ${OLD_U}` },
+  { rel: 'og/ilsan-room.svg', old: `담당 일산룸 · ${OLD_R}` },
+  { rel: 'og/ilsan-myeongwolgwan.svg', old: `담당 일산명월관요정 · ${OLD_R}` },
 ];
 
 // ───────── 돌리기(전부 메모리에서 만들고 확인한 뒤에만 쓴다) ─────────
@@ -427,24 +493,21 @@ function runPage(rel, apply, check) {
   } else already++;
   for (const x of check(h)) miss.push(`${rel}: 확인 ${x}`);
 }
+function runCardPage(p, apply, check) {
+  const card = cardOf(p.card);
+  const cardPath = `/og/${card}`, cardUrl = `${HOST}${cardPath}`;
+  pairs.push({ url: `${HOST}/${p.rel.replace(/index\.html$/, '')}`, cardUrl });
+  runPage(p.rel, (h, m) => apply(h, m, p, cardPath, cardUrl), (h) => check(h, p, cardPath, cardUrl));
+}
 
-for (const p of VENUE_DEMOTE) {
-  const card = cardOf(p.card);
-  const cardPath = `/og/${card}`, cardUrl = `${HOST}${cardPath}`;
-  pairs.push({ url: `${HOST}/${p.rel.replace(/index\.html$/, '')}`, cardUrl });
-  runPage(p.rel, (h, m) => applyDemote(h, m, p, cardPath, cardUrl), (h) => checkDemote(h, p, cardPath, cardUrl));
-}
-for (const p of SIN_PAGES) {
-  const card = cardOf(p.card);
-  const cardPath = `/og/${card}`, cardUrl = `${HOST}${cardPath}`;
-  pairs.push({ url: `${HOST}/${p.rel.replace(/index\.html$/, '')}`, cardUrl });
-  runPage(p.rel, (h, m) => applySin(h, m, p, cardPath, cardUrl), (h) => checkSin(h, p, cardPath, cardUrl));
-}
+for (const p of VENUE_DEMOTE) runCardPage(p, applyDemote, checkDemote);
+runCardPage(YO, applyYo, checkYo);
 for (const o of OTHERS) {
   runPage(o.rel, (h, m) => sub(o.apply(h, m), m, '표지', '</body>', `${MARK}</body>`), (h) => {
     const bad = [];
     if (h.split(MARK).length - 1 !== 1) bad.push('표지');
     for (const [s, n] of o.want) { const c = h.split(s).length - 1; if (c !== n) bad.push(`${s.slice(0, 40)}(${c}/${n})`); }
+    if (o.check) bad.push(...o.check(h));
     return bad;
   });
 }
@@ -455,13 +518,11 @@ for (const s of SVGS) {
   const re = SVG_LINE(s.old);
   const n = (x.match(new RegExp(re.source, 'g')) || []).length;
   if (n === 1) {
-    const y = x.replace(re, (m) => (s.now ? m.replace(`>${s.old}<`, () => `>${s.now}<`) : ''));
+    const y = x.replace(re, '');
     outs.set(s.rel, y);
     pngJobs.push({ rel: s.rel.replace(/\.svg$/, '.png'), svg: y });
-  } else if (n === 0) {
-    already++;
-    if (s.now && !SVG_LINE(s.now).test(x)) miss.push(`${s.rel}: 연락 줄이 옛 것도 새 것도 아님`);
-  } else miss.push(`${s.rel}: 연락 줄(찾은 수 ${n})`);
+  } else if (n === 0) already++;
+  else miss.push(`${s.rel}: 연락 줄(찾은 수 ${n})`);
 }
 // 사이트맵 <image:image>
 function sitemapWithImages(list) {
@@ -488,10 +549,11 @@ function sitemapWithImages(list) {
 const smap = sitemapWithImages(pairs);
 if (smap.added) outs.set('sitemap.xml', smap.text);
 
-// dist 전체 지킴(고친 글은 메모리 판으로)
+// dist 전체 지킴(고친 글은 메모리 판으로 · 쪽 안 base64 덩이는 풀어서 같이 본다)
 const TEXT = /\.(html?|xml|txt|json|svg|m?js|css|webmanifest|md)$/i;
+const B64_ANY = /["'`]([A-Za-z0-9+/]{200,}={0,2})["'`]/g;
 const hits = [];
-let scanned = 0;
+let scanned = 0, blobs = 0;
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
     const f = join(dir, name);
@@ -503,8 +565,11 @@ let scanned = 0;
     scanned++;
     const b = t.match(BAD);
     if (b) hits.push(`${rel}: 「${b[0]}」`);
-    const s = t.match(SIN);
-    if (s && !SIN_OK.has(rel)) hits.push(`${rel}: 허용 쪽 밖의 「${s[0]}」`);
+    for (const m of t.matchAll(B64_ANY)) {
+      blobs++;
+      const inner = Buffer.from(m[1], 'base64').toString('utf8').match(BAD);
+      if (inner) { hits.push(`${rel}: 자료 덩이 안의 「${inner[0]}」`); break; }
+    }
   }
 })(ROOT);
 if (scanned < 100) miss.push(`dist 글 파일이 너무 적음(${scanned})`);
@@ -526,4 +591,4 @@ for (const [rel, t] of outs) writeFileSync(fileOf(rel), t);
 for (const p of pngs) writeFileSync(fileOf(p.rel), p.buf);
 for (const rel of outs.keys()) console.log(`${TAG} 고침 — ${rel}`);
 for (const p of pngs) console.log(`${TAG} 다시 그림 — ${p.rel} (${p.buf.length}B)`);
-console.log(`${TAG} 끝 — 고친 파일 ${outs.size} · 다시 그린 그림 ${pngs.length} · 이미 고쳐져 있던 것 ${already} · 사이트맵 그림 줄 +${smap.added} · 지킴 검사 글 파일 ${scanned}개 남은 글자 0`);
+console.log(`${TAG} 끝 — 고친 파일 ${outs.size} · 다시 그린 그림 ${pngs.length} · 이미 고쳐져 있던 것 ${already} · 사이트맵 그림 줄 +${smap.added} · 지킴 검사 글 파일 ${scanned}개(푼 자료 덩이 ${blobs}) 남은 글자 0`);

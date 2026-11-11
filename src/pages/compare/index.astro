@@ -44,7 +44,7 @@ const _b64 = Buffer.from(JSON.stringify({ venues: compareData })).toString('base
 
   <script is:inline define:vars={{ _b64 }}>
   (function(){
-    var D=JSON.parse(atob(_b64));var all=D.venues;
+    var D=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(_b64),function(c){return c.charCodeAt(0);})));var all=D.venues;
     var selA=document.getElementById('selA');
     var selB=document.getElementById('selB');
     var selC=document.getElementById('selC');

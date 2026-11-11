@@ -284,7 +284,7 @@ const _b64s = Buffer.from(JSON.stringify({
 
 <script is:inline define:vars={{ _b64s }}>
 (function(){
-  var D=JSON.parse(atob(_b64s));
+  var D=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(_b64s),function(c){return c.charCodeAt(0);})));
   function recCard(v){return '<a href="/venue/'+v.s+'/" target="_blank" class="rec-card"><div class="rec-name">'+v.n+'</div><div class="rec-meta">'+v.r+' · '+v.tn+'</div></a>';}
   document.getElementById('recsSimilar').innerHTML=D.similar.map(recCard).join('');
   document.getElementById('recsNearby').innerHTML=D.nearby.length?D.nearby.map(recCard).join(''):'<p style="font-size:13px;color:var(--text-muted)">근처 다른 업소가 없습니다.</p>';
