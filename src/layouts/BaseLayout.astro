@@ -86,7 +86,6 @@ const currentYear = new Date().getFullYear();
 
   <div class="age-notice">
     <span>본 사이트는 만 19세 이상 성인만 이용 가능합니다</span>
-    <span style="margin-left:12px;color:var(--accent);font-weight:600;" id="fomoCounter"></span>
   </div>
 
   <header class="site-header">
@@ -229,7 +228,6 @@ const currentYear = new Date().getFullYear();
   <a href={MAIN_SITE_URL} target="_blank" rel="noopener noreferrer" class="main-link-bar">놀쿨에서 더 보기 →</a>
 
   <button class="back-to-top" id="backToTop" aria-label="맨 위로">↑</button>
-  <div class="toast" id="toast"></div>
 
   <!-- ═══ RETENTION ENGINE — 틱톡 95분 체류 시스템 ═══ -->
 
@@ -392,18 +390,6 @@ const currentYear = new Date().getFullYear();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // ═══ [틱톡] FOMO 카운터 — "지금 N명이 보고 있습니다" ═══
-      var fomoEl = document.getElementById('fomoCounter');
-      if (fomoEl) {
-        var base = 47 + (new Date().getHours() * 13 + new Date().getMinutes()) % 280;
-        fomoEl.textContent = base + '명이 지금 탐색 중';
-        setInterval(function() {
-          base += Math.random() > 0.5 ? 1 : -1;
-          if (base < 30) base = 30;
-          fomoEl.textContent = base + '명이 지금 탐색 중';
-        }, 8000);
-      }
-
       // ═══ [넷플릭스] 자동 다음 콘텐츠 — 5초 후 다음 섹션 하이라이트 ═══
       var sections = document.querySelectorAll('.section-header');
       var currentSection = 0;
@@ -497,31 +483,6 @@ const currentYear = new Date().getFullYear();
         scrollBn.classList.remove('show');
       });
 
-      // ═══ [틱톡] 소셜증거 토스트 — 활기찬 사이트 ═══
-      var toastEl = document.getElementById('toast');
-      var toastMsgs = [
-        '방금 수원에서 찬스돔나이트를 탐색했습니다',
-        '강남에서 3명이 레이스를 확인했습니다',
-        
-        
-        '파주에서 스카이돔나이트가 인기급상승',
-        '울산에서 챔피언나이트 후기가 올라왔습니다',
-        '압구정에서 하입 탐색이 늘고 있습니다'
-      ];
-      var toastIdx = 0;
-      function showToast() {
-        if (!toastEl) return;
-        toastEl.textContent = toastMsgs[toastIdx % toastMsgs.length];
-        toastEl.classList.add('show');
-        toastIdx++;
-        setTimeout(function() { toastEl.classList.remove('show'); }, 4000);
-      }
-      // 첫 토스트 45초 후, 이후 90초마다
-      setTimeout(function() {
-        showToast();
-        setInterval(showToast, 90000);
-      }, 45000);
-
       // ═══ [자이가르닉] 페이지 이탈 시 미완성 메시지 ═══
       var scrollDepth = 0;
       window.addEventListener('scroll', function() {
@@ -589,15 +550,14 @@ const currentYear = new Date().getFullYear();
       // ─── 2. 마일스톤 보상 시스템 (슬롯머신: 가변 보상 스케줄) ───
       var MILESTONES = [
         { sec: 60, icon: '🌟', title: '1분 돌파!', desc: '탐색을 시작했습니다', reward: '초보 탐험가 뱃지 획득', color: '#8B5CF6' },
-        { sec: 180, icon: '🔥', title: '3분 체류!', desc: '당신은 이미 상위 30% 탐험가입니다', reward: '열정 탐험가 뱃지 획득', color: '#F59E0B' },
-        { sec: 300, icon: '⚡', title: '5분 달성!', desc: '숨겨진 추천이 해제되었습니다', reward: '히든 콘텐츠 언락!', color: '#06B6D4' },
-        { sec: 600, icon: '💎', title: '10분 마스터!', desc: '상위 10% 탐험가 진입!', reward: 'VIP 탐험가 뱃지', color: '#8B5CF6' },
+        { sec: 180, icon: '🔥', title: '3분 체류!', desc: '', reward: '열정 탐험가 뱃지 획득', color: '#F59E0B' },
+        { sec: 600, icon: '💎', title: '10분 마스터!', desc: '', reward: 'VIP 탐험가 뱃지', color: '#8B5CF6' },
         { sec: 900, icon: '🏆', title: '15분 챔피언!', desc: '이 정도면 놀쿨 프로입니다', reward: '프로 탐험가 뱃지', color: '#F59E0B' },
-        { sec: 1200, icon: '🎯', title: '20분 전설!', desc: '전체 이용자 중 상위 5%!', reward: '전설의 탐험가', color: '#DC2626' },
+        { sec: 1200, icon: '🎯', title: '20분 전설!', desc: '', reward: '전설의 탐험가', color: '#DC2626' },
         { sec: 1800, icon: '🌙', title: '30분의 밤!', desc: '당신은 진정한 밤의 탐험가', reward: '밤의 달인 뱃지', color: '#7C3AED' },
-        { sec: 2700, icon: '✨', title: '45분 돌파!', desc: '최상위 탐험가만 도달하는 영역', reward: '다이아몬드 뱃지', color: '#6D28D9' },
-        { sec: 3600, icon: '👑', title: '1시간 달성!', desc: '놀쿨의 왕/여왕이 되셨습니다!', reward: '크라운 뱃지 + 특별 추천', color: '#F59E0B' },
-        { sec: 5700, icon: '🏅', title: '95분! 틱톡급!', desc: '틱톡 평균 체류시간을 달성했습니다!', reward: '레전드 뱃지 해제!', color: '#DC2626' }
+        { sec: 2700, icon: '✨', title: '45분 돌파!', desc: '', reward: '다이아몬드 뱃지', color: '#6D28D9' },
+        { sec: 3600, icon: '👑', title: '1시간 달성!', desc: '놀쿨의 왕/여왕이 되셨습니다!', reward: '크라운 뱃지', color: '#F59E0B' },
+        { sec: 5700, icon: '🏅', title: '95분! 틱톡급!', desc: '', reward: '레전드 뱃지 해제!', color: '#DC2626' }
       ];
 
       function checkMilestones(totalSec) {
@@ -682,29 +642,8 @@ const currentYear = new Date().getFullYear();
         setTimeout(function() { toast.classList.remove('show'); }, 4000);
       }
 
-      // ─── 6. 가변 간격 보상 (슬롯머신 핵심: Variable Ratio Schedule) ───
-      var rewardMsgs = [
-        { text: '💡 숨겨진 팁: 금요일 밤 10시가 입장 최적 시간!', delay: 35000 },
-        { text: '🔥 지금 이 시간 가장 인기 있는 지역을 확인해보세요', delay: 70000 },
-        { text: '💎 3곳 이상 비교하면 후회 없는 선택이 나옵니다', delay: 120000 },
-        { text: '⚡ 방금 새로운 업소 정보가 업데이트되었습니다', delay: 180000 },
-        { text: '🎯 담당자에게 "놀쿨 보고 왔다"고 하면 대우가 달라집니다', delay: 250000 },
-        { text: '🌟 주중에 가면 줄도 없고, 분위기가 또 다릅니다', delay: 340000 },
-        { text: '🏆 이미 50곳 이상 탐색한 전문가들의 비결이 궁금하다면?', delay: 450000 },
-        { text: '✨ 오늘의 특별 추천이 준비되었습니다!', delay: 580000 }
-      ];
+      // ─── 6. 알림 칸(아래 13~17 구획이 쓴다) ───
       var varRewardEl = document.getElementById('varReward');
-      rewardMsgs.forEach(function(r) {
-        var jitter = Math.floor(Math.random() * 20000) - 10000; // ±10초 랜덤 지터
-        setTimeout(function() {
-          if (varRewardEl) {
-            varRewardEl.textContent = r.text;
-            varRewardEl.classList.add('show');
-            triggerDopamine();
-            setTimeout(function() { varRewardEl.classList.remove('show'); }, 5000);
-          }
-        }, r.delay + jitter);
-      });
 
       // ─── 7. 스크롤 콤보 시스템 (틱톡: 연속 시청 보상) ───
       var comboEl = document.getElementById('comboCounter');
@@ -801,38 +740,6 @@ const currentYear = new Date().getFullYear();
       sessionStorage.setItem('bk_page_visits', pageVisits.toString());
       if (pageVisits >= 3 && !challenges.visit3) updateChallenge('visit3');
 
-      // ─── 10. "다른 사람들은 지금..." 실시간 활동 피드 (넷플릭스: 사회적 증거) ───
-      var activityFeed = [
-        '서울에서 누군가 클럽 TOP5를 비교하고 있습니다',
-        '부산 사용자가 나이트 추천을 받았습니다',
-        '방금 강남에서 예약 문의가 들어왔습니다',
-        '수원 탐험가가 레벨업했습니다!',
-        '인천에서 신규 업소가 등록되었습니다',
-        '대구에서 VS투표에 참여했습니다',
-        '오늘 전체 탐색 수 1,200건 돌파',
-        '홍대에서 주말 이벤트가 업데이트되었습니다',
-        '울산에서 숨은 명소를 발견했습니다',
-        '일산 명월관에 새로운 후기가 올라왔습니다'
-      ];
-      var activityIdx = 0;
-      var toastUsedForActivity = false;
-      setInterval(function() {
-        if (toastUsedForActivity) return;
-        toastUsedForActivity = true;
-        var msg = activityFeed[activityIdx % activityFeed.length];
-        activityIdx++;
-        if (toastEl) {
-          toastEl.textContent = msg;
-          toastEl.classList.add('show');
-          setTimeout(function() {
-            toastEl.classList.remove('show');
-            toastUsedForActivity = false;
-          }, 4000);
-        } else {
-          toastUsedForActivity = false;
-        }
-      }, 45000);
-
       // ─── 11. 스크롤 깊이별 콘텐츠 언락 (슬롯머신: 가변 보상) ───
       var unlockThresholds = [25, 50, 75, 90];
       var unlockedDepths = JSON.parse(sessionStorage.getItem('bk_unlocked') || '[]');
@@ -843,7 +750,7 @@ const currentYear = new Date().getFullYear();
             unlockedDepths.push(t);
             sessionStorage.setItem('bk_unlocked', JSON.stringify(unlockedDepths));
             if (t === 25) showAchievement('📖', '25% 탐색 완료', '더 많은 콘텐츠가 기다리고 있어요');
-            if (t === 50) showAchievement('🎯', '절반 돌파!', '끝까지 보면 숨겨둔 게 있습니다');
+            if (t === 50) showAchievement('🎯', '절반 돌파!', '');
             if (t === 75) showAchievement('🔥', '75% 달성!', '거의 다 왔습니다!');
             if (t === 90) {
               showAchievement('👑', '페이지 정복!', '완독 보상 획득!');
@@ -897,10 +804,7 @@ const currentYear = new Date().getFullYear();
       // ─── 14. 무활동 감지 — 다시 끌어오기 (틱톡: 재참여) ───
       var idleTimer = null;
       var idleMsgs = [
-        '아직 보지 못한 숨겨진 곳이 있습니다',
-        '방금 새로운 추천이 업데이트되었습니다',
-        '다른 사용자들이 활발하게 탐색 중입니다',
-        '오늘의 특별 추천을 아직 확인하지 않았습니다'
+        '아직 보지 못한 숨겨진 곳이 있습니다'
       ];
       function resetIdle() {
         clearTimeout(idleTimer);
@@ -929,7 +833,7 @@ const currentYear = new Date().getFullYear();
           if (away > 30) {
             setTimeout(function() {
               if (varRewardEl) {
-                varRewardEl.textContent = '🔄 돌아오셨군요! 새로운 추천이 준비되었습니다';
+                varRewardEl.textContent = '🔄 돌아오셨군요!';
                 varRewardEl.classList.add('show');
                 setTimeout(function() { varRewardEl.classList.remove('show'); }, 4000);
               }
@@ -969,18 +873,6 @@ const currentYear = new Date().getFullYear();
           }
         }
       }, 120000);
-
-      // ─── 18. 시간대별 긴급 메시지 (틱톡: FOMO) ───
-      var hour = new Date().getHours();
-      if (hour >= 20 || hour < 4) {
-        setTimeout(function() {
-          if (varRewardEl) {
-            varRewardEl.textContent = '🌙 지금은 피크 타임! 인기 업소들이 빠르게 마감되고 있습니다';
-            varRewardEl.classList.add('show');
-            setTimeout(function() { varRewardEl.classList.remove('show'); }, 5000);
-          }
-        }, 30000);
-      }
 
       // ─── 19. 스크롤 위치별 미리보기 (넷플릭스: 에피소드 미리보기) ───
       var previewShown = {};

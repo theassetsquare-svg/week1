@@ -359,7 +359,7 @@ for (const p of PAGES) {
   if (p.ad) once('아래 고정 바', new RegExp(`<a href="https://nolcool\\.com" target="_blank" rel="noopener noreferrer" class="phone-bar no-phone"(${A})>[^<]*</a>`),
     (_m, cid) => `<a href="${TEL}" class="phone-bar has-phone" style="font-size:clamp(13px,3.9vw,18px);letter-spacing:0;white-space:nowrap;"${cid}>${p.name} 예약 · ${NICK} ${PHONE}</a>`);
   h = removeEl(h, `<span style="margin-left:12px;color:var\\(--accent\\);font-weight:600;"${A} id="fomoCounter"${A}>`, missing, '지금 N명', false);
-  h = removeEl(h, `<div class="toast"${A} id="toast"${A}>`, missing, '토스트', true);
+  h = removeEl(h, `<div class="toast"${A} id="toast"${A}>`, missing, '토스트', false); // 공통 틀에서 뺐다(2026-11-13) — 없으면 넘어감
   h = removeEl(h, `<div class="var-reward"${A} id="varReward"${A}>`, missing, '떠오르는 알림', true);
   for (const b of BANNERS) h = removeEl(h, b, missing, '광고 안내 창', true);
   if (missing.length) stop(`${p.slug} 못 찾은 자리 — ${missing.join(' · ')} (아무 쪽도 쓰지 않음)`);

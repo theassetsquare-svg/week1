@@ -230,8 +230,9 @@ removeEl('예산 가이드', new RegExp(`<div class="insider-card"${A}>\\s*<span
 removeEl('인사이더 팁 띄우기(첫 방문 혜택 등)', new RegExp(`<section class="insider-tip"${A} id="insiderTip"`));
 removeEl('오늘 단 N명 문구', new RegExp(`<p class="scarcity-text"${A} id="scarcityText"`));
 removeEl('다음 업소 자동 이동', new RegExp(`<section class="next-countdown"${A} id="nextCountdown"${A}>`));
-removeEl('지금 N명 탐색 중', new RegExp(`<span style="margin-left:12px;color:var\\(--accent\\);font-weight:600;"${A} id="fomoCounter"${A}>`));
-removeEl('예약 문의 들어옴 알림', new RegExp(`<div class="toast"${A} id="toast"${A}>`));
+// 아래 두 칸은 공통 틀에서 뺐다(2026-11-13 · 지어낸 숫자 · 지어낸 알림) — 없으면 넘어가고, 옛 틀로 지은 판이면 여기서 뺀다
+removeEl('지금 N명 탐색 중', new RegExp(`<span style="margin-left:12px;color:var\\(--accent\\);font-weight:600;"${A} id="fomoCounter"${A}>`), true);
+removeEl('예약 문의 들어옴 알림', new RegExp(`<div class="toast"${A} id="toast"${A}>`), true);
 removeEl('떠오르는 알림(확인 안 된 혜택 · 마감 문구)', new RegExp(`<div class="var-reward"${A} id="varReward"${A}>`));
 
 // ⑥ 관계 고지 — 본문 끝

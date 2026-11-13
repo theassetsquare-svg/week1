@@ -263,9 +263,10 @@ for (const p of PAGES) {
     if (n !== 1) { missing.push(`${label}(찾은 수 ${n})`); return; }
     h = h.replace(new RegExp(re.source, re.flags.replace('g', '')), typeof repl === 'string' ? () => repl : repl);
   };
-  const removeEl = (label, re) => {
+  const removeEl = (label, re, optional = false) => {
     const g = new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g');
     const all = [...h.matchAll(g)];
+    if (all.length === 0 && optional) return;
     if (all.length !== 1) { missing.push(`${label}(찾은 수 ${all.length})`); return; }
     const start = all[0].index;
     const tag = h.slice(start).match(/^<([a-zA-Z][a-zA-Z0-9]*)\b/)[1].toLowerCase();
@@ -322,8 +323,9 @@ for (const p of PAGES) {
   once('아래 고정 바', new RegExp(`<a href="https://nolcool\\.com" target="_blank" rel="noopener noreferrer" class="phone-bar no-phone"(${A})>[^<]*</a>`),
     (_m, cid) => `<a href="${TEL}" class="phone-bar has-phone" style="font-size:clamp(13px,3.9vw,18px);letter-spacing:0;white-space:nowrap;"${cid}>${BAR_TEXT}</a>`);
   // ⑤ 틀 밖의 지어낸 알림 셋(지금 N명 탐색 중 · 예약 문의 들어옴 · 떠오르는 혜택) — 선례처럼 이 쪽에서만 뺀다(틀 스크립트가 없으면 넘어가게 짜여 있음)
-  removeEl('지금 N명 탐색 중', new RegExp(`<span style="margin-left:12px;color:var\\(--accent\\);font-weight:600;"${A} id="fomoCounter"${A}>`));
-  removeEl('예약 문의 들어옴 알림', new RegExp(`<div class="toast"${A} id="toast"${A}>`));
+  //   앞의 두 칸은 공통 틀에서 뺐다(2026-11-13) — 없으면 넘어가고, 옛 틀로 지은 판이면 여기서 뺀다
+  removeEl('지금 N명 탐색 중', new RegExp(`<span style="margin-left:12px;color:var\\(--accent\\);font-weight:600;"${A} id="fomoCounter"${A}>`), true);
+  removeEl('예약 문의 들어옴 알림', new RegExp(`<div class="toast"${A} id="toast"${A}>`), true);
   removeEl('떠오르는 알림', new RegExp(`<div class="var-reward"${A} id="varReward"${A}>`));
 
   if (missing.length) stop(`${p.slug} 못 찾은 자리 ${missing.length}곳 — ${missing.join(' · ')} (세 쪽 다 쓰지 않음)`);
