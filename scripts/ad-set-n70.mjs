@@ -20,12 +20,14 @@
 //   이미 고친 dist(표지가 있음)는 확인만 한다 — 두 번 돌려도 같다
 //   끝에 dist 글 파일 전부(base64 덩이는 풀어서)를 훑는다 — 옛 번호·해지 이름은 어디에도 0 ·
 //   닉네임과 새 번호는 일산 세 쪽에만(쪽마다 제 닉네임만) — 어긋나면 종료 1
-//   ※ 번호와 닉네임 끝 낱말은 조각으로 적는다 — 이 파일은 그 글자를 「찾아서 빼거나 지키는」 쪽이라, 통째로 적어 두면
-//     저장소 연락처 검사(naver-watch scripts/adv/legacy-repo-scan.mjs)가 이 목록 자체를 남은 연락처로 센다
+//   ※ 저장소 연락처 검사(naver-watch scripts/adv/legacy-repo-scan.mjs)는 이 파일도 훑는다 — 2026-11-13 부터는 나눠 적은 번호까지 센다.
+//     · 해지된 옛 번호 둘은 번호 글자를 어떤 꼴로도 두지 않는다 → 끝 여덟 자리의 지문(sha256 앞 16자)만 두고 dist 를 그 지문으로 지킨다(GONE_FP)
+//     · 새 번호와 두 닉네임은 일산 가게 이름이 붙은 기록(ADV_N) 한 곳에만 통째로 적는다 — 그 검사는 기록 주인이 일산 가게일 때만 통과시킨다
 //   node scripts/ad-set-n70.mjs [dist]        (N70_SHARP=<sharp 경로> 로 다른 sharp 를 쓸 수 있음 · 시험용)
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 
 const ROOT = process.argv[2] || process.env.AD_SET_ROOT || 'dist';
 const HOST = 'https://dd.nolcool.com';
@@ -38,13 +40,22 @@ if (!existsSync(join(ROOT, 'index.html'))) stop(`dist 가 아님(index.html 없�
 // 번호 = [앞, 가운데, 끝] 조각 · dash = 쪽에 적힌 꼴 · tail·flat = 지킴 검사에 쓰는 꼴
 const tel = (a, b, c) => ({ dash: [a, b, c].join('-'), tail: `${b}[\\s.\\-]?${c}`, flat: [a, b, c].join('') });
 const TEL_R = tel('010', '4117', '5556'); // 옛 일산룸·일산명월관요정 자료 번호(소스 데이터에 있음 → 여기서 뺀다)
-const TEL_U = tel('010', '5653', '0069'); // 울산챔피언나이트 해지 번호 — 소스 자료에서는 지웠다(아래 OLD_U 자리 표시) · 지킴만
-const TEL_X = tel('010', '3695', '4929'); // 2026-11-11 해지된 옛 일산 담당 번호(이제 어디에도 넣지 않는다 · 지킴만)
-const TEL_N = tel('010', '3541', '0027'); // 2026-11-13 일산 세 쪽 광고주 번호(대표님 13:30) — 이 세 쪽에만
-// 일산 광고주 닉네임의 끝 낱말 — 일산 세 쪽에서 아래 두 닉네임 꼴로만 쓴다(그 밖의 쪽에는 0 · 뒤에 TV 가 붙은 옛 이름은 어디에도 0)
-const NICK_X = ['신', '실장'].join('');
-const NICK_ROOM = `일산룸 총책임자 ${NICK_X}`; // 일산룸 쪽(대표님 2026-11-13 13:48)
-const NICK_YO = `일산요정 총책임자 ${NICK_X}`;  // 일산명월관 · 일산요정 쪽
+// 2026-11-13 일산 세 쪽 광고주(대표님 13:30 번호 · 13:48 닉네임) — 이 세 쪽에만 · 번호와 닉네임은 이 기록 한 곳에만 적는다
+const ADV_N = { name: '일산룸 · 일산명월관요정', nickRoom: '일산룸 총책임자 신실장', nickYo: '일산요정 총책임자 신실장', phone: '010-3541-0027' };
+const TEL_N = tel(...ADV_N.phone.split('-'));
+const NICK_ROOM = ADV_N.nickRoom; // 일산룸 쪽
+const NICK_YO = ADV_N.nickYo;     // 일산명월관 · 일산요정 쪽
+// 닉네임 끝 낱말 — 일산 세 쪽에서 위 두 닉네임 꼴로만 쓴다(그 밖의 쪽에는 0 · 뒤에 TV 가 붙은 옛 이름은 어디에도 0)
+const NICK_X = NICK_ROOM.split(' ').pop();
+// 해지된 옛 번호 둘(울산챔피언나이트 2026-10-25 · 옛 일산 담당 2026-11-11 — 어디에도 0 · 지킴만)의 끝 여덟 자리 지문.
+//   dist 글에서 「네 자리 + (빈칸·점·줄표 하나) + 네 자리」를 한 자리씩 밀며 지문을 견준다 — 옛 지킴 틀(가운데·끝 묶음)과 같은 범위라
+//   앞 세 자리를 붙인 꼴 · 붙여 쓴 꼴도 잡힌다. 울산 번호의 자리는 src/data/nights-other.ts 의 자리 표시(OLD_U)가 맡는다.
+const GONE_FP = new Set(['858733e59f736af7', '8b4f061cef6f703f']);
+const fp8 = (d) => createHash('sha256').update(d).digest('hex').slice(0, 16);
+function goneHit(t) {
+  for (const m of String(t).matchAll(/(?=(\d{4})[\s.\-]?(\d{4}))/g)) if (GONE_FP.has(fp8(m[1] + m[2]))) return ['해지된 옛 번호'];
+  return null;
+}
 const OLD_R = TEL_R.dash;
 const NEW = TEL_N.dash;               // 쪽에 적는 꼴
 const NEW_HREF = `tel:${TEL_N.flat}`; // 전화 링크
@@ -58,9 +69,10 @@ const SHORT_U0 = '춘자 담당에게 전화 한 통이면 좌석부터 케이�
 const SHORT_U1 = '입구에 금색 트로피 장식이 서 있고, 무대는 권투 링처럼 로프를 둘렀다.';
 const cut25 = (s) => `${s.substring(0, 25)}…`; // 순위 쪽 카드 설명 = 앞 25자 + …(src/pages/ranking/index.astro)
 
-// dist 어디에도 남으면 안 되는 것 — 허용 쪽 없음(옛 번호 셋 · 해지 이름 · 옛 TV 이름 · 지어낸 사람 구절 · 가게 이름을 사람처럼 쓴 옛 담당 줄)
+// dist 어디에도 남으면 안 되는 것 — 허용 쪽 없음(옛 자료 번호 · 해지 이름 · 옛 TV 이름 · 지어낸 사람 구절 · 가게 이름을 사람처럼 쓴 옛 담당 줄)
+//   해지된 옛 번호 둘은 이 틀이 아니라 goneHit(지문)이 본다
 const BAD = new RegExp([
-  TEL_U.tail, TEL_U.flat, TEL_R.tail, TEL_R.flat, TEL_X.tail, TEL_X.flat, OLD_U,
+  TEL_R.tail, TEL_R.flat, OLD_U,
   '춘자', `${NICK_X}\\s*TV`, '미친 기억력',
   '일산룸(?:한테|에게| 담당(?!자)| 바로 연결|이라는 사람)',
   '일산명월관요정(?:에게|한테| 담당(?!자)| 바로 연결)',
@@ -983,7 +995,7 @@ const count = (t, s) => t.split(s).length - 1;
     const t = outs.has(rel) ? outs.get(rel) : readFileSync(f, 'utf8');
     scanned++;
     const own = NICK_OF.get(rel);
-    const b = t.match(BAD) || (own ? null : t.match(BAD_OUT));
+    const b = t.match(BAD) || goneHit(t) || (own ? null : t.match(BAD_OUT));
     if (b) hits.push(`${rel}: 「${b[0]}」`);
     if (own) {
       ownSeen++;
@@ -995,7 +1007,7 @@ const count = (t, s) => t.split(s).length - 1;
     for (const m of t.matchAll(B64_ANY)) {
       blobs++;
       const u = Buffer.from(m[1], 'base64').toString('utf8');
-      const inner = u.match(BAD) || u.match(BAD_OUT); // 자료 덩이 안에는 어느 쪽이든 닉네임·새 번호 0
+      const inner = u.match(BAD) || goneHit(u) || u.match(BAD_OUT); // 자료 덩이 안에는 어느 쪽이든 닉네임·새 번호 0
       if (inner) { hits.push(`${rel}: 자료 덩이 안의 「${inner[0]}」`); break; }
     }
   }
